@@ -1,0 +1,14 @@
+
+Apache cTAKES
+==================================
+Detailed documentation can be found at:
+http://ctakes.apache.org
+
+Requirements
+---------------------------------------
+Java 1.8 is required to run cTAKES
+Maven 3.0.0 is required to build cTAKES
+
+
+For information on Installation and Operation:
+https://cwiki.apache.org/confluence/display/ctakes/ctakes
