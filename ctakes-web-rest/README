@@ -1,0 +1,27 @@
+This is the README for the REST module in the cTakes project.
+
+This module performs natural language processing of input payload using REST API
+endpoint and extracts out clicnical information in JSON format.
+
+Installation:
+
+1) Build all the cTAKES modules as this module contains a number of references 
+to other cTAKES modules.
+
+2) Modify 'src\main\resources\org\apache\ctakes\dictionary\lookup\fast\customDictionary.xml'
+to refer to the respective database where dictionary is loaded or use UMLS database.
+
+3) Build ctakes-web-rest module and deploy ctakes-web-rest.war available 
+under 'target' folder in Apache Tomcat.
+
+4) Access the following URL to peform text analysis using cTAKES web application:
+
+	http://<host-name>:<port>/ctakes-web-rest/index.jsp
+
+5) Access the following REST API endpoint to perform text analysis using default pipeline:
+
+	http://<host-name>:<port>/ctakes-web-rest/service/analyze?pipeline=Default
+
+6) Access the following REST API endpoint to perform text analysis using full pipeline:
+
+	http://<host-name>:<port>/ctakes-web-rest/service/analyze?pipeline=Full

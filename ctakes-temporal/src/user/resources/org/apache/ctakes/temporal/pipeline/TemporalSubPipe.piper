@@ -1,0 +1,19 @@
+// Commands and parameters to create a default temporal processing sub-pipeline.  This is not a full pipeline.
+
+// 'Generic' Events.  Use addDescription and let the EventAnnotator set itself up with defaults.
+addDescription EventAnnotator
+
+// Times.  Use addLogged to log start and finish of processing.  There aren't default models, so set specifically
+add BackwardsTimeAnnotator classifierJarPath=/org/apache/ctakes/temporal/models/timeannotator/model.jar
+
+// DocTimeRel: the relation bin for Events to the Document Creation Time.
+add DocTimeRelAnnotator classifierJarPath=/org/apache/ctakes/temporal/models/doctimerel/model.jar
+
+// Event - Time binary relations.
+add EventTimeRelationAnnotator classifierJarPath=/org/apache/ctakes/temporal/models/eventtime/model.jar
+
+// Event - Event binary relations.
+add EventEventRelationAnnotator classifierJarPath=/org/apache/ctakes/temporal/models/eventevent/model.jar
+
+//  Need to improve.  Generic Events (head words) should be replaced by overlapping subclasses with relations adjusted.
+//add FullTemporalExtractionPipeline.CopyPropertiesToTemporalEventAnnotator

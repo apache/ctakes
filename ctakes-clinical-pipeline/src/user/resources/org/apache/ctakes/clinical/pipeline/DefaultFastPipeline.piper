@@ -1,0 +1,24 @@
+// Commands and parameters to create a default plaintext document processing pipeline with UMLS lookup
+
+// Write nice big banners when ctakes starts and finishes.
+set WriteBanner=yes
+
+// Load a simple token processing pipeline from another pipeline file
+load DefaultTokenizerPipeline
+
+// Add non-core annotators
+add ContextDependentTokenizerAnnotator
+addDescription POSTagger
+
+// Add Chunkers
+load ChunkerSubPipe
+
+// Default fast dictionary lookup
+load DictionarySubPipe
+
+// Add Cleartk Entity Attribute annotators
+load AttributeCleartkSubPipe
+
+// Log run time stats and completion
+addLast util.log.FinishedLogger
+

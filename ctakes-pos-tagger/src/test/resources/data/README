@@ -1,0 +1,12 @@
+The files in this directory are here to support unit testing of the POSTagger.
+
+contents:
+GENIAcorpus3.02.pos.test.xml - contains two GENIA abstracts used for unit testing scripts/java/data.pos.training.GeniaPosTrainingDataExtractor.java
+unit-test-2lines-training-data.txt - 2 sentences from GENIA corpus in OpenNLP format with some (obvious) modifications.  used for unit testing.
+unit-test-tag-dictionary.txt - simple tag model for unit tests, with all words constrained to spit out "IN" it is a good contrast with the predicted values not using the tag dictionary.
+unit-test-tags.opennlp.format - supports unit tests for collection reader OpenNLPPOSCollectionReader.java
+unit-test-training-data.txt - 500 sentences from GENIA corpus in OpenNLP format
+
+A model can be generated with the following command:
+
+java opennlp.tools.postag.POSTaggerME data/test/unit-test-training-data.txt data/test/unit-test-model.bin.gz

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/core"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="4"/>
+</listAttribute>
+<booleanAttribute key="org.eclipse.debug.core.appendEnvironmentVariables" value="true"/>
+<stringAttribute key="org.eclipse.debug.ui.target_debug_perspective" value="perspective_default"/>
+<stringAttribute key="org.eclipse.debug.ui.target_run_perspective" value="perspective_default"/>
+<stringAttribute key="org.eclipse.jdt.launching.CLASSPATH_PROVIDER" value="org.eclipse.m2e.launchconfig.classpathProvider"/>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="org.apache.uima.tools.annot_view.Gladis"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="ctakes-core"/>
+<stringAttribute key="org.eclipse.jdt.launching.SOURCE_PATH_PROVIDER" value="org.eclipse.m2e.launchconfig.sourcepathProvider"/>
+<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="&quot;-Djava.util.logging.config.file=${env_var:UIMA_HOME}/Logger.properties&quot;  -Xms500M -Xmx3g"/>
+</launchConfiguration>

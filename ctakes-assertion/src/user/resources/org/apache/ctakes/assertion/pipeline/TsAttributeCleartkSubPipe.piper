@@ -1,0 +1,19 @@
+// Commands and parameters to create a default entity attributes processing sub-pipeline.  This is not a full pipeline.
+
+// Add the Dependency parser for use by cleartk
+addDescription concurrent.ThreadSafeClearNlpDepParser
+// Add the Semantic Role Labeler parser for use by cleartk
+addDescription concurrent.ThreadSafeClearNlpSemRoleLabeler
+
+// Add the cleartk package for cleartk class lookups
+package org.apache.ctakes.assertion.medfacts.cleartk
+
+// Add the cleartk attribute engines, logging for them as a block
+add StartFinishLogger LOGGER_NAME=CleartkAnalysisEngine LOGGER_TASK="Assigning Attributes" IS_START=true
+addDescription PolarityCleartkAnalysisEngine
+addDescription UncertaintyCleartkAnalysisEngine
+addDescription HistoryCleartkAnalysisEngine
+addDescription ConditionalCleartkAnalysisEngine
+addDescription GenericCleartkAnalysisEngine
+addDescription SubjectCleartkAnalysisEngine
+add StartFinishLogger LOGGER_NAME=CleartkAnalysisEngine LOGGER_TASK="Assigning Attributes"

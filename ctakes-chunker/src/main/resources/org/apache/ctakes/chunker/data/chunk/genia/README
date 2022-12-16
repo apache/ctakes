@@ -1,0 +1,29 @@
+This file describes how to prepare OpenNLP chunker training data from the GENIA treebank data.  
+
+####################################
+Step 0 - prepare Genia Treebank data
+####################################
+Before you can execute the steps below, you must first prepare the Genia treebank data as described in data/treebank/genia/README
+You must also obtain the chunklink script as described in scripts/perl/README
+
+############################################
+Step 1 - run chunklink_2-2-2000_for_conll.pl
+############################################
+
+Run the chunklink script to convert Genia data to chunk data.  Please see scripts/perl/README for information on obtaining the chunklink script.
+
+I can only get this script to work correctly using cygwin.  So, open a cygwin session and cd to data/treebank/genia to run the script.  
+I have not run this script under mac or linux - but I assume that it should work fine on these platforms.  
+
+>cd data/treebank/genia
+>perl ../../../scripts/perl/chunklink_2-2-2000_for_conll.pl -NHhftc ??/wsj_????.mrg > ../../chunk/genia/genia.chunklink.chunks
+
+
+###############################################
+Step 2 - convert chunklink data to OpenNLP data
+###############################################
+
+The output of chunklink needs to be converted to OpenNLP format.  This can be done using the script scripts/java/data/chunk/Chunklink2OpenNLP.java:
+
+java data.chunk.Chunklink2OpenNLP data/chunk/genia/genia.chunklink.chunks data/chunk/genia/genia.opennlp.chunks 
+

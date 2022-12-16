@@ -1,0 +1,9 @@
+//  Commands and parameters to create a default dictionary lookup sub-pipeline.  This is not a full pipeline.
+
+// path to the xml file containing information for dictionary lookup configuration.
+cli LookupXml=l
+// umls credentials
+cli umlsKey=key
+
+// Default fast dictionary lookup
+add concurrent.ThreadSafeFastLookup

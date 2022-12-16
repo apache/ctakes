@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<COMPONENT_INSTALLATION_DESCRIPTOR>
+	<OS>
+		<NAME>Windows and Linux</NAME>
+	</OS>
+	<TOOLKITS>
+		<JDK_VERSION>1.4.0</JDK_VERSION>
+	</TOOLKITS>
+	<UIMA_FRAMEWORK>
+	</UIMA_FRAMEWORK>
+	<SUBMITTED_COMPONENT>
+		<ID>org.mitre.medfacts.pear.AssertionPear</ID>
+		<NAME></NAME>
+		<DESC>$main_root/desc/assertionMiniPipelineAnalysisEngine.xml</DESC>
+		<DEPLOYMENT>standard</DEPLOYMENT>
+	</SUBMITTED_COMPONENT>
+	<INSTALLATION>
+		<PROCESS>
+			<ACTION>set_env_variable</ACTION>
+			<PARAMETERS>
+				<COMMENTS></COMMENTS>
+				<VAR_VALUE>$main_root/target/classes;$main_root/bin;$main_root/lib/commons-cli-1.2.jar;$main_root/lib/jackson-core-lgpl-1.5.0.jar;$main_root/lib/jackson-mapper-lgpl-1.5.0.jar;$main_root/lib/med-facts-i2b2-1.0-SNAPSHOT.jar;$main_root/lib/med-facts-zoner-1.0-SNAPSHOT.jar;$main_root/../core/bin;$main_root/lib/jline-0.9.94.jar;$main_root/lib/xmlgraphics-commons-1.3.1.jar;$main_root/lib/commons-io-1.3.1.jar;$main_root/lib/commons-logging-1.0.4.jar;$main_root/lib/jfreechart-1.0.13.jar;$main_root/lib/jcommon-1.0.16.jar;$main_root/lib/netlib-java-0.9.3.jar;$main_root/lib/arpack-combo-0.1.jar;$main_root/lib/itext-2.1.5.jar;$main_root/lib/bcmail-jdk14-138.jar;$main_root/lib/bcprov-jdk14-138.jar;$main_root/lib/sbinary_2.9.0-0.4.0.jar;$main_root/lib/jcarafe-core_2.9.0-0.9.8.2.RC5.jar;$main_root/lib/jcarafe-ext_2.9.0-0.9.8.2.RC5.jar;$main_root/lib/scala-library-2.9.0.jar;$main_root/lib/scalala_2.9.0-1.0.0.RC2-SNAPSHOT.jar;</VAR_VALUE>
+				<VAR_NAME>CLASSPATH</VAR_NAME>
+			</PARAMETERS>
+		</PROCESS>
+	</INSTALLATION>
+</COMPONENT_INSTALLATION_DESCRIPTOR>

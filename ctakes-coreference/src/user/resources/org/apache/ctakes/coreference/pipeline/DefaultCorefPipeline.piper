@@ -1,0 +1,7 @@
+// Default Clinical Pipeline with  coreference resolution
+
+// Default Clinical Pipeline
+load DefaultFastPipeline
+
+// Coreference resolution
+load CorefSubPipe

@@ -1,0 +1,5 @@
+
+The model in parsermodel is trained on Mipacq data (clinical notes, clinical questions, medpedia, etc.)
+as well as the Penn Treebank (Wall Street Journal).  This model performs about 1.5 better labeled F-score
+on some preliminary runs.  fastModel is trained only on clinical data but is a much smaller model and
+runs a lot faster.

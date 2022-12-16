@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<lookupSpecification>
+	<!--  Defines what dictionaries will be used in terms of implementation specifics and metaField configuration. -->
+	<dictionaries>
+		<dictionary id="GAZ_CSV_PAD_TERM" externalResourceKey="PAD_Terms_File" caseSensitive="false">
+			<implementation>
+				<csvImpl delimiter="|" indexedFieldNames="0,1"/>
+			</implementation>
+			<lookupField fieldName="0"/>
+			<metaFields>
+				<metaField fieldName="1"/>
+			</metaFields>
+		</dictionary>
+		<dictionary id="GAZ_CSV_PAD_LOC" externalResourceKey="PAD_Location_File" caseSensitive="false">
+			<implementation>
+				<csvImpl delimiter="|" indexedFieldNames="0"/>
+			</implementation>
+			<lookupField fieldName="0"/>
+			<!-- metaField represents the "cols" in the result of the dictionary lookup-->
+			<metaFields>
+				<metaField fieldName="1"/>
+				<metaField fieldName="2"/>
+			</metaFields>
+		</dictionary>
+	</dictionaries>
+	<!-- Binds together the components necessary to perform the complete lookup logic start to end. -->
+	<lookupBindings>
+		<lookupBinding>
+			<dictionaryRef idRef="GAZ_CSV_PAD_TERM"/>
+			<!-- NOTE: Only use if windowAnnotations have small # of tokens, sentences are not a good idea! -->
+			<lookupInitializer className="org.apache.ctakes.dictionary.lookup.ae.FirstTokenPermLookupInitializerImpl">
+				<properties>
+					<property key="textMetaFields" value="1"/>
+					<property key="maxPermutationLevel" value="7"/>
+					<property key="windowAnnotations" value="org.apache.ctakes.typesystem.type.textspan.Sentence"/>
+				</properties>
+			</lookupInitializer>
+			<lookupConsumer className="org.apache.ctakes.padtermspotter.impl.PADTermConsumerImpl">
+				<properties>
+					<!-- property key="stopWordsExtFileResrcKey" value="StopWordsFile"/ -->
+				</properties>
+			</lookupConsumer>
+		</lookupBinding>
+		<lookupBinding>
+			<dictionaryRef idRef="GAZ_CSV_PAD_LOC"/>
+			<!-- NOTE: Only use if windowAnnotations have small # of tokens, sentences are not a good idea! -->
+			<lookupInitializer className="org.apache.ctakes.dictionary.lookup.ae.FirstTokenPermLookupInitializerImpl">
+				<properties>
+					<property key="textMetaFields" value="1"/>
+					<property key="maxPermutationLevel" value="7"/>
+					<property key="windowAnnotations" value="org.apache.ctakes.typesystem.type.textspan.Sentence"/>
+				</properties>
+			</lookupInitializer>
+			<lookupConsumer className="org.apache.ctakes.padtermspotter.impl.PADLocationConsumerImpl">
+				<properties>
+					<!-- property key="stopWordsExtFileResrcKey" value="StopWordsFile"/ -->
+				</properties>
+			</lookupConsumer>
+		</lookupBinding>
+	</lookupBindings>
+</lookupSpecification>

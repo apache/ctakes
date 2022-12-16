@@ -1,0 +1,9 @@
+
+load SectionedRelationTemporalPipeline
+
+package org.apache.ctakes.fhir.cc
+
+set WriteNlpFhir=true
+
+add FhirJsonFileWriter
+

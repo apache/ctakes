@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<collectionReaderDescription xmlns="http://uima.apache.org/resourceSpecifier">
+<frameworkImplementation>org.apache.uima.java</frameworkImplementation>
+<implementationName>org.apache.ctakes.core.cr.LinesFromFileCollectionReader</implementationName>
+<processingResourceMetaData>
+<name>lines from file collection reader</name>
+<description>This collection reader facilitates reading "documents" from a single file.  Each line in the document will be considered an entity to be analyzed by the CPE.  That is each line will be treated as a "document" and will have its own CAS.</description>
+<version>1.0</version>
+<vendor>Mayo Clinic</vendor>
+<configurationParameters>
+<configurationParameter>
+<name>InputFileName</name>
+<description>specifies the location of the file that will be run through this collection reader.</description>
+<type>String</type>
+<multiValued>false</multiValued>
+<mandatory>true</mandatory>
+</configurationParameter>
+<configurationParameter>
+<name>Language</name>
+<description>ISO language code for the documents</description>
+<type>String</type>
+<multiValued>false</multiValued>
+<mandatory>false</mandatory>
+</configurationParameter>
+<configurationParameter>
+<name>CommentString</name>
+<description>specifies a comment string.  Any line that begins with the string will be ignored and not be added as a "document" to the CPE.</description>
+<type>String</type>
+<multiValued>false</multiValued>
+<mandatory>false</mandatory>
+</configurationParameter>
+<configurationParameter>
+<name>IgnoreBlankLines</name>
+<description>Optional parameter determines whether a blank line will be processed as a document or will be ignored.  The default will be set to 'true' which means that blank lines will be ignored.</description>
+<type>Boolean</type>
+<multiValued>false</multiValued>
+<mandatory>false</mandatory>
+</configurationParameter>
+<configurationParameter>
+<name>IdDelimeter</name>
+<description>Name of optional configuration parameter that specifies a character (or string) that delimits
+the id of the document from the text of the document. For example, if the parameter is 
+set to '|' then the following line from a file:
+1234|this is some text
+ would have an id of 1234 and text 'this is some text'.  
+     * If this parameter is not set, then
+     * the id of a document will be its line number in the file.</description>
+<type>String</type>
+<multiValued>false</multiValued>
+<mandatory>false</mandatory>
+</configurationParameter>
+</configurationParameters>
+<configurationParameterSettings>
+<nameValuePair>
+<name>InputFileName</name>
+<value>
+<string>change me</string>
+</value>
+</nameValuePair>
+<nameValuePair>
+<name>IgnoreBlankLines</name>
+<value>
+<boolean>true</boolean>
+</value>
+</nameValuePair>
+</configurationParameterSettings>
+<typeSystemDescription>
+<imports>
+</imports>
+</typeSystemDescription>
+<typePriorities/>
+<fsIndexCollection/>
+<capabilities>
+<capability>
+<inputs/>
+<outputs/>
+<languagesSupported/>
+</capability>
+</capabilities>
+<operationalProperties>
+<modifiesCas>true</modifiesCas>
+<multipleDeploymentAllowed>false</multipleDeploymentAllowed>
+</operationalProperties>
+</processingResourceMetaData>
+</collectionReaderDescription>

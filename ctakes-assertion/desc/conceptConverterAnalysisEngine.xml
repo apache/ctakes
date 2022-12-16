@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<analysisEngineDescription xmlns="http://uima.apache.org/resourceSpecifier">
+  <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
+  <primitive>true</primitive>
+  <annotatorImplementationName>org.apache.ctakes.assertion.medfacts.ConceptConverterAnalysisEngine</annotatorImplementationName>
+  <analysisEngineMetaData>
+    <name>conceptConverterAnalysisEngine</name>
+    <description/>
+    <version>1.0</version>
+    <vendor/>
+    <configurationParameters/>
+    <configurationParameterSettings/>
+    <typeSystemDescription>
+      <imports>
+        <import name="org.apache.ctakes.assertion.types.TypeSystem"/>
+        <import name="org.apache.ctakes.typesystem.types.TypeSystem"/>
+      </imports>
+    </typeSystemDescription>
+    <typePriorities/>
+    <fsIndexCollection/>
+    <capabilities>
+      <capability>
+        <inputs>
+          <type allAnnotatorFeatures="true">org.apache.ctakes.typesystem.type.refsem.UmlsConcept</type>
+          <type allAnnotatorFeatures="true">org.apache.ctakes.typesystem.type.refsem.OntologyConcept</type>
+          <type allAnnotatorFeatures="true">org.apache.ctakes.typesystem.type.textsem.EntityMention</type>
+          <type allAnnotatorFeatures="true">org.apache.ctakes.typesystem.type.syntax.BaseToken</type>
+        </inputs>
+        <outputs>
+          <type allAnnotatorFeatures="true">org.apache.ctakes.assertion.medfacts.types.Concept</type>
+        </outputs>
+        <languagesSupported/>
+      </capability>
+    </capabilities>
+    <operationalProperties>
+      <modifiesCas>true</modifiesCas>
+      <multipleDeploymentAllowed>true</multipleDeploymentAllowed>
+      <outputsNewCASes>false</outputsNewCASes>
+    </operationalProperties>
+  </analysisEngineMetaData>
+  <externalResourceDependencies>
+    <externalResourceDependency>
+      <key>assertionModelResource</key>
+      <description/>
+      <optional>false</optional>
+    </externalResourceDependency>
+    <externalResourceDependency>
+      <key>scopeModelResource</key>
+      <description/>
+      <optional>false</optional>
+    </externalResourceDependency>
+    <externalResourceDependency>
+      <key>cueModelResource</key>
+      <description/>
+      <optional>false</optional>
+    </externalResourceDependency>
+    <externalResourceDependency>
+      <key>enabledFeaturesResource</key>
+      <description/>
+      <optional>false</optional>
+    </externalResourceDependency>
+  </externalResourceDependencies>
+  <resourceManagerConfiguration>
+    <externalResources>
+      <externalResource>
+        <name>assertionModelResourceImpl</name>
+        <description/>
+        <fileResourceSpecifier>
+          <fileUrl>file:org/mitre/medfacts/resources/i2b2.model</fileUrl>
+        </fileResourceSpecifier>
+      </externalResource>
+      <externalResource>
+        <name>scopeModelResourceImpl</name>
+        <description/>
+        <fileResourceSpecifier>
+          <fileUrl>file:org/mitre/medfacts/resources/scope.model</fileUrl>
+        </fileResourceSpecifier>
+      </externalResource>
+      <externalResource>
+        <name>cueModelResourceImpl</name>
+        <description/>
+        <fileResourceSpecifier>
+          <fileUrl>file:org/mitre/medfacts/resources/cue.model</fileUrl>
+        </fileResourceSpecifier>
+      </externalResource>
+      <externalResource>
+        <name>enabledFeaturesResourceImpl</name>
+        <description/>
+        <fileResourceSpecifier>
+          <fileUrl>file:org/mitre/medfacts/resources/featureFile11b</fileUrl>
+        </fileResourceSpecifier>
+      </externalResource>
+    </externalResources>
+    <externalResourceBindings>
+      <externalResourceBinding>
+        <key>assertionModelResource</key>
+        <resourceName>assertionModelResourceImpl</resourceName>
+      </externalResourceBinding>
+      <externalResourceBinding>
+        <key>scopeModelResource</key>
+        <resourceName>scopeModelResourceImpl</resourceName>
+      </externalResourceBinding>
+      <externalResourceBinding>
+        <key>cueModelResource</key>
+        <resourceName>cueModelResourceImpl</resourceName>
+      </externalResourceBinding>
+      <externalResourceBinding>
+        <key>enabledFeaturesResource</key>
+        <resourceName>enabledFeaturesResourceImpl</resourceName>
+      </externalResourceBinding>
+    </externalResourceBindings>
+  </resourceManagerConfiguration>
+</analysisEngineDescription>

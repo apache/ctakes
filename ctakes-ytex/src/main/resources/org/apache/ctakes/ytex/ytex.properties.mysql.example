@@ -1,0 +1,29 @@
+# schema/database name 
+db.schema=ytex
+# username
+db.username=ytex
+# password
+db.password=ytex
+
+# jdbc url for database.  schema name must match db.schema
+db.url=jdbc:mysql://localhost:3306/ytex?autoReconnect=true
+
+# the schema where umls is installed
+# if not specified, will default to schema from ytex
+#umls.schema=umls
+
+
+# you should not have to modify anything below
+db.type=mysql
+db.driver=com.mysql.jdbc.Driver
+db.initStatements=
+hibernate.dialect=org.hibernate.dialect.MySQLMyISAMDialect
+
+# transaction isolation level
+db.isolationLevel=READ_UNCOMMITTED
+
+# the parameters passed to mysql
+# if you have any additional parameters that must be passed to mysql 
+# (e.g. if you are using a non-standard port)
+# uncomment and modify the line below
+# mysql.line=--user=${db.username} --password=${db.password} --host=${db.host} ${db.schema} 

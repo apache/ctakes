@@ -1,0 +1,52 @@
+Contents
+- Introduction
+- Running the context dependent tokenizer
+	- ContextDependentTokenizerAnnotator.xml
+	- TestTAE.xml
+ 
+############
+Introduction
+############
+
+This annotator creates annotations from one or more tokens, using surrounding tokens as clues. 
+An example of an annotation created from multiple tokens is a range that includes 2 numbers 
+and a dash (e.g. 2-3).
+
+See the CdtTypeSystem.xml descriptor for the list of annotation types this annotator might create.  
+
+This annotator depends on finite state machine (FSM) code in the project named core. 
+
+############################################################################
+Running the context dependent tokenizer
+############################################################################
+   
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+ContextDependentTokenizerAnnotator.xml
+
+The analysis engine descriptor has no parameters.
+Include this analysis engine in your pipeline if you wish to have the following annotations created
+  DateAanotation
+  FractionAnnotation
+  MeasurementAnnotation
+  PersonTitleAnnotation
+  RangeAnnotation
+  RomanNumeralAnnotation
+  TimeAnnotation
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+TestTAE.xml  
+
+The TestTAE descriptor is an aggregate analysis engine that can be used to run a short pipeline
+that takes plaintext as input and annotates for tokens, sentences, and for the annotations created
+by this context dependent tokenizer annotator:
+  DateAanotation
+  FractionAnnotation
+  MeasurementAnnotation
+  PersonTitleAnnotation
+  RangeAnnotation
+  RomanNumeralAnnotation
+  TimeAnnotation
+ 
+This aggregate does not override any parameters or resource bindings.

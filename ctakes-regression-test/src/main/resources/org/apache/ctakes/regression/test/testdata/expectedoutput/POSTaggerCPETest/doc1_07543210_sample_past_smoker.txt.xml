@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CAS version="2">
+    <uima.cas.Sofa _indexed="0" _id="3" sofaNum="1" sofaID="_InitialView" mimeType="text" sofaString="REVIEW OF SYSTEMS:&#13;&#10;General: Has gained about 10 lb in the past 4 yr, no fatigue&#13;&#10;Skin: No rashes or other changes&#13;&#10;Head: See present illness.&#13;&#10;Eyes: Reading glasses for 5 yr, last checked 1 yr ago. No double or blurry vision&#13;&#10;Ears: Hearing good. No tinnitus, vertigo, infections&#13;&#10;Nose, Sinuses: occasional mild cold. No hay fever, sinus trouble&#13;&#10;Mouth and Throat: Last to dentist 2 yr ago. Occasional canker sore&#13;&#10;Neck: No lumps, goiter, pain&#13;&#10;Breasts: No lumps, pain, discharge.&#13;&#10;Habits:&#13;&#10;Patient claims to have quit smoking about two years ago.&#13;&#10;FAMILY HISTORY&#13;&#10;- Mother died, 67, stroke; had varicose veins, headaches, hypertension&#13;&#10;- Father died, 43, train accident"/>
+    <org.apache.ctakes.typesystem.type.structured.DocumentID _indexed="1" _id="1" documentID="doc1_07543210_sample_past_smoker.txt"/>
+    <uima.tcas.DocumentAnnotation _indexed="1" _id="10" _ref_sofa="3" begin="0" end="670" language="x-unspecified"/>
+    <org.apache.ctakes.typesystem.type.textspan.Segment _indexed="1" _id="15" _ref_sofa="3" begin="0" end="670" id="SIMPLE_SEGMENT"/>
+    <org.apache.ctakes.typesystem.type.syntax.NewlineToken _indexed="1" _id="20" _ref_sofa="3" begin="18" end="20" tokenNumber="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.NewlineToken _indexed="1" _id="28" _ref_sofa="3" begin="80" end="82" tokenNumber="1"/>
+    <org.apache.ctakes.typesystem.type.syntax.NewlineToken _indexed="1" _id="36" _ref_sofa="3" begin="114" end="116" tokenNumber="2"/>
+    <org.apache.ctakes.typesystem.type.syntax.NewlineToken _indexed="1" _id="44" _ref_sofa="3" begin="142" end="144" tokenNumber="3"/>
+    <org.apache.ctakes.typesystem.type.syntax.NewlineToken _indexed="1" _id="52" _ref_sofa="3" begin="225" end="227" tokenNumber="4"/>
+    <org.apache.ctakes.typesystem.type.syntax.NewlineToken _indexed="1" _id="60" _ref_sofa="3" begin="279" end="281" tokenNumber="5"/>
+    <org.apache.ctakes.typesystem.type.syntax.NewlineToken _indexed="1" _id="68" _ref_sofa="3" begin="345" end="347" tokenNumber="6"/>
+    <org.apache.ctakes.typesystem.type.syntax.NewlineToken _indexed="1" _id="76" _ref_sofa="3" begin="413" end="415" tokenNumber="7"/>
+    <org.apache.ctakes.typesystem.type.syntax.NewlineToken _indexed="1" _id="84" _ref_sofa="3" begin="443" end="445" tokenNumber="8"/>
+    <org.apache.ctakes.typesystem.type.syntax.NewlineToken _indexed="1" _id="92" _ref_sofa="3" begin="480" end="482" tokenNumber="9"/>
+    <org.apache.ctakes.typesystem.type.syntax.NewlineToken _indexed="1" _id="100" _ref_sofa="3" begin="489" end="491" tokenNumber="10"/>
+    <org.apache.ctakes.typesystem.type.syntax.NewlineToken _indexed="1" _id="108" _ref_sofa="3" begin="547" end="549" tokenNumber="11"/>
+    <org.apache.ctakes.typesystem.type.syntax.NewlineToken _indexed="1" _id="116" _ref_sofa="3" begin="563" end="565" tokenNumber="12"/>
+    <org.apache.ctakes.typesystem.type.syntax.NewlineToken _indexed="1" _id="124" _ref_sofa="3" begin="635" end="637" tokenNumber="13"/>
+    <org.apache.ctakes.typesystem.type.textspan.Sentence _indexed="1" _id="132" _ref_sofa="3" begin="0" end="18" sentenceNumber="0"/>
+    <org.apache.ctakes.typesystem.type.textspan.Sentence _indexed="1" _id="138" _ref_sofa="3" begin="20" end="28" sentenceNumber="1"/>
+    <org.apache.ctakes.typesystem.type.textspan.Sentence _indexed="1" _id="144" _ref_sofa="3" begin="29" end="80" sentenceNumber="2"/>
+    <org.apache.ctakes.typesystem.type.textspan.Sentence _indexed="1" _id="150" _ref_sofa="3" begin="82" end="114" sentenceNumber="3"/>
+    <org.apache.ctakes.typesystem.type.textspan.Sentence _indexed="1" _id="156" _ref_sofa="3" begin="116" end="142" sentenceNumber="4"/>
+    <org.apache.ctakes.typesystem.type.textspan.Sentence _indexed="1" _id="162" _ref_sofa="3" begin="144" end="198" sentenceNumber="5"/>
+    <org.apache.ctakes.typesystem.type.textspan.Sentence _indexed="1" _id="168" _ref_sofa="3" begin="199" end="225" sentenceNumber="6"/>
+    <org.apache.ctakes.typesystem.type.textspan.Sentence _indexed="1" _id="174" _ref_sofa="3" begin="227" end="279" sentenceNumber="7"/>
+    <org.apache.ctakes.typesystem.type.textspan.Sentence _indexed="1" _id="180" _ref_sofa="3" begin="281" end="295" sentenceNumber="8"/>
+    <org.apache.ctakes.typesystem.type.textspan.Sentence _indexed="1" _id="186" _ref_sofa="3" begin="296" end="345" sentenceNumber="9"/>
+    <org.apache.ctakes.typesystem.type.textspan.Sentence _indexed="1" _id="192" _ref_sofa="3" begin="347" end="364" sentenceNumber="10"/>
+    <org.apache.ctakes.typesystem.type.textspan.Sentence _indexed="1" _id="198" _ref_sofa="3" begin="365" end="390" sentenceNumber="11"/>
+    <org.apache.ctakes.typesystem.type.textspan.Sentence _indexed="1" _id="204" _ref_sofa="3" begin="391" end="413" sentenceNumber="12"/>
+    <org.apache.ctakes.typesystem.type.textspan.Sentence _indexed="1" _id="210" _ref_sofa="3" begin="415" end="443" sentenceNumber="13"/>
+    <org.apache.ctakes.typesystem.type.textspan.Sentence _indexed="1" _id="216" _ref_sofa="3" begin="445" end="453" sentenceNumber="14"/>
+    <org.apache.ctakes.typesystem.type.textspan.Sentence _indexed="1" _id="222" _ref_sofa="3" begin="454" end="480" sentenceNumber="15"/>
+    <org.apache.ctakes.typesystem.type.textspan.Sentence _indexed="1" _id="228" _ref_sofa="3" begin="482" end="489" sentenceNumber="16"/>
+    <org.apache.ctakes.typesystem.type.textspan.Sentence _indexed="1" _id="234" _ref_sofa="3" begin="491" end="547" sentenceNumber="17"/>
+    <org.apache.ctakes.typesystem.type.textspan.Sentence _indexed="1" _id="240" _ref_sofa="3" begin="549" end="563" sentenceNumber="18"/>
+    <org.apache.ctakes.typesystem.type.textspan.Sentence _indexed="1" _id="246" _ref_sofa="3" begin="565" end="591" sentenceNumber="19"/>
+    <org.apache.ctakes.typesystem.type.textspan.Sentence _indexed="1" _id="252" _ref_sofa="3" begin="592" end="635" sentenceNumber="20"/>
+    <org.apache.ctakes.typesystem.type.textspan.Sentence _indexed="1" _id="258" _ref_sofa="3" begin="637" end="670" sentenceNumber="21"/>
+</CAS>

@@ -1,0 +1,8 @@
+// Clinical Pipeline with sectionization, paragraph and list detection and degree-of and location-of relations
+// with events, times, event-event and event-time relations plus event-document creation time relations
+
+// Clinical Pipeline with sectionization, paragraph and list detection with degree-of and location-of relations
+load TsSectionedRelationPipeline
+
+// degree-of, relation-of
+load TsTemporalSubPipe

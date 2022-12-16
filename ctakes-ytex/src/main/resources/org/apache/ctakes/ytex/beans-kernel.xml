@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+
+	<!-- ensure that the above transactional advice runs for any execution of 
+		an operation defined by the FooService interface -->
+	<aop:config>
+		<aop:pointcut id="daoOperation"
+			expression="execution(* org.apache.ctakes.ytex.kernel.dao.*Dao.*(..))" />
+		<aop:pointcut id="umlsDaoOperation"
+			expression="execution(* org.apache.ctakes.ytex.umls.dao.*Dao.*(..))" />
+		<aop:pointcut id="exporterOperation"
+			expression="execution(* org.apache.ctakes.ytex.*.*Exporter*.*(..))" />
+		<aop:pointcut id="wekaImporter"
+			expression="execution(* org.apache.ctakes.ytex.weka.WekaResultsImporterImpl.*(..))" />
+		<aop:pointcut id="mapperOperation"
+			expression="execution(* org.apache.ctakes.ytex.uima.mapper.*.*(..))" />
+		<aop:pointcut id="treeOperation"
+			expression="execution(* org.apache.ctakes.ytex.kernel.tree.*Tree*.*.*(..))" />
+		<aop:pointcut id="utilOperation"
+			expression="execution(* org.apache.ctakes.ytex.kernel.KernelUtil*.*(..))" />
+		<aop:pointcut id="corpusEvaluatorOperation"
+			expression="execution(* org.apache.ctakes.ytex.kernel.*EvaluatorImpl.*(..))" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="exporterOperation" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="mapperOperation" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="wekaImporter" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="daoOperation" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="umlsDaoOperation" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="treeOperation" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="utilOperation" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="corpusEvaluatorOperation" />
+	</aop:config>
+	<bean id="kernelEvaluationDao"
+		class="org.apache.ctakes.ytex.kernel.dao.KernelEvaluationDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+		<property name="transactionManager" ref="transactionManager" />
+	</bean>
+	<bean id="conceptDao" class="org.apache.ctakes.ytex.kernel.dao.ConceptDaoImpl">
+		<property name="ytexProperties" ref="ytexProperties" />
+		<property name="dataSource" ref="dataSource" />
+		<property name="intrinsicInfoContentEvaluator" ref="intrinsicInfoContentEvaluator" />
+	</bean>
+	<bean id="umlsDao" class="org.apache.ctakes.ytex.umls.dao.UMLSDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="wekaBagOfWordsExporter" class="org.apache.ctakes.ytex.weka.WekaBagOfWordsExporterImpl">
+		<property name="dataSource" ref="dataSource" />
+		<property name="transactionManager" ref="transactionManager" />
+	</bean>
+	<bean id="gramMatrixExporter" class="org.apache.ctakes.ytex.weka.GramMatrixExporterImpl">
+		<property name="dataSource" ref="dataSource" />
+		<property name="kernelEvaluationDao" ref="kernelEvaluationDao" />
+		<!-- property name="bagOfWordsExporter" ref="wekaBagOfWordsExporter" / -->
+		<property name="transactionManager" ref="transactionManager" />
+	</bean>
+	<bean id="documentResultInstanceImporter"
+		class="org.apache.ctakes.ytex.weka.DocumentResultInstanceImporter">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="wekaResultsImporter" class="org.apache.ctakes.ytex.weka.WekaResultsImporterImpl">
+		<property name="docResultInstanceImporter" ref="documentResultInstanceImporter" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- <bean id="corpusDao" class="org.apache.ctakes.ytex.kernel.dao.CorpusDaoImpl"> 
+		<property name="sessionFactory" ref="sessionFactory" /> </bean> -->
+	<bean id="classifierEvaluationDao"
+		class="org.apache.ctakes.ytex.kernel.dao.ClassifierEvaluationDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="libSVMGramMatrixExporter"
+		class="org.apache.ctakes.ytex.libsvm.LibSVMGramMatrixExporterImpl">
+		<property name="dataSource" ref="dataSource" />
+		<property name="kernelEvaluationDao" ref="kernelEvaluationDao" />
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="libsvmUtil" ref="libsvmUtil" />
+		<property name="kernelUtil" ref="kernelUtil" />
+	</bean>
+	<bean id="rGramMatrixExporter" class="org.apache.ctakes.ytex.R.RGramMatrixExporterImpl">
+		<property name="kernelEvaluationDao" ref="kernelEvaluationDao" />
+		<property name="kernelUtil" ref="kernelUtil" />
+		<property name="instanceDataExporter" ref="instanceDataExporter" />
+	</bean>
+	<bean id="libsvmUtil" class="org.apache.ctakes.ytex.libsvm.LibSVMUtilImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="instanceTreeBuilder"
+		class="org.apache.ctakes.ytex.kernel.tree.InstanceTreeBuilderImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="abstractNormKernel" abstract="true"
+		class="org.apache.ctakes.ytex.kernel.evaluator.NormKernel"
+		init-method="init">
+		<property name="cacheManager" ref="cacheManager" />
+	</bean>
+	<bean id="equalityKernel" class="org.apache.ctakes.ytex.kernel.evaluator.EqualityKernel">
+	</bean>
+	<bean id="atttributeProductKernel"
+		class="org.apache.ctakes.ytex.kernel.evaluator.AttributeProductKernel">
+	</bean>
+	<bean id="cacheManager"
+		class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+		<property name="configLocation" value="classpath:org/apache/ctakes/ytex/kernel/ehcache.xml" />
+	</bean>
+	<bean id="abstractCorpusKernelEvaluator"
+		class="org.apache.ctakes.ytex.kernel.evaluator.CorpusKernelEvaluatorImpl">
+		<property name="dataSource" ref="dataSource" />
+		<property name="kernelEvaluationDao" ref="kernelEvaluationDao" />
+		<property name="transactionManager" ref="transactionManager" />
+	</bean>
+
+	<bean id="foldGenerator" class="org.apache.ctakes.ytex.kernel.FoldGeneratorImpl">
+		<property name="kernelUtil" ref="kernelUtil" />
+		<property name="classifierEvaluationDao" ref="classifierEvaluationDao" />
+	</bean>
+	<bean id="kernelUtil" class="org.apache.ctakes.ytex.kernel.KernelUtilImpl">
+		<property name="dataSource" ref="dataSource" />
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="kernelEvaluationDao" ref="kernelEvaluationDao" />
+		<property name="classifierEvaluationDao" ref="classifierEvaluationDao" />
+		<property name="foldGenerator" ref="foldGenerator" />
+	</bean>
+
+	<bean id="baseClassifierEvaluationParser" abstract="true">
+		<property name="classifierEvaluationDao" ref="classifierEvaluationDao" />
+	</bean>
+	<bean id="semiLEvaluationParser" class="org.apache.ctakes.ytex.semil.SemiLEvaluationParser"
+		parent="baseClassifierEvaluationParser" />
+	<bean id="libSVMParser" class="org.apache.ctakes.ytex.libsvm.LibSVMParser"
+		parent="baseClassifierEvaluationParser" />
+	<bean id="svmLightParser" class="org.apache.ctakes.ytex.svmlight.SVMLightParser"
+		parent="baseClassifierEvaluationParser" />
+	<bean id="svmlinParser" class="org.apache.ctakes.ytex.kernel.SvmlinEvaluationParser"
+		parent="baseClassifierEvaluationParser" />
+
+	<bean id="ClassifierEvaluationImporter"
+		class="org.apache.ctakes.ytex.kernel.ClassifierEvaluationImporter">
+		<property name="nameToParserMap">
+			<map>
+				<entry>
+					<key>
+						<value>libsvm</value>
+					</key>
+					<ref bean="libSVMParser" />
+				</entry>
+				<entry>
+					<key>
+						<value>svmlight</value>
+					</key>
+					<ref bean="svmLightParser" />
+				</entry>
+				<entry>
+					<key>
+						<value>semil</value>
+					</key>
+					<ref bean="semiLEvaluationParser" />
+				</entry>
+				<entry>
+					<key>
+						<value>svmlin</value>
+					</key>
+					<ref bean="svmlinParser" />
+				</entry>
+			</map>
+		</property>
+	</bean>
+
+	<bean id="sparseDataExporter" class="org.apache.ctakes.ytex.kernel.SparseDataExporterImpl">
+		<property name="dataSource" ref="dataSource" />
+		<property name="txTemplateNew" ref="txTemplateNew" />
+		<property name="kernelUtil" ref="kernelUtil" />
+		<property name="nameToFormatterMap">
+			<map>
+				<entry>
+					<key>
+						<value>libsvm</value>
+					</key>
+					<ref bean="libSVMFormatterFactory" />
+				</entry>
+				<entry>
+					<key>
+						<value>sparsematrix</value>
+					</key>
+					<ref bean="sparseMatrixFormatterFactory" />
+				</entry>
+				<entry>
+					<key>
+						<value>svmlight</value>
+					</key>
+					<ref bean="svmLightFormatterFactory" />
+				</entry>
+				<entry>
+					<key>
+						<value>sgt</value>
+					</key>
+					<ref bean="sgtFormatterFactory" />
+				</entry>
+				<entry>
+					<key>
+						<value>svmlin</value>
+					</key>
+					<ref bean="svmLinFormatterFactory" />
+				</entry>
+				<entry>
+					<key>
+						<value>semil</value>
+					</key>
+					<ref bean="semiLFormatterFactory" />
+				</entry>
+				<entry>
+					<key>
+						<value>weka</value>
+					</key>
+					<ref bean="wekaFormatterFactory" />
+				</entry>
+			</map>
+		</property>
+	</bean>
+	<bean id="sparseDataFormatterFactory" abstract="true">
+		<property name="kernelUtil" ref="kernelUtil" />
+	</bean>
+	<bean id="svmLightFormatterFactory"
+		class="org.apache.ctakes.ytex.svmlight.SVMLightFormatterFactory"
+		parent="sparseDataFormatterFactory">
+	</bean>
+	<bean id="libSVMFormatterFactory" class="org.apache.ctakes.ytex.libsvm.LibSVMFormatterFactory"
+		parent="sparseDataFormatterFactory">
+	</bean>
+	<bean id="svmLinFormatterFactory" class="org.apache.ctakes.ytex.kernel.SVMLinFormatterFactory"
+		parent="sparseDataFormatterFactory">
+	</bean>
+	<bean id="sgtFormatterFactory" class="org.apache.ctakes.ytex.svmlight.SGTFormatterFactory"
+		parent="sparseDataFormatterFactory">
+	</bean>
+	<bean id="sparseMatrixFormatterFactory"
+		class="org.apache.ctakes.ytex.sparsematrix.SparseMatrixFormatterFactory"
+		parent="sparseDataFormatterFactory">
+		<property name="instanceDataExporter" ref="instanceDataExporter" />
+	</bean>
+	<bean id="semiLFormatterFactory" class="org.apache.ctakes.ytex.semil.SemiLFormatterFactory"
+		parent="sparseDataFormatterFactory">
+	</bean>
+	<bean id="wekaFormatterFactory" class="org.apache.ctakes.ytex.weka.WekaFormatterFactory"
+		parent="sparseDataFormatterFactory">
+	</bean>
+	<bean id="instanceDataExporter"
+		class="org.apache.ctakes.ytex.sparsematrix.InstanceDataExporterImpl">
+	</bean>
+	<bean id="infogainAttributeEval" class="weka.attributeSelection.InfoGainAttributeEval">
+	</bean>
+	<bean id="rankerSearch" class="weka.attributeSelection.Ranker">
+	</bean>
+	<bean id="infogainAttributeSelection" class="weka.attributeSelection.AttributeSelection">
+		<property name="evaluator" ref="infogainAttributeEval" />
+		<property name="search" ref="rankerSearch" />
+	</bean>
+
+	<bean id="wekaAttributeEvaluator" class="org.apache.ctakes.ytex.weka.WekaAttributeEvaluatorImpl">
+		<property name="attributeSelection" ref="infogainAttributeSelection" />
+		<property name="sparseDataExporter" ref="sparseDataExporter" />
+		<property name="classifierEvaluationDao" ref="classifierEvaluationDao" />
+		<property name="asEvaluation" ref="infogainAttributeEval" />
+		<property name="kernelUtil" ref="kernelUtil" />
+	</bean>
+	<bean id="infoContentEvaluator" class="org.apache.ctakes.ytex.kernel.InfoContentEvaluatorImpl">
+		<property name="conceptDao" ref="conceptDao" />
+		<property name="classifierEvaluationDao" ref="classifierEvaluationDao" />
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="intrinsicInfoContentEvaluator"
+		class="org.apache.ctakes.ytex.kernel.IntrinsicInfoContentEvaluatorImpl">
+		<property name="conceptDao" ref="conceptDao" />
+		<property name="classifierEvaluationDao" ref="classifierEvaluationDao" />
+	</bean>
+	<bean id="imputedFeatureEvaluator"
+		class="org.apache.ctakes.ytex.kernel.ImputedFeatureEvaluatorImpl">
+		<property name="conceptDao" ref="conceptDao" />
+		<property name="dataSource" ref="dataSource" />
+		<property name="kernelUtil" ref="kernelUtil" />
+		<property name="classifierEvaluationDao" ref="classifierEvaluationDao" />
+		<property name="ytexProperties" ref="ytexProperties" />
+		<property name="infoContentEvaluator" ref="infoContentEvaluator" />
+	</bean>
+	<bean id="cytoscapeHelper" class="org.apache.ctakes.ytex.kernel.CytoscapeHelperImpl">
+		<property name="conceptDao" ref="conceptDao" />
+		<property name="classifierEvaluationDao" ref="classifierEvaluationDao" />
+		<property name="umlsDao" ref="umlsDao" />
+	</bean>
+	<bean id="abstractKernelCacheAdvice"
+		class="org.apache.ctakes.ytex.kernel.evaluator.MethodCachingInterceptor"
+		abstract="true">
+		<property name="cacheManager" ref="cacheManager" />
+		<property name="cacheKeyGenerator">
+			<bean
+				class="org.apache.ctakes.ytex.kernel.evaluator.SymmetricPairCacheKeyGenerator" />
+		</property>
+		<property name="methodName" value="evaluate" />
+	</bean>
+	<bean id="pageRankService"
+		class="org.apache.ctakes.ytex.kernel.pagerank.PageRankServiceImpl">
+	</bean>
+	<!-- <bean id="abstractKernelCacheAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor"> 
+		<property name="pointcut"> <bean class="org.springframework.aop.support.JdkRegexpMethodPointcut"> 
+		<property name="pattern"> <value>.*evaluate.*</value> </property> </bean> 
+		</property> </bean> -->
+</beans>

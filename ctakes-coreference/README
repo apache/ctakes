@@ -1,0 +1,76 @@
+This is the README for the Coreference Resolution module in the cTakes project.
+
+This module performs coreference resolution for several types of coreference,
+excluding person mentions and some rare pronouns.
+
+Installation:
+This module contains a number of references to other cTAKES modules, especially
+the Constituency Parser.  The links inside this project use relative path names
+so they should be portable as long as all modules are placed in the same directory.
+
+Types:
+
+Most basically, the output of this module will be several data types added to 
+the CAS representing the output of the system.  These types are as follows:
+
+Markable - Subtyped into NEMarkable (Named entities), PronounMarkable (pronouns),
+and DemMarkable (certain demonstrative and relative pronouns), these are automatically
+discovered and taken as input to the coreference resolution algorithm.  These are types
+required above the SHARP types for entities due to some special considerations with
+span differences and differing type inheritances.
+
+CoreferenceRelation - A type containing two Markables that are believed to
+co-refer.  A CoreferenceRelation has two arguments of type RelationArgument,
+with a role field containing a value of either "anaphor" or "antecedent."  There
+is also an "argument" field which contains the Markable fulfilling the role.
+
+CollectionTextRelation - A linked list containing chains of Annotations that the classifier
+says refer to the same entity.  This is derived from the set of CoreferenceRelation
+elements described above.  It contains a list of UIMA type NonEmptyFSList, as well
+as a size field.  For singletons there are lists of length 1.  For actual chains
+the size will be different, and each node in the list is of type NonEmptyFSList.
+That type has a head and tail field.  The head points to the data for the node,
+which is a Markable, and the tail points to the next element in the list, or
+to a node of type EmptyFSList when the chain is complete.
+
+UIMA Annotators:
+This module is released with several UIMA processing classes which can be included
+in pipelines.
+
+desc/analysis_engine/CorefUMLSProcessor.xml:
+An end-to-end aggregate annotator mainly used for demo/debugging.  You can use this in 
+the CVD (CAS VIsual Debugger) to test your setup with the following:
+        - Run launcher resources/launcher/*cvd*
+        - Load descriptor desc/analysis_engine/CorefUMLSProcessor.xml
+        - Open file resources/testfakenote.txt
+        - Run AE (Ctrl-R)
+        - Inspect results
+            - Should be 13 markables, 10 nes, 2 pronouns, and 1 dem (under Annotation index)
+            - Should be 9 CollectionTextRelation - most are 1 element (singletons).
+            - Chain 3 has 3 elements: "immense leg pain", "the pain", and "pain".
+            - Chain 6 has 2 elements: "a small lesion..." and "the lesion"
+            - Chain 8 has 2 elements: "imaging" and "which"
+            - These chains are decomposed in the CoreferenceRelation index into pairs. 
+
+
+
+desc/collection_processing_engine/Coref-resolver_CPE.xml:
+This is a collection processing engine.  It wraps the above AE with a collection
+reader and consumer.  CPEs can be run with resources/launch/UIMA_CPE_coref-resolver.launch
+eclipse launch configuration.  File->Load the CPE above, then the CPE GUI will have
+text boxes with associated file chooser buttons for the input and output files.
+
+The remaining descriptor files are mostly not meant to be used independently.  Please
+feel free to email the authors if you are curious about their usage and want help
+figuring it out.
+
+If you want to use the coreference module for a pipeline of your own, the recommended
+method is to make a copy of CorefUMLSProcessor.xml and add any other modules you 
+require to that pipeline.  Future release will contain standalone pipelines with
+the minimum set of requirements, but in fact the CorefDBProcessor is pretty close
+to being that already -- corefererence resolution is simply dependent on a lot of
+earlier tasks.
+
+
+
+

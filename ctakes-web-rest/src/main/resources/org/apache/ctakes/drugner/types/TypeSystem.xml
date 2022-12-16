@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<typeSystemDescription xmlns="http://uima.apache.org/resourceSpecifier">
+  <name>org.apache.ctakes.drugner.types.TypeSystem</name>
+  <description/>
+  <version>1.0</version>
+  <vendor>Mayo Clinic</vendor>
+  <types>
+    <typeDescription>
+      <name>org.apache.ctakes.drugner.type.FrequencyAnnotation</name>
+      <description>The frequency determination for the Drug NER profile.</description>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+    </typeDescription>
+    <typeDescription>
+      <name>org.apache.ctakes.drugner.type.DurationAnnotation</name>
+      <description>The duration determination for the Drug NER profile.</description>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+    </typeDescription>
+    <typeDescription>
+      <name>org.apache.ctakes.drugner.type.RouteAnnotation</name>
+      <description>The route determination for the Drug NER profile.</description>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+      <features>
+        <featureDescription>
+          <name>intakeMethod</name>
+          <description>Means by which the drug was taken.</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
+      <name>org.apache.ctakes.drugner.type.SuffixStrengthAnnotation</name>
+      <description>The suffix portion of dosage strength determination for the Drug NER profile.</description>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+    </typeDescription>
+    <typeDescription>
+      <name>org.apache.ctakes.drugner.type.FractionStrengthAnnotation</name>
+      <description>The fraction portion of dosages strength determination for the Drug NER profile.</description>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+    </typeDescription>
+    <typeDescription>
+      <name>org.apache.ctakes.drugner.type.RangeStrengthAnnotation</name>
+      <description>The range portion of dosages stength determination for the Drug NER profile.</description>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+    </typeDescription>
+    <typeDescription>
+      <name>org.apache.ctakes.drugner.type.DecimalStrengthAnnotation</name>
+      <description>The decimal portion of dosages stength determination for the Drug NER profile.</description>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+    </typeDescription>
+    <typeDescription>
+      <name>org.apache.ctakes.drugner.type.DrugChangeStatusAnnotation</name>
+      <description>The change status of dosages determination for the Drug NER profile.</description>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+      <features>
+        <featureDescription>
+          <name>changeStatus</name>
+          <description>Indicates the drug change status of 'stop', 'start', 'increase', 'decrease', or 'noChange'.</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
+      <name>org.apache.ctakes.drugner.type.DosagesAnnotation</name>
+      <description>The dosage determination for the Drug NER profile.</description>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+    </typeDescription>
+    <typeDescription>
+      <name>org.apache.ctakes.drugner.type.StrengthAnnotation</name>
+      <description>Holds the value representing the unit of the drug dosage.</description>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+    </typeDescription>
+    <typeDescription>
+      <name>org.apache.ctakes.drugner.type.StrengthUnitAnnotation</name>
+      <description/>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+    </typeDescription>
+    <typeDescription>
+      <name>org.apache.ctakes.drugner.type.FrequencyUnitAnnotation</name>
+      <description>The value represents the unit portion of the drug frequency.</description>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+      <features>
+        <featureDescription>
+          <name>period</name>
+          <description>The periodic unit used, e.g day, month, hour, etc.</description>
+          <rangeTypeName>uima.cas.Float</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
+      <name>org.apache.ctakes.drugner.type.FormAnnotation</name>
+      <description>The value represents the form portion of the drug mention.</description>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+    </typeDescription>
+    <typeDescription>
+      <name>org.apache.ctakes.drugner.type.SubSectionAnnotation</name>
+      <description/>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+      <features>
+        <featureDescription>
+          <name>subSectionBodyBegin</name>
+          <description>Sub-section body begin offset.</description>
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>subSectionBodyEnd</name>
+          <description>Sub-section body end offset.</description>
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>status</name>
+          <description>Status of 'possible', 'history of', or 'family history of'.</description>
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>subSectionHeaderBegin</name>
+          <description>Begin offset of subSection header</description>
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>subSectionHeaderEnd</name>
+          <description>Ending offset of subsection header</description>
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>parentSectionId</name>
+          <description>The section in which the subsection was found.</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
+      <name>org.apache.ctakes.drugner.type.DrugMentionAnnotation</name>
+      <description/>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+      <features>
+        <featureDescription>
+          <name>status</name>
+          <description/>
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>confidence</name>
+          <description>The confidence of the annotation.</description>
+          <rangeTypeName>uima.cas.Float</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>frequency</name>
+          <description>Frequency refers to how often the patient needs to take the drug. Frequency is divided into frequency number and frequency unit. E.g. twice daily</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>frequencyBegin</name>
+          <description/>
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>frequencyEnd</name>
+          <description/>
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>duration</name>
+          <description>Duration refers to for how long the patient is expected to take the drug. E.g. 'for 2 weeks' 
+Strongly encouraged to use bold text</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>durationBegin</name>
+          <description/>
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>durationEnd</name>
+          <description/>
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>route</name>
+          <description>Medication route refers to the way that a drug is introduced into the body. E.g oral 
+Strongly encouraged to use bold text</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>routeBegin</name>
+          <description/>
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>routeEnd</name>
+          <description/>
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>drugChangeStatus</name>
+          <description>Status refers to the whether the medication is currently being taken or not.</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>dosage</name>
+          <description>Dosage refers to how many of each drug the patient is taking. E.g. 5 mg</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>dosageBegin</name>
+          <description/>
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>dosageEnd</name>
+          <description/>
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>strength</name>
+          <description/>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>strengthBegin</name>
+          <description/>
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>strengthEnd</name>
+          <description/>
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>strengthUnit</name>
+          <description/>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>suBegin</name>
+          <description/>
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>suEnd</name>
+          <description/>
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>form</name>
+          <description>Form refers to the physical appearance of the drug. E.g. cream</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>formBegin</name>
+          <description/>
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>formEnd</name>
+          <description/>
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>frequencyUnit</name>
+          <description/>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>fuBegin</name>
+          <description/>
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>fuEnd</name>
+          <description/>
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>startDate</name>
+          <description/>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>reason</name>
+          <description/>
+          <rangeTypeName>uima.cas.FSArray</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>changeStatusBegin</name>
+          <description/>
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>changeStatusEnd</name>
+          <description/>
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
+      <name>org.apache.ctakes.drugner.type.ChunkAnnotation</name>
+      <description/>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+      <features>
+        <featureDescription>
+          <name>sentenceID</name>
+          <description/>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
+      <name>org.apache.ctakes.typesystem.type.textspan.DrugLookupWindowAnnotation</name>
+      <description>Similar to LookupWindowAnnotation however, these annotations are restricted to the segments/sections specified in the parameter - sectionOverrideSet - in DrugCNP2LookupWindow</description>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+    </typeDescription>
+  </types>
+</typeSystemDescription>

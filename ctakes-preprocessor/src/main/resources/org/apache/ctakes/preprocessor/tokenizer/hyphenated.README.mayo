@@ -1,0 +1,8 @@
+
+removed all names and numbers that appeared to be identifiers
+
+removed all lines that contained a hyphen as first character
+removed all lines that contained a hyphen as the last character of the "word"
+removed all lines that contained more than one consecutive hyphen
+
+1/2009: lowercased it

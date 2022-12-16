@@ -1,0 +1,21 @@
+: - :
+: 24 hours :
+: 8 hours :
+: address :
+: arbitrary concentration :
+: duration of encounter :
+: duration of the study :
+: finding :
+: identifier :
+: impression / interpretation of study :
+: life of the unit :
+: mass :
+: number :
+: point in time :
+: prid :
+: pt :
+: substance concentration :
+: text :
+: type :
+: volume :
+: volume rate :

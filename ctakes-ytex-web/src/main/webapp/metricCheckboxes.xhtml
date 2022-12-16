@@ -1,0 +1,61 @@
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<div xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ice="http://www.icesoft.com/icefaces/component">
+	<table>
+		<tr>
+			<th align="left">Path Finding</th>
+			<th align="left">Intrinsic InfoContent</th>
+			<th align="left">Corpus InfoContent</th>
+		</tr>
+		<tr>
+			<td valign="top"><h:selectManyCheckbox
+					value="#{semanticSimBean.metricSelectTaxonomy}"
+					layout="pageDirection">
+					<f:selectItem itemValue="WUPALMER" itemLabel="Wu-Palmer" />
+					<f:selectItem itemValue="PATH" itemLabel="Path" />
+					<f:selectItem itemValue="LCH" itemLabel="Leacock &amp; Chodorow" />
+					<f:selectItem itemValue="RADA" itemLabel="Rada" />
+				</h:selectManyCheckbox>
+			</td>
+			<td valign="top"><h:selectManyCheckbox
+					value="#{semanticSimBean.metricSelectIntrinsicIC}"
+					layout="pageDirection">
+					<f:selectItem itemValue="INTRINSIC_LIN" itemLabel="Lin" />
+					<f:selectItem itemValue="INTRINSIC_PATH" itemLabel="Path" />
+					<f:selectItem itemValue="INTRINSIC_LCH"
+						itemLabel="Leacock &amp; Chodorow" />
+					<f:selectItem itemValue="INTRINSIC_RADA" itemLabel="Rada" />
+					<f:selectItem itemValue="JACCARD" itemLabel="Jaccard" />
+					<f:selectItem itemValue="SOKAL" itemLabel="Sokal &amp; Sneath" />
+				</h:selectManyCheckbox>
+			</td>
+			<td valign="top"><h:selectManyCheckbox
+					value="#{semanticSimBean.metricSelectCorpusIC}"
+					layout="pageDirection">
+					<f:selectItem itemValue="LIN" itemLabel="Lin" />
+				</h:selectManyCheckbox>
+			</td>
+		</tr>
+	</table>
+</div>

@@ -1,0 +1,12 @@
+// Load a simple token processing pipeline from another pipeline file
+load DefaultTokenizerPipeline
+
+// Add non-core annotators
+addDescription POSTagger
+
+// New case-sensitive dictionary lookup
+load cased_2020aa_2
+add CasedAnnotationFinder
+
+// Simple writer for Demo
+add ApacheConAnnotationWriter

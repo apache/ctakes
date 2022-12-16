@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="org.apache.ctakes.ytex.kernel.model">
+	<class name="KernelEvaluation" table="kernel_eval">
+		<id name="kernelEvaluationId" column="kernel_eval_id">
+			<generator class="native">
+				<param name="sequence">kernel_eval_id_sequence</param>
+			</generator>
+		</id>
+		<property name="corpusName" column="corpus_name"/>
+		<property name="experiment" />
+		<property name="label" />
+		<property name="foldId" column="cv_fold_id" />
+		<property name="param1" />
+		<property name="param2" />
+	</class>
+	<class name="KernelEvaluationInstance" table="kernel_eval_instance">
+		<!-- don't use the auto_increment key so hibernate can batch insert this -->
+		<composite-id>
+			<!-- 
+			<key-many-to-one name="kernelEvaluation" class="KernelEvaluation" column="kernel_eval_id"/>
+			 -->
+			<key-property name="kernelEvaluationId" column="kernel_eval_id" />
+			<key-property name="instanceId1" column="instance_id1" type="long"/>
+			<key-property name="instanceId2" column="instance_id2" type="long" />
+		</composite-id>
+		<property name="similarity" column="similarity" />
+	</class>
+	<query name="getKernelEvaluation"><![CDATA[
+		from KernelEvaluationInstance
+		where kernelEvaluationId = :kernelEvaluationId
+		and instanceId1 = :instanceId1
+		and  instanceId2 =  :instanceId2
+	]]></query>
+	<query name="deleteKernelEvaluation"><![CDATA[
+		delete from KernelEvaluationInstance
+		where kernelEvaluationId = :kernelEvaluationId
+		and instanceId1 = :instanceId1
+		and  instanceId2 =  :instanceId2
+	]]></query>
+	<query name="getAllKernelEvaluations"><![CDATA[
+		from KernelEvaluationInstance
+		where kernelEvaluationId = :kernelEvaluationId
+	]]></query>
+	<!-- 2 separate indices for instanceId1 & instanceId2 use union so that 
+		mysql can use both indices arggh! hibernate doesn't support union - run 2 
+		queries -->
+	<query name="getAllKernelEvaluationsForInstance1"><![CDATA[
+		from KernelEvaluationInstance
+		where kernelEvaluationId = :kernelEvaluationId
+		and instanceId1 = :instanceId 
+	]]></query>
+	<query name="getAllKernelEvaluationsForInstance2"><![CDATA[
+		from KernelEvaluationInstance
+		where kernelEvaluationId = :kernelEvaluationId
+		and instanceId2 = :instanceId 
+	]]></query>
+	<query name="getKernelEval"><![CDATA[
+		from KernelEvaluation
+		where corpusName = :corpusName
+		and experiment = :experiment
+		and label = :label
+		and foldId = :foldId
+		and param1 = :param1
+		and param2 = :param2
+	]]></query>
+	
+</hibernate-mapping>

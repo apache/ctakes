@@ -1,0 +1,542 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CAS version="2">
+    <uima.cas.Sofa _indexed="0" _id="3" sofaNum="1" sofaID="_InitialView" mimeType="text" sofaString="&#13;&#10;The patient reported pain in her upper arm.&#13;&#10;No swelling.&#13;&#10;Aspirin 325 mg.&#13;&#10;"/>
+    <org.apache.ctakes.typesystem.type.structured.DocumentID _indexed="1" _id="1" documentID="text1.txt"/>
+    <uima.tcas.DocumentAnnotation _indexed="1" _id="10" _ref_sofa="3" begin="0" end="78" language="x-unspecified"/>
+    <org.apache.ctakes.typesystem.type.textspan.Segment _indexed="1" _id="15" _ref_sofa="3" begin="0" end="78" id="SIMPLE_SEGMENT"/>
+    <org.apache.ctakes.typesystem.type.textspan.Sentence _indexed="1" _id="20" _ref_sofa="3" begin="2" end="45" sentenceNumber="0"/>
+    <org.apache.ctakes.typesystem.type.textspan.Sentence _indexed="1" _id="26" _ref_sofa="3" begin="47" end="59" sentenceNumber="1"/>
+    <org.apache.ctakes.typesystem.type.textspan.Sentence _indexed="1" _id="32" _ref_sofa="3" begin="61" end="76" sentenceNumber="2"/>
+    <org.apache.ctakes.typesystem.type.syntax.NewlineToken _indexed="1" _id="38" _ref_sofa="3" begin="0" end="2" tokenNumber="0" normalizedForm="&#13;&#10;"/>
+    <org.apache.ctakes.typesystem.type.syntax.NewlineToken _indexed="1" _id="46" _ref_sofa="3" begin="45" end="47" tokenNumber="10" normalizedForm="&#13;&#10;"/>
+    <org.apache.ctakes.typesystem.type.syntax.NewlineToken _indexed="1" _id="54" _ref_sofa="3" begin="59" end="61" tokenNumber="14" normalizedForm="&#13;&#10;"/>
+    <org.apache.ctakes.typesystem.type.syntax.NewlineToken _indexed="1" _id="62" _ref_sofa="3" begin="76" end="78" tokenNumber="19" normalizedForm="&#13;&#10;"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="70" _ref_sofa="3" begin="2" end="5" tokenNumber="1" normalizedForm="The" partOfSpeech="DT" capitalization="1" numPosition="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="82" _ref_sofa="3" begin="6" end="13" tokenNumber="2" normalizedForm="patient" partOfSpeech="NN" _ref_lemmaEntries="283" capitalization="0" numPosition="0" canonicalForm="patient"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="94" _ref_sofa="3" begin="14" end="22" tokenNumber="3" normalizedForm="report" partOfSpeech="VBD" _ref_lemmaEntries="404" capitalization="0" numPosition="0" canonicalForm="report"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="106" _ref_sofa="3" begin="23" end="27" tokenNumber="4" normalizedForm="pain" partOfSpeech="NN" _ref_lemmaEntries="525" capitalization="0" numPosition="0" canonicalForm="pain"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="118" _ref_sofa="3" begin="28" end="30" tokenNumber="5" normalizedForm="in" partOfSpeech="IN" capitalization="0" numPosition="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="130" _ref_sofa="3" begin="31" end="34" tokenNumber="6" normalizedForm="her" partOfSpeech="PRP$" _ref_lemmaEntries="616" capitalization="0" numPosition="0" canonicalForm="her"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="142" _ref_sofa="3" begin="35" end="40" tokenNumber="7" normalizedForm="upp" partOfSpeech="JJ" _ref_lemmaEntries="755" capitalization="0" numPosition="0" canonicalForm="upp"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="154" _ref_sofa="3" begin="41" end="44" tokenNumber="8" normalizedForm="arm" partOfSpeech="NN" _ref_lemmaEntries="876" capitalization="0" numPosition="0" canonicalForm="arm"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="174" _ref_sofa="3" begin="47" end="49" tokenNumber="11" normalizedForm="no" partOfSpeech="DT" _ref_lemmaEntries="949" capitalization="1" numPosition="0" canonicalForm="no"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="186" _ref_sofa="3" begin="50" end="58" tokenNumber="12" normalizedForm="swel" partOfSpeech="NN" _ref_lemmaEntries="1058" capitalization="0" numPosition="0" canonicalForm="swel"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="206" _ref_sofa="3" begin="61" end="68" tokenNumber="15" normalizedForm="aspirin" partOfSpeech="NNP" _ref_lemmaEntries="1185" capitalization="1" numPosition="0" canonicalForm="aspirin"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="227" _ref_sofa="3" begin="73" end="75" tokenNumber="17" normalizedForm="mg" partOfSpeech="NNS" _ref_lemmaEntries="1276" capitalization="0" numPosition="0" canonicalForm="mg"/>
+    <org.apache.ctakes.typesystem.type.syntax.PunctuationToken _indexed="1" _id="166" _ref_sofa="3" begin="44" end="45" tokenNumber="9" normalizedForm="." partOfSpeech="."/>
+    <org.apache.ctakes.typesystem.type.syntax.PunctuationToken _indexed="1" _id="198" _ref_sofa="3" begin="58" end="59" tokenNumber="13" normalizedForm="." partOfSpeech="."/>
+    <org.apache.ctakes.typesystem.type.syntax.PunctuationToken _indexed="1" _id="239" _ref_sofa="3" begin="75" end="76" tokenNumber="18" normalizedForm="." partOfSpeech="."/>
+    <org.apache.ctakes.typesystem.type.syntax.NumToken _indexed="1" _id="218" _ref_sofa="3" begin="69" end="72" tokenNumber="16" normalizedForm="325" partOfSpeech="CD" numType="1"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="283" _ref_head="247" _ref_tail="286"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="286" _ref_head="250" _ref_tail="289"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="289" _ref_head="253" _ref_tail="292"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="292" _ref_head="256" _ref_tail="295"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="295" _ref_head="259" _ref_tail="298"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="298" _ref_head="262" _ref_tail="301"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="301" _ref_head="265" _ref_tail="304"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="304" _ref_head="268" _ref_tail="307"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="307" _ref_head="271" _ref_tail="310"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="310" _ref_head="274" _ref_tail="313"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="313" _ref_head="277" _ref_tail="316"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="316" _ref_head="280" _ref_tail="319"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="404" _ref_head="320" _ref_tail="407"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="407" _ref_head="323" _ref_tail="410"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="410" _ref_head="326" _ref_tail="413"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="413" _ref_head="329" _ref_tail="416"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="416" _ref_head="332" _ref_tail="419"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="419" _ref_head="335" _ref_tail="422"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="422" _ref_head="338" _ref_tail="425"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="425" _ref_head="341" _ref_tail="428"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="428" _ref_head="344" _ref_tail="431"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="431" _ref_head="347" _ref_tail="434"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="434" _ref_head="350" _ref_tail="437"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="437" _ref_head="353" _ref_tail="440"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="440" _ref_head="356" _ref_tail="443"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="443" _ref_head="359" _ref_tail="446"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="446" _ref_head="362" _ref_tail="449"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="449" _ref_head="365" _ref_tail="452"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="452" _ref_head="368" _ref_tail="455"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="455" _ref_head="371" _ref_tail="458"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="458" _ref_head="374" _ref_tail="461"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="461" _ref_head="377" _ref_tail="464"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="464" _ref_head="380" _ref_tail="467"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="467" _ref_head="383" _ref_tail="470"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="470" _ref_head="386" _ref_tail="473"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="473" _ref_head="389" _ref_tail="476"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="476" _ref_head="392" _ref_tail="479"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="479" _ref_head="395" _ref_tail="482"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="482" _ref_head="398" _ref_tail="485"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="485" _ref_head="401" _ref_tail="488"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="525" _ref_head="489" _ref_tail="528"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="528" _ref_head="492" _ref_tail="531"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="531" _ref_head="495" _ref_tail="534"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="534" _ref_head="498" _ref_tail="537"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="537" _ref_head="501" _ref_tail="540"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="540" _ref_head="504" _ref_tail="543"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="543" _ref_head="507" _ref_tail="546"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="546" _ref_head="510" _ref_tail="549"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="549" _ref_head="513" _ref_tail="552"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="552" _ref_head="516" _ref_tail="555"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="555" _ref_head="519" _ref_tail="558"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="558" _ref_head="522" _ref_tail="561"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="616" _ref_head="562" _ref_tail="619"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="619" _ref_head="565" _ref_tail="622"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="622" _ref_head="568" _ref_tail="625"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="625" _ref_head="571" _ref_tail="628"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="628" _ref_head="574" _ref_tail="631"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="631" _ref_head="577" _ref_tail="634"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="634" _ref_head="580" _ref_tail="637"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="637" _ref_head="583" _ref_tail="640"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="640" _ref_head="586" _ref_tail="643"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="643" _ref_head="589" _ref_tail="646"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="646" _ref_head="592" _ref_tail="649"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="649" _ref_head="595" _ref_tail="652"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="652" _ref_head="598" _ref_tail="655"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="655" _ref_head="601" _ref_tail="658"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="658" _ref_head="604" _ref_tail="661"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="661" _ref_head="607" _ref_tail="664"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="664" _ref_head="610" _ref_tail="667"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="667" _ref_head="613" _ref_tail="670"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="755" _ref_head="671" _ref_tail="758"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="758" _ref_head="674" _ref_tail="761"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="761" _ref_head="677" _ref_tail="764"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="764" _ref_head="680" _ref_tail="767"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="767" _ref_head="683" _ref_tail="770"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="770" _ref_head="686" _ref_tail="773"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="773" _ref_head="689" _ref_tail="776"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="776" _ref_head="692" _ref_tail="779"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="779" _ref_head="695" _ref_tail="782"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="782" _ref_head="698" _ref_tail="785"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="785" _ref_head="701" _ref_tail="788"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="788" _ref_head="704" _ref_tail="791"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="791" _ref_head="707" _ref_tail="794"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="794" _ref_head="710" _ref_tail="797"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="797" _ref_head="713" _ref_tail="800"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="800" _ref_head="716" _ref_tail="803"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="803" _ref_head="719" _ref_tail="806"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="806" _ref_head="722" _ref_tail="809"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="809" _ref_head="725" _ref_tail="812"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="812" _ref_head="728" _ref_tail="815"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="815" _ref_head="731" _ref_tail="818"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="818" _ref_head="734" _ref_tail="821"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="821" _ref_head="737" _ref_tail="824"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="824" _ref_head="740" _ref_tail="827"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="827" _ref_head="743" _ref_tail="830"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="830" _ref_head="746" _ref_tail="833"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="833" _ref_head="749" _ref_tail="836"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="836" _ref_head="752" _ref_tail="839"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="876" _ref_head="840" _ref_tail="879"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="879" _ref_head="843" _ref_tail="882"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="882" _ref_head="846" _ref_tail="885"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="885" _ref_head="849" _ref_tail="888"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="888" _ref_head="852" _ref_tail="891"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="891" _ref_head="855" _ref_tail="894"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="894" _ref_head="858" _ref_tail="897"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="897" _ref_head="861" _ref_tail="900"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="900" _ref_head="864" _ref_tail="903"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="903" _ref_head="867" _ref_tail="906"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="906" _ref_head="870" _ref_tail="909"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="909" _ref_head="873" _ref_tail="912"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="949" _ref_head="913" _ref_tail="952"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="952" _ref_head="916" _ref_tail="955"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="955" _ref_head="919" _ref_tail="958"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="958" _ref_head="922" _ref_tail="961"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="961" _ref_head="925" _ref_tail="964"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="964" _ref_head="928" _ref_tail="967"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="967" _ref_head="931" _ref_tail="970"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="970" _ref_head="934" _ref_tail="973"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="973" _ref_head="937" _ref_tail="976"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="976" _ref_head="940" _ref_tail="979"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="979" _ref_head="943" _ref_tail="982"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="982" _ref_head="946" _ref_tail="985"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="1058" _ref_head="986" _ref_tail="1061"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="1061" _ref_head="989" _ref_tail="1064"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="1064" _ref_head="992" _ref_tail="1067"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="1067" _ref_head="995" _ref_tail="1070"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="1070" _ref_head="998" _ref_tail="1073"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="1073" _ref_head="1001" _ref_tail="1076"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="1076" _ref_head="1004" _ref_tail="1079"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="1079" _ref_head="1007" _ref_tail="1082"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="1082" _ref_head="1010" _ref_tail="1085"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="1085" _ref_head="1013" _ref_tail="1088"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="1088" _ref_head="1016" _ref_tail="1091"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="1091" _ref_head="1019" _ref_tail="1094"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="1094" _ref_head="1022" _ref_tail="1097"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="1097" _ref_head="1025" _ref_tail="1100"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="1100" _ref_head="1028" _ref_tail="1103"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="1103" _ref_head="1031" _ref_tail="1106"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="1106" _ref_head="1034" _ref_tail="1109"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="1109" _ref_head="1037" _ref_tail="1112"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="1112" _ref_head="1040" _ref_tail="1115"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="1115" _ref_head="1043" _ref_tail="1118"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="1118" _ref_head="1046" _ref_tail="1121"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="1121" _ref_head="1049" _ref_tail="1124"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="1124" _ref_head="1052" _ref_tail="1127"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="1127" _ref_head="1055" _ref_tail="1130"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="1185" _ref_head="1131" _ref_tail="1188"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="1188" _ref_head="1134" _ref_tail="1191"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="1191" _ref_head="1137" _ref_tail="1194"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="1194" _ref_head="1140" _ref_tail="1197"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="1197" _ref_head="1143" _ref_tail="1200"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="1200" _ref_head="1146" _ref_tail="1203"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="1203" _ref_head="1149" _ref_tail="1206"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="1206" _ref_head="1152" _ref_tail="1209"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="1209" _ref_head="1155" _ref_tail="1212"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="1212" _ref_head="1158" _ref_tail="1215"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="1215" _ref_head="1161" _ref_tail="1218"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="1218" _ref_head="1164" _ref_tail="1221"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="1221" _ref_head="1167" _ref_tail="1224"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="1224" _ref_head="1170" _ref_tail="1227"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="1227" _ref_head="1173" _ref_tail="1230"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="1230" _ref_head="1176" _ref_tail="1233"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="1233" _ref_head="1179" _ref_tail="1236"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="1236" _ref_head="1182" _ref_tail="1239"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="1276" _ref_head="1240" _ref_tail="1279"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="1279" _ref_head="1243" _ref_tail="1282"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="1282" _ref_head="1246" _ref_tail="1285"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="1285" _ref_head="1249" _ref_tail="1288"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="1288" _ref_head="1252" _ref_tail="1291"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="1291" _ref_head="1255" _ref_tail="1294"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="1294" _ref_head="1258" _ref_tail="1297"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="1297" _ref_head="1261" _ref_tail="1300"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="1300" _ref_head="1264" _ref_tail="1303"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="1303" _ref_head="1267" _ref_tail="1306"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="1306" _ref_head="1270" _ref_tail="1309"/>
+    <uima.cas.NonEmptyFSList _indexed="1" _id="1309" _ref_head="1273" _ref_tail="1312"/>
+    <org.apache.ctakes.typesystem.type.textsem.MeasurementAnnotation _indexed="1" _id="1313" _ref_sofa="3" begin="69" end="75" id="2" typeID="0" segmentID="SIMPLE_SEGMENT" discoveryTechnique="0" confidence="0.0" polarity="0" uncertainty="0" conditional="false" generic="false" historyOf="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.NP _indexed="1" _id="1330" _ref_sofa="3" begin="2" end="13" chunkType="NP"/>
+    <org.apache.ctakes.typesystem.type.syntax.NP _indexed="1" _id="1340" _ref_sofa="3" begin="23" end="27" chunkType="NP"/>
+    <org.apache.ctakes.typesystem.type.syntax.NP _indexed="1" _id="1350" _ref_sofa="3" begin="31" end="44" chunkType="NP"/>
+    <org.apache.ctakes.typesystem.type.syntax.NP _indexed="1" _id="1355" _ref_sofa="3" begin="47" end="58" chunkType="NP"/>
+    <org.apache.ctakes.typesystem.type.syntax.NP _indexed="1" _id="1360" _ref_sofa="3" begin="61" end="68" chunkType="NP"/>
+    <org.apache.ctakes.typesystem.type.syntax.NP _indexed="1" _id="1365" _ref_sofa="3" begin="69" end="75" chunkType="NP"/>
+    <org.apache.ctakes.typesystem.type.syntax.VP _indexed="1" _id="1335" _ref_sofa="3" begin="14" end="22" chunkType="VP"/>
+    <org.apache.ctakes.typesystem.type.syntax.PP _indexed="1" _id="1345" _ref_sofa="3" begin="28" end="30" chunkType="PP"/>
+    <org.apache.ctakes.typesystem.type.textspan.LookupWindowAnnotation _indexed="1" _id="1370" _ref_sofa="3" begin="2" end="13"/>
+    <org.apache.ctakes.typesystem.type.textspan.LookupWindowAnnotation _indexed="1" _id="1374" _ref_sofa="3" begin="23" end="27"/>
+    <org.apache.ctakes.typesystem.type.textspan.LookupWindowAnnotation _indexed="1" _id="1378" _ref_sofa="3" begin="31" end="44"/>
+    <org.apache.ctakes.typesystem.type.textspan.LookupWindowAnnotation _indexed="1" _id="1382" _ref_sofa="3" begin="47" end="58"/>
+    <org.apache.ctakes.typesystem.type.textspan.LookupWindowAnnotation _indexed="1" _id="1386" _ref_sofa="3" begin="61" end="68"/>
+    <org.apache.ctakes.typesystem.type.textspan.LookupWindowAnnotation _indexed="1" _id="1390" _ref_sofa="3" begin="69" end="75"/>
+    <org.apache.ctakes.typesystem.type.textsem.SignSymptomMention _indexed="1" _id="1404" _ref_sofa="3" begin="23" end="27" id="0" _ref_ontologyConceptArr="1401" typeID="3" segmentID="SIMPLE_SEGMENT" discoveryTechnique="1" confidence="0.0" polarity="0" uncertainty="0" conditional="false" generic="false" historyOf="0"/>
+    <org.apache.ctakes.typesystem.type.textsem.MedicationMention _indexed="1" _id="1441" _ref_sofa="3" begin="61" end="68" id="1" _ref_ontologyConceptArr="1433" typeID="1" segmentID="SIMPLE_SEGMENT" discoveryTechnique="1" confidence="0.0" polarity="0" uncertainty="0" conditional="false" generic="false" historyOf="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.TerminalTreebankNode _indexed="1" _id="1607" _ref_sofa="3" begin="2" end="5" nodeType="DT" nodeValue="The" leaf="true" _ref_parent="1760" headIndex="0" index="0" tokenIndex="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.TerminalTreebankNode _indexed="1" _id="1620" _ref_sofa="3" begin="6" end="13" nodeType="NN" nodeValue="patient" leaf="true" _ref_parent="1760" headIndex="0" index="1" tokenIndex="1"/>
+    <org.apache.ctakes.typesystem.type.syntax.TerminalTreebankNode _indexed="1" _id="1633" _ref_sofa="3" begin="14" end="22" nodeType="VBD" nodeValue="reported" leaf="true" _ref_parent="1777" headIndex="0" index="2" tokenIndex="2"/>
+    <org.apache.ctakes.typesystem.type.syntax.TerminalTreebankNode _indexed="1" _id="1646" _ref_sofa="3" begin="23" end="27" nodeType="NN" nodeValue="pain" leaf="true" _ref_parent="1811" headIndex="0" index="3" tokenIndex="3"/>
+    <org.apache.ctakes.typesystem.type.syntax.TerminalTreebankNode _indexed="1" _id="1659" _ref_sofa="3" begin="28" end="30" nodeType="IN" nodeValue="in" leaf="true" _ref_parent="1827" headIndex="0" index="4" tokenIndex="4"/>
+    <org.apache.ctakes.typesystem.type.syntax.TerminalTreebankNode _indexed="1" _id="1672" _ref_sofa="3" begin="31" end="34" nodeType="PRP$" nodeValue="her" leaf="true" _ref_parent="1844" headIndex="0" index="5" tokenIndex="5"/>
+    <org.apache.ctakes.typesystem.type.syntax.TerminalTreebankNode _indexed="1" _id="1685" _ref_sofa="3" begin="35" end="40" nodeType="JJ" nodeValue="upper" leaf="true" _ref_parent="1844" headIndex="0" index="6" tokenIndex="6"/>
+    <org.apache.ctakes.typesystem.type.syntax.TerminalTreebankNode _indexed="1" _id="1698" _ref_sofa="3" begin="41" end="44" nodeType="NN" nodeValue="arm" leaf="true" _ref_parent="1844" headIndex="0" index="7" tokenIndex="7"/>
+    <org.apache.ctakes.typesystem.type.syntax.TerminalTreebankNode _indexed="1" _id="1711" _ref_sofa="3" begin="44" end="45" nodeType="." nodeValue="." leaf="true" _ref_parent="1742" headIndex="0" index="8" tokenIndex="8"/>
+    <org.apache.ctakes.typesystem.type.syntax.TerminalTreebankNode _indexed="1" _id="1911" _ref_sofa="3" begin="47" end="49" nodeType="DT" nodeValue="No" leaf="true" _ref_parent="1968" headIndex="0" index="0" tokenIndex="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.TerminalTreebankNode _indexed="1" _id="1924" _ref_sofa="3" begin="50" end="58" nodeType="NN" nodeValue="swelling" leaf="true" _ref_parent="1968" headIndex="0" index="1" tokenIndex="1"/>
+    <org.apache.ctakes.typesystem.type.syntax.TerminalTreebankNode _indexed="1" _id="1937" _ref_sofa="3" begin="58" end="59" nodeType="." nodeValue="." leaf="true" _ref_parent="1968" headIndex="0" index="2" tokenIndex="2"/>
+    <org.apache.ctakes.typesystem.type.syntax.TerminalTreebankNode _indexed="1" _id="2050" _ref_sofa="3" begin="61" end="68" nodeType="NNP" nodeValue="Aspirin" leaf="true" _ref_parent="2138" headIndex="0" index="0" tokenIndex="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.TerminalTreebankNode _indexed="1" _id="2063" _ref_sofa="3" begin="69" end="72" nodeType="CD" nodeValue="325" leaf="true" _ref_parent="2154" headIndex="0" index="1" tokenIndex="1"/>
+    <org.apache.ctakes.typesystem.type.syntax.TerminalTreebankNode _indexed="1" _id="2076" _ref_sofa="3" begin="73" end="75" nodeType="NNS" nodeValue="mg" leaf="true" _ref_parent="2154" headIndex="0" index="2" tokenIndex="2"/>
+    <org.apache.ctakes.typesystem.type.syntax.TerminalTreebankNode _indexed="1" _id="2089" _ref_sofa="3" begin="75" end="76" nodeType="." nodeValue="." leaf="true" _ref_parent="2120" headIndex="0" index="3" tokenIndex="3"/>
+    <org.apache.ctakes.typesystem.type.syntax.TreebankNode _indexed="1" _id="1742" _ref_sofa="3" begin="2" end="45" nodeType="S" leaf="false" _ref_parent="1724" _ref_children="1755" _ref_nodeTags="1753" headIndex="2"/>
+    <org.apache.ctakes.typesystem.type.syntax.TreebankNode _indexed="1" _id="1760" _ref_sofa="3" begin="2" end="13" nodeType="NP" leaf="false" _ref_parent="1742" _ref_children="1773" _ref_nodeTags="1771" headIndex="1"/>
+    <org.apache.ctakes.typesystem.type.syntax.TreebankNode _indexed="1" _id="1777" _ref_sofa="3" begin="14" end="44" nodeType="VP" leaf="false" _ref_parent="1742" _ref_children="1790" _ref_nodeTags="1788" headIndex="2"/>
+    <org.apache.ctakes.typesystem.type.syntax.TreebankNode _indexed="1" _id="1794" _ref_sofa="3" begin="23" end="44" nodeType="NP" leaf="false" _ref_parent="1777" _ref_children="1807" _ref_nodeTags="1805" headIndex="3"/>
+    <org.apache.ctakes.typesystem.type.syntax.TreebankNode _indexed="1" _id="1811" _ref_sofa="3" begin="23" end="27" nodeType="NP" leaf="false" _ref_parent="1794" _ref_children="1824" _ref_nodeTags="1822" headIndex="3"/>
+    <org.apache.ctakes.typesystem.type.syntax.TreebankNode _indexed="1" _id="1827" _ref_sofa="3" begin="28" end="44" nodeType="PP" leaf="false" _ref_parent="1794" _ref_children="1840" _ref_nodeTags="1838" headIndex="4"/>
+    <org.apache.ctakes.typesystem.type.syntax.TreebankNode _indexed="1" _id="1844" _ref_sofa="3" begin="31" end="44" nodeType="NP" leaf="false" _ref_parent="1827" _ref_children="1857" _ref_nodeTags="1855" headIndex="7"/>
+    <org.apache.ctakes.typesystem.type.syntax.TreebankNode _indexed="1" _id="1968" _ref_sofa="3" begin="47" end="59" nodeType="NP" leaf="false" _ref_parent="1950" _ref_children="1981" _ref_nodeTags="1979" headIndex="1"/>
+    <org.apache.ctakes.typesystem.type.syntax.TreebankNode _indexed="1" _id="2120" _ref_sofa="3" begin="61" end="76" nodeType="NP" leaf="false" _ref_parent="2102" _ref_children="2133" _ref_nodeTags="2131" headIndex="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.TreebankNode _indexed="1" _id="2138" _ref_sofa="3" begin="61" end="68" nodeType="NP" leaf="false" _ref_parent="2120" _ref_children="2151" _ref_nodeTags="2149" headIndex="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.TreebankNode _indexed="1" _id="2154" _ref_sofa="3" begin="69" end="75" nodeType="NP" leaf="false" _ref_parent="2120" _ref_children="2167" _ref_nodeTags="2165" headIndex="2"/>
+    <org.apache.ctakes.typesystem.type.syntax.TopTreebankNode _indexed="1" _id="1724" _ref_sofa="3" begin="2" end="45" nodeType="TOP" leaf="false" _ref_children="1739" _ref_nodeTags="1737" headIndex="0" treebankParse="(TOP (S (NP (DT The) (NN patient)) (VP (VBD reported) (NP (NP (NN pain)) (PP (IN in) (NP (PRP$ her) (JJ upper) (NN arm)))))(. .)))" _ref_terminals="1596"/>
+    <org.apache.ctakes.typesystem.type.syntax.TopTreebankNode _indexed="1" _id="1950" _ref_sofa="3" begin="47" end="59" nodeType="TOP" leaf="false" _ref_children="1965" _ref_nodeTags="1963" headIndex="0" treebankParse="(TOP (NP (DT No) (NN swelling)(. .)))" _ref_terminals="1906"/>
+    <org.apache.ctakes.typesystem.type.syntax.TopTreebankNode _indexed="1" _id="2102" _ref_sofa="3" begin="61" end="76" nodeType="TOP" leaf="false" _ref_children="2117" _ref_nodeTags="2115" headIndex="0" treebankParse="(TOP (NP (NP (NNP Aspirin)) (NP (CD 325) (NNS mg))(. .)))" _ref_terminals="2044"/>
+    <org.apache.ctakes.coreference.type.NEMarkable _indexed="1" _id="2171" _ref_sofa="3" begin="23" end="44" _ref_content="1404" id="53" anaphoric_prob="0.0"/>
+    <org.apache.ctakes.coreference.type.NEMarkable _indexed="1" _id="2178" _ref_sofa="3" begin="61" end="68" _ref_content="1441" id="54" anaphoric_prob="0.0"/>
+    <org.apache.ctakes.coreference.type.MarkablePairSet _indexed="1" _id="2185" _ref_sofa="3" begin="61" end="68" _ref_anaphor="2178" _ref_antecedentList="2194"/>
+    <uima.cas.EmptyFSList _id="2194"/>
+    <uima.cas.FSArray _id="2044" size="4">
+        <i>2050</i>
+        <i>2063</i>
+        <i>2076</i>
+        <i>2089</i>
+    </uima.cas.FSArray>
+    <uima.cas.StringArray _id="2115" size="0"/>
+    <uima.cas.FSArray _id="2117" size="1">
+        <i>2120</i>
+    </uima.cas.FSArray>
+    <uima.cas.FSArray _id="1906" size="3">
+        <i>1911</i>
+        <i>1924</i>
+        <i>1937</i>
+    </uima.cas.FSArray>
+    <uima.cas.StringArray _id="1963" size="0"/>
+    <uima.cas.FSArray _id="1965" size="1">
+        <i>1968</i>
+    </uima.cas.FSArray>
+    <uima.cas.FSArray _id="1596" size="9">
+        <i>1607</i>
+        <i>1620</i>
+        <i>1633</i>
+        <i>1646</i>
+        <i>1659</i>
+        <i>1672</i>
+        <i>1685</i>
+        <i>1698</i>
+        <i>1711</i>
+    </uima.cas.FSArray>
+    <uima.cas.StringArray _id="1737" size="0"/>
+    <uima.cas.FSArray _id="1739" size="1">
+        <i>1742</i>
+    </uima.cas.FSArray>
+    <uima.cas.StringArray _id="2165" size="0"/>
+    <uima.cas.FSArray _id="2167" size="2">
+        <i>2063</i>
+        <i>2076</i>
+    </uima.cas.FSArray>
+    <uima.cas.StringArray _id="2149" size="0"/>
+    <uima.cas.FSArray _id="2151" size="1">
+        <i>2050</i>
+    </uima.cas.FSArray>
+    <uima.cas.StringArray _id="2131" size="0"/>
+    <uima.cas.FSArray _id="2133" size="3">
+        <i>2138</i>
+        <i>2154</i>
+        <i>2089</i>
+    </uima.cas.FSArray>
+    <uima.cas.StringArray _id="1979" size="0"/>
+    <uima.cas.FSArray _id="1981" size="3">
+        <i>1911</i>
+        <i>1924</i>
+        <i>1937</i>
+    </uima.cas.FSArray>
+    <uima.cas.StringArray _id="1855" size="0"/>
+    <uima.cas.FSArray _id="1857" size="3">
+        <i>1672</i>
+        <i>1685</i>
+        <i>1698</i>
+    </uima.cas.FSArray>
+    <uima.cas.StringArray _id="1838" size="0"/>
+    <uima.cas.FSArray _id="1840" size="2">
+        <i>1659</i>
+        <i>1844</i>
+    </uima.cas.FSArray>
+    <uima.cas.StringArray _id="1822" size="0"/>
+    <uima.cas.FSArray _id="1824" size="1">
+        <i>1646</i>
+    </uima.cas.FSArray>
+    <uima.cas.StringArray _id="1805" size="0"/>
+    <uima.cas.FSArray _id="1807" size="2">
+        <i>1811</i>
+        <i>1827</i>
+    </uima.cas.FSArray>
+    <uima.cas.StringArray _id="1788" size="0"/>
+    <uima.cas.FSArray _id="1790" size="2">
+        <i>1633</i>
+        <i>1794</i>
+    </uima.cas.FSArray>
+    <uima.cas.StringArray _id="1771" size="0"/>
+    <uima.cas.FSArray _id="1773" size="2">
+        <i>1607</i>
+        <i>1620</i>
+    </uima.cas.FSArray>
+    <uima.cas.StringArray _id="1753" size="0"/>
+    <uima.cas.FSArray _id="1755" size="3">
+        <i>1760</i>
+        <i>1777</i>
+        <i>1711</i>
+    </uima.cas.FSArray>
+    <org.apache.ctakes.typesystem.type.refsem.OntologyConcept _id="1436" codingScheme="RXNORM" code="C6666666" oid="C6666666#RXNORM"/>
+    <uima.cas.FSArray _id="1433" size="1">
+        <i>1436</i>
+    </uima.cas.FSArray>
+    <org.apache.ctakes.typesystem.type.refsem.UmlsConcept _id="1394" codingScheme="SNOMED" code="100206" oid="100206#SNOMED" cui="Cui0206" tui="T_SS"/>
+    <uima.cas.FSArray _id="1401" size="1">
+        <i>1394</i>
+    </uima.cas.FSArray>
+    <uima.cas.EmptyFSList _id="1312"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="1273" key="mgs" posTag="NN"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="1270" key="mgs" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="1267" key="mger" posTag="RB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="1264" key="mger" posTag="JJ"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="1261" key="mgest" posTag="RB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="1258" key="mgest" posTag="JJ"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="1255" key="mg" posTag="NN"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="1252" key="mg" posTag="RB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="1249" key="mg" posTag="JJ"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="1246" key="mg" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="1243" key="mging" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="1240" key="mged" posTag="VB"/>
+    <uima.cas.EmptyFSList _id="1239"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="1182" key="Aspirinning" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="1179" key="Aspirining" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="1176" key="Aspirinned" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="1173" key="Aspiriner" posTag="RB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="1170" key="Aspiriner" posTag="JJ"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="1167" key="Aspirined" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="1164" key="Aspirinnest" posTag="RB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="1161" key="Aspirinnest" posTag="JJ"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="1158" key="Aspirin" posTag="NN"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="1155" key="Aspirin" posTag="RB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="1152" key="Aspirin" posTag="JJ"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="1149" key="Aspirin" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="1146" key="Aspirinest" posTag="RB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="1143" key="Aspirinest" posTag="JJ"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="1140" key="Aspirinner" posTag="RB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="1137" key="Aspirinner" posTag="JJ"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="1134" key="Aspirins" posTag="NN"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="1131" key="Aspirins" posTag="VB"/>
+    <uima.cas.EmptyFSList _id="1130"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="1055" key="swelle" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="1052" key="sweled" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="1049" key="swel" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="1046" key="swels" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="1043" key="swellinger" posTag="RB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="1040" key="swellinger" posTag="JJ"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="1037" key="swellinging" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="1034" key="swellinged" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="1031" key="swell" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="1028" key="swellung" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="1025" key="swelleed" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="1022" key="swelleing" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="1019" key="swelled" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="1016" key="sweling" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="1013" key="swellingest" posTag="RB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="1010" key="swellingest" posTag="JJ"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="1007" key="swells" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="1004" key="swelles" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="1001" key="swellings" posTag="NN"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="998" key="swellings" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="995" key="swelling" posTag="NN"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="992" key="swelling" posTag="RB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="989" key="swelling" posTag="JJ"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="986" key="swelling" posTag="VB"/>
+    <uima.cas.EmptyFSList _id="985"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="946" key="Noer" posTag="RB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="943" key="Noer" posTag="JJ"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="940" key="Nos" posTag="NN"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="937" key="Nos" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="934" key="No" posTag="NN"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="931" key="No" posTag="RB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="928" key="No" posTag="JJ"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="925" key="No" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="922" key="Noing" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="919" key="Noest" posTag="RB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="916" key="Noest" posTag="JJ"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="913" key="Noed" posTag="VB"/>
+    <uima.cas.EmptyFSList _id="912"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="873" key="armer" posTag="RB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="870" key="armer" posTag="JJ"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="867" key="armed" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="864" key="arming" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="861" key="arm" posTag="NN"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="858" key="arm" posTag="RB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="855" key="arm" posTag="JJ"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="852" key="arm" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="849" key="arms" posTag="NN"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="846" key="arms" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="843" key="armest" posTag="RB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="840" key="armest" posTag="JJ"/>
+    <uima.cas.EmptyFSList _id="839"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="752" key="uppeest" posTag="RB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="749" key="uppeest" posTag="JJ"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="746" key="upperring" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="743" key="upperred" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="740" key="upperest" posTag="RB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="737" key="upperest" posTag="JJ"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="734" key="uppered" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="731" key="upperer" posTag="RB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="728" key="upperer" posTag="JJ"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="725" key="upperrest" posTag="RB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="722" key="upperrest" posTag="JJ"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="719" key="uppe" posTag="RB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="716" key="uppe" posTag="JJ"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="713" key="upp" posTag="RB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="710" key="upp" posTag="JJ"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="707" key="upper" posTag="NN"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="704" key="upper" posTag="RB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="701" key="upper" posTag="JJ"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="698" key="upper" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="695" key="upperrer" posTag="RB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="692" key="upperrer" posTag="JJ"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="689" key="uppeer" posTag="RB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="686" key="uppeer" posTag="JJ"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="683" key="uppering" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="680" key="uppest" posTag="RB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="677" key="uppest" posTag="JJ"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="674" key="uppers" posTag="NN"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="671" key="uppers" posTag="VB"/>
+    <uima.cas.EmptyFSList _id="670"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="613" key="herred" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="610" key="herring" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="607" key="her" posTag="NN"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="604" key="her" posTag="RB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="601" key="her" posTag="JJ"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="598" key="her" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="595" key="herer" posTag="RB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="592" key="herer" posTag="JJ"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="589" key="herrer" posTag="RB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="586" key="herrer" posTag="JJ"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="583" key="hers" posTag="NN"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="580" key="hers" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="577" key="herrest" posTag="RB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="574" key="herrest" posTag="JJ"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="571" key="hering" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="568" key="herest" posTag="RB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="565" key="herest" posTag="JJ"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="562" key="hered" posTag="VB"/>
+    <uima.cas.EmptyFSList _id="561"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="522" key="pained" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="519" key="pain" posTag="NN"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="516" key="pain" posTag="RB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="513" key="pain" posTag="JJ"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="510" key="pain" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="507" key="pains" posTag="NN"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="504" key="pains" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="501" key="painest" posTag="RB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="498" key="painest" posTag="JJ"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="495" key="paining" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="492" key="painer" posTag="RB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="489" key="painer" posTag="JJ"/>
+    <uima.cas.EmptyFSList _id="488"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="401" key="reportedest" posTag="RB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="398" key="reportedest" posTag="JJ"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="395" key="reporteding" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="392" key="reporteeding" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="389" key="reporting" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="386" key="reportedding" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="383" key="report" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="380" key="reportes" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="377" key="reporteds" posTag="NN"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="374" key="reporteds" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="371" key="reporteeded" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="368" key="reporteeds" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="365" key="reporteder" posTag="RB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="362" key="reporteder" posTag="JJ"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="359" key="reportedded" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="356" key="reporte" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="353" key="reporteing" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="350" key="reporteddest" posTag="RB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="347" key="reporteddest" posTag="JJ"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="344" key="reporteded" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="341" key="reports" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="338" key="reported" posTag="NN"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="335" key="reported" posTag="RB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="332" key="reported" posTag="JJ"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="329" key="reported" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="326" key="reportedder" posTag="RB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="323" key="reportedder" posTag="JJ"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="320" key="reporteed" posTag="VB"/>
+    <uima.cas.EmptyFSList _id="319"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="280" key="patienter" posTag="RB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="277" key="patienter" posTag="JJ"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="274" key="patiented" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="271" key="patientest" posTag="RB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="268" key="patientest" posTag="JJ"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="265" key="patienting" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="262" key="patient" posTag="NN"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="259" key="patient" posTag="RB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="256" key="patient" posTag="JJ"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="253" key="patient" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="250" key="patients" posTag="NN"/>
+    <org.apache.ctakes.typesystem.type.syntax.Lemma _id="247" key="patients" posTag="VB"/>
+</CAS>

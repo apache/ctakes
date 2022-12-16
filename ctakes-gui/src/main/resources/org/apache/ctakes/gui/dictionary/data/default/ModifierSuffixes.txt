@@ -1,0 +1,15 @@
+( acute )
+( benign )
+( chronic )
+( clinical )
+( malignant )
+( partial )
+- acute
+- chronic
+, acute
+, bilateral
+, chronic
+, multiple
+, single
+ acute
+ chronic

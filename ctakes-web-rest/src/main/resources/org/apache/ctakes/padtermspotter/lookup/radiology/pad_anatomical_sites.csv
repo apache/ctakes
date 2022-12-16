@@ -1,0 +1,76 @@
+//not interested in the vein in the lower extremities. Interested in the arteries in the lower extremities.
+aortabi-iliac|aortabi-iliac artery|6
+aortabi-iliac|aortabi-iliac arteries|6
+aortobiiliac|aortobiiliac artery|6
+aortobiiliac|aortobiiliac arteries|6
+aortobifemoral|aortobifemoral artery|6
+aortobifemoral|aortobifemoral arteries|6
+axillobifemoral|axillobifemoral arteries|6
+axillobifemoral|axillobifemoral artery|6
+cardiod|cardiod|6
+femoral|femoral artery|6
+femoral|femoral arteries|6
+femoropopliteal|femoropopliteal artery|6
+femoropopliteal|femoropopliteal arteries|6
+peroneal|peroneal artery|6
+peroneal|peroneal arteries|6
+popliteal|popliteal artery|6
+popliteal|popliteal arteries|6
+femoral-femoral|femoral-femoral arteries|STAND_ALONE
+femoral-femoral|femoral-femoral|6
+femoral|femoral-to-peroneal artery|STAND_ALONE
+femoral-popliteal|femoral-popliteal|6
+fem-pop|fem-pop|STAND_ALONE
+fem-fem|fem-fem|STAND_ALONE
+aortabi-iliac|aortabi-iliac|6
+aortobiiliac|aortobiiliac|6
+aortobifemoral|aortobifemoral|6
+axillobifemoral|axillobifemoral|6
+femoral|femoral|6
+femoropopliteal|femoropopliteal|6
+peroneal|peroneal|6
+popliteal|popliteal|6
+femoral-femoral|femoral-femoral arteries|STAND_ALONE
+femoral-femoral|femoral-femoral|6
+femoral|femoral-to-peroneal artery|STAND_ALONE
+calf|calf artery|6
+tibial|tibial arteries|6
+tibial|tibial artery|6
+calf|calf arteries|6
+common|common femoral|6
+external|external illiac|6
+left|left femoral|6
+rigth|right femoral|6
+right|right leg|6
+left|left leg|6
+left|left lower extremity|6
+rigth|right lower extremity|6
+lower|lower extremity|6
+common|common iliac|6
+common|common iliac artery|6
+peroneal|peroneal trunk|6
+tibioperoneal|tibioperoneal trunk|6
+internal|internal iliac arteries|6
+iliac|iliac artery|6
+iliac|iliac systems|6
+iliac|iliac system|6
+iliac|iliac origin|6
+origin|origin of iliac|6
+anterior|anterior tibial artery|6
+peroneal|peroneal artery|6
+SFA|SFA|6
+CFA|CFA|6
+IFA|IFA|6
+anterior|anterior tibial artery|6
+anterior|anterior tibial arteries|6
+posterior|posterior tibial|6
+anterior|anterior tibial|6
+posterior|posterior tibial artery|6
+femoropopliteal|femoropopliteal artery|6
+femoropopliteal|femoropopliteal arteries|6
+posterior|posterior tibial arteries|6
+PT|PT|6
+AT|AT|6
+anastomosis|anastomosis|6
+vein|vein|9
+veins|veins|9

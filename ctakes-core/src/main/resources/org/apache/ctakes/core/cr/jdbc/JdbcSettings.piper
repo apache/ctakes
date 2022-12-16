@@ -1,0 +1,109 @@
+//
+//     The following are parameters that can be set for use by the JdbcNotesReader.
+//     The settings below are examples and should be changed.
+//     To use the JdbcNotesReader and your own settings,
+//     copy this file, edit to your details, and add two lines to the top of your piper file:
+//          load /my/dir/MyJdbcSettings.piper
+//          reader jdbc.JdbcNotesReader
+//
+
+
+//////////     Mandatory     //////////
+
+//  JDBC driver ClassName.
+set DbDriver=com.ibm.db2.jcc.DB2Driver
+
+//  JDBC URL that specifies database network location and name.
+set DbUrl=jdbc:db2://localhost:0000/changeme
+
+//  Username for database authentication.
+set DbUser=changeme
+
+//  Password for database authentication.
+set DbPass=changeme
+
+//  SQL statement to retrieve the document.
+set SqlStatement="SELECT * FROM MY_TABLE"
+
+//  Name of column that contains the document text.
+set DocColumn=NOTE_TEXT
+
+
+
+//////////     Optional     //////////
+
+//  Flag that determines whether to keep JDBC connection open no matter what.
+# set KeepAlive="true"
+
+//  JDBC decryptor ClassName.  This must be an implementation of org.apache.ctakes.core.cr.jdbc.Decryptor
+# set DbDecryptor=org.apache.ctakes.core.cr.jdbc.PassThroughDecryptor
+
+//  Password for text decryption.
+# set DecryptPass=
+
+//  Specifies column names that will be used to form a document ID.
+# set IdColumns=PATIENT_ID,NOTE_ID
+
+//  Specifies delimiter used when document ID is built.
+# set IdDelimiter=_
+
+//  Name of column that contains the patient identifier.
+# set PatientColumn=PATIENT_ID
+
+//  Name of column that contains the patient id.  This column should contain longs.
+# set PatientIdColumn=PATIENT_NUM
+
+//  Name of column that contains the note type.
+# set NoteTypeColumn=
+
+//  Name of column that contains the note subtype.
+# set NoteSubtypeColumn=
+
+//  Name of column that contains the author specialty.
+# set SpecialtyColumn=
+
+//  Name of column that contains the document standard.
+# set StandardColumn=
+
+//  Name of column that contains the document instance id.  This column should contain longs.
+# set InstanceIdColumn=
+
+//  Name of column that contains the document revision number.  This column should contain integers.
+# set RevisionColumn=
+
+//  Name of column that contains the document revision date.  This column should contain dates.
+# set RevisionDateColumn=
+
+//  Name of column that contains the document original date.
+# set DateColumn=
+
+//  Name of column that contains the source institution.
+# set InstituteColumn=
+
+//  Name of column that contains the encounter id.
+# set EncounterIdColumn=
+
+//  Name of column that contains the patient birth date.  This column should contain dates.
+# set BirthColumn=
+
+//  Name of column that contains the patient death date.  This column should contain dates.
+# set DeathColumn=
+
+//  Name of column that contains the patient gender.
+# set GenderColumn=
+
+//  Name of column that contains the patient first name.
+# set FirstNameColumn=
+
+//  Name of column that contains the patient middle name.
+# set MiddleNameColumn=
+
+//  Name of column that contains the patient last name.
+# set LastNameColumn=
+
+//  Name of column that contains the patient first name soundex.
+# set FirstSoundexColumn=
+
+//  Name of column that contains the patient last name soundex.
+# set LastSoundexColumn=
+

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CAS version="2">
+    <uima.cas.Sofa _indexed="0" _id="3" sofaNum="1" sofaID="_InitialView" mimeType="text" sofaString="Mr. Johnson is presenting signs of a shark bite.  It occurred last week and has caused immense leg pain.  The pain was so severe that he had begun taking narcotics to relieve it.&#13;&#10;&#13;&#10;The patient also was concerned about a small lesion in his Broca's area and said the lesion was causing him to lettuce Wednesday baseball applesauce.&#13;&#10;&#13;&#10;After imaging which was inconclusive, the patient was released to go home and treat his pain himself."/>
+    <org.apache.ctakes.typesystem.type.structured.DocumentID _indexed="1" _id="1" documentID="testfakenote.txt"/>
+    <uima.tcas.DocumentAnnotation _indexed="1" _id="10" _ref_sofa="3" begin="0" end="436" language="x-unspecified"/>
+    <org.apache.ctakes.typesystem.type.textspan.Segment _indexed="1" _id="15" _ref_sofa="3" begin="0" end="436" id="SIMPLE_SEGMENT"/>
+    <org.apache.ctakes.typesystem.type.syntax.NewlineToken _indexed="1" _id="20" _ref_sofa="3" begin="178" end="180" tokenNumber="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.NewlineToken _indexed="1" _id="28" _ref_sofa="3" begin="180" end="182" tokenNumber="1"/>
+    <org.apache.ctakes.typesystem.type.syntax.NewlineToken _indexed="1" _id="36" _ref_sofa="3" begin="331" end="333" tokenNumber="2"/>
+    <org.apache.ctakes.typesystem.type.syntax.NewlineToken _indexed="1" _id="44" _ref_sofa="3" begin="333" end="335" tokenNumber="3"/>
+    <org.apache.ctakes.typesystem.type.textspan.Sentence _indexed="1" _id="52" _ref_sofa="3" begin="0" end="178" sentenceNumber="0"/>
+    <org.apache.ctakes.typesystem.type.textspan.Sentence _indexed="1" _id="58" _ref_sofa="3" begin="182" end="247" sentenceNumber="1"/>
+    <org.apache.ctakes.typesystem.type.textspan.Sentence _indexed="1" _id="64" _ref_sofa="3" begin="247" end="331" sentenceNumber="2"/>
+    <org.apache.ctakes.typesystem.type.textspan.Sentence _indexed="1" _id="70" _ref_sofa="3" begin="335" end="436" sentenceNumber="3"/>
+</CAS>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CAS version="2">
+    <uima.cas.Sofa _indexed="0" _id="3" sofaNum="1" sofaID="_InitialView" mimeType="text" sofaString="&#13;&#10;Dr. Nutritious&#13;&#10;&#13;&#10;Medical Nutrition Therapy for Hyperlipidemia&#13;&#10;&#13;&#10;Significant for her father, who died at 50 years from colon cancer.&#13;&#10;Phone contact: (555) 555-1212&#13;&#10;Height: 144 cm   Current Weight: 45 kg&#13;&#10;Diet: General&#13;&#10;Daily Calorie needs (kcals): 1500 calories, assessed as HB + 20% for activity.&#13;&#10;Daily Protein needs: 40 grams,  assessed as 1.0 g/kg.&#13;&#10;Colonoscopy. No pain or discomfort reported.&#13;&#10;"/>
+    <org.apache.ctakes.typesystem.type.structured.DocumentID _indexed="1" _id="1" documentID="testpatient_plaintext_2.txt"/>
+    <uima.tcas.DocumentAnnotation _indexed="1" _id="10" _ref_sofa="3" begin="0" end="404" language="x-unspecified"/>
+    <org.apache.ctakes.typesystem.type.textspan.Segment _indexed="1" _id="15" _ref_sofa="3" begin="0" end="404" id="SIMPLE_SEGMENT"/>
+    <org.apache.ctakes.typesystem.type.syntax.NewlineToken _indexed="1" _id="20" _ref_sofa="3" begin="0" end="2" tokenNumber="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.NewlineToken _indexed="1" _id="28" _ref_sofa="3" begin="16" end="18" tokenNumber="1"/>
+    <org.apache.ctakes.typesystem.type.syntax.NewlineToken _indexed="1" _id="36" _ref_sofa="3" begin="18" end="20" tokenNumber="2"/>
+    <org.apache.ctakes.typesystem.type.syntax.NewlineToken _indexed="1" _id="44" _ref_sofa="3" begin="64" end="66" tokenNumber="3"/>
+    <org.apache.ctakes.typesystem.type.syntax.NewlineToken _indexed="1" _id="52" _ref_sofa="3" begin="66" end="68" tokenNumber="4"/>
+    <org.apache.ctakes.typesystem.type.syntax.NewlineToken _indexed="1" _id="60" _ref_sofa="3" begin="135" end="137" tokenNumber="5"/>
+    <org.apache.ctakes.typesystem.type.syntax.NewlineToken _indexed="1" _id="68" _ref_sofa="3" begin="166" end="168" tokenNumber="6"/>
+    <org.apache.ctakes.typesystem.type.syntax.NewlineToken _indexed="1" _id="76" _ref_sofa="3" begin="206" end="208" tokenNumber="7"/>
+    <org.apache.ctakes.typesystem.type.syntax.NewlineToken _indexed="1" _id="84" _ref_sofa="3" begin="221" end="223" tokenNumber="8"/>
+    <org.apache.ctakes.typesystem.type.syntax.NewlineToken _indexed="1" _id="92" _ref_sofa="3" begin="301" end="303" tokenNumber="9"/>
+    <org.apache.ctakes.typesystem.type.syntax.NewlineToken _indexed="1" _id="100" _ref_sofa="3" begin="356" end="358" tokenNumber="10"/>
+    <org.apache.ctakes.typesystem.type.syntax.NewlineToken _indexed="1" _id="108" _ref_sofa="3" begin="402" end="404" tokenNumber="11"/>
+    <org.apache.ctakes.typesystem.type.textspan.Sentence _indexed="1" _id="116" _ref_sofa="3" begin="2" end="16" sentenceNumber="0"/>
+    <org.apache.ctakes.typesystem.type.textspan.Sentence _indexed="1" _id="122" _ref_sofa="3" begin="20" end="64" sentenceNumber="1"/>
+    <org.apache.ctakes.typesystem.type.textspan.Sentence _indexed="1" _id="128" _ref_sofa="3" begin="68" end="135" sentenceNumber="2"/>
+    <org.apache.ctakes.typesystem.type.textspan.Sentence _indexed="1" _id="134" _ref_sofa="3" begin="137" end="151" sentenceNumber="3"/>
+    <org.apache.ctakes.typesystem.type.textspan.Sentence _indexed="1" _id="140" _ref_sofa="3" begin="152" end="166" sentenceNumber="4"/>
+    <org.apache.ctakes.typesystem.type.textspan.Sentence _indexed="1" _id="146" _ref_sofa="3" begin="168" end="175" sentenceNumber="5"/>
+    <org.apache.ctakes.typesystem.type.textspan.Sentence _indexed="1" _id="152" _ref_sofa="3" begin="176" end="200" sentenceNumber="6"/>
+    <org.apache.ctakes.typesystem.type.textspan.Sentence _indexed="1" _id="158" _ref_sofa="3" begin="201" end="206" sentenceNumber="7"/>
+    <org.apache.ctakes.typesystem.type.textspan.Sentence _indexed="1" _id="164" _ref_sofa="3" begin="208" end="221" sentenceNumber="8"/>
+    <org.apache.ctakes.typesystem.type.textspan.Sentence _indexed="1" _id="170" _ref_sofa="3" begin="223" end="251" sentenceNumber="9"/>
+    <org.apache.ctakes.typesystem.type.textspan.Sentence _indexed="1" _id="176" _ref_sofa="3" begin="252" end="301" sentenceNumber="10"/>
+    <org.apache.ctakes.typesystem.type.textspan.Sentence _indexed="1" _id="182" _ref_sofa="3" begin="303" end="323" sentenceNumber="11"/>
+    <org.apache.ctakes.typesystem.type.textspan.Sentence _indexed="1" _id="188" _ref_sofa="3" begin="324" end="349" sentenceNumber="12"/>
+    <org.apache.ctakes.typesystem.type.textspan.Sentence _indexed="1" _id="194" _ref_sofa="3" begin="349" end="356" sentenceNumber="13"/>
+    <org.apache.ctakes.typesystem.type.textspan.Sentence _indexed="1" _id="200" _ref_sofa="3" begin="358" end="370" sentenceNumber="14"/>
+    <org.apache.ctakes.typesystem.type.textspan.Sentence _indexed="1" _id="206" _ref_sofa="3" begin="371" end="402" sentenceNumber="15"/>
+</CAS>

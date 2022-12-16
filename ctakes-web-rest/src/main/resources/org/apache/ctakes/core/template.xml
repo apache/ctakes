@@ -1,0 +1,107 @@
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<root suffix=" ?[:]" case_insensitive="yes" lists="no" >
+    <report>
+ 	    <!-- RECORD INFO START -->
+            <record/>
+	    <admission_date/>
+	    <report_status/>
+            <discharge_date/>
+            <identification/>
+
+ 	    <!-- DIAGNOSES -->
+	    <admit_diagnosis/>
+            <principal_discharge_diagnosis/>
+	    <principal_diagnosis/>
+	    <principal_diagnoses/>
+	    <secondary_diagnosis/>
+	    <secondary_diagnoses/>
+	    <discharge_diagnosis/>
+	    <chief_complaint/>
+	    <other_medical_issues_considered_at_this_time/>
+
+ 	    <!-- ALLERGIES -->
+	    <allergies/>
+	    <allergy/>
+
+ 	    <!-- HISTORY (medical, social, family)-->
+	    <brief_history_of_physical_illness/>
+            <history_of_present_illness/>
+            <history_of_the_present_illness/>
+	    <past_medical_history/>
+	    <past_surgical_history/>
+	    <social_history/>
+	    <sh/>
+	    <family_history/>
+
+	    <!-- EXAMS -->
+            <review_of_systems/>
+            <physical_examination_on_admission/>
+	    <physical_examination/>
+	    <physical_exam/>
+	    <studies/>
+
+	    <!-- PROCEDURES/LABS -->
+            <hospital_course/>
+	    <operations_and_procedures/>
+            <laboratory_data/>
+            <laboratories/>
+
+	    <!-- OTHER -->
+	    <diet/>
+	    <all/>
+	    <pmh/> 
+	    <hpi/>
+
+
+	    <!-- MEDICATIONS -->
+	    <medications />
+            <rx_on_admit/>
+	    <home_meds/>
+	    <meds/>
+            <current_medications />
+	    <discharge_medications />
+	    <medications_on_discharge />
+	
+	    <!-- DISCHARGE -->
+	    <discharge_condition/>
+	    <disposition/>
+	    <discharge/>
+	    <advanced_directives/>
+	    <conditions_on_discharge/>
+	    <follow-up/>
+	    <followup/>
+	    <discharge_status/>
+
+	    <!-- RECORD INFO END -->
+  	    <additional_comments/>
+	    <cc/>
+	    <to-do_list/>
+	    <for_pcp/>
+	    <dictated_by/>
+	    <attending/>
+	    <entered_by/>
+	    
+	    <!-- ODIE CORPUS -->
+	    <GROSS_DESCRIPTION/>
+	    <FINAL_DIAGNOSIS/>
+</report>
+</root>

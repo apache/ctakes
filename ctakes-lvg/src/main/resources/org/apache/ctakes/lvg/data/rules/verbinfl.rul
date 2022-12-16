@@ -1,0 +1,79 @@
+#			  VERB INFLECTION RULES:
+#
+#  0 =>  k  /c _{ing,ed}
+#
+# These rules would likely be considered part
+# of regular English inflection were they not 
+# of such limited scope.  Only 13 verbs in English end in "c"
+# of those 12 are covered by these rules.
+# "floc" as a verb appears in Webster's Medical Dictinary.
+#  with the paradigm: flocs flocced flocced floccing (regd)
+# "floc" is apparently a back formation from "floculate". Which
+# may account for it's deviant regularity.  (2-Oct-92)
+#
+RULE: c$|verb|infinitive|cking$|verb|presPart
+EXCEPTION: floc|flocking;
+#
+RULE: c$|verb|infinitive|cked$|verb|past
+EXCEPTION: floc|flocked;
+#
+RULE: c$|verb|infinitive|cked$|verb|pastPart
+EXCEPTION: floc|flocked;
+#
+# The past part ing/ung rule applies to more verbs than
+# the past ing/ung rule. "ring" has "rang" in the past,
+# and "wring" has "wrang", sing according to Websters has
+# either "sing" or "sung" in the past.
+# in the realm of the exotic coolung is a crazy crane, and gunnung is
+# a type of swamp mahogony. (and a pung is a kind of sleigh)
+#
+RULE: ing$|verb|infinitive|ung$|verb|pastPart
+EXCEPTION: cooling|coolung;
+EXCEPTION: ding|dung;
+EXCEPTION: gunning|gunnung;
+EXCEPTION: ing|ung;
+EXCEPTION: ling|lung;
+EXCEPTION: ping|pung;
+#
+RULE: ing$|verb|infinitive|ung$|verb|past
+EXCEPTION: cooling|coolung;
+EXCEPTION: ding|dung;
+EXCEPTION: gunning|gunnung;
+EXCEPTION: ing|ung;
+EXCEPTION: ling|lung;
+EXCEPTION: ping|pung;
+EXCEPTION: ring|rung;
+EXCEPTION: wring|wrung;
+#
+# e.g. feed|fed speed|sped bleed|bled .....
+#
+RULE: eed$|verb|infinitive|ed$|verb|past
+EXCEPTION: eed|ed;
+EXCEPTION: freed|fred;
+EXCEPTION: reed|red;
+EXCEPTION: weed|wed;
+#
+RULE: eed$|verb|infinitive|ed$|verb|pastPart
+EXCEPTION: eed|ed;
+EXCEPTION: freed|fred;
+EXCEPTION: reed|red;
+EXCEPTION: weed|wed;
+#
+# ay~aid for both past and past part
+#e.g  pay|paid
+#
+RULE: ay$|verb|infinitive|aid$|verb|past
+EXCEPTION: bray|braid;
+EXCEPTION: May|maid;
+EXCEPTION: may|maid;
+EXCEPTION: play|plaid;
+EXCEPTION: ray|raid;
+EXCEPTION: stay|staid;
+#
+RULE: ay$|verb|infinitive|aid$|verb|pastPart
+EXCEPTION: bray|braid;
+EXCEPTION: May|maid;
+EXCEPTION: may|maid;
+EXCEPTION: play|plaid;
+EXCEPTION: ray|raid;
+EXCEPTION: stay|staid;

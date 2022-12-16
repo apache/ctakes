@@ -1,0 +1,12 @@
+# This file is used by ctakes-core/sectionizer
+# It uses rules and RegEx to match the section headers
+# It is derived from the Consolidated CDA/HL7 standard
+# http://bluebuttonplus.org/healthrecords.html
+# http://cdatools.org/infocenter/index.jsp
+# The format is as follows:
+# HL7 template id,LOINC Section Code,n list of header names
+# Custom ones can be added to the below mapping file
+# By Default,they are case insenstive and spaces trimmed. 
+
+history,1,HISTORY OF PRESENT ILLNESS,brief history of physical illness,history of present illness,history of the present illness,HISTORY,HISTORY AND REASON FOR HOSPITALIZATION,HISTORY AND REASON FOR ADMISSION,PRESENT ILLNESS,HPI,Service,OPERATIONS \/ PROCEDURES,OTHER POSTPARTUM THERAPIES
+course,2,HOSPITAL COURSE,HOSPITAL COURSE \( include complications if any \),Brief Hospital Course,HOSPITAL COURSE BY SYSTEM,HOSPITAL COURSE BY SYSTEMS,BRIEF RESUME OF HOSPITAL COURSE,SUMMARY OF HOSPITAL COURSE BY SYSTEMS,HOSPITAL COURSE BY SYSTEMS INCLUDING PERTINENT LABORATORY DATA,SUMMARY OF HOSPITAL COURSE BY ISSUES-SYSTEM,SUMMARY OF HOSPITAL COURSE,HOSPITAL COURSE AND TREATMENT,HOSPITAL COURSE OVER THESE PREVIOUS DAYS

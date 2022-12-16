@@ -1,0 +1,1036 @@
+# File: dm.rul
+#
+# @(#)dm.rul     1.1	24 Feb 1995
+#
+# This file contains the suffix rules for generating derivational
+# variants.
+#
+# All lines starting with a '#' are comment lines.
+# Whitespace is ignored.
+#
+# Format of non-comment lines is:
+#
+#   in_suffix|in_cat_|in_infl|out_suffix|out_cat|out_infl
+#
+# where,
+#
+#   in_suffix: is the matching suffix of input term
+#   in_cat: is the part of speech of the input term
+#   in_infl: is the inflection of the input term
+#   out_suffix: is the generated output suffix
+#   out_cat: is the part of speech of the output term
+#   out_infl: is the inflection of the output term
+#
+# Part of speech can be one of:
+#
+#   adj: adjective
+#   adv: adverb
+#   noun: noun
+#   verb: verb
+#
+# For example, ability|noun|able|adj
+#
+# Says that a noun ending in "ability" generates an adjective form with "able"
+# replacing "ability", e.g., readability -> readable
+#
+#
+# e.g. readability|readable
+RULE: ability$|noun|base|able$|adj|base
+#
+# e.g. washable|wash
+RULE: able$|adj|base|$|noun|base
+EXCEPTION: available|avail;
+EXCEPTION: ballotable|ballot;
+EXCEPTION: capable|cap;
+EXCEPTION: finable|fin;
+EXCEPTION: habitable|habit;
+EXCEPTION: potable|pot;
+EXCEPTION: sable|s;
+EXCEPTION: suitable|suit;
+EXCEPTION: tractable|tract;
+EXCEPTION: trainable|train;
+EXCEPTION: treatable|treat;
+EXCEPTION: able|;
+EXCEPTION: amenable|Amen;
+EXCEPTION: amenable|amen;
+EXCEPTION: bearable|bear;
+EXCEPTION: datable|DAT;
+EXCEPTION: reusable|reus;
+#
+# e.g. washable|wash
+RULE: able$|adj|base|$|verb|base
+EXCEPTION: ballotable|ballot;
+EXCEPTION: capable|cap;
+EXCEPTION: disagreeable|disagree;
+EXCEPTION: incurable|incur;
+EXCEPTION: able|;
+EXCEPTION: bearable|bear;
+EXCEPTION: potable|pot;
+#
+# e.g. irritable|irritate
+RULE: able$|adj|base|ate$|verb|base
+EXCEPTION: probable|probate;
+EXCEPTION: sable|sate;
+EXCEPTION: stable|state;
+EXCEPTION: tractable|tractate;
+#
+# e.g. improvable|improve
+RULE: able$|adj|base|e$|verb|base
+EXCEPTION: educable|educe;
+EXCEPTION: liable|lie;
+EXCEPTION: viable|vie;
+#
+# e.g. passably|pass
+RULE: ably$|adv|base|$|verb|base
+#
+# e.g. adequacy|adequate, celibacy|celibate
+RULE: acy$|noun|base|ate$|adj|base
+#
+# e.g. assemblage|assemble
+RULE: age$|noun|base|e$|verb|base
+EXCEPTION: borage|bore;
+EXCEPTION: salvage|salve;
+EXCEPTION: savage|save;
+EXCEPTION: mirage|mire;
+#
+# e.g. functional|function
+RULE: al$|adj|base|$|noun|base
+EXCEPTION: ammoniacal|ammoniac;
+EXCEPTION: banal|ban;
+EXCEPTION: carpal|carp;
+EXCEPTION: choreal|chore;
+EXCEPTION: costal|cost;
+EXCEPTION: dental|dent;
+EXCEPTION: fatal|fat;
+EXCEPTION: final|fin;
+EXCEPTION: fundal|fund;
+EXCEPTION: genal|gen;
+EXCEPTION: genual|genu;
+EXCEPTION: hemal|hem;
+EXCEPTION: humoral|humor;
+EXCEPTION: incidental|incident;
+EXCEPTION: jugal|jug;
+EXCEPTION: legal|leg;
+EXCEPTION: limbal|limb;
+EXCEPTION: literal|liter;
+EXCEPTION: meatal|meat;
+EXCEPTION: nodal|nod;
+EXCEPTION: papal|pap;
+EXCEPTION: partal|part;
+EXCEPTION: penal|pen;
+EXCEPTION: proal|pro;
+EXCEPTION: pupal|pup;
+EXCEPTION: ramal|ram;
+EXCEPTION: rational|ration;
+EXCEPTION: rimal|rim;
+EXCEPTION: sinal|sin;
+EXCEPTION: spinal|spin;
+EXCEPTION: sternal|stern;
+EXCEPTION: total|tot;
+EXCEPTION: tubal|tub;
+EXCEPTION: internal|intern;
+EXCEPTION: lateral|later;
+EXCEPTION: mineral|miner;
+EXCEPTION: oral|or;
+EXCEPTION: mal|m;
+EXCEPTION: al|;
+EXCEPTION: amoral|amor;
+EXCEPTION: basal|bas;
+EXCEPTION: bursal|burs;
+EXCEPTION: cemental|cement;
+EXCEPTION: cereal|cere;
+EXCEPTION: dorsal|dors;
+EXCEPTION: modal|mod;
+EXCEPTION: mortal|mort;
+EXCEPTION: renal|ren;
+EXCEPTION: lienal|lien;
+EXCEPTION: royal|roy;
+#
+# e.g. universal|universe
+RULE: al$|adj|base|e$|noun|base
+EXCEPTION: acral|acre;
+EXCEPTION: banal|bane;
+EXCEPTION: caval|cave;
+EXCEPTION: conjunctival|conjunctive;
+EXCEPTION: coral|core;
+EXCEPTION: dual|due;
+EXCEPTION: fetal|fete;
+EXCEPTION: final|fine;
+EXCEPTION: formal|forme;
+EXCEPTION: genal|gene;
+EXCEPTION: hemal|heme;
+EXCEPTION: internal|interne;
+EXCEPTION: moral|more;
+EXCEPTION: oral|ore;
+EXCEPTION: pial|pie;
+EXCEPTION: primal|prime;
+EXCEPTION: prodromal|prodrome;
+EXCEPTION: special|specie;
+EXCEPTION: vasal|vase;
+EXCEPTION: morsal|morse;
+EXCEPTION: callosal|callose;
+EXCEPTION: teal|tee;
+EXCEPTION: rimal|rime;
+EXCEPTION: sinal|sine;
+#
+# e.g.  protozoal|protozoa, vaginal|vagina, visceral|viscera
+RULE: al$|adj|base|a$|noun|base
+EXCEPTION: aural|aura;
+EXCEPTION: ideal|idea;
+EXCEPTION: material|materia;
+EXCEPTION: medial|media;
+EXCEPTION: oral|ora;
+EXCEPTION: prodromal|prodroma;
+EXCEPTION: spinal|spina;
+EXCEPTION: venal|vena;
+EXCEPTION: plasmal|plasma;
+EXCEPTION: anorectal|anorecta;
+EXCEPTION: antebrachial|antebrachia;
+EXCEPTION: antral|antra;
+EXCEPTION: astral|astra;
+EXCEPTION: atlantal|atlanta;
+EXCEPTION: atrial|atria;
+EXCEPTION: bigeminal|bigemina;
+EXCEPTION: brachial|brachia;
+EXCEPTION: bronchial|bronchia;
+EXCEPTION: cacuminal|cacumina;
+EXCEPTION: calcaneal|calcanea;
+EXCEPTION: callosal|callosa;
+EXCEPTION: capital|capita;
+EXCEPTION: cecal|ceca;
+EXCEPTION: central|centra;
+EXCEPTION: cerebral|cerebra;
+EXCEPTION: corporal|corpora;
+EXCEPTION: dorsal|dorsa;
+EXCEPTION: ilial|ilia;
+EXCEPTION: jugal|juga;
+EXCEPTION: marsupial|marsupia;
+EXCEPTION: menstrual|menstrua;
+EXCEPTION: pectoral|pectora;
+EXCEPTION: primordial|primordia;
+EXCEPTION: ramal|rama;
+EXCEPTION: tergal|terga;
+EXCEPTION: vaccinal|vaccina;
+EXCEPTION: angelical|angelica;
+EXCEPTION: tubal|tuba;
+EXCEPTION: vital|vita;
+EXCEPTION: zonal|zona;
+EXCEPTION: moral|mora;
+EXCEPTION: real|rea;
+EXCEPTION: mesal|mesa;
+EXCEPTION: molal|mola;
+EXCEPTION: papal|papa;
+EXCEPTION: teal|tea;
+# 
+# e.g. bacterial|bacterium
+RULE: al$|adj|base|um$|noun|base
+EXCEPTION: oval|ovum;
+EXCEPTION: radial|radium;
+EXCEPTION: seral|serum;
+EXCEPTION: caval|cavum;
+EXCEPTION: aural|aurum;
+EXCEPTION: central|centrum;
+EXCEPTION: jugal|jugum;
+EXCEPTION: cordial|cordium;
+#
+# e.g. governance|govern
+RULE: ance$|noun|base|$|verb|base
+EXCEPTION: importance|import;
+EXCEPTION: penance|pen;
+EXCEPTION: balance|BAL;
+EXCEPTION: balance|bal;
+EXCEPTION: Formance|form;
+#
+# e.g. defiance|defiant, conformance|conformant
+RULE: ance$|noun|base|ant$|adj|base
+EXCEPTION: ambulance|ambulant;
+#
+# e.g. insurance|insure
+RULE: ance$|noun|base|e$|verb|base
+EXCEPTION: balance|bale;
+EXCEPTION: finance|fine;
+#
+# e.g. relaxant|relax
+RULE: ant$|adj|base|$|verb|base
+EXCEPTION: errant|err;
+EXCEPTION: gallant|gall;
+EXCEPTION: important|import;
+EXCEPTION: rampant|ramp;
+EXCEPTION: trenchant|trench;
+EXCEPTION: Protestant|protest;
+EXCEPTION: idant|id;
+EXCEPTION: ant|;
+#
+# e.g. triumphant|triumph
+RULE: ant$|noun|base|$|verb|base
+EXCEPTION: formant|form;
+EXCEPTION: gallant|gall;
+EXCEPTION: spinant|spin;
+EXCEPTION: ant|;
+EXCEPTION: Protestant|protest;
+EXCEPTION: idant|id;
+#
+# e.g. radiant|radiate
+RULE: ant$|adj|base|ate$|verb|base
+EXCEPTION: arrogant|arrogate;
+EXCEPTION: pellant|pellate;
+#
+# e.g. stimulant|stimulate
+RULE: ant$|noun|base|ate$|verb|base
+EXCEPTION: grant|grate;
+EXCEPTION: plant|plate;
+EXCEPTION: rant|rate;
+EXCEPTION: slant|slate;
+#
+# e.g. fumigant|fumigation
+RULE: ant$|adj|base|ation$|noun|base
+EXCEPTION: conversant|conversation;
+EXCEPTION: dilatant|dilatation;
+EXCEPTION: important|importation;
+EXCEPTION: pellant|pellation;
+EXCEPTION: vacant|vacation;
+EXCEPTION: Protestant|protestation;
+#
+# e.g. servant|serve
+RULE: ant$|noun|base|e$|verb|base
+EXCEPTION: fusant|fuse;
+EXCEPTION: maturant|mature;
+EXCEPTION: mutant|mute;
+EXCEPTION: truant|true;
+EXCEPTION: savant|save;
+#
+# e.g. Cambodian|Cambodia
+RULE: an$|adj|base|a$|noun|base
+EXCEPTION: median|media;
+EXCEPTION: span|spa;
+EXCEPTION: Dirian|diria;
+EXCEPTION: Dominican|dominica;
+EXCEPTION: Raman|rama;
+EXCEPTION: lean|lea;
+EXCEPTION: nonan|nona;
+#
+# e.g. amphibian|amphibia
+RULE: an$|noun|base|a$|noun|base
+EXCEPTION: loan|loa;
+EXCEPTION: median|media;
+EXCEPTION: span|spa;
+EXCEPTION: Dirian|diria;
+EXCEPTION: Dominican|dominica;
+EXCEPTION: Duran|dura;
+EXCEPTION: Milian|milia;
+EXCEPTION: ban|ba;
+EXCEPTION: bran|bra;
+EXCEPTION: lean|lea;
+EXCEPTION: pean|pea;
+EXCEPTION: aran|ara;
+EXCEPTION: evan|eva;
+EXCEPTION: ratan|rata;
+EXCEPTION: nonan|nona;
+EXCEPTION: nyhan|nyha;
+EXCEPTION: saran|sara;
+#
+# e.g. inflationary|inflation, cautionary|caution
+RULE: ary$|adj|base|$|noun|base
+EXCEPTION: binary|bin;
+EXCEPTION: literary|liter;
+EXCEPTION: rotary|rot;
+EXCEPTION: cavitary|cavit;
+#
+# e.g. insular|insulate, modular|modulate
+RULE: ar$|adj|base|ate$|verb|base
+EXCEPTION: far|fate;
+EXCEPTION: insular|insulate;
+#
+# e.g. fibular|fibula
+RULE: ar$|adj|base|a$|noun|base
+EXCEPTION: amygdalar|amygdala;
+EXCEPTION: columnar|columna;
+EXCEPTION: pilar|pila;
+EXCEPTION: velar|vela;
+EXCEPTION: sear|sea;
+EXCEPTION: lunar|luna;
+EXCEPTION: molar|mola;
+EXCEPTION: pylar|pyla;
+#
+# e.g. modular|module
+RULE: ar$|adj|base|e$|noun|base
+EXCEPTION: alar|ale;
+EXCEPTION: hoar|hoe;
+EXCEPTION: pilar|pile;
+EXCEPTION: solar|sole;
+EXCEPTION: volar|vole;
+EXCEPTION: lunar|lune;
+EXCEPTION: malar|male;
+EXCEPTION: talar|tale;
+EXCEPTION: lazar|laze;
+EXCEPTION: mular|mule;
+#
+# e.g. alveolar|alveolus
+RULE: ar$|adj|base|us$|noun|base
+EXCEPTION: popular|populus;
+# 
+# e.g. fantasia|fantastic
+RULE: asia$|noun|base|astic$|adj|base
+#
+# e.g. flirtation|flirt
+RULE: ation$|noun|base|$|verb|base
+EXCEPTION: designation|design;
+EXCEPTION: donation|don;
+EXCEPTION: revelation|revel;
+EXCEPTION: rotation|rot;
+EXCEPTION: situation|situ;
+EXCEPTION: oration|or;
+EXCEPTION: conation|con;
+EXCEPTION: fellation|fell;
+#
+# e.g. alienation|alienate
+RULE: ation$|noun|base|ate$|verb|base
+EXCEPTION: ration|rate;
+EXCEPTION: station|state;
+EXCEPTION: creation|create;
+EXCEPTION: aspiration|aspirate;
+EXCEPTION: predation|predate;
+EXCEPTION: recreation|recreate;
+EXCEPTION: vacation|vacate;
+#
+# e.g. admiration|admire
+RULE: ation$|noun|base|e$|verb|base
+EXCEPTION: education|educe;
+EXCEPTION: machination|machine;
+EXCEPTION: probation|probe;
+EXCEPTION: salvation|salve;
+EXCEPTION: aspiration|aspire;
+EXCEPTION: conation|cone;
+EXCEPTION: mutation|mute;
+#
+# e.g. narrative|narrate
+RULE: ative$|noun|base|ate$|verb|base
+#
+# e.g. pigmented|pigment
+RULE: ed$|adj|base|$|noun|base
+EXCEPTION: abed|ab;
+EXCEPTION: armed|arm;
+EXCEPTION: bated|bat;
+EXCEPTION: collected|collect;
+EXCEPTION: fated|fat;
+EXCEPTION: lobed|lob;
+EXCEPTION: striped|strip;
+EXCEPTION: united|unit;
+EXCEPTION: wicked|wick;
+EXCEPTION: cared|car;
+EXCEPTION: rated|rat;
+EXCEPTION: ed|;
+EXCEPTION: armoured|Armour;
+EXCEPTION: spined|spin;
+EXCEPTION: tubed|tub;
+EXCEPTION: wooded|Wood;
+EXCEPTION: naked|nak;
+#
+# e.g. glued|glue
+RULE: ed$|adj|base|e$|noun|base
+EXCEPTION: closed|close;
+EXCEPTION: jaded|jade;
+EXCEPTION: incensed|incense;
+EXCEPTION: tired|tire;
+EXCEPTION: pied|pie;
+#
+# e.g. fluency|fluent cogency|cogent
+RULE: ency$|noun|base|ent$|adj|base
+EXCEPTION: emergency|emergent;
+#
+# e.g. absorbency|absorbent
+RULE: ency$|noun|base|ent$|noun|base
+#
+# e.g. deferential|deference
+RULE: ential$|adj|base|ence$|noun|base
+#
+# e.g. corpulent|corpulence
+RULE: ent$|adj|base|ence$|noun|base
+EXCEPTION: influent|influence;
+EXCEPTION: eminent|eminence;
+EXCEPTION: bent|bence;
+#
+# e.g. machinery|machine
+RULE: ery$|noun|base|e$|noun|base
+EXCEPTION: forgery|forge;
+EXCEPTION: surgery|surge;
+EXCEPTION: misery|mise;
+#
+# e.g. employer|employ
+RULE: er$|noun|base|$|verb|base
+EXCEPTION: buffer|buff;
+EXCEPTION: bunker|bunk;
+EXCEPTION: butter|butt;
+EXCEPTION: canter|cant;
+EXCEPTION: caper|cap;
+EXCEPTION: career|care;
+EXCEPTION: charter|chart;
+EXCEPTION: corner|corn;
+EXCEPTION: dresser|dress;
+EXCEPTION: flicker|flick;
+EXCEPTION: flower|flow;
+EXCEPTION: rider|rid;
+EXCEPTION: sewer|sew;
+EXCEPTION: shower|show;
+EXCEPTION: skewer|skew;
+EXCEPTION: sweater|sweat;
+EXCEPTION: taper|tap;
+EXCEPTION: tender|tend;
+EXCEPTION: tower|tow;
+EXCEPTION: trimer|trim;
+EXCEPTION: wager|wag;
+EXCEPTION: whisker|whisk;
+EXCEPTION: fiber|fib;
+EXCEPTION: venter|vent;
+EXCEPTION: wither|with;
+EXCEPTION: er|;
+EXCEPTION: Bender|bend;
+EXCEPTION: Cooper|coop;
+EXCEPTION: Crocker|crock;
+EXCEPTION: Fisher|fish;
+EXCEPTION: Fowler|fowl;
+EXCEPTION: Gruber|grub;
+EXCEPTION: Horner|horn;
+EXCEPTION: Hunter|hunt;
+EXCEPTION: Hurler|hurl;
+EXCEPTION: Letterer|letter;
+EXCEPTION: Lister|list;
+EXCEPTION: Palmer|palm;
+EXCEPTION: Parker|park;
+EXCEPTION: Ringer|ring;
+EXCEPTION: Senter|sent;
+EXCEPTION: Turner|turn;
+EXCEPTION: Walker|walk;
+EXCEPTION: Wheeler|wheel;
+EXCEPTION: adder|add;
+EXCEPTION: banter|bant;
+EXCEPTION: dimer|dim;
+EXCEPTION: former|form;
+EXCEPTION: gruber|grub;
+EXCEPTION: hunger|hung;
+EXCEPTION: liter|lit;
+EXCEPTION: meter|met;
+EXCEPTION: number|numb;
+EXCEPTION: plumber|plumb;
+EXCEPTION: porter|port;
+EXCEPTION: rooster|roost;
+EXCEPTION: roter|rot;
+EXCEPTION: scraper|scrap;
+EXCEPTION: snicker|snick;
+EXCEPTION: solder|sold;
+EXCEPTION: splinter|splint;
+EXCEPTION: luster|lust;
+EXCEPTION: liner|lin;
+EXCEPTION: muller|mull;
+#
+# e.g. pursuer|pursue
+RULE: er$|noun|base|e$|verb|base
+EXCEPTION: crater|crate;
+EXCEPTION: liver|live;
+EXCEPTION: river|rive;
+EXCEPTION: singer|singe;
+EXCEPTION: baker|bake;
+EXCEPTION: piper|pipe;
+EXCEPTION: shaker|shake;
+EXCEPTION: analyser|analyse;
+EXCEPTION: meter|mete;
+EXCEPTION: wager|wage;
+#
+# e.g. hypothetic|hypothesis
+RULE: etic$|adj|base|esis$|noun|base
+EXCEPTION: genetic|genesis;
+#
+# e.g. maniac|mania
+RULE: iac$|noun|base|ia$|noun|base
+EXCEPTION: ammoniac|ammonia;
+#
+# e.g. colonial|colony
+RULE: ial$|adj|base|y$|noun|base
+EXCEPTION: partial|party;
+#
+# e.g. reliance|reliant
+RULE: iance$|noun|base|iant$|adj|base
+#
+# e.g. Algerian|Algeria
+RULE: ian$|adj|base|ia$|noun|base
+EXCEPTION: median|media;
+EXCEPTION: Dirian|diria;
+#
+# e.g. Syrian|Syria
+RULE: ian$|noun|base|ia$|noun|base
+EXCEPTION: median|media;
+EXCEPTION: Dirian|diria;
+EXCEPTION: Milian|milia;
+#
+# e.g. trombiculiasis|trombicula
+RULE: iasis$|noun|base|a$|noun|base
+EXCEPTION: auriasis|aura;
+EXCEPTION: loiasis|loa;
+# 
+# e.g. critical|critic
+RULE: ical$|adj|base|ic$|noun|base
+#
+# e.g. anatomical|anatomy
+RULE: ical$|adj|base|y$|noun|base
+#
+# e.g. elasticity|elastic
+RULE: icity$|noun|base|ic$|adj|base
+#
+# e.g. alcoholic|alcohol
+RULE: ic$|adj|base|$|noun|base
+EXCEPTION: actinic|actin;
+EXCEPTION: classic|class;
+EXCEPTION: conic|con;
+EXCEPTION: formic|form;
+EXCEPTION: genic|gen;
+EXCEPTION: pediatric|pediatr;
+EXCEPTION: rustic|rust;
+EXCEPTION: sonic|son;
+EXCEPTION: tonic|ton;
+EXCEPTION: manic|man;
+EXCEPTION: genetic|genet;
+EXCEPTION: genetic|Genet;
+EXCEPTION: limbic|limb;
+EXCEPTION: ic|;
+EXCEPTION: Gallic|gall;
+EXCEPTION: Homeric|homer;
+EXCEPTION: Masonic|mason;
+EXCEPTION: abasic|abas;
+EXCEPTION: adenic|aden;
+EXCEPTION: allelic|allel;
+EXCEPTION: anisic|anis;
+EXCEPTION: arsonic|arson;
+EXCEPTION: ataraxic|Atarax;
+EXCEPTION: balanic|balan;
+EXCEPTION: basic|bas;
+EXCEPTION: basilic|basil;
+EXCEPTION: biotic|Biot;
+EXCEPTION: caloric|calor;
+EXCEPTION: choreic|chore;
+EXCEPTION: crotonic|Croton;
+EXCEPTION: cryptic|crypt;
+EXCEPTION: cubic|cub;
+EXCEPTION: enzymic|enzym;
+EXCEPTION: folic|fol;
+EXCEPTION: fundic|fund;
+EXCEPTION: funic|fun;
+EXCEPTION: gallic|gall;
+EXCEPTION: genesic|genes;
+EXCEPTION: hemic|hem;
+EXCEPTION: ironic|iron;
+EXCEPTION: lipasic|lipas;
+EXCEPTION: lyssic|lyss;
+EXCEPTION: maleic|male;
+EXCEPTION: phasic|phas;
+EXCEPTION: plumbic|plumb;
+EXCEPTION: tabic|tab;
+EXCEPTION: tactic|tact;
+EXCEPTION: toric|tor;
+EXCEPTION: biotic|biot;
+EXCEPTION: malic|mal;
+EXCEPTION: rabic|rab;
+#
+# e.g. amnesic|amnesia; and  academic|academia
+RULE: ia$|noun|base|ic$|adj|base
+EXCEPTION: acidophilia|acidophilic;
+EXCEPTION: media|medic;
+EXCEPTION: olympia|Olympic;
+EXCEPTION: Eugenia|eugenic;
+#
+# e.g. barbaric|barbarism
+RULE: ic$|adj|base|ism$|noun|base
+EXCEPTION: bimetallic|bimetallism;
+EXCEPTION: boric|borism;
+EXCEPTION: bromic|bromism;
+EXCEPTION: camphoric|camphorism;
+EXCEPTION: telluric|tellurism;
+EXCEPTION: cubic|Cubism;
+#
+# e.g. demagogic|demagogy
+RULE: ic$|adj|base|y$|noun|base
+EXCEPTION: autonomic|autonomy;
+EXCEPTION: colonic|colony;
+EXCEPTION: ferric|ferry;
+EXCEPTION: Germanic|germany;
+EXCEPTION: caffeic|caffey;
+EXCEPTION: italic|Italy;
+EXCEPTION: academic|academy;
+EXCEPTION: sympathic|sympathy;
+#
+# e.g. deficient|deficiency
+RULE: ient$|adj|base|iency$|noun|base
+#
+# e.g. easily|easy
+RULE: ily$|adv|base|y$|adj|base
+#
+# e.g. ambition|ambitious religion|religious
+RULE: ion$|noun|base|ious$|adj|base
+EXCEPTION: fraction|fractious;
+EXCEPTION: pion|pious;
+#
+# e.g. glorious|glory
+RULE: ious$|adj|base|y$|noun|base
+EXCEPTION: copious|copy;
+#
+# e.g. capitalism|capital
+RULE: ism$|noun|base|$|noun|base
+EXCEPTION: actinism|actin;
+EXCEPTION: humanism|human;
+EXCEPTION: ism|;
+EXCEPTION: Catholicism|catholic;
+EXCEPTION: Expressionism|expression;
+EXCEPTION: Impressionism|impression;
+EXCEPTION: cubism|cub;
+#
+# e.g. anachronism|anachronistic atavism|atavistic
+RULE: ism$|noun|base|istic$|adj|base
+EXCEPTION: ballism|ballistic;
+#
+# e.g. artist|art
+RULE: ist$|noun|base|$|noun|base
+EXCEPTION: dentist|dent;
+EXCEPTION: grist|gr;
+EXCEPTION: list|l;
+EXCEPTION: methodist|method;
+EXCEPTION: humanist|human;
+EXCEPTION: mist|m;
+#
+# e.g. fatalist|fatalism; and atheist|atheism
+RULE: ist$|noun|base|ism$|noun|base
+EXCEPTION: agonist|agonism;
+EXCEPTION: Baptist|baptism;
+#
+# e.g. abnormality|abnormal
+RULE: ity$|noun|base|$|adj|base
+EXCEPTION: dimity|dim;
+EXCEPTION: dexterity|dexter;
+EXCEPTION: hilarity|hilar;
+EXCEPTION: majority|major;
+EXCEPTION: density|dens;
+EXCEPTION: severity|sever;
+#
+# e.g. adversity|adverse
+RULE: ity$|noun|base|e$|adj|base
+EXCEPTION: relativity|relative;
+EXCEPTION: cooperativity|Cooperative;
+EXCEPTION: gentility|Gentile;
+EXCEPTION: adversity|adverse;
+#
+# e.g. frivolity|frivolous
+RULE: ity$|noun|base|ous$|adj|base
+EXCEPTION: ingenuity|ingenuous;
+#
+# e.g. explosive|explosion
+RULE: ive$|noun|base|ion$|noun|base
+EXCEPTION: accusative|accusation;
+EXCEPTION: defective|defection;
+EXCEPTION: determinative|determination;
+EXCEPTION: native|nation;
+EXCEPTION: objective|objection;
+EXCEPTION: passive|passion;
+EXCEPTION: positive|position;
+EXCEPTION: subjunctive|subjunction;
+EXCEPTION: reflexive|reflexion;
+EXCEPTION: conservative|conservation;
+EXCEPTION: cooperative|cooperation;
+#
+# e.g. civilization|civilize
+RULE: ization$|noun|base|ize$|verb|base
+#
+# e.g. actively|active
+RULE: ly$|adv|base|$|adj|base
+EXCEPTION: hardly|hard;
+EXCEPTION: lately|late;
+EXCEPTION: early|ear;
+EXCEPTION: singly|sing;
+EXCEPTION: ly|;
+EXCEPTION: awfully|awful;
+EXCEPTION: badly|bad;
+EXCEPTION: barely|bare;
+EXCEPTION: deeply|deep;
+EXCEPTION: openly|open;
+EXCEPTION: poorly|poor;
+EXCEPTION: really|real;
+EXCEPTION: sharply|sharp;
+EXCEPTION: shortly|short;
+EXCEPTION: wildly|wild;
+#
+# e.g. invariably|invariable
+RULE: ly$|adv|base|le$|adj|base
+EXCEPTION: supply|supple;
+EXCEPTION: apply|apple;
+#
+# e.g. editor|edit
+RULE: or$|noun|base|$|verb|base
+EXCEPTION: armor|arm;
+EXCEPTION: demeanor|demean;
+EXCEPTION: donor|don;
+EXCEPTION: door|do;
+EXCEPTION: or|;
+EXCEPTION: humor|hum;
+EXCEPTION: meteor|mete;
+EXCEPTION: rigor|rig;
+EXCEPTION: tailor|tail;
+EXCEPTION: Castor|cast;
+EXCEPTION: Tendor|tend;
+EXCEPTION: cantor|cant;
+EXCEPTION: castor|cast;
+EXCEPTION: clamor|clam;
+EXCEPTION: furor|fur;
+EXCEPTION: rotor|rot;
+EXCEPTION: tumor|tum;
+EXCEPTION: rubor|rub;
+#
+# e.g. conductor|conduct
+RULE: or$|noun|base|e$|verb|base
+EXCEPTION: dolor|dole;
+EXCEPTION: equator|equate;
+EXCEPTION: honor|hone;
+EXCEPTION: livor|live;
+EXCEPTION: minor|mine;
+EXCEPTION: razor|raze;
+EXCEPTION: stridor|stride;
+EXCEPTION: primor|prime;
+EXCEPTION: timor|time;
+EXCEPTION: dicor|dice;
+EXCEPTION: donor|done;
+EXCEPTION: fetor|fete;
+EXCEPTION: pavor|pave;
+EXCEPTION: savor|save;
+EXCEPTION: tensor|tense;
+# 
+# e.g. diagnosis|diagnose
+RULE: osis$|noun|base|ose$|verb|base
+#
+# e.g. porosity|porous
+RULE: osity$|noun|base|ous$|adj|base
+#
+# e.g. ichthyotic|ichthyosis
+RULE: otic$|adj|base|osis$|noun|base
+#
+# e.g. cancerous|cancer
+RULE: ous$|adj|base|$|noun|base
+EXCEPTION: bullous|bull;
+EXCEPTION: hideous|hide;
+EXCEPTION: parous|par;
+EXCEPTION: ous|;
+EXCEPTION: amorous|amor;
+EXCEPTION: androgenous|androgen;
+EXCEPTION: caseous|case;
+EXCEPTION: circuitous|circuit;
+EXCEPTION: genetous|Genet;
+EXCEPTION: momentous|moment;
+EXCEPTION: spinous|spin;
+EXCEPTION: sanous|san;
+EXCEPTION: torous|tor;
+#
+# e.g. analogous|analogy
+RULE: ous$|adj|base|y$|noun|base
+EXCEPTION: bullous|bully;
+EXCEPTION: ferrous|ferry;
+#
+# e.g. diffusion|diffuse
+RULE: sion$|noun|base|se$|verb|base
+EXCEPTION: basion|base;
+EXCEPTION: conversion|converse;
+#
+# e.g. diversion|divert
+RULE: sion$|noun|base|t$|verb|base
+EXCEPTION: basion|bat;
+EXCEPTION: lesion|let;
+EXCEPTION: mission|mist;
+EXCEPTION: scansion|scant;
+EXCEPTION: version|vert;
+#
+# e.g. obsession|obsess
+RULE: ssion$|noun|base|ss$|verb|base
+EXCEPTION: compassion|compass;
+EXCEPTION: mission|miss;
+EXCEPTION: passion|pass;
+#
+# e.g. aseptic|asepsis
+RULE: tic$|adj|base|sis$|noun|base
+EXCEPTION: genetic|genesis;
+#
+# e.g. tabular|table
+RULE: ular$|adj|base|le$|noun|base
+EXCEPTION: articular|article;
+EXCEPTION: particular|particle;
+#
+# e.g. nebular|nebula
+RULE: ular$|adj|base|ula$|noun|base
+#     
+# e.g. bushy|bush
+RULE: y$|adj|base|$|noun|base
+EXCEPTION: army|arm;
+EXCEPTION: bandy|band;
+EXCEPTION: bully|bull;
+EXCEPTION: busy|bus;
+EXCEPTION: dilatory|dilator;
+EXCEPTION: dumpy|dump;
+EXCEPTION: handy|hand;
+EXCEPTION: husky|husk;
+EXCEPTION: jaunty|jaunt;
+EXCEPTION: lacy|lac;
+EXCEPTION: naughty|naught;
+EXCEPTION: pasty|past;
+EXCEPTION: perky|perk;
+EXCEPTION: ready|read;
+EXCEPTION: ruby|rub;
+EXCEPTION: scary|scar;
+EXCEPTION: seedy|seed;
+EXCEPTION: shiny|shin;
+EXCEPTION: silly|sill;
+EXCEPTION: steady|stead;
+EXCEPTION: sticky|stick;
+EXCEPTION: slippery|slipper;
+EXCEPTION: stingy|sting;
+EXCEPTION: stuffy|stuff;
+EXCEPTION: testy|test;
+EXCEPTION: tiny|tin;
+EXCEPTION: wary|war;
+EXCEPTION: weary|wear;
+EXCEPTION: early|earl;
+EXCEPTION: hearty|heart;
+EXCEPTION: study|stud;
+EXCEPTION: mousey|mouse;
+EXCEPTION: y|;
+EXCEPTION: astray|astra;
+EXCEPTION: bally|ball;
+EXCEPTION: butoxy|Butox;
+EXCEPTION: downy|Down;
+EXCEPTION: earthy|Earth;
+EXCEPTION: hilly|Hill;
+EXCEPTION: lazy|Laz;
+EXCEPTION: malay|mala;
+EXCEPTION: okay|Oka;
+EXCEPTION: okay|oka;
+EXCEPTION: potty|Pott;
+EXCEPTION: potty|pott;
+EXCEPTION: silvery|Silver;
+EXCEPTION: thorny|Thorn;
+EXCEPTION: bay|ba;
+EXCEPTION: flaky|flak;
+EXCEPTION: shady|shad;
+EXCEPTION: lazy|laz;
+EXCEPTION: massy|mass;
+EXCEPTION: spiny|spin;
+#
+# e.g. bristly|bristle
+RULE: y$|adj|base|e$|noun|base
+EXCEPTION: fey|fee;
+EXCEPTION: heavy|heave;
+EXCEPTION: holy|hole;
+EXCEPTION: nosy|nose;
+EXCEPTION: poky|poke;
+EXCEPTION: racy|race;
+EXCEPTION: tidy|tide;
+EXCEPTION: wary|ware;
+EXCEPTION: mousy|mouse;
+EXCEPTION: steely|steele;
+EXCEPTION: airy|aire;
+EXCEPTION: foy|foe;
+EXCEPTION: ley|lee;
+EXCEPTION: may|mae;
+EXCEPTION: roy|roe;
+EXCEPTION: tiny|tine;
+#
+# e.g. abundancy|abundance
+RULE: y$|noun|base|e$|noun|base
+EXCEPTION: copy|cope;
+EXCEPTION: gravy|grave;
+EXCEPTION: heavy|heave;
+EXCEPTION: policy|police;
+EXCEPTION: poly|pole;
+EXCEPTION: story|store;
+EXCEPTION: tidy|tide;
+EXCEPTION: toy|toe;
+EXCEPTION: mousy|mouse;
+EXCEPTION: steely|steele;
+EXCEPTION: foy|foe;
+EXCEPTION: ley|lee;
+EXCEPTION: may|mae;
+EXCEPTION: roy|roe;
+#
+# some neo-classical terminal rules added: 24-Sep-92
+#
+#e.g. thermograph|thermogram
+RULE: graph$|noun|base|gram$|noun|base
+EXCEPTION: diagraph|diagram;
+EXCEPTION: graph|gram;
+EXCEPTION: hysterograph|hysterogram;
+EXCEPTION: micrograph|microgram;
+#
+#e.g. thermogram|thermography
+RULE: gram$|noun|base|graphy$|noun|base
+EXCEPTION: histogram|histography;
+EXCEPTION: microgram|micrography;
+EXCEPTION: osteogram|osteography;
+#
+#e.g. photograph|photography
+RULE: graph$|noun|base|graphy$|noun|base
+EXCEPTION: urethrograph|urethrography;
+#
+#e.g. thermogram|thermographic
+RULE: gram$|noun|base|graphic$|adj|base
+EXCEPTION: gram|graphic;
+#
+#e.g.
+RULE: meter$|noun|base|metry$|noun|base
+EXCEPTION: auxometer|auxometry;
+EXCEPTION: biometer|biometry;
+EXCEPTION: oscillometer|oscillometry;
+EXCEPTION: pathometer|pathometry;
+EXCEPTION: skiameter|skiametry;
+EXCEPTION: urometer|urometry;
+#
+#e.g.
+RULE: physis$|noun|base|physeal$|adj|base
+#
+#NOMINALIZATION Rules:
+#
+# This is an extreemly productive nominalization formation rule!
+# reflected in the "nominalization=" and "nominalization_of=" slots
+# in the lexicon. Aronoff (1976) discusses the productivity of "ness"
+# versus "ity".
+# e.g. aptness|apt
+RULE: ness$|noun|base|$|adj|base
+EXCEPTION: chilliness|chilli;
+EXCEPTION: likeness|like;
+EXCEPTION: witness|wit;
+EXCEPTION: wilderness|wilder;
+#
+# e.g. retire|retirement
+RULE: ment$|noun|base|$|verb|base
+EXCEPTION: Enlightenment|enlighten;
+EXCEPTION: Government|govern;
+EXCEPTION: abutment|abut;
+EXCEPTION: ailment|ail;
+EXCEPTION: apartment|apart;
+EXCEPTION: basement|base;
+EXCEPTION: catchment|catch;
+EXCEPTION: department|depart;
+EXCEPTION: deportment|deport;
+EXCEPTION: environment|environ;
+EXCEPTION: filament|fila;
+EXCEPTION: foment|fo;
+EXCEPTION: lament|la;
+EXCEPTION: moment|mo;
+EXCEPTION: parchment|parch;
+EXCEPTION: pavement|pave;
+EXCEPTION: pigment|pig;
+EXCEPTION: supplement|supple;
+EXCEPTION: temperament|tempera;
+EXCEPTION: wonderment|wonder;
+#
+#e.g. 
+RULE: y$|verb|base|ication$|noun|base
+EXCEPTION: comply|complication;
+EXCEPTION: fry|frication;
+EXCEPTION: reply|replication;
+EXCEPTION: rusty|rustication;
+EXCEPTION: supply|supplication;
+#
+# e.g. provide|provision
+RULE: de$|verb|base|sion$|noun|base
+EXCEPTION: bade|basion;

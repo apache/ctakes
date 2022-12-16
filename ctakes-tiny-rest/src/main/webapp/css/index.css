@@ -1,0 +1,33 @@
+h3 {
+   text-align: center;
+}
+textarea {
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
+   border: 2px solid SteelBlue;
+   border-radius: 4px;
+}
+.button {
+   transition-duration: 0.3s;
+   color: black;
+   border: 2px solid SteelBlue;
+   border-radius: 4px;
+   text-align: center;
+   padding: 10px 10px;
+   min-width: 75px;
+   margin-bottom: 5px;
+   text-decoration: none;
+   display: inline-block;
+   cursor: pointer;
+}
+.button:hover {
+   background-color: SteelBlue;
+   color: white;
+}
+.center {
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
+   text-align: center;
+}

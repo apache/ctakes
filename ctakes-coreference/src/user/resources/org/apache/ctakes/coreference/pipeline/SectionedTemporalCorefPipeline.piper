@@ -1,0 +1,8 @@
+// Clinical Pipeline with sectionization, paragraph and list detection with
+// events, times, event-event and event-time relations plus event-document creation time relations
+
+// Clinical Pipeline with sectionization, paragraph and list detection and temporal
+load SectionedTemporalPipeline
+
+// Coreference resolution
+load CorefSubPipe

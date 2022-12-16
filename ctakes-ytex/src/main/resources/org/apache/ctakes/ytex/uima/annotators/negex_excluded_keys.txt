@@ -1,0 +1,42 @@
+# throwaway words that are common parts of 
+# negex regular expressions but do not serve as
+# efficient lookups.  
+# Good candidates are modifiers  used in regular expressions where there's another version
+# or common words that could never stand alone as a negation trigger
+# the more words we can put here, the faster Negex will run
+# for example there are two regexes  "absence of"  and "free of"  In the inverted  lookup mechanism, there would be entries for 
+# "of","absence","free" where "of" contained two regex expressions and triggered two attempts.   By removing "of" using the list
+# below, we can get to the appropriate regex for a sentence with "absence of" or "free of" in the first hit.
+a
+an
+are
+as
+be
+been
+can
+change
+did
+for
+had
+has
+have
+her
+him
+if
+is
+know
+must
+new
+of
+out
+out
+patient
+patinet
+reveal
+see
+than
+the
+to
+was
+were
+with

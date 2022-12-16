@@ -1,0 +1,33 @@
+//
+//     The following are parameters that can be set for use by the I2b2JdbcWriter.
+//     The settings below are examples and should be changed.
+//     To use the I2b2JdbcWriter and your own settings,
+//     copy this file, edit to your details, and add two lines to your piper file:
+//          load /my/dir/MyI2b2Settings.piper
+//          add jdbc.i2b2.I2b2JdbcWriter
+//
+
+
+//////////     Mandatory     //////////
+
+//  JDBC driver ClassName.
+set DbDriver=com.ibm.db2.jcc.DB2Driver
+
+//  JDBC URL that specifies database network location and name.
+set DbUrl=jdbc:db2://localhost:0000/changeme
+
+//  Username for database authentication.
+set DbUser=changeme
+
+//  Password for database authentication.
+set DbPass=changeme
+
+// Name of the Observation_Fact table for writing output.
+set FactOutputTable=changeme
+
+
+
+//////////     Optional     //////////
+
+//  Flag that determines whether to keep JDBC connection open no matter what.
+# set KeepAlive="true"

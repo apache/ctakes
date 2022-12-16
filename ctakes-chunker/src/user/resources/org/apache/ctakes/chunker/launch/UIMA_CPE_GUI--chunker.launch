@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
+<stringAttribute key="bad_container_name" value="\chunker\resources\l"/>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/chunker"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="4"/>
+</listAttribute>
+<booleanAttribute key="org.eclipse.debug.core.appendEnvironmentVariables" value="true"/>
+<stringAttribute key="org.eclipse.debug.ui.target_debug_perspective" value="perspective_default"/>
+<stringAttribute key="org.eclipse.debug.ui.target_run_perspective" value="perspective_default"/>
+<booleanAttribute key="org.eclipse.hyades.trace.ui.ATTR_AUTO_MONITORING" value="true"/>
+<stringAttribute key="org.eclipse.hyades.trace.ui.ATTR_DESTINATION_FILE" value=""/>
+<stringAttribute key="org.eclipse.hyades.trace.ui.ATTR_DESTINATION_MONITOR" value="DefaultMonitor"/>
+<stringAttribute key="org.eclipse.hyades.trace.ui.ATTR_DESTINATION_PROJECT" value="ProfileProject"/>
+<stringAttribute key="org.eclipse.hyades.trace.ui.ATTR_FILTER_SET" value="org.eclipse.hyades.trace.ui.filterSet.default"/>
+<booleanAttribute key="org.eclipse.hyades.trace.ui.ATTR_PROFILE_TO_FILE" value="false"/>
+<booleanAttribute key="org.eclipse.hyades.trace.ui.ATTR_PROFILING_LIMIT_INVOCATIONS" value="false"/>
+<intAttribute key="org.eclipse.hyades.trace.ui.ATTR_PROFILING_LIMIT_INVOCATIONS_NUM" value="10000"/>
+<booleanAttribute key="org.eclipse.hyades.trace.ui.ATTR_PROFILING_LIMIT_SECONDS" value="false"/>
+<intAttribute key="org.eclipse.hyades.trace.ui.ATTR_PROFILING_LIMIT_SECONDS_NUM" value="5"/>
+<stringAttribute key="org.eclipse.hyades.trace.ui.ATTR_PROFILING_SET" value="New Profiling Set1144790253289"/>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="org.apache.uima.tools.cpm.CpmFrame"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="chunker"/>
+<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Xms500M -Xmx3g"/>
+</launchConfiguration>

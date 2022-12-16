@@ -1,0 +1,9 @@
+classpath*:org/apache/ctakes/typesystem/types/TypeSystem.xml
+classpath*:org/apache/ctakes/assertion/types/TypeSystem.xml
+classpath*:org/apache/ctakes/assertion/zoner/types/TypeSystem.xml
+classpath*:org/apache/ctakes/constituency/parser/types/LabeledTree.xml
+classpath*:org/apache/ctakes/coreference/types/TypeSystem.xml
+classpath*:org/apache/ctakes/drugner/types/TypeSystem.xml
+classpath*:org/apache/ctakes/padtermspotter/types/TypeSystem.xml
+classpath*:org/apache/ctakes/smokingstatus/types/TypeSystem.xml
+classpath*:org/apache/ctakes/sideeffect/types/TypeSystem.xml

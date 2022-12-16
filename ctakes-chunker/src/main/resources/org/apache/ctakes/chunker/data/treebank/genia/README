@@ -1,0 +1,63 @@
+This file describes how to generate treebank data that can be consumed by the Chunklink perl script for the purpose of creating chunk data for the OpenNLP chunker.  
+
+#####################################
+Step 1 - Download GENIA treebank data
+#####################################
+
+Download the Genia treebank data from the Genia website.  The version is called "Beta" and consists of 500 treebanked files distributed in 2 tar.gz files given by the links:
+
+http://www-tsujii.is.s.u-tokyo.ac.jp/~genia/corpus/GTB.tar.gz
+http://www-tsujii.is.s.u-tokyo.ac.jp/~genia/corpus/GTB-B2.tar.gz
+
+The resulting tar files after being gunzipped have the following md5sums:
+
+80a9d8ad7e5a7f6f4d01b71427f2059b
+79a71617ca86ad8595a61dbf6c78c917
+
+- gunzip and untar GTB.tar.gz to a directory named treebank/genia/GTB200/ 
+	- there should be 401 objects in the directory when you are done
+	- verify that the file treebank/genia/GTB200/91079577.tree exists
+- gunzip and untar GTB-B2.tar.gz to a directory named treebank/genia/GTB300/ 
+	- the files will be copied to subdirectories called 300 and 300tree respectively
+	- delete the directory '300'
+	- move all files in 300tree to treebank/genia/GTB300
+	- verify that the file treebank/genia/GTB300/93123257.tree exists
+	
+######################
+Step 2 - Run Genia2PTB
+######################
+
+Run the class data.chunk.genia.Genia2PTB on the data:
+
+java Genia2PTB "data/treebank/genia/GTB200" data/treebank/genia/00 1 data/treebank/genia/names-00.txt
+java Genia2PTB "data/treebank/genia/GTB300" data/treebank/genia/01 201 data/treebank/genia/names-01.txt
+
+There should now be 200 .mrg files in data/treebank/genia/00 and 300 .mrg files in data/treebank/genia/01
+
+This script does three things:
+1) renames the .tree files to files that look like wsj_0001.mrg and puts them in a directory structure expected by chunklink (e.g. 00) and creates a mapping of the original new names to the old names (e.g. names-00.txt)
+2) reformats the way pos tags are formatted 
+3) adds an extra set of parentheses to each line of the data
+
+#################################
+Step 3 - Remove problem sentences
+#################################
+There are a number of problem sentences in the 2nd set of 300 treebanked abstracts that I removed because they caused the chunklink script to fail.  Simply open the following files in the directory data/treebank/genia/01 remove the lines indicated (e.g. remove line 6 from wsj_0201.mrg)
+
+wsj_0201.mrg - 6
+wsj_0217.mrg - 3
+wsj_0222.mrg - 5
+wsj_0268.mrg - 7
+wsj_0301.mrg - 6
+wsj_0322.mrg - 2
+wsj_0350.mrg - 3, 5
+wsj_0383.mrg - 10
+wsj_0388.mrg - 4
+wsj_0429.mrg - 3, 4
+wsj_0442.mrg - 7
+wsj_0455.mrg - 6, 7
+
+#####
+Done!
+#####
+You should be able to run the Chunklink script as described in data/chunk/genia/README

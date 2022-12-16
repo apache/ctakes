@@ -1,0 +1,11 @@
+// Annotate sections by known regex
+//add BsvRegexSectionizer
+add SimpleSegmentAnnotator
+
+//add ParagraphAnnotator
+
+//add SentenceDetector
+addLogged SentenceDetectorAnnotatorBIO classifierJarPath=/org/apache/ctakes/core/models/sentdetect/model.jar
+
+// Save simple information
+add ApacheConSentenceWriter

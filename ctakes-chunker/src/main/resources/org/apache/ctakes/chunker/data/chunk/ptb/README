@@ -1,0 +1,45 @@
+This file describes how to prepare OpenNLP chunker training data from the PTB treebank data.  
+
+#######################################
+Step 0 - obtain version of WSJ PTB data
+#######################################
+
+The version of Penn Treebank (PTB) that I ran contains ~2300 treebanked files from the Wall Street Journal (WSJ) and I believe that is it is version 2.
+
+The folder contains some of the following file names:
+
+wsj/mrg/00/wsj_0001.mrg
+wsj/mrg/12/wsj_1231.mrg
+wsj/mrg/24/wsj_2454.mrg
+
+The size of the folder is:
+32.4MB (34,017,332 bytes)
+2,312 Files, 27 Folders
+
+############################################
+Step 1 - run chunklink_2-2-2000_for_conll.pl
+############################################
+
+Run the chunklink script to convert PTB data to chunk data.  Please see scripts/perl/README for information on obtaining the chunklink script.
+
+I can only get this script to work correctly using cygwin.  Open a cygwin session and cd to data/treebank/ptb to run the script.  I have not run this script under mac or linux - but I assume that it should work fine on these platforms.  
+
+Use commands similar to the following:
+
+
+>perl scripts/perl/chunklink_2-2-2000_for_conll.pl -NHhftc ??/wsj_????.mrg > data/chunk/ptb/ptb.chunklink.chunks
+
+The system output after the script finished was:
+2447 2448 2449 2450 2451 2452 2453 2454
+1173766 words processed
+
+
+###############################################
+Step 2 - convert chunklink data to OpenNLP data
+###############################################
+
+The output of chunklink needs to be converted to OpenNLP format.  This can be done using the script scripts/java/data/chunk/Chunklink2OpenNLP.java:
+
+java data.chunk.Chunklink2OpenNLP data/chunk/ptb/ptb.chunklink.chunks data/chunk/ptb/ptb.opennlp.chunks 
+
+

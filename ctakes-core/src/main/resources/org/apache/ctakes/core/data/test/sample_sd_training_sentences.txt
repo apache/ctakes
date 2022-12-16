@@ -1,0 +1,31 @@
+Sentences in this sample file are repeated so they pass cutoff.
+Consult requested by Dr. Testing for renal cyst, hypertension. 
+Mr. Testing returns for follow-up of his medical evaluation initiated on June 20, 2000. 
+Cough. 
+Review of health concerns. 
+Cancer, heart disease. 
+Consult requested by Dr. Testing for renal cyst, hypertension. 
+Mr. Testing returns for follow-up of his medical evaluation initiated on June 20, 2000. 
+Cough. 
+Review of health concerns. 
+Cancer, heart disease. 
+Consult requested by Dr. Testing for renal cyst, hypertension. 
+Mr. Testing returns for follow-up of his medical evaluation initiated on June 20, 2000. 
+Cough. 
+Review of health concerns. 
+Cancer, heart disease. 
+Consult requested by Dr. Testing for renal cyst, hypertension. 
+Mr. Testing returns for follow-up of his medical evaluation initiated on June 20, 2000. 
+Cough. 
+Review of health concerns. 
+Cancer, heart disease. 
+Consult requested by Dr. Testing for renal cyst, hypertension. 
+Mr. Testing returns for follow-up of his medical evaluation initiated on June 20, 2000. 
+Cough. 
+Review of health concerns. 
+Cancer, heart disease. 
+Consult requested by Dr. Testing for renal cyst, hypertension. 
+Mr. Testing returns for follow-up of his medical evaluation initiated on June 20, 2000. 
+Cough. 
+Review of health concerns. 
+Cancer, heart disease. 

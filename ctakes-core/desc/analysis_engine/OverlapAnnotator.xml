@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<taeDescription xmlns="http://uima.apache.org/resourceSpecifier">
+<frameworkImplementation>org.apache.uima.java</frameworkImplementation>
+<primitive>true</primitive>
+<annotatorImplementationName>org.apache.ctakes.core.ae.OverlapAnnotator</annotatorImplementationName>
+<analysisEngineMetaData>
+<name>OverlapAnnotator</name>
+<description></description>
+<version></version>
+<vendor>Mayo</vendor>
+<configurationParameters>
+<configurationParameter>
+<name>A_ObjectClass</name>
+<description>JCas object classname designated A.</description>
+<type>String</type>
+<multiValued>false</multiValued>
+<mandatory>true</mandatory>
+</configurationParameter>
+<configurationParameter>
+<name>B_ObjectClass</name>
+<description>JCas object classname designated B.</description>
+<type>String</type>
+<multiValued>false</multiValued>
+<mandatory>true</mandatory>
+</configurationParameter>
+<configurationParameter>
+<name>OverlapType</name>
+<description>Allowed values are:
+
+NONE
+
+or any combination of the following delimited by | char
+
+PARTIAL
+EXACT
+A_ENV_B
+B_ENV_A</description>
+<type>String</type>
+<multiValued>false</multiValued>
+<mandatory>true</mandatory>
+</configurationParameter>
+<configurationParameter>
+<name>ActionType</name>
+<description>Allowed values are: CREATE, MODIFY, DELETE</description>
+<type>String</type>
+<multiValued>false</multiValued>
+<mandatory>true</mandatory>
+</configurationParameter>
+<configurationParameter>
+<name>CreateAction</name>
+<description>not implemented yet</description>
+<type>String</type>
+<multiValued>true</multiValued>
+<mandatory>false</mandatory>
+</configurationParameter>
+<configurationParameter>
+<name>ModifyAction</name>
+<description>Required properties:
+
+selector=A or B
+begin=A or B or SMALLEST or LARGEST
+end=A or B or SMALLEST or LARGEST</description>
+<type>String</type>
+<multiValued>true</multiValued>
+<mandatory>false</mandatory>
+</configurationParameter>
+<configurationParameter>
+<name>DeleteAction</name>
+<description>Required Properties:
+
+selector=A or B or BOTH</description>
+<type>String</type>
+<multiValued>true</multiValued>
+<mandatory>false</mandatory>
+</configurationParameter>
+</configurationParameters>
+<configurationParameterSettings>
+<nameValuePair>
+<name>A_ObjectClass</name>
+<value>
+<string>org.apache.ctakes.typesystem.type.syntax.BaseToken</string>
+</value>
+</nameValuePair>
+<nameValuePair>
+<name>B_ObjectClass</name>
+<value>
+<string>org.apache.ctakes.typesystem.type.textspan.Sentence</string>
+</value>
+</nameValuePair>
+<nameValuePair>
+<name>OverlapType</name>
+<value>
+<string>PARTIAL|EXACT|A_ENV_B|B_ENV_A</string>
+</value>
+</nameValuePair>
+<nameValuePair>
+<name>ActionType</name>
+<value>
+<string>MODIFY</string>
+</value>
+</nameValuePair>
+<nameValuePair>
+<name>ModifyAction</name>
+<value>
+<array>
+<string>selector=A</string>
+<string>begin=B</string>
+<string>end=B</string>
+</array>
+</value>
+</nameValuePair>
+<nameValuePair>
+<name>DeleteAction</name>
+<value>
+<array>
+<string>selector=A</string>
+</array>
+</value>
+</nameValuePair>
+</configurationParameterSettings>
+<typeSystemDescription/>
+<capabilities>
+<capability>
+<inputs/>
+<outputs/>
+<languagesSupported/>
+</capability>
+</capabilities>
+<operationalProperties>
+<modifiesCas>true</modifiesCas>
+<multipleDeploymentAllowed>true</multipleDeploymentAllowed>
+<outputsNewCASes>false</outputsNewCASes>
+</operationalProperties>
+</analysisEngineMetaData>
+</taeDescription>

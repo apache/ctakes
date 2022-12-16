@@ -1,0 +1,34 @@
+# Java generated
+target/
+
+# Developer environment setup
+/resources/
+*.patch
+
+# Subversion
+.svn
+
+# IntelliJ
+.idea
+*.iml
+*.ipr
+*.iws
+
+# Eclipse
+.project
+.settings
+.classpath
+*/maven-eclipse.xml
+
+# Windows
+Thumbs.db
+*.lnk
+
+# OSX
+.DS_Store
+
+# log files and temp dirs
+cTAKES.error.log
+/temp/
+/tmp/
+

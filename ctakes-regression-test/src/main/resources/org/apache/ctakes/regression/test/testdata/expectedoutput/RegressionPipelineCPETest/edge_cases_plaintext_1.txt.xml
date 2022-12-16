@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?><CAS version="2">
+    <uima.cas.Sofa _indexed="0" _id="3" sofaNum="1" sofaID="_InitialView" mimeType="text" sofaString="patient complained that the n'tion didn't make sense.  This is a test of an edge case in contraction in the tokezier.&#10;aspirin decreased from 2:00 PM.  This used to cause the drug ner to go into an infinte loop."/>
+    <org.apache.ctakes.typesystem.type.structured.DocumentID _indexed="1" _id="1" documentID="edge_cases_plaintext_1.txt"/>
+    <uima.tcas.DocumentAnnotation _indexed="1" _id="10" _ref_sofa="3" begin="0" end="210" language="x-unspecified"/>
+    <org.apache.ctakes.typesystem.type.textspan.Segment _indexed="1" _id="15" _ref_sofa="3" begin="0" end="210" id="SIMPLE_SEGMENT"/>
+    <org.apache.ctakes.typesystem.type.textspan.Sentence _indexed="1" _id="21" _ref_sofa="3" begin="0" end="53" sentenceNumber="0"/>
+    <org.apache.ctakes.typesystem.type.textspan.Sentence _indexed="1" _id="27" _ref_sofa="3" begin="55" end="117" sentenceNumber="1"/>
+    <org.apache.ctakes.typesystem.type.textspan.Sentence _indexed="1" _id="33" _ref_sofa="3" begin="118" end="149" sentenceNumber="2"/>
+    <org.apache.ctakes.typesystem.type.textspan.Sentence _indexed="1" _id="39" _ref_sofa="3" begin="151" end="210" sentenceNumber="3"/>
+    <org.apache.ctakes.typesystem.type.syntax.NewlineToken _indexed="1" _id="45" _ref_sofa="3" begin="117" end="118" tokenNumber="25"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="53" _ref_sofa="3" begin="0" end="7" tokenNumber="0" normalizedForm="patient" partOfSpeech="NN" capitalization="0" numPosition="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="65" _ref_sofa="3" begin="8" end="18" tokenNumber="1" normalizedForm="complained" partOfSpeech="VBD" capitalization="0" numPosition="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="77" _ref_sofa="3" begin="19" end="23" tokenNumber="2" normalizedForm="that" partOfSpeech="IN" capitalization="0" numPosition="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="89" _ref_sofa="3" begin="24" end="27" tokenNumber="3" normalizedForm="the" partOfSpeech="DT" capitalization="0" numPosition="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="109" _ref_sofa="3" begin="31" end="34" tokenNumber="5" normalizedForm="ion" partOfSpeech="NN" capitalization="0" numPosition="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="121" _ref_sofa="3" begin="35" end="38" tokenNumber="6" normalizedForm="did" partOfSpeech="VBD" capitalization="0" numPosition="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="141" _ref_sofa="3" begin="42" end="46" tokenNumber="8" normalizedForm="make" partOfSpeech="VB" capitalization="0" numPosition="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="153" _ref_sofa="3" begin="47" end="52" tokenNumber="9" normalizedForm="sense" partOfSpeech="JJ" capitalization="0" numPosition="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="173" _ref_sofa="3" begin="55" end="59" tokenNumber="11" normalizedForm="This" partOfSpeech="DT" capitalization="1" numPosition="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="185" _ref_sofa="3" begin="60" end="62" tokenNumber="12" normalizedForm="is" partOfSpeech="VBZ" capitalization="0" numPosition="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="197" _ref_sofa="3" begin="63" end="64" tokenNumber="13" normalizedForm="a" partOfSpeech="DT" capitalization="0" numPosition="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="209" _ref_sofa="3" begin="65" end="69" tokenNumber="14" normalizedForm="test" partOfSpeech="NN" capitalization="0" numPosition="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="221" _ref_sofa="3" begin="70" end="72" tokenNumber="15" normalizedForm="of" partOfSpeech="IN" capitalization="0" numPosition="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="233" _ref_sofa="3" begin="73" end="75" tokenNumber="16" normalizedForm="an" partOfSpeech="DT" capitalization="0" numPosition="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="245" _ref_sofa="3" begin="76" end="80" tokenNumber="17" normalizedForm="edge" partOfSpeech="NN" capitalization="0" numPosition="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="257" _ref_sofa="3" begin="81" end="85" tokenNumber="18" normalizedForm="case" partOfSpeech="NN" capitalization="0" numPosition="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="269" _ref_sofa="3" begin="86" end="88" tokenNumber="19" normalizedForm="in" partOfSpeech="IN" capitalization="0" numPosition="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="281" _ref_sofa="3" begin="89" end="100" tokenNumber="20" normalizedForm="contraction" partOfSpeech="NN" capitalization="0" numPosition="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="293" _ref_sofa="3" begin="101" end="103" tokenNumber="21" normalizedForm="in" partOfSpeech="IN" capitalization="0" numPosition="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="305" _ref_sofa="3" begin="104" end="107" tokenNumber="22" normalizedForm="the" partOfSpeech="DT" capitalization="0" numPosition="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="317" _ref_sofa="3" begin="108" end="116" tokenNumber="23" normalizedForm="tokezier" partOfSpeech="NN" capitalization="0" numPosition="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="337" _ref_sofa="3" begin="118" end="125" tokenNumber="26" normalizedForm="aspirin" partOfSpeech="NN" capitalization="0" numPosition="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="349" _ref_sofa="3" begin="126" end="135" tokenNumber="27" normalizedForm="decreased" partOfSpeech="VBN" capitalization="0" numPosition="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="361" _ref_sofa="3" begin="136" end="140" tokenNumber="28" normalizedForm="from" partOfSpeech="IN" capitalization="0" numPosition="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="399" _ref_sofa="3" begin="146" end="148" tokenNumber="32" normalizedForm="PM" partOfSpeech="NN" capitalization="3" numPosition="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="419" _ref_sofa="3" begin="151" end="155" tokenNumber="34" normalizedForm="This" partOfSpeech="DT" capitalization="1" numPosition="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="431" _ref_sofa="3" begin="156" end="160" tokenNumber="35" normalizedForm="used" partOfSpeech="VBN" capitalization="0" numPosition="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="443" _ref_sofa="3" begin="161" end="163" tokenNumber="36" normalizedForm="to" partOfSpeech="TO" capitalization="0" numPosition="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="455" _ref_sofa="3" begin="164" end="169" tokenNumber="37" normalizedForm="cause" partOfSpeech="VB" capitalization="0" numPosition="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="467" _ref_sofa="3" begin="170" end="173" tokenNumber="38" normalizedForm="the" partOfSpeech="DT" capitalization="0" numPosition="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="479" _ref_sofa="3" begin="174" end="178" tokenNumber="39" normalizedForm="drug" partOfSpeech="NN" capitalization="0" numPosition="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="491" _ref_sofa="3" begin="179" end="182" tokenNumber="40" normalizedForm="ner" partOfSpeech="NN" capitalization="0" numPosition="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="503" _ref_sofa="3" begin="183" end="185" tokenNumber="41" normalizedForm="to" partOfSpeech="TO" capitalization="0" numPosition="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="515" _ref_sofa="3" begin="186" end="188" tokenNumber="42" normalizedForm="go" partOfSpeech="VB" capitalization="0" numPosition="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="527" _ref_sofa="3" begin="189" end="193" tokenNumber="43" normalizedForm="into" partOfSpeech="IN" capitalization="0" numPosition="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="539" _ref_sofa="3" begin="194" end="196" tokenNumber="44" normalizedForm="an" partOfSpeech="DT" capitalization="0" numPosition="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="551" _ref_sofa="3" begin="197" end="204" tokenNumber="45" normalizedForm="infinte" partOfSpeech="NN" capitalization="0" numPosition="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="563" _ref_sofa="3" begin="205" end="209" tokenNumber="46" normalizedForm="loop" partOfSpeech="NN" capitalization="0" numPosition="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.ContractionToken _indexed="1" _id="101" _ref_sofa="3" begin="28" end="31" tokenNumber="4" partOfSpeech="RB"/>
+    <org.apache.ctakes.typesystem.type.syntax.ContractionToken _indexed="1" _id="133" _ref_sofa="3" begin="38" end="41" tokenNumber="7" partOfSpeech="RB"/>
+    <org.apache.ctakes.typesystem.type.syntax.PunctuationToken _indexed="1" _id="165" _ref_sofa="3" begin="52" end="53" tokenNumber="10" partOfSpeech="."/>
+    <org.apache.ctakes.typesystem.type.syntax.PunctuationToken _indexed="1" _id="329" _ref_sofa="3" begin="116" end="117" tokenNumber="24" partOfSpeech="."/>
+    <org.apache.ctakes.typesystem.type.syntax.PunctuationToken _indexed="1" _id="382" _ref_sofa="3" begin="142" end="143" tokenNumber="30" partOfSpeech=":"/>
+    <org.apache.ctakes.typesystem.type.syntax.PunctuationToken _indexed="1" _id="411" _ref_sofa="3" begin="148" end="149" tokenNumber="33" partOfSpeech="."/>
+    <org.apache.ctakes.typesystem.type.syntax.PunctuationToken _indexed="1" _id="575" _ref_sofa="3" begin="209" end="210" tokenNumber="47" partOfSpeech="."/>
+    <org.apache.ctakes.typesystem.type.syntax.NumToken _indexed="1" _id="373" _ref_sofa="3" begin="141" end="142" tokenNumber="29" partOfSpeech="CD" numType="1"/>
+    <org.apache.ctakes.typesystem.type.syntax.NumToken _indexed="1" _id="390" _ref_sofa="3" begin="143" end="145" tokenNumber="31" partOfSpeech="CD" numType="1"/>
+    <org.apache.ctakes.typesystem.type.textsem.RomanNumeralAnnotation _indexed="1" _id="583" _ref_sofa="3" begin="35" end="38" id="0" typeID="0" segmentID="SIMPLE_SEGMENT" discoveryTechnique="0" confidence="0.0" polarity="0" uncertainty="0" conditional="false" generic="false" historyOf="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.NP _indexed="1" _id="601" _ref_sofa="3" begin="0" end="7" chunkType="NP"/>
+    <org.apache.ctakes.typesystem.type.syntax.NP _indexed="1" _id="616" _ref_sofa="3" begin="24" end="34" chunkType="NP"/>
+    <org.apache.ctakes.typesystem.type.syntax.NP _indexed="1" _id="631" _ref_sofa="3" begin="55" end="59" chunkType="NP"/>
+    <org.apache.ctakes.typesystem.type.syntax.NP _indexed="1" _id="641" _ref_sofa="3" begin="63" end="116" chunkType="NP"/>
+    <org.apache.ctakes.typesystem.type.syntax.NP _indexed="1" _id="651" _ref_sofa="3" begin="73" end="85" chunkType="NP"/>
+    <org.apache.ctakes.typesystem.type.syntax.NP _indexed="1" _id="661" _ref_sofa="3" begin="89" end="100" chunkType="NP"/>
+    <org.apache.ctakes.typesystem.type.syntax.NP _indexed="1" _id="671" _ref_sofa="3" begin="104" end="116" chunkType="NP"/>
+    <org.apache.ctakes.typesystem.type.syntax.NP _indexed="1" _id="676" _ref_sofa="3" begin="118" end="125" chunkType="NP"/>
+    <org.apache.ctakes.typesystem.type.syntax.NP _indexed="1" _id="691" _ref_sofa="3" begin="141" end="142" chunkType="NP"/>
+    <org.apache.ctakes.typesystem.type.syntax.NP _indexed="1" _id="701" _ref_sofa="3" begin="143" end="148" chunkType="NP"/>
+    <org.apache.ctakes.typesystem.type.syntax.NP _indexed="1" _id="706" _ref_sofa="3" begin="151" end="155" chunkType="NP"/>
+    <org.apache.ctakes.typesystem.type.syntax.NP _indexed="1" _id="721" _ref_sofa="3" begin="170" end="182" chunkType="NP"/>
+    <org.apache.ctakes.typesystem.type.syntax.NP _indexed="1" _id="736" _ref_sofa="3" begin="194" end="209" chunkType="NP"/>
+    <org.apache.ctakes.typesystem.type.syntax.VP _indexed="1" _id="606" _ref_sofa="3" begin="8" end="18" chunkType="VP"/>
+    <org.apache.ctakes.typesystem.type.syntax.VP _indexed="1" _id="621" _ref_sofa="3" begin="35" end="46" chunkType="VP"/>
+    <org.apache.ctakes.typesystem.type.syntax.VP _indexed="1" _id="636" _ref_sofa="3" begin="60" end="62" chunkType="VP"/>
+    <org.apache.ctakes.typesystem.type.syntax.VP _indexed="1" _id="681" _ref_sofa="3" begin="126" end="135" chunkType="VP"/>
+    <org.apache.ctakes.typesystem.type.syntax.VP _indexed="1" _id="711" _ref_sofa="3" begin="156" end="160" chunkType="VP"/>
+    <org.apache.ctakes.typesystem.type.syntax.VP _indexed="1" _id="716" _ref_sofa="3" begin="161" end="169" chunkType="VP"/>
+    <org.apache.ctakes.typesystem.type.syntax.VP _indexed="1" _id="726" _ref_sofa="3" begin="183" end="188" chunkType="VP"/>
+    <org.apache.ctakes.typesystem.type.syntax.SBAR _indexed="1" _id="611" _ref_sofa="3" begin="19" end="23" chunkType="SBAR"/>
+    <org.apache.ctakes.typesystem.type.syntax.ADJP _indexed="1" _id="626" _ref_sofa="3" begin="47" end="52" chunkType="ADJP"/>
+    <org.apache.ctakes.typesystem.type.syntax.PP _indexed="1" _id="646" _ref_sofa="3" begin="70" end="72" chunkType="PP"/>
+    <org.apache.ctakes.typesystem.type.syntax.PP _indexed="1" _id="656" _ref_sofa="3" begin="86" end="88" chunkType="PP"/>
+    <org.apache.ctakes.typesystem.type.syntax.PP _indexed="1" _id="666" _ref_sofa="3" begin="101" end="103" chunkType="PP"/>
+    <org.apache.ctakes.typesystem.type.syntax.PP _indexed="1" _id="686" _ref_sofa="3" begin="136" end="140" chunkType="PP"/>
+    <org.apache.ctakes.typesystem.type.syntax.PP _indexed="1" _id="731" _ref_sofa="3" begin="189" end="193" chunkType="PP"/>
+    <org.apache.ctakes.typesystem.type.syntax.O _indexed="1" _id="696" _ref_sofa="3" begin="142" end="143" chunkType="O"/>
+    <org.apache.ctakes.typesystem.type.textspan.LookupWindowAnnotation _indexed="1" _id="741" _ref_sofa="3" begin="0" end="7"/>
+    <org.apache.ctakes.typesystem.type.textspan.LookupWindowAnnotation _indexed="1" _id="745" _ref_sofa="3" begin="24" end="34"/>
+    <org.apache.ctakes.typesystem.type.textspan.LookupWindowAnnotation _indexed="1" _id="749" _ref_sofa="3" begin="55" end="59"/>
+    <org.apache.ctakes.typesystem.type.textspan.LookupWindowAnnotation _indexed="1" _id="753" _ref_sofa="3" begin="63" end="116"/>
+    <org.apache.ctakes.typesystem.type.textspan.LookupWindowAnnotation _indexed="1" _id="769" _ref_sofa="3" begin="118" end="125"/>
+    <org.apache.ctakes.typesystem.type.textspan.LookupWindowAnnotation _indexed="1" _id="773" _ref_sofa="3" begin="141" end="142"/>
+    <org.apache.ctakes.typesystem.type.textspan.LookupWindowAnnotation _indexed="1" _id="777" _ref_sofa="3" begin="143" end="148"/>
+    <org.apache.ctakes.typesystem.type.textspan.LookupWindowAnnotation _indexed="1" _id="781" _ref_sofa="3" begin="151" end="155"/>
+    <org.apache.ctakes.typesystem.type.textspan.LookupWindowAnnotation _indexed="1" _id="785" _ref_sofa="3" begin="170" end="182"/>
+    <org.apache.ctakes.typesystem.type.textspan.LookupWindowAnnotation _indexed="1" _id="789" _ref_sofa="3" begin="194" end="209"/>
+    <org.apache.ctakes.typesystem.type.textsem.MedicationMention _indexed="1" _id="803" _ref_sofa="3" begin="118" end="125" id="1" _ref_ontologyConceptArr="793" typeID="1" segmentID="SIMPLE_SEGMENT" discoveryTechnique="1" confidence="0.0" polarity="1" uncertainty="0" conditional="false" generic="false" subject="patient" historyOf="0"/>
+    <org.apache.ctakes.typesystem.type.refsem.OntologyConcept _id="796" codingScheme="RXNORM" code="C6666666" oid="C6666666#RXNORM" score="0.0" disambiguated="false"/>
+    <uima.cas.FSArray _id="793" size="1">
+        <i>796</i>
+    </uima.cas.FSArray>
+</CAS>

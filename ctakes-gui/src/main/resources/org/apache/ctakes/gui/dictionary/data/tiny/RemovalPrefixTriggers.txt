@@ -1,0 +1,38 @@
+deprecated
+retired procedure
+// The following are in UnwantedPrefixes for the default, but removed for small
+[ d ]
+[ edta ]
+[ m ]
+[ q ]
+[ v ]
+[ x ]
+[ so ]
+activities involving
+and unspecified
+( non-specific )
+child :
+college of american pathologists cancer checklist ;
+other activity involving
+other
+phenx -
+specimen source code -
+specimen source codes -
+specimen source codes =
+ or
+#
+&
+& [
+'
+*
+-
+:
+?
+// The following are in UnwantedPrefixes for the default, but removed for tiny
+// The idea is that such prefixes would most likely not be found by the old dictionary
+// And there should be versions without these prefixes
+( congenital )
+engaged in
+entire
+h / o :
+no

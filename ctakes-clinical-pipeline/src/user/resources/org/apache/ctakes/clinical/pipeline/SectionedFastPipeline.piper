@@ -1,0 +1,17 @@
+// Clinical Pipeline with sectionization, paragraph and list detection
+
+// Advanced Tokenization: Regex sectionization, Paragraphs, Lists
+load FullTokenizerPipeline
+
+// Add non-core annotators
+add ContextDependentTokenizerAnnotator
+addDescription POSTagger
+
+// Add Chunkers
+load ChunkerSubPipe
+
+// Default fast dictionary lookup
+load DictionarySubPipe
+
+// Add Cleartk Entity Attribute annotators
+load AttributeCleartkSubPipe

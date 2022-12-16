@@ -1,0 +1,7 @@
+// Thread Safe Default Clinical Pipeline with events, times, event-event and event-time relations plus event-document creation time relations
+
+// Default Clinical Pipeline
+load TsDefaultFastPipeline
+
+// event, time, event-event, event-time, dtr
+load TsTemporalSubPipe

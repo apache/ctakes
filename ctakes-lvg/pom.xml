@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>ctakes-lvg</artifactId>
+	<name>Apache cTAKES LVG lexical tools</name>
+	<description>cTAKES wrapper for the National Library of Medicine (NLM) SPECIALIST lexical tools</description>
+	<parent>
+		<groupId>org.apache.ctakes</groupId>
+		<artifactId>ctakes</artifactId>
+		<version>5.0.0-SNAPSHOT</version>
+	</parent>
+	<dependencies>  
+	    <!-- TODO: remove dependency to net.sourceforge.ctakesresources -->
+		<dependency>
+			<groupId>net.sourceforge.ctakesresources</groupId>
+			<artifactId>ctakes-resources-lvg2008</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.ctakes</groupId>
+			<artifactId>ctakes-core</artifactId>
+		</dependency>
+ 		<dependency>
+			<groupId>gov.nih.nlm.nls.lvg</groupId>
+			<artifactId>lvgdist</artifactId>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>unpack-dependencies</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>unpack-dependencies</goal>
+						</goals>
+						<configuration>
+							<includeArtifactIds>ctakes-resources-lvg2008</includeArtifactIds>
+							<excludes>**/META-INF/**</excludes>
+							<outputDirectory>${project.basedir}/../resources</outputDirectory>
+<!--							<outputDirectory>${project.build.directory}/classes</outputDirectory>-->
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+				<plugin>
+					<artifactId>maven-jar-plugin</artifactId>
+					<configuration>
+			          <includes>
+			          <!-- Resources that are unpacked
+			          automatically by maven
+			          	are not jar'd and included in the bin distro
+			          	by default please download them from SF if needed. 
+			           -->
+			            <include>**/*.class</include>
+			            <include>**/types/*.xml</include>			            
+			            <include>**/META-INF/**</include>
+			          </includes>
+	        		</configuration>
+				</plugin>	    	
+		</plugins>
+	</build>    
+</project>

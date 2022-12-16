@@ -1,0 +1,27 @@
+# database (catalog) name
+db.name=YTEX
+
+# schema. default is dbo
+db.schema=dbo
+
+# jdbc url for database.  Replace localhost and YTEX_TEST 
+# with the values of db.host and db.name respectively
+db.url=jdbc:sqlserver://localhost;databaseName=YTEX;integratedSecurity=true
+
+# assume windows integrated authentication, change if necessary
+db.username=
+db.password=
+
+# the schema and catalog (database) where umls is installed
+# if not specified, will default to schema/database from ytex
+#umls.schema=dbo
+#umls.catalog=umls
+
+# you should not have to modify anything below
+db.type=mssql
+db.driver=com.microsoft.sqlserver.jdbc.SQLServerDriver
+db.initStatements=
+hibernate.dialect=org.hibernate.dialect.SQLServerDialect
+
+# transaction isolation level
+db.isolationLevel=READ_UNCOMMITTED

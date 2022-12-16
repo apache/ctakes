@@ -1,0 +1,31 @@
+Contents:
+- Verifying you can produce expected tokenization using included sample data  
+- Running the TokenizerAnnotator analysis engine
+	- SentencesAndTokensAggregate.xml
+	- SentencesAndTokensCPE.xml
+
+##########################################################################
+Verifying you can produce expected tokenization using included sample data
+Running the TokenizerAnnotator analysis engine  
+##########################################################################
+
+Launch the "Tokenizer annotator" run configuration.
+Open CPE SentencesAndTokensCPE.xml, which uses the analysis
+engines listed in SentencesAndTokensAggregate.xml.
+
+The aggregate analysis engine is defined to read from plain text file(s) in 
+data\test\sample_notes_plaintext
+using the FilesInDirectoryCollectionReader.
+
+Since the sentence annotator processes the text one section at a time, there 
+must be at least one section (segment) annotation for the SentenceDetectorAnnotator
+to add Sentence annotations. 
+Therefore the first analysis engine is the SimpleSegmentAnnotator, which
+creates a single Segment annotation that covers the entire text.
+Then the SentenceDetectorAnnotator analysis engine adds Sentence annotations.
+Then the TokenizerAnnotator analysis engine adds annotations for
+tokens, such as PunctuationToken, WordToken, NewlineToken.
+
+Strictly speaking, it would not be necessary to run the
+SentenceDetectorAnnotator in order to test the TokenizerAnnotator.
+The TokenizerAnnotator does not require the presence of Sentence annotations.

@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<analysisEngineDescription xmlns="http://uima.apache.org/resourceSpecifier">
+  <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
+  <primitive>false</primitive>
+  <delegateAnalysisEngineSpecifiers>
+    <delegateAnalysisEngine key="ConstituencyParserAnnotator">
+      <import location="../../../ctakes-constituency-parser/desc/ConstituencyParserAnnotator.xml"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="TokenizerAnnotator">
+      <import location="../../../ctakes-core/desc/analysis_engine/TokenizerAnnotator.xml"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="ContextDependentTokenizerAnnotator">
+      <import location="../../../ctakes-context-tokenizer/desc/analysis_engine/ContextDependentTokenizerAnnotator.xml"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="NegationAnnotator">
+      <import location="../../../ctakes-ne-contexts/desc/NegationAnnotator.xml"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="StatusAnnotator">
+      <import location="../../../ctakes-ne-contexts/desc/StatusAnnotator.xml"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="MipacqMarkableExpander">
+      <import location="../MipacqMarkableExpander.xml"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="SentenceDetectorAnnotator">
+      <import location="../../../ctakes-core/desc/analysis_engine/SentenceDetectorAnnotator.xml"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="SimpleSegmentAnnotator">
+      <import location="../../../ctakes-clinical-pipeline/desc/analysis_engine/SimpleSegmentAnnotator.xml"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="POSTagger">
+      <import location="../../../ctakes-pos-tagger/desc/POSTagger.xml"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="Chunker">
+      <import location="../../../ctakes-chunker/desc/Chunker.xml"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="MipacqMarkableCreator">
+      <import location="../MipacqMarkableCreator.xml"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="DictionaryLookupAnnotatorDB">
+      <import location="../../../ctakes-dictionary-lookup/desc/analysis_engine/DictionaryLookupAnnotatorUMLS.xml"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="ExtractionPrepAnnotator">
+      <import location="../../../ctakes-clinical-pipeline/desc/analysis_engine/ExtractionPrepAnnotator.xml"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="MipacqMarkablePairGenerator">
+      <import location="../MipacqMarkablePairGenerator.xml"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="LookupWindowAnnotator">
+      <import location="../../../ctakes-clinical-pipeline/desc/analysis_engine/LookupWindowAnnotator.xml"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="LvgAnnotator">
+      <import location="../../../ctakes-lvg/desc/analysis_engine/LvgAnnotator.xml"/>
+    </delegateAnalysisEngine>
+  </delegateAnalysisEngineSpecifiers>
+  <analysisEngineMetaData>
+    <name>ParedMarkablePlaintextProcessor</name>
+    <description>Runs the complete pipeline for annotating clinical documents in plain text format.</description>
+    <version/>
+    <vendor/>
+    <configurationParameters searchStrategy="language_fallback">
+      <configurationParameter>
+        <name>SegmentID</name>
+        <description/>
+        <type>String</type>
+        <multiValued>false</multiValued>
+        <mandatory>false</mandatory>
+        <overrides>
+          <parameter>SimpleSegmentAnnotator/SegmentID</parameter>
+        </overrides>
+      </configurationParameter>
+      <configurationParameter>
+        <name>ChunkCreatorClass</name>
+        <type>String</type>
+        <multiValued>false</multiValued>
+        <mandatory>true</mandatory>
+        <overrides>
+          <parameter>Chunker/ChunkCreatorClass</parameter>
+        </overrides>
+      </configurationParameter>
+    </configurationParameters>
+    <configurationParameterSettings>
+      <nameValuePair>
+        <name>ChunkCreatorClass</name>
+        <value>
+          <string>org.apache.ctakes.chunker.ae.PhraseTypeChunkCreator</string>
+        </value>
+      </nameValuePair>
+    </configurationParameterSettings>
+    <flowConstraints>
+      <fixedFlow>
+        <node>SimpleSegmentAnnotator</node>
+        <node>SentenceDetectorAnnotator</node>
+        <node>TokenizerAnnotator</node>
+        <node>LvgAnnotator</node>
+        <node>ContextDependentTokenizerAnnotator</node>
+        <node>POSTagger</node>
+        <node>Chunker</node>
+        <node>LookupWindowAnnotator</node>
+        <node>DictionaryLookupAnnotatorDB</node>
+        <node>StatusAnnotator</node>
+        <node>NegationAnnotator</node>
+        <node>ExtractionPrepAnnotator</node>
+        <node>ConstituencyParserAnnotator</node>
+        <node>MipacqMarkableCreator</node>
+        <node>MipacqMarkableExpander</node>
+        <node>MipacqMarkablePairGenerator</node>
+      </fixedFlow>
+    </flowConstraints>
+    <typePriorities>
+      <name>Ordering</name>
+      <description>For subiterator</description>
+      <version>1.0</version>
+      <priorityList>
+        <type>org.apache.ctakes.typesystem.type.textspan.Segment</type>
+        <type>org.apache.ctakes.typesystem.type.textspan.Sentence</type>
+        <type>org.apache.ctakes.typesystem.type.syntax.BaseToken</type>
+      </priorityList>
+      <priorityList>
+        <type>org.apache.ctakes.typesystem.type.textspan.Sentence</type>
+        <type>org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation</type>
+      </priorityList>
+    </typePriorities>
+    <fsIndexCollection/>
+    <capabilities>
+      <capability>
+        <inputs/>
+        <outputs/>
+        <languagesSupported/>
+      </capability>
+    </capabilities>
+    <operationalProperties>
+      <modifiesCas>true</modifiesCas>
+      <multipleDeploymentAllowed>true</multipleDeploymentAllowed>
+      <outputsNewCASes>false</outputsNewCASes>
+    </operationalProperties>
+  </analysisEngineMetaData>
+  <resourceManagerConfiguration>
+    <externalResources>
+      <externalResource>
+        <name>stopWordsFile</name>
+        <description/>
+        <fileResourceSpecifier>
+          <fileUrl>file:org/apache/ctakes/coreference/models/stop.txt</fileUrl>
+        </fileResourceSpecifier>
+        <implementationName>org.apache.ctakes.core.resource.FileResourceImpl</implementationName>
+      </externalResource>
+    </externalResources>
+  </resourceManagerConfiguration>
+</analysisEngineDescription>

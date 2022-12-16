@@ -1,0 +1,10 @@
+// Commands and parameters to create a default relation extraction sub-pipeline.  This is not a full pipeline.
+
+// Modifiers. Use addLogged to log start and finish of processing.  There aren't default models, so set specifically
+add concurrent.ThreadSafeModifierExtractor classifierJarPath=/org/apache/ctakes/relation/extractor/models/modifier_extractor/model.jar
+
+// Degree of severity, etc.
+add concurrent.ThreadSafeDegreeExtractor classifierJarPath=/org/apache/ctakes/relation/extractor/models/degree_of/model.jar
+
+// Location.
+add concurrent.ThreadSafeLocationExtractor classifierJarPath=/org/apache/ctakes/relation/extractor/models/location_of/model.jar

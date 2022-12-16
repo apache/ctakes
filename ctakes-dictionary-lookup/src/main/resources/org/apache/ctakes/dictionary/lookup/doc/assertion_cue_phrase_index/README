@@ -1,0 +1,19 @@
+This directory contains the resources needed to create the lucene index for assertion cue phrase lookup.
+
+To build the index, run the class (in src/main/java):
+  org.apache.ctakes.dictionary.assertion.CreateAssertionLuceneIndexFromDelimitedFile
+
+The files in this directory are pipe delimited files with the following format:
+
+  cue_phrase:cue_phrase_category:cue_phrase_family
+
+The "cue phrase" is the string itself.  For example, "no evidence of".
+
+The "cue phrase category" is something like -- no, not, speculation_low, speculation_high, etc.
+
+The "cue_phrase_family" is the general category of cue phrase.  Generally this aligns with the assertion attribute being set:
+  * negation (for the polarity attribute)
+  * uncertainty
+  * subject
+  * generic
+

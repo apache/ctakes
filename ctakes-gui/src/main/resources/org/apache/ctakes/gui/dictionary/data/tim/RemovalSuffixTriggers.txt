@@ -1,0 +1,249 @@
+- retired code
+- retired -
+- retired
+( reassigned )
+[ obsolete ]
+( deprecated )
+// The following are in UnwantedSuffixes for default, but trigger removal for small
+- ( other )
+- duplicate -
+- nos
+- retired
+- retired -
+- unspec
+- unspecified
+ as topic
+ as topics
+ nec
+ nec in snomedct
+ nos
+ not otherwise specified
+ or
+ title 18
+( or )
+( 10 )
+( _ _ _ 0 , 2 )
+( deprecated )
+( except leather and fur )
+( hl7v3 . 0 concept )
+( inactive concept )
+( mesh category )
+( namespace concept )
+( non-specific )
+( nos )
+( not elsewhere classified in lnc )
+( obsolete notation )
+( procedure nec )
+( process of differentiation )
+) ( adjudicators ( & top )
+& / or o / e
+& / or orderly ( & [ orderlies ] )
+& [ fistula ]
+& [ symptom ]
+& [ legal ]
+& [ symptom ]
+& [ vehicle ]
+( & [ reimbursement ] )
+( & [ abnormal ] )
+( & [ acquired ] )
+( & [ acute ] )
+( & [ acute nos ] )
+( & [ broad ligament ] )
+( & [ bupa examination done ] )
+( & [ c / o - ] )
+( & [ c / o ] )
+( & [ chart ] )
+( & [ duct ] or [ gland ] )
+( & [ eating observation ] )
+( & [ etc ] )
+( & [ expiratory ] )
+( & [ eye disorder ] )
+( & [ government ] )
+( & [ hall ] )
+( & [ infection ] )
+( & [ keen ] )
+( & [ labor complicated by ] )
+( & [ laborer nos ] )
+( & [ labour complicated by ] )
+( & [ labourer nos ] )
+( & [ machine ] and / or [ press ] )
+( & [ member of phct ] )
+( & [ miners ( & coal )
+( & [ named variants ] )
+( & [ nec ] )
+( & [ nos ] )
+( & [ obstructive ] )
+( & [ occupation ] )
+( & [ occupations ] )
+( & [ officer ] )
+( & [ product ] )
+( & [ refer ] )
+( & [ referral ] )
+( & [ referral to ] )
+( & [ reimbursement ] )
+( & [ retail ] )
+( & [ rubber ] )
+( & [ staff ] )
+( & [ staghorn ] )
+( & [ symptom ] )
+( & [ teachers ] )
+( & [ unmarried ] )
+( & [ unspecified ] )
+( & [ warfarin ] )
+( & [ weightlessness ] )
+( & [ well ] )
+( & acquired )
+( & acute )
+( & admin )
+( & administration )
+( & ankle joint )
+( & assess )
+( & attic )
+( & bladder )
+( & blind )
+( & c / o )
+( & c / s )
+( & certificate )
+( & chronic )
+( & claim )
+( & claim gp / ms )
+( & congenital )
+( & conjunctiva )
+( & consent )
+( & dialysis )
+( & direct )
+( & disorder )
+( & distal )
+( & drug )
+( & expiratory )
+( & f303 )
+( & floor / wall )
+( & food poison )
+( & form )
+( & form gp45 ) )
+( & form : [ fp70a ] or [ gp / pea ] )
+( & from patient )
+( & held )
+( & hepatic duct )
+( & in blood )
+( & infection )
+( & infestation )
+( & level ( & phenylalanine ) )
+( & level )
+( & localization )
+( & marital )
+( & maternity allowances )
+( & mobile unit x-ray )
+( & named variants )
+( & nec )
+( & non urg )
+( & nos )
+( & o / e )
+( & on medical advice )
+( & operation )
+( & other )
+( & pathology )
+( & patient data )
+( & peritonsillar region )
+( & pleural )
+( & provision )
+( & record )
+( & referred to )
+( & report )
+( & result )
+( & sample )
+( & sc1 - given to staff )
+( & scrotal skin )
+( & short hip rotator )
+( & sinus )
+( & skin )
+( & skin of external ear )
+( & skin of external nose )
+( & skin of eyebrow )
+( & skin of eyelid )
+( & skin of male perineum )
+( & skin of nipple )
+( & skin of penis )
+( & skin of vulva )
+( & stock order gp10a )
+( & swab )
+( & symptom )
+( & tanner )
+( & top )
+( & top managers )
+( & traumatic )
+( & umbilical skin )
+( & unspecified )
+( & upper )
+( & vaccination )
+( & various types )
+( & viral )
+( & with stabilisation )
+( & with stabilization )
+( * )
+( _ _ _ per hpf )
+( + / - religion )
+( = breath )
+( = breath )
+( = stone )
+( = stone )
+[ & aircraft ]
+[ & bacterial ]
+[ & glucose ]
+[ & named variants ]
+[ & nos ]
+[ & professional ]
+[ & symptom ]
+[ ambiguous ]
+[ dup ]
+[ duplicate ]
+[ obsolete ]
+[ other ]
+, nec in snomedct
+, nos
+, not elsewhere classified
+, unclassified
+, unspecified
+, unspecified part
+concept ( inactive concept )
+reason not stated ( inactive concept )
+// New for tiny
+&
+: phenx
+// Added for form cleanup 11/3/2014 spf
+( # _ _ _ )
+( / _ _ _ )
+( _ _ _ / )
+( j _ _ _ )
+( _ _ _ 0 , 2 )
+( _ _ _ 0 - 30 )
+( _ _ _ bpm )
+( _ _ _ cm )
+( _ _ _ _ cm )
+( _ _ _ _ _ cm )
+( _ _ _ cm2 )
+( _ _ _ degrees )
+( _ _ _ m2 )
+( _ _ _ mets )
+( _ _ _ min )
+( _ _ _ minutes each time )
+( _ _ _ per hpf )
+( minus _ _ _ )
+( _ _ _ ml / hr )
+( _ _ _ ml per second )
+( plus _ _ _ )
+( _ _ _ sec )
+: plus _ _ _
+_ _ _ %
+_ _ _ cm
+add _ _ _
+// Added for Tim Other
+( sensu insecta )
+( sensu drosophila )
+ 500 ml
+& / or fluid
+}
+[ 1 ]
+[ 2 ]
+[ 3 ]
+[ 4 ]

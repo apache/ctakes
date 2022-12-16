@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<lookupSpecification>
+	<!--  Defines what dictionaries will be used in terms of implementation specifics and metaField configuration. -->
+	<dictionaries>
+		<dictionary id="DICT_CSV_SAMPLE" externalResourceKey="DictionaryFile" caseSensitive="false">
+			<implementation>
+				<csvImpl delimiter="|" indexedFieldNames="0,1"/>
+			</implementation>
+			<lookupField fieldName="0"/>
+			<metaFields>
+				<metaField fieldName="1"/>
+			</metaFields>
+		</dictionary>
+		<dictionary id="DICT_RXNORM" externalResourceKey="RxnormIndexReader" caseSensitive="false">
+			<implementation>
+				<luceneImpl/>
+			</implementation>
+			<lookupField fieldName="first_word"/>
+			<metaFields>
+				<metaField fieldName="code"/>
+				<metaField fieldName="preferred_designation"/>
+				<metaField fieldName="other_designation"/>
+			</metaFields>
+		</dictionary>
+	</dictionaries>
+	<!-- Binds together the components necessary to perform the complete lookup logic start to end. -->
+	<lookupBindings>
+		<lookupBinding>
+			<dictionaryRef idRef="DICT_CSV_SAMPLE"/>
+
+<!-- NOTE: Only use if windowAnnotations have small # of tokens, sentences are not a good idea! -->
+
+			<lookupInitializer className="org.apache.ctakes.dictionary.lookup.ae.DirectLookupInitializerImpl">
+				<properties>
+				</properties>
+			</lookupInitializer>
+			<lookupConsumer className="org.apache.ctakes.dictionary.lookup.ae.NamedEntityLookupConsumerImpl">
+				<properties>
+				</properties>
+			</lookupConsumer>
+		</lookupBinding>
+		<lookupBinding>
+			<dictionaryRef idRef="DICT_RXNORM"/>
+			<lookupInitializer className="org.apache.ctakes.dictionary.lookup.ae.FirstTokenPermLookupInitializerImpl">
+				<properties>
+					<property key="textMetaFields" value="preferred_designation|other_designation"/>
+					<property key="maxPermutationLevel" value="7"/>
+					<property key="windowAnnotations" value="org.apache.ctakes.typesystem.type.textspan.LookupWindowAnnotation"/>
+					<property key="exclusionTags" value="VB,VBD,VBG,VBN,VBP,VBZ,CC,CD,DT,EX,LS,MD,PDT,POS,PP,PP$,RP,TO,WDT,WP,WPS,WRB"/>
+				</properties>
+			</lookupInitializer>
+			<lookupConsumer className="org.apache.ctakes.dictionary.lookup.ae.OrangeBookFilterConsumerImpl">
+				<properties>
+					<property key="codingScheme" value="RXNORM"/>
+					<property key="codeMetaField" value="code"/>
+					<property key="luceneFilterExtResrcKey" value="OrangeBookIndexReader"/>
+				</properties>
+			</lookupConsumer>
+		</lookupBinding>
+	</lookupBindings>
+</lookupSpecification>

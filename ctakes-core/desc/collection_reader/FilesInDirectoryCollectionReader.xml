@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<collectionReaderDescription xmlns="http://uima.apache.org/resourceSpecifier">
+<frameworkImplementation>org.apache.uima.java</frameworkImplementation>
+<implementationName>org.apache.ctakes.core.cr.FilesInDirectoryCollectionReader</implementationName>
+<processingResourceMetaData>
+<name>lines from file collection reader</name>
+<description>This collection reader facilitates reading documents from a directory.
+</description>
+<version>1.0</version>
+<vendor>Mayo Clinic</vendor>
+<configurationParameters>
+<configurationParameter>
+<name>InputDirectory</name>
+<description>specifies the path of the directory containing input files.</description>
+<type>String</type>
+<multiValued>false</multiValued>
+<mandatory>true</mandatory>
+</configurationParameter>
+<configurationParameter>
+<name>Language</name>
+<description>ISO language code for the documents</description>
+<type>String</type>
+<multiValued>false</multiValued>
+<mandatory>false</mandatory>
+</configurationParameter>
+<configurationParameter>
+<name>Encoding</name>
+<description>Character encoding for the documents.  If not specified, the default system encoding will be used.  Note that this parameter only applies if there is no CAS Initializer provided; otherwise, it is the CAS Inializer's responsibility to deal with character encoding issues.</description>
+<type>String</type>
+<multiValued>false</multiValued>
+<mandatory>false</mandatory>
+</configurationParameter>
+<configurationParameter>
+<name>Extensions</name>
+<description>specifies the extensions of the files that the collection reader will read.  Values for this parameter should not begin with a dot ('.').</description>
+<type>String</type>
+<multiValued>true</multiValued>
+<mandatory>false</mandatory>
+</configurationParameter>
+<configurationParameter>
+<name>Recurse</name>
+<description>If true, then the collection reader will recurse into subdirectories of the input directory.</description>
+<type>Boolean</type>
+<multiValued>false</multiValued>
+<mandatory>false</mandatory>
+</configurationParameter>
+</configurationParameters>
+<configurationParameterSettings>
+<nameValuePair>
+<name>InputDirectory</name>
+<value>
+<string>CHANGEME</string>
+</value>
+</nameValuePair>
+</configurationParameterSettings>
+<typeSystemDescription/>
+<typePriorities/>
+<fsIndexCollection/>
+<capabilities>
+<capability>
+<inputs/>
+<outputs/>
+<languagesSupported/>
+</capability>
+</capabilities>
+<operationalProperties>
+<modifiesCas>true</modifiesCas>
+<multipleDeploymentAllowed>false</multipleDeploymentAllowed>
+<outputsNewCASes>false</outputsNewCASes>
+</operationalProperties>
+</processingResourceMetaData>
+</collectionReaderDescription>

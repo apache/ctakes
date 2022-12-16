@@ -1,0 +1,51 @@
+
+Contents
+- Introduction
+- Running the analysis engine
+	- AggregateAE.xml
+	- CdaCasInitializer.xml analysis engine descriptor
+
+############
+Introduction
+############
+
+The CdaCasInitializer annotator transforms a Common Data Architecture (CDA) document into plain text,
+provided the CDA document conforms to the DTD resources.
+
+As part of the conversion to plaintext, section (segment) markers are inserted into the text, 
+hyphens are inserted into words that should be hyphenated.
+The resulting text in stored in a new View, which has its own Sofa. 
+
+Sections are detected and Segment (aka section) annotations are added to the CAS. 
+Document level data is extracted and stored in the CAS as Property annotations.
+
+This does not handle all CDA documents -- the CDA document must conform to the DTD. 
+resources/cda/NotesIIST_RTF.DTD
+
+
+#######################################
+Running the analysis engine (annotator)
+#######################################
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+AggregateAE.xml
+
+The file desc/AggregateAE.xml defines a "pipeline" for preprocessing documents.
+The "pipeline" is a simple pipeline with only one delegate analysis engine (one 
+annotator), the CdaCasInitializer, and is included for testing.  Typically the 
+CdaCasInitializer.xml descriptor is included in a more complete pipeline rather
+than using the AggregateAE.xml descriptor that is in this project.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+CdaCasInitializer.xml
+
+The CdaCasInitializer descriptor defines the analysis engine (annotator) for 
+preprocessing documents. 
+
+It takes no parameters.
+
+It creates a plaintext view from a CDA view. 
+The plaintext view can then annotated for tokens, parts of speech, chunks, etc.
+ 
+ 

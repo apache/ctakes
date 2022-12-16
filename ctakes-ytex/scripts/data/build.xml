@@ -1,0 +1,602 @@
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<!--
+-->
+<project name="ytex.data">
+
+	<description>
+		<![CDATA[
+
+This buildfile sets up the ytex database.
+== all ==
+sets up all ytex tables, calls following targets:
+  * umls.all
+  * uima.all
+
+== umls.all ==
+setup umls_aui_fword and v_snomed_fword_lookup table and view.  
+check if mrconso table exists and import umls tables if required.
+If the umls database tables exist, then setup the umls_aui_fword table
+from the database.  If yes, execute umls.setup.db to setup umls_aui_fword 
+from db. If no, execute umls.setup.dump to create and import umls tables
+from dump files.  We look for a umls.zip file in the directory
+that contains ytex.  If it exists, we load the umls tables from that file.
+If not, we load the sample umls tables included in the ytex distro
+
+== uima.all ==
+setup all ytex database tables.  All existing ytex tables
+will be dropped first.
+		
+== configuration ==
+Database connection parameters are taken from ytex.properties.
+	]]>
+	</description>
+	<import file="../build-classpath.xml" />
+
+	<!-- by default umls in same database/catalog as ytex -->
+	<property name="sql.dir" value="./${db.type}" />
+	<property name="meta.tables" value="MRDOC,MRSTY,MRCONSO,MRREL" />
+	<!-- SU is in a different format -->
+	<property name="net.tables" value="SRDEF,SRFIL,SRFLD,SRSTR,SRSTRE1,SRSTRE2" />
+	<property name="sct.home" value="E:/temp/SnomedCT_RF2Release_INT_20110731/Snapshot/Terminology" />
+	<property name="sctf.home" value="E:/temp/SnomedCT_RF2Release_INT_20110731/Full/Terminology" />
+	<property name="sct.version" value="20110731" />
+
+
+	<target name="all" depends="umls.all,uima.all,kernel.all" description="call umls.all, uima.all, kernel.all" />
+	<target name="init" description="initialize flags indicating which db is in use">
+		<condition property="mysql">
+			<equals arg1="${db.type}" arg2="mysql" />
+		</condition>
+		<condition property="mssql">
+			<equals arg1="${db.type}" arg2="mssql" />
+		</condition>
+		<condition property="orcl">
+			<equals arg1="${db.type}" arg2="orcl" />
+		</condition>
+		<condition property="hsql">
+			<equals arg1="${db.type}" arg2="hsql" />
+		</condition>
+		<condition property="umls.data" value="${java.io.tmpdir}" else="${basedir}/umls">
+			<isset property="umls.zip.available" />
+		</condition>
+		<!-- what to do when errors occur while dropping tables.  ignore these for oracle -->
+		<condition property="drop.sql.onerror" value="continue" else="abort">
+			<equals arg1="${db.type}" arg2="orcl" />
+		</condition>
+	</target>
+	<target name="test" depends="init">
+		<echo>umls.zip.available ${umls.zip.available}</echo>
+		<echo>db.schema ${db.schema}</echo>
+		<echo>db.type ${db.type}</echo>
+	</target>
+	<target name="dbping" description="verify db connection params" unless="hsql">
+		<java classname="org.apache.ctakes.ytex.tools.DBPing" fork="yes" classpathref="${kernel.cp}" failonerror="yes">
+			<jvmarg value="${log4j.arg}" />
+			<jvmarg value="-Xmx64m" />
+			<arg value="${config.local}/org/apache/ctakes/ytex/ytex.properties" />
+		</java>
+	</target>
+
+	<target name="umls.check.mrconso" description="set mrconso.exists property if mrconso table can be found">
+		<echo>umls.schema ${umls.schema}</echo>
+		<echo>umls.catalog ${umls.catalog}</echo>
+		<delete file="${java.io.tmpdir}/mrconso-check.txt" quiet="yes" />
+		<if>
+			<equals arg1="${db.type}" arg2="mysql" />
+			<then>
+				<sql driver="${db.driver}" url="${db.url}" userid="${db.username}" password="${db.password}" classpathref="${kernel.cp}" output="${java.io.tmpdir}/mrconso-check.txt" print="true" showheaders="false" showtrailers="false">show tables from ${umls.schema} like 'MRCONSO';</sql>
+			</then>
+		</if>
+		<if>
+			<equals arg1="${db.type}" arg2="mssql" />
+			<then>
+				<sql driver="${db.driver}" url="${db.url}" userid="${db.username}" password="${db.password}" classpathref="${kernel.cp}" output="${java.io.tmpdir}/mrconso-check.txt" print="true" showheaders="false" showtrailers="false">use ${umls.catalog}; SELECT count(*) FROM sys.objects WHERE object_id = OBJECT_ID(N'${umls.schema}.[MRCONSO]');</sql>
+			</then>
+		</if>
+		<if>
+			<equals arg1="${db.type}" arg2="orcl" />
+			<then>
+				<sql driver="${db.driver}" url="${db.url}" userid="${db.username}" password="${db.password}" classpathref="${kernel.cp}" output="${java.io.tmpdir}/mrconso-check.txt" print="true" showheaders="false" showtrailers="false">select count(*) from all_tables where lower(table_name) = 'mrconso' and lower(owner) = lower('${umls.schema}');</sql>
+			</then>
+		</if>
+		<if>
+			<equals arg1="${db.type}" arg2="hsql" />
+			<then>
+				<sql driver="${db.driver}" url="${db.url}" userid="${db.username}" password="${db.password}" classpathref="${kernel.cp}" output="${java.io.tmpdir}/mrconso-check.txt" print="true" showheaders="false" showtrailers="false">select count(*) from INFORMATION_SCHEMA.SYSTEM_TABLES where lower(table_name) = 'mrconso' and lower(table_schem) = lower('${umls.schema}');</sql>
+			</then>
+		</if>
+		<loadfile srcFile="${java.io.tmpdir}/mrconso-check.txt" property="mrconso.out" />
+		<echo>mrconso.out = ${mrconso.out}</echo>
+		<delete file="${java.io.tmpdir}/mrconso-check.txt" />
+		<condition property="mrconso.equals" value="mrconso" else="1">
+			<equals arg1="mysql" arg2="${db.type}" />
+		</condition>
+		<condition property="mrconso.exists">
+			<equals arg1="${mrconso.equals}" arg2="${mrconso.out}" casesensitive="false" trim="true" />
+		</condition>
+		<echo>mrconso.exists = ${mrconso.exists}</echo>
+	</target>
+
+	<target name="umls.drop.all" depends="umls.drop.view,umls.dropAuiFword" description="drop umls_aui_fword and v_snomed_fword_lookup" />
+	<target name="umls.all" depends="init,umls.check.mrconso" description="setup umls tables from dump or db, depending on existence of mrconso">
+		<echo>mrconso.exists = ${mrconso.exists}</echo>
+		<if>
+			<isset property="mrconso.exists" />
+			<then>
+				<antcall target="umls.setup.db" />
+			</then>
+			<else>
+				<antcall target="umls.setup.dump" />
+			</else>
+		</if>
+	</target>
+	<target name="umls.mssql.setup" depends="init,umls.check.mrconso" description="setup umls from RRF files for mssql">
+		<!--
+		perform import if mrconso table does not exist
+		and this is ms sql server setup
+		and rrf.home is set 
+		-->
+		<condition property="umls.mssql.import">
+			<and>
+				<isset property="mssql" />
+				<isset property="rrf.home" />
+				<not>
+					<isset property="mrconso.exists" />
+				</not>
+			</and>
+		</condition>
+		<!-- abort if we can't find the RRF files -->
+		<fail message="could not find ${rrf.home}/META/MRCONSO.RRF">
+			<condition>
+				<and>
+					<isset property="umls.mssql.import" />
+					<not>
+						<available file="${rrf.home}/META/MRCONSO.RRF" />
+					</not>
+				</and>
+			</condition>
+		</fail>
+		<!-- do the import if necessary -->
+		<if>
+			<isset property="umls.mssql.import" />
+			<then>
+				<antcall target="umls.mssql.import" />
+			</then>
+		</if>
+	</target>
+	<target name="umls.mssql.import" description="create mssql umls tables, import from RRF files" depends="init.conn">
+		<echo>create umls tables</echo>
+		<for list="mssql_drop.sql,mssql_tables.sql,mssql_net_tables.sql" param="sqlcmd.script">
+			<sequential>
+				<antcall target="jdbc.sqlcmd">
+					<param name="sqlcmd.dir" value="umls" />
+					<param name="db.name" value="${umls.catalog}" />
+					<param name="db.schema" value="${umls.schema}" />
+					<param name="sqlcmd.script" value="@{sqlcmd.script}" />
+				</antcall>
+			</sequential>
+		</for>
+		<echo>import umls tables</echo>
+		<for list="${meta.tables}" param="rrf.base">
+			<sequential>
+				<antcall target="jdl">
+					<param name="jdl.data" value="${rrf.home}/META/@{rrf.base}.RRF" />
+					<param name="jdl.format" value="${basedir}/umls/@{rrf.base}.xml" />
+				</antcall>
+			</sequential>
+		</for>
+		<for list="${net.tables}" param="rrf.base">
+			<sequential>
+				<antcall target="jdl">
+					<param name="jdl.data" value="${rrf.home}/NET/@{rrf.base}" />
+					<param name="jdl.format" value="${basedir}/umls/@{rrf.base}.xml" />
+				</antcall>
+			</sequential>
+		</for>
+		<echo>index umls tables</echo>
+		<antcall target="jdbc.sqlcmd">
+			<param name="sqlcmd.dir" value="umls" />
+			<param name="db.name" value="${umls.catalog}" />
+			<param name="db.schema" value="${umls.schema}" />
+			<param name="sqlcmd.script" value="mssql_indexes.sql" />
+		</antcall>
+	</target>
+	<target name="umls.import.meta" description="create and import MRCONSO and MRSTY tables" depends="init,init.conn">
+		<echo>create umls tables</echo>
+		<antcall target="jdbc.sqlcmd">
+			<param name="sqlcmd.dir" value="umls" />
+			<param name="sqlcmd.script" value="import_umls.sql" />
+		</antcall>
+		<echo>import MRCONSO</echo>
+		<antcall target="jdl">
+			<param name="jdl.data" value="${umls.data}/MRCONSO.RRF" />
+			<param name="jdl.format" value="${basedir}/umls/MRCONSO.xml" />
+		</antcall>
+		<echo>import MRSTY</echo>
+		<antcall target="jdl">
+			<param name="jdl.data" value="${umls.data}/MRSTY.RRF" />
+			<param name="jdl.format" value="${basedir}/umls/MRSTY.xml" />
+		</antcall>
+		<echo>index umls tables</echo>
+		<antcall target="jdbc.sqlcmd">
+			<param name="sqlcmd.dir" value="./umls" />
+			<param name="sqlcmd.script" value="index_umls.sql" />
+		</antcall>
+	</target>
+	<target name="umls.setup.dump" depends="umls.drop.view,umls.create.view,umls.import.view,umls.index.view" unless="mrconso.exists" description="load lookup table from export" />
+	<target name="umls.setup.db" depends="umls.setupAuiFword,umls.drop.view,umls.create.view,umls.insert.view,umls.index.view" if="mrconso.exists" description="setup umls_aui_fword from mrconso in db, and generate lookup table by joining mrconso,mrsty, and umls_aui_fword tables" />
+	<target name="umls.setup.import" depends="umls.import.meta,umls.setup.db" if="mrconso.exists" description="import mrconso and mrsty tables, call umls.setup.db" />
+	<target name="umls.dropAuiFword" depends="init" description="drop umls_aui_fword table">
+		<echo>drop ytex umls_aui_fword table</echo>
+		<antcall target="jdbc.sqlcmd">
+			<param name="sqlcmd.dir" value="./umls" />
+			<param name="sqlcmd.script" value="drop_tables.sql" />
+			<param name="sql.onerror" value="${drop.sql.onerror}" />
+		</antcall>
+	</target>
+	<target name="umls.setupAuiFword" depends="init,umls.dropAuiFword" description="setup umls_aui_fword from mrconso">
+		<echo>create ytex umls_aui_fword tables</echo>
+		<antcall target="jdbc.sqlcmd">
+			<param name="sqlcmd.dir" value="./umls" />
+			<param name="sqlcmd.script" value="create_tables.sql" />
+		</antcall>
+		<echo>setting up umls_aui_fword table. please be patient - this can take a while</echo>
+		<java classname="org.apache.ctakes.ytex.tools.SetupAuiFirstWord" fork="yes" classpathref="${kernel.cp}" failonerror="yes">
+			<jvmarg value="${log4j.arg}" />
+		</java>
+		<echo>index umls_aui_fword tables</echo>
+		<antcall target="jdbc.sqlcmd">
+			<param name="sqlcmd.dir" value="./umls" />
+			<param name="sqlcmd.script" value="create_indices.sql" />
+		</antcall>
+	</target>
+	<target name="umls.unpack" if="umls.zip.available" description="unpack umls from archive">
+		<unzip src="${umls.zip}" dest="${java.io.tmpdir}">
+			<patternset>
+				<include name="**/*.*" />
+				<exclude name="conceptGraph/**/*.*" />
+			</patternset>
+		</unzip>
+	</target>
+	<target name="umls.cleanup" if="umls.zip.available" description="delete unpacked umls files">
+		<delete quiet="yes">
+			<fileset dir="${java.io.tmpdir}" includes="MRREL.RRF,MRCONSO.RRF,MRSTY.RRF,umls_aui_fword.txt" />
+		</delete>
+	</target>
+	<target name="umls.import.view" depends="init.conn" description="load v_snomed_fword_lookup.txt. Use file from resources directory if it exists and if ytex.test is not defined">
+		<condition property="view.jdl.data" value="${ytex.resources.home}/org/apache/ctakes/ytex/dictionary/lookup/v_snomed_fword_lookup.txt" else="${basedir}/umls/v_snomed_fword_lookup.txt">
+			<and>
+				<available file="${ytex.resources.home}/org/apache/ctakes/ytex/dictionary/lookup/v_snomed_fword_lookup.txt" />
+				<not>
+					<isset property="ytex.test" />
+				</not>
+			</and>
+		</condition>
+		<echo>import v_snomed_fword_lookup from ${view.jdl.data}.  Be patient, this can take a while.</echo>
+		<antcall target="jdl">
+			<param name="jdl.data" value="${view.jdl.data}" />
+			<param name="jdl.format" value="${basedir}/umls/v_snomed_fword_lookup.xml" />
+		</antcall>
+	</target>
+	<target name="umls.insert.view" depends="init.conn" description="create view by joining the mrconso, mrsty and umls_aui_fword tables">
+		<if>
+			<available file="${sql.dir}/umls/insert_view.template.sql" />
+			<then>
+				<echo>copying script and replacing UMLS_SCHEMA token with ${umls.schema}</echo>
+				<copy file="${sql.dir}/umls/insert_view.template.sql" tofile="${java.io.tmpdir}/insert_view.template.sql" overwrite="yes">
+					<filterset>
+						<filter token="UMLS_SCHEMA" value="${umls.schema}" />
+					</filterset>
+				</copy>
+			</then>
+			<else>
+				<copy file="${sql.dir}/umls/insert_view.sql" tofile="${java.io.tmpdir}/insert_view.template.sql" overwrite="yes" />
+			</else>
+		</if>
+		<antcall target="jdbc.sqlcmd">
+			<param name="sql.file" value="${java.io.tmpdir}/insert_view.template.sql" />
+		</antcall>
+	</target>
+	<target name="umls.create.view" depends="init.conn">
+		<echo>create the v_snomed_fword_lookup table</echo>
+		<antcall target="jdbc.sqlcmd">
+			<param name="sqlcmd.dir" value="./umls" />
+			<param name="sqlcmd.script" value="create_view.sql" />
+		</antcall>
+	</target>
+	<target name="umls.index.view" depends="init.conn">
+		<echo>index the v_snomed_fword_lookup table</echo>
+		<antcall target="jdbc.sqlcmd">
+			<param name="sqlcmd.dir" value="./umls" />
+			<param name="sqlcmd.script" value="index_view.sql" />
+		</antcall>
+	</target>
+
+	<target name="umls.import.auiFword" depends="init.conn">
+		<echo>drop ytex umls_aui_fword table</echo>
+		<antcall target="jdbc.sqlcmd">
+			<param name="sqlcmd.dir" value="./umls" />
+			<param name="sqlcmd.script" value="drop_tables.sql" />
+			<param name="sql.onerror" value="${drop.sql.onerror}" />
+		</antcall>
+		<echo>create ytex umls_aui_fword table</echo>
+		<antcall target="jdbc.sqlcmd">
+			<param name="sqlcmd.dir" value="./umls" />
+			<param name="sqlcmd.script" value="create_tables.sql" />
+		</antcall>
+		<echo>import umls tables into ${umls.schema} schema.  Be patient, this can take a while.</echo>
+		<antcall target="jdl">
+			<param name="jdl.data" value="${umls.data}/umls_aui_fword.txt" />
+			<param name="jdl.format" value="${basedir}/umls/umls_aui_fword.xml" />
+		</antcall>
+	</target>
+	<target name="umls.drop.view" depends="init" description="drop and create umls tables">
+		<echo>drop v_snomed_fword_lookup table</echo>
+		<antcall target="jdbc.sqlcmd">
+			<param name="sqlcmd.dir" value="./umls" />
+			<param name="sqlcmd.script" value="drop_view.sql" />
+			<param name="sql.onerror" value="${drop.sql.onerror}" />
+		</antcall>
+	</target>
+	<target name="umls.create.meta" description="create mrconso table">
+		<echo>create nlm's umls tables</echo>
+		<antcall target="jdbc.sqlcmd">
+			<param name="sqlcmd.dir" value="./umls" />
+			<param name="sqlcmd.script" value="umls.sql" />
+		</antcall>
+	</target>
+	<!-- uima script targets -->
+	<target name="jdbc.sqlcmd">
+		<echo>db.schema${db.schema}</echo>
+		<echo>umls.schema ${umls.schema}</echo>
+		<echo>umls.catalog ${umls.catalog}</echo>
+		<property name="sql.onerror" value="abort" />
+		<property name="sql.delimiter" value=";" />
+		<property name="sql.catalog" value="${db.name}" />
+		<property name="sql.schema" value="${db.schema}" />
+		<property name="sql.file" value="${sql.dir}/${sqlcmd.dir}/${sqlcmd.script}" />
+		<tempfile property="sql.src" prefix="ytex" suffix=".sql" destdir="${java.io.tmpdir}" />
+		<tempfile property="use.sql.file" prefix="ytex" suffix="use.sql" destdir="${java.io.tmpdir}" />
+		<echo>execute ${sql.file}</echo>
+		<!-- <property name="sql.src" value="${java.io.tmpdir}/${sqlcmd.script}" /> -->
+		<if>
+			<equals arg1="${db.type}" arg2="mssql" />
+			<then>
+				<echo file="${use.sql.file}">
+use ${sql.catalog}
+${sql.delimiter}					
+</echo>
+				<copy file="${sql.file}" tofile="${sql.src}" overwrite="true">
+					<!-- for mssql replace db_schema and go -->
+					<filterset begintoken="$(" endtoken=")">
+						<filter token="db_schema" value="${db.schema}" />
+						<filter token="umls_catalog" value="${umls.catalog}" />
+						<filter token="umls_schema" value="${umls.schema}" />
+					</filterset>
+					<filterchain>
+						<concatfilter prepend="${use.sql.file}" />
+						<tokenfilter>
+							<replaceregex pattern="\Ago\z" flags="gi" replace="" />
+							<replaceregex pattern="\Wgo\W" flags="gi" replace="" />
+						</tokenfilter>
+					</filterchain>
+				</copy>
+			</then>
+			<else>
+				<if>
+					<equals arg1="${db.type}" arg2="hsql" />
+					<then>
+						<echo file="${use.sql.file}">
+set schema ${sql.schema}
+${sql.delimiter}					
+</echo>
+					</then>
+				</if>
+				<if>
+					<equals arg1="${db.type}" arg2="mysql" />
+					<then>
+						<echo file="${use.sql.file}">
+use ${sql.schema}
+${sql.delimiter}					
+</echo>
+					</then>
+				</if>
+				<if>
+					<equals arg1="${db.type}" arg2="orcl" />
+					<then>
+						<echo file="${use.sql.file}">
+ALTER SESSION SET CURRENT_SCHEMA=${sql.schema}
+${sql.delimiter}					
+</echo>
+					</then>
+				</if>
+				<copy file="${sql.file}" tofile="${sql.src}" overwrite="true">
+					<!-- for oracle and mysql use the correct schema -->
+					<filterchain>
+						<concatfilter prepend="${use.sql.file}" />
+					</filterchain>
+				</copy>
+			</else>
+		</if>
+		<echo>executing ${sql.src}</echo>
+		<sql driver="${db.driver}" url="${db.url}" userid="${db.username}" password="${db.password}" src="${sql.src}" onerror="${sql.onerror}" classpathref="${kernel.cp}" delimiter="${sql.delimiter}" />
+		<delete file="${sql.src}" />
+		<delete file="${use.sql.file}" />
+	</target>
+	<target name="jdl" description="load data with java data loader.  used instead of native database utilities.">
+		<echo>jdl.format ${jdl.format}</echo>
+		<echo>jdl.data ${jdl.data}</echo>
+		<echo>umls.prefix ${umls.prefix}</echo>
+		<tempfile property="jdl.format.file" suffix=".xml" deleteonexit="true" destdir="${java.io.tmpdir}" />
+		<copy file="${jdl.format}" tofile="${jdl.format.file}" overwrite="true">
+			<filterset>
+				<filter token="umls.prefix" value="${umls.prefix}" />
+				<filter token="db.schema" value="${db.schema}" />
+			</filterset>
+		</copy>
+		<java classpathref="${kernel.cp}" classname="org.apache.ctakes.jdl.AppMain" fork="yes" failonerror="yes">
+			<jvmarg value="-Dfile.encoding=UTF-8" />
+			<jvmarg value="-Xmx256m" />
+			<jvmarg value="${log4j.arg}" />
+			<arg value="-c" />
+			<arg value="${java.io.tmpdir}/conn.xml" />
+			<arg value="-d" />
+			<arg value="${jdl.data}" />
+			<arg value="-l" />
+			<arg value="${jdl.format.file}" />
+		</java>
+	</target>
+	<target name="uima.all" description="drop and create ytex uima tables" depends="uima.drop,uima.create" />
+	<target name="uima.drop" description="drop ytex uima tables">
+		<!-- for oracle we don't check existence before dropping objects, so just continue in case of errors -->
+		<condition property="sql.onerror" value="continue" else="abort">
+			<equals arg1="${db.type}" arg2="orcl" />
+		</condition>
+		<for list="drop_view.sql,drop_document.sql,drop_reference.sql" param="sqlcmd.script">
+			<sequential>
+				<antcall target="jdbc.sqlcmd">
+					<param name="sqlcmd.dir" value="uima" />
+					<param name="sqlcmd.script" value="@{sqlcmd.script}" />
+				</antcall>
+			</sequential>
+		</for>
+	</target>
+	<target name="uima.create" depends="init" description="create ytex uima tables">
+		<for list="create_reference.sql,create_document.sql,create_view.sql" param="sqlcmd.script">
+			<sequential>
+				<antcall target="jdbc.sqlcmd">
+					<param name="sqlcmd.dir" value="uima" />
+					<param name="sqlcmd.script" value="@{sqlcmd.script}" />
+				</antcall>
+			</sequential>
+		</for>
+		<antcall target="uima.create.trigger" />
+		<antcall target="uima.ref.load" />
+		<antcall target="uima.examples.load" />
+		<antcall target="uima.stopword.load" />
+	</target>
+	<target name="uima.create.trigger" if="orcl" description="create insert triggers for oracle">
+		<for list="create_reference_trg.sql,create_document_trg.sql" param="sqlcmd.script">
+			<sequential>
+				<antcall target="jdbc.sqlcmd">
+					<param name="sqlcmd.dir" value="uima" />
+					<param name="sqlcmd.script" value="@{sqlcmd.script}" />
+					<param name="sql.delimiter" value="/" />
+				</antcall>
+			</sequential>
+		</for>
+	</target>
+	<target name="uima.ref.load" depends="init,init.conn">
+		<antcall target="jdl">
+			<param name="jdl.data" value="ref_uima_type.txt" />
+			<param name="jdl.format" value="ref_uima_type.xml" />
+		</antcall>
+	</target>
+	<target name="uima.stopword.load" depends="init,init.conn">
+		<antcall target="jdl">
+			<param name="jdl.data" value="stopword.txt" />
+			<param name="jdl.format" value="stopword.xml" />
+		</antcall>
+	</target>
+	<target name="uima.examples.load" depends="init,init.conn">
+		<antcall target="jdl">
+			<param name="jdl.data" value="examples/fracture_demo.txt" />
+			<param name="jdl.format" value="examples/fracture_demo.xml" />
+		</antcall>
+		<antcall target="jdbc.sqlcmd">
+			<param name="sqlcmd.dir" value="uima" />
+			<param name="sqlcmd.script" value="fracture_demo.sql" />
+		</antcall>
+	</target>
+	<target name="init.conn">
+		<copy file="${basedir}/conn.xml.template" tofile="${java.io.tmpdir}/conn.xml" overwrite="yes">
+			<filterset>
+				<filter token="db.driver" value="${db.driver}" />
+				<filter token="db.url" value="${db.url}" />
+				<filter token="db.username" value="${db.username}" />
+				<filter token="db.password" value="${db.password}" />
+			</filterset>
+		</copy>
+	</target>
+	<target name="kernel.all" description="drop and create tables for data mining" depends="kernel.drop,kernel.create" />
+	<target name="kernel.drop" description="create tables for data mining">
+		<condition property="drop.sql.onerror" value="continue" else="abort">
+			<equals arg1="${db.type}" arg2="orcl" />
+		</condition>
+		<antcall target="jdbc.sqlcmd">
+			<param name="sqlcmd.dir" value="kernel" />
+			<param name="sqlcmd.script" value="drop_tables.sql" />
+			<param name="sql.onerror" value="${drop.sql.onerror}" />
+		</antcall>
+	</target>
+	<target name="kernel.create" description="create tables for data mining">
+		<antcall target="jdbc.sqlcmd">
+			<param name="sqlcmd.dir" value="kernel" />
+			<param name="sqlcmd.script" value="create_tables.sql" />
+		</antcall>
+		<if>
+			<equals arg1="${db.type}" arg2="orcl" />
+			<then>
+				<antcall target="jdbc.sqlcmd">
+					<param name="sqlcmd.dir" value="kernel" />
+					<param name="sqlcmd.script" value="create_tables_trg.sql" />
+					<param name="sql.delimiter" value="/" />
+				</antcall>
+			</then>
+		</if>
+	</target>
+	<target name="sct.all" depends="sct.create,sct.load" description="import snomed-ct snapshot tables" />
+	<target name="sctf.all" description="import snomed-ct full tables">
+		<antcall target="sct.all">
+			<param name="prefix" value="sct2f" />
+			<param name="suffix" value="full" />
+			<param name="sct.home" value="${sctf.home}" />
+		</antcall>
+	</target>
+	<target name="sct.create" description="create snomed-ct tables">
+		<property name="suffix" value="" />
+		<antcall target="jdbc.sqlcmd">
+			<param name="sqlcmd.dir" value="snomedct" />
+			<param name="sqlcmd.script" value="create_tables${suffix}.sql" />
+		</antcall>
+	</target>
+	<target name="sct.load" depends="init.conn" description="load snomed-ct tables">
+		<property name="suffix" value="" />
+		<property name="prefix" value="sct2" />
+		<antcall target="jdl">
+			<param name="jdl.data" value="${sct.home}/${prefix}_Concept_Snapshot_INT_${sct.version}.txt" />
+			<param name="jdl.format" value="${basedir}/snomedct/${prefix}_concept.xml" />
+		</antcall>
+		<antcall target="jdl">
+			<param name="jdl.data" value="${sct.home}/${prefix}_Relationship_Snapshot_INT_${sct.version}.txt" />
+			<param name="jdl.format" value="${basedir}/snomedct/${prefix}_relationship.xml" />
+		</antcall>
+		<antcall target="jdl">
+			<param name="jdl.data" value="${sct.home}/${prefix}_Description_Snapshot-en_INT_${sct.version}.txt" />
+			<param name="jdl.format" value="${basedir}/snomedct/${prefix}_description.xml" />
+		</antcall>
+		<antcall target="jdbc.sqlcmd">
+			<param name="sqlcmd.dir" value="snomedct" />
+			<param name="sqlcmd.script" value="index_tables${suffix}.sql" />
+		</antcall>
+	</target>
+</project>

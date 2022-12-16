@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<lookupSpecification>
+	<!--  Defines what dictionaries will be used in terms of implementation specifics and metaField configuration. -->
+	<dictionaries>
+	
+		<dictionary id="DICT_UMLS_MS" externalResourceKey="UmlsIndexReader" caseSensitive="false">
+			<implementation>
+				<luceneImpl/>
+			</implementation>
+			<lookupField fieldName="first_word"/>
+			<metaFields>
+				<metaField fieldName="cui"/>
+				<metaField fieldName="tui"/>
+				<metaField fieldName="text"/>
+			</metaFields>
+		</dictionary>
+	
+		<dictionary id="DICT_RXNORM" externalResourceKey="RxnormIndexReader" caseSensitive="false">
+			<implementation>
+				<luceneImpl/>
+			</implementation>
+			<lookupField fieldName="first_word"/>
+			<metaFields>
+				<metaField fieldName="code"/>
+				<metaField fieldName="preferred_designation"/>
+				<metaField fieldName="other_designation"/>
+			</metaFields>
+		</dictionary>
+	
+	</dictionaries>
+	<!-- Binds together the components necessary to perform the complete lookup logic start to end. -->
+	<lookupBindings>
+	
+		<lookupBinding>
+			<dictionaryRef idRef="DICT_UMLS_MS"/>
+			<lookupInitializer className="org.apache.ctakes.dictionary.lookup.ae.FirstTokenPermLookupInitializerImpl">
+				<properties>
+					<property key="textMetaFields" value="text"/>
+					<property key="maxPermutationLevel" value="5"/>
+					<!--	<property key="windowAnnotations" value="org.apache.ctakes.typesystem.type.textspan.Sentence"/> -->
+					<property key="windowAnnotations" value="org.apache.ctakes.typesystem.type.textspan.LookupWindowAnnotation"/>  
+					<property key="exclusionTags" value="VB,VBD,VBG,VBN,VBP,VBZ,CC,CD,DT,EX,LS,MD,PDT,POS,PP,PP$,PRP,PRP$,RP,TO,WDT,WP,WPS,WRB"/>
+				</properties>
+			</lookupInitializer>
+			<lookupConsumer className="org.apache.ctakes.dictionary.lookup.ae.UmlsToSnomedLuceneConsumerImpl">
+				<properties>
+					<property key="codingScheme" value="SNOMED"/>
+					<property key="cuiMetaField" value="cui"/>
+					<property key="tuiMetaField" value="tui"/>
+					<property key="cuiMappingField" value="cui"/>
+					<property key="snomedCodeMappingField" value="code"/>
+					<!-- the following values are used as TUIs for testing: T_AS, T_PR, T_DD, T_SS -->
+					<property key="anatomicalSiteTuis" value="T021,T022,T023,T024,T025,T026,T029,T030,T_AS"/>
+					<property key="procedureTuis" value="T059,T060,T061,T_PR"/>
+					<property key="disorderTuis" value="T019,T020,T037,T046,T047,T048,T049,T050,T190,T191,T_DD"/>
+					<property key="findingTuis" value="T033,T034,T040,T041,T042,T043,T044,T045,T046,T056,T057,T184,T_SS"/>
+					<property key="luceneFilterExtResrcKey" value="UmlsIndexReader"/>
+				</properties>
+			</lookupConsumer>
+		</lookupBinding>
+	
+		<lookupBinding>
+			<dictionaryRef idRef="DICT_RXNORM"/>
+			<lookupInitializer className="org.apache.ctakes.dictionary.lookup.ae.FirstTokenPermLookupInitializerImpl">
+				<properties>
+					<property key="textMetaFields" value="preferred_designation|other_designation"/>
+					<property key="maxPermutationLevel" value="7"/>
+					<!--	<property key="windowAnnotations" value="org.apache.ctakes.typesystem.type.textspan.Sentence"/> -->
+					<property key="windowAnnotations" value="org.apache.ctakes.typesystem.type.textspan.LookupWindowAnnotation"/>  
+					<property key="exclusionTags" value="VB,VBD,VBG,VBN,VBP,VBZ,CC,CD,DT,EX,LS,MD,PDT,POS,PP,PP$,RP,TO,WDT,WP,WPS,WRB"/>
+				</properties>
+			</lookupInitializer>
+			<lookupConsumer className="org.apache.ctakes.dictionary.lookup.ae.OrangeBookFilterConsumerImpl">
+				<properties>
+					<property key="codingScheme" value="RXNORM"/>
+					<property key="codeMetaField" value="code"/>
+					<property key="luceneFilterExtResrcKey" value="OrangeBookIndexReader"/>
+				</properties>
+			</lookupConsumer>
+		</lookupBinding>
+		
+	</lookupBindings>
+</lookupSpecification>

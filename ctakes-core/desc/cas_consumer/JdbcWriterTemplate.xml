@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<!--
+Create a vector table that closely follows the standard i2b2 schema, but is smaller to prevent waste
+
+create table nlp_[study]_[umls/custom] (
+record_id         int NOT NULL IDENTITY,
+encounter_num     int,
+patient_num       int,
+concept_cd        varchar(50),
+provider_id       varchar(50),
+start_date        datetime default getDate(),
+modifier_cd       varchar(50),
+instance_num      int,
+valType_cd        varchar(50),
+tval_char         varchar(255),
+observation_blob  text,
+PRIMARY KEY (record_id)
+);
+
+select encounter_num into nlp_[study]_[umls/custom]_done from nlp_[study]_[umls/custom];
+-->
+<casConsumerDescription xmlns="http://uima.apache.org/resourceSpecifier">
+   <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
+   <implementationName>org.apache.ctakes.core.cc.JdbcWriterTemplate</implementationName>
+   <processingResourceMetaData>
+      <name>JdbcWriterTemplate</name>
+      <description>Cas Consumer that stores a matrix of information in a database format.</description>
+      <version>1.0</version>
+      <vendor>Apache Software Foundation</vendor>
+      <configurationParameters>
+         <configurationParameter>
+            <name>VectorTable</name>
+            <description>Name of Table in which to store documents in DB.</description>
+            <type>String</type>
+            <multiValued>false</multiValued>
+            <mandatory>true</mandatory>
+         </configurationParameter>
+         <configurationParameter>
+            <name>DbConnResrcName</name>
+            <description>Name of external resource for database connection.</description>
+            <type>String</type>
+            <multiValued>false</multiValued>
+            <mandatory>true</mandatory>
+         </configurationParameter>
+      </configurationParameters>
+      <configurationParameterSettings>
+         <nameValuePair>
+            <name>VectorTable</name>
+            <value>
+               <!--  CHANGE ME  -->
+               <string>dbo.nlp_template_umls</string>
+            </value>
+         </nameValuePair>
+         <nameValuePair>
+            <name>DbConnResrcName</name>
+            <value>
+               <string>DbConnectionWrite</string>
+            </value>
+         </nameValuePair>
+      </configurationParameterSettings>
+      <typeSystemDescription/>
+      <typePriorities/>
+      <fsIndexCollection/>
+      <capabilities/>
+      <operationalProperties>
+         <modifiesCas>false</modifiesCas>
+         <multipleDeploymentAllowed>true</multipleDeploymentAllowed>
+      </operationalProperties>
+   </processingResourceMetaData>
+   <externalResourceDependencies>
+      <externalResourceDependency>
+         <key>DbConnectionWrite</key>
+         <description/>
+         <interfaceName>org.apache.ctakes.core.resource.JdbcConnectionResource</interfaceName>
+         <optional>false</optional>
+      </externalResourceDependency>
+   </externalResourceDependencies>
+   <resourceManagerConfiguration>
+      <externalResources>
+         <externalResource>
+            <name>DbConnectionWrite</name>
+            <description/>
+            <configurableDataResourceSpecifier>
+               <url/>
+               <resourceMetaData>
+                  <name/>
+                  <configurationParameters>
+                     <configurationParameter>
+                        <name>DriverClassName</name>
+                        <type>String</type>
+                        <multiValued>false</multiValued>
+                        <mandatory>true</mandatory>
+                     </configurationParameter>
+                     <configurationParameter>
+                        <name>URL</name>
+                        <type>String</type>
+                        <multiValued>false</multiValued>
+                        <mandatory>true</mandatory>
+                     </configurationParameter>
+                     <configurationParameter>
+                        <name>Username</name>
+                        <type>String</type>
+                        <multiValued>false</multiValued>
+                        <mandatory>true</mandatory>
+                     </configurationParameter>
+                     <configurationParameter>
+                        <name>Password</name>
+                        <type>String</type>
+                        <multiValued>false</multiValued>
+                        <mandatory>true</mandatory>
+                     </configurationParameter>
+                     <configurationParameter>
+                        <name>KeepConnectionAlive</name>
+                        <type>String</type>
+                        <multiValued>false</multiValued>
+                        <mandatory>true</mandatory>
+                     </configurationParameter>
+                  </configurationParameters>
+                  <configurationParameterSettings>
+                     <nameValuePair>
+                        <name>DriverClassName</name>
+                        <value>
+                           <string>com.microsoft.sqlserver.jdbc.SQLServerDriver</string>
+                        </value>
+                     </nameValuePair>
+                     <nameValuePair>
+                        <name>URL</name>
+                        <value>
+                           <!--  CHANGE ME  -->
+                           <string>jdbc:sqlserver://NODE.AT.MY.ORG:PORT</string>
+                        </value>
+                     </nameValuePair>
+                     <nameValuePair>
+                        <name>Username</name>
+                        <value>
+                           <!--  CHANGE ME  -->
+                           <string>MY_USERNAME</string>
+                        </value>
+                     </nameValuePair>
+                     <nameValuePair>
+                        <name>Password</name>
+                        <value>
+                           <!--  CHANGE ME  -->
+                           <string>MY_PASSWORD</string>
+                        </value>
+                     </nameValuePair>
+                     <nameValuePair>
+                        <name>KeepConnectionAlive</name>
+                        <value>
+                           <string>false</string>
+                        </value>
+                     </nameValuePair>
+                  </configurationParameterSettings>
+               </resourceMetaData>
+            </configurableDataResourceSpecifier>
+            <implementationName>org.apache.ctakes.core.resource.JdbcConnectionResourceImpl</implementationName>
+         </externalResource>
+      </externalResources>
+      <externalResourceBindings>
+         <externalResourceBinding>
+            <key>DbConnectionWrite</key>
+            <resourceName>DbConnectionWrite</resourceName>
+         </externalResourceBinding>
+      </externalResourceBindings>
+   </resourceManagerConfiguration>
+</casConsumerDescription>

@@ -1,0 +1,9 @@
+// Default Clinical Pipeline with degree-of and location-of relations
+// with events, times, event-event and event-time relations plus event-document creation time relations
+// with coreference resolution
+
+// Default Relation and Temporal pipeline
+load DefaultRelationTemporalPipeline
+
+// Coreference resolution
+load CorefSubPipe

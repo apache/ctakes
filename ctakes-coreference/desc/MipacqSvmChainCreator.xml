@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<analysisEngineDescription xmlns="http://uima.apache.org/resourceSpecifier">
+  <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
+  <primitive>true</primitive>
+  <annotatorImplementationName>org.apache.ctakes.coreference.ae.MipacqSvmChainCreator</annotatorImplementationName>
+  <analysisEngineMetaData>
+    <name>SvmChainCreator</name>
+    <description/>
+    <version>1.0</version>
+    <vendor/>
+    <configurationParameters/>
+    <configurationParameterSettings/>
+    <typeSystemDescription>
+      <imports>
+        <import name="org.apache.ctakes.coreference.types.TypeSystem"/>
+      </imports>
+    </typeSystemDescription>
+    <typePriorities/>
+    <fsIndexCollection/>
+    <capabilities>
+      <capability>
+        <inputs/>
+        <outputs/>
+        <languagesSupported/>
+      </capability>
+    </capabilities>
+    <operationalProperties>
+      <modifiesCas>true</modifiesCas>
+      <multipleDeploymentAllowed>true</multipleDeploymentAllowed>
+      <outputsNewCASes>false</outputsNewCASes>
+    </operationalProperties>
+  </analysisEngineMetaData>
+  <externalResourceDependencies>
+    <externalResourceDependency>
+      <key>svmPronModel</key>
+      <description>pronoun model file</description>
+      <interfaceName>org.apache.ctakes.core.resource.FileResource</interfaceName>
+      <optional>false</optional>
+    </externalResourceDependency>
+    <externalResourceDependency>
+      <key>svmDemModel</key>
+      <description>demonstrative and relative pronoun model file</description>
+      <interfaceName>org.apache.ctakes.core.resource.FileResource</interfaceName>
+      <optional>false</optional>
+    </externalResourceDependency>
+    <externalResourceDependency>
+      <key>svmAnaphoricityModel</key>
+      <description>anaphoricity classifier model file</description>
+      <interfaceName>org.apache.ctakes.core.resource.FileResource</interfaceName>
+      <optional>false</optional>
+    </externalResourceDependency>
+    <externalResourceDependency>
+      <key>svmCorefModel</key>
+      <description>coreference classifier model file</description>
+      <interfaceName>org.apache.ctakes.core.resource.FileResource</interfaceName>
+      <optional>false</optional>
+    </externalResourceDependency>
+    <externalResourceDependency>
+      <key>stopWords</key>
+      <description>snowball English stop words list</description>
+      <interfaceName>org.apache.ctakes.core.resource.FileResource</interfaceName>
+      <optional>true</optional>
+    </externalResourceDependency>
+    <externalResourceDependency>
+      <key>frags</key>
+      <description>File of tree kernel fragment features</description>
+      <interfaceName>org.apache.ctakes.core.resource.FileResource</interfaceName>
+      <optional>true</optional>
+    </externalResourceDependency>
+  </externalResourceDependencies>
+  <resourceManagerConfiguration>
+    <externalResources>
+      <externalResource>
+        <name>svmPronModelFile</name>
+        <description/>
+        <fileResourceSpecifier>
+          <fileUrl>file:org/apache/ctakes/coreference/models/pronoun.mayo.rbf.model</fileUrl>
+        </fileResourceSpecifier>
+        <implementationName>org.apache.ctakes.core.resource.FileResourceImpl</implementationName>
+      </externalResource>
+      <externalResource>
+        <name>svmDemModelFile</name>
+        <description/>
+        <fileResourceSpecifier>
+          <fileUrl>file:org/apache/ctakes/coreference/models/dem.model</fileUrl>
+        </fileResourceSpecifier>
+        <implementationName>org.apache.ctakes.core.resource.FileResourceImpl</implementationName>
+      </externalResource>
+      <externalResource>
+        <name>svmAnaphoricityModelFile</name>
+        <description/>
+        <fileResourceSpecifier>
+          <fileUrl>file:org/apache/ctakes/coreference/models/anaphoricity.mayo.rbf.model</fileUrl>
+        </fileResourceSpecifier>
+        <implementationName>org.apache.ctakes.core.resource.FileResourceImpl</implementationName>
+      </externalResource>
+      <externalResource>
+        <name>svmCorefModelFile</name>
+        <description/>
+        <fileResourceSpecifier>
+          <fileUrl>file:org/apache/ctakes/coreference/models/ne.mayo.rbf.model</fileUrl>
+        </fileResourceSpecifier>
+        <implementationName>org.apache.ctakes.core.resource.FileResourceImpl</implementationName>
+      </externalResource>
+      <externalResource>
+        <name>StopWordsFile</name>
+        <description/>
+        <fileResourceSpecifier>
+          <fileUrl>file:org/apache/ctakes/coreference/models/stop.txt</fileUrl>
+        </fileResourceSpecifier>
+        <implementationName>org.apache.ctakes.core.resource.FileResourceImpl</implementationName>
+      </externalResource>
+      <externalResource>
+        <name>fragsFile</name>
+        <description/>
+        <fileResourceSpecifier>
+          <fileUrl>file:org/apache/ctakes/coreference/models/frags.txt</fileUrl>
+        </fileResourceSpecifier>
+        <implementationName>org.apache.ctakes.core.resource.FileResourceImpl</implementationName>
+      </externalResource>
+    </externalResources>
+    <externalResourceBindings>
+      <externalResourceBinding>
+        <key>svmPronModel</key>
+        <resourceName>svmPronModelFile</resourceName>
+      </externalResourceBinding>
+      <externalResourceBinding>
+        <key>svmDemModel</key>
+        <resourceName>svmDemModelFile</resourceName>
+      </externalResourceBinding>
+      <externalResourceBinding>
+        <key>svmAnaphoricityModel</key>
+        <resourceName>svmAnaphoricityModelFile</resourceName>
+      </externalResourceBinding>
+      <externalResourceBinding>
+        <key>stopWords</key>
+        <resourceName>StopWordsFile</resourceName>
+      </externalResourceBinding>
+      <externalResourceBinding>
+        <key>svmCorefModel</key>
+        <resourceName>svmCorefModelFile</resourceName>
+      </externalResourceBinding>
+      <externalResourceBinding>
+        <key>frags</key>
+        <resourceName>fragsFile</resourceName>
+      </externalResourceBinding>
+    </externalResourceBindings>
+  </resourceManagerConfiguration>
+</analysisEngineDescription>

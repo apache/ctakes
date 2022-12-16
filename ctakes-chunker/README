@@ -1,0 +1,138 @@
+Contents
+- Listing of README's in this project
+- Introduction
+- Building a model
+- Tagging text - Running the Chunker analysis engine
+	- Chunker.xml
+	- ChunkerAggregate.xml
+	- ChunkerCPE.xml
+- Running the Chunk Adjuster analysis engine
+	- ChunkAdjuster.xml
+	- AdjustNounPhraseToIncludeFollowingNP.xml
+	- AdjustNounPhraseToIncludeFollowingPPNP.xml
+
+###################################
+Listing of README's in this project
+###################################
+
+ - data/chunk/genia/README - how to prepare Genia chunk training data
+ - data/chunk/ptb/README - how to prepare PTB chunk training data
+ - data/treebank/genia/README - how to prepare Genia Treebank data for ChunkLink
+ - resources/models/README - how to build a chunker model
+ - scripts/perl/README - information on obtaining the chunklink script
+ - target/test-classes/data/README - a description of the files used to unit test the Chunker annotator
+ 
+############
+Introduction
+############
+
+Throughout this document when we refer to a "chunker" we often mean a shallow 
+parser - i.e. a component that tags noun phrases, verb phrases, etc.  
+
+This project supports three tasks:
+1) Building a model from training data
+2) Tagging text, using a trained model
+3) Adjusting the end offset of certain chunks so they envelop other chunks,
+   for certain patterns of chunks.
+  
+This project provides a UIMA wrapper around the popular OpenNLP chunker. 
+The UIMA examples project provides default wrappers for several of the 
+components in OpenNLP, but not for the chunker.  We have borrowed from 
+the UIMA examples project liberally.  Our wrapper works with our 
+type system.  Additionally, we added features and supporting components.
+We also documented how to generate training data and how to build a chunker model. 
+
+A chunker model is included with this project.
+
+The model derives from a combination of GENIA, Penn Treebank (Wall Street Journal) and anonymized
+clinical data per Safe Harbor HIPAA guidelines. Prior to model building, the clinical data was 
+deidentified for patient names to preserve patient confidentiality. Any person name in the model 
+will originate from non-patient data sources.
+
+################
+Building a model 
+################
+
+If you wish to build your own mode you will need to follow these steps:
+1) obtain training data - see data/chunk/genia/README and data/chunk/ptb/README
+2) build a model from your training data - see resources/models/README
+
+##################################################
+Tagging text - Running the Chunker analysis engine
+##################################################
+
+%%%%%%%%%%%%%
+Chunker.xml
+
+The file desc/Chunker.xml provides a descriptor for the Chunker analysis 
+engine which is the UIMA component we have written that wraps the OpenNLP 
+chunker / shallow parser.  Open this file using the Component Descriptor 
+Editor as described in the tutorial.  Click on the tab labeled "Overview" 
+to observe that the class called by this descriptor is 
+"org.apache.ctakes.chunker.ae.Chunker".  Click on the tab labeled 
+"Parameter Settings" to view the parameters required by the POSTagger 
+component.  The descriptor file does not document the parameters because 
+they are documented in the api javadocs for the class 
+org.apache.ctakes.chunker.ae.Chunker.  Please consult that documentation for 
+additional details.  The parameters are:
+- ModelFile - the file that contains the chunker tagging model
+- ChunkerCreatorClass - the full class name of an implementation of the 
+                        interface org.apache.ctakes.chunker.ae.ChunkerCreator
+
+%%%%%%%%%%%%%%%%%%%%%%
+ChunkerAggregate.xml
+
+The file desc/ChunkerAggregate.xml provides a descriptor that defines a 
+pipeline for shallow parsing so that all the necessary inputs (e.g. tokens, 
+sentences, and pos tags) have been added to the CAS.  Open this file using 
+the Component Descriptor Editor as described in the tutorial.  Click on 
+the tab labeled "Overview" to observe that the engine type is "Aggregate".  
+Click on the tab labeled "Aggregate" to see the components that need to be 
+run before the Chunker can run.  Click on the tab labeled "Parameter Settings"
+to see that the same two parameters need to be set from the Chunker.xml file
+in addition to the three parameters required by the POSTagger (see 
+"POS tagger/README").  If you assign these parameters acceptable values, 
+you can run open and run desc/ChunkerAggregate.xml using the CAS Visual
+Debugger as described in the tutorial.  
+
+%%%%%%%%%%%%%%%%
+ChunkerCPE.xml
+
+The file desc/ChunkerCPE.xml provides an xml-specification of a component 
+processing engine (CPE) which can be opened, edited, and run using the 
+UIMA CPE GUI as described in the tutorial.  Open this file using the UIMA 
+CPE GUI and set the parameters for the collection reader to point to a local
+collection of files that you want shallow parsed.  Set the parameters for 
+the Chunker as appropriate for your environment and, finally, set the output
+directory of the XCAS Writer CAS Consumer.  The results of running the 
+pipeline are written to the output directory as XCAS files.  These files 
+can be viewed in the CAS Visual Debugger as described in the tutorial.  
+
+	     
+##################################################
+Running the Chunk Adjuster analysis engine
+##################################################
+
+%%%%%%%%%%%%%%%%%
+ChunkAdjuster.xml
+
+Example of descriptor for the ChunkAdjuster.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+AdjustNounPhraseToIncludeFollowingNP.xml
+
+Descriptor for the ChunkAdjuster, with parameters set so that consecutive
+noun phrase (NP) chunks are pseudo-merged -- the end-offset of the first NP 
+is changed to match the end-offset of the last NP in a consecutive list of NPs.
+ 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+AdjustNounPhraseToIncludeFollowingPPNP.xml
+
+Descriptor for the ChunkAdjuster, with parameters set so that a sequence of NP PP NP chunks   
+are pseudo-merged -- the end-offset of the first NP is changed to match the end-offset
+of the last NP in NP PP NP.  This adjustment is applied repeatedly, so for a pattern
+of NP PP NP PP NP, the end offset for the first NP is set to match the end offset
+of the last NP. 
+ 
+  

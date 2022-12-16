@@ -1,0 +1,52 @@
+<assembly xmlns="http://maven.apache.org/ASSEMBLY/2.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.0.0 http://maven.apache.org/xsd/assembly-2.0.0.xsd">
+   <id>bin</id>
+   <formats>
+      <format>dir</format>
+   </formats>
+   <includeBaseDirectory>false</includeBaseDirectory>
+
+   <dependencySets>
+      <dependencySet>
+         <includes>
+            <include>org.apache.ctakes:dockhand-local</include>
+         </includes>
+         <useTransitiveFiltering>true</useTransitiveFiltering>
+         <fileMode>644</fileMode>
+         <directoryMode>755</directoryMode>
+         <outputDirectory>lib</outputDirectory>
+      </dependencySet>
+   </dependencySets>
+
+
+   <fileSets>
+      <fileSet>
+         <directory>.</directory>
+         <outputDirectory/>
+         <includes>
+            <include>*.piper</include>
+            <include>*.sh</include>
+            <include>*.bat</include>
+         </includes>
+         <fileMode>644</fileMode>
+         <directoryMode>755</directoryMode>
+      </fileSet>
+   </fileSets>
+
+   <files>
+      <file>
+         <source>LICENSE</source>
+         <outputDirectory/>
+      </file>
+      <file>
+         <source>NOTICE</source>
+         <outputDirectory/>
+      </file>
+      <file>
+         <source>log4j.xml</source>
+         <outputDirectory/>
+      </file>
+   </files>
+
+</assembly>

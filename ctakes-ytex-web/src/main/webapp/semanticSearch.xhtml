@@ -1,0 +1,176 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:icecore="http://www.icefaces.org/icefaces/core"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ice="http://www.icesoft.com/icefaces/component">
+
+<h:body>
+	<ui:composition template="WEB-INF/inc-templates/commonLayout.xhtml">
+		<!-- params for page titles-->
+		<ui:param name="pageTitle" value="Semantic Search" />
+		<ui:param name="contentHeader" value="Semantic Search" />
+
+		<!-- header content here  -->
+		<ui:define name="pageName">
+                #{contentHeader}
+        </ui:define>
+
+		<!-- insert content here -->
+		<ui:define name="pageContent">
+			<ice:form id="umlsSearch">
+				<ice:panelGrid columns="1">
+					<ice:panelGroup>
+						<table border="0">
+							<tr valign="top">
+								<td><ice:outputLabel id="codeLabel" value="Concept ID:" />
+								</td>
+								<td><ice:outputText
+										value="Enter the first word of the concept and select a concept ID" /><br />
+									<ice:selectInputText id="codeInput" rows="30" width="300"
+										valueChangeListener="#{semanticSearchBean.updateList}"
+										required="true">
+										<f:selectItems value="#{semanticSearchBean.list}" />
+									</ice:selectInputText></td>
+							</tr>
+							<tr valign="top">
+								<td><ice:outputLabel id="patientIdLabel"
+										value="Patient ID:" /></td>
+								<td><ice:inputText id="patientIdInput"
+										value="#{semanticSearchBean.patientId}" required="false">
+										<f:convertNumber integerOnly="true" groupingUsed="false" />
+									</ice:inputText></td>
+							</tr>
+							<tr valign="top">
+								<td><ice:outputLabel id="fromDateTxt" value="From Date:" />
+								</td>
+								<td><ice:selectInputDate id="fromDateInput"
+										renderMonthAsDropdown="true" renderYearAsDropdown="true"
+										value="#{semanticSearchBean.dateFrom}" title="From Date"
+										renderAsPopup="true" required="false">
+										<f:convertDateTime pattern="MM/dd/yyyy" />
+									</ice:selectInputDate></td>
+							</tr>
+							<tr valign="top">
+								<td><ice:outputLabel id="toDateTxt" value="To Date:" /></td>
+								<td><ice:selectInputDate id="toDateInput"
+										renderMonthAsDropdown="true" renderYearAsDropdown="true"
+										value="#{semanticSearchBean.dateTo}" title="To Date"
+										renderAsPopup="true" required="false">
+										<f:convertDateTime pattern="MM/dd/yyyy" />
+									</ice:selectInputDate></td>
+							</tr>
+							<tr valign="top">
+								<td><ice:outputLabel id="negationContextLabel"
+										value="Negation Context:" /></td>
+								<td><ice:selectOneRadio id="negationContextInput"
+										value="#{semanticSearchBean.negationStatus}" required="false">
+										<f:selectItem itemValue="#{true}" itemLabel="Affirmed" />
+										<f:selectItem itemValue="#{false}" itemLabel="Negated" />
+									</ice:selectOneRadio></td>
+							</tr>
+						</table>
+						<ice:commandButton id="Search" value="Search" title="Search"
+							actionListener="#{semanticSearchBean.searchListen}" />
+						<ice:commandButton id="Reset" value="Reset" title="Reset"
+							actionListener="#{semanticSearchBean.resetListen}" />
+					</ice:panelGroup>
+					<br />
+					<ice:panelGroup>
+						<ice:outputText value="Search Term:" style="font-weight:bold;" />
+						<ice:panelGrid columns="2">
+							<ice:outputText value="CUI:" />
+							<ice:outputText id="cui"
+								value="#{semanticSearchBean.searchCUI.conceptId}" />
+							<ice:outputText value="Text:" />
+							<ice:outputText id="text"
+								value="#{semanticSearchBean.searchCUI.text}" />
+						</ice:panelGrid>
+					</ice:panelGroup>
+
+				</ice:panelGrid>
+			</ice:form>
+
+
+			<ice:form>
+				<ice:dataTable value="#{semanticSearchBean.searchResultList}"
+					var="item">
+
+					<ice:column>
+						<f:facet name="header">
+							<ice:outputText value="Doc ID" />
+						</f:facet>
+						<ice:outputLink
+							value="./viewDocument.iface?documentID=#{item.documentID}">
+							<ice:outputText value="#{item.documentID}" />
+						</ice:outputLink>
+					</ice:column>
+
+					<ice:column>
+						<f:facet name="header">
+							<ice:outputText value="Date" />
+						</f:facet>
+						<ice:outputText value="#{item.documentDate}" />
+					</ice:column>
+
+					<ice:column>
+						<f:facet name="header">
+							<ice:outputText value="Title" />
+						</f:facet>
+						<ice:outputText value="#{item.documentTitle}" />
+					</ice:column>
+
+					<ice:column>
+						<f:facet name="header">
+							<ice:outputText value="Doc Type" />
+						</f:facet>
+						<ice:outputText value="#{item.documentTypeName}" />
+					</ice:column>
+
+					<ice:column>
+						<f:facet name="header">
+							<ice:outputText value="Term" />
+						</f:facet>
+						<ice:outputText value="#{item.cuiText}" />
+					</ice:column>
+
+					<ice:column>
+						<f:facet name="header">
+							<ice:outputText value="Sentence" />
+						</f:facet>
+						<ice:outputText value="#{item.sentenceText}" />
+					</ice:column>
+
+				</ice:dataTable>
+			</ice:form>
+		</ui:define>
+
+
+	</ui:composition>
+
+</h:body>
+
+</html>

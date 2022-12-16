@@ -1,0 +1,8 @@
+// Thread Safe Default Clinical Pipeline with events, times, event-event and event-time relations plus event-document creation time relations
+// and coreferences
+
+// Default Temporal pipeline
+load TsDefaultTemporalPipeline
+
+// Coreference resolution
+load TsCorefSubPipe

@@ -1,0 +1,1 @@
+classpath*:edu/mayo/bmi/uima/ctakes-core/type/**/*.xml

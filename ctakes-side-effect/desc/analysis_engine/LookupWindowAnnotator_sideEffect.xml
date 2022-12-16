@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<taeDescription xmlns="http://uima.apache.org/resourceSpecifier">
+  <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
+  <primitive>false</primitive>
+  <delegateAnalysisEngineSpecifiers>
+    <delegateAnalysisEngine key="NP2LookupWindow">
+      <import location="../../../ctakes-clinical-pipeline/desc/analysis_engine/NP2LookupWindow.xml"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="DrugCNP2LookupWindow">
+      <import location="../../../ctakes-drug-ner/desc/analysis_engine/DrugCNP2LookupWindow.xml"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="VG2LookupWindow">
+      <import location="VG2LookupWindow.xml"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="AdjP2LookupWindow">
+      <import location="AdjP2LookupWindow.xml"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="AdjustNPToIncludePPNP">
+      <import location="../../../ctakes-chunker/desc/AdjustNounPhraseToIncludeFollowingPPNP.xml"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="MaxLookupWindows">
+      <import location="../../../ctakes-clinical-pipeline/desc/analysis_engine/MaxLookupWindows.xml"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="AdjustNPToIncludeNP">
+      <import location="../../../ctakes-chunker/desc/AdjustNounPhraseToIncludeFollowingNP.xml"/>
+    </delegateAnalysisEngine>
+  </delegateAnalysisEngineSpecifiers>
+  <analysisEngineMetaData>
+    <name>LookupWindowAnnotator_sideEffect</name>
+    <description>Selects pre-existing annotations in the CAS to become LookupWindow annotations for the side effect project</description>
+    <version/>
+    <vendor/>
+    <configurationParameters/>
+    <configurationParameterSettings/>
+    <flowConstraints>
+      <fixedFlow>
+        <node>AdjustNPToIncludeNP</node>
+        <node>AdjustNPToIncludePPNP</node>
+        <node>NP2LookupWindow</node>
+        <node>DrugCNP2LookupWindow</node>
+        <node>VG2LookupWindow</node>
+      </fixedFlow>
+    </flowConstraints>
+    <fsIndexCollection/>
+    <capabilities>
+      <capability>
+        <inputs>
+          <type allAnnotatorFeatures="true">edu.mayo.bmi.uima.cdt.types.ProblemListAnnotation</type>
+          <type allAnnotatorFeatures="true">uima.tt.PNPAnnotation</type>
+          <type allAnnotatorFeatures="true">uima.tt.NPSAnnotation</type>
+          <type allAnnotatorFeatures="true">uima.tt.NPPAnnotation</type>
+          <type allAnnotatorFeatures="true">uima.tt.NPListAnnotation</type>
+          <type allAnnotatorFeatures="true">uima.tt.NPAnnotation</type>
+          <type allAnnotatorFeatures="true">uima.tt.CNPAnnotation</type>
+        </inputs>
+        <outputs>
+          <type allAnnotatorFeatures="true">org.apache.ctakes.typesystem.type.textspan.LookupWindowAnnotation</type>
+        </outputs>
+        <languagesSupported/>
+      </capability>
+    </capabilities>
+    <operationalProperties>
+      <modifiesCas>true</modifiesCas>
+      <multipleDeploymentAllowed>true</multipleDeploymentAllowed>
+      <outputsNewCASes>false</outputsNewCASes>
+    </operationalProperties>
+  </analysisEngineMetaData>
+</taeDescription>

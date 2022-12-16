@@ -1,0 +1,206 @@
+<?xml version="1.0"?>
+<!-- see accompanying README.txt	-->
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.apache.ctakes</groupId>
+		<artifactId>ctakes</artifactId>
+		<version>5.0.0-SNAPSHOT</version>
+	</parent>
+	<artifactId>ctakes-ytex-web</artifactId>
+	<packaging>war</packaging>
+	<name>Apache cTAKES YTEX Web</name>
+	<url>http://ctakes.apache.org</url>
+	<inceptionYear>2012</inceptionYear>
+	<properties>
+		<jetty.useTestScope>false</jetty.useTestScope>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.ctakes</groupId>
+			<artifactId>ctakes-ytex</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.faces</groupId>
+			<artifactId>jsf-api</artifactId>
+			<version>${jsf-api.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.faces</groupId>
+			<artifactId>jsf-impl</artifactId>
+			<version>${jsf-impl.version}</version>
+		</dependency>
+		<!-- <dependency> <groupId>org.icepush</groupId> <artifactId>icepush</artifactId> 
+			<version>2.0.2</version> </dependency> -->
+		<dependency>
+			<groupId>org.icefaces</groupId>
+			<artifactId>icefaces</artifactId>
+			<version>${icefaces.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.icefaces</groupId>
+			<artifactId>icefaces-ace</artifactId>
+			<version>${icefaces.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.icefaces</groupId>
+			<artifactId>icefaces-compat</artifactId>
+			<version>${icefaces.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>backport-util-concurrent</groupId>
+			<artifactId>backport-util-concurrent</artifactId>
+			<version>${backport-util.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.jsr107cache</groupId>
+			<artifactId>jsr107cache</artifactId>
+			<version>${jsr107cache.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-frontend-jaxws</artifactId>
+			<version>${cxf.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-frontend-jaxrs</artifactId>
+			<version>${cxf.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-transports-http</artifactId>
+			<version>${cxf.version}</version>
+		</dependency>
+		<!-- Jetty is needed if you're are not using the CXFServlet <dependency> 
+			<groupId>org.apache.cxf</groupId> <artifactId>cxf-rt-transports-http-jetty</artifactId> 
+			<version>${cxf.version}</version> </dependency> -->
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-databinding-aegis</artifactId>
+			<version>${cxf.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>${servlet-jsp-api.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>${servlet-jstl.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-el</groupId>
+			<artifactId>commons-el</artifactId>
+			<version>${commons-el.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.web</groupId>
+			<artifactId>el-impl</artifactId>
+			<version>${glassfish-web.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-server</artifactId>
+			<version>${jetty.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-runner</artifactId>
+			<version>${jetty.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-jsp</artifactId>
+			<version>${jetty.version}</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+
+			<!--    ctakes-ytex is a separate module with its own code repo.
+        ytex-web wants its resources.  There was a dirty hack in 4.0.0, but below is a
+        different method that should produce a usable result.
+          Using the plugin instead of redirecting resources allows maven to appropriately
+        build a classpath.   -->
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>3.0.2</version>
+				<executions>
+					<execution>
+						<id>copy-resources</id>
+						<phase>compile</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/target/classes</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${basedir}/../ctakes-ytex/src/main/resources</directory>
+									<filtering>true</filtering>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+
+			<plugin>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>${jetty.version}</version>
+				<executions>
+					<execution>
+						<id>start-jetty</id>
+						<!-- <phase>pre-integration-test</phase> -->
+						<configuration>
+							<scanIntervalSeconds>5</scanIntervalSeconds>
+							<stopPort>9966</stopPort>
+							<stopKey>foo</stopKey>
+							<useProvidedScope>true</useProvidedScope>
+							<useTestScope>${jetty.useTestScope}</useTestScope>
+							<connectors>
+								<connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
+									<port>9080</port>
+									<maxIdleTime>60000</maxIdleTime>
+								</connector>
+							</connectors>
+							<daemon>true</daemon>
+							<jvmArgs>-XX:MaxPermSize=128m -Xmx512m
+								-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8000</jvmArgs>
+						</configuration>
+						<goals>
+							<goal>run-forked</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>stop-jetty</id>
+						<!-- <phase>post-integration-test</phase> -->
+						<goals>
+							<goal>stop</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+			    <artifactId>maven-war-plugin</artifactId>
+				<version>${maven-war-plugin.version}</version>
+			    <configuration>
+			        <attachClasses>true</attachClasses>
+			    </configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

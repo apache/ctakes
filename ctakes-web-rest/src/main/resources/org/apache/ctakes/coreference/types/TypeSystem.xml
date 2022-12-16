@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<typeSystemDescription xmlns="http://uima.apache.org/resourceSpecifier">
+  <name>org.apache.ctakes.coreference.types.TypeSystem</name>
+  <description/>
+  <version>1.0</version>
+  <vendor/>
+  <imports>
+    <import location="Pair.xml"/>
+    <import location="BooleanLabeledFS.xml"/>
+  </imports>
+  <types>
+    <typeDescription>
+      <name>org.apache.ctakes.coreference.type.Markable</name>
+      <description/>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+      <features>
+        <featureDescription>
+          <name>content</name>
+          <description>The markable instance, i.e., a Named Entity, pronoun Token, etc.</description>
+          <rangeTypeName>uima.tcas.Annotation</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>id</name>
+          <description/>
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>anaphoric_prob</name>
+          <description/>
+          <rangeTypeName>uima.cas.Double</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
+      <name>org.apache.ctakes.coreference.type.PronounMarkable</name>
+      <description/>
+      <supertypeName>org.apache.ctakes.coreference.type.Markable</supertypeName>
+    </typeDescription>
+    <typeDescription>
+      <name>org.apache.ctakes.coreference.type.NEMarkable</name>
+      <description/>
+      <supertypeName>org.apache.ctakes.coreference.type.Markable</supertypeName>
+    </typeDescription>
+    <typeDescription>
+      <name>org.apache.ctakes.coreference.type.DemMarkable</name>
+      <description/>
+      <supertypeName>org.apache.ctakes.coreference.type.Markable</supertypeName>
+    </typeDescription>
+    <typeDescription>
+      <name>org.apache.ctakes.coreference.type.MarkablePair</name>
+      <description/>
+      <supertypeName>uima.cas.TOP</supertypeName>
+      <features>
+        <featureDescription>
+          <name>antecedent</name>
+          <description>Proposed antecedent</description>
+          <rangeTypeName>org.apache.ctakes.coreference.type.Markable</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>anaphor</name>
+          <description/>
+          <rangeTypeName>org.apache.ctakes.coreference.type.Markable</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>label</name>
+          <description>Is this pair coreferent?</description>
+          <rangeTypeName>uima.cas.Boolean</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
+      <name>org.apache.ctakes.coreference.type.MarkablePairSet</name>
+      <description/>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+      <features>
+        <featureDescription>
+          <name>anaphor</name>
+          <description/>
+          <rangeTypeName>org.apache.ctakes.coreference.type.Markable</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>antecedentList</name>
+          <description/>
+          <rangeTypeName>uima.cas.FSList</rangeTypeName>
+          <elementType>org.chboston.cnlp.ctakes.common.BooleanLabeledFS</elementType>
+        </featureDescription>
+      </features>
+    </typeDescription>
+  </types>
+</typeSystemDescription>

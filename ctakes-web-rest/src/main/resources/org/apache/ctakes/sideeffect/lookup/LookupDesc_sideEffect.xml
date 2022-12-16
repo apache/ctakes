@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<lookupSpecification>
+	<!--  Defines what Gazetteers will be used in terms of implementation specifics and metaField configuration. -->
+	<dictionaries>
+		<dictionary id="GAZ_UMLS_MS_2009" externalResourceKey="SnomedIndexReader" caseSensitive="false" cacheDbLookup="true">
+			<implementation>
+				<luceneImpl/>
+			</implementation>
+			<lookupField fieldName="first_word"/>
+			<excludeList>
+			   <child value="does not"/>
+			   <child value="po" />
+			   <child value="dosed" />
+			   <child value="marriage" />
+			   <child value="education" />
+			   <child value="effort" />
+			   <child value="efforts" />
+			   <child value="follow-up" />
+			   <child value="cm"/> 
+			   <child value="w"/>
+			   <child value="k"/>
+         <child value="aid" />
+			   <child value="nearest" />
+			   <child value="near" />
+				<child value="foam" />
+				<child value="pt" />
+				<child value="dr" />
+				<child value="drs" />
+				<child value="md" />
+				<child value="pm" />
+				<child value="is" />
+				<child value="being" />
+				<child value="be" />
+				<child value="mg" />
+				<child value="zinc" />
+				<child value="iron" />
+				<child value="Lead" />
+				<child value="pt" />
+				<child value="symptoms"/>
+				<child value="symptom"/>
+				<child value="problem"/>
+				<child value="problems"/>
+				<child value="drinking"/>
+				<child value="no"/>
+				<child value="discontinued"/>
+				<child value="absence"/>
+				<child value="complaint"/>
+				<child value="complaints"/>
+				<child value="overdose"/>
+				<child value="history"/>
+				<child value="pregnancy"/>
+				<child value="initiation"/>
+			</excludeList>
+			<metaFields>
+				<metaField fieldName="cui"/>
+				<metaField fieldName="tui"/>
+				<metaField fieldName="text"/>
+			</metaFields>
+		</dictionary>
+		<dictionary id="GAZ_RXNORM" externalResourceKey="RxnormIndexReader" caseSensitive="false">
+			<implementation>
+				<luceneImpl/>
+			</implementation>
+			<lookupField fieldName="first_word"/>
+			<excludeList>
+				 <child value="program" />
+			   <child value="today" />
+			   <child value="nicotine" />
+			   <child value="alcohol"/>
+			   <child value="allergies"/>
+			   <child value="factor"/>
+			   <child value="bottle"/>
+			   <child value="bottles"/>
+			   <child value="film"/>
+			   <child value="spray"/>
+			   <child value="sprays"/>
+			   <child value="oil"/>
+			   <child value="oils"/>
+			   <child value="solution"/>
+			   <child value="solutions"/>
+			   <child value="sodium"/>
+			   <child value="syrup"/>
+			   <child value="inhaler"/>
+			   <child value="unit"/>
+			   <child value="units"/>
+			   <child value="cholesterol"/>
+			   <child value="completed"/>
+			   <child value="caplet"/>
+			   <child value="caplets"/>
+			   <child value="chewable"/>
+			   <child value="dose"/>
+			   <child value="doses"/>
+			   <child value="frozen"/>
+			   <child value="freeze"/>
+			   <child value="transdermal patch"/>
+			   <child value="tablet"/>
+			   <child value="tablets"/>
+			   <child value="pack"/>
+			   <child value="packs"/>
+			   <child value="patch"/>
+			   <child value="patches"/>
+			   <child value="pill"/>
+			   <child value="pills"/>
+			   <child value="ointment"/>
+			   <child value="oral"/>
+			   <child value="capsule"/>
+			   <child value="capsules"/>
+			   <child value="cream"/>
+			   <child value="disk"/>
+			   <child value="toothpaste"/>
+			   <child value="topical"/>
+			   <child value="liver"/>
+			   <child value="liquid"/>
+			   <child value="lotion"/>
+			   <child value="lozenge"/>
+			   <child value="lozenges"/>
+			   <child value="nebulizer"/>
+			   <child value="gas"/>
+			   <child value="gel"/>
+			   <child value="prostate"/>
+			   <child value="bar"/>
+			   <child value="be"/>
+			   <child value="being"/>
+			   <child value="cm"/>
+			   <child value="dr"/>
+			   <child value="drs"/>
+			   <child value="is"/>
+			   <child value="urea"/>
+			   <child value="children"/>
+			   <child value="solid"/>
+			   <child value="water"/>
+			   <child value="md"/><child value="pm"/><child value="mg"/><child value="a"/><child value="b"/><child value="c"/><child value="d"/><child value="e"/><child value="f"/><child value="g"/><child value="h"/><child value="i"/><child value="j"/><child value="k"/><child value="l"/><child value="m"/><child value="n"/><child value="o"/><child value="p"/><child value="q"/><child value="r"/><child value="s"/><child value="t"/><child value="q"/><child value="v"/><child value="w"/><child value="x"/><child value="y"/><child value="z"/>
+				<child value="aid" />
+				<child value="nearest" />
+				<child value="near" />
+				<child value="foam" />
+				<child value="pt" />
+				<child value="dr" />
+				<child value="drs" />
+				<child value="is" />
+				<child value="being" />
+				<child value="be" />
+				<child value="air" />
+				<child value="zinc" />
+				<child value="iron" />
+				<child value="Lead" />
+				<child value="foam" />
+				<child value="pt" />
+				<child value="ms" />
+			</excludeList>
+			<metaFields>
+				<metaField fieldName="code"/>
+				<metaField fieldName="codeRxNorm"/>
+				<metaField fieldName="preferred_designation"/>
+				<metaField fieldName="other_designation"/>
+				<metaField fieldName="databaseVersion"/>
+				<metaField fieldName="ndfrtClass1"/>
+				<metaField fieldName="ndfrtClass2"/>
+			</metaFields>
+		</dictionary>
+		<!-- Supplement Terms for the side effect project -->
+		<dictionary id="GAZ_CSV_SE" externalResourceKey="CsvSE" caseSensitive="false">
+		<implementation>
+			<csvImpl delimiter="|" indexedFieldNames="0"/>
+		</implementation>
+		<lookupField fieldName="0"/>
+		<metaFields>
+			<metaField fieldName="1"/>
+			<metaField fieldName="typeId"/>
+		</metaFields>
+		</dictionary>			
+	</dictionaries>
+	
+	<!-- Binds together the components necessary to perform the complete lookup logic start to end. -->
+	<lookupBindings>
+		<lookupBinding>
+			<dictionaryRef idRef="GAZ_UMLS_MS_2009"/>
+			<lookupInitializer className="org.apache.ctakes.dictionary.lookup.ae.FirstTokenPermLookupInitializerImpl">
+				<properties>
+					<property key="textMetaFields" value="text"/>
+					<property key="maxPermutationLevel" value="5"/>
+					<property key="windowAnnotations" value="org.apache.ctakes.typesystem.type.textspan.LookupWindowAnnotation"/>
+					<property key="exclusionTags" value="AUX,AUXD,AUXG,AUXN,AUXP,AUXZ,CC,CD,DT,EX,LS,MD,PDT,POS,PP,PP$,PRP,PRP$,RP,TO,WDT,WP,WPS,WRB"/>
+				</properties>
+			</lookupInitializer>
+			<lookupConsumer className="org.apache.ctakes.dictionary.lookup.ae.UmlsToSnomedLuceneConsumerImpl">
+				<properties>
+					<property key="codingScheme" value="SNOMED"/>
+					<property key="cuiMetaField" value="cui"/>
+					<property key="tuiMetaField" value="tui"/>
+					<property key="cuiMappingField" value="cui"/>
+					<property key="snomedCodeMappingField" value="code"/>
+					<!-- the following values are used as TUIs for testing: T_AS, T_PR, T_DD, T_SS -->
+					<property key="anatomicalSiteTuis" value="T021,T022,T023,T024,T025,T026,T029,T030,T_AS"/>
+					<property key="procedureTuis" value="T059,T060,T061,T_PR"/>
+					<property key="disorderTuis" value="T019,T020,T037,T046,T047,T048,T049,T050,T190,T191,T_DD"/>
+					<property key="findingTuis" value="T033,T034,T040,T041,T042,T043,T044,T045,T046,T056,T057,T184,T_SS"/>
+					<property key="luceneFilterExtResrcKey" value="UmlsIndexReader"/>
+				</properties>
+			</lookupConsumer>
+		</lookupBinding>
+		<lookupBinding>
+			<dictionaryRef idRef="GAZ_RXNORM"/>
+			<lookupInitializer className="org.apache.ctakes.dictionary.lookup.ae.FirstTokenPermLookupInitializerImpl">
+				<properties>
+					<property key="textMetaFields" value="preferred_designation|other_designation"/>
+					<property key="maxPermutationLevel" value="5"/>
+					<property key="windowAnnotations" value="org.apache.ctakes.typesystem.type.textspan.DrugLookupWindowAnnotation"/>
+					<property key="exclusionTags" value="AUX,AUXD,AUXG,AUXN,AUXP,AUXZ,CC,CD,DT,EX,LS,MD,PDT,POS,PP,PP$,RP,TO,WDT,WP,WPS,WRB"/>
+				</properties>
+			</lookupInitializer>
+			<lookupConsumer className="org.apache.ctakes.dictionary.lookup.ae.NamedEntityLookupConsumerImpl">
+				<properties>
+					<property key="codingScheme" value="RXNORM"/>
+					<property key="codeMetaField" value="code"/>
+					<property key="codeMetaRxField" value="codeRxNorm"/>
+					<property key="databaseVersion" value="RXN2009"/>
+					<property key="primaryClassification" value="ndfrtClass1"/>
+					<property key="secondaryClassification" value="ndfrtClass2"/>
+					<property key="luceneFilterExtResrcKey" value="NamedEntityLookupConsumer"/>
+				</properties>
+			</lookupConsumer>
+		</lookupBinding>
+		<!-- Supplement Terms for the side effect project -->
+		<lookupBinding>
+			<dictionaryRef idRef="GAZ_CSV_SE"/>												
+			<lookupInitializer className="org.apache.ctakes.dictionary.lookup.ae.FirstTokenPermLookupInitializerImpl">
+				<properties>
+					<property key="textMetaFields" value="1"/>
+					<property key="maxPermutationLevel" value="5"/>
+					<property key="windowAnnotations" value="org.apache.ctakes.typesystem.type.textspan.LookupWindowAnnotation"/>		
+				</properties>
+			</lookupInitializer>
+			<lookupConsumer className="org.apache.ctakes.dictionary.lookup.ae.NamedEntityLookupConsumerImpl">
+				<properties>
+					<property key="codingScheme" value="CT"/>
+					<property key="typeIdField" value="2"/>
+				</properties>
+			</lookupConsumer>
+		</lookupBinding>
+	</lookupBindings>
+</lookupSpecification>

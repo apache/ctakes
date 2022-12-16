@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<taeDescription xmlns="http://uima.apache.org/resourceSpecifier">
+  <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
+  <primitive>true</primitive>
+  <annotatorImplementationName>org.apache.ctakes.smokingstatus.ae.ClassifiableEntries</annotatorImplementationName>
+  <analysisEngineMetaData>
+    <name>ClassifiableEntriesAnnotator</name>
+    <description>Converts Sentences to ClassifiableEntries (required by SmokingStatus pipeline) and ultimately to RecordSentence.
+
+Update 1/20: Removed param [String InputDirectory]</description>
+    <version>1.0</version>
+    <vendor>Mayo</vendor>
+    <configurationParameters>
+      <configurationParameter>
+        <name>TruthFile</name>
+        <description>Delimited Truth file.  Delimiter is expected to be the TAB char.  
+
+This param is optional.  If not specified, then the classification feature of the RecordSentence object will not be set.</description>
+        <type>String</type>
+        <multiValued>false</multiValued>
+        <mandatory>false</mandatory>
+      </configurationParameter>
+      <configurationParameter>
+        <name>AllowedClassifications</name>
+        <description>See org.apache.ctakes.smokingstatus.Const.java for permitted string values.</description>
+        <type>String</type>
+        <multiValued>true</multiValued>
+        <mandatory>false</mandatory>
+      </configurationParameter>
+      <configurationParameter>
+        <name>SectionsToIgnore</name>
+        <description>sections to ignore for ClassifiableEntries - Family History (20109)</description>
+        <type>String</type>
+        <multiValued>true</multiValued>
+        <mandatory>false</mandatory>
+      </configurationParameter>
+    </configurationParameters>
+    <configurationParameterSettings>
+      <nameValuePair>
+        <name>TruthFile</name>
+        <value>
+          <string/>
+        </value>
+      </nameValuePair>
+      <nameValuePair>
+        <name>AllowedClassifications</name>
+        <value>
+          <array>
+            <string>SMOKER</string>
+            <string>CURRENT_SMOKER</string>
+            <string>NON_SMOKER</string>
+            <string>PAST_SMOKER</string>
+            <string>UNKNOWN</string>
+          </array>
+        </value>
+      </nameValuePair>
+      <nameValuePair>
+        <name>SectionsToIgnore</name>
+        <value>
+          <array>
+            <string>20109</string>
+            <string>20138</string>
+          </array>
+        </value>
+      </nameValuePair>
+    </configurationParameterSettings>
+    <typeSystemDescription>
+      <imports>
+		<import name="org.apache.ctakes.smokingstatus.types.TypeSystem"/>
+      </imports>
+    </typeSystemDescription>
+    <capabilities>
+      <capability>
+        <inputs/>
+        <outputs/>
+        <languagesSupported/>
+      </capability>
+    </capabilities>
+    <operationalProperties>
+      <modifiesCas>true</modifiesCas>
+      <multipleDeploymentAllowed>true</multipleDeploymentAllowed>
+      <outputsNewCASes>false</outputsNewCASes>
+    </operationalProperties>
+  </analysisEngineMetaData>
+  <externalResourceDependencies>
+    <externalResourceDependency>
+      <key>UimaDescriptorStep1Key</key>
+      <description/>
+      <interfaceName>org.apache.ctakes.core.resource.FileResource</interfaceName>
+      <optional>false</optional>
+    </externalResourceDependency>
+    <externalResourceDependency>
+      <key>UimaDescriptorStep2Key</key>
+      <description/>
+      <interfaceName>org.apache.ctakes.core.resource.FileResource</interfaceName>
+      <optional>false</optional>
+    </externalResourceDependency>
+    <externalResourceDependency>
+      <key>negationContradictionWordsKey</key>
+      <description/>
+      <interfaceName>org.apache.ctakes.core.resource.FileResource</interfaceName>
+      <optional>false</optional>
+    </externalResourceDependency>
+  </externalResourceDependencies>
+  <resourceManagerConfiguration>
+    <externalResources>
+      <externalResource>
+        <name>UimaDescriptorStep1</name>
+        <description/>
+        <fileResourceSpecifier>
+          <fileUrl>file:org/apache/ctakes/smokingstatus/analysis_engine/ProductionPostSentenceAggregate_step1.xml</fileUrl>
+        </fileResourceSpecifier>
+        <implementationName>org.apache.ctakes.core.resource.FileResourceImpl</implementationName>
+      </externalResource>
+      <externalResource>
+        <name>UimaDescriptorStep2</name>
+        <description/>
+        <fileResourceSpecifier>
+          <fileUrl>file:org/apache/ctakes/smokingstatus/analysis_engine/ProductionPostSentenceAggregate_step2_libsvm.xml</fileUrl>
+        </fileResourceSpecifier>
+        <implementationName>org.apache.ctakes.core.resource.FileResourceImpl</implementationName>
+      </externalResource>
+      <externalResource>
+        <name>negationContradictionWords</name>
+        <description/>
+        <fileResourceSpecifier>
+          <fileUrl>file:org/apache/ctakes/smokingstatus/data/context/negationContradictionWords.txt</fileUrl>
+        </fileResourceSpecifier>
+        <implementationName>org.apache.ctakes.core.resource.FileResourceImpl</implementationName>
+      </externalResource>
+    </externalResources>
+    <externalResourceBindings>
+      <externalResourceBinding>
+        <key>UimaDescriptorStep1Key</key>
+        <resourceName>UimaDescriptorStep1</resourceName>
+      </externalResourceBinding>
+      <externalResourceBinding>
+        <key>UimaDescriptorStep2Key</key>
+        <resourceName>UimaDescriptorStep2</resourceName>
+      </externalResourceBinding>
+      <externalResourceBinding>
+        <key>negationContradictionWordsKey</key>
+        <resourceName>negationContradictionWords</resourceName>
+      </externalResourceBinding>
+    </externalResourceBindings>
+  </resourceManagerConfiguration>
+</taeDescription>

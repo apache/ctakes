@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+http://www.apache.org/licenses/LICENSE-2.0
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+
+<!--    New format for the .xml lookup specification.  Uses table name and value type/class for Concept Factories.  -->
+<lookupSpecification>
+<dictionaries>
+   <dictionary>
+      <name>customDictionaryTerms</name>
+      <implementationName>org.apache.ctakes.dictionary.lookup2.dictionary.JdbcRareWordDictionary</implementationName>
+      <properties>
+<!-- urls for hsqldb memory connections must be file types in hsql 1.8.
+These file urls must be either absolute path or relative to current working directory.
+They cannot be based upon the classpath.
+Though JdbcConnectionFactory will attempt to "find" a db based upon the parent dir of the url
+for the sake of ide ease-of-use, the user should be aware of these hsql limitations.
+-->
+         <property key="jdbcDriver" value="com.mysql.jdbc.Driver"/>
+         <property key="jdbcUrl" value="jdbc:mysql://127.0.0.1:3306/umls?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false"/>
+         <property key="jdbcUser" value="root"/>
+         <property key="jdbcPass" value="pass"/>
+         <property key="rareWordTable" value="cui_terms"/>
+         <property key="umlsUrl" value="https://uts-ws.nlm.nih.gov/restful/isValidUMLSUser"/>
+         <property key="umlsVendor" value="NLM-6515182895"/>
+         <property key="umlsUser" value="CHANGE_ME"/>
+         <property key="umlsPass" value="CHANGE_ME"/>
+      </properties>
+   </dictionary>
+</dictionaries>
+
+<conceptFactories>
+   <conceptFactory>
+      <name>customDictionaryConcepts</name>
+      <implementationName>org.apache.ctakes.dictionary.lookup2.concept.JdbcConceptFactory</implementationName>
+      <properties>
+         <property key="jdbcDriver" value="com.mysql.jdbc.Driver"/>
+         <property key="jdbcUrl" value="jdbc:mysql://127.0.0.1:3306/umls?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false"/>
+         <property key="jdbcUser" value="root"/>
+         <property key="jdbcPass" value="pass"/>
+         <property key="umlsUrl" value="https://uts-ws.nlm.nih.gov/restful/isValidUMLSUser"/>
+         <property key="umlsVendor" value="NLM-6515182895"/>
+         <property key="umlsUser" value="CHANGE_ME"/>
+         <property key="umlsPass" value="CHANGE_ME"/>
+         <property key="tuiTable" value="tui"/>
+         <property key="prefTermTable" value="prefTerm"/>
+<!-- Optional tables for optional term info.
+Uncommenting these lines alone may not persist term information;
+persistence depends upon the TermConsumer.  -->
+         <property key="rxnormTable" value="long"/>
+         <property key="snomedct_usTable" value="long"/>
+         <property key="mdrTable" value="long"/>
+      </properties>
+   </conceptFactory>
+</conceptFactories>
+
+<!--  Defines what terms and concepts will be used  -->
+<dictionaryConceptPairs>
+   <dictionaryConceptPair>
+      <name>customDictionaryPair</name>
+      <dictionaryName>customDictionaryTerms</dictionaryName>
+      <conceptFactoryName>customDictionaryConcepts</conceptFactoryName>
+   </dictionaryConceptPair>
+</dictionaryConceptPairs>
+
+<!-- DefaultTermConsumer will persist all spans.
+PrecisionTermConsumer will only persist only the longest overlapping span of any semantic group.
+SemanticCleanupTermConsumer works as Precision** but also removes signs/sympoms contained within disease/disorder,
+and (just in case) removes any s/s and d/d that are also (exactly) anatomical sites. -->
+<rareWordConsumer>
+   <name>Term Consumer</name>
+   <implementationName>org.apache.ctakes.dictionary.lookup2.consumer.DefaultTermConsumer</implementationName>
+   <!--<implementationName>org.apache.ctakes.dictionary.lookup2.consumer.PrecisionTermConsumer</implementationName>-->
+   <!--<implementationName>org.apache.ctakes.dictionary.lookup2.consumer.SemanticCleanupTermConsumer</implementationName>-->
+   <properties>
+<!-- Depending upon the consumer, the value of codingScheme may or may not be used.  With the packaged consumers,
+codingScheme is a default value used only for cuis that do not have secondary codes (snomed, rxnorm, etc.)  -->
+         <property key="codingScheme" value="customDictionary"/>
+   </properties>
+</rareWordConsumer>
+
+</lookupSpecification>

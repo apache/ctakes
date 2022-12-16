@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<taeDescription xmlns="http://uima.apache.org/resourceSpecifier">
+  <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
+  <primitive>true</primitive>
+  <annotatorImplementationName>org.apache.ctakes.drugner.ae.DrugMentionAnnotator</annotatorImplementationName>
+  <analysisEngineMetaData>
+    <name>DrugMentionAnnotator</name>
+    <description>Generates DrugMentions and related attributes such as strength, dosage, frequency, etc.</description>
+    <version>1.0</version>
+    <vendor>Mayo</vendor>
+    <configurationParameters>
+      <configurationParameter>
+        <name>medicationRelatedSection</name>
+        <description>Section ids that need to be considered when generating the DrugMentionAnnotation</description>
+        <type>String</type>
+        <multiValued>true</multiValued>
+        <mandatory>false</mandatory>
+      </configurationParameter>
+      <configurationParameter>
+        <name>DISTANCE</name>
+        <description>Number of annotation types to be used as window.  Default is '1'</description>
+        <type>String</type>
+        <multiValued>false</multiValued>
+        <mandatory>false</mandatory>
+      </configurationParameter>
+      <configurationParameter>
+        <name>DISTANCE_ANN_TYPE</name>
+        <description>Type annotation annotion used for window.</description>
+        <type>String</type>
+        <multiValued>false</multiValued>
+        <mandatory>false</mandatory>
+      </configurationParameter>
+      <configurationParameter>
+        <name>STATUS_BOUNDARY_ANN_TYPE</name>
+        <type>String</type>
+        <multiValued>false</multiValued>
+        <mandatory>false</mandatory>
+      </configurationParameter>
+    </configurationParameters>
+    <configurationParameterSettings>
+      <nameValuePair>
+        <name>medicationRelatedSection</name>
+        <value>
+          <array>
+            <string>20101</string>
+            <string>20102</string>
+            <string>20103</string>
+            <string>20104</string>
+            <string>20105</string>
+            <string>20106</string>
+            <string>20107</string>
+            <string>20108</string>
+            <string>20109</string>
+            <string>20110</string>
+            <string>20111</string>
+            <string>20112</string>
+            <string>20113</string>
+            <string>20114</string>
+            <string>20115</string>
+            <string>20116</string>
+            <string>20117</string>
+            <string>20118</string>
+            <string>20119</string>
+            <string>20120</string>
+            <string>20121</string>
+            <string>20122</string>
+            <string>20123</string>
+            <string>20124</string>
+            <string>20125</string>
+            <string>20126</string>
+            <string>20127</string>
+            <string>20128</string>
+            <string>20129</string>
+            <string>20130</string>
+            <string>20110</string>
+            <string>20133</string>
+            <string>20147</string>
+            <string>SIMPLE_SEGMENT</string>
+          </array>
+        </value>
+      </nameValuePair>
+      <nameValuePair>
+        <name>DISTANCE</name>
+        <value>
+          <string>1</string>
+        </value>
+      </nameValuePair>
+      <nameValuePair>
+        <name>DISTANCE_ANN_TYPE</name>
+        <value>
+          <string>org.apache.ctakes.typesystem.type.textspan.Sentence</string>
+        </value>
+      </nameValuePair>
+      <nameValuePair>
+        <name>STATUS_BOUNDARY_ANN_TYPE</name>
+        <value>
+          <string>org.apache.ctakes.typesystem.type.textspan.Sentence</string>
+        </value>
+      </nameValuePair>
+    </configurationParameterSettings>
+<typeSystemDescription>    
+       <imports>
+         <import name="org.apache.ctakes.drugner.types.TypeSystem"/>
+       </imports>
+</typeSystemDescription>
+
+    <typePriorities/>
+    <fsIndexCollection/>
+    <capabilities>
+      <capability>
+        <inputs>
+          <type allAnnotatorFeatures="true">uima.tcas.Annotation</type>
+        </inputs>
+        <outputs>
+          <type allAnnotatorFeatures="true">org.apache.ctakes.drugner.type.RangeAnnotation</type>
+          <type allAnnotatorFeatures="true">org.apache.ctakes.drugner.type.MeasurementAnnotation</type>
+          <type allAnnotatorFeatures="true">org.apache.ctakes.drugner.type.FractionAnnotation</type>
+          <type allAnnotatorFeatures="true">org.apache.ctakes.drugner.type.DrugMentionAnnotation</type>
+        </outputs>
+        <languagesSupported/>
+      </capability>
+    </capabilities>
+    <operationalProperties>
+      <modifiesCas>true</modifiesCas>
+      <multipleDeploymentAllowed>true</multipleDeploymentAllowed>
+      <outputsNewCASes>false</outputsNewCASes>
+    </operationalProperties>
+  </analysisEngineMetaData>
+  <resourceManagerConfiguration/>
+</taeDescription>

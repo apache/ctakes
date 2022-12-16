@@ -1,0 +1,20 @@
+// Thread Safe Clinical Pipeline with sectionization, paragraph and list detection
+
+// set the thread count
+threads 3
+
+// Advanced Tokenization: Regex sectionization, Paragraphs, Lists
+load TsFullTokenizerPipeline
+
+// Add non-core annotators
+add ContextDependentTokenizerAnnotator
+addDescription POSTagger
+
+// Add Chunkers
+load TsChunkerSubPipe
+
+// Default fast dictionary lookup
+load TsDictionarySubPipe
+
+// Add Cleartk Entity Attribute annotators
+load TsAttributeCleartkSubPipe

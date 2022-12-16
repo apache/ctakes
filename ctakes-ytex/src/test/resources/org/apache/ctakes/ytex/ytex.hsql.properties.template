@@ -1,0 +1,24 @@
+# schema/database name 
+db.schema=PUBLIC
+# username
+db.username=SA
+# password
+db.password=
+
+db.directory=@ytex.hsql.db@
+# jdbc url for database.  schema name must match db.schema
+db.url=jdbc:hsqldb:file://@ytex.hsql.db@;shutdown=true
+
+# the schema where umls is installed
+# if not specified, will default to schema from ytex
+#umls.schema=umls
+
+
+# you should not have to modify anything below
+db.type=hsql
+db.driver=org.hsqldb.jdbcDriver
+db.initStatements=
+hibernate.dialect=org.hibernate.dialect.HSQLDialect
+
+# transaction isolation level
+db.isolationLevel=READ_UNCOMMITTED

@@ -1,0 +1,151 @@
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<project name="build-setup" default="help">
+	<description>
+		<![CDATA[
+Setup ytex
+
+Main target is 'all', which does the following:
+  * templateToConfig generates configuration files from templates. 
+  * setupDatabase call data/build.xml to setup the database.
+
+You *must* define the CTAKES_HOME environment variable, or set ctakes.home via the -D option:
+ant -Dctakes.home=c:\java\ctakes -file build-setup.xml
+	]]>
+	</description>
+	<!-- override these variables using eclipse settings/command line -->
+	<property name="context.root" value="ytex.web" />
+	<property name="catalina.base" value="${ytex.home}/web" />
+	<target name="help">
+		<echo>
+Ant build script to setup ytex.
+Call with option -projecthelp for more info.
+			${ctakes.url}
+</echo>
+	</target>
+	<import file="build-classpath.xml" />
+	<!-- -->
+	<property name="config.source.dir" value="${ytex.resources.home}" />
+	<property name="config.generated.dir" value="${config.local}" />
+	<property name="test.hsqldb.dir" value="${java.io.tmpdir}/ctakes-test-hsqldb/ctakes" />
+
+	<target name="all" depends="dbping,templateToConfig,setupDatabase" description="calls dbping,setup.ctakes,setup.lvg.all,templateToConfig,setupDatabase" />
+	<target name="dbping" description="verify db connection params">
+		<ant dir="./data" target="dbping" />
+	</target>
+	<target name="setupDatabase" description="setup ytex database tables">
+		<ant dir="./data" target="all" />
+	</target>
+	<target name="templateToConfig.init" description="setup variables for updating template">
+		<condition property="filter.umls.catalog" value="" else="catalog=&quot;${umls.catalog}&quot;">
+			<or>
+				<!-- for mysql/oracle, no catalog - assume umls in same catalog -->
+				<equals arg1="mysql" arg2="${db.type}" />
+				<equals arg1="oracle" arg2="${db.type}" />
+				<!-- if umls.catalog not set, assume in same catalog -->
+				<not>
+					<isset property="umls.catalog" />
+				</not>
+				<!-- if umls catalog same as db, don't bother -->
+				<equals arg1="${umls.catalog}" arg2="${db.name}" />
+			</or>
+		</condition>
+		<!-- default umls schema to ytex schema - this will only be set if umls.schema hasn't been defined -->
+		<property name="umls.schema" value="${db.schema}" />
+		<mkdir dir="${config.generated.dir}" />
+	</target>
+	<target name="templateToConfig.extractTemplates" description="extractTemplateFiles" unless="ctakes.dev.mode">
+		<pathconvert property="res.jar" pathsep="${line.separator}">
+            <fileset dir="${ctakes.home}/lib">
+                <include name="ctakes-ytex-res-*.jar"/>
+            </fileset>
+        </pathconvert>
+		<echo>unpacking ytex templates from ${res.jar} to ${config.source.dir}</echo>
+		<unzip src="${res.jar}" dest="${config.source.dir}">
+			<patternset>
+				<include name="org/apache/ctakes/ytex/**/*.template.xml"/>
+			</patternset>
+		</unzip>
+	</target>
+	<target name="templateToConfig.updateConfig" depends="templateToConfig.init" description="update config files">
+		<echo>config.source.dir = ${config.source.dir}</echo>
+		<echo>config.generated.dir = ${config.generated.dir}</echo>
+		<if>
+			<available file="${config.local}/org/apache/ctakes/ytex/ytex.properties" />
+			<then>
+				<copy todir="${config.generated.dir}" overwrite="yes">
+					<fileset dir="${config.source.dir}" includes="org/apache/ctakes/ytex/**/*.template.xml" />
+					<globmapper from="*.template.xml" to="*.xml" />
+					<filterset>
+						<!-- with a filter set, the last token overrides previous tokens -->
+						<filtersfile file="${config.local}/org/apache/ctakes/ytex/ytex.properties" />
+						<filter token="umls.schema" value="${umls.schema}" />
+						<filter token="filter.umls.catalog" value="${filter.umls.catalog}" />
+						<filter token="ytex.home" value="${ytex.home}" />
+						<filter token="ctakes.home" value="${ctakes.home}" />
+					</filterset>
+				</copy>
+			</then>
+			<else>
+				<echo>Warning! ${config.local}/org/apache/ctakes/ytex/ytex.properties not available, no files generated</echo>
+			</else>
+		</if>
+	</target>
+	<target name="generateTestYtexProperties" description="generate ytex.properties pointing to an hsql database for test purposes.  Defaults to generating hsql properties; override by setting db.type=[xxx].  If that is set, then use src/test/resources/.../ytex.${db.type}.properties">
+		<if>
+			<available file="${config.local}/org/apache/ctakes/ytex/ytex.properties" />
+			<then>
+				<echo>${config.local}/org/apache/ctakes/ytex/ytex.properties exists, skipping test ytex.properties generation</echo>
+			</then>
+			<else>
+				<pathconvert targetos="unix" property="ytex.hsql.db">
+					<path>
+						<pathelement location="${test.hsqldb.dir}/ctakes" />
+					</path>
+				</pathconvert>
+				<property name="db.type" value="hsql" />
+				<if>
+					<equals arg1="${db.type}" arg2="hsql" />
+					<then>
+						<echo>${config.local}/org/apache/ctakes/ytex/ytex.properties does not exist, generating ytex.properties for hsqldb in ${ytex.hsql.db}</echo>
+						<copy file="${ctakes.home}/ctakes-ytex/src/test/resources/org/apache/ctakes/ytex/ytex.hsql.properties.template" tofile="${config.local}/org/apache/ctakes/ytex/ytex.properties">
+							<filterset>
+								<filter token="ytex.hsql.db" value="${ytex.hsql.db}" />
+							</filterset>
+						</copy>
+					</then>
+					<else>
+						<echo>${config.local}/org/apache/ctakes/ytex/ytex.properties does not exist, using ytex.${db.type}.properties</echo>
+						<copy file="${ctakes.home}/ctakes-ytex/src/test/resources/org/apache/ctakes/ytex/ytex.${db.type}.properties" tofile="${config.local}/org/apache/ctakes/ytex/ytex.properties" />
+					</else>
+				</if>
+			</else>
+		</if>
+	</target>
+	<target name="deleteTestDb" description="delete the test hsql databse">
+		<delete dir="${test.hsqldb.dir}" quiet="true" />
+	</target>
+	<target name="templateToConfig" depends="templateToConfig.init,templateToConfig.extractTemplates,templateToConfig.updateConfig" description="generate config files from templates using values specified in ytex.properties">
+	</target>
+	<target name="test.setup" description="setup properties and database for unit tests" depends="generateTestYtexProperties,templateToConfig,deleteTestDb">
+		<ant dir="data" target="all" inheritAll="true"/>
+	</target>
+</project>

@@ -1,0 +1,11 @@
+follow-up|7
+x-rays|15
+x-ray|8
+high-grade|21
+32-year-old|1
+33-year-old|1
+multi-vitamin|3
+3-month|1
+non-small-cell|3
+non-hodgkins|1
+non-hodgkin|2

@@ -1,0 +1,19 @@
+// This file contains commands and parameters to run the ctakes-examples "Hello World" pipeline
+// with UMLS Concept Unique Identifiers (CUI) output
+
+// Load a simple token processing pipeline from another pipeline file
+load org/apache/ctakes/core/pipeline/DefaultTokenizerPipeline.piper
+
+// Add non-core annotators
+add ContextDependentTokenizerAnnotator
+// The POSTagger has a -complex- startup, but it can create its own description to handle it
+addDescription POSTagger
+
+// Change the umls and password parameters below
+set ctakes.umlsuser=CHANGE_ME ctakes.umlspw=CHANGE_ME
+
+// Default fast dictionary lookup
+load DictionarySubPipe.piper
+
+// Collect discovered UMLS Concept Unique Identifiers (CUI) for post-run information
+collectCuis

@@ -1,0 +1,454 @@
+conditional	on exertion
+conditional	on exercise
+conditional	with exertion
+conditional	with exercise
+conditional	exertional
+conditional	intolerance
+conditional	after
+conditional	post
+conditional	while
+conditional	when
+conditional	planned
+conditional	in the event
+conditional	if
+conditional	awaiting
+conditional	continued
+conditional	proceed
+conditional	plan
+conditionalavoid	scheduled
+hypothetical	avoiding
+hypothetical	avoidance
+hypothetical	if
+hypothetical	unless
+hypothetical	monitor for
+hypothetical	monitors for
+hypothetical	monitored for
+hypothetical	monitoring for
+hypothetical	prn
+hypothetical	PRN
+hypothetical	p.r.n.
+hypothetical	P.R.N.
+hypothetical	as needed for
+hypothetical	as necessary for 
+hypothetical	call for
+hypothetical	call with
+hypothetical	return for
+hypothetical	return with
+hypothetical	return
+hypothetical	watch for
+hypothetical	report new
+hypothetical	potential
+hypothetical	potentially
+hypothetical	instructions for
+hypothetical	prevent
+hypothetical	preventing
+hypothetical	prevention
+hypothetical	risk
+hypothetical	risk stratification for
+hypothetical	future
+hypothetical	immunization against
+hypothetical	should
+hypothetical	should he experience
+hypothetical	should she experience
+hypothetical	should the patient experience
+hypothetical	prophylaxis
+hypothetical	prophylactic
+negation	not
+negation	n't
+negation	&apos;t
+negation	didn't
+negation	doesn't
+negation	don't
+negation	isn't
+negation	aren't
+negation	wasn't
+negation	weren't
+negation	hadn't
+negation	hasn't
+negation	haven't
+negation	won't
+negation	wouldn't
+negation	never
+negation	no longer
+negation	in no way
+negation	neither
+negation	nor
+negation	none
+negation	nobody
+negation	no one
+negation	nowhere
+negation	no place
+negation	no
+negation	without
+negation	absence of
+negation	free of
+negation	clear of
+negation	clear to
+negation	negative for
+negation	neg for
+negation	negative for
+negation	unremarkable for
+negation	unassociated with
+negation	( - )
+negation	non
+negation	lack of
+negation	lack
+negation	lacked
+negation	lacks
+negation	lacking
+negation	impossible
+negation	cannot
+negation	can't
+negation	couldn't
+negation	inability
+negation	unable
+negation	forget
+negation	forgets
+negation	forgetting
+negation	forgot
+negation	forgotten
+negation	fail
+negation	failed
+negation	failing
+negation	fails
+negation	failure
+negation	free of
+negation	free
+negation	absent
+negation	immune to
+negation	denied
+negation	denies
+negation	deny
+negation	denying
+negation	avoided
+negation	avoids
+negation	prevented
+negation	prevents
+negation	prophylaxis against
+negation	shouldn't
+negation	mustn't
+negation	unwilling
+negation	unwillingness
+negation	reluctance
+negation	reluctant
+negation	decline
+negation	declined
+negation	declines
+negation	declining
+negation	refusal
+negation	refuse
+negation	refused
+negation	refuses
+negation	refusing
+negation	excluded
+negation	excludes
+negation	ruled out
+negation	rules out
+negation	discontinuance
+negation	discontinuation
+negation	discontinue
+negation	discontinued
+negation	discontinues
+negation	discontinuing
+negation	quit
+negation	quits
+negation	quitting
+negation	stop
+negation	stopped
+negation	stopping
+negation	stops
+negation	used to
+negation	held
+negation	hold
+negation	holding
+negation	holds
+negation	on hold
+negation	off
+negation	elimination
+negation	eliminate
+negation	eliminated
+negation	eliminates
+negation	eliminating
+negation	eradication
+negation	eradicate
+negation	eradicated
+negation	eradicates
+negation	eradicating
+negation	removal
+negation	remove
+negation	removed
+negation	removes
+negation	removing
+negation	purge
+negation	purged
+negation	purges
+negation	purging
+negation	wipe out
+negation	wiped out
+negation	wipes out
+negation	wiping out
+negation	rid
+negation	interrupt
+negation	interruption
+negation	interruptions
+negation	resolved
+negation	resolution
+negation	disappeared
+negation	disappearance
+negation	rather than
+negation	instead of
+negation	except
+negation	exception
+negation	besides
+negation	aside from
+negation	other than
+not_patient	mother
+not_patient	father
+not_patient	parent
+not_patient	parents
+not_patient	sister
+not_patient	sisters
+not_patient	brother
+not_patient	brothers
+not_patient	sibling
+not_patient	siblings
+not_patient	grandfather
+not_patient	grandfathers
+not_patient	grandmother
+not_patient	grandmothers
+not_patient	cousin
+not_patient	cousins
+not_patient	aunt
+not_patient	aunts
+not_patient	uncle
+not_patient	uncles
+not_patient	stepfather
+not_patient	stepmother
+not_patient	cousin
+not_patient	cousins
+not_patient	niece
+not_patient	nieces
+not_patient	nephew
+not_patient	nephews
+not_patient	wife
+not_patient	husband
+not_patient	spouse
+not_patient	partner
+not_patient	partners
+not_patient	roommate
+not_patient	roommates
+not_patient	classmate
+not_patient	classmates
+not_patient	friend
+not_patient	friends
+not_patient	acquaintance
+not_patient	acquaintances
+not_patient	individual
+not_patient	individuals
+not_patient	person
+not_patient	persons
+not_patient	relative
+not_patient	relatives
+not_patient	family
+not_patient	family member
+not_patient	family members
+not_patient	familiy history of 
+not_patient	fhx of
+not_patient	fam hx of
+not_patient	family hx
+not_patient	twin
+not_patient	familial
+speculation	uncertain
+speculation	unsure
+speculation	improbable
+speculation	unlikely
+speculation	doubtful
+speculation	doubt
+speculation	doubted
+speculation	doubting
+speculation	doubts
+speculation	possible
+speculation	poss
+speculation	hypothetical
+speculation	questionable
+speculation	consistent with
+speculation	compatible with
+speculation	equivocal for
+speculation	suspicious for
+speculation	potential
+speculation	concerned for
+speculation	concerning for
+speculation	worrisome for
+speculation	unclear
+speculation	unknown
+speculation	possibly
+speculation	potentially
+speculation	maybe
+speculation	perhaps
+speculation	possibilities
+speculation	possibility
+speculation	evidence for
+speculation	evidence of
+speculation	speculation
+speculation	consideration
+speculation	?
+speculation	ddx
+speculation	differential diagnosis
+speculation	differential diagnoses
+speculation	believe
+speculation	believed
+speculation	believes
+speculation	believing
+speculation	consider
+speculation	considered
+speculation	considering
+speculation	considers
+speculation	t/c
+speculation	entertain
+speculation	entertained
+speculation	entertaining
+speculation	entertains
+speculation	question
+speculation	questioned
+speculation	questioning
+speculation	questions
+speculation	speculate
+speculation	speculated
+speculation	speculates
+speculation	speculating
+speculation	can
+speculation	could
+speculation	may
+speculation	might
+speculation	whether or not
+speculation	whether
+speculation	either
+speculation	or
+speculation	if
+speculation	unless
+	probable	prob_adj
+speculation	likely
+speculation	presumed
+speculation	presumptive
+speculation	apparent
+speculation	preliminary
+speculation	putative
+speculation	indicative of
+speculation	suggestive of
+speculation	typical of
+speculation	probably
+speculation	likely
+speculation	presumably
+speculation	apparently
+speculation	reportedly
+speculation	seemingly
+speculation	supposedly
+speculation	must
+speculation	appear
+speculation	appeared
+speculation	appearing
+speculation	appears
+speculation	seem
+speculation	seemed
+speculation	seems
+speculation	seeming
+speculation	estimate
+speculation	estimated
+speculation	estimates
+speculation	estimating
+speculation	feel that
+speculation	feeling that
+speculation	feels that
+speculation	felt that
+speculation	hypothesize
+speculation	hypothesized
+speculation	hypothesizes
+speculation	hypothesizing
+speculation	implied
+speculation	implies
+speculation	imply
+speculation	implying
+speculation	indicate
+speculation	indicated
+speculation	indicates
+speculation	indicating
+speculation	postulate
+speculation	postulated
+speculation	postulating
+speculation	postulates
+speculation	propose
+speculation	proposed
+speculation	proposes
+speculation	proposing
+speculation	suggest
+speculation	suggested
+speculation	suggesting
+speculation	suggests
+speculation	support
+speculation	supported
+speculation	supporting
+speculation	supports
+speculation	suppose
+speculation	supposed
+speculation	supposes
+speculation	supposing
+speculation	suspect
+speculation	suspected
+speculation	suspecting
+speculation	suspects
+speculation	think
+speculation	thinks
+speculation	thinking
+speculation	thought
+speculation	concern for
+speculation	concerns for
+speculation	implication
+speculation	implications
+speculation	impression of
+speculation	indication of
+speculation	indications of
+speculation	suspicion
+speculation	suspicions
+speculation	suggestion
+speculation	suggestions
+speculation	hypothesis
+speculation	hypotheses
+speculation	probability
+speculation	probabilities
+speculation	sign of
+speculation	signs of
+speculation	v.s.
+speculation	versus
+speculation	vs.
+speculation	vs
+speculation	r / o
+speculation	ro
+speculation	r/o
+speculation	rule out
+speculation	ruling out
+speculation	rule - out
+speculation	ruling - out
+speculation	test for
+speculation	tested for
+speculation	testing for
+speculation	tests for
+speculation	check for
+speculation	checked for
+speculation	checking for
+speculation	checks for
+speculation	evaluate for
+speculation	eval for
+speculation	evaluated for
+speculation	evaluates for
+speculation	evaluating for
+speculation	evaluation for
+speculation	assess for
+speculation	assessment for
+speculation	monitor for
+speculation	monitored for
+speculation	monitoring for
+speculation	monitors for
+speculation	seriologies for
+speculation	seriology for
+speculation	work up for
+speculation	workup for

@@ -1,0 +1,27 @@
+// use the standard tokenizer pipeline:
+load DefaultTokenizerPipeline
+
+// Always need these ...
+add ContextDependentTokenizerAnnotator
+add POSTagger
+
+// Chunkers
+load ChunkerSubPipe
+
+// Default fast dictionary lookup
+//set minimumSpan=2
+load DictionarySubPipe
+
+// Cleartk Entity Attributes (negation, uncertainty, etc.)
+load AttributeCleartkSubPipe
+
+// Location.
+//addLogged LocationOfRelationExtractorAnnotator classifierJarPath=/org/apache/ctakes/relationextractor/models/location_of/model.jar
+
+// Temporal (event, time, dtr, tlink)
+//load TemporalSubPipe
+
+// Coreferences (e.g. patient = he)
+load CorefSubPipe
+
+add ApacheConCorefWriter

@@ -1,0 +1,8 @@
+// Default Clinical Pipeline with degree-of and location-of relations
+// with coreference resolution
+
+// Default Clinical Pipeline with degree-of and location-of relations
+load DefaultRelationPipeline
+
+// Coreference resolution
+load CorefSubPipe

@@ -1,0 +1,151 @@
+# All comments start with a '#' character in col 1.
+# Empty lines and lines with only whitespace are ignored.
+#
+# @(#)im.rul	1.1	24 Feb 1995
+#
+# This file describes the rules used to generate inflections.
+#
+# The format is as follows:
+#
+#   <in pattern>|<in cat>|<in infl>|<out pattern>|<out cat>|<out infl>
+#
+# where:
+#
+#   <in pattern> is an input pattern to match as a suffix.
+#     Lowercase characters are matched as literals.  Uppercase letters
+#     have the following meaning: D=digit [0-9], L=any letter, ^=start
+#     $=end, [AEIOU]=any vowel, [BCFGHJKMNPQRSTVWXYZ]=any consonant.
+#     The same uppercase letter used in the output pattern unifies with
+#     the actual character that matched the input.
+#   <in cat> is the input category and must be one of: adj, adv, noun or verb.
+#   <in infl> is the input inflection and must be one of: base, singular,
+#     positive, infinitive, plural, comparative, superlative, present,
+#     ing or past.
+#   <out cat> refers to output category.
+#   <out infl> refers to output inflection.
+#
+# The rules are stated to mean that if the input matches the pattern and is
+# of the appropriate category and inflection, then the stated rule generates
+# the output inflection.  Note that rules only need be stated in one direction.
+# The reverse rules are automatically generated.  Duplicate identical rules
+# are unique'ed out.
+#
+# Identity rules
+RULE: $|verb|base|$|verb|base
+RULE: $|noun|base|$|noun|base
+RULE: $|adj|base|$|adj|base
+RULE: $|adv|base|$|adv|base
+#
+# Adjective rules
+RULE: Cy$|adj|positive|Cier$|adj|comparative
+RULE: Cy$|adj|positive|Ciest$|adj|superlative
+#
+RULE: CVC$|adj|positive|CVSCer$|adj|comparative
+RULE: CVC$|adj|positive|CVSCest$|adj|superlative
+#
+RULE: e$|adj|positive|er$|adj|comparative
+EXCEPTION: inhale|inhaler;
+RULE: e$|adj|positive|est$|adj|superlative
+EXCEPTION: e|est;
+#
+RULE: $|adj|positive|er$|adj|comparative
+EXCEPTION: |er;
+EXCEPTION: inhal|inhaler;
+#
+RULE: $|adj|positive|est$|adj|superlative
+EXCEPTION: |est;
+#
+# Adverb rules
+RULE: Cy$|adv|positive|Cier$|adv|comparative
+RULE: Cy$|adv|positive|Ciest$|adv|superlative
+#
+RULE: CVC$|adv|positive|CVSCer$|adv|comparative
+RULE: CVC$|adv|positive|CVSCest$|adv|superlative
+#
+RULE: e$|adv|positive|er$|adv|comparative
+EXCEPTION: inhale|inhaler;
+#
+RULE: e$|adv|positive|est$|adv|superlative
+EXCEPTION: e|est;
+#
+RULE: $|adv|positive|er$|adv|comparative
+EXCEPTION: |er;
+EXCEPTION: inhal|inhaler;
+#
+RULE: $|adv|positive|est$|adv|superlative
+EXCEPTION: |est;
+#
+# Noun rules (reg)
+RULE: ^L$|noun|singular|^L's$|noun|plural
+RULE: D$|noun|singular|D's$|noun|plural
+RULE: Cy$|noun|singular|Cies$|noun|plural
+RULE: Co$|noun|singular|Cos$|noun|plural
+RULE: Co$|noun|singular|Coes$|noun|plural
+RULE: ch$|noun|singular|ches$|noun|plural
+RULE: sh$|noun|singular|shes$|noun|plural
+RULE: s$|noun|singular|ses$|noun|plural
+RULE: x$|noun|singular|xes$|noun|plural
+RULE: z$|noun|singular|zes$|noun|plural
+RULE: $|noun|singular|s$|noun|plural
+EXCEPTION: |s;
+#
+# Noun rules (glreg)
+RULE: us$|noun|singular|i$|noun|plural
+EXCEPTION: antus|anti;
+#
+RULE: ma$|noun|singular|mata$|noun|plural
+RULE: a$|noun|singular|ae$|noun|plural
+RULE: um$|noun|singular|a$|noun|plural
+RULE: on$|noun|singular|a$|noun|plural
+RULE: sis$|noun|singular|ses$|noun|plural
+RULE: is$|noun|singular|ides$|noun|plural
+RULE: men$|noun|singular|mina$|noun|plural
+RULE: ex$|noun|singular|ices$|noun|plural
+RULE: x$|noun|singular|ces$|noun|plural
+#
+### plural rules include irregular
+#   noun inflection rules. (ACB) (1-Oct-92)
+FILE: plural.rul
+#
+# Verb rules (present)
+RULE: Cy$|verb|infinitive|Cies$|verb|pres
+RULE: s$|verb|infinitive|ses$|verb|pres
+RULE: x$|verb|infinitive|xes$|verb|pres
+RULE: z$|verb|infinitive|zes$|verb|pres
+RULE: ch$|verb|infinitive|ches$|verb|pres
+RULE: sh$|verb|infinitive|shes$|verb|pres
+RULE: Co$|verb|infinitive|Cos$|verb|pres
+EXCEPTION: do|dos;
+RULE: Co$|verb|infinitive|Coes$|verb|pres
+RULE: CVC$|verb|infinitive|CVCs$|verb|pres
+RULE: $|verb|infinitive|s$|verb|pres
+EXCEPTION: |s;
+EXCEPTION: do|dos;
+#
+# Verb rules (past)
+RULE: Cy$|verb|infinitive|Cied$|verb|past
+RULE: CVC$|verb|infinitive|CVSCed$|verb|past
+RULE: e$|verb|infinitive|ed$|verb|past
+EXCEPTION: e|ed;
+EXCEPTION: fre|fred;
+EXCEPTION: free|freed;
+#
+RULE: $|verb|infinitive|ed$|verb|past
+EXCEPTION: |ed;
+EXCEPTION: do|doed;
+EXCEPTION: fr|fred;
+EXCEPTION: free|freed;
+#
+# Verb rules (ing)
+RULE: ie$|verb|infinitive|ying$|verb|presPart
+RULE: ee$|verb|infinitive|eeing$|verb|presPart
+RULE: oe$|verb|infinitive|oeing$|verb|presPart
+RULE: ye$|verb|infinitive|yeing$|verb|presPart
+RULE: CVC$|verb|infinitive|CVSCing$|verb|presPart
+RULE: e$|verb|infinitive|ing$|verb|presPart
+EXCEPTION: e|ing;
+RULE: $|verb|infinitive|ing$|verb|presPart
+EXCEPTION: |ing;
+#
+### Irregular VERB inflection rules (2-Oct-92)
+FILE: verbinfl.rul

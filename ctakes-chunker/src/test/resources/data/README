@@ -1,0 +1,10 @@
+The files in this directory are here to support unit testing of the Chunker.
+
+contents:
+
+unit-test.opennlp.chunks - training data for test model.  Contains ~1000 words from GENIA.
+text-files - directory containing sample input files for testing the chunker 
+
+A chunker model can be generated with the following command:
+
+java opennlp.tools.chunker.ChunkerME target/test-classes/data/unit-test.opennlp.chunks target/test-classes/data/unit-test.chunker.model.bin.gz

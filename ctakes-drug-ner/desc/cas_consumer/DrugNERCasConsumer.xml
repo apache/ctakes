@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<casConsumerDescription xmlns="http://uima.apache.org/resourceSpecifier">
+  <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
+  <implementationName>org.apache.ctakes.drugner.cc.ConsumeNamedEntityRecordModel</implementationName>
+  <processingResourceMetaData>
+    <name>ConsumeNamedEntityRecord</name>
+    <description>Processes a given CAS to identify predetermined list of NER items</description>
+    <version>1.0</version>
+    <vendor>Mayo</vendor>
+    <configurationParameters>
+      <configurationParameter>
+        <name>OutputDirectory</name>
+        <description>Directory where the cvs file will be written</description>
+        <type>String</type>
+        <multiValued>false</multiValued>
+        <mandatory>true</mandatory>
+      </configurationParameter>
+      <configurationParameter>
+        <name>useMedicationSectionOnly</name>
+        <description>Indicates if only medication related sections should be included in the drug NE extraction</description>
+        <type>Boolean</type>
+        <multiValued>false</multiValued>
+        <mandatory>true</mandatory>
+      </configurationParameter>
+      <configurationParameter>
+        <name>locationForClinicRcdInput</name>
+        <description>Optional.  Location for file containing patient clinics and possible anchor date value</description>
+        <type>String</type>
+        <multiValued>false</multiValued>
+        <mandatory>false</mandatory>
+      </configurationParameter>
+      <configurationParameter>
+        <name>filterGroupDrugs</name>
+        <description>Optional.  List of drugs to be filtered when discovered.</description>
+        <type>String</type>
+        <multiValued>false</multiValued>
+        <mandatory>false</mandatory>
+      </configurationParameter>
+      <configurationParameter>
+        <name>listMedicationSection</name>
+        <description>Optional. List of medications sections the include list drug NE.</description>
+        <type>String</type>
+        <multiValued>false</multiValued>
+        <mandatory>false</mandatory>
+      </configurationParameter>
+    </configurationParameters>
+    <configurationParameterSettings>
+      <nameValuePair>
+        <name>OutputDirectory</name>
+        <value>
+          <string>testdata/drugnertest/testoutput/xcas</string>
+        </value>
+      </nameValuePair>
+      <nameValuePair>
+        <name>useMedicationSectionOnly</name>
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </nameValuePair>
+      <nameValuePair>
+        <name>listMedicationSection</name>
+        <value>
+          <string>20104|20133|20147</string>
+        </value>
+      </nameValuePair>
+    </configurationParameterSettings>
+    <typeSystemDescription>
+    </typeSystemDescription>
+    <typePriorities/>
+    <fsIndexCollection/>
+    <capabilities>
+      <capability>
+        <inputs>
+          <type allAnnotatorFeatures="true">org.apache.ctakes.typesystem.type.textspan.Segment</type>
+        </inputs>
+        <outputs/>
+        <inputSofas>
+          <sofaName>plaintext</sofaName>
+        </inputSofas>
+        <languagesSupported/>
+      </capability>
+    </capabilities>
+    <operationalProperties>
+      <modifiesCas>false</modifiesCas>
+      <multipleDeploymentAllowed>false</multipleDeploymentAllowed>
+      <outputsNewCASes>false</outputsNewCASes>
+    </operationalProperties>
+  </processingResourceMetaData>
+  <resourceManagerConfiguration/>
+</casConsumerDescription>

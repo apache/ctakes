@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?><taeDescription xmlns="http://uima.apache.org/resourceSpecifier">
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+  <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
+  <primitive>false</primitive>
+  <delegateAnalysisEngineSpecifiers>
+    <delegateAnalysisEngine key="NegationAnnotator">
+      <import name="org.apache.ctakes.necontexts.desc.NegationAnnotator"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="SentenceAdjuster">
+      <import location="SentenceAdjuster.xml"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="SmokingStatusDictionaryLookupAnnotator">
+      <import location="SmokingStatusDictionaryLookupAnnotator.xml"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="PcsClassifierAnnotator_libsvm">
+      <import location="PcsClassifierAnnotator_libsvm.xml"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="ArtificialSentenceAnnotator">
+      <import location="ArtificialSentenceAnnotator.xml"/>
+    </delegateAnalysisEngine>
+  </delegateAnalysisEngineSpecifiers>
+  <analysisEngineMetaData>
+    <name>Smoking Status AE</name>
+    <description>Aggregate AE used to run the Smoking Status pipeline.  This should be followed by the RecordResolutionCasConsumer.</description>
+    <version/>
+    <vendor/>
+    <configurationParameters searchStrategy="language_fallback"/>
+    <configurationParameterSettings/>
+    <flowConstraints>
+      <fixedFlow>
+        <node>PcsClassifierAnnotator_libsvm</node>
+        <node>ArtificialSentenceAnnotator</node>
+        <node>SentenceAdjuster</node>
+        <node>SmokingStatusDictionaryLookupAnnotator</node>
+        <node>NegationAnnotator</node>
+      </fixedFlow>
+    </flowConstraints>
+    <fsIndexCollection/>
+    <capabilities>
+      <capability>
+        <inputs/>
+        <outputs/>
+        <languagesSupported/>
+      </capability>
+    </capabilities>
+    <operationalProperties>
+      <modifiesCas>true</modifiesCas>
+      <multipleDeploymentAllowed>true</multipleDeploymentAllowed>
+      <outputsNewCASes>false</outputsNewCASes>
+    </operationalProperties>
+  </analysisEngineMetaData>
+  <resourceManagerConfiguration/>
+</taeDescription>

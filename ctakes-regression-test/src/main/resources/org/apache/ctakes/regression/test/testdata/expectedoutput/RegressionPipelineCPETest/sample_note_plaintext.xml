@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?><CAS version="2">
+    <uima.cas.Sofa _indexed="0" _id="3" sofaNum="1" sofaID="_InitialView" mimeType="text" sofaString="S/P right knee arthroscopy.&#10;Knee x-ray.  Patient denies knee pain.&#10;"/>
+    <org.apache.ctakes.typesystem.type.structured.DocumentID _indexed="1" _id="1" documentID="sample_note_plaintext"/>
+    <uima.tcas.DocumentAnnotation _indexed="1" _id="10" _ref_sofa="3" begin="0" end="67" language="x-unspecified"/>
+    <org.apache.ctakes.typesystem.type.textspan.Segment _indexed="1" _id="15" _ref_sofa="3" begin="0" end="67" id="SIMPLE_SEGMENT"/>
+    <org.apache.ctakes.typesystem.type.textspan.Sentence _indexed="1" _id="21" _ref_sofa="3" begin="0" end="27" sentenceNumber="0"/>
+    <org.apache.ctakes.typesystem.type.textspan.Sentence _indexed="1" _id="27" _ref_sofa="3" begin="28" end="39" sentenceNumber="1"/>
+    <org.apache.ctakes.typesystem.type.textspan.Sentence _indexed="1" _id="33" _ref_sofa="3" begin="41" end="66" sentenceNumber="2"/>
+    <org.apache.ctakes.typesystem.type.syntax.NewlineToken _indexed="1" _id="39" _ref_sofa="3" begin="27" end="28" tokenNumber="7"/>
+    <org.apache.ctakes.typesystem.type.syntax.NewlineToken _indexed="1" _id="47" _ref_sofa="3" begin="66" end="67" tokenNumber="16"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="55" _ref_sofa="3" begin="0" end="1" tokenNumber="0" normalizedForm="S" partOfSpeech="NN" capitalization="3" numPosition="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="75" _ref_sofa="3" begin="2" end="3" tokenNumber="2" normalizedForm="P" partOfSpeech="IN" capitalization="3" numPosition="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="87" _ref_sofa="3" begin="4" end="9" tokenNumber="3" normalizedForm="right" partOfSpeech="JJ" capitalization="0" numPosition="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="99" _ref_sofa="3" begin="10" end="14" tokenNumber="4" normalizedForm="knee" partOfSpeech="NN" capitalization="0" numPosition="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="111" _ref_sofa="3" begin="15" end="26" tokenNumber="5" normalizedForm="arthroscopy" partOfSpeech="NN" capitalization="0" numPosition="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="131" _ref_sofa="3" begin="28" end="32" tokenNumber="8" normalizedForm="Knee" partOfSpeech="NN" capitalization="1" numPosition="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="143" _ref_sofa="3" begin="33" end="38" tokenNumber="9" normalizedForm="x-ray" partOfSpeech="NN" capitalization="0" numPosition="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="163" _ref_sofa="3" begin="41" end="48" tokenNumber="11" normalizedForm="Patient" partOfSpeech="NN" capitalization="1" numPosition="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="175" _ref_sofa="3" begin="49" end="55" tokenNumber="12" normalizedForm="denies" partOfSpeech="VBZ" capitalization="0" numPosition="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="187" _ref_sofa="3" begin="56" end="60" tokenNumber="13" normalizedForm="knee" partOfSpeech="NN" capitalization="0" numPosition="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.WordToken _indexed="1" _id="199" _ref_sofa="3" begin="61" end="65" tokenNumber="14" normalizedForm="pain" partOfSpeech="NN" capitalization="0" numPosition="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.PunctuationToken _indexed="1" _id="67" _ref_sofa="3" begin="1" end="2" tokenNumber="1" partOfSpeech="HYPH"/>
+    <org.apache.ctakes.typesystem.type.syntax.PunctuationToken _indexed="1" _id="123" _ref_sofa="3" begin="26" end="27" tokenNumber="6" partOfSpeech="."/>
+    <org.apache.ctakes.typesystem.type.syntax.PunctuationToken _indexed="1" _id="155" _ref_sofa="3" begin="38" end="39" tokenNumber="10" partOfSpeech="."/>
+    <org.apache.ctakes.typesystem.type.syntax.PunctuationToken _indexed="1" _id="211" _ref_sofa="3" begin="65" end="66" tokenNumber="15" partOfSpeech="."/>
+    <org.apache.ctakes.typesystem.type.syntax.NP _indexed="1" _id="219" _ref_sofa="3" begin="0" end="1" chunkType="NP"/>
+    <org.apache.ctakes.typesystem.type.syntax.NP _indexed="1" _id="234" _ref_sofa="3" begin="4" end="26" chunkType="NP"/>
+    <org.apache.ctakes.typesystem.type.syntax.NP _indexed="1" _id="239" _ref_sofa="3" begin="28" end="38" chunkType="NP"/>
+    <org.apache.ctakes.typesystem.type.syntax.NP _indexed="1" _id="244" _ref_sofa="3" begin="41" end="48" chunkType="NP"/>
+    <org.apache.ctakes.typesystem.type.syntax.NP _indexed="1" _id="254" _ref_sofa="3" begin="56" end="65" chunkType="NP"/>
+    <org.apache.ctakes.typesystem.type.syntax.VP _indexed="1" _id="224" _ref_sofa="3" begin="1" end="2" chunkType="VP"/>
+    <org.apache.ctakes.typesystem.type.syntax.VP _indexed="1" _id="249" _ref_sofa="3" begin="49" end="55" chunkType="VP"/>
+    <org.apache.ctakes.typesystem.type.syntax.PP _indexed="1" _id="229" _ref_sofa="3" begin="2" end="3" chunkType="PP"/>
+    <org.apache.ctakes.typesystem.type.textspan.LookupWindowAnnotation _indexed="1" _id="259" _ref_sofa="3" begin="0" end="1"/>
+    <org.apache.ctakes.typesystem.type.textspan.LookupWindowAnnotation _indexed="1" _id="263" _ref_sofa="3" begin="4" end="26"/>
+    <org.apache.ctakes.typesystem.type.textspan.LookupWindowAnnotation _indexed="1" _id="267" _ref_sofa="3" begin="28" end="38"/>
+    <org.apache.ctakes.typesystem.type.textspan.LookupWindowAnnotation _indexed="1" _id="271" _ref_sofa="3" begin="41" end="48"/>
+    <org.apache.ctakes.typesystem.type.textspan.LookupWindowAnnotation _indexed="1" _id="275" _ref_sofa="3" begin="56" end="65"/>
+    <org.apache.ctakes.typesystem.type.textsem.AnatomicalSiteMention _indexed="1" _id="292" _ref_sofa="3" begin="10" end="14" id="0" _ref_ontologyConceptArr="289" typeID="6" segmentID="SIMPLE_SEGMENT" discoveryTechnique="1" confidence="0.0" polarity="1" uncertainty="0" conditional="false" generic="false" subject="patient" historyOf="0"/>
+    <org.apache.ctakes.typesystem.type.textsem.AnatomicalSiteMention _indexed="1" _id="326" _ref_sofa="3" begin="28" end="32" id="1" _ref_ontologyConceptArr="323" typeID="6" segmentID="SIMPLE_SEGMENT" discoveryTechnique="1" confidence="0.0" polarity="1" uncertainty="0" conditional="false" generic="false" subject="patient" historyOf="0"/>
+    <org.apache.ctakes.typesystem.type.textsem.AnatomicalSiteMention _indexed="1" _id="403" _ref_sofa="3" begin="56" end="60" id="2" _ref_ontologyConceptArr="400" typeID="6" segmentID="SIMPLE_SEGMENT" discoveryTechnique="1" confidence="0.0" polarity="1" uncertainty="0" conditional="false" generic="false" subject="patient" historyOf="0"/>
+    <org.apache.ctakes.typesystem.type.textsem.SignSymptomMention _indexed="1" _id="360" _ref_sofa="3" begin="61" end="65" id="3" _ref_ontologyConceptArr="357" typeID="3" segmentID="SIMPLE_SEGMENT" discoveryTechnique="1" confidence="0.0" polarity="1" uncertainty="0" conditional="false" generic="false" subject="patient" historyOf="0"/>
+    <org.apache.ctakes.typesystem.type.refsem.UmlsConcept _id="347" codingScheme="SNOMED" code="100206" oid="100206#SNOMED" score="0.0" disambiguated="false" cui="Cui0206" tui="T_SS"/>
+    <uima.cas.FSArray _id="357" size="1">
+        <i>347</i>
+    </uima.cas.FSArray>
+    <org.apache.ctakes.typesystem.type.refsem.UmlsConcept _id="390" codingScheme="SNOMED" code="100002" oid="100002#SNOMED" score="0.0" disambiguated="false" cui="Cui0002" tui="T_AS"/>
+    <uima.cas.FSArray _id="400" size="1">
+        <i>390</i>
+    </uima.cas.FSArray>
+    <org.apache.ctakes.typesystem.type.refsem.UmlsConcept _id="313" codingScheme="SNOMED" code="100002" oid="100002#SNOMED" score="0.0" disambiguated="false" cui="Cui0002" tui="T_AS"/>
+    <uima.cas.FSArray _id="323" size="1">
+        <i>313</i>
+    </uima.cas.FSArray>
+    <org.apache.ctakes.typesystem.type.refsem.UmlsConcept _id="279" codingScheme="SNOMED" code="100002" oid="100002#SNOMED" score="0.0" disambiguated="false" cui="Cui0002" tui="T_AS"/>
+    <uima.cas.FSArray _id="289" size="1">
+        <i>279</i>
+    </uima.cas.FSArray>
+</CAS>

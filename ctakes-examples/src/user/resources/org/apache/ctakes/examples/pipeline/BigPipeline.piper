@@ -1,0 +1,53 @@
+
+/////////////////////////////////////////////////////////
+//
+//     An example pipeline that does a lot of stuff.
+//
+/////////////////////////////////////////////////////////
+
+set WriteBanner=yes
+
+// Advanced Tokenization: Regex sectionization, BIO Sentence Detector (lumper), Paragraphs, Lists
+load FullTokenizerPipeline
+// OR use the standard tokenizer pipeline:
+//load DefaultTokenizerPipeline
+
+// Refined tokens, Parts of Speech
+add ContextDependentTokenizerAnnotator
+add POSTagger
+
+// Chunkers
+load ChunkerSubPipe
+
+// Default fast dictionary lookup
+set minimumSpan=2
+load DictionarySubPipe
+
+// Cleartk Entity Attributes (negation, uncertainty, etc.)
+load AttributeCleartkSubPipe
+
+// Entity Relations (degree/severity, anatomical location)
+load RelationSubPipe
+
+// Temporal (event, time, dtr, tlink)
+load TemporalSubPipe
+
+// Coreferences (e.g. patient = he)
+load CorefSubPipe
+
+// Html output, write to subdirectory
+add pretty.html.HtmlTextWriter SubDirectory=html
+
+// Text output, write to subdirectory
+add pretty.plaintext.PrettyTextWriterFit SubDirectory=text
+
+// Table output, write to subdirectory
+add SemanticTableFileWriter SubDirectory=bsv_table
+add SemanticTableFileWriter SubDirectory=html_table TableType=HTML
+
+// XMI output.  Warning: these can be very large.
+//writeXmis
+add FileTreeXmiWriter SubDirectory=xmi
+
+// Write some information about the run
+addLast org.apache.ctakes.core.util.log.FinishedLogger

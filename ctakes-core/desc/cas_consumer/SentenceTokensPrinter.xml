@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<casConsumerDescription xmlns="http://uima.apache.org/resourceSpecifier">
+   <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
+   <implementationName>org.apache.ctakes.core.cc.SentenceTokensPrinter</implementationName>
+   <processingResourceMetaData>
+      <name>SentenceTokensPrinter</name>
+      <description>For each CAS the tokens are printed per sentence to a line.
+         If the parameter OutputDirectory is provided then tokenized sentences are saved in files named after document
+         IDs.
+         If no OutputDirectory is specified then tokenized sentences are printed to standard output.
+      </description>
+      <version>1.0</version>
+      <vendor>TCH</vendor>
+      <configurationParameters>
+         <configurationParameter>
+            <name>OutputDirectory</name>
+            <description>The directory name where the plain text tokenized sentences will be written to.</description>
+            <type>String</type>
+            <multiValued>false</multiValued>
+            <mandatory>false</mandatory>
+         </configurationParameter>
+      </configurationParameters>
+      <configurationParameterSettings>
+         <nameValuePair>
+            <name>OutputDirectory</name>
+            <value>
+               <string>CHANGE_ME</string>
+            </value>
+         </nameValuePair>
+      </configurationParameterSettings>
+      <typeSystemDescription>
+         <imports>
+         </imports>
+      </typeSystemDescription>
+      <typePriorities/>
+      <capabilities/>
+      <operationalProperties>
+         <modifiesCas>false</modifiesCas>
+         <multipleDeploymentAllowed>false</multipleDeploymentAllowed>
+      </operationalProperties>
+   </processingResourceMetaData>
+</casConsumerDescription>

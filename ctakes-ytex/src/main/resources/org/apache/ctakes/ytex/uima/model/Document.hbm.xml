@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="org.apache.ctakes.ytex.uima.model">
+	<class name="Document" table="document" discriminator-value="D">
+		<id name="documentID" column="document_id">
+			<generator class="org.hibernate.id.enhanced.TableGenerator">
+				<!-- <generator class="native"> -->
+				<param name="sequence">document_id_sequence</param>
+				<param name="increment_size">100</param>
+			</generator>
+		</id>
+		<property name="docText" column="doc_text" type="text" />
+		<property name="cas" column="cas" type="binary" />
+		<property name="analysisBatch" column="analysis_batch" />
+		<property name="instanceID" column="instance_id" />
+		<property name="instanceKey" column="instance_key" />
+		<bag name="documentAnnotations" inverse="true" cascade="delete">
+			<key column="document_id" />
+			<one-to-many class="DocumentAnnotation" />
+		</bag>
+	</class>
+	<class name="UimaType" table="ref_uima_type">
+		<cache usage="read-only" />
+		<id name="uimaTypeID" column="uima_type_id" />
+		<property name="uimaTypeName" column="uima_type_name" />
+		<property name="tableName" column="table_name" />
+	</class>
+	<class name="AnnotationContainmentLink" table="anno_contain">
+		<!-- <id name="annotationContainmentLinkId" column="anno_contain_id"> <generator 
+			class="native"> <param name="sequence">anno_contain_id_sequence</param> </generator> 
+			</id> -->
+		<composite-id>
+			<key-property name="parentAnnotationId" column="parent_anno_base_id" />
+			<key-property name="childAnnotationId" column="child_anno_base_id" />
+		</composite-id>
+		<property name="parentUimaTypeId" column="parent_uima_type_id" />
+		<property name="childUimaTypeId" column="child_uima_type_id" />
+	</class>
+	<class name="DocumentAnnotation" table="anno_base">
+		<id name="documentAnnotationID" column="anno_base_id">
+			<generator class="org.hibernate.id.enhanced.TableGenerator">
+				<param name="table_name">anno_base_sequence</param>
+				<param name="segment_value">anno_base_id_sequence</param>
+				<param name="increment_size">1000</param>
+			</generator>
+			<!-- <generator class="native"> <param name="sequence">anno_base_id_sequence</param> 
+				</generator> -->
+		</id>
+		<property name="begin" column="span_begin" />
+		<property name="end" column="span_end" />
+		<many-to-one name="uimaType" class="UimaType" column="uima_type_id"
+			not-null="true" />
+		<many-to-one name="document" class="Document" column="document_id"
+			not-null="true" />
+	</class>
+	<query name="getUimaTypeByName"><![CDATA[
+		from UimaType
+		where uimaTypeName = :uimaTypeName
+	]]></query>
+	<query name="getUimaTypes"><![CDATA[
+		from UimaType
+	]]></query>
+	<!-- insert anno_contain for a document annotations must pertain to the 
+		same document parent annotation spans a range that contains the child annotation 
+		if annotations span the exact same range, they must be of different types -->
+	<query name="insertAnnotationContainmentLinks"><![CDATA[
+		insert into AnnotationContainmentLink (parentAnnotationId, parentUimaTypeId, childAnnotationId, childUimaTypeId)
+		select p.documentAnnotationID, p.uimaType.uimaTypeID, c.documentAnnotationID, c.uimaType.uimaTypeID
+		from DocumentAnnotation p, DocumentAnnotation c
+		where p.begin <= c.begin
+		and p.end >= c.end
+		and p.documentAnnotationID <> c.documentAnnotationID
+		and not (p.begin = c.begin and p.end = c.end and p.uimaType.uimaTypeID = c.uimaType.uimaTypeID)
+		and p.document.documentID = :documentID
+		and c.document.documentID = :documentID
+	]]></query>
+</hibernate-mapping>

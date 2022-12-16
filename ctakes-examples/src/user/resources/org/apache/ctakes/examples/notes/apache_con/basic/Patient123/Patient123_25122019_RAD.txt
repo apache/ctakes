@@ -1,0 +1,22 @@
+Template:       TP Report 1
+Encounter Time: Dec 25 2019 12:00:00
+Patient Name:   Neid, Indira
+Provider:       Liszt Prahseseur Memorial
+Setting:        Outpatient.
+Code:           XYZ
+Back Code:      ZYX
+
+Text: CLINICAL HISTORY:
+Text: This is a 50 year old peri-menopausal female who underwent mammogram on 1/28/09 for a palpable lump in the right breast.
+Text:
+Text: PROCEDURE:
+Text: Ultrasound guided core biopsy of right breast 1 o'clock abnormality with clip placement.
+Text:
+Text: FINDINGS:
+Text: Under ultrasound guidance from a medial approach, 2 passes with a 14 gauge biopsy device were performed and sent to pathology.
+Text:
+Text: IMPRESSION:
+Text: Uncomplicated ultrasound guided core biopsies of the right breast at the 1 o'clock position and abnormal right axillary lymph node.
+
+Signature:      Sleips I., Nephra
+Attending:      Cash, Johnny

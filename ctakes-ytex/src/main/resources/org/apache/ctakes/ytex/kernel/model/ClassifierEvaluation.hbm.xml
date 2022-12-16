@@ -1,0 +1,320 @@
+<?xml version="1.0"?>
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="org.apache.ctakes.ytex.kernel.model">
+	<class name="FeatureEvaluation" table="feature_eval">
+		<id name="featureEvaluationId" column="feature_eval_id">
+			<generator class="native">
+				<param name="sequence">feature_eval_sequence</param>
+			</generator>
+		</id>
+		<property name="corpusName" column="corpus_name" />
+		<property name="featureSetName" column="featureset_name" />
+		<property name="param1" column="param1" />
+		<property name="param2" column="param2" />
+		<property name="label" />
+		<property name="crossValidationFoldId" column="cv_fold_id" />
+		<property name="evaluationType" column="type" />
+	</class>
+	<class name="FeatureRank" table="feature_rank">
+		<id name="featureRankId" column="feature_rank_id">
+			<generator class="native">
+				<param name="sequence">feature_rank_sequence</param>
+			</generator>
+		</id>
+		<many-to-one name="featureEval" class="FeatureEvaluation"
+			column="feature_eval_id" />
+		<property name="featureName" column="feature_name" />
+		<property name="evaluation" column="evaluation" />
+		<property name="rank" column="rank" />
+	</class>
+	<class name="FeatureParentChild" table="feature_parchd">
+		<id name="featureParentChildId" column="feature_parchd_id">
+			<generator class="native">
+				<param name="sequence">feature_parchd_sequence</param>
+			</generator>
+		</id>
+		<many-to-one name="featureRankChild" class="FeatureRank"
+			column="chd_feature_rank_id" />
+		<many-to-one name="featureRankParent" class="FeatureRank"
+			column="par_feature_rank_id" />
+	</class>
+	<class name="CrossValidationFold" table="cv_fold">
+		<id name="crossValidationFoldId" column="cv_fold_id">
+			<generator class="native">
+				<param name="sequence">classifier_fold_sequence</param>
+			</generator>
+		</id>
+		<property name="corpusName" column="corpus_name" />
+		<property name="splitName" column="split_name" />
+		<property name="label" />
+		<property name="run" />
+		<property name="fold" />
+		<!-- property name="train" / -->
+		<set name="instanceIds" table="cv_fold_instance" cascade="all">
+			<key column="cv_fold_id" />
+			<composite-element class="CrossValidationFoldInstance">
+				<property name="instanceId" column="instance_id" type="long" />
+				<property name="train" />
+			</composite-element>
+		</set>
+	</class>
+	<class name="ClassifierEvaluation" table="classifier_eval">
+		<id name="classifierEvaluationId" column="classifier_eval_id">
+			<generator class="native">
+				<param name="sequence">classifier_eval_sequence</param>
+			</generator>
+		</id>
+		<property name="name" />
+		<property name="experiment" />
+		<property name="fold" />
+		<property name="run" />
+		<property name="algorithm" />
+		<property name="label" />
+		<property name="options" />
+		<property name="param1" />
+		<property name="param2" />
+		<property name="model" column="model" type="binary" />
+		<map name="classifierInstanceEvaluations" inverse="true"
+			table="classifier_instance_eval">
+			<key column="classifier_eval_id" />
+			<map-key column="instance_id" type="long" />
+			<one-to-many class="ClassifierInstanceEvaluation" />
+		</map>
+		<joined-subclass name="SVMClassifierEvaluation" table="classifier_eval_svm">
+			<key column="classifier_eval_id" />
+			<property name="cost" />
+			<property name="weight" />
+			<property name="degree" />
+			<property name="gamma" />
+			<property name="kernel" />
+			<property name="supportVectors" />
+			<property name="vcdim" />
+		</joined-subclass>
+		<joined-subclass name="SemiLClassifierEvaluation"
+			table="classifier_eval_semil">
+			<key column="classifier_eval_id" />
+			<property name="distance" column="distance" />
+			<property name="degree" column="degree" />
+			<property name="softLabel" column="soft_label" />
+			<property name="normalizedLaplacian" column="norm_laplace" />
+			<property name="mu" column="mu" />
+			<property name="lambda" column="lambda" />
+			<property name="gamma" column="gamma" />
+			<property name="percentLabeled" column="pct_labeled" />
+		</joined-subclass>
+	</class>
+	<class name="ClassifierEvaluationIRStat" table="classifier_eval_ir">
+		<id name="classifierEvaluationIRStatId" column="classifier_instance_eval_id">
+			<generator class="native">
+				<param name="sequence">classifier_eval_ir_sequence</param>
+			</generator>
+		</id>
+		<many-to-one name="classifierEvaluation" class="ClassifierEvaluation"
+			column="classifier_eval_id" not-null="true" />
+		<property name="type" column="ir_type"  />
+		<property name="irClass" column="ir_class" />
+		<property name="irClassId" column="ir_class_id" />
+		<property name="tp" />
+		<property name="fp" />
+		<property name="tn" />
+		<property name="fn" />
+		<property name="ppv" />
+		<property name="npv" />
+		<property name="sensitivity" column="sens" />
+		<property name="specificity" column="spec" />
+		<property name="f1" />
+	</class>
+	<class name="ClassifierInstanceEvaluation" table="classifier_instance_eval">
+		<id name="classifierInstanceEvaluationId" column="classifier_instance_eval_id">
+			<generator class="native">
+				<param name="sequence">classifier_instance_eval_sequence</param>
+			</generator>
+		</id>
+		<property name="instanceId" column="instance_id" type="long" />
+		<property name="predictedClassId" column="pred_class_id" />
+		<property name="targetClassId" column="target_class_id" />
+		<many-to-one name="classifierEvaluation" class="ClassifierEvaluation"
+			column="classifier_eval_id" not-null="true" />
+		<map name="classifierInstanceProbabilities" table="classifier_instance_eval_prob">
+			<key column="classifier_instance_eval_id" />
+			<map-key column="class_id" type="int" />
+			<element column="probability" type="double" />
+		</map>
+	</class>
+	<query name="getCrossValidationFoldByName"><![CDATA[
+		from CrossValidationFold
+		where corpusName = :corpusName
+		and splitName = :splitName  
+	]]></query>
+	<query name="getCrossValidationFold"><![CDATA[
+		from CrossValidationFold
+		where name = :name
+		and splitName = :splitName
+		and label = :label
+		and	run = :run
+		and fold = :fold
+	]]></query>
+	<query name="getFeatureEvaluationByNameAndType"><![CDATA[
+		from FeatureEvaluation
+		where corpusName = :corpusName
+		and featureSetName = :featureSetName
+		and param1 = :param1
+		and param2 = :param2
+		and evaluationType = :evaluationType
+	]]></query>
+	<query name="getFeatureEvaluationByNK"><![CDATA[
+		from FeatureEvaluation
+		where corpusName = :corpusName
+		and featureSetName = :featureSetName
+		and param1 = :param1
+		and param2 = :param2
+		and crossValidationFoldId = :crossValidationFoldId
+		and evaluationType = :evaluationType
+		and label = :label
+	]]></query>
+	<query name="getImputedFeaturesByPropagatedCutoff"><![CDATA[
+		select r
+		from FeatureRank r
+		where r.featureEval.corpusName = :corpusName
+		and r.featureEval.featureSetName = :featureSetName
+		and r.featureEval.param1 = :param1
+		and r.featureEval.param2 = :param2
+		and r.featureEval.crossValidationFoldId = :crossValidationFoldId
+		and r.featureEval.evaluationType = :evaluationType
+		and r.featureEval.label = :label
+		and r.evaluation >=  
+		(
+			select min(evaluation)
+			from FeatureRank rp
+			where rp.featureEval.corpusName = :corpusName
+			and rp.featureEval.featureSetName = :featureSetName
+			and rp.featureEval.param1 = :param1
+			and rp.featureEval.param2 = :param2
+			and rp.featureEval.crossValidationFoldId = :crossValidationFoldId
+			and rp.featureEval.evaluationType = :propEvaluationType
+			and rp.featureEval.label = :label
+			and rp.rank <= :propRankCutoff
+		)
+	]]></query>
+	<query name="getThresholdFeatures"><![CDATA[
+		from FeatureRank
+		where featureEval.corpusName = :corpusName
+		and featureEval.featureSetName = :featureSetName
+		and featureEval.param1 = :param1
+		and featureEval.param2 = :param2
+		and featureEval.crossValidationFoldId = :crossValidationFoldId
+		and featureEval.evaluationType = :evaluationType
+		and featureEval.label = :label
+		and evaluation >= :evaluation
+	]]></query>
+	<query name="getTopFeatures"><![CDATA[
+		from FeatureRank
+		where featureEval.corpusName = :corpusName
+		and featureEval.featureSetName = :featureSetName
+		and featureEval.param1 = :param1
+		and featureEval.param2 = :param2
+		and featureEval.crossValidationFoldId = :crossValidationFoldId
+		and featureEval.evaluationType = :evaluationType
+		and featureEval.label = :label
+		order by evaluation desc
+	]]></query>
+	<query name="getFeatureRankEvaluations"><![CDATA[
+		from FeatureRank
+		where featureEval.corpusName = :corpusName
+		and featureEval.featureSetName = :featureSetName
+		and featureEval.param1 = :param1
+		and featureEval.param2 = :param2
+		and featureEval.crossValidationFoldId = :crossValidationFoldId
+		and featureEval.evaluationType = :evaluationType
+		and featureEval.label = :label
+		and featureName in (:featureNames)
+	]]></query>	
+ 	<query name="deleteFeatureRank"><![CDATA[
+		delete from FeatureRank r
+		where featureEval.featureEvaluationId = :featureEvaluationId
+	]]></query>
+	<query name="deleteFeatureEval"><![CDATA[
+		delete from FeatureEvaluation
+		where featureEvaluationId = :featureEvaluationId
+	]]></query>
+	<query name="getCorpusCuiTuis"><![CDATA[
+		select s.cui, s.tui 
+		from FeatureRank r, MRSTY s
+		where r.featureEval.corpusName = :corpusName
+		and r.featureEval.featureSetName = :featureSetName
+		and r.featureEval.param1 = :param1
+		and r.featureEval.param2 = :param2
+		and r.featureEval.crossValidationFoldId = :crossValidationFoldId
+		and r.featureEval.evaluationType = :evaluationType
+		and r.featureEval.label = :label
+		and r.featureName = s.cui
+	]]></query>	
+	<query name="getCuiMinStr"><![CDATA[
+		select cui, min(str)
+		from MRCONSO
+		where cui in (:cuis)
+		group by cui
+	]]></query>
+	<query name="getCuiPreferredName"><![CDATA[
+		select cui, min(str)
+		from MRCONSO
+		where cui in (:cuis)
+		and (tty = 'PN' or tty = 'PT')
+		group by cui
+	]]></query>
+	<query name="getMaxFeatureEvaluation"><![CDATA[
+		select max(evaluation)
+		from FeatureRank
+		where featureEval.corpusName = :corpusName
+		and featureEval.featureSetName = :featureSetName
+		and featureEval.param1 = :param1
+		and featureEval.param2 = :param2
+		and featureEval.crossValidationFoldId = :crossValidationFoldId
+		and featureEval.evaluationType = :evaluationType
+		and featureEval.label = :label
+	]]></query>
+	<query name="getMaxFeatureRank"><![CDATA[
+		select max(rank)
+		from FeatureRank
+		where featureEval.corpusName = :corpusName
+		and featureEval.featureSetName = :featureSetName
+		and featureEval.param1 = :param1
+		and featureEval.param2 = :param2
+		and featureEval.crossValidationFoldId = :crossValidationFoldId
+		and featureEval.evaluationType = :evaluationType
+		and featureEval.label = :label
+	]]></query>	
+	<query name="getIntrinsicInfoContent"><![CDATA[
+		select new org.apache.ctakes.ytex.kernel.metric.ConceptInfo(featureName, rank, 0d, evaluation)
+		from FeatureRank
+		where featureEval.corpusName = :corpusName
+		and featureEval.featureSetName = :featureSetName
+		and featureEval.param1 = :param1
+		and featureEval.param2 = :param2
+		and featureEval.crossValidationFoldId = :crossValidationFoldId
+		and featureEval.evaluationType = :evaluationType
+		and featureEval.label = :label
+		order by evaluation desc
+	]]></query>
+	
+</hibernate-mapping>

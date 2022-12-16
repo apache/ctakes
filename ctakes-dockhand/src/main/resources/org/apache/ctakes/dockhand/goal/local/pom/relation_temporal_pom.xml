@@ -1,0 +1,182 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+   <modelVersion>4.0.0</modelVersion>
+   <groupId>org.apache.ctakes</groupId>
+   <artifactId>dockhand-local</artifactId>
+   <name>Relation Temporal Dockhand</name>
+   <version>5.0.0-SNAPSHOT</version>
+   <description>Discovers Relations and Temporal Information using Apache cTAKES</description>
+   <packaging>jar</packaging>
+   <url>http://ctakes.apache.org</url>
+   <inceptionYear>2012</inceptionYear>
+
+   <properties>
+      <ctakes.version>5.0.0-SNAPSHOT</ctakes.version>
+   </properties>
+
+   <dependencies>
+
+      <dependency>
+         <groupId>org.apache.ctakes</groupId>
+         <artifactId>ctakes-utils</artifactId>
+         <version>${ctakes.version}</version>
+         <exclusions>
+            <exclusion>
+               <groupId>org.apache.lucene</groupId>
+               <artifactId>lucene-queries</artifactId>
+            </exclusion>
+            <exclusion>
+               <groupId>org.apache.lucene</groupId>
+               <artifactId>lucene-queryparser</artifactId>
+            </exclusion>
+            <exclusion>
+               <groupId>org.apache.lucene</groupId>
+               <artifactId>lucene-analyzers-common</artifactId>
+            </exclusion>
+         </exclusions>
+      </dependency>
+
+      <dependency>
+         <groupId>org.apache.ctakes</groupId>
+         <artifactId>ctakes-temporal</artifactId>
+         <version>${ctakes.version}</version>
+         <exclusions>
+            <exclusion>
+               <groupId>org.apache.ctakes</groupId>
+               <artifactId>ctakes-clinical-pipeline</artifactId>
+            </exclusion>
+         </exclusions>
+      </dependency>
+
+      <dependency>
+         <groupId>org.apache.ctakes</groupId>
+         <artifactId>ctakes-chunker</artifactId>
+         <version>${ctakes.version}</version>
+      </dependency>
+
+      <dependency>
+         <groupId>org.apache.ctakes</groupId>
+         <artifactId>ctakes-dictionary-lookup-fast</artifactId>
+         <version>${ctakes.version}</version>
+      </dependency>
+      <dependency>
+         <groupId>net.sourceforge.ctakesresources</groupId>
+         <artifactId>ctakes-resources-sno_rx</artifactId>
+         <version>4.0.0</version>
+      </dependency>
+
+      <dependency>
+         <groupId>org.apache.ctakes</groupId>
+         <artifactId>ctakes-constituency-parser</artifactId>
+         <version>${ctakes.version}</version>
+      </dependency>
+      <dependency>
+         <groupId>org.apache.ctakes</groupId>
+         <artifactId>ctakes-dependency-parser</artifactId>
+         <version>${ctakes.version}</version>
+         <exclusions>
+            <exclusion>
+               <groupId>org.apache.ctakes</groupId>
+               <artifactId>ctakes-dependency-parser-models-clear</artifactId>
+            </exclusion>
+            <exclusion>
+               <groupId>org.apache.ctakes</groupId>
+               <artifactId>ctakes-lvg</artifactId>
+            </exclusion>
+         </exclusions>
+      </dependency>
+      <dependency>
+         <groupId>org.apache.ctakes</groupId>
+         <artifactId>ctakes-context-tokenizer</artifactId>
+         <version>${ctakes.version}</version>
+      </dependency>
+
+      <dependency>
+         <groupId>org.apache.ctakes</groupId>
+         <artifactId>ctakes-fhir</artifactId>
+         <version>${ctakes.version}</version>
+      </dependency>
+
+      <dependency>
+         <groupId>org.apache.ctakes</groupId>
+         <artifactId>ctakes-gui</artifactId>
+         <version>${ctakes.version}</version>
+      </dependency>
+
+      <!--  libsvm for temporal  -->
+      <dependency>
+         <groupId>org.cleartk</groupId>
+         <artifactId>cleartk-ml-libsvm</artifactId>
+         <version>2.0.0</version>
+      </dependency>
+
+   </dependencies>
+
+   <repositories>
+      <repository>
+         <id>apache.snapshots</id>
+         <name>Apache Development Snapshot Repository</name>
+         <url>https://repository.apache.org/content/groups/snapshots/</url>
+         <releases>
+            <enabled>false</enabled>
+         </releases>
+         <snapshots>
+            <enabled>true</enabled>
+         </snapshots>
+      </repository>
+   </repositories>
+
+   <build>
+      <plugins>
+
+         <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-dependency-plugin</artifactId>
+            <version>3.1.1</version>
+            <executions>
+               <execution>
+                  <id>unpack</id>
+                  <phase>package</phase>
+                  <goals>
+                     <goal>unpack</goal>
+                  </goals>
+                  <configuration>
+                     <artifactItems>
+                        <artifactItem>
+                           <groupId>net.sourceforge.ctakesresources</groupId>
+                           <artifactId>ctakes-resources-sno_rx</artifactId>
+                           <type>jar</type>
+                           <overWrite>false</overWrite>
+                           <outputDirectory>apache-ctakes-${project.version}/resources</outputDirectory>
+                        </artifactItem>
+                     </artifactItems>
+                  </configuration>
+               </execution>
+            </executions>
+         </plugin>
+
+         <plugin>
+            <artifactId>maven-assembly-plugin</artifactId>
+            <executions>
+               <execution>
+                  <id>bundle-project-sources</id>
+                  <phase>package</phase>
+                  <goals>
+                     <goal>single</goal>
+                  </goals>
+                  <configuration>
+                     <descriptors>
+                        <descriptor>build.xml</descriptor>
+                     </descriptors>
+                     <finalName>apache-ctakes-${project.version}</finalName>
+                     <appendAssemblyId>false</appendAssemblyId>
+                     <outputDirectory>.</outputDirectory>
+                  </configuration>
+               </execution>
+            </executions>
+         </plugin>
+
+      </plugins>
+   </build>
+
+</project>

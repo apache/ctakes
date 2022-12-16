@@ -1,0 +1,31 @@
+# jdbc url for database.  
+# Replace localhost:1521:orcl with the host, port and service name/SID of your database
+# another format that works is e.g.: jdbc:oracle:thin:ytex/ytex@localhost:1521:orcl
+db.url=jdbc:oracle:thin:@localhost:1521:orcl
+
+# oracle username and password
+# user needs connect, resource, and create view privileges
+db.username=ytex_test
+db.password=ytex_test
+
+# database schema 
+# typically identical to username
+# alternatively, the user must have access to the schema
+db.schema=ytex_test
+
+# the schema where umls is installed
+# if not specified, will default to schema from ytex
+#umls.schema=umls
+
+
+# you should not have to modify anything below
+# hibernate database dialect
+# specify Oracle8iDialect, Oracle9iDialect, or Oracle10gDialect
+# can use Oracle10gDialect for Oracle11
+hibernate.dialect=org.hibernate.dialect.Oracle10gDialect
+
+db.type=orcl
+db.driver=oracle.jdbc.driver.OracleDriver
+
+# transaction isolation level
+db.isolationLevel=READ_COMMITTED

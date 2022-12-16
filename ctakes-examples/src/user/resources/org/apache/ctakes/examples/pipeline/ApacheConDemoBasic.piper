@@ -1,0 +1,21 @@
+
+// Run using command line parameters
+// -p ApacheConDemoBasic
+// -i org/apache/ctakes/examples/notes/apache_con/Patient123
+// -o {your output directory}
+
+// Use our simple extension of AbstractFileTreeReader.
+reader ApacheConDemoReader
+
+// Add our simple regex engine to the pipeline.
+// By default finds "biopsy".
+add ApacheConDemoEngine
+
+// Add our simple regex engine to the pipeline.
+// Find Imaging mentions.
+add ApacheConDemoEngine REGEX_CUI=AC456 REGEX="diagnostic imaging|MRI"
+
+// Use our simple extension of AbstractJCasFileWriter.
+add ApacheConDemoWriter
+
+add FileTreeXmiWriter SubDirectory=XMI

@@ -1,0 +1,203 @@
+Contents
+- Listing of README's in this project
+- Introduction
+- Building a model
+- Building a tag dictionary
+- Running the POSTagger analysis engine
+	- POSTagger.xml
+	- POSTaggerAggregate.xml
+	- POSTaggerCPE.xml
+- Evaluating a POS tagger
+
+
+###################################
+Listing of README's in this project
+###################################
+
+ - data/pos/training/README - describes how to create training data for the 
+                              part-of-speech (POS) tagger.
+ - resources/models/README - describes how the pos-tagging models were created
+ - test/data/README - describes data used for the unit tests	
+
+
+############
+Introduction
+############
+
+This project provides a UIMA wrapper around the popular OpenNLP part-of-speech 
+tagger. The UIMA examples project provides a default wrapper from which we have 
+borrowed liberally.  We have created our own wrapper so that it will work better
+with our type system and to add features and supporting components.  
+Additionally, both the OpenNLP package and the UIMA examples OpenNLP wrappers 
+lack documentation for how to do things like generate training data, build a 
+part-of-speech tagging model, and build a tag dictionary.  The latter in 
+particular can be very confusing if you are new to OpenNLP.  We have 
+attempted to provide all of the necessary documentation here.
+
+A part-of-speech tagging model is included with this project.
+
+The model derives from a combination of GENIA, Penn Treebank (Wall Street Journal) and anonymized
+clinical data per Safe Harbor HIPAA guidelines. Prior to model building, the clinical data was 
+deidentified for patient names to preserve patient confidentiality. Any person name in the model 
+will originate from non-patient data sources.
+ 
+
+################
+Building a model 
+################
+
+If you wish to build your own part-of-speech model that works with the OpenNLP 
+part-of-speech tagger you will need to follow these steps:
+1) obtain training data - see data/pos/training/README
+2) build a model using the training data - see resources/models/README
+
+
+#########################
+Building a tag dictionary 
+#########################
+
+One thing that can be confusing about the OpenNLP part-of-speech tagger is that 
+there are two data structures with similar sounding names - Dictionary and 
+TagDictionary.  In short, the Dictionary construct is one that can and should 
+be ignored while the TagDictionary is one that needs a bit of attention.
+
+A tag dictionary is used when tagging text, not during the training of a POS model.  
+
+Unfortunately, OpenNLP does not provide a mechanism for creating a tag 
+dictionary, so we have provided one.  It can be run with the following command:
+
+java org.apache.ctakes.postagger.TagDictionaryCreator <training-data> 
+                                                        <tag-dictionary> 
+                                                         <case-sensitive>
+														 
+  where <training-data> is a file containing pos-of-speech tagged training data 
+                        as described in data/pos/training/README
+  where <tag-dictionary> is the file that will be created, and where the 
+                         tag dictionary will be written to
+  where <case-sensitive> is either 'true' or 'false' depending on whether the 
+  						 tag dictionary should be case sensitive or not.
+
+For relevant material about the difference between Dictionary and TagDictionary 
+see the following:
+https://sourceforge.net/forum/forum.php?thread_id=1720863&forum_id=9943
+https://sourceforge.net/forum/forum.php?thread_id=1894043&forum_id=9943
+DefaultPOSContextGenerator.getContext(int, Object[], String[])
+
+OpenNLP provides a default tag dictionary for the English part-of-speech model 
+called tag.bin.gz which can be downloaded from:
+http://opennlp.sourceforge.net/models/english/parser/tagdict
+You should use this tag dictionary only if you are using the model from:
+http://opennlp.sourceforge.net/models/english/parser/tag.bin.gz
+
+If we want to use the tag dictionary in a case insensitive way, then entries 
+in the tag dictionary which are not all lowercased will be ignored because 
+the tag dictionary fails to lowercase entries read in from the file.  
+It only lowercases the words that are compared against the dictionary when 
+"CaseSensitive" is set to false.  Therefore, if you want the tag dictionary 
+to be used in a case insensitive way, be sure to build the tag dictionary 
+using 'false' as the third argument (as described above).  
+
+
+#####################################
+Running the POSTagger analysis engine
+#####################################
+
+%%%%%%%%%%%%%
+POSTagger.xml
+
+The file desc/POSTagger.xml provides a descriptor for the POSTagger analysis 
+engine which is the UIMA component we have written that wraps the OpenNLP 
+part-of-speech tagger.  Open this file using the Component Descriptor Editor as
+described in the tutorial.  Click on the tab labeled "Overview" to observe that 
+the class called by this descriptor is "org.apache.ctakes.postagger.POSTagger".
+Click on the tab labeled "Parameter Settings" to view the parameters required 
+by the POSTagger component.  The descriptor file does not document the 
+parameters because they are documented in the api javadocs for the class 
+org.apache.ctakes.postagger.POSTagger.  Please consult that documentation for 
+additional details.  The parameters are:
+ - PosModelFile - the file that contains the part-of-speech tagging model
+ - TagDictionary - the file that contains the tag dictionary (if available)
+ - CaseSensitive - determines whether to use the TagDictionary in a case 
+					sensitive way or not.
+
+%%%%%%%%%%%%%%%%%%%%%%
+POSTaggerAggregate.xml
+
+The descriptor desc/POSTaggerAggregate.xml defines a pipeline for part-of-speech
+tagging that creates all the necessary inputs (e.g. token and sentence
+annotations).
+
+Open it using the Component Descriptor Editor as described in the tutorial.
+Click on the tab labeled "Overview" to observe that the engine type is 
+"Aggregate".  
+Click on the tab labeled "Aggregate" to see the components that need to be run 
+before the POSTagger can run.  
+Click on the tab labeled "Parameter Settings" to see that the same three 
+parameters need to be set from the POSTagger.xml file.  If you set these 
+parameters to acceptable values, you can open and run
+desc/POSTaggerAggregate.xml using the CAS Visual Debugger.  
+
+%%%%%%%%%%%%%%%%
+POSTaggerCPE.xml
+
+The file desc/POSTaggerCPE.xml provides an xml-specification of a component 
+processing engine (CPE) which can be opened, edited, and run using the UIMA 
+CPE GUI as described in the tutorial.  Open this file using the UIMA CPE GUI 
+and set the parameters for the collection reader to point to a local collection
+of files that you want part-of-speech tagged.  Set the parameters for the 
+POSTagger as appropriate for your environment and, finally, set the output 
+directory of the XCAS Writer CAS Consumer.  
+
+The results of running the pipeline are written to the output directory 
+as XCAS files.
+  
+These files can be viewed in the CAS Visual Debugger.  
+
+#######################
+Evaluating a POS tagger
+#######################
+
+There are two ways a POS tagger should be evaluated:
+
+1) Use gold standard tokens
+
+Run the POS tagger using gold standard tokens and calculate the percentage of 
+part-of-speech labels that have been correctly assigned.
+
+If this is gold standard sentence:
+The_DT major_JJ inducible_JJ protein_NN complex_NN that_WDT binds_VBZ ._.
+
+And if this is the output for that sentence:
+The_DT major_JJ inducible_NN protein_NN complex_NN that_WDT binds_VBD ._.
+
+The accuracy should be 6/8 = 75%.
+
+2) Use tokenizer generated tokens
+
+Run the tokenizer and use this as input to the POS tagger.  In this scenario, we calculate 
+f-measure in the following way:
+
+true positive - a token that has the correct boundary and part-of-speech label 
+false positive - a tagged token that does not have the correct boundary and/or
+                 part-of-speech label 
+false negative - a token in the gold standard data that was not correctly generated by 
+                 the tokenizer/POS tagger
+
+If this is gold standard sentence:
+This_DT complex_NN is_VBZ not_RB cyclosporin_JJ -sensitive_JJ ._.
+
+And if this is the output for that sentence:
+This_DT complex_JJ is_VBZ not_RB cyclosporin-sensitive_JJ ._.
+
+true positives = 4
+false positives = 2
+false negatives = 3
+
+f-measure = (2 * recall * precision) / (precision + recall) 
+          = (2*TP) / (2*TP + FP + FN) 
+          
+f-measure = (2*4) / (2*4 + 2 + 3) = 8 / 13 = .615
+
+In fact, if you do the evaluation this way for the "gold standard tokens" evaluation, then 
+you will get the same answer as the accuracy calculation given above. 
+ 

@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<casConsumerDescription xmlns="http://uima.apache.org/resourceSpecifier">
+  <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
+  <implementationName>org.apache.ctakes.coreference.cc.ODIEVectorFileWriter</implementationName>
+  <processingResourceMetaData>
+    <name>Create libsvm input</name>
+    <description>Write the vector values in the CAS to a file plain text, one instance per line</description>
+    <version>1.0</version>
+    <vendor>Mayo Clinic</vendor>
+    <configurationParameters>
+      <configurationParameter>
+        <name>outputDir</name>
+        <description>Where the files will be written to</description>
+        <type>String</type>
+        <multiValued>false</multiValued>
+        <mandatory>true</mandatory>
+      </configurationParameter>
+      <configurationParameter>
+        <name>goldStandardDir</name>
+        <type>String</type>
+        <multiValued>false</multiValued>
+        <mandatory>true</mandatory>
+      </configurationParameter>
+      <configurationParameter>
+        <name>writeVectors</name>
+        <description>Should the consumer print out the vector pairs for the coreferent markables?</description>
+        <type>Boolean</type>
+        <multiValued>false</multiValued>
+        <mandatory>true</mandatory>
+      </configurationParameter>
+      <configurationParameter>
+        <name>writeTrees</name>
+        <type>Boolean</type>
+        <multiValued>false</multiValued>
+        <mandatory>true</mandatory>
+      </configurationParameter>
+      <configurationParameter>
+        <name>anaphora</name>
+        <description>Building anaphora vectors?</description>
+        <type>Boolean</type>
+        <multiValued>false</multiValued>
+        <mandatory>true</mandatory>
+      </configurationParameter>
+    </configurationParameters>
+    <configurationParameterSettings>
+      <nameValuePair>
+        <name>outputDir</name>
+        <value>
+          <string>test\data\output</string>
+        </value>
+      </nameValuePair>
+      <nameValuePair>
+        <name>writeVectors</name>
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </nameValuePair>
+      <nameValuePair>
+        <name>writeTrees</name>
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </nameValuePair>
+      <nameValuePair>
+        <name>anaphora</name>
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </nameValuePair>
+      <nameValuePair>
+        <name>goldStandardDir</name>
+        <value>
+          <string>change me</string>
+        </value>
+      </nameValuePair>
+    </configurationParameterSettings>
+    <typeSystemDescription>
+      <imports>
+<import name="org.apache.ctakes.typesystem.types.TypeSystem"/>
+      </imports>
+    </typeSystemDescription>
+    <typePriorities/>
+    <fsIndexCollection/>
+    <capabilities>
+      <capability>
+        <inputs>
+          <type allAnnotatorFeatures="true">org.apache.ctakes.typesystem.type.DocumentID</type>
+        </inputs>
+        <outputs/>
+        <inputSofas>
+          <sofaName>plaintext</sofaName>
+        </inputSofas>
+        <languagesSupported/>
+      </capability>
+    </capabilities>
+    <operationalProperties>
+      <modifiesCas>false</modifiesCas>
+      <multipleDeploymentAllowed>true</multipleDeploymentAllowed>
+      <outputsNewCASes>false</outputsNewCASes>
+    </operationalProperties>
+  </processingResourceMetaData>
+  <externalResourceDependencies>
+    <externalResourceDependency>
+      <key>stopWords</key>
+      <description/>
+      <interfaceName>org.apache.ctakes.core.resource.FileResource</interfaceName>
+      <optional>false</optional>
+    </externalResourceDependency>
+    <externalResourceDependency>
+      <key>treeFrags</key>
+      <description/>
+      <interfaceName>org.apache.ctakes.core.resource.FileResource</interfaceName>
+      <optional>false</optional>
+    </externalResourceDependency>
+  </externalResourceDependencies>
+  <resourceManagerConfiguration>
+    <externalResources>
+      <externalResource>
+        <name>stopWordsFile</name>
+        <description/>
+        <fileResourceSpecifier>
+          <fileUrl>file:org/apache/ctakes/coreference/models/stop.txt</fileUrl>
+        </fileResourceSpecifier>
+        <implementationName>org.apache.ctakes.core.resource.FileResourceImpl</implementationName>
+      </externalResource>
+      <externalResource>
+        <name>treeFragFile</name>
+        <description/>
+        <fileResourceSpecifier>
+          <fileUrl>file:org/apache/ctakes/coreference/models/frags.txt</fileUrl>
+        </fileResourceSpecifier>
+        <implementationName>org.apache.ctakes.core.resource.FileResourceImpl</implementationName>
+      </externalResource>
+    </externalResources>
+    <externalResourceBindings>
+      <externalResourceBinding>
+        <key>stopWords</key>
+        <resourceName>stopWordsFile</resourceName>
+      </externalResourceBinding>
+      <externalResourceBinding>
+        <key>treeFrags</key>
+        <resourceName>treeFragFile</resourceName>
+      </externalResourceBinding>
+    </externalResourceBindings>
+  </resourceManagerConfiguration>
+</casConsumerDescription>

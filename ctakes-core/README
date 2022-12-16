@@ -1,0 +1,99 @@
+
+Contents
+- Introduction
+- Analysis engines (annotators)
+	- CopyAnnotator.xml
+	- NullAnnotator.xml
+	- OverlapAnnotator.xml
+	- SentenceDetectorAnnotator.xml
+	- SimpleSegmentAnnotator.xml
+	- TokenizerAnnotator.xml
+	  
+
+############
+Introduction
+############
+
+This project contains several annotators, including:
+	- a sentence detector annotator (a wrapper around the OpenNLP sentence detector)
+	- a tokenizer
+	- an annotator that does not update the CAS in any way, which can be useful if you are using the UIMA
+	  CPE GUI and you are required to specify an analysis engine but you don't actually want to specify one.
+	- an annotator that creates a single Segment annotation encompassing the entire document text, which can
+	  be used when processing a plaintext document which therefore doesn't have section (aka segment) tags. 
+
+Of particular interest is that
+	- End-of-line characters are considered end-of-sentence markers. 
+
+A sentence detector model is included with this project.
+
+The model derives from a combination of GENIA, Penn Treebank (Wall Street Journal) and anonymized
+clinical data per Safe Harbor HIPAA guidelines. Prior to model building, the clinical data was 
+deidentified for patient names to preserve patient confidentiality. Any person name in the model 
+will originate from non-patient data sources.
+   
+
+#############################
+Analysis engines (annotators)
+#############################
+
+%%%%%%%%%%%%%%%%%
+CopyAnnotator.xml
+
+This is a utility annotator that copies data from an existing JCas object into a new JCas object.
+
+%%%%%%%%%%%%%%%%%
+NullAnnotator.xml
+
+%%%%%%%%%%%%%%%%%%%%
+OverlapAnnotator.xml
+
+An annotator that modifies one annotation (begin and end offsets) or deletes one (or both) of 
+the annotations, when two annotations overlap. The action taken depends on the configuration parameters.
+
+It can extend an annotation to encompass overlapping annotations.
+
+It can be configured to delete annotations of type A that are subsumed by other annotations of type A 
+if you only want the longest annotations of the given type to be kept.
+
+See the javadoc for org.apache.ctakes.core.ae.OverlapAnnotator for more details.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+SentenceDetectorAnnotator.xml
+
+A wrapper around the OpenNLP sentence detector, that creates Sentence annotations based on the 
+location of end-of-line characters and on the output of the OpenNLP sentence detector.
+This annotator considers an end-of-line character as an end-of-sentence marker.
+Optionally can skip certain sections of the document.
+
+Parameters:
+  SegmentsToSkip - (optional) the list of sections not to create Sentence annotations for.  
+
+Resources:
+  MaxentModelFile - (required) the Maxent model sentence detector.
+  
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+SimpleSegmentAnnotator.xml
+
+Creates a single Segment annotation, encompassing the entire document.  
+For use prior to annotators that require a Segment annotation, when the the pipeline does not
+contain a different annotator that creates Segment annotations.
+This annotator is used for plaintext files, but not for CDA documents, as the
+CdaCasInitializer annotator creates Segment annotations.
+
+Parameters:
+  SegmentID - (optional) the identifier to use for the Segment annotation created.   
+
+%%%%%%%%%%%%%%%%%%%%%%
+TokenizerAnnotator.xml
+
+Tokenizes text.    
+See classes org.apache.ctakes.core.ae.TokenizerAnnotatorPTB and org.apache.ctakes.core.nlp.tokenizer.Tokenizer
+for implementation details.
+
+Parameters:
+  SegmentsToSkip - (optional) the list of sections not to create token annotations for.
+
+

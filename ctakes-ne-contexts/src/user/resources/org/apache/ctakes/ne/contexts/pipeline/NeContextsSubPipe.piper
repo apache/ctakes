@@ -1,0 +1,7 @@
+// Commands and parameters to create a default entity attributes processing sub-pipeline.  This is not a full pipeline.
+
+// Add the context annotator for simple annotation properties
+// The default call sets it to detect negation
+add ContextAnnotator
+// It can also detect Status if you change some parameters from the defaults
+add ContextAnnotator ContextAnalyzerClass=org.apache.ctakes.necontexts.status.StatusContextAnalyzer ContextHitConsumerClass=org.apache.ctakes.necontexts.status.StatusContextHitConsumer MaxLeftScopeSize=10 MaxRightScopeSize=10

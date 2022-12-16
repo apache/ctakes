@@ -1,0 +1,24 @@
+// Commands and parameters to create a token processing pipeline with sections, paragraphs and lists
+
+// Annotate sections by known regex
+add BsvRegexSectionizer
+
+// The sentence detector needs our custom model path, otherwise default values are used.
+//addLogged SentenceDetectorAnnotatorBIO classifierJarPath=/org/apache/ctakes/core/sentdetect/model.jar
+
+// The SentenceDetectorAnnotatorBIO is a "lumper" that works well for notes in which end of line does not indicate a sentence.
+// If that is not your case, then you may get better results using the more standard SentenceDetector
+add SentenceDetector
+
+// By default, paragraphs are parsed using empty lines as separators and Part #:
+add ParagraphAnnotator
+// Fix sentences so that no sentence spans across two or more paragraphs.
+add ParagraphSentenceFixer
+
+// Use regular expressions created for the Pitt notes to discover formatted lists and tables.
+add ListAnnotator
+// Fix sentences so that no sentence spans across two or more list entries.
+add ListSentenceFixer
+
+// Now we can finally tokenize, tag parts of speech and chunk using adjusted sentences.
+add TokenizerAnnotatorPTB

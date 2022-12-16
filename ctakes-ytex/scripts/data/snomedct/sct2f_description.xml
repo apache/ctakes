@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<load xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://jdl-prj.googlecode.com/files/xdl.xsd">
+	<!-- tiny hack - encapsulator defaults to " and can't be set to null. some 
+		snomed strings have quotes which throws off the csv parser. tilde doesn't 
+		appear anywhere so safe to use this as encapsulator -->
+	<csv table="sct2f_description" commit="10000" delimiter="&#009;"
+		skip="1" encapsulator="~">
+		<column name="id" />
+		<column name="effectiveTime" format="java.text.SimpleDateFormat"
+			pattern="yyyyMMdd" />
+		<column name="active" format="java.text.DecimalFormat" pattern="#" />
+		<column name="moduleId" />
+		<column name="conceptId" />
+		<column name="languageCode" />
+		<column name="typeId" />
+		<column name="term" />
+		<column name="caseSignificanceId" />
+	</csv>
+</load>

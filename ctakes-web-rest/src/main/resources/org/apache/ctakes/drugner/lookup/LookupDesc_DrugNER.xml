@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<lookupSpecification>
+	<!--  Defines what dictionaries will be used in terms of implementation specifics and metaField configuration. -->
+	<dictionaries>
+		<dictionary id="GAZ_RXNORM" externalResourceKey="RxnormIndexReader" caseSensitive="false">
+			<implementation>
+				<luceneImpl/>
+			</implementation>
+			<lookupField fieldName="first_word"/>
+			<excludeList>
+			   <child value="alcohol"/>
+			   <child value="air"/>
+			   <child value="allergies"/>
+			   <child value="allergy"/>
+			   <child value="aerosol"/>
+			   <child value="bottle"/>
+			   <child value="bottles"/>
+			   <child value="film"/>
+			   <child value="spray"/>
+			   <child value="sprays"/>
+			   <child value="freez"/>
+			   <child value="freeze"/>
+			   <child value="frozen"/>
+			   <child value="froze"/>
+			   <child value="factor xiii"/>
+			   <child value="factor"/>
+			   <child value="gas"/>
+			   <child value="oxygen"/>
+			   <child value="paste"/>
+			   <child value="powder"/>
+			   <child value="oil"/>
+			   <child value="oils"/>
+			   <child value="solution"/>
+			   <child value="solutions"/>
+			   <child value="sodium"/>
+			   <child value="syrup"/>
+			   <child value="inhaler"/>
+			   <child value="unit"/>
+			   <child value="units"/>
+			   <child value="cholesterol"/>
+			   <child value="completed"/>
+			   <child value="caplet"/>
+			   <child value="caplets"/>
+			   <child value="cain"/>
+			   <child value="dos"/>
+			   <child value="dose"/>
+			   <child value="doses"/>
+			   <child value="transdermal patch"/>
+			   <child value="tablet"/>
+			   <child value="tablets"/>
+			   <child value="patch"/>
+			   <child value="patches"/>
+			   <child value="pill"/>
+			   <child value="pills"/>
+			   <child value="program"/>
+			   <child value="ointment"/>
+			   <child value="oral"/>
+			<!--      <child value="calcium"/>
+			   <child value="glucose"/>
+			<child value="magnesium"/> -->
+			   <child value="diuresed"/>
+			   <child value="diurese"/>
+			   <child value="capsule"/>
+			   <child value="capsules"/>
+			    <child value="cane"/>
+			   <child value="chewable"/>
+			   <child value="cream"/>
+			   <child value="topical"/>
+			   <child value="lead"/>
+			   <child value="led"/>
+			   <child value="load"/>
+			   <child value="leads"/>
+			   <child value="leading"/>
+			   <child value="loads"/>
+			   <child value="liver"/>
+			   <child value="liquid"/>
+			   <child value="lozenge"/>
+			   <child value="lozenges"/>
+			   <child value="nebulizer"/>
+			   <child value="nebulize"/>
+			   <child value="gel"/>
+			   <child value="prostate"/>
+			   <child value="be"/>
+			   <child value="being"/>
+			   <child value="cm"/>
+			   <child value="dr"/>
+			   <child value="drs"/>
+			   <child value="is"/>
+			   <child value="hearing"/>
+			   <child value="prompting"/>
+			   <child value="sutures"/>
+			   <child value="tomorrow"/>
+			   <child value="water"/>
+			   <child value="walker"/>
+			   <child value="suspension"/>
+			   <child value="sustained"/>
+			   <child value="air"/>
+			   <child value="md"/><child value="pm"/><child value="mg"/><child value="a"/><child value="b"/><child value="c"/><child value="d"/><child value="e"/><child value="f"/><child value="g"/><child value="h"/><child value="i"/><child value="j"/><child value="k"/><child value="l"/><child value="m"/><child value="n"/><child value="o"/><child value="p"/><child value="q"/><child value="r"/><child value="s"/><child value="t"/><child value="q"/><child value="v"/><child value="w"/><child value="x"/><child value="y"/><child value="z"/>
+			</excludeList>
+			<metaFields>
+				<metaField fieldName="code"/>
+				<metaField fieldName="codeRxNorm"/>
+				<metaField fieldName="preferred_designation"/>
+			</metaFields>
+			</dictionary>
+	</dictionaries>
+	<!-- Binds together the components necessary to perform the complete lookup logic start to end. -->
+	<lookupBindings>
+		<lookupBinding>
+			<dictionaryRef idRef="GAZ_RXNORM"/>
+			<lookupInitializer className="org.apache.ctakes.dictionary.lookup.ae.FirstTokenPermLookupInitializerImpl">
+				<properties>
+					<property key="textMetaFields" value="preferred_designation|other_designation"/>
+					<property key="maxPermutationLevel" value="3"/>
+					<property key="windowAnnotations" value="org.apache.ctakes.typesystem.type.textspan.DrugLookupWindowAnnotation"/>
+					<property key="exclusionTags" value="CC,CD,DT,EX,LS,MD,PDT,POS,PP,PP$,PRP,PRP$,RP,TO,WDT,WP,WPS,WRB"/> <!-- ohnlp ID# 3378705 -->
+				</properties>
+			</lookupInitializer>
+			<lookupConsumer className="org.apache.ctakes.dictionary.lookup.ae.NamedEntityLookupConsumerImpl">
+				<properties>
+					<property key="codingScheme" value="RXNORM"/>
+					<property key="codeMetaField" value="codeRxNorm"/> <!--  change this to value="code" for UMLS CUIs -->
+					<property key="luceneFilterExtResrcKey" value="NamedEntityLookupConsumer"/>
+					<property key="typeIdField" value="1"/>
+				</properties>
+			</lookupConsumer>
+		</lookupBinding>
+	</lookupBindings>
+</lookupSpecification>

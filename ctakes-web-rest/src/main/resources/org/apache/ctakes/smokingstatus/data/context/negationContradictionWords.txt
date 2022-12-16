@@ -1,0 +1,8 @@
+quit
+quits
+stop
+stops
+stopped
+discontinue
+discontinues
+discontinued

@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Comments are placed inside these arrow-and-dash things -->
+<!-- Remember that anything that's an <entity> will have a span by default, and that Span doesn't need to be requested explicitly as a <property> -->
+<schema>
+   <defaultattribute>
+      <required>False</required>
+   </defaultattribute>
+   <definition>
+      <entities type="Attributes_general" color="">
+         <entity type="negation_indicator_class" color="F5BAD2" hotkey="o">
+            <properties>
+               <property input="choice" type="negation_indicator_normalization">negation_present,negation_absent</property>
+            </properties>
+         </entity>
+         <entity type="uncertainty_indicator_class" color="F3BAF5" hotkey="u">
+            <properties>
+               <property input="choice" type="uncertainty_indicator_normalization">indicator_present,indicator_absent</property>
+            </properties>
+         </entity>
+         <entity type="subject_class" color="F3BAF5">
+            <properties>
+               <property input="choice" type="subject_normalization">patient, family_member, donor_family_member, donor_other, other</property>
+            </properties>
+         </entity>
+         <entity type="severity_class" color="DFBAF5">
+            <properties>
+               <property input="choice" type="severity_normalization">severe, moderate, slight, unmarked</property>
+            </properties>
+         </entity>
+         <entity type="course_class" color="CAF5BA">
+            <properties>
+               <property input="choice" type="course_normalization">changed, increased, decreased, improved, worsened, resolved, unmarked</property>
+            </properties>
+         </entity>
+         <entity type="generic_class" color="DDF5BA">
+            <properties>
+               <property input="choice" type="generic_normalization">true,false</property>
+            </properties>
+         </entity>
+         <entity type="conditional_class" color="F5F5BA" hotkey="q">
+            <properties>
+               <property input="choice" type="conditional_normalization">true, false</property>
+            </properties>
+         </entity>
+         <entity type="historyOf_indicator_class" color="F5D8BA" hotkey="h">
+            <properties>
+               <property input="choice" type="historyOf_normalization">true, false</property>
+            </properties>
+         </entity>
+      </entities>
+
+      <entities type="Attributes_medication" color="">
+         <entity type="Date" color="F55B89">
+            <properties>
+               <property input="text" type="day"></property>
+               <property input="text" type="month"></property>
+               <property input="text" type="year"></property>
+            </properties>
+         </entity>
+         <entity type="StrengthNumber" color="E35BF5">
+            <properties>
+            </properties>
+         </entity>
+         <entity type="StrengthUnit" color="985BF5">
+            <properties>
+            </properties>
+         </entity>
+         <entity type="Strength" color="625BF5">
+            <properties>
+               <property input="list" type="strength_number" maxLink="1" instanceOf="StrengthNumber"></property>
+               <property input="list" type="strength_unit" maxLink="1" instanceOf="StrengthUnit"></property>
+            </properties>
+         </entity>
+         <entity type="Dosage" color="FB96F5">
+            <properties>
+               <property input="text" type="dosage_values"></property>
+            </properties>
+         </entity>
+         <entity type="FrequencyNumber" color="5BD3F5">
+            <properties>
+               <property input="text" type="frequency_number_normalization"></property>
+            </properties>
+         </entity>
+         <entity type="FrequencyUnit" color="5BF5C7">
+            <properties>
+               <property input="choice" type="frequency_unit_values">undetermined, as_needed, hour, day, week, month, every_other_day, other</property>
+            </properties>
+         </entity>
+         <entity type="Frequency" color="62F55B">
+            <properties>
+               <property input="list" type="frequency_number" maxLink="1" instanceOf="FrequencyNumber"></property>
+               <property input="list" type="frequency_unit" maxLink="1" instanceOf="FrequencyUnit"></property>
+            </properties>
+         </entity>
+         <entity type="Duration" color="A5F55B">
+            <properties>
+               <property input="text" type="duration_values"></property>
+            </properties>
+         </entity>
+         <entity type="Route" color="DEF55B">
+            <properties>
+               <!-- Here, the initial comma means "No default value"-->
+               <property input="choice" type="route_values">,Topical, Enteral_Oral, Enteral_Gastric, Enteral_Rectal, Parenteral_Intravenous, Parenteral_Intra-arterial, Parenteral_Intramuscular, Parenteral_Intracardiac, Parenteral_Subcutaneous, Parenteral_Intrathecal, Parenteral_Intraperiotoneal, Parenteral_Transdermal, Parenteral_Transmucosal, other, undetermined</property>
+            </properties>
+         </entity>
+         <entity type="Form" color="F5E05B">
+            <properties>
+               <property input="choice" type="form">,aerosol, capsule, cream, elixir, emulsion, enema, gel, implant, inhalant, injection, liquid, lotion, lozenge, ointment, patch, pellet, pill, powder, shampoo, soap, solution, spray, suppository, syrup, tablet, other</property>
+            </properties>
+         </entity>
+         <entity type="StatusChange" color="F5BA5B">
+            <properties>
+               <property input="choice" type="change_status_value">start, stop, increase, decrease, noChange</property>
+            </properties>
+         </entity>
+         <entity type="allergy_indicator_class" color="F5625B">
+            <properties>
+               <property input="choice" type="allergy_indicator_normalization">indicator_present, indicator_absent</property>
+            </properties>
+         </entity>
+      </entities>
+
+      <entities type="UMLSEntities" color="">
+         <entity type="Anatomical_site" color="BD0B32" hotkey="a">
+            <properties>
+               <!-- Anything of type "entity" has a span, no need to consider it a property -->
+               <property input="list" type="negation_indicator" maxLink="1" instanceOf="negation_indicator_class" required="true"/>
+               <property input="text" type="associatedCode"></property>
+               <!-- All relations or pointers to entities have input="list" -->
+               <property input="list" type="conditional" maxLink="1" instanceOf="conditional_class" required="true"/>
+               <property input="list" type="generic" maxLink="1" instanceOf="generic_class" required="true"/>
+               <property input="list" type="subject" maxLink="1" instanceOf="Person"/>
+               <property input="list" type="uncertainty_indicator" maxLink="1" instanceOf="uncertainty_indicator_class" required="true"/>
+            </properties>
+         </entity>
+         <entity type="Disease_Disorder" color="AB0BBD" hotkey="d">
+            <properties>
+               <!-- Again, any relations or pointers to other annotations have input="list"-->
+               <property input="list" type="negation_indicator" maxLink="1" instanceOf="negation_indicator_class" required="true"/>
+               <property input="text" type="associatedCode"></property>
+               <property input="list" type="conditional" maxLink="1" instanceOf="conditional_class" required="true"/>
+               <property input="list" type="generic" maxLink="1" instanceOf="generic_class" required="true"/>
+               <property input="list" type="subject" maxLink="1" instanceOf="Person"/>
+               <property input="list" type="uncertainty_indicator" maxLink="1" instanceOf="uncertainty_indicator_class" required="true"/>
+               <!-- Commas in the "instanceof" field allow you to specify that it can be an instance of many things -->
+               <!-- Many is specified using an absurdly high number -->
+               <property input="text" type="alleviating_factor"></property>
+               <property input="text" type="associated_sign_or_symptom"></property>
+               <!-- input="multichoice" is used when you've got a choice where more than one item can be chosen-->
+               <property input="text" type="course"></property>
+               <property input="text" type="exacerbating_factor"></property>
+               <property input="text" type="duration"></property>
+               <property input="text" type="start_time"></property>
+               <property input="text" type="end_time"></property>
+               <property input="list" type="historyOf" maxLink="1" instanceOf="historyOf_indicator_class" required="true"/>
+               <property input="text" type="relative_temporal_context"></property>
+               <property input="list" type="severity" maxLink="1" instanceOf="severity_class" required="true"/>
+            </properties>
+         </entity>
+
+         <entity type="Clinical_Attribute" color="580BBD" hotkey="k">
+            <properties>
+               <property input="list" type="negation_indicator" maxLink="1" instanceOf="negation_indicator_class" required="true"/>
+               <property input="text" type="associatedCode"></property>
+               <property input="list" type="conditional" maxLink="1" instanceOf="conditional_class" required="true"/>
+               <property input="list" type="generic" maxLink="1" instanceOf="generic_class" required="true"/>
+               <property input="list" type="subject" maxLink="1" instanceOf="Person"/>
+               <property input="list" type="entity" maxLink="1" instanceOf="Procedure,Anatomical_site,Disease_Disorder"/>
+               <property input="list" type="uncertainty_indicator" maxLink="1" instanceOf="uncertainty_indicator_class" required="true"/>
+               <property input="list" type="historyOf" maxLink="1" instanceOf="historyOf_indicator_class" required="true"/>
+            </properties>
+         </entity>
+
+         <entity type="Devices" color="140BBD">
+            <properties>
+               <property input="list" type="negation_indicator" maxLink="1" instanceOf="negation_indicator_class" required="true"/>
+               <!-- For manual entry, specify input ="text" -->
+               <property input="text" type="associatedCode"></property>
+               <property input="list" type="conditional" maxLink="1" instanceOf="conditional_class" required="true"/>
+               <property input="list" type="generic" maxLink="1" instanceOf="generic_class" required="true"/>
+               <property input="list" type="subject" maxLink="1" instanceOf="Person"/>
+               <property input="list" type="uncertainty_indicator" maxLink="1" instanceOf="uncertainty_indicator_class" required="true"/>
+               <property input="list" type="historyOf" maxLink="1" instanceOf="historyOf_indicator_class" required="true"/>
+            </properties>
+         </entity>
+         <entity type="Lab" color="D6B189" hotkey="b">
+            <properties>
+               <property input="list" type="negation_indicator" maxLink="1" instanceOf="negation_indicator_class" required="true"/>
+               <property input="text" type="associatedCode"/>
+               <property input="list" type="conditional" maxLink="1" instanceOf="conditional_class" required="true"/>
+               <property input="list" type="generic" maxLink="1" instanceOf="generic_class" required="true"/>
+               <property input="text" type="Lab_value"></property>
+               <property input="list" type="uncertainty_indicator" maxLink="1" instanceOf="uncertainty_indicator_class" required="true"/>
+               <property input="list" type="historyOf" maxLink="1" instanceOf="historyOf_indicator_class" required="true"/>
+               <property input="list" type="subject" maxLink="1" instanceOf="Person"/>
+               <property input="text" type="reference_range"/>
+
+            </properties>
+         </entity>
+         <entity type="Medications/Drugs" color="0B58BD" hotkey="m">
+            <properties>
+               <property input="list" type="negation_indicator" maxLink="1" instanceOf="negation_indicator_class" required="true"/>
+               <property input="text" type="associatedCode"/>
+               <property input="list" type="conditional" maxLink="1" instanceOf="conditional_class" required="true"/>
+               <property input="list" type="generic" maxLink="1" instanceOf="generic_class" required="true"/>
+               <property input="list" type="subject" maxLink="1" instanceOf="Person"/>
+               <property input="list" type="uncertainty_indicator" maxLink="1" instanceOf="uncertainty_indicator_class" required="true"/>
+               <property input="list" type="historyOf" maxLink="1" instanceOf="historyOf_indicator_class" required="true"/>
+               <property input="list" type="allergy_indicator" maxLink="1" instanceOf="allergy_indicator_class"/>
+               <property input="list" type="change_status_model" maxLink="1" instanceOf="StatusChange"/>
+               <property input="list" type="dosage_model" maxLink="1" instanceOf="Dosage"/>
+               <property input="list" type="duration_model" maxLink="1" instanceOf="Duration"/>
+               <property input="list" type="end_date" maxLink="1" instanceOf="Date"/>
+               <property input="list" type="form_model" maxLink="1" instanceOf="Form"/>
+               <property input="text" type="frequency_model"></property>
+               <property input="list" type="route_model" maxLink="1" instanceOf="Route"/>
+               <property input="list" type="start_date" maxLink="1" instanceOf="Date"/>
+               <property input="text" type="strength_model"></property>
+            </properties>
+         </entity>
+         <entity type="Person" color="0B9CBD" hotkey="r">
+            <properties>
+               <property input="choice" type="subject_normalization">patient, family_member, donor_family_member, donor_other, other</property>
+            </properties>
+         </entity>
+         <entity type="Phenomena" color="0BBD8A" hotkey="f">
+            <properties>
+               <property input="list" type="negation_indicator" maxLink="1" instanceOf="negation_indicator_class" required="true"/>
+               <!-- For manual entry, specify input ="text" -->
+               <property input="text" type="associatedCode"></property>
+               <property input="list" type="conditional" maxLink="1" instanceOf="conditional_class" required="true"/>
+               <property input="list" type="generic" maxLink="1" instanceOf="generic_class" required="true"/>
+               <property input="list" type="subject" maxLink="1" instanceOf="Person"/>
+               <property input="list" type="uncertainty_indicator" maxLink="1" instanceOf="uncertainty_indicator_class" required="true"/>
+               <property input="list" type="historyOf" maxLink="1" instanceOf="historyOf_indicator_class" required="true"/>
+            </properties>
+         </entity>
+         <entity type="Procedure" color="0BBD0B" hotkey="p">
+            <properties>
+               <property input="list" type="negation_indicator" maxLink="1" instanceOf="negation_indicator_class" required="true"/>
+               <!-- For manual entry, specify input ="text" -->
+               <property input="text" type="associatedCode"></property>
+               <property input="list" type="conditional" maxLink="1" instanceOf="conditional_class" required="true"/>
+               <property input="list" type="generic" maxLink="1" instanceOf="generic_class" required="true"/>
+               <property input="list" type="subject" maxLink="1" instanceOf="Person"/>
+               <property input="list" type="uncertainty_indicator" maxLink="1" instanceOf="uncertainty_indicator_class" required="true"/>
+               <property input="list" type="historyOf" maxLink="1" instanceOf="historyOf_indicator_class" required="true"/>
+               <property input="text" type="device"></property>
+               <property input="text" type="start_time"></property>
+               <property input="text" type="duration"></property>
+               <property input="text" type="end_time"></property>
+               <property input="text" type="relative_temporal_context"></property>
+            </properties>
+         </entity>
+         <entity type="Sign_symptom" color="BDA50B" hotkey="s">
+            <properties>
+               <property input="text" type="alleviating_factor"></property>
+               <property input="text" type="start_time"></property>
+               <property input="text" type="duration"></property>
+               <property input="text" type="end_time"></property>
+               <property input="list" type="negation_indicator" maxLink="1" instanceOf="negation_indicator_class" required="true"/>
+               <!-- For manual entry, specify input ="text" -->
+               <property input="text" type="associatedCode"></property>
+               <property input="list" type="conditional" maxLink="1" instanceOf="conditional_class" required="true"/>
+               <property input="list" type="generic" maxLink="1" instanceOf="generic_class" required="true"/>
+               <property input="list" type="subject" maxLink="1" instanceOf="Person"/>
+               <property input="list" type="uncertainty_indicator" maxLink="1" instanceOf="uncertainty_indicator_class" required="true"/>
+               <property input="list" type="historyOf" maxLink="1" instanceOf="historyOf_indicator_class" required="true"/>
+               <property input="text" type="exacerbating_factor"></property>
+               <property input="text" type="course"></property>
+               <property input="text" type="body_location"></property>
+               <property input="text" type="severity"></property>
+               <property input="text" type="relative_temporal_context"></property>
+            </properties>
+         </entity>
+      </entities>
+
+   </definition>
+</schema>

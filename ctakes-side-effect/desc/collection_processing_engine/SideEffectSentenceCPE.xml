@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<cpeDescription xmlns="http://uima.apache.org/resourceSpecifier">
+    <collectionReader>
+        <collectionIterator>
+            <descriptor>
+                <import location="../../../ctakes-core/desc/collection_reader/FilesInDirectoryCollectionReader.xml"/>
+            </descriptor>
+            <configurationParameterSettings>
+                <nameValuePair>
+                    <name>InputDirectory</name>
+                    <value>
+                        <string>/Volumes/bmi/Dept/projects/Text/Outcomes/data/manual_annotations/round3/texts</string>
+                    </value>
+                </nameValuePair>
+            </configurationParameterSettings>
+        </collectionIterator>
+    </collectionReader>
+    <casProcessors casPoolSize="3" processingUnitThreadCount="1">
+        <casProcessor deployment="integrated" name="SideEffectSentenceAggregateTAE">
+            <descriptor>
+                <import location="../analysis_engine/SideEffectSentenceAggregateTAE.xml"/>
+            </descriptor>
+            <deploymentParameters/>
+            <errorHandling>
+                <errorRateThreshold action="terminate" value="0/1000"/>
+                <maxConsecutiveRestarts action="terminate" value="30"/>
+                <timeout max="100000" default="-1"/>
+            </errorHandling>
+            <checkpoint batch="10000" time="1000ms"/>
+        </casProcessor>
+        <casProcessor deployment="integrated" name="SideEffectSentenceCasConsumer">
+            <descriptor>
+                <import location="../cas_consumer/SideEffectSentenceCasConsumer.xml"/>
+            </descriptor>
+            <deploymentParameters/>
+            <errorHandling>
+                <errorRateThreshold action="terminate" value="0/1000"/>
+                <maxConsecutiveRestarts action="terminate" value="30"/>
+                <timeout max="100000" default="-1"/>
+            </errorHandling>
+            <checkpoint batch="10000" time="1000ms"/>
+            <configurationParameterSettings>
+                <nameValuePair>
+                    <name>OutputFile</name>
+                    <value>
+                        <string>/Volumes/bmi/Dept/projects/Text/Outcomes/data/manual_annotations/round3/texts/out/sideEffectsSentence.txt</string>
+                    </value>
+                </nameValuePair>
+            </configurationParameterSettings>
+        </casProcessor>
+    </casProcessors>
+    <cpeConfig>
+        <numToProcess>-1</numToProcess>
+        <deployAs>immediate</deployAs>
+        <checkpoint batch="0" time="300000"/>
+        <timerImpl/>
+    </cpeConfig>
+</cpeDescription>

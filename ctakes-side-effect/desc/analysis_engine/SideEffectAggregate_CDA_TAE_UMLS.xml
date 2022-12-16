@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<taeDescription xmlns="http://uima.apache.org/resourceSpecifier">
+  <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
+  <primitive>false</primitive>
+  <delegateAnalysisEngineSpecifiers>
+    <delegateAnalysisEngine key="TokenizerAnnotator">
+      <import location="../../../ctakes-core/desc/analysis_engine/TokenizerAnnotator.xml"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="ContextDependentTokenizerAnnotator">
+      <import location="../../../ctakes-context-tokenizer/desc/analysis_engine/ContextDependentTokenizerAnnotator.xml"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="NegationAnnotator">
+      <import location="../../../ctakes-ne-contexts/desc/NegationAnnotator.xml"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="StatusAnnotator">
+      <import location="../../../ctakes-ne-contexts/desc/StatusAnnotator.xml"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="SentenceDetectorAnnotator">
+      <import location="../../../ctakes-core/desc/analysis_engine/SentenceDetectorAnnotator.xml"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="POSTagger">
+      <import location="../../../ctakes-pos-tagger/desc/POSTagger.xml"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="DrugMentionAnnotator">
+      <import location="../../../ctakes-drug-ner/desc/analysis_engine/DrugMentionAnnotator.xml"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="Chunker">
+      <import location="../../../ctakes-chunker/desc/Chunker.xml"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="SideEffectAnnotator">
+      <import location="SideEffectAnnotator.xml"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="CdaCasInitializer">
+      <import location="../../../ctakes-preprocessor/desc/CdaCasInitializer.xml"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="ExtractionPrepAnnotator">
+      <import location="../../../ctakes-clinical-pipeline/desc/analysis_engine/ExtractionPrepAnnotator.xml"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="LookupWindowAnnotator">
+      <import location="LookupWindowAnnotator_sideEffect.xml"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="DictionaryLookupAnnotator">
+      <import location="DictionaryLookupAnnotator_sideEffectUMLS.xml"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="LvgAnnotator">
+      <import location="../../../ctakes-lvg/desc/analysis_engine/LvgAnnotator.xml"/>
+    </delegateAnalysisEngine>
+  </delegateAnalysisEngineSpecifiers>
+  <analysisEngineMetaData>
+    <name>SideEffectAggregate_CDA_TAE</name>
+    <description>Perform rule-based side effect extraction</description>
+    <version>1.0</version>
+    <vendor>Mayo</vendor>
+    <configurationParameters searchStrategy="language_fallback">
+      <configurationParameter>
+        <name>ChunkCreatorClass</name>
+        <type>String</type>
+        <multiValued>false</multiValued>
+        <mandatory>true</mandatory>
+        <overrides>
+          <parameter>Chunker/ChunkCreatorClass</parameter>
+        </overrides>
+      </configurationParameter>
+    </configurationParameters>
+    <configurationParameterSettings>
+      <nameValuePair>
+        <name>ChunkCreatorClass</name>
+        <value>
+          <string>org.apache.ctakes.chunker.ae.PhraseTypeChunkCreator</string>
+        </value>
+      </nameValuePair>
+    </configurationParameterSettings>
+    <flowConstraints>
+      <fixedFlow>
+        <node>CdaCasInitializer</node>
+        <node>SentenceDetectorAnnotator</node>
+        <node>TokenizerAnnotator</node>
+        <node>LvgAnnotator</node>
+        <node>ContextDependentTokenizerAnnotator</node>
+        <node>POSTagger</node>
+        <node>Chunker</node>
+        <node>LookupWindowAnnotator</node>
+        <node>DictionaryLookupAnnotator</node>
+        <node>DrugMentionAnnotator</node>
+        <node>StatusAnnotator</node>
+        <node>NegationAnnotator</node>
+        <node>ExtractionPrepAnnotator</node>
+        <node>SideEffectAnnotator</node>
+      </fixedFlow>
+    </flowConstraints>
+    <fsIndexCollection/>
+    <capabilities>
+      <capability>
+        <inputs/>
+        <outputs/>
+        <outputSofas>
+          <sofaName>plaintext</sofaName>
+        </outputSofas>
+        <languagesSupported/>
+      </capability>
+    </capabilities>
+    <operationalProperties>
+      <modifiesCas>true</modifiesCas>
+      <multipleDeploymentAllowed>true</multipleDeploymentAllowed>
+      <outputsNewCASes>false</outputsNewCASes>
+    </operationalProperties>
+  </analysisEngineMetaData>
+  <sofaMappings>
+    <sofaMapping>
+      <componentKey>CdaCasInitializer</componentKey>
+      <componentSofaName>plaintext</componentSofaName>
+      <aggregateSofaName>plaintext</aggregateSofaName>
+    </sofaMapping>
+    <sofaMapping>
+      <componentKey>Chunker</componentKey>
+      <aggregateSofaName>plaintext</aggregateSofaName>
+    </sofaMapping>
+    <sofaMapping>
+      <componentKey>ContextDependentTokenizerAnnotator</componentKey>
+      <aggregateSofaName>plaintext</aggregateSofaName>
+    </sofaMapping>
+    <sofaMapping>
+      <componentKey>DictionaryLookupAnnotator</componentKey>
+      <aggregateSofaName>plaintext</aggregateSofaName>
+    </sofaMapping>
+    <sofaMapping>
+      <componentKey>DrugMentionAnnotator</componentKey>
+      <aggregateSofaName>plaintext</aggregateSofaName>
+    </sofaMapping>
+    <sofaMapping>
+      <componentKey>ExtractionPrepAnnotator</componentKey>
+      <aggregateSofaName>plaintext</aggregateSofaName>
+    </sofaMapping>
+    <sofaMapping>
+      <componentKey>LookupWindowAnnotator</componentKey>
+      <aggregateSofaName>plaintext</aggregateSofaName>
+    </sofaMapping>
+    <sofaMapping>
+      <componentKey>LvgAnnotator</componentKey>
+      <aggregateSofaName>plaintext</aggregateSofaName>
+    </sofaMapping>
+    <sofaMapping>
+      <componentKey>NegationAnnotator</componentKey>
+      <aggregateSofaName>plaintext</aggregateSofaName>
+    </sofaMapping>
+    <sofaMapping>
+      <componentKey>POSTagger</componentKey>
+      <aggregateSofaName>plaintext</aggregateSofaName>
+    </sofaMapping>
+    <sofaMapping>
+      <componentKey>SentenceDetectorAnnotator</componentKey>
+      <aggregateSofaName>plaintext</aggregateSofaName>
+    </sofaMapping>
+    <sofaMapping>
+      <componentKey>SideEffectAnnotator</componentKey>
+      <aggregateSofaName>plaintext</aggregateSofaName>
+    </sofaMapping>
+    <sofaMapping>
+      <componentKey>StatusAnnotator</componentKey>
+      <aggregateSofaName>plaintext</aggregateSofaName>
+    </sofaMapping>
+    <sofaMapping>
+      <componentKey>TokenizerAnnotator</componentKey>
+      <aggregateSofaName>plaintext</aggregateSofaName>
+    </sofaMapping>
+  </sofaMappings>
+</taeDescription>

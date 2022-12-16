@@ -1,0 +1,23 @@
+Template:       TP Report 3
+Encounter Time: Dec 25 2019 12:00:00
+Patient Name:   Neid, Indira
+Provider:       Liszt Prahseseur Memorial
+Setting:        Outpatient.
+Code:           XYZ
+Back Code:      ZYX
+
+Text: CLINICAL HISTORY:
+Text: This is a 50 year old peri-menopausal female with clinical stage 2A (T1,N2,M0) infiltrating ductal carcinoma.
+Text:
+Text: INTERIM HISTORY:
+Text: MRI of the left breast was without malignancy.
+Text: Physical Exam: Well appearing female in NAD
+Text: Neck: Supple, no masses, thyroid not enlarged
+Text: LUNGS: CTA, No wheezes, rales, rhonchi
+Text:
+Text: IMPRESSION:
+Text: On review of the patient's screening and diagnostic imaging and biopsy results she has a stage IIA (T1,N2,M0)
+Text:  infiltrating ductal carcinoma of the right breast.
+
+Signature:      Sleips I., Nephra
+Attending:      Cash, Johnny

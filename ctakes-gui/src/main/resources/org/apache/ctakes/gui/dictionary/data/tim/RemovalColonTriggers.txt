@@ -1,0 +1,38 @@
+: - :
+: 24 hours :
+: 8 hours :
+: address :
+: arbitrary concentration :
+: duration of encounter :
+: duration of the study :
+: finding :
+: identifier :
+: impression / interpretation of study :
+: life of the unit :
+: mass :
+: number :
+: point in time :
+: prid :
+: pt :
+: substance concentration :
+: text :
+: type :
+: volume :
+: volume rate :
+// The following are in UnwantedSuffixes for default, but trigger removal for small
+:
+: - -
+: - : point in time : ^ patient : - : phenx
+: ( & glucose ( & plasma ) )
+: ( & nos )
+: [ & named variants ]
+: [ admin ] or [ exam ]
+: [ drivers exam ] or [ dtp20003 - hgv / publ serv claim ] or [ admin ]
+: [ early morning ] or [ mid-stream ] or [ for organism ( & culture ) ]
+: [ exam ( & admin ) ] ) or [ my22 form ]
+: [ fp78 ] or [ gp78 ]
+: [ implantation ] or [ implant ]
+: [ monitoring ] or [ clinic ]
+: [ nos ]
+: [ officer ] or [ executive ]
+: [ production ] or [ product ]

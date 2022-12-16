@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<taeDescription xmlns="http://uima.apache.org/resourceSpecifier">
+  <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
+  <primitive>true</primitive>
+  <annotatorImplementationName>org.apache.ctakes.dictionary.lookup.ae.DictionaryLookupAnnotator</annotatorImplementationName>
+  <analysisEngineMetaData>
+    <name>DictionaryLookupAnnotator</name>
+    <description/>
+    <version/>
+    <vendor>Mayo</vendor>
+    <configurationParameters/>
+    <configurationParameterSettings/>
+    <typeSystemDescription>
+      <imports>
+<import name="org.apache.ctakes.typesystem.types.TypeSystem"/>
+      </imports>
+    </typeSystemDescription>
+    <capabilities>
+      <capability>
+        <inputs>
+          <type allAnnotatorFeatures="true">org.apache.ctakes.typesystem.type.syntax.BaseToken</type>
+          <type allAnnotatorFeatures="true">org.apache.ctakes.typesystem.type.textspan.LookupWindowAnnotation</type>
+        </inputs>
+        <outputs>
+          <type allAnnotatorFeatures="true">edu.mayo.bmi.uima.lookup.type.IdentifiedAnnotation</type>
+        </outputs>
+        <languagesSupported/>
+      </capability>
+    </capabilities>
+    <operationalProperties>
+      <modifiesCas>true</modifiesCas>
+      <multipleDeploymentAllowed>true</multipleDeploymentAllowed>
+      <outputsNewCASes>false</outputsNewCASes>
+    </operationalProperties>
+  </analysisEngineMetaData>
+  <externalResourceDependencies>
+    <externalResourceDependency>
+      <key>LookupDescriptor</key>
+      <description/>
+      <interfaceName>org.apache.ctakes.core.resource.FileResource</interfaceName>
+      <optional>false</optional>
+    </externalResourceDependency>
+    <externalResourceDependency>
+      <key>SnomedIndexReader</key>
+      <description/>
+      <interfaceName>org.apache.ctakes.core.resource.LuceneIndexReaderResource</interfaceName>
+      <optional>false</optional>
+    </externalResourceDependency>
+    <externalResourceDependency>
+      <key>CodesListIndexDirectory</key>
+      <description/>
+      <interfaceName>org.apache.ctakes.core.resource.FileResource</interfaceName>
+      <optional>true</optional>
+    </externalResourceDependency>
+    <externalResourceDependency>
+      <key>RxnormIndexReader</key>
+      <description/>
+      <interfaceName>org.apache.ctakes.core.resource.LuceneIndexReaderResource</interfaceName>
+      <optional>false</optional>
+    </externalResourceDependency>
+    <externalResourceDependency>
+      <key>OrangeBookIndexReader</key>
+      <description/>
+      <interfaceName>org.apache.ctakes.core.resource.LuceneIndexReaderResource</interfaceName>
+      <optional>false</optional>
+    </externalResourceDependency>
+    <externalResourceDependency>
+      <key>CsvSE</key>
+      <description/>
+      <interfaceName>org.apache.ctakes.core.resource.FileResource</interfaceName>
+      <optional>false</optional>
+    </externalResourceDependency>
+  </externalResourceDependencies>
+  <resourceManagerConfiguration>
+    <externalResources>
+      <externalResource>
+        <name>LookupDescriptorFile</name>
+        <description/>
+        <fileResourceSpecifier>
+          <fileUrl>file:org/apache/ctakes/sideeffect/lookup/LookupDesc_sideEffect.xml</fileUrl>
+        </fileResourceSpecifier>
+        <implementationName>org.apache.ctakes.core.resource.FileResourceImpl</implementationName>
+      </externalResource>
+      <externalResource>
+        <name>SnomedIndex</name>
+        <description/>
+        <configurableDataResourceSpecifier>
+          <url/>
+          <resourceMetaData>
+            <name/>
+            <configurationParameters>
+              <configurationParameter>
+                <name>UseMemoryIndex</name>
+                <type>Boolean</type>
+                <multiValued>false</multiValued>
+                <mandatory>true</mandatory>
+              </configurationParameter>
+              <configurationParameter>
+                <name>IndexDirectory</name>
+                <type>String</type>
+                <multiValued>false</multiValued>
+                <mandatory>true</mandatory>
+              </configurationParameter>
+            </configurationParameters>
+            <configurationParameterSettings>
+              <nameValuePair>
+                <name>UseMemoryIndex</name>
+                <value>
+                  <boolean>true</boolean>
+                </value>
+              </nameValuePair>
+              <nameValuePair>
+                <name>IndexDirectory</name>
+                <value>
+                  <string>org/apache/ctakes/dictionary/lookup/snomed-like_sample</string>
+                </value>
+              </nameValuePair>
+            </configurationParameterSettings>
+          </resourceMetaData>
+        </configurableDataResourceSpecifier>
+        <implementationName>org.apache.ctakes.core.resource.LuceneIndexReaderResourceImpl</implementationName>
+      </externalResource>
+      <externalResource>
+        <name>CodesListIndexDirectory</name>
+        <description/>
+        <fileResourceSpecifier>
+          <fileUrl>file:org/apache/ctakes/dictionary/lookup/snomed-like_codes_sample</fileUrl>
+        </fileResourceSpecifier>
+        <implementationName>org.apache.ctakes.core.resource.FileResourceImpl</implementationName>
+      </externalResource>
+      <externalResource>
+        <name>RxnormIndex</name>
+        <description/>
+        <configurableDataResourceSpecifier>
+          <url/>
+          <resourceMetaData>
+            <name/>
+            <configurationParameters>
+              <configurationParameter>
+                <name>UseMemoryIndex</name>
+                <type>Boolean</type>
+                <multiValued>false</multiValued>
+                <mandatory>true</mandatory>
+              </configurationParameter>
+              <configurationParameter>
+                <name>IndexDirectory</name>
+                <type>String</type>
+                <multiValued>false</multiValued>
+                <mandatory>true</mandatory>
+              </configurationParameter>
+            </configurationParameters>
+            <configurationParameterSettings>
+              <nameValuePair>
+                <name>UseMemoryIndex</name>
+                <value>
+                  <boolean>true</boolean>
+                </value>
+              </nameValuePair>
+              <nameValuePair>
+                <name>IndexDirectory</name>
+                <value>
+                  <string>org/apache/ctakes/dictionary/lookup/drug_index</string>
+                </value>
+              </nameValuePair>
+            </configurationParameterSettings>
+          </resourceMetaData>
+        </configurableDataResourceSpecifier>
+        <implementationName>org.apache.ctakes.core.resource.LuceneIndexReaderResourceImpl</implementationName>
+      </externalResource>
+      <externalResource>
+        <name>OrangeBookIndex</name>
+        <description/>
+        <configurableDataResourceSpecifier>
+          <url/>
+          <resourceMetaData>
+            <name/>
+            <configurationParameters>
+              <configurationParameter>
+                <name>UseMemoryIndex</name>
+                <type>Boolean</type>
+                <multiValued>false</multiValued>
+                <mandatory>true</mandatory>
+              </configurationParameter>
+              <configurationParameter>
+                <name>IndexDirectory</name>
+                <type>String</type>
+                <multiValued>false</multiValued>
+                <mandatory>true</mandatory>
+              </configurationParameter>
+            </configurationParameters>
+            <configurationParameterSettings>
+              <nameValuePair>
+                <name>UseMemoryIndex</name>
+                <value>
+                  <boolean>true</boolean>
+                </value>
+              </nameValuePair>
+              <nameValuePair>
+                <name>IndexDirectory</name>
+                <value>
+                  <string>org/apache/ctakes/dictionary/lookup/OrangeBook</string>
+                </value>
+              </nameValuePair>
+            </configurationParameterSettings>
+          </resourceMetaData>
+        </configurableDataResourceSpecifier>
+        <implementationName>org.apache.ctakes.core.resource.LuceneIndexReaderResourceImpl</implementationName>
+      </externalResource>
+      <externalResource>
+        <name>CsvSEFile</name>
+        <description>supplemental NEs</description>
+        <fileResourceSpecifier>
+          <fileUrl>file:org/apache/ctakes/sideeffect/lookup/additionalNE_dictionary.csv</fileUrl>
+        </fileResourceSpecifier>
+        <implementationName>org.apache.ctakes.core.resource.FileResourceImpl</implementationName>
+      </externalResource>
+    </externalResources>
+    <externalResourceBindings>
+      <externalResourceBinding>
+        <key>LookupDescriptor</key>
+        <resourceName>LookupDescriptorFile</resourceName>
+      </externalResourceBinding>
+      <externalResourceBinding>
+        <key>SnomedIndexReader</key>
+        <resourceName>SnomedIndex</resourceName>
+      </externalResourceBinding>
+      <externalResourceBinding>
+        <key>CodesListIndexDirectory</key>
+        <resourceName>CodesListIndexDirectory</resourceName>
+      </externalResourceBinding>
+      <externalResourceBinding>
+        <key>RxnormIndexReader</key>
+        <resourceName>RxnormIndex</resourceName>
+      </externalResourceBinding>
+      <externalResourceBinding>
+        <key>OrangeBookIndexReader</key>
+        <resourceName>OrangeBookIndex</resourceName>
+      </externalResourceBinding>
+      <externalResourceBinding>
+        <key>CsvSE</key>
+        <resourceName>CsvSEFile</resourceName>
+      </externalResourceBinding>
+    </externalResourceBindings>
+  </resourceManagerConfiguration>
+</taeDescription>

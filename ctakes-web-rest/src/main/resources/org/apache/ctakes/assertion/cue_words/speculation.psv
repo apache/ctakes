@@ -1,0 +1,194 @@
+uncertain|speculation_mid|speculation
+unsure|speculation_mid|speculation
+improbable|speculation_low|speculation
+unlikely|speculation_low|speculation
+doubtful|speculation_low|speculation
+doubt|speculation_low|speculation
+doubted|speculation_low|speculation
+doubting|speculation_low|speculation
+doubts|speculation_low|speculation
+possible|speculation_mid|speculation
+poss|speculation_mid|speculation
+hypothetical|speculation_mid|speculation
+questionable|speculation_mid|speculation
+consistent with|speculation_mid|speculation
+compatible with|speculation_mid|speculation
+equivocal for|speculation_mid|speculation
+suspicious for|speculation_mid|speculation
+potential|speculation_mid|speculation
+concerned for|speculation_mid|speculation
+concerning for|speculation_mid|speculation
+worrisome for|speculation_mid|speculation
+unclear|speculation_mid|speculation
+unknown|speculation_mid|speculation
+possibly|speculation_mid|speculation
+potentially|speculation_mid|speculation
+maybe|speculation_mid|speculation
+perhaps|speculation_mid|speculation
+possibilities|speculation_mid|speculation
+possibility|speculation_mid|speculation
+evidence for|speculation_mid|speculation
+evidence of|speculation_mid|speculation
+speculation|speculation_mid|speculation
+consideration|speculation_mid|speculation
+?|speculation_mid|speculation
+ddx|speculation_mid|speculation
+differential diagnosis|speculation_mid|speculation
+differential diagnoses|speculation_mid|speculation
+believe|speculation_high|speculation
+believed|speculation_high|speculation
+believes|speculation_high|speculation
+believing|speculation_high|speculation
+consider|speculation_mid|speculation
+considered|speculation_mid|speculation
+considering|speculation_mid|speculation
+considers|speculation_mid|speculation
+t/c|speculation_mid|speculation
+entertain|speculation_mid|speculation
+entertained|speculation_mid|speculation
+entertaining|speculation_mid|speculation
+entertains|speculation_mid|speculation
+question|speculation_mid|speculation
+questioned|speculation_mid|speculation
+questioning|speculation_mid|speculation
+questions|speculation_mid|speculation
+speculate|speculation_high|speculation
+speculated|speculation_high|speculation
+speculates|speculation_high|speculation
+speculating|speculation_high|speculation
+can|speculation_mid|speculation
+could|speculation_mid|speculation
+may|speculation_mid|speculation
+might|speculation_mid|speculation
+whether or not|speculation_mid|speculation
+whether|speculation_mid|speculation
+either|speculation_mid|speculation
+or|speculation_mid|speculation
+if|speculation_mid|speculation
+unless|speculation_low|speculation
+probable	prob_adj
+likely|speculation_high|speculation
+presumed|speculation_high|speculation
+presumptive|speculation_high|speculation
+apparent|speculation_high|speculation
+preliminary|speculation_high|speculation
+putative|speculation_high|speculation
+indicative of|speculation_high|speculation
+suggestive of|speculation_high|speculation
+typical of|speculation_high|speculation
+probably|speculation_high|speculation
+likely|speculation_high|speculation
+presumably|speculation_high|speculation
+apparently|speculation_high|speculation
+reportedly|speculation_high|speculation
+seemingly|speculation_high|speculation
+supposedly|speculation_high|speculation
+must|speculation_high|speculation
+appear|speculation_high|speculation
+appeared|speculation_high|speculation
+appearing|speculation_high|speculation
+appears|speculation_high|speculation
+seem|speculation_high|speculation
+seemed|speculation_high|speculation
+seems|speculation_high|speculation
+seeming|speculation_high|speculation
+estimate|speculation_high|speculation
+estimated|speculation_high|speculation
+estimates|speculation_high|speculation
+estimating|speculation_high|speculation
+feel that|speculation_high|speculation
+feeling that|speculation_high|speculation
+feels that|speculation_high|speculation
+felt that|speculation_high|speculation
+hypothesize|speculation_high|speculation
+hypothesized|speculation_high|speculation
+hypothesizes|speculation_high|speculation
+hypothesizing|speculation_high|speculation
+implied|speculation_high|speculation
+implies|speculation_high|speculation
+imply|speculation_high|speculation
+implying|speculation_high|speculation
+indicate|speculation_high|speculation
+indicated|speculation_high|speculation
+indicates|speculation_high|speculation
+indicating|speculation_high|speculation
+postulate|speculation_high|speculation
+postulated|speculation_high|speculation
+postulating|speculation_high|speculation
+postulates|speculation_high|speculation
+propose|speculation_high|speculation
+proposed|speculation_high|speculation
+proposes|speculation_high|speculation
+proposing|speculation_high|speculation
+suggest|speculation_high|speculation
+suggested|speculation_high|speculation
+suggesting|speculation_high|speculation
+suggests|speculation_high|speculation
+support|speculation_high|speculation
+supported|speculation_high|speculation
+supporting|speculation_high|speculation
+supports|speculation_high|speculation
+suppose|speculation_high|speculation
+supposed|speculation_high|speculation
+supposes|speculation_high|speculation
+supposing|speculation_high|speculation
+suspect|speculation_high|speculation
+suspected|speculation_high|speculation
+suspecting|speculation_high|speculation
+suspects|speculation_high|speculation
+think|speculation_high|speculation
+thinks|speculation_high|speculation
+thinking|speculation_high|speculation
+thought|speculation_high|speculation
+concern for|speculation_high|speculation
+concerns for|speculation_high|speculation
+implication|speculation_high|speculation
+implications|speculation_high|speculation
+impression of|speculation_high|speculation
+indication of|speculation_high|speculation
+indications of|speculation_high|speculation
+suspicion|speculation_high|speculation
+suspicions|speculation_high|speculation
+suggestion|speculation_high|speculation
+suggestions|speculation_high|speculation
+hypothesis|speculation_high|speculation
+hypotheses|speculation_high|speculation
+probability|speculation_high|speculation
+probabilities|speculation_high|speculation
+sign of|speculation_high|speculation
+signs of|speculation_high|speculation
+v.s.|speculation_high|speculation
+versus|speculation_high|speculation
+vs.|speculation_high|speculation
+vs|speculation_high|speculation
+r / o|speculation_mid|speculation
+ro|speculation_mid|speculation
+r/o|speculation_mid|speculation
+rule out|speculation_mid|speculation
+ruling out|speculation_mid|speculation
+rule - out|speculation_mid|speculation
+ruling - out|speculation_mid|speculation
+test for|speculation_mid|speculation
+tested for|speculation_mid|speculation
+testing for|speculation_mid|speculation
+tests for|speculation_mid|speculation
+check for|speculation_mid|speculation
+checked for|speculation_mid|speculation
+checking for|speculation_mid|speculation
+checks for|speculation_mid|speculation
+evaluate for|speculation_mid|speculation
+eval for|speculation_mid|speculation
+evaluated for|speculation_mid|speculation
+evaluates for|speculation_mid|speculation
+evaluating for|speculation_mid|speculation
+evaluation for|speculation_mid|speculation
+assess for|speculation_mid|speculation
+assessment for|speculation_mid|speculation
+monitor for|speculation_mid|speculation
+monitored for|speculation_mid|speculation
+monitoring for|speculation_mid|speculation
+monitors for|speculation_mid|speculation
+seriologies for|speculation_mid|speculation
+seriology for|speculation_mid|speculation
+work up for|speculation_mid|speculation
+workup for|speculation_mid|speculation

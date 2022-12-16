@@ -1,0 +1,22 @@
+// This file contains commands and parameters to run the ctakes-examples "Hello World" pipeline
+// with Entity Property output
+
+// Load a simple token processing pipeline from another file
+load org/apache/ctakes/examples/pipeline/HelloWorld.piper
+
+// Assertion engines require dependencies
+addDescription ClearNLPDependencyParserAE
+// Add the Semantic Role Labeler parser for use by assertion
+addLogged ClearNLPSemanticRoleLabelerAE
+
+// Use the assertion mini pipeline
+// load parameters used by the following engines
+load org/apache/ctakes/examples/pipeline/AssertionDefaults.piper
+// the engines ...
+add medfacts.AssertionAnalysisEngine
+add medfacts.ConceptConverterAnalysisEngine
+add attributes.SubjectAttributeAnalysisEngine
+add attributes.GenericAttributeAnalysisEngine
+
+// Collect discovered Entity information for post-run access
+collectEntities

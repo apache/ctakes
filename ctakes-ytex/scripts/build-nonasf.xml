@@ -1,0 +1,82 @@
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<project name="build-nonasf" default="all">
+	<description>
+		<![CDATA[
+Create the ctakes-ytex-resources.zip that contains the following:
+* umls dictionary lookup table 
+* umls concept graphs
+* non asf compliant jars: hibernate, weka, mysql, ms sql
+
+Before running this:
+* run the maven build
+* need db with umls installed
+* run the data/build.xml (so we can generate the v_snomed_fword_lookup table)
+]]>
+	</description>
+	<import file="build-classpath.xml" />
+	<property name="sqljdbc.home" value="c:/java/sqljdbc_4.0/enu" />
+	<target name="all" depends="create.conceptGraph.all,export.lookup,create.resources.zip,create.lib.zip" />
+	<target name="create.resources.zip">
+		<delete file="../target/ctakes-ytex-resources.zip" quiet="yes" />
+		<zip destfile="../target/ctakes-ytex-resources.zip">
+			<!-- dictionary lookup -->
+			<zipfileset prefix="resources" dir="${ytex.resources.home}" includes="org/apache/ctakes/ytex/dictionary/lookup/v_snomed_fword_lookup.txt" />
+			<!-- concept graphs -->
+			<zipfileset prefix="resources" dir="${ytex.resources.home}" includes="org/apache/ctakes/ytex/conceptGraph/*.gz" />
+		</zip>
+	</target>
+	<target name="create.lib.zip">
+		<delete file="../target/ctakes-ytex-lib.zip" quiet="yes" />
+		<zip destfile="../target/ctakes-ytex-lib.zip">
+			<!-- non-asf libraries -->
+			<zipfileset prefix="lib" dir="../target/lib" includes="hibernate-*.jar,jboss-*.jar,weka-*.jar,mysql-*.jar" />
+			<!-- mssql jdbc driver and authentication dlls -->
+			<zipfileset prefix="lib" dir="${sqljdbc.home}" includes="sqljdbc4.jar,auth/**/*.*" />
+			<!-- mssql jdbc readmes -->
+			<zipfileset prefix="lib/auth" dir="${sqljdbc.home}" includes="*.txt" />
+		</zip>
+
+	</target>
+	<target name="export.lookup">
+		<mkdir dir="${ytex.resources.home}/org/apache/ctakes/ytex/dictionary/lookup" />
+		<sql url="${db.url}" userid="${db.username}" password="${db.password}" driver="${db.driver}" classpathref="${kernel.cp}" csvColumnSeparator="&#9;" showheaders="false" showtrailers="false" print="true" output="${ytex.resources.home}/org/apache/ctakes/ytex/dictionary/lookup/v_snomed_fword_lookup.txt">
+			select cui, coalesce(tui, ''), fword, coalesce(fstem,''), tok_str, coalesce(stem_str,'') from v_snomed_fword_lookup
+		</sql>
+	</target>
+	<target name="create.conceptGraph.all">
+		<antcall target="create.conceptGraph" />
+		<antcall target="create.conceptGraph">
+			<param name="cg.name" value="sct-rxnorm" />
+		</antcall>
+	</target>
+	<target name="create.conceptGraph">
+		<property name="cg.name" value="sct-msh-csp-aod" />
+		<java classname="org.apache.ctakes.ytex.kernel.dao.ConceptDaoImpl" classpathref="${kernel.cp}" maxmemory="4g" fork="true">
+			<arg value="-name" />
+			<arg value="${cg.name}" />
+		</java>
+		<mkdir dir="${ytex.resources.home}/org/apache/ctakes/ytex/conceptGraph" />
+		<copy todir="${ytex.resources.home}">
+			<javaresource name="org/apache/ctakes/ytex/conceptGraph/${cg.name}.gz" classpathref="${kernel.cp}" />
+		</copy>
+	</target>
+</project>

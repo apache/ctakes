@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Licensed to the Apache Software Foundation (ASF) under one or more contributor 
+	license agreements. See the NOTICE file distributed with this work for additional 
+	information regarding copyright ownership. The ASF licenses this file to 
+	you under the Apache License, Version 2.0 (the "License"); you may not use 
+	this file except in compliance with the License. You may obtain a copy of 
+	the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required 
+	by applicable law or agreed to in writing, software distributed under the 
+	License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS 
+	OF ANY KIND, either express or implied. See the License for the specific 
+	language governing permissions and limitations under the License. -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>ctakes-ytex-uima</artifactId>
+	<name>Apache cTAKES YTEX UIMA</name>
+	<parent>
+		<groupId>org.apache.ctakes</groupId>
+		<artifactId>ctakes</artifactId>
+		<version>5.0.0-SNAPSHOT</version>
+	</parent>
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.ctakes</groupId>
+			<artifactId>ctakes-ytex</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.ctakes</groupId>
+			<artifactId>ctakes-type-system</artifactId>
+		</dependency>
+		<!--  If ctakes-lvg is a dependency then everything in ctakes-lvg should be removed.  e.g. lookup, core
+				This makes maintenance much easier wrt upgraded versions and removed/unused modules (e.g. old lookup).-->
+		<dependency>
+			<groupId>org.apache.ctakes</groupId>
+			<artifactId>ctakes-lvg</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.ctakes</groupId>
+			<artifactId>ctakes-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.ctakes</groupId>
+			<artifactId>ctakes-dictionary-lookup</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.ctakes</groupId>
+			<artifactId>ctakes-pos-tagger</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.ctakes</groupId>
+			<artifactId>ctakes-chunker</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.ctakes</groupId>
+			<artifactId>ctakes-context-tokenizer</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.ctakes</groupId>
+			<artifactId>ctakes-dependency-parser</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.ctakes</groupId>
+			<artifactId>ctakes-dependency-parser-models</artifactId>
+			<version>${ctakes.models.version}</version>
+			<scope>test</scope>
+		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>org.apache.ctakes</groupId>-->
+<!--			<artifactId>ctakes-dependency-parser-models-clear</artifactId>-->
+<!--			<scope>test</scope>-->
+<!--		</dependency>-->
+		<dependency>
+			<groupId>org.apache.ctakes</groupId>
+			<artifactId>ctakes-assertion</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.ctakes</groupId>
+			<artifactId>ctakes-ne-contexts</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- begin dependencies added from ctakes-assertion -->
+		<!-- maven is so friggin pedantic and won't load the transitive dependencies 
+			of ctakes-assertion because of ctakes-assertion pom not being absolutely 
+			perfect arghh. manually add dependencies here -->
+		<dependency>
+			<groupId>org.scala-lang</groupId>
+			<artifactId>scala-library</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.scala-tools.sbinary</groupId>
+			<artifactId>sbinary_2.9.0</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!-- end dependencies added from ctakes-assertion -->
+		<!-- <dependency> <groupId>org.apache.ctakes</groupId> <artifactId>ctakes-core-res</artifactId> 
+			<scope>test</scope> </dependency> -->
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+         	<version>${commons-collections.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib</artifactId>
+			<version>${cglib.version}</version>
+		</dependency>
+      <dependency>
+         <groupId>org.apache.uima</groupId>
+         <artifactId>uimaj-tools</artifactId>
+      </dependency>
+	</dependencies>
+	<build>
+		<plugins>
+				<plugin>
+				  <groupId>org.apache.uima</groupId>
+				  <artifactId>jcasgen-maven-plugin</artifactId>
+				  <executions>
+				    <execution>
+				      <goals><goal>generate</goal></goals>
+				      <configuration>
+				        <typeSystemIncludes>
+				          <typeSystemInclude>src/main/resources/org/apache/ctakes/**/types/TypeSystem.xml</typeSystemInclude>				          
+				        </typeSystemIncludes>
+						  <limitToProject>true</limitToProject>
+				      </configuration>
+				    </execution>
+				    </executions>
+				</plugin>
+	
+			<!-- ant scripts need project dependencies in the target/lib directory -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-dependencies</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<includeScope>compile</includeScope>
+							<outputDirectory>${basedir}/target/lib</outputDirectory>
+							<overWriteReleases>false</overWriteReleases>
+							<overWriteSnapshots>false</overWriteSnapshots>
+							<overWriteIfNewer>true</overWriteIfNewer>
+						</configuration>
+					</execution>
+					<execution>
+						<id>unpack-models</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>unpack-dependencies</goal>
+						</goals>
+						<configuration>
+							<includeArtifactIds>ctakes-dependency-parser-models</includeArtifactIds>
+							<excludes>**/META-INF/**</excludes>
+							<outputDirectory>${project.basedir}/../resources</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<!-- run ant scripts to setup test properties and database -->
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>generate-test-config</id>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target>
+								<!-- default to hsql, override via -D -->
+								<property name="db.type" value="hsql" />
+								<ant antfile="build-setup.xml" dir="${basedir}/../ctakes-ytex/scripts" target="test.setup">
+									<property name="config.local" value="${project.build.testOutputDirectory}" />
+									<property name="db.type" value="${db.type}" />
+									<property name="ytex.test" value="true" />
+									<property name="ctakes.home" value="${project.basedir}/.." />
+								</ant>
+							</target>
+						</configuration>
+					</execution>			
+				</executions>
+			</plugin>
+			<!-- run all tests in the integration test phase -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+				<executions>
+					<execution>
+						<id>surefire-it</id>
+						<phase>integration-test</phase>
+						<goals>
+							<goal>test</goal>
+						</goals>
+						<configuration>
+							<skip>false</skip>
+							<forkMode>always</forkMode>
+							<systemPropertyVariables>
+								<log4j.configuration>file:${project.basedir}/src/test/resources/log4j.properties</log4j.configuration>
+							</systemPropertyVariables>
+							<argLine>-Xmx1536m</argLine>
+							<forkMode>always</forkMode>
+							<forkCount>1</forkCount>
+							<reuseForks>false</reuseForks>
+							<forkedProcessTimeoutInSeconds>900</forkedProcessTimeoutInSeconds>
+							<!-- additionalClasspathElements>
+								<additionalClasspathElement>${project.basedir}/../ctakes-assertion-res/src/main/resources</additionalClasspathElement>
+								<additionalClasspathElement>${project.basedir}/../ctakes-assertion-zoner-res/src/main/resources</additionalClasspathElement>
+								<additionalClasspathElement>${project.basedir}/../ctakes-chunker-res/src/main/resources</additionalClasspathElement>
+								<additionalClasspathElement>${project.basedir}/../ctakes-constituency-parser-res/src/main/resources</additionalClasspathElement>
+								<additionalClasspathElement>${project.basedir}/../ctakes-core-res/src/main/resources</additionalClasspathElement>
+								<additionalClasspathElement>${project.basedir}/../ctakes-coreference-res/src/main/resources</additionalClasspathElement>
+								<additionalClasspathElement>${project.basedir}/../ctakes-dependency-parser-res/src/main/resources</additionalClasspathElement>
+								<additionalClasspathElement>${project.basedir}/../ctakes-dictionary-lookup-res/src/main/resources</additionalClasspathElement>
+								<additionalClasspathElement>${project.basedir}/../ctakes-drug-ner-res/src/main/resources</additionalClasspathElement>
+								<additionalClasspathElement>${project.basedir}/../ctakes-lvg-res/src/main/resources</additionalClasspathElement>
+								<additionalClasspathElement>${project.basedir}/../ctakes-ne-contexts-res/src/main/resources</additionalClasspathElement>
+								<additionalClasspathElement>${project.basedir}/../ctakes-pos-tagger-res/src/main/resources</additionalClasspathElement>
+								<additionalClasspathElement>${project.basedir}/../ctakes-relation-extractor-res/src/main/resources</additionalClasspathElement>
+								<additionalClasspathElement>${project.basedir}/../ctakes-side-effect-res/src/main/resources</additionalClasspathElement>
+								<additionalClasspathElement>${project.basedir}/../ctakes-smoking-status-res/src/main/resources</additionalClasspathElement>
+								<additionalClasspathElement>${project.basedir}/../ctakes-temporal-res/src/main/resources</additionalClasspathElement>
+								<additionalClasspathElement>${project.basedir}/../ctakes-ytex-res/src/main/resources</additionalClasspathElement>
+							</additionalClasspathElements -->
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-clean-plugin</artifactId>
+				<configuration>
+					<failOnError>false</failOnError>
+				</configuration>
+			</plugin>			
+		</plugins>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<!-- copy-dependency plugin -->
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.apache.maven.plugins</groupId>
+										<artifactId>maven-dependency-plugin</artifactId>
+										<versionRange>[1.0.0,)</versionRange>
+										<goals>
+											<goal>copy-dependencies</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<execute>
+											<runOnIncremental>false</runOnIncremental>
+										</execute>
+									</action>
+								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.apache.maven.plugins</groupId>
+										<artifactId>maven-antrun-plugin</artifactId>
+										<versionRange>[1.0,)</versionRange>
+										<goals>
+											<goal>run</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<execute>
+											<runOnIncremental>false</runOnIncremental>
+										</execute>
+									</action>
+								</pluginExecution>								
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+</project>

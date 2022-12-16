@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<analysisEngineDescription xmlns="http://uima.apache.org/resourceSpecifier">
+<frameworkImplementation>org.apache.uima.java</frameworkImplementation>
+<primitive>false</primitive>
+<delegateAnalysisEngineSpecifiers>
+<delegateAnalysisEngine key="SimpleSegmentAnnotator">
+<import location="SimpleSegmentAnnotator.xml"/>
+</delegateAnalysisEngine>
+<delegateAnalysisEngine key="Chunker">
+<import location="Chunker.xml"/>
+</delegateAnalysisEngine>
+<delegateAnalysisEngine key="SentenceDetectorAnnotator">
+<import location="../../../ctakes-core/desc/analysis_engine/SentenceDetectorAnnotator.xml"/>
+</delegateAnalysisEngine>
+<delegateAnalysisEngine key="TokenizerAnnotator">
+<import location="TokenizerAnnotator.xml"/>
+</delegateAnalysisEngine>
+<delegateAnalysisEngine key="POSTagger">
+<import location="POSTagger.xml"/>
+</delegateAnalysisEngine>
+</delegateAnalysisEngineSpecifiers>
+<analysisEngineMetaData>
+<name>Chunker Aggregate</name>
+<description></description>
+<version>1.0</version>
+<vendor></vendor>
+<configurationParameters searchStrategy="language_fallback">
+<configurationParameter>
+<name>PosModelFile</name>
+<description>the file that contains the part-of-speech tagging model</description>
+<type>String</type>
+<multiValued>false</multiValued>
+<mandatory>true</mandatory>
+<overrides>
+<parameter>POSTagger/PosModelFile</parameter>
+</overrides>
+</configurationParameter>
+<configurationParameter>
+<name>ChunkerModelFile</name>
+<type>String</type>
+<multiValued>false</multiValued>
+<mandatory>true</mandatory>
+<overrides>
+<parameter>Chunker/ChunkerModelFile</parameter>
+</overrides>
+</configurationParameter>
+<configurationParameter>
+<name>PosTagDictionary</name>
+<type>String</type>
+<multiValued>false</multiValued>
+<mandatory>false</mandatory>
+<overrides>
+<parameter>POSTagger/TagDictionary</parameter>
+</overrides>
+</configurationParameter>
+<configurationParameter>
+<name>ChunkCreatorClass</name>
+<type>String</type>
+<multiValued>false</multiValued>
+<mandatory>true</mandatory>
+<overrides>
+<parameter>Chunker/ChunkCreatorClass</parameter>
+</overrides>
+</configurationParameter>
+<configurationParameter>
+<name>CaseSensitive</name>
+<type>Boolean</type>
+<multiValued>false</multiValued>
+<mandatory>true</mandatory>
+<overrides>
+<parameter>POSTagger/CaseSensitive</parameter>
+</overrides>
+</configurationParameter>
+</configurationParameters>
+<configurationParameterSettings>
+<nameValuePair>
+<name>ChunkerModelFile</name>
+<value>
+<string>target/test-classes/data/unit-test.chunker.model.bin.gz</string>
+</value>
+</nameValuePair>
+<nameValuePair>
+<name>PosModelFile</name>
+<value>
+<string>target/test-classes/data/unit-test-model.bin.gz</string>
+</value>
+</nameValuePair>
+<nameValuePair>
+<name>ChunkCreatorClass</name>
+<value>
+<string>org.apache.ctakes.chunker.ae.DefaultChunkCreator</string>
+</value>
+</nameValuePair>
+<nameValuePair>
+<name>CaseSensitive</name>
+<value>
+<boolean>true</boolean>
+</value>
+</nameValuePair>
+</configurationParameterSettings>
+<flowConstraints>
+<fixedFlow>
+<node>SimpleSegmentAnnotator</node>
+<node>TokenizerAnnotator</node>
+<node>SentenceDetectorAnnotator</node>
+<node>POSTagger</node>
+<node>Chunker</node>
+</fixedFlow>
+</flowConstraints>
+<typePriorities/>
+<fsIndexCollection/>
+<capabilities>
+<capability>
+<inputs/>
+<outputs/>
+<languagesSupported/>
+</capability>
+</capabilities>
+<operationalProperties>
+<modifiesCas>true</modifiesCas>
+<multipleDeploymentAllowed>true</multipleDeploymentAllowed>
+<outputsNewCASes>false</outputsNewCASes>
+</operationalProperties>
+</analysisEngineMetaData>
+<resourceManagerConfiguration/>
+</analysisEngineDescription>

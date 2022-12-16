@@ -1,0 +1,76 @@
+
+Contents
+- Introduction
+- Description of resources
+    - lvg.properties
+    - LVG database
+- Running the LVG annotator
+	- LvgAnnotator.xml
+	- AggregateAE.xml
+
+############
+Introduction
+############
+
+This annotator wraps the National Library of Medicine (NLM) SPECIALIST lexical tools.
+
+See the cTAKES Wiki for the latest information about this annotator:
+https://cwiki.apache.org/confluence/display/CTAKES/cTAKES
+
+Documentation for the SPECIALIST lexical tools is at:
+https://lsg3.nlm.nih.gov/Specialist/Home/index.html
+
+Documentation for Lvg and Norm can be found at: 
+https://lsg3.nlm.nih.gov/LexSysGroup/Projects/lvg/current/web/index.html
+  
+This annotator generates a canonical form for each word and also generates a list of lemma 
+entries with Penn Treebank tags.  These tags could be useful for a part of speech (POS) tagger.
+
+However, for the OpenNLP POS tagger, cTAKES uses a tag dictionary rather than lemma information.
+See the documentation for the POS tagger annotator. 
+
+
+########################
+Description of resources
+########################
+
+%%%%%%%%%%%%%%%%
+lvg.properties
+%%%%%%%%%%%%%%%%
+The LVG configuration file lvg.properties defines the location
+and attributes of the LVG database and the jdbc driver used.
+
+%%%%%%%%%%%%%%%%
+LVG database
+%%%%%%%%%%%%%%%%
+
+The database engine used is hsqldb. 
+
+The LVG database available from the NLM is hundreds of megabytes.  To keep this 
+project relatively small, the database tables included with this project have a 
+relatively small number of rows.
+
+#########################
+Running the LVG annotator
+#########################
+
+%%%%%%%%%%%%%%%%
+LvgAnnotator.xml
+%%%%%%%%%%%%%%%%
+
+The parameters are:
+  UseSegments - controls whether only certain sections will be annotated by this annotator
+  SegmentsToSkip - list of sections not to be processed by this annotator 
+  UseCmdCache - controls whether to look up information in a cache before using norm
+  CmdCacheFileLocation - location of norm cache file
+  CmdCacheFrequencyCutoff - 
+  ExclusionSet - words for which canonicalForm is never set and Lemma entries are never posted
+  XeroxTreebankMap - mapping of part of speech tags, used to POS tags from lexical tools to Penn Treebank tags
+  PostLemmas - controls whether any lemma entries are posted to the CAS  
+  UseLemmaCache - controls whether to look up lemma information in a cache before using lvg
+  LemmaCacheFileLocation - the location of the cache file 
+  LemmaCacheFileFrequencyCutoff - 
+
+Note: as distributed, PostLemmas is set to false.  This is done to reduce the size of the CAS.
+Set PostLemmas to true to have org.apache.ctakes.typesystem.type.Lemma annotations added to the CAS. 
+

@@ -1,0 +1,76 @@
+
+This README describes how to generate training data for the part-of-speech 
+(POS) tagger.
+
+Contents
+- Training data format
+- Sources of training data
+- Genia
+- Penn Treebank
+
+####################
+Training data format
+####################
+
+
+The format of a training data file should have one sentence per line, with
+each 'word' immediately followed by "_" and the word's part-of-speech tag, 
+which is then followed by a space.
+
+Here is an example snippet from one line of training data:
+
+the_DT stories_NNS about_IN well-heeled_JJ communities_NNS and_CC 
+
+- What if my text contains underscores?   No problem.  OpenNLP splits the word 
+  from the tag using the last underscore.  However, there will be difficulties 
+  if your data uses an underscore as a part-of-speech tag.   
+
+- What if I have a "token" that contains a space?  This is a problem. 
+  OpenNLP will not be able to handle a token that contains a space in it.  
+  GENIA, for example, contains 108 occurrences of spaces inside tokens.  
+  The whitespace must be removed from these tokens or ignored (see below).
+
+
+########################
+Sources of training data
+########################
+There are a variety of sources of part-of-speech data that may be useful for 
+training a part-of-speech tagger.  We have used the following three sources 
+for training a part-of-speech tagger for clinical data:
+
+- Mayo part-of-speech corpus - this is a corpus owned and maintained by the 
+  Mayo Clinic.  Unfortunately, because of legal and privacy issues it is not 
+  currently available for distribution.  However, a part-of-speech model based 
+  on this data will likely be available.  
+- GENIA - see below
+- Penn Treebank - see below
+
+#####
+Genia
+#####
+We have provided a simple script to convert GENIA data to OpenNLP part-of-speech
+data.  To create a training data file from the GENIA corpus, do the following:
+1) obtain GENIAcorpus3.02.pos.xml from 
+   http://www-tsujii.is.s.u-tokyo.ac.jp/~genia/corpus/GENIAcorpus3.02p.tgz
+2) run scripts/java/data.pos.training.GeniaPosTrainingDataExtractor with the 
+   following command:
+java data.pos.training.GeniaPosTrainingDataExtractor GENIAcorpus3.02.pos.xml 
+       data/pos/training/genia-pos-training.txt
+
+For the few cases in Genia where tokens contain white space - these are simply 
+ignored and not added to the training data file.  
+
+#############
+Penn Treebank
+#############
+We do not have scripts that we can share for converting Penn Treebank version 2
+into OpenNLP-formatted training data.  However, there are many libraries that 
+are available that can be used to parse the Penn Treebank.  Two suggestions are:
+- OpenNLP library - see opennlp.tools.parser.ParserEventStream
+- Stanford parser - see http://nlp.stanford.edu/software/lex-parser.shtml
+
+Another strategy is to take the output of the chunker training data as detailed
+in chunker/data/chunk/ptb/README and convert it to the correct format.  
+
+
+

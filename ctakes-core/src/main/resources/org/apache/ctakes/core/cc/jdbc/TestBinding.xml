@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<root>
+	<preparedStatements>
+		<preparedStatement id="TEST_QUERY_PREP_STMT" sql="select count(*) as MYCOUNT from TXTPH3.JDBC_CC_TEST"/>
+		<preparedStatement id="TEST_INSERT_PREP_STMT" sql="insert into TXTPH3.JDBC_CC_TEST (C1, C2, C3,C4) values (?,?,?,?)"/>
+	</preparedStatements>
+	<executionFlow>
+		<query idref="TEST_QUERY_PREP_STMT">
+			<paramBindings/>
+			<resultSetBindings>
+				<binding>
+					<variable id="MYCOUNT" scope="GLOBAL"/>
+					<prepStmtResult column="MYCOUNT" dataType="INTEGER"/>
+				</binding>
+			</resultSetBindings>
+		</query>
+		<insert idref="TEST_INSERT_PREP_STMT" batchUpdate="TRUE">
+			<paramBindings>
+				<binding>
+					<prepStmtParam dataType="DECIMAL"/>
+					<variableRef idref="MYCOUNT" scope="GLOBAL"/>
+				</binding>
+				<binding>
+					<prepStmtParam dataType="INTEGER"/>
+					<variableRef idref="MYCOUNT" scope="GLOBAL"/>
+				</binding>
+				<binding>
+					<prepStmtParam dataType="CLOB"/>
+					<variableRef idref="NORM_DOC_TEXT" scope="GLOBAL"/>
+				</binding>
+				<binding>
+					<prepStmtParam dataType="BLOB"/>
+					<variableRef idref="NORM_DOC_MAP" scope="GLOBAL"/>
+				</binding>
+			</paramBindings>
+		</insert>
+	</executionFlow>
+</root>

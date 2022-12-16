@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CAS version="2">
+    <uima.cas.Sofa _indexed="0" _id="3" sofaNum="1" sofaID="_InitialView" mimeType="text" sofaString="S/P right knee arthroscopy.&#10;Knee x-ray.  Patient denies knee pain.&#10;"/>
+    <org.apache.ctakes.typesystem.type.structured.DocumentID _indexed="1" _id="1" documentID="sample_note_plaintext"/>
+    <uima.tcas.DocumentAnnotation _indexed="1" _id="10" _ref_sofa="3" begin="0" end="67" language="x-unspecified"/>
+    <org.apache.ctakes.typesystem.type.textspan.Segment _indexed="1" _id="15" _ref_sofa="3" begin="0" end="67" id="SIMPLE_SEGMENT"/>
+    <org.apache.ctakes.typesystem.type.syntax.NewlineToken _indexed="1" _id="20" _ref_sofa="3" begin="27" end="28" tokenNumber="0"/>
+    <org.apache.ctakes.typesystem.type.syntax.NewlineToken _indexed="1" _id="28" _ref_sofa="3" begin="66" end="67" tokenNumber="1"/>
+    <org.apache.ctakes.typesystem.type.textspan.Sentence _indexed="1" _id="36" _ref_sofa="3" begin="0" end="27" sentenceNumber="0"/>
+    <org.apache.ctakes.typesystem.type.textspan.Sentence _indexed="1" _id="42" _ref_sofa="3" begin="28" end="39" sentenceNumber="1"/>
+    <org.apache.ctakes.typesystem.type.textspan.Sentence _indexed="1" _id="48" _ref_sofa="3" begin="41" end="66" sentenceNumber="2"/>
+</CAS>

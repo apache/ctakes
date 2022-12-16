@@ -1,0 +1,32 @@
+deprecated 
+retired procedure
+// The following are in UnwantedPrefixes for the default, but here for small
+[ d ]
+[ edta ]
+[ m ]
+[ q ]
+[ v ]
+[ x ]
+[ so ]
+// activities involving
+and unspecified
+( non-specific )
+child :
+college of american pathologists cancer checklist ;
+// other activity involving
+other
+phenx -
+specimen source code -
+specimen source codes -
+specimen source codes =
+ or
+#
+&
+& [
+'
+*
+-
+:
+?
+
+

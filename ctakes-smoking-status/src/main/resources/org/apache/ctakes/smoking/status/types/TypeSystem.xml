@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<typeSystemDescription xmlns="http://uima.apache.org/resourceSpecifier">
+	<name>org.apache.ctakes.smokingstatus.types.TypeSystem</name>
+	<description />
+	<version>1.0</version>
+	<vendor />
+	<imports>
+		<import name="org.apache.ctakes.typesystem.types.TypeSystem" />
+	</imports>
+	<types>
+		<typeDescription>
+			<name>org.apache.ctakes.smokingstatus.i2b2.type.RecordSentence</name>
+			<description>Represents a single sentence from an I2B2 record.
+			</description>
+			<supertypeName>uima.tcas.Annotation</supertypeName>
+			<features>
+				<featureDescription>
+					<name>recordID</name>
+					<description>ID of record that this sentence belongs to.
+					</description>
+					<rangeTypeName>uima.cas.String</rangeTypeName>
+				</featureDescription>
+				<featureDescription>
+					<name>classification</name>
+					<description>Smoking status classification for the given sentence.
+					</description>
+					<rangeTypeName>uima.cas.String</rangeTypeName>
+				</featureDescription>
+				<featureDescription>
+					<name>recordTextBegin</name>
+					<description>Begin offset of the sentence relative to the entire
+						record text.
+					</description>
+					<rangeTypeName>uima.cas.Integer</rangeTypeName>
+				</featureDescription>
+				<featureDescription>
+					<name>recordTextEnd</name>
+					<description>End offset of the sentence relative to the entire
+						record text.
+					</description>
+					<rangeTypeName>uima.cas.Integer</rangeTypeName>
+				</featureDescription>
+			</features>
+		</typeDescription>
+		<typeDescription>
+			<name>org.apache.ctakes.smokingstatus.type.SmokerNamedEntityAnnotation
+			</name>
+			<description />
+			<supertypeName>org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation
+			</supertypeName>
+		</typeDescription>
+		<typeDescription>
+			<name>org.apache.ctakes.smokingstatus.type.NonSmokerNamedEntityAnnotation
+			</name>
+			<description />
+			<supertypeName>org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation
+			</supertypeName>
+		</typeDescription>
+		<typeDescription>
+			<name>org.apache.ctakes.smokingstatus.type.SmokingDocumentClassification
+			</name>
+			<description>Represents classification related to the document
+			</description>
+			<supertypeName>uima.tcas.Annotation</supertypeName>
+			<features>
+				<featureDescription>
+					<name>classification</name>
+					<description>represents the document level classification that
+						RecordResolutionAnnotator assigns
+					</description>
+					<rangeTypeName>uima.cas.String</rangeTypeName>
+				</featureDescription>
+				<featureDescription>
+					<name>recordID</name>
+					<description>Represents the document record id</description>
+					<rangeTypeName>uima.cas.String</rangeTypeName>
+				</featureDescription>
+			</features>
+		</typeDescription>
+		<typeDescription>
+			<name>org.apache.ctakes.smokingstatus.type.UnknownSmokerNamedEntityAnnotation
+			</name>
+			<description />
+			<supertypeName>org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation
+			</supertypeName>
+		</typeDescription>
+		<typeDescription>
+			<name>org.apache.ctakes.smokingstatus.type.libsvm.NumericAttributeValue
+			</name>
+			<description>Corresponds to the ARFF numeric attributes.
+			</description>
+			<supertypeName>org.apache.ctakes.smokingstatus.type.libsvm.AttributeValue
+			</supertypeName>
+			<features>
+				<featureDescription>
+					<name>numericValue</name>
+					<description></description>
+					<rangeTypeName>uima.cas.String</rangeTypeName>
+				</featureDescription>
+			</features>
+		</typeDescription>
+		<typeDescription>
+			<name>org.apache.ctakes.smokingstatus.type.libsvm.AttributeValue
+			</name>
+			<description></description>
+			<supertypeName>uima.tcas.Annotation</supertypeName>
+			<features>
+				<featureDescription>
+					<name>attributeName</name>
+					<description></description>
+					<rangeTypeName>uima.cas.String</rangeTypeName>
+				</featureDescription>
+			</features>
+		</typeDescription>
+		<typeDescription>
+			<name>org.apache.ctakes.smokingstatus.type.libsvm.NominalAttributeValue
+			</name>
+			<description></description>
+			<supertypeName>org.apache.ctakes.smokingstatus.type.libsvm.AttributeValue
+			</supertypeName>
+			<features>
+				<featureDescription>
+					<name>nominalValue</name>
+					<description></description>
+					<rangeTypeName>uima.cas.String</rangeTypeName>
+				</featureDescription>
+			</features>
+		</typeDescription>
+		<typeDescription>
+			<name>org.apache.ctakes.smokingstatus.type.libsvm.StringAttributeValue
+			</name>
+			<description></description>
+			<supertypeName>org.apache.ctakes.smokingstatus.type.libsvm.AttributeValue
+			</supertypeName>
+			<features>
+				<featureDescription>
+					<name>attributeStringValue</name>
+					<description></description>
+					<rangeTypeName>uima.cas.String</rangeTypeName>
+				</featureDescription>
+			</features>
+		</typeDescription>
+		<typeDescription>
+			<name>org.apache.ctakes.smokingstatus.type.libsvm.DateAttributeValue
+			</name>
+			<description></description>
+			<supertypeName>org.apache.ctakes.smokingstatus.type.libsvm.AttributeValue
+			</supertypeName>
+			<features>
+				<featureDescription>
+					<name>dateValue</name>
+					<description></description>
+					<rangeTypeName>uima.cas.String</rangeTypeName>
+				</featureDescription>
+			</features>
+		</typeDescription>
+		<typeDescription>
+			<name>org.apache.ctakes.smokingstatus.type.libsvm.DocumentID</name>
+			<description></description>
+			<supertypeName>uima.tcas.Annotation</supertypeName>
+			<features>
+				<featureDescription>
+					<name>documentID</name>
+					<description></description>
+					<rangeTypeName>uima.cas.String</rangeTypeName>
+				</featureDescription>
+			</features>
+		</typeDescription>
+	</types>
+</typeSystemDescription>

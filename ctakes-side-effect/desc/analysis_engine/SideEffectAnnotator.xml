@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<taeDescription xmlns="http://uima.apache.org/resourceSpecifier">
+  <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
+  <primitive>true</primitive>
+  <annotatorImplementationName>org.apache.ctakes.sideeffect.ae.SideEffectAnnotator</annotatorImplementationName>
+  <analysisEngineMetaData>
+    <name>side effect annotator</name>
+    <description>Rule-based side effect annotator</description>
+    <version/>
+    <vendor>Mayo Clinic</vendor>
+    <configurationParameters>
+      <configurationParameter>
+        <name>sectionsToIgnore</name>
+        <description>section(s) not used for searching side effect</description>
+        <type>String</type>
+        <multiValued>true</multiValued>
+        <mandatory>false</mandatory>
+      </configurationParameter>
+      <configurationParameter>
+        <name>hasPatternOfDrugCauseVerbPse</name>
+        <description>list of CauseVerb used in this rule</description>
+        <type>String</type>
+        <multiValued>true</multiValued>
+        <mandatory>true</mandatory>
+      </configurationParameter>
+      <configurationParameter>
+        <name>hasPatternOfPseDueToDrug</name>
+        <description>list of DueTo words used in this rule</description>
+        <type>String</type>
+        <multiValued>true</multiValued>
+        <mandatory>true</mandatory>
+      </configurationParameter>
+      <configurationParameter>
+        <name>hasPatternOfDrugDueToPse</name>
+        <description>list of DueTo words used in this rule</description>
+        <type>String</type>
+        <multiValued>true</multiValued>
+        <mandatory>true</mandatory>
+      </configurationParameter>
+      <configurationParameter>
+        <name>hasPatternOfDiscontDrugBecausePse</name>
+        <description>list of Discont verbs used in this rule</description>
+        <type>String</type>
+        <multiValued>true</multiValued>
+        <mandatory>true</mandatory>
+      </configurationParameter>
+      <configurationParameter>
+        <name>sideEffectWord</name>
+        <description>list of sideEffectWord used in the rules of hasWordOfSideEffect and hasSideEffectAsPse</description>
+        <type>String</type>
+        <multiValued>true</multiValued>
+        <mandatory>true</mandatory>
+      </configurationParameter>
+      <configurationParameter>
+        <name>hasPatternOfNotePseWithDrug</name>
+        <description>list of Note verbs used in this rule</description>
+        <type>String</type>
+        <multiValued>true</multiValued>
+        <mandatory>true</mandatory>
+      </configurationParameter>
+      <configurationParameter>
+        <name>hasPatternOfDrugMadePse</name>
+        <description>list of Made verbs used in this rule</description>
+        <type>String</type>
+        <multiValued>true</multiValued>
+        <mandatory>true</mandatory>
+      </configurationParameter>
+      <configurationParameter>
+        <name>hasPatternOfPseAfterDrug</name>
+        <description>list of After words used in this rule</description>
+        <type>String</type>
+        <multiValued>true</multiValued>
+        <mandatory>true</mandatory>
+      </configurationParameter>
+    </configurationParameters>
+    <configurationParameterSettings>
+      <nameValuePair>
+        <name>sectionsToIgnore</name>
+        <value>
+          <array>
+            <string>20101</string>
+            <string>20106</string>
+            <string>20109</string>
+            <string>20110</string>
+            <string>20111</string>
+            <string>20114</string>
+            <string>20117</string>
+            <string>20121</string>
+            <string>20123</string>
+            <string>20126</string>
+            <string>20127</string>
+            <string>20129</string>
+            <string>20130</string>
+            <string>20136</string>
+            <string>20138</string>
+          </array>
+        </value>
+      </nameValuePair>
+      <nameValuePair>
+        <name>hasPatternOfDrugCauseVerbPse</name>
+        <value>
+          <array>
+            <string>caused</string>
+            <string>induced</string>
+            <string>resulted</string>
+            <string>yielded</string>
+            <string>causing</string>
+            <string>inducing</string>
+            <string>resulting</string>
+            <string>yielding</string>
+          </array>
+        </value>
+      </nameValuePair>
+      <nameValuePair>
+        <name>hasPatternOfPseDueToDrug</name>
+        <value>
+          <array>
+            <string>due to</string>
+            <string>secondary to</string>
+            <string>because of</string>
+            <string>associated with</string>
+            <string>induced by</string>
+            <string>attributed to</string>
+          </array>
+        </value>
+      </nameValuePair>
+      <nameValuePair>
+        <name>hasPatternOfDrugDueToPse</name>
+        <value>
+          <array>
+            <string>due to</string>
+            <string>secondary to</string>
+            <string>because of</string>
+            <string>associates with</string>
+            <string>associate with</string>
+            <string>account for</string>
+            <string>accounts for</string>
+          </array>
+        </value>
+      </nameValuePair>
+      <nameValuePair>
+        <name>sideEffectWord</name>
+        <value>
+          <array>
+            <string>side effect</string>
+            <string>side effects</string>
+            <string>reaction</string>
+            <string>reactions</string>
+          </array>
+        </value>
+      </nameValuePair>
+      <nameValuePair>
+        <name>hasPatternOfNotePseWithDrug</name>
+        <value>
+          <array>
+            <string>noted</string>
+            <string>developed</string>
+            <string>reported</string>
+            <string>described</string>
+          </array>
+        </value>
+      </nameValuePair>
+      <nameValuePair>
+        <name>hasPatternOfDrugMadePse</name>
+        <value>
+          <array>
+            <string>made</string>
+          </array>
+        </value>
+      </nameValuePair>
+      <nameValuePair>
+        <name>hasPatternOfDiscontDrugBecausePse</name>
+        <value>
+          <array>
+            <string>discontinued</string>
+            <string>tapered</string>
+            <string>decreased</string>
+            <string>stopped</string>
+          </array>
+        </value>
+      </nameValuePair>
+      <nameValuePair>
+        <name>hasPatternOfPseAfterDrug</name>
+        <value>
+          <array>
+            <string>after taking</string>
+            <string>after starting</string>
+          </array>
+        </value>
+      </nameValuePair>
+    </configurationParameterSettings>
+  	<typeSystemDescription>
+      <imports>
+        <import name="org.apache.ctakes.sideeffect.types.TypeSystem"/>
+      </imports>
+    </typeSystemDescription>
+    <capabilities>
+      <capability>
+        <inputs/>
+        <outputs/>
+        <languagesSupported/>
+      </capability>
+    </capabilities>
+    <operationalProperties>
+      <modifiesCas>true</modifiesCas>
+      <multipleDeploymentAllowed>true</multipleDeploymentAllowed>
+      <outputsNewCASes>false</outputsNewCASes>
+    </operationalProperties>
+  </analysisEngineMetaData>
+  <externalResourceDependencies>
+    <externalResourceDependency>
+      <key>sideEffectTable</key>
+      <description/>
+      <interfaceName>org.apache.ctakes.core.resource.FileResourceImpl</interfaceName>
+      <optional>false</optional>
+    </externalResourceDependency>
+  </externalResourceDependencies>
+  <resourceManagerConfiguration>
+    <externalResources>
+      <externalResource>
+        <name>sideEffectDic</name>
+        <description>dictionary of drug side effect</description>
+        <fileResourceSpecifier>
+          <fileUrl>file:org/apache/ctakes/sideeffect/lookup/sideEffect_dictionary.txt</fileUrl>
+        </fileResourceSpecifier>
+        <implementationName>org.apache.ctakes.core.resource.FileResourceImpl</implementationName>
+      </externalResource>
+    </externalResources>
+    <externalResourceBindings>
+      <externalResourceBinding>
+        <key>sideEffectTable</key>
+        <resourceName>sideEffectDic</resourceName>
+      </externalResourceBinding>
+    </externalResourceBindings>
+  </resourceManagerConfiguration>
+</taeDescription>

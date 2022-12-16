@@ -1,0 +1,6 @@
+#----------------------------------------------------------
+# Unicode synonym mapping table
+# Unicode | Synonym Base | Char    | Synonym Char | Unicode Name | Synonym Name
+# U+XXXX  | U+XXXX       | (Notes) | (Notes)      | (Notes)      | (Notes)
+#----------------------------------------------------------
+U+03BC|U+00B5|μ|µ|GREEK SMALL LETTER MU|MICRO SIGN

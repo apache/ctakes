@@ -1,0 +1,27 @@
+Template:       TP Report 2
+Encounter Time: Dec 25 2019 12:00:00
+Patient Name:   Neid, Indira
+Provider:       Liszt Prahseseur Memorial
+Setting:        Outpatient.
+Code:           XYZ
+Back Code:      ZYX
+
+Title:          SURGICAL PATHOLOGY REPORT
+
+Text: DIAGNOSIS:
+
+Text: 1) OVARY AND FALLOPIAN TUBE; RIGHT; SALPINGO-OOPHORECTOMY: HIGH GRADE
+Text: MALIGNANT NEOPLASM; 6.5 CM IN GREATEST EXTENT; CONFINED TO THE OVARY
+Text: (SEE COMMENT).
+Text:
+Text: 2) OMENTUM; EXCISION: ADIPOSE TISSUE; NEGATIVE FOR MALIGNANCY.
+Text:
+Text:                          OID***Carcinoma Summary Findings
+Text:
+Text: Specimen Type: bilateral salpingo-oophorectomy
+Text: Primary tumor site: right
+Text: Specimen Integrity:
+Text:       Right Ovary: good
+Text:       Left Ovary: good
+
+Electronically signed by: ABC DEF; M.D.

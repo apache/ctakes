@@ -1,0 +1,6 @@
+# Parameters for AssertionAnalysisEngine and ConceptConverterAnalysisEngine
+set assertionModelResource=file:org/apache/ctakes/assertion/models/i2b2.model
+set scopeModelResource=file:org/apache/ctakes/assertion/models/scope.model
+set cueModelResource=file:org/apache/ctakes/assertion/models/cue.model
+set enabledFeaturesResource=file:org/apache/ctakes/assertion/models/featureFile11b
+set posModelResource=file:org/apache/ctakes/assertion/models/pos.model

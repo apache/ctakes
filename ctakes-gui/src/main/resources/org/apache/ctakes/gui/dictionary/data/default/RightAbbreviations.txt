@@ -1,0 +1,1178 @@
+ - health center
+ - health centre
+& [ cellulitis ear ]
+( % )
+( & [ aching leg syndrome ] )
+( & [ adenomyosis ] )
+( & [ ateliotic dwarf ] )
+( & [ bedwetting ] )
+( & [ cat liver fluke infection ] )
+( & [ cogan ' s syndrome ] )
+( & [ condyloma acuminatum ] )
+( & [ couvelaire uterus ] )
+( & [ dacryocystitis ] )
+( & [ growth hormone overproduction ] )
+( & [ hashimoto ' s disease ] )
+( & [ infertility ] )
+( & [ mistress ] )
+( & [ mongoloid ] )
+( & [ morning - after pill ] )
+( & [ nipple pain ] )
+( & [ obstetric varicose veins ] )
+( & [ panhypopituitarism ] )
+( & [ paranoid schizophrenia ] )
+( & [ parkinson gait ] )
+( & [ pelvic inflammatory disease ] )
+( & [ potty trained ] )
+( & [ regional enteritis ] )
+( & [ scotoma ] )
+( & [ scurvy ] )
+( & [ subarachnoid birth haemorrhage ] )
+( & [ subarachnoid birth hemorrhage ] )
+( & [ tangier disease ] )
+( & [ unspecified female pelvic peritonitis ] )
+( & [ vibration white finger ] )
+( & [ whispering ] )
+( & allergic rhinitis due to pollens )
+( & anal carcinoma )
+( & ascariasis )
+( & hidradenitis suppurativa )
+( & lung diseases )
+( & nasal reconstruction )
+( & serum blood tests )
+( & sore throat symptom )
+( & trench foot )
+( + )
+( - )
+( 3m syndrome )
+( 5p11 - pter )
+( 65 + )
+( 6mp )
+( a )
+( aa )
+( aaa )
+( aas )
+( abbreviation )
+( abe )
+( abgs )
+( abpa )
+( abve regimen )
+( aca )
+( aci )
+( acne )
+( acromegaly )
+( actg )
+( acv )
+( adamts13 )
+( adhd )
+( adi )
+( adl )
+( adrenoleukodystrophy )
+( ads )
+( af )
+( afm )
+( aft )
+( ag )
+( agus )
+( ahds )
+( ahp )
+( aidp )
+( aids )
+( aih )
+( aild )
+( ain iii )
+( aivr )
+( ajcc )
+( ald )
+( all )
+( alps2b )
+( als )
+( alspac )
+( ambulance )
+( amc )
+( ami )
+( aml )
+( aml - m2 )
+( amyotrophic lateral sclerosis )
+( anll )
+( ans )
+( aod )
+( apache )
+( apc )
+( aps )
+( arc )
+( ards )
+( armd )
+( artificial intelligence )
+( asd )
+( ash )
+( asi )
+( assault )
+( asv )
+( atm )
+( atu )
+( au )
+( auc )
+( bac )
+( baep )
+( bal )
+( bcg )
+( bednar tumor )
+( bei )
+( beta - thalassemia major )
+( beta - thalassemia minor )
+( beta thalassemia major )
+( beta thalassemia minor )
+( bidirectional glenn procedure )
+( bims )
+( biparietal circumference )
+( blennorrhagica )
+( blv )
+( blvr )
+( bmi )
+( boop )
+( boundary )
+( bovine spongiform encephalopathy )
+( bpd )
+( bph )
+( bq )
+( brazzaville )
+( bric2 )
+( bse )
+( btu )
+( bun ) ( mpm - a )
+( buschke - lowenstein )
+( c )
+( cabg )
+( cad )
+( cah )
+( calcified structure )
+( calorie fast )
+( cam )
+( canine roundworms )
+( capd )
+( cardiorsp )
+( cast )
+( cav )
+( cbas1 )
+( cbas2 )
+( cbas3 )
+( cbc )
+( ccd )
+( ccs )
+( ccs - a )
+( cd )
+( cdc )
+( cdc - d )
+( cdc - h )
+( cdc - j )
+( cdc - k )
+( cdd )
+( cdt )
+( cdt - 4 )
+( ceh )
+( central processing unit of computer system )
+( cep )
+( cerebral palsy )
+( cerebroocular dysgenesis )
+( cerebrovascular accident )
+( cf )
+( cfav )
+( cfr )
+( cfs )
+( cfu )
+( cg )
+( cga )
+( cgp )
+( cgy )
+( chf )
+( child add )
+( child disability benefits )
+( chl - b )
+( chl - c )
+( chl - d )
+( chn )
+( ci )
+( cidi )
+( cidp )
+( cin )
+( cin - 1 )
+( cis )
+( ckd )
+( cl )
+( clabsi )
+( climate )
+( cll )
+( cm )
+( cm2 )
+( cmc - d )
+( cml )
+( cmt )
+( cmv )
+( cn )
+( co )
+( coat )
+( col - a )
+( commission on cancer )
+( committee )
+( company )
+( complex regional pain syndromes )
+( copd )
+( costa )
+( costart )
+( cp )
+( cp regimen )
+( cpap )
+( cpeo )
+( cpm )
+( cpr )
+( cps )
+( cpt )
+( crbsi )
+( creutzfeldt - jakob disease )
+( creutzfeldt jakob disease )
+( crf )
+( crna )
+( crt )
+( csf )
+( csr )
+( cst )
+( ctg )
+( cts )
+( cup )
+( cvs )
+( cwp - d )
+( da )
+( datum presentation )
+( db )
+( dbms )
+( deca regimen )
+( deeds )
+( degos syndrome )
+( destruens )
+( dfpm )
+( dfpt )
+( dg )
+( dialysis treatment adequacy measure )
+( dic )
+( dicom )
+( difference )
+( dip )
+( dis )
+( discharge status = dead )
+( dish )
+( disorders of initiating and maintaining sleep )
+( distress of human spirit )
+( dl )
+( dle )
+( dm )
+( dmd )
+( dmm )
+( doe )
+( dpi )
+( drg )
+( dril )
+( drn )
+( drs )
+( dsap )
+( dsm )
+( dur )
+( dvt )
+( dwi )
+( dwmri )
+( dx )
+( e coli )
+( ea1 )
+( ea2 )
+( eae )
+( eap )
+( ebv )
+( ecg / ekg )
+( ecmo )
+( ect )
+( eds )
+( edwards type iii )
+( eeg )
+( ef )
+( ego )
+( ehec )
+( ehi )
+( eia )
+( ekg , ecg )
+( electrical injury )
+( emd )
+( emit )
+( emt )
+( eng )
+( ent )
+( environment / location )
+( eoe )
+( eog )
+( epec )
+( epi )
+( epidermolytic palmoplantar keratoderma )
+( epps )
+( epsp )
+( er )
+( era )
+( ercp )
+( erg )
+( erp )
+( erpf )
+( ert )
+( esl )
+( esp )
+( esr )
+( esrd )
+( estimated fetal weight )
+( estimated fetal weight 2 )
+( eswl )
+( etec )
+( ev )
+( eva )
+( experimental allergic neuritis )
+( experimental autoimmune neuritis )
+( extracorporeal shockwave lithotripsy )
+( f1 )
+( f2 )
+( f3o )
+( f3t )
+( falls risk assessment score for the elderly )
+( fas )
+( fast )
+( fcrs )
+( feline roundworms )
+( felv )
+( femur length )
+( fetal alcohol effects )
+( fetal trunk area )
+( fevc )
+( fg )
+( fifth disease )
+( figlu - uria )
+( fio2 )
+( fish )
+( fiv )
+( fl )
+( fldem )
+( fluid analysis )
+( fluorescence recovery after photobleaching )
+( fm )
+( fmc )
+( fmqai )
+( fms )
+( fo )
+( foc )
+( formation of excess fibrous connective tissue )
+( fp )
+( fqhc )
+( french foot )
+( frontal assessment battery )
+( fuo )
+( g )
+( g / mol )
+( gabg )
+( gan )
+( gan1 )
+( gbm )
+( gbs )
+( gems )
+( gerd )
+( ghz )
+( gi )
+( gift )
+( gis )
+( gju )
+( glc )
+( go )
+( gp )
+( gpa )
+( grinding teeth )
+( gsd i )
+( gsl )
+( gu )
+( gv )
+( gy )
+( h = wb / a )
+( h1n1 )
+( happle )
+( hcm )
+( hcmv )
+( hcv )
+( hd )
+( he4 )
+( height , width , length )
+( hepatic vein thrombosis )
+( hereditary motor and sensory neuropathy type v )
+( hereditary sensory autonomic neuropathy )
+( hes )
+( hev )
+( hgsil )
+( hhcc )
+( hhv - 5 )
+( hhv 6 )
+( hhv 7 )
+( hids )
+( hie )
+( hipaa )
+( hit )
+( hiv )
+( hmo )
+( hmsn )
+( hmsn 2 b )
+( hocm )
+( housewife )
+( hplc )
+( hpns )
+( hpv )
+( hrt )
+( hsan )
+( hsp )
+( hsv - 1 )
+( htlv )
+( htlv - 1 + )
+( htlv - 1 positive )
+( htlv - iii )
+( htlv 1 )
+( huntington )
+( hus )
+( hydroxyindoleaceticac )
+( hz )
+( i . q . 35 - 49 )
+( i . q . below 20 )
+( iadl )
+( ibc )
+( ibd )
+( ibs )
+( ic )
+( ic50 )
+( icce )
+( icd )
+( icd - 10 )
+( ich )
+( ics )
+( icsi )
+( icu )
+( ids )
+( iep )
+( ifap )
+( igs )
+( ihss )
+( imri )
+( in labor )
+( incl )
+( independent practice association )
+( individual practice association )
+( inph )
+( inr )
+( ins )
+( iol )
+( ippb )
+( iq )
+( irv )
+( issd )
+( itp )
+( iu / g hb )
+( iv )
+( ivf )
+( ivig )
+( ivp )
+( joint fluid )
+( jpl )
+( juvenile myoclonic epilepsy )
+( k07 )
+( k10 )
+( kat )
+( kcal )
+( kg )
+( kinetic parameter )
+( kinshasa )
+( kj )
+( km )
+( konno procedure )
+( kpa )
+( kv )
+( kw )
+( lada )
+( lan )
+( lasik )
+( lav )
+( lavh )
+( lbs )
+( lcad , vlcad )
+( lchad )
+( lcmv )
+( ld50 )
+( leep )
+( length , width , thickness )
+( let )
+( level 0 + snomed )
+( level 0 + snomed + mdr )
+( lexical )
+( lg )
+( lgl )
+( lmat )
+( lmct )
+( loa )
+( lobectomy )
+( loh )
+( loinc fragment )
+( loinc notation for presence )
+( lpn )
+( lrr )
+( lsc - a )
+( ltp )
+( m )
+( m2 )
+( m3 )
+( mac )
+( machado - joseph )
+( machado joseph )
+( macs )
+( malt )
+( map )
+( maple syrup urine disease )
+( mark )
+( masa )
+( mast )
+( mbc )
+( mc )
+( mcad )
+( mcadd )
+( mcg )
+( mch )
+( mci )
+( mcv )
+( mdr )
+( meddra )
+( medio - lateral oblique )
+( meg )
+( men 2a )
+( men1 )
+( mental age less than 2 years )
+( meq )
+( merrf syndrome )
+( mesh )
+( mg )
+( mg / mmol )
+( mgus )
+( mhc )
+( mhz )
+( mi )
+( miu )
+( mixed type carcinoma )
+( mlc )
+( mm )
+( mmhg )
+( mmol )
+( mmol / l )
+( mmtv )
+( mngie )
+( mol / g )
+( mol / l )
+( mos )
+( moyamoya )
+( mpgn )
+( mph )
+( mpm - a )
+( mpm - e )
+( mr )
+( mra )
+( mrd )
+( mri )
+( mrs )
+( mrsa )
+( ms )
+( msls )
+( mslt )
+( msv )
+( mtc )
+( mtss )
+( mu )
+( multiple acyl - coa dehydrogenase deficiency )
+( multiple sclerosis )
+( mv )
+( mvp )
+( mvt )
+( mvv )
+( mw )
+( n1 )
+( naaccr )
+( nag )
+( naion )
+( napiia )
+( narp syndrome )
+( natives )
+( nbia )
+( ncfs )
+( nci )
+( ncv )
+( ndv )
+( nemsis )
+( neurofibromatosis 1 )
+( neurofibromatosis 2 )
+( neuroleptic malignant syndrome )
+( ng )
+( ngu )
+( nhl )
+( nic )
+( nicu )
+( nippv )
+( nl )
+( nm )
+( nmol / l )
+( nmr )
+( noc )
+( normal pressure hydrocephalus )
+( nph )
+( npv )
+( ns )
+( nsd )
+( nstemi )
+( nvss )
+( ocd )
+( octd )
+( odor )
+( of )
+( oli )
+( ols )
+( op )
+( opi )
+( oppa regimen )
+( orif )
+( os )
+( osteopenia )
+( otc )
+( over 100 years )
+( oz )
+( p2 )
+( p3 )
+( p30 )
+( pac )
+( pacu )
+( paho )
+( palestine )
+( panic )
+( panin )
+( pao )
+( part )
+( pat )
+( pbs )
+( pc02 )
+( pca )
+( pcds )
+( pcn )
+( pcos )
+( pcp )
+( pcr )
+( pct )
+( pcv )
+( pd )
+( pdd )
+( pdr )
+( peep )
+( pei )
+( pej )
+( persistent vegetative state )
+( pes )
+( pet )
+( pfeiffer )
+( pfge )
+( pfic 1 )
+( pfic 2 )
+( pfic1 )
+( pfic2 )
+( pfic3 )
+( pg )
+( ph )
+( ph ir )
+( pha )
+( php )
+( phyrophosphate )
+( physician data query )
+( pi )
+( pid )
+( piedra )
+( pin i )
+( pin ii )
+( pjc )
+( pku )
+( pl )
+( plc )
+( plt )
+( pm )
+( pmol / l )
+( pmr )
+( pms )
+( pnet )
+( pnh )
+( pni )
+( po )
+( po2 )
+( pog )
+( poi )
+( poms )
+( ponv )
+( possession )
+( post-op )
+( pott ' s )
+( pp )
+( ppb )
+( ppc - c )
+( ppc - e )
+( ppfa )
+( ppm )
+( ppo )
+( praecox )
+( prc )
+( prg )
+( prk )
+( prognosis )
+( proximal isovelocity surface area )
+( proximal myotonic myopathy )
+( prp )
+( prrs )
+( psi )
+( psn )
+( psvt )
+( pt )
+( pta )
+( ptca )
+( ptld )
+( ptsd )
+( pump bump )
+( pvc )
+( pvd )
+( pvm )
+( qaly )
+( qct )
+( qsar )
+( qtl )
+( ra )
+( raeb - 1 )
+( raeb - 2 )
+( rars )
+( rast )
+( rbmt )
+( rcmd - rs )
+( rda )
+( rds )
+( rec )
+( reflex sympathetic dystrophy )
+( related person )
+( release )
+( remedy )
+( ret )
+( retinal coloboma and nystagmus )
+( rflp )
+( rhagades )
+( ria )
+( right ventricular systolic pressure )
+( rigid covering )
+( ris )
+( rls )
+( rn )
+( rnai )
+( rp )
+( rpm )
+( rsds )
+( rsv )
+( rti )
+( rv )
+( saas )
+( sad )
+( sads )
+( sars )
+( sc )
+( scad )
+( scal )
+( scr ) ( mpm - a )
+( sdh )
+( sec )
+( sem )
+( semi )
+( sepa )
+( sepp )
+( sga )
+( sgp )
+( short arm )
+( short terminal repeat , nucleic acid )
+( sids )
+( sine )
+( sipt )
+( site - specific colonic cancer )
+( siv )
+( sle )
+( sleepiness )
+( snomed rt + ctv3 )
+( sob )
+( spect )
+( spf )
+( spl )
+( srt )
+( sscp )
+( sspe )
+( sst )
+( stai )
+( star )
+( starr )
+( std )
+( stds )
+( stel )
+( stm )
+( subarachnoid hemorrhage )
+( sunds )
+( sv )
+( svc )
+( svd )
+( svo2 )
+( swallowing air )
+( swimup )
+( t1a )
+( t1p )
+( t2a )
+( t2p )
+( t3a )
+( t3p )
+( tat )
+( tb )
+( tdd )
+( teeth grinding )
+( tem )
+( tens )
+( termination of pregnancy )
+( tfa )
+( tfp )
+( tgv )
+( thompson ' s test )
+( thompson test )
+( thoracentesis fld )
+( thrush )
+( tia )
+( tkr )
+( tlc )
+( tme )
+( tmj )
+( tms )
+( to2 )
+( to3 )
+( tof )
+( tp )
+( tpn )
+( trali )
+( transient global amnesia )
+( transient ischemic attack )
+( traps )
+( traumatic brain injury )
+( tri )
+( truncus arteriosus )
+( tsp )
+( tss )
+( ttd )
+( ttnb )
+( ttp )
+( turp )
+( u . s . legislature )
+( uci )
+( ufo )
+( ug )
+( uicc )
+( uiu )
+( ul )
+( ultrastar )
+( um / l )
+( umls )
+( umol )
+( un )
+( unhcr )
+( urti )
+( uti )
+( v - tach )
+( va c & p )
+( vap )
+( variant - creutzfeldt - jakob disease )
+( variant creutzfeldt jakob disease )
+( vast )
+( vats )
+( vbg )
+( vcg )
+( ve )
+( vel )
+( ventilation )
+( vigs )
+( vin )
+( vin iii )
+( vipoma )
+( visa / gisa )
+( vogt koyanagi harada )
+( voltage )
+( vre )
+( vrsa / grsa )
+( vsd )
+( vt )
+( vulval aphthosis )
+( wais )
+( wax in ear )
+( wbc )
+( wbs )
+( weakness )
+( whi )
+( whipple resection )
+( who )
+( yd )
+- abdominal pressure
+- accident and emergency department
+- accommodation
+- activated clotting time
+- active cycle of breathing technique
+- acute disseminated encephalomyelitis
+- adenocarcinoma in situ
+- air conduction
+- airway resistance
+- allied health professional
+- amalgam cement restoration
+- amaurosis fugax
+- amniocentesis
+- anion gap
+- ankle jerk
+- anogenital human papilloma virus infection
+- antegrade colonic enema procedure
+- anterior ciliary sclerotomy
+- anterior colporrhaphy
+- arterial oxygen content
+- automatic cardiac defibrillator procedure
+- axial length
+- base curve
+- best corrected visual acuity
+- binocular distance visual acuity
+- binocular vision
+- biparietal diameter
+- birth weight
+- blood pressure
+- body mass index
+- body odor problem
+- body surface area
+- body temperature
+- bone conduction
+- brainstem auditory evoked potentials
+- brainstem auditory evoked responses
+- brainstem evoked potentials
+- brainstem evoked responses
+- breast - fed
+- breast - feeding
+- breastfed
+- breastfeeding
+- breath sounds
+- breathing rate
+- brightness acuity testing visual acuity
+- capillary oxygen content
+- carcinoma in situ
+- cardiac output
+- central corneal thickness
+- central european tick - borne encephalitis
+- central line associated bloodstream infection
+- central venous pressure
+- closing volume
+- cochlear microphonic
+- color vision
+- colour vision
+- community hospital
+- confrontation visual field
+- corneal reflex
+- cortical auditory evoked potentials
+- crown rump length
+- dark adaptation
+- dead space
+- dermatomal sep
+- diastolic arterial pressure
+- diastolic blood pressure
+- direct current
+- emotion
+- english regional health authority
+- esophageal pressure
+- eustachian tube function
+- event - related potentials
+- evoked potentials
+- exercise tolerance
+- expiratory reserve volume
+- external optical zone
+- extraocular muscle balance
+- failure to thrive
+- far point of accommodation
+- fluid balance
+- forced expired volume
+- forced vital capacity
+- functional residual capacity
+- genital wart virus infection
+- gastric acid secretion
+- glaucoma hemifield test
+- head circumference
+- health boards of northern ireland
+- heart beat
+- heart rate
+- heart sounds
+- hyperventilation syndrome
+- ideal body weight
+- in vitro fertilisation with intracytoplasmic sperm injection ( icsi )
+- inspiratory capacity
+- inspiratory reserve
+- intelligence quotient
+- intensive care unit
+- intercanthal distance
+- internal optical zone
+- international neuroblastoma staging system stage
+- interpupillary distance
+- intracranial pressure
+- intraocular pressure
+- invasive blood pressure
+- lateral flexion
+- lean body mass
+- left atrial pressure
+- left axis deviation
+- left to right ventricular stroke volume ratio
+- left ventricular stroke work
+- left ventricular stroke work index
+- light touch
+- local anesthetic block of nerve plexus
+- long - term memory
+- loudness discomfort level
+- lung compliance
+- maximum expiratory flow rate
+- maximum mid-expiratory flow rate
+- mean deviation
+- middle latency responses
+- mini-mental state examination
+- minimal erythema dose
+- minimal phototoxic dose
+- mouth pressure
+- myocardial oxygen consumption
+- neuroleptic malignant syndrome
+- no light perception
+- no perception of light
+- nursing home
+- observation of present pain intensity
+- occipitofrontal circumference
+- oesophageal pressure
+- operating room
+- operating theatre
+- optical density
+- optokinetic nystagmus
+- osmotic pressure
+- outpatients department
+- overload response
+- oxygen delivery
+- oxygen saturation
+- packed cell volume
+- paediatric intensive care unit
+- passive movements
+- pediatric intensive care unit
+- peripheral nerve injury
+- phantom limb syndrome
+- phantom limb pain syndrome
+- positive end expiratory pressure setting
+- potential acuity meter visual acuity
+- potential acuity metre visual acuity
+- present illness
+- present , sound and crowned tooth count
+- pulmonary artery diastolic pressure
+- pulmonary artery occlusion pressure
+- pulmonary artery pressure
+- pulmonary to systemic flow ratio
+- pulmonary vascular resistance
+- pulmonary vascular resistance index
+- pulsatility index
+- pulse rate
+- pus cells
+- pv
+- recommended nutrient intake
+- residual respiratory volume
+- respiratory quotient
+- respiratory rate
+- restriction fragment length polymorphism
+- retinal correspondence
+- rhythmic mid-temporal discharge
+- right atrial pressure
+- right ventricular ejection fraction
+- right ventricular end - diastolic pressure
+- right ventricular pressure
+- right ventricular stroke work index
+- right ventricular work
+- selective parenteral and enteral antisepsis regimen
+- somatosensory evoked potential
+- somatosensory evoked potentials
+- special care baby unit
+- standard deviation of phase
+- stapedial reflex threshold
+- stereoscopic vision
+- stroke index
+- stroke volume
+- subclinical rhythmical eeg discharges in adults
+- systemic vascular resistance
+- systemic vascular resistance index
+- systolic arterial pressure
+- total iron binding capacity
+- uncomfortable loudness level
+- usual body weight
+- venous pressure
+- vibration sense
+- vital capacity
+: ( & cin i )
+: [ periorbital oedema ]
+[ & calcinosis ]
+[ & german measles ]
+[ acoustic neurofibromatosis ]
+[ aiphi ]
+[ artefacta ]
+[ berloque dermatitis ]
+[ bilharziasis ]
+[ bmi ]
+[ body louse ]
+[ cancer - causing gene ]
+[ cas ]
+[ chf congo virus ]
+[ cin i ]
+[ cin ii ]
+[ cish ]
+[ dcr ]
+[ e . chafeensis ]
+[ e . coli ]
+[ ecmo ]
+[ ein ]
+[ eng ]
+[ eog ]
+[ erc ]
+[ ercp ]
+[ erg ]
+[ erp ]
+[ eswl ]
+[ h . pylori ]
+[ h = wb / a ]
+[ head louse ]
+[ hiv - 2 ]
+[ htlv - ii ]
+[ iabp ]
+[ ippb ]
+[ isd ]
+[ lash ]
+[ lrvh ]
+[ lsh ]
+[ mcls ]
+[ nci ]
+[ obsessional rituals ]
+[ peg ]
+[ pej ]
+[ phaehyphomycosis ]
+[ pku ]
+[ ptca ]
+[ pubic louse ]
+[ sepsis ]
+[ streptococcus pneumoniae pneumonia ]
+[ streptococcus pneumoniae septicemia ]
+[ tlh ]
+[ tlrh ]
+[ ufr ]
+[ under age group ]
+[ upp ]
+[ vep ]
+[ vin i ]
+[ von recklinghausen ' s disease ]

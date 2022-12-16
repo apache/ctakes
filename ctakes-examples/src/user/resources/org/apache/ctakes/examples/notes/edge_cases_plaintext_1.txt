@@ -1,0 +1,2 @@
+patient complained that the n'tion didn't make sense.  This is a test of an edge case in contraction in the tokezier.
+aspirin decreased from 2:00 PM.  This used to cause the drug ner to go into an infinte loop.

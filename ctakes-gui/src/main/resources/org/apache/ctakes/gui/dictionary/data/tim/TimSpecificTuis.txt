@@ -1,0 +1,19 @@
+// ACTI Activities & Behaviors
+T051
+T052
+T053
+T054
+T055
+T056
+T057
+T064
+T066
+// OBJC Objects
+T167
+T168
+T071
+T072
+T073
+// OCCU Occupations
+T090
+T091

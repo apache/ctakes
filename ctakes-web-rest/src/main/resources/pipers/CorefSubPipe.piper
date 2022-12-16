@@ -1,0 +1,10 @@
+// Commands and parameters to create a default coreference processing sub-pipeline.  This is not a full pipeline.
+
+// A Dependency Parser is necessary, but is usually added for assertion so don't add one here
+
+// Constituency Parser adds Terminal Treebank Nodes, needed to create Markables
+add ConstituencyParser
+
+add DeterministicMarkableAnnotator
+addDescription MarkableSalienceAnnotator /org/apache/ctakes/temporal/models/salience/model.jar
+addDescription MentionClusterCoreferenceAnnotator /org/apache/ctakes/coreference/models/mention-cluster/model.jar

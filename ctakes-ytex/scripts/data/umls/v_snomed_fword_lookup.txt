@@ -1,0 +1,2733 @@
+C0000726	T029	abdominal		Abdominal	
+C0000726	T029	abdomen		Abdomen	
+C0000726	T029	abdomen		Abdomen , NOS	
+C0000726	T029	abdominal		Abdominal structure	
+C0000726	T029	abdominal		Abdominal structure ( body structure )	
+C0000726	T029	abdominal		Abdominal ( qualifier value )	
+C0000970	T109	acetaminophen		Acetaminophen	
+C0000970	T109	acetaminophen		Acetaminophen	
+C0000970	T109	acetaminophen		Acetaminophen	
+C0000970	T109	acetaminophen		Acetaminophen	
+C0000970	T109	acetaminophen		Acetaminophen	
+C0000970	T109	paracetamol		Paracetamol	
+C0000970	T109	paracetamol		Paracetamol	
+C0000970	T109	paracetamol		Paracetamol	
+C0000970	T109	paracetamol		Paracetamol	
+C0000970	T109	paracetamol		Paracetamol	
+C0000970	T109	paracetamol		Paracetamol product	
+C0000970	T109	paracetamol		Paracetamol - chemical	
+C0000970	T109	paracetamol		Paracetamol - chemical	
+C0000970	T109	acetaminophen		Acetaminophen ( product )	
+C0000970	T109	acetaminophen		Acetaminophen product	
+C0000970	T109	acetaminophen		Acetaminophen ( substance )	
+C0000970	T109	acetaminophen		Acetaminophen ( substance )	
+C0000970	T109	paracetamol		Paracetamol ( substance )	
+C0000970	T109	paracetamol		Paracetamol - chemical ( substance )	
+C0001314	T047	acute		Acute disease	
+C0001314	T047	acute		Acute disease , NOS	
+C0001314	T047	acute		Acute disease ( disorder )	
+C0001418	T191	adenocarcinoma		Adenocarcinoma	
+C0001418	T191	adenocarcinoma		Adenocarcinoma	
+C0001418	T191	adenocarcinoma		Adenocarcinoma , NOS	
+C0001418	T191	[		[ M ] Adenocarcinoma NOS	
+C0001418	T191	[		[ M ] Adenocarcinomas	
+C0001418	T191	[		[ M ] Adenocarcinoma NOS ( morphologic abnormality )	
+C0001418	T191	adenocarcinoma		Adenocarcinoma , no subtype ( morphologic abnormality )	
+C0001418	T191	adenocarcinoma		Adenocarcinoma , no subtype	
+C0001418	T191	malignant		Malignant adenomatous neoplasm	
+C0001418	T191	malignant		Malignant adenomatous neoplasm ( disorder )	
+C0001625	T023	adrenal		Adrenal structure	
+C0001625	T023	adrenal		Adrenal gland	
+C0001625	T023	adrenal		Adrenal gland , NOS	
+C0001625	T023	adrenal		Adrenal structure ( body structure )	
+C0001857	T047	aids		AIDS - like syndrome	
+C0001857	T047	aids		AIDS - related complex	
+C0001857	T047	arc		ARC	
+C0001857	T047	arc		ARC - Acquired immunodeficiency syndrome - related complex	
+C0001857	T047	acquired		Acquired immune deficiency syndrome - related complex	
+C0001857	T047	aids		Aids - related complex ( ARC )	
+C0001857	T047	acquired		Acquired immune deficiency syndrome ( & [ ARC ] )	
+C0001857	T047	acquired		Acquired immune deficiency syndrome ( & [ ARC ] )	
+C0001857	T047	acquired		Acquired immune deficiency syndrome ( & [ ARC ] )	
+C0001857	T047	acquired		Acquired immune deficiency syndrome ( & [ ARC ] )	
+C0001857	T047	acquired		Acquired immune deficiency syndrome - related complex ( disorder )	
+C0001857	T047	aids		AIDS - like syndrome ( disorder )	
+C0001857	T047	acquired		Acquired immunodeficiency syndrome ( AIDS ) - like syndrome ( disorder )	
+C0001857	T047	acquired		Acquired immunodeficiency syndrome ( AIDS ) - like syndrome	
+C0001857	T047	acquired		Acquired immune deficiency syndrome ( & [ ARC ] ) ( disorder )	
+C0001857	T047	acquired		Acquired immune deficiency syndrome ( & [ ARC ] ) ( disorder )	
+C0002778	T059	analysis		Analysis	
+C0002778	T059	analysis		Analysis ( qualifier value )	
+C0002940	T047	aneurysm		Aneurysm	
+C0002940	T047	aneurysm		Aneurysm	
+C0002940	T047	aneurysm		Aneurysm NOS	
+C0002940	T047	aneurysm		Aneurysm NOS	
+C0002940	T047	aneurysm		Aneurysm NOS	
+C0002940	T047	aneurysm		Aneurysm NOS	
+C0002940	T047	aneurysm		Aneurysm NOS	
+C0002940	T047	aneurysm		Aneurysm , NOS	
+C0002940	T047	aneurysmal		Aneurysmal dilatation	
+C0002940	T047	aneurysmal		Aneurysmal dilatation , NOS	
+C0002940	T047	aneurysm		Aneurysm - lesion	
+C0002940	T047	aneurysm		Aneurysm ( morphologic abnormality )	
+C0002940	T047	aneurysm		Aneurysm ( disorder )	
+C0002940	T047	aneurysm		Aneurysm NOS ( disorder )	
+C0002940	T047	aneurysm		Aneurysm NOS ( disorder )	
+C0002940	T047	aneurysm		Aneurysm NOS ( disorder )	
+C0002940	T047	aneurysm		Aneurysm - lesion ( qualifier value )	
+C0002940	T047	unspecified		Unspecified aneurysm	
+C0002940	T047	unspecified		Unspecified aneurysm	
+C0002940	T047	unspecified		Unspecified aneurysm ( disorder )	
+C0003086	T029	ankle		Ankle	
+C0003086	T029	ankle		Ankle , NOS	
+C0003086	T029	hock		Hock	
+C0003086	T029	hock		Hock , NOS	
+C0003086	T029	tarsus		Tarsus	
+C0003483	T023	aortic		Aortic	
+C0003483	T023	aorta		Aorta	
+C0003483	T023	aorta		Aorta , NOS	
+C0003483	T023	aortic		Aortic structure	
+C0003483	T023	aortic		Aortic structure ( body structure )	
+C0003483	T023	aortic		Aortic ( qualifier value )	
+C0003484	T023	abdominal		Abdominal aorta structure	
+C0003484	T023	abdominal		Abdominal aorta	
+C0003484	T023	abdominal		Abdominal aorta structure ( body structure )	
+C0003486	T047	aortic		Aortic aneurysm	
+C0003486	T047	aortic		Aortic aneurysm	
+C0003486	T047	aortic		Aortic aneurysm	
+C0003486	T047	aortic		Aortic aneurysm , NOS	
+C0003486	T047	aortic		Aortic aneurysm NOS	
+C0003486	T047	aortic		Aortic aneurysm NOS	
+C0003486	T047	aortic		Aortic aneurysm NOS	
+C0003486	T047	aneurysm		Aneurysm of aorta	
+C0003486	T047	aneurysm		Aneurysm of aorta , NOS	
+C0003486	T047	aa		AA - Aortic aneurysm	
+C0003486	T047	aortic		Aortic aneurysm ( disorder )	
+C0003486	T047	aortic		Aortic aneurysm ( disorder )	
+C0003486	T047	aortic		Aortic aneurysm NOS ( disorder )	
+C0003486	T047	aortic		Aortic aneurysm NOS ( disorder )	
+C0003842	T023	arterial		Arterial structure	
+C0003842	T023	artery		Artery	
+C0003842	T023	artery		Artery , NOS	
+C0003842	T023	arterial		Arterial structure ( body structure )	
+C0003893	T061	arthroplasty		Arthroplasty	
+C0003893	T061	arthroplasty		Arthroplasty	
+C0003893	T061	arthroplasty		Arthroplasty	
+C0003893	T061	arthroplasty		Arthroplasty , NOS	
+C0003893	T061	reconstruction		Reconstruction of joint	
+C0003893	T061	joint		Joint reconstruction	
+C0003893	T061	joint		Joint reconstruction	
+C0003893	T061	reconstruction		Reconstruction of joint , NOS	
+C0003893	T061	arthroplasty		Arthroplasty - action	
+C0003893	T061	arthroplasty		Arthroplasty - action	
+C0003893	T061	arthroplasty		Arthroplasty [ Ambiguous ]	
+C0003893	T061	reconstruction		Reconstruction of joint ( procedure )	
+C0003893	T061	joint		Joint reconstruction ( procedure )	
+C0003893	T061	arthroplasty		Arthroplasty - action ( qualifier value )	
+C0003893	T061	arthroplasty		Arthroplasty ( procedure )	
+C0003893	T061	repair		Repair of joint ( procedure )	
+C0003893	T061	repair		Repair of joint	
+C0004057	T109	aspirin		Aspirin	
+C0004057	T109	aspirin		Aspirin	
+C0004057	T109	aspirin		Aspirin	
+C0004057	T109	acetylsalicylic		Acetylsalicylic acid	
+C0004057	T109	acetylsalicylic		Acetylsalicylic acid	
+C0004057	T109	antiplatelet		Antiplatelet aspirin	
+C0004057	T109	aspirin		Aspirin [ antiplatelet ]	
+C0004057	T109	aspirin		Aspirin [ central nervous system use ]	
+C0004057	T109	aspirin		Aspirin [ musculoskeletal use ]	
+C0004057	T109	acetylsalicylic		Acetylsalicylic acid - chemical	
+C0004057	T109	antiplatelet		Antiplatelet aspirin ( product )	
+C0004057	T109	antiplatelet		Antiplatelet aspirin ( substance )	
+C0004057	T109	aspirin		Aspirin [ central nervous system use ] ( product )	
+C0004057	T109	aspirin		Aspirin [ central nervous system use ] ( substance )	
+C0004057	T109	aspirin		Aspirin - chemical	
+C0004057	T109	aspirin		Aspirin - chemical	
+C0004057	T109	aspirin		Aspirin - chemical	
+C0004057	T109	aspirin		Aspirin [ musculoskeletal use ] ( product )	
+C0004057	T109	aspirin		Aspirin [ musculoskeletal use ] ( substance )	
+C0004057	T109	aspirin		Aspirin ( product )	
+C0004057	T109	aspirin		Aspirin product	
+C0004057	T109	aspirin		Aspirin product ( substance )	
+C0004057	T109	aspirin		Aspirin ( substance )	
+C0004057	T109	aspirin		Aspirin ( substance )	
+C0004057	T109	aspirin		Aspirin - chemical ( substance )	
+C0004144	T046	atelectasis		Atelectasis	
+C0004144	T046	atelectasis		Atelectasis	
+C0004144	T046	atelectasis		Atelectasis	
+C0004144	T046	atelectasis		Atelectasis	
+C0004144	T046	atelectasis		Atelectasis , NOS	
+C0004144	T046	pulmonary		Pulmonary collapse	
+C0004144	T046	pulmonary		Pulmonary collapse	
+C0004144	T046	collapse		Collapse of lung	
+C0004144	T046	collapse		Collapse of lung	
+C0004144	T046	collapse		Collapse of lung	
+C0004144	T046	collapse		Collapse of lung	
+C0004144	T046	collapse		Collapse of lung	
+C0004144	T046	collapse		Collapse of lung	
+C0004144	T046	collapse		Collapse - lung	
+C0004144	T046	collapse		Collapse - lung	
+C0004144	T046	pulmonary		Pulmonary atelectasis	
+C0004144	T046	pulmonary		Pulmonary collapse with atelectasis	
+C0004144	T046	pulmonary		Pulmonary collapse with atelectasis	
+C0004144	T046	pulmonary		Pulmonary collapse with atelectasis	
+C0004144	T046	pulmonary		Pulmonary collapse with atelectasis	
+C0004144	T046	atelectasis		Atelectasis ( & with pulmonary collapse )	
+C0004144	T046	atelectasis		Atelectasis ( & with pulmonary collapse )	
+C0004144	T046	(		( Pulmonary collapse - atelactasis ) or ( atelectasis ) or ( collapse - lung )	
+C0004144	T046	(		( Pulmonary collapse - atelactasis ) or ( atelectasis ) or ( collapse - lung )	
+C0004144	T046	(		( Pulmonary collapse - atelactasis ) or ( atelectasis ) or ( collapse - lung )	
+C0004144	T046	(		( Pulmonary collapse - atelactasis ) or ( atelectasis ) or ( collapse - lung )	
+C0004144	T046	pulmonary		Pulmonary collapse - atelactasis	
+C0004144	T046	pulmonary		Pulmonary collapse - atelactasis	
+C0004144	T046	atelectasis		Atelectasis ( disorder )	
+C0004144	T046	pulmonary		Pulmonary collapse with atelectasis ( disorder )	
+C0004144	T046	atelectasis		Atelectasis ( & with pulmonary collapse ) ( disorder )	
+C0004144	T046	(		( Pulmonary collapse - atelactasis ) or ( atelectasis ) or ( collapse - lung ) ( disorder )	
+C0004144	T046	(		( Pulmonary collapse - atelactasis ) or ( atelectasis ) or ( collapse - lung ) ( disorder )	
+C0004144	T046	collapse		Collapse of lung ( disorder )	
+C0004454	T029	axillary		Axillary	
+C0004454	T029	axilla		Axilla	
+C0004454	T029	axilla		Axilla	
+C0004454	T029	axilla		Axilla	
+C0004454	T029	axilla		Axilla	
+C0004454	T029	axilla		Axilla	
+C0004454	T029	axilla		Axilla	
+C0004454	T029	axilla		Axilla , NOS	
+C0004454	T029	armpit		Armpit	
+C0004454	T029	armpit		Armpit	
+C0004454	T029	axillary		Axillary fossa	
+C0004454	T029	axillary		Axillary fossa	
+C0004454	T029	axillary		Axillary region	
+C0004454	T029	axilla		Axilla structure	
+C0004454	T029	axilla		Axilla ( body structure )	
+C0004454	T029	axilla		Axilla ( body structure )	
+C0004454	T029	axilla		Axilla structure ( body structure )	
+C0004454	T029	axillary		Axillary region structure ( body structure )	
+C0004454	T029	axillary		Axillary ( qualifier value )	
+C0004454	T029	axillary		Axillary region structure	
+C0004454	T029	structure		Structure of axillary fossa ( body structure )	
+C0004454	T029	structure		Structure of axillary fossa	
+C0005001	T046	benign		Benign prostatic hypertrophy	
+C0005001	T046	benign		Benign prostatic hypertrophy	
+C0005001	T046	benign		Benign prostatic hypertrophy	
+C0005001	T046	benign		Benign prostatic hypertrophy	
+C0005001	T046	benign		Benign prostatic hypertrophy	
+C0005001	T046	bph		BPH	
+C0005001	T046	bph		BPH	
+C0005001	T046	benign		Benign enlargement of prostate	
+C0005001	T046	benign		Benign enlargement of prostate	
+C0005001	T046	benign		Benign enlargement of prostate , NOS	
+C0005001	T046	benign		Benign enlargement of prostate , NOS	
+C0005001	T046	bep		BEP - Benign enlargement of prostate	
+C0005001	T046	bep		BEP - Benign enlargement of prostate	
+C0005001	T046	bph		BPH - Benign prostatic hypertrophy	
+C0005001	T046	bph		BPH - Benign prostatic hypertrophy	
+C0005001	T046	bph		BPH - benign prostatic hypertrophy	
+C0005001	T046	enlarged		Enlarged prostate - benign	
+C0005001	T046	hypertrophy		Hypertrophy - prost . ben .	
+C0005001	T046	hypertrophy		Hypertrophy - prost . ben .	
+C0005001	T046	benign		Benign prostatic hyper .	
+C0005001	T046	benign		Benign prostatic hyper .	
+C0005001	T046	prostatic		Prostatic hyper - benign	
+C0005001	T046	prostatic		Prostatic hyper - benign	
+C0005388	T031	bile		Bile fluid	
+C0005388	T031	bile		Bile	
+C0005388	T031	bile		Bile , NOS	
+C0005388	T031	gallbladder		Gallbladder bile	
+C0005388	T031	gallbladder		Gallbladder bile ( substance )	
+C0005388	T031	bile		Bile ( substance )	
+C0005400	T023	bile		Bile duct structure	
+C0005400	T023	bile		Bile duct	
+C0005400	T023	bile		Bile duct , NOS	
+C0005400	T023	bile		Bile duct structure ( body structure )	
+C0005558	T060	biopsy		Biopsy	
+C0005558	T060	biopsy		Biopsy , NOS	
+C0005558	T060	biopsy		Biopsy - action	
+C0005558	T060	bx		BX - Biopsy	
+C0005558	T060	biopsy		Biopsy - action ( qualifier value )	
+C0005558	T060	biopsy		Biopsy ( procedure )	
+C0005682	T023	urinary		Urinary bladder structure	
+C0005682	T023	bladder		Bladder	
+C0005682	T023	bladder		Bladder , NOS	
+C0005682	T023	urinary		Urinary bladder	
+C0005682	T023	urinary		Urinary bladder , NOS	
+C0005682	T023	bladder		Bladder structure	
+C0005682	T023	urinary		Urinary bladder structure ( body structure )	
+C0005684	T191	malignant		Malignant tumor of urinary bladder	
+C0005684	T191	malignant		Malignant tumor of urinary bladder	
+C0005684	T191	malignant		Malignant tumour of urinary bladder	
+C0005684	T191	malignant		Malignant tumour of urinary bladder	
+C0005684	T191	malignant		Malignant neoplasm of bladder , NOS	
+C0005684	T191	malignant		Malignant neoplasm of bladder	
+C0005684	T191	bladder		Bladder cancer	
+C0005684	T191	bladder		Bladder cancer	
+C0005684	T191	ca		CA - Bladder cancer	
+C0005684	T191	ca		CA - Bladder cancer	
+C0005684	T191	malignant		Malignant neoplasm of urinary bladder	
+C0005684	T191	malignant		Malignant neoplasm of urinary bladder	
+C0005684	T191	malignant		Malignant neoplasm of urinary bladder NOS	
+C0005684	T191	bladder		Bladder Ca	
+C0005684	T191	bladder		Bladder Ca	
+C0005684	T191	malignant		Malignant neoplasm of urinary bladder NOS ( disorder )	
+C0005684	T191	malignant		Malignant tumor of urinary bladder ( disorder )	
+C0005684	T191	malignant		Malignant tumor of urinary bladder ( disorder )	
+C0005967	T191	bone		Bone tumor	
+C0005967	T191	bone		Bone tumor	
+C0005967	T191	bone		Bone tumour	
+C0005967	T191	bone		Bone tumour	
+C0005967	T191	neoplasm		Neoplasm of bone	
+C0005967	T191	bone		Bone tumor ( morphologic abnormality )	
+C0005967	T191	neoplasm		Neoplasm of bone ( disorder )	
+C0006318	T033	bruit		Bruit	
+C0006318	T033	bruit		Bruit ( finding )	
+C0006826	T191	malignant		Malignant neoplastic disease	
+C0006826	T191	malignant		Malignant neoplastic disease	
+C0006826	T191	cancer		Cancer	
+C0006826	T191	cancer		Cancer	
+C0006826	T191	cancers		Cancers	
+C0006826	T191	malignant		Malignant neoplasm	
+C0006826	T191	malignant		Malignant neoplasm	
+C0006826	T191	malignant		Malignant neoplasms	
+C0006826	T191	malignant		Malignant neoplasms	
+C0006826	T191	malignant		Malignant neoplasm NOS	
+C0006826	T191	neoplasms		Neoplasms - malignant	
+C0006826	T191	neoplasms		Neoplasms - malignant	
+C0006826	T191	malignant		Malignant tumor	
+C0006826	T191	malignant		Malignant tumor	
+C0006826	T191	malignant		Malignant tumour	
+C0006826	T191	malignant		Malignant tumour	
+C0006826	T191	malignant		Malignant tumour	
+C0006826	T191	[		[ X ] Malignant neoplasm without specification of site	
+C0006826	T191	malignant		Malignant neoplasm of unspecified site	
+C0006826	T191	malignant		Malignant neoplasm of unspecified site NOS	
+C0006826	T191	ca		CA - Cancer	
+C0006826	T191	ca		CA - Cancer	
+C0006826	T191	ca		Ca - unspecified site NOS	
+C0006826	T191	ca		Ca - unspecified site NOS	
+C0006826	T191	ca		Ca - unspecified site NOS	
+C0006826	T191	ca		Ca - unspecified site	
+C0006826	T191	ca		Ca - unspecified site NOS ( disorder )	
+C0006826	T191	ca		Ca - unspecified site NOS ( disorder )	
+C0006826	T191	(		( Neoplasms ) or ( cancers )	
+C0006826	T191	(		( Neoplasms ) or ( cancers )	
+C0006826	T191	malignant		Malignant neoplastic disease ( disorder )	
+C0006826	T191	[		[ X ] Malignant neoplasm without specification of site ( disorder )	
+C0006826	T191	malignant		Malignant neoplasm of unspecified site NOS ( disorder )	
+C0006826	T191	malignant		Malignant neoplasm of unspecified site ( disorder )	
+C0006826	T191	malignant		Malignant tumor ( disorder )	
+C0006826	T191	malignant		Malignant tumour ( disorder )	
+C0006826	T191	(		( Neoplasms ) or ( cancers ) ( disorder )	
+C0007112	T191	adenocarcinoma		Adenocarcinoma of prostate	
+C0007112	T191	adenocarcinoma		Adenocarcinoma of prostate ( disorder )	
+C0007301	T024	cartilage		Cartilage tissue	
+C0007301	T024	cartilage		Cartilage	
+C0007301	T024	cartilage		Cartilage , NOS	
+C0007301	T024	cartilaginous		Cartilaginous tissue	
+C0007301	T024	cartilaginous		Cartilaginous tissue , NOS	
+C0007301	T024	cartilage		Cartilage tissue ( body structure )	
+C0007301	T024	cartilaginous		Cartilaginous tissue structure ( body structure )	
+C0007301	T024	cartilaginous		Cartilaginous tissue structure	
+C0007634	T025	cell		Cell structure	
+C0007634	T025	cell		Cell	
+C0007634	T025	cell		Cell , NOS	
+C0007634	T025	cellular		Cellular structures	
+C0007634	T025	cellular		Cellular structure	
+C0007634	T025	cell		Cell structure ( body structure )	
+C0007634	T025	cell		Cell structure ( cell structure )	
+C0008114	T029	chin		Chin structure	
+C0008114	T029	chin		Chin	
+C0008114	T029	mental		Mental region of face	
+C0008114	T029	mental		Mental region of face	
+C0008114	T029	chin		Chin structure ( body structure )	
+C0008114	T029	structure		Structure of mental region of face ( body structure )	
+C0008114	T029	structure		Structure of mental region of face	
+C0008320	T061	cholecystectomy		Cholecystectomy	
+C0008320	T061	cholecystectomy		Cholecystectomy	
+C0008320	T061	cholecystectomy		Cholecystectomy	
+C0008320	T061	removal		Removal of gallbladder	
+C0008320	T061	excision		Excision of gallbladder	
+C0008320	T061	excision		Excision of gallbladder NOS	
+C0008320	T061	gallbladder		Gallbladder excision	
+C0008320	T061	gallbladder		Gallbladder excision	
+C0008320	T061	gallbladder		Gallbladder excision	
+C0008320	T061	cholecystectomy		Cholecystectomy ( procedure )	
+C0008320	T061	cholecystectomy		Cholecystectomy ( procedure )	
+C0008320	T061	excision		Excision of gallbladder NOS ( procedure )	
+C0008913	T023	bone		Bone structure of clavicle	
+C0008913	T023	clavicle		Clavicle	
+C0008913	T023	clavicle		Clavicle , NOS	
+C0008913	T023	collar		Collar bone	
+C0008913	T023	bone		Bone structure of clavicle ( body structure )	
+C0009194	T023	bone		Bone structure of coccyx	
+C0009194	T023	coccyx		Coccyx	
+C0009194	T023	coccyx		Coccyx , NOS	
+C0009194	T023	os		Os coccyx	
+C0009194	T023	bone		Bone structure of coccyx ( body structure )	
+C0009437	T023	common		Common bile duct structure	
+C0009437	T023	common		Common bile duct	
+C0009437	T023	common		Common bile duct , NOS	
+C0009437	T023	common		Common bile duct structure ( body structure )	
+C0010709	T047	cyst		Cyst	
+C0010709	T047	cyst		Cyst	
+C0010709	T047	cyst		Cyst	
+C0010709	T047	cyst		Cyst	
+C0010709	T047	cyst		Cyst	
+C0010709	T047	cyst		Cyst , NOS	
+C0010709	T047	cyst		Cyst ( morphologic abnormality ) [ Ambiguous ]	
+C0010709	T047	cyst		Cyst ( morphologic abnormality )	
+C0010709	T047	cyst		Cyst ( morphologic abnormality )	
+C0010709	T047	cyst		Cyst ( morphologic abnormality )	
+C0010709	T047	cyst		Cyst - morphology	
+C0010709	T047	cyst		Cyst - RETIRED -	
+C0010709	T047	cyst		Cyst ( disorder )	
+C0011164	T046	degeneration		Degeneration	
+C0011164	T046	degeneration		Degeneration , NOS	
+C0011164	T046	degenerative		Degenerative change	
+C0011164	T046	degenerative		Degenerative abnormality	
+C0011164	T046	degenerative		Degenerative abnormality ( morphologic abnormality )	
+C0011164	T046	degeneration		Degeneration ( morphologic abnormality )	
+C0011900	T033	diagnosis		Diagnosis	
+C0011900	T033	diagnosis		Diagnosis ( observable entity )	
+C0011923	T060	imaging		Imaging	
+C0011923	T060	diagnostic		Diagnostic imaging	
+C0011923	T060	diagnostic		Diagnostic imaging	
+C0011923	T060	diagnostic		Diagnostic imaging , NOS	
+C0011923	T060	imaging		Imaging ( procedure )	
+C0011923	T060	imaging		Imaging procedure	
+C0011923	T060	diagnostic		Diagnostic imaging ( procedure )	
+C0011923	T060	imaging		Imaging by method	
+C0011923	T060	imaging		Imaging by method	
+C0011923	T060	imaging		Imaging by method ( procedure )	
+C0012634	T047	disease		Disease	
+C0012634	T047	diseases		Diseases	
+C0012634	T047	disease		Disease , NOS	
+C0012634	T047	disease		Disease ( disorder )	
+C0012634	T047	clinical		Clinical disease AND / OR syndrome present	
+C0012634	T047	clinical		Clinical disease or syndrome present , NOS	
+C0012634	T047	clinical		Clinical disease AND / OR syndrome	
+C0012634	T047	clinical		Clinical disease or syndrome , NOS	
+C0012634	T047	disease		Disease AND / OR syndrome present	
+C0012634	T047	disease		Disease or syndrome present , NOS	
+C0012634	T047	disorder		Disorder	
+C0012634	T047	disorders		Disorders	
+C0012634	T047	disorder		Disorder , NOS	
+C0012691	T037	dislocation		Dislocation of joint	
+C0012691	T037	dislocation		Dislocation	
+C0012691	T037	dislocations		Dislocations	
+C0012691	T037	dislocations		Dislocations	
+C0012691	T037	dislocation		Dislocation , NOS	
+C0012691	T037	dislocated		Dislocated joint	
+C0012691	T037	dislocation		Dislocation ( morphologic abnormality )	
+C0012691	T037	dislocation		Dislocation of joint ( disorder )	
+C0012737	T061	dissection		Dissection - action	
+C0012737	T061	dissection		Dissection	
+C0012737	T061	dissection		Dissection , NOS	
+C0012737	T061	dissection		Dissection - action ( qualifier value )	
+C0012737	T061	dissection		Dissection procedure	
+C0012737	T061	dissection		Dissection procedure ( procedure )	
+C0013227	T121	general		General drug type	
+C0013227	T121	drug		Drug	
+C0013227	T121	drug		Drug	
+C0013227	T121	drug		Drug	
+C0013227	T121	drug		Drug	
+C0013227	T121	drug		Drug , NOS	
+C0013227	T121	medicine		Medicine , NOS	
+C0013227	T121	medicine		Medicine	
+C0013227	T121	drug		Drug preparation	
+C0013227	T121	drug		Drug preparation , NOS	
+C0013227	T121	medication		Medication , NOS	
+C0013227	T121	medication		Medication	
+C0013227	T121	drug		Drug , medicament or biological substance	
+C0013227	T121	pharmaceutical		Pharmaceutical / biologic product	
+C0013227	T121	pharmaceutical		Pharmaceutical / biologic product ( product )	
+C0013227	T121	drug		Drug , medicament or biological substance ( substance )	
+C0013227	T121	general		General drug type ( product )	
+C0013227	T121	general		General drug type ( substance )	
+C0013227	T121	drug		Drug preparation ( product )	
+C0013227	T121	drug		Drug preparation ( substance )	
+C0013227	T121	drug		Drug product	
+C0013227	T121	drug		Drug ( substance )	
+C0013227	T121	medicinal		Medicinal product	
+C0013227	T121	drug		Drug or medicament	
+C0013227	T121	drug		Drug or medicament ( substance )	
+C0013687	T046	effusion		Effusion	
+C0013687	T046	effusion		Effusion , NOS	
+C0013687	T046	free		Free fluid	
+C0013687	T046	free		Free fluid , NOS	
+C0013687	T046	effusion		Effusion ( morphologic abnormality )	
+C0015641	T024	fascial		Fascial	
+C0015641	T024	fascia		Fascia	
+C0015641	T024	fascia		Fascia	
+C0015641	T024	fascia		Fascia	
+C0015641	T024	fascia		Fascia , NOS	
+C0015641	T024	fascial		Fascial structure	
+C0015641	T024	fascial		Fascial structure ( body structure )	
+C0015641	T024	fascial		Fascial ( qualifier value )	
+C0015641	T024	structure		Structure of fascia ( body structure )	
+C0015641	T024	structure		Structure of fascia	
+C0015641	T024	fascia		Fascia ( body structure )	
+C0015811	T023	bone		Bone structure of femur	
+C0015811	T023	femur		Femur	
+C0015811	T023	femur		Femur , NOS	
+C0015811	T023	femoral		Femoral	
+C0015811	T023	bone		Bone structure of femur ( body structure )	
+C0015811	T023	femoral		Femoral ( qualifier value )	
+C0015811	T023	structure		Structure of femur ( body structure )	
+C0015811	T023	structure		Structure of femur	
+C0016059	T046	fibrosis		Fibrosis	
+C0016059	T046	fibrosis		Fibrosis	
+C0016059	T046	fibrosis		Fibrosis , NOS	
+C0016059	T046	desmoplasia		Desmoplasia	
+C0016059	T046	fibroplasia		Fibroplasia	
+C0016059	T046	fibroplasia		Fibroplasia , NOS	
+C0016059	T046	fibrous		Fibrous repair	
+C0016059	T046	fibrous		Fibrous thickening	
+C0016059	T046	fibrosis		Fibrosis ( morphologic abnormality )	
+C0016059	T046	fibrosis		Fibrosis ( qualifier value )	
+C0016059	T046	fibrous		Fibrous replacement	
+C0016129	T029	digit		Digit of hand structure	
+C0016129	T029	foredigit		Foredigit , NOS	
+C0016129	T029	digit		Digit of hand	
+C0016129	T029	finger		Finger structure	
+C0016129	T029	finger		Finger	
+C0016129	T029	finger		Finger , NOS	
+C0016129	T029	digit		Digit of hand structure ( body structure )	
+C0016129	T029	finger		Finger structure ( body structure )	
+C0016169	T190	fistula		Fistula	
+C0016169	T190	fistula		Fistula	
+C0016169	T190	fistula		Fistula , NOS	
+C0016169	T190	abnormal		Abnormal sinus tract	
+C0016169	T190	abnormal		Abnormal sinus tract , NOS	
+C0016169	T190	fistulous		Fistulous tract	
+C0016169	T190	fistulous		Fistulous tract , NOS	
+C0016169	T190	sinus		Sinus	
+C0016169	T190	fistula		Fistula ( morphologic abnormality )	
+C0016169	T190	unspecified		Unspecified fistula	
+C0016169	T190	unspecified		Unspecified fistula	
+C0016169	T190	sinus		Sinus ( morphologic abnormality )	
+C0016169	T190	fistula		Fistula ( disorder )	
+C0016169	T190	unspecified		Unspecified fistula ( disorder )	
+C0016504	T023	foot		Foot structure	
+C0016504	T023	foot		Foot	
+C0016504	T023	foot		Foot , NOS	
+C0016504	T023	foot		Foot structure ( body structure )	
+C0016542	T037	foreign		Foreign body	
+C0016542	T037	foreign		Foreign body	
+C0016542	T037	foreign		Foreign body , NOS	
+C0016542	T037	exogenous		Exogenous material	
+C0016542	T037	exogenous		Exogenous material , NOS	
+C0016542	T037	foreign		Foreign material	
+C0016542	T037	foreign		Foreign material , NOS	
+C0016542	T037	fb		FB - Foreign body of body structure	
+C0016542	T037	foreign		Foreign body of body structure	
+C0016542	T037	fb		FB - Foreign body	
+C0016542	T037	foreign		Foreign body ( morphologic abnormality )	
+C0016542	T037	disorder		Disorder due to presence of foreign body	
+C0016542	T037	foreign		Foreign body ( disorder )	
+C0016658	T037	fracture		Fracture	
+C0016658	T037	fracture		Fracture	
+C0016658	T037	fracture		Fracture	
+C0016658	T037	fracture		Fracture	
+C0016658	T037	fracture		Fracture NOS	
+C0016658	T037	fracture		Fracture NOS	
+C0016658	T037	fracture		Fracture NOS	
+C0016658	T037	fracture		Fracture NOS	
+C0016658	T037	fracture		Fracture , NOS	
+C0016658	T037	fracture		Fracture of unspecified bones	
+C0016658	T037	fracture		Fracture of unspecified bones	
+C0016658	T037	fracture		Fracture of bone	
+C0016658	T037	fracture		Fracture of bones NOS	
+C0016658	T037	fracture		Fracture , cause unspecified	
+C0016658	T037	broken		Broken bone	
+C0016658	T037	fracture		Fracture - lesion	
+C0016658	T037	fracture		Fracture - lesion	
+C0016658	T037	fracture		Fracture - lesion	
+C0016658	T037	fracture		Fracture - lesion	
+C0016658	T037	fracture		Fracture ( morphologic abnormality )	
+C0016658	T037	fracture		Fracture of bone ( disorder )	
+C0016658	T037	fracture		Fracture of bones NOS ( disorder )	
+C0016658	T037	fracture		Fracture of unspecified bones ( disorder )	
+C0016658	T037	fracture		Fracture : [ of unspecified bones ] or [ NOS ]	
+C0016658	T037	fracture		Fracture : [ of unspecified bones ] or [ NOS ]	
+C0016658	T037	fracture		Fracture , cause unspecified ( finding )	
+C0016658	T037	fracture		Fracture NOS ( disorder )	
+C0016658	T037	fracture		Fracture NOS ( disorder )	
+C0016658	T037	fracture		Fracture ( disorder )	
+C0016658	T037	fracture		Fracture , cause unspecified ( disorder )	
+C0016658	T037	fracture		Fracture - lesion ( disorder )	
+C0016658	T037	fracture		Fracture : [ of unspecified bones ] or [ NOS ] ( disorder )	
+C0016658	T037	fracture		Fracture - lesion ( morphologic abnormality )	
+C0016734	T030	frontal		Frontal sinus structure	
+C0016734	T030	frontal		Frontal sinus	
+C0016734	T030	frontal		Frontal sinus , NOS	
+C0016734	T030	frontal		Frontal sinus structure ( body structure )	
+C0016976	T023	gallbladder		Gallbladder structure	
+C0016976	T023	gallbladder		Gallbladder	
+C0016976	T023	gallbladder		Gallbladder , NOS	
+C0016976	T023	gallbladder		Gallbladder structure ( body structure )	
+C0016976	T023	gall		gall bladder	
+C0018026	T121	gold		Gold	
+C0018026	T121	gold		Gold , NOS	
+C0018026	T121	au		Au - Gold	
+C0018026	T121	gold		Gold ( substance )	
+C0018563	T023	hand		Hand structure	
+C0018563	T023	hand		Hand	
+C0018563	T023	hand		Hand , NOS	
+C0018563	T023	hand		Hand structure ( body structure )	
+C0018670	T029	head		Head structure	
+C0018670	T029	head		Head	
+C0018670	T029	head		Head , NOS	
+C0018670	T029	head		Head structure ( body structure )	
+C0018787	T023	heart		Heart structure	
+C0018787	T023	heart		Heart	
+C0018787	T023	heart		Heart , NOS	
+C0018787	T023	cardiac		Cardiac structure	
+C0018787	T023	cardiac		Cardiac structure	
+C0018787	T023	cardiac		Cardiac structure ( body structure )	
+C0018787	T023	heart		Heart structure ( body structure )	
+C0018801	T047	heart		Heart failure	
+C0018801	T047	heart		Heart failure	
+C0018801	T047	heart		Heart failure	
+C0018801	T047	heart		Heart failure , NOS	
+C0018801	T047	heart		Heart failure NOS	
+C0018801	T047	heart		Heart failure NOS	
+C0018801	T047	heart		Heart failure NOS	
+C0018801	T047	heart		Heart failure NOS	
+C0018801	T047	cardiac		Cardiac failure	
+C0018801	T047	cardiac		Cardiac failure , NOS	
+C0018801	T047	cardiac		Cardiac failure NOS	
+C0018801	T047	insufficiency		Insufficiency - cardiac	
+C0018801	T047	insufficiency		Insufficiency - cardiac	
+C0018801	T047	weak		Weak heart	
+C0018801	T047	weak		Weak heart	
+C0018801	T047	weak		Weak heart , NOS	
+C0018801	T047	hf		HF - Heart failure	
+C0018801	T047	heart		Heart failure ( disorder )	
+C0018801	T047	heart		Heart failure ( disorder )	
+C0018801	T047	heart		Heart failure NOS ( disorder )	
+C0018801	T047	heart		Heart failure NOS ( disorder )	
+C0018801	T047	heart		Heart : [ weak ] or [ failure NOS ]	
+C0018801	T047	heart		Heart : [ weak ] or [ failure NOS ]	
+C0018801	T047	heart		Heart : [ weak ] or [ failure NOS ] ( disorder )	
+C0018802	T047	congestive		Congestive heart failure	
+C0018802	T047	congestive		Congestive heart failure	
+C0018802	T047	congestive		Congestive cardiac failure	
+C0018802	T047	congestive		Congestive cardiac failure	
+C0018802	T047	congestive		Congestive cardiac failure	
+C0018802	T047	congestive		Congestive cardiac failure	
+C0018802	T047	congestive		Congestive heart disease	
+C0018802	T047	ccf		CCF - Congestive cardiac failure	
+C0018802	T047	chf		CHF - Congestive heart failure	
+C0018802	T047	congestive		Congestive cardiac fail	
+C0018802	T047	congestive		Congestive cardiac fail	
+C0018802	T047	congetive		Congetive cardiac failure	
+C0018802	T047	congetive		Congetive cardiac failure	
+C0018802	T047	congestive		Congestive heart failure ( disorder )	
+C0018965	T033	hematuria		Hematuria syndrome	
+C0018965	T033	hematuria		Hematuria syndrome , NOS	
+C0018965	T033	haematuria		Haematuria syndrome	
+C0018965	T033	hematuria		Hematuria	
+C0018965	T033	hematuria		Hematuria	
+C0018965	T033	hematuria		Hematuria	
+C0018965	T033	haematuria		Haematuria	
+C0018965	T033	haematuria		Haematuria	
+C0018965	T033	haematuria		Haematuria	
+C0018965	T033	haematuria		Haematuria NOS	
+C0018965	T033	haematuria		Haematuria NOS	
+C0018965	T033	haematuria		Haematuria NOS	
+C0018965	T033	hematuria		Hematuria NOS	
+C0018965	T033	hematuria		Hematuria NOS	
+C0018965	T033	blood		Blood in urine	
+C0018965	T033	blood		Blood in urine - hematuria	
+C0018965	T033	blood		Blood in urine - hematuria	
+C0018965	T033	blood		Blood in urine - hematuria	
+C0018965	T033	blood		Blood in urine - hematuria	
+C0018965	T033	blood		Blood in urine - hematuria	
+C0018965	T033	blood		Blood in urine - haematuria	
+C0018965	T033	blood		Blood in urine - haematuria	
+C0018965	T033	blood		Blood in urine - haematuria	
+C0018965	T033	blood		Blood in urine - haematuria	
+C0018965	T033	blood		Blood in urine - haematuria	
+C0018965	T033	haematuria		Haematuria [ Ambiguous ]	
+C0018965	T033	blood		Blood in urine - hematuria ( disorder )	
+C0018965	T033	blood		Blood in urine ( finding )	
+C0018965	T033	blood		Blood in urine - hematuria ( & [ symptom ] )	
+C0018965	T033	blood		Blood in urine - hematuria ( & [ symptom ] )	
+C0018965	T033	blood		Blood in urine - haematuria ( & [ symptom ] )	
+C0018965	T033	blood		Blood in urine - haematuria ( & [ symptom ] )	
+C0018965	T033	blood		Blood in urine - haematuria ( & [ symptom ] )	
+C0018965	T033	blood		Blood in urine - haematuria ( & [ symptom ] )	
+C0018965	T033	blood		Blood in urine ( & symptom )	
+C0018965	T033	blood		Blood in urine ( & symptom )	
+C0018965	T033	urine		Urine - blood - symptom	
+C0018965	T033	urine		Urine - blood - symptom	
+C0018965	T033	blood		Blood - urine - symptom	
+C0018965	T033	blood		Blood - urine - symptom	
+C0018965	T033	blood		Blood - urine - symptom	
+C0018965	T033	blood		Blood - urine - symptom	
+C0018965	T033	blood		Blood in urine - symptom	
+C0018965	T033	hematuria		Hematuria syndrome ( disorder )	
+C0018965	T033	hematuria		Hematuria NOS ( finding )	
+C0018965	T033	hematuria		Hematuria - symptom	
+C0018965	T033	hematuria		Hematuria - symptom	
+C0018965	T033	hematuria		Hematuria - symptom	
+C0018965	T033	haematuria		Haematuria - symptom	
+C0018965	T033	haematuria		Haematuria - symptom	
+C0018965	T033	haematuria		Haematuria - symptom	
+C0018965	T033	blood		Blood in urine - haematuria ( & [ symptom ] ) ( finding )	
+C0018965	T033	blood		Blood in urine - haematuria ( & [ symptom ] ) ( finding )	
+C0018965	T033	haematuria		Haematuria ( disorder )	
+C0018965	T033	haematuria		Haematuria NOS ( disorder )	
+C0018965	T033	blood		Blood in urine ( & symptom ) ( finding )	
+C0019123	T046	hemothorax		Hemothorax	
+C0019123	T046	hemothorax		Hemothorax	
+C0019123	T046	hemothorax		Hemothorax	
+C0019123	T046	haemothorax		Haemothorax	
+C0019123	T046	haemothorax		Haemothorax	
+C0019123	T046	haemothorax		Haemothorax	
+C0019123	T046	pleural		Pleural hemorrhage	
+C0019123	T046	pleural		Pleural haemorrhage	
+C0019123	T046	hemothorax		Hemothorax ( disorder )	
+C0019552	T023	hip		Hip region structure	
+C0019552	T023	hip		Hip	
+C0019552	T023	hip		Hip	
+C0019552	T023	hip		Hip , NOS	
+C0019552	T023	hip		Hip region	
+C0019552	T023	bone		Bone structure of hip	
+C0019552	T023	hip		Hip structure	
+C0019552	T023	bone		Bone structure of hip ( body structure )	
+C0019552	T023	hip		Hip region structure ( body structure )	
+C0019939	T023	horn		Horn	
+C0019939	T023	horn		Horn , NOS	
+C0019939	T023	horn		Horn ( body structure )	
+C0019939	T023	horn		Horn structure ( body structure )	
+C0019939	T023	horn		Horn structure	
+C0020162	T037	fracture		Fracture of humerus	
+C0020162	T037	fracture		Fracture of humerus	
+C0020162	T037	fracture		Fracture of humerus	
+C0020162	T037	fracture		Fracture of humerus , NOS	
+C0020162	T037	fracture		Fracture of humerus NOS	
+C0020162	T037	fracture		Fracture of humerus NOS	
+C0020162	T037	fracture		Fracture of humerus NOS	
+C0020162	T037	fracture		Fracture of upper arm	
+C0020162	T037	fracture		Fracture of upper arm , NOS	
+C0020162	T037	fracture		Fracture of humerus ( disorder )	
+C0020162	T037	fracture		Fracture of humerus ( disorder )	
+C0020162	T037	fracture		Fracture of humerus NOS ( disorder )	
+C0020162	T037	fracture		Fracture of humerus NOS ( disorder )	
+C0020164	T023	bone		Bone structure of humerus	
+C0020164	T023	bone		Bone of arm , NOS	
+C0020164	T023	bone		Bone of arm	
+C0020164	T023	humerus		Humerus	
+C0020164	T023	humerus		Humerus , NOS	
+C0020164	T023	bone		Bone structure of upper arm ( body structure )	
+C0020164	T023	bone		Bone structure of upper arm	
+C0020164	T023	bone		Bone structure of humerus ( body structure )	
+C0020295	T047	hydronephrosis		Hydronephrosis	
+C0020295	T047	hydronephrosis		Hydronephrosis	
+C0020295	T047	hydronephrosis		Hydronephrosis	
+C0020295	T047	hydronephrosis		Hydronephrosis NOS	
+C0020295	T047	hydronephrosis		Hydronephrosis ( disorder )	
+C0020295	T047	hydronephrosis		Hydronephrosis ( disorder )	
+C0020295	T047	hydronephrosis		Hydronephrosis NOS ( disorder )	
+C0020507	T046	hyperplasia		Hyperplasia	
+C0020507	T046	hyperplasia		Hyperplasia , NOS	
+C0020507	T046	cellular		Cellular proliferation	
+C0020507	T046	hypercellularity		Hypercellularity	
+C0020507	T046	hyperplasia		Hyperplasia ( morphologic abnormality )	
+C0020740	T109	ibuprofen		Ibuprofen	
+C0020740	T109	ibuprofen		Ibuprofen	
+C0020740	T109	ibuprofen		Ibuprofen	
+C0020740	T109	propionic		Propionic acid - ibuprofen	
+C0020740	T109	p		p - Isobutylhydratropic acid	
+C0020740	T109	p		p - Isobutylhydratropic acid	
+C0020740	T109	ibuprofen		Ibuprofen [ cns analgesic ] [ see j28 . . ]	
+C0020740	T109	ibuprofen		Ibuprofen [ musculoskeletal use ]	
+C0020740	T109	ibuprofen		Ibuprofen ( product )	
+C0020740	T109	ibuprofen		Ibuprofen product	
+C0020740	T109	ibuprofen		Ibuprofen [ musculoskeletal use 2 ]	
+C0020740	T109	ibuprofen		Ibuprofen [ musculoskeletal use 2 ] ( product )	
+C0020740	T109	ibuprofen		Ibuprofen [ musculoskeletal use 2 ] ( substance )	
+C0020740	T109	ibuprofen		Ibuprofen [ cns analgesic ] [ see j28 . . ] ( product )	
+C0020740	T109	ibuprofen		Ibuprofen [ cns analgesic ] [ see j28 . . ] ( substance )	
+C0020740	T109	ibuprofen		Ibuprofen [ musculoskeletal use ] ( product )	
+C0020740	T109	ibuprofen		Ibuprofen [ musculoskeletal use ] ( substance )	
+C0020740	T109	ibuprofen		Ibuprofen product ( substance )	
+C0020740	T109	ibuprofen		Ibuprofen ( substance )	
+C0020740	T109	ibuprofen		Ibuprofen ( substance )	
+C0020887	T023	structure		Structure of iliac artery	
+C0020887	T023	iliac		Iliac artery	
+C0020887	T023	iliac		Iliac artery , NOS	
+C0020887	T023	structure		Structure of iliac artery ( body structure )	
+C0021853	T023	intestinal		Intestinal	
+C0021853	T023	bowel		Bowel	
+C0021853	T023	bowel		Bowel , NOS	
+C0021853	T023	intestinal		Intestinal tract	
+C0021853	T023	intestinal		Intestinal tract , NOS	
+C0021853	T023	intestines		Intestines	
+C0021853	T023	intestine		Intestine	
+C0021853	T023	intestines		Intestines , NOS	
+C0021853	T023	intestinal		Intestinal structure	
+C0021853	T023	intestinal		Intestinal structure ( body structure )	
+C0021853	T023	intestinal		Intestinal ( qualifier value )	
+C0022408	T047	arthropathy		Arthropathy	
+C0022408	T047	arthropathy		Arthropathy	
+C0022408	T047	arthropathy		Arthropathy	
+C0022408	T047	arthropathy		Arthropathy , NOS	
+C0022408	T047	arthropathies		Arthropathies NOS	
+C0022408	T047	arthropathy		Arthropathy NOS	
+C0022408	T047	arthropathy		Arthropathy NOS	
+C0022408	T047	arthropathy		Arthropathy NOS	
+C0022408	T047	arthropathy		Arthropathy NOS	
+C0022408	T047	arthropathy		Arthropathy NOS	
+C0022408	T047	arthropathy		Arthropathy NOS	
+C0022408	T047	arthropathy		Arthropathy NOS	
+C0022408	T047	arthropathy		Arthropathy NOS	
+C0022408	T047	joint		Joint disease	
+C0022408	T047	joint		Joint disease	
+C0022408	T047	joint		Joint disease , NOS	
+C0022408	T047	osteoarthrosis		Osteoarthrosis	
+C0022408	T047	osteoarthrosis		Osteoarthrosis	
+C0022408	T047	osteoarthrosis		Osteoarthrosis	
+C0022408	T047	osteoarthrosis		Osteoarthrosis , NOS	
+C0022408	T047	arthrosis		Arthrosis	
+C0022408	T047	arthrosis		Arthrosis	
+C0022408	T047	arthrosis		Arthrosis	
+C0022408	T047	arthrosis		Arthrosis	
+C0022408	T047	arthrosis		Arthrosis , NOS	
+C0022408	T047	joint		Joint disorder	
+C0022408	T047	joint		Joint disorder	
+C0022408	T047	disorder		Disorder of joint , NOS	
+C0022408	T047	joint		Joint disorders NOS	
+C0022408	T047	joint		Joint disorders NOS	
+C0022408	T047	joint		Joint disorders NOS	
+C0022408	T047	joint		Joint disorder NOS	
+C0022408	T047	joint		Joint disorder NOS	
+C0022408	T047	joint		Joint disorders	
+C0022408	T047	disorder		Disorder of joint	
+C0022408	T047	disorder		Disorder of joint	
+C0022408	T047	[		[ X ] Arthrosis	
+C0022408	T047	arthropathy		Arthropathy NOS , of unspecified site	
+C0022408	T047	joint		Joint disorder NOS , of unspecified site	
+C0022408	T047	arthropathy		Arthropathy ( disorder )	
+C0022408	T047	arthropathy		Arthropathy ( disorder )	
+C0022408	T047	arthropathies		Arthropathies NOS ( disorder )	
+C0022408	T047	arthropathy		Arthropathy NOS ( disorder )	
+C0022408	T047	arthropathy		Arthropathy NOS ( disorder )	
+C0022408	T047	arthropathy		Arthropathy NOS ( disorder )	
+C0022408	T047	arthropathy		Arthropathy NOS , of unspecified site ( disorder )	
+C0022408	T047	[		[ X ] Arthrosis ( disorder )	
+C0022408	T047	joint		Joint disorders NOS ( disorder )	
+C0022408	T047	joint		Joint disorders NOS ( disorder )	
+C0022408	T047	joint		Joint disorder NOS , of unspecified site ( disorder )	
+C0022408	T047	osteoarthrosis		Osteoarthrosis ( disorder )	
+C0022417	T030	joint		Joint structure	
+C0022417	T030	joint		Joint structure	
+C0022417	T030	joint		Joint structure	
+C0022417	T030	joint		Joint	
+C0022417	T030	joint		Joint , NOS	
+C0022417	T030	joint		Joint structure ( body structure )	
+C0022417	T030	joint		Joint structure ( body structure )	
+C0022417	T030	joint		Joint types	
+C0022646	T023	kidney		Kidney structure	
+C0022646	T023	kidney		Kidney	
+C0022646	T023	kidney		Kidney , NOS	
+C0022646	T023	renal		Renal structure	
+C0022646	T023	kidney		Kidney structure ( body structure )	
+C0022745	T030	knee		Knee joint structure	
+C0022745	T030	knee		Knee joint	
+C0022745	T030	knee		Knee joint , NOS	
+C0022745	T030	stifle		Stifle joint , NOS	
+C0022745	T030	knee		Knee joint structure ( body structure )	
+C0023216	T029	lower		Lower limb structure	
+C0023216	T029	hindlimb		Hindlimb , NOS	
+C0023216	T029	leg		Leg	
+C0023216	T029	lower		Lower extremity	
+C0023216	T029	lower		Lower extremity , NOS	
+C0023216	T029	lower		Lower limb	
+C0023216	T029	lower		Lower limb , NOS	
+C0023216	T029	leg		Leg region	
+C0023216	T029	region		Region of lower extremity ( body structure )	
+C0023216	T029	lower		Lower limb structure ( body structure )	
+C0023216	T029	region		Region of lower extremity	
+C0023216	T029	lower		Lower extremity region	
+C0023216	T029	lower		Lower extremity structure	
+C0023221	T190	leg		Leg length inequality	
+C0023221	T190	leg		Leg length discrepancy	
+C0023221	T190	lower		Lower limb length difference	
+C0023221	T190	leg		Leg length inequality ( finding )	
+C0023685	T024	structure		Structure of ligament	
+C0023685	T024	ligament		Ligament	
+C0023685	T024	ligament		Ligament	
+C0023685	T024	ligament		Ligament	
+C0023685	T024	ligament		Ligament , NOS	
+C0023685	T024	structure		Structure of ligament ( body structure )	
+C0023685	T024	ligament		Ligament ( body structure )	
+C0023884	T023	liver		Liver structure	
+C0023884	T023	liver		Liver	
+C0023884	T023	liver		Liver , NOS	
+C0023884	T023	liver		Liver structure ( body structure )	
+C0024109	T023	lung		Lung structure	
+C0024109	T023	lung		Lung	
+C0024109	T023	lung		Lung , NOS	
+C0024109	T023	lung		Lung structure ( body structure )	
+C0024202	T031	lymph		Lymph	
+C0024202	T031	lymph		Lymph , NOS	
+C0024202	T031	lymph		Lymph ( substance )	
+C0024204	T023	structure		Structure of lymph node	
+C0024204	T023	lymph		Lymph node structure	
+C0024204	T023	lymph		Lymph node	
+C0024204	T023	lymph		Lymph node , NOS	
+C0024204	T023	lymph		Lymph gland	
+C0024204	T023	lymph		Lymph gland , NOS	
+C0024204	T023	lymphatic		Lymphatic gland	
+C0024204	T023	lymphatic		Lymphatic gland , NOS	
+C0024204	T023	structure		Structure of lymph node ( body structure )	
+C0024204	T023	lymph		Lymph node structure ( body structure )	
+C0024264	T025	lymphocyte		Lymphocyte	
+C0024264	T025	lymphocyte		Lymphocyte , NOS	
+C0024264	T025	lymphocytic		Lymphocytic cell	
+C0024264	T025	lymphocytic		Lymphocytic cell , NOS	
+C0024264	T025	lymphocyte		Lymphocyte ( cell )	
+C0024485	T060	magnetic		Magnetic resonance imaging - action	
+C0024485	T060	magnetic		Magnetic resonance imaging	
+C0024485	T060	magnetic		Magnetic resonance imaging	
+C0024485	T060	magnetic		Magnetic resonance imaging	
+C0024485	T060	magnetic		Magnetic resonance imaging , NOS	
+C0024485	T060	nuclear		Nuclear magnetic resonance NOS	
+C0024485	T060	nuclear		Nuclear magnetic resonance NOS	
+C0024485	T060	nuclear		Nuclear magnetic resonance NOS	
+C0024485	T060	nuclear		Nuclear magnetic resonance	
+C0024485	T060	mri		MRI	
+C0024485	T060	mri		MRI , NOS	
+C0024485	T060	mri		MRI - Magnetic resonance imaging	
+C0024485	T060	mr		MR - Magnetic resonance	
+C0024485	T060	nmr		NMR - Nuclear magnetic resonance	
+C0024485	T060	magnetic		Magnetic resonance study	
+C0024485	T060	magnetic		Magnetic resonance study	
+C0024485	T060	magnetic		Magnetic resonance study	
+C0024485	T060	magnetic		Magnetic resonance study	
+C0024485	T060	magnetic		Magnetic resonance technique	
+C0024485	T060	magnetic		Magnetic resonance imaging - action ( qualifier value )	
+C0024485	T060	magnetic		Magnetic resonance : [ imaging ] or [ study ]	
+C0024485	T060	magnetic		Magnetic resonance : [ imaging ] or [ study ]	
+C0024485	T060	magnetic		Magnetic resonance imaging ( procedure )	
+C0024485	T060	nuclear		Nuclear magnetic resonance NOS ( procedure )	
+C0024485	T060	nuclear		Nuclear magnetic resonance NOS ( procedure )	
+C0024485	T060	magnetic		Magnetic resonance study ( procedure )	
+C0024485	T060	magnetic		Magnetic resonance study ( procedure )	
+C0024485	T060	nmr		NMR Scan	
+C0024485	T060	magnetic		Magnetic resonance : [ imaging ] or [ study ] ( procedure )	
+C0025066	T029	mediastinal		Mediastinal	
+C0025066	T029	mediastinum		Mediastinum	
+C0025066	T029	mediastinum		Mediastinum , NOS	
+C0025066	T029	structure		Structure of mediastinum	
+C0025066	T029	mediastinal		Mediastinal structure	
+C0025066	T029	mediastinal		Mediastinal structure ( body structure )	
+C0025066	T029	mediastinal		Mediastinal ( qualifier value )	
+C0025526	T023	bone		Bone structure of metacarpal	
+C0025526	T023	metacarpal		Metacarpal	
+C0025526	T023	metacarpal		Metacarpal , NOS	
+C0025526	T023	metacarpal		Metacarpal bone	
+C0025526	T023	metacarpal		Metacarpal bone , NOS	
+C0025526	T023	bone		Bone structure of metacarpal ( body structure )	
+C0025584	T023	metatarsal		Metatarsal bone structure	
+C0025584	T023	metatarsal		Metatarsal bone	
+C0025584	T023	metatarsal		Metatarsal bone , NOS	
+C0025584	T023	metatarsal		Metatarsal	
+C0025584	T023	metatarsal		Metatarsal , NOS	
+C0025584	T023	metatarsal		Metatarsal bone structure ( body structure )	
+C0025589	T030	metatarsophalangeal		Metatarsophalangeal joint structure	
+C0025589	T030	metatarsal		Metatarsal joint , NOS	
+C0025589	T030	metatarsal		Metatarsal joint	
+C0025589	T030	metatarsophalangeal		Metatarsophalangeal joint	
+C0025589	T030	metatarsophalangeal		Metatarsophalangeal joint , NOS	
+C0025589	T030	[		[ SO ] Metatarsophalangeal joint unspecified	
+C0025589	T030	[		[ SO ] Metatarsophalangeal joint unspecified ( body structure )	
+C0025589	T030	metatarsophalangeal		Metatarsophalangeal joint structure ( body structure )	
+C0026845	T024	muscle		Muscle tissue	
+C0026845	T024	muscle		Muscle	
+C0026845	T024	muscle		Muscle , NOS	
+C0026845	T024	muscle		Muscle , NOS	
+C0026845	T024	muscles		Muscles , NOS	
+C0026845	T024	muscle		Muscle tissue ( body structure )	
+C0026846	T047	muscle		Muscle atrophy	
+C0026846	T047	muscle		Muscle atrophy , NOS	
+C0026846	T047	muscular		Muscular atrophy	
+C0026846	T047	muscular		Muscular atrophy	
+C0026846	T047	muscular		Muscular atrophy	
+C0026846	T047	muscular		Muscular atrophy	
+C0026846	T047	muscular		Muscular atrophy	
+C0026846	T047	atrophy		Atrophy - muscular	
+C0026846	T047	atrophy		Atrophy - muscular	
+C0026846	T047	atrophy		Atrophy - muscular	
+C0026846	T047	atrophy		Atrophy - muscular	
+C0026846	T047	muscular		Muscular atrophy , NOS	
+C0026846	T047	amyotrophy		Amyotrophy	
+C0026846	T047	amyotrophy		Amyotrophy , NOS	
+C0026846	T047	amyotrophia		Amyotrophia	
+C0026846	T047	amyotrophia		Amyotrophia , NOS	
+C0026846	T047	amyotrophia		Amyotrophia NOS	
+C0026846	T047	muscle		Muscle wasting	
+C0026846	T047	muscle		Muscle wasting	
+C0026846	T047	muscle		Muscle wasting	
+C0026846	T047	muscle		Muscle wasting	
+C0026846	T047	muscle		Muscle wasting	
+C0026846	T047	wasting		Wasting - muscle	
+C0026846	T047	wasting		Wasting - muscle	
+C0026846	T047	muscle		Muscle wasting , NOS	
+C0026846	T047	muscle		Muscle thinning	
+C0026846	T047	muscle		Muscle wasting disorder	
+C0026846	T047	amyotrophia		Amyotrophia NOS ( disorder )	
+C0026846	T047	muscle		Muscle atrophy ( disorder )	
+C0026846	T047	muscle		Muscle wasting ( finding )	
+C0027651	T191	neoplasm		Neoplasm	
+C0027651	T191	neoplasms		Neoplasms	
+C0027651	T191	neoplasm		Neoplasm , NOS	
+C0027651	T191	neoplasms		Neoplasms NOS	
+C0027651	T191	neoplasms		Neoplasms NOS	
+C0027651	T191	neoplasms		Neoplasms NOS	
+C0027651	T191	neoplasms		Neoplasms NOS	
+C0027651	T191	neoplasms		Neoplasms NOS	
+C0027651	T191	neoplasms		Neoplasms NOS	
+C0027651	T191	neoplasms		Neoplasms NOS	
+C0027651	T191	unspecified		Unspecified nature neoplasm	
+C0027651	T191	neoplasm		Neoplasm of unspecified nature	
+C0027651	T191	neoplasm		Neoplasm of unspecified nature NOS	
+C0027651	T191	neoplasm		Neoplasm of unspecified nature NOS	
+C0027651	T191	neoplasm		Neoplasm of unspecified nature NOS	
+C0027651	T191	tumor		Tumor	
+C0027651	T191	tumor		Tumor , NOS	
+C0027651	T191	tumour		Tumour	
+C0027651	T191	tumour		Tumour , NOS	
+C0027651	T191	tumor		Tumor NOS	
+C0027651	T191	tumour		Tumour NOS	
+C0027651	T191	new		New growth	
+C0027651	T191	[		[ M ] Neoplasms NOS	
+C0027651	T191	neoplasia		Neoplasia	
+C0027651	T191	neoplastic		Neoplastic growth	
+C0027651	T191	ng		NG - Neoplastic growth	
+C0027651	T191	ng		NG - New growth	
+C0027651	T191	[		[ M ] Neoplasms NOS ( morphologic abnormality )	
+C0027651	T191	neoplasm		Neoplasm ( morphologic abnormality )	
+C0027651	T191	unspecified		Unspecified nature neoplasm ( disorder )	
+C0027651	T191	neoplasm		Neoplasm of unspecified nature ( disorder )	
+C0027651	T191	neoplasm		Neoplasm of unspecified nature NOS ( disorder )	
+C0027651	T191	neoplasm		Neoplasm of unspecified nature NOS ( disorder )	
+C0027651	T191	neoplasms		Neoplasms NOS ( disorder )	
+C0027651	T191	neoplasms		Neoplasms NOS ( disorder )	
+C0027651	T191	neoplasms		Neoplasms NOS ( disorder )	
+C0027651	T191	neoplasms		Neoplasms NOS ( disorder )	
+C0027740	T024	nerve		Nerve structure	
+C0027740	T024	nerve		Nerve	
+C0027740	T024	nerve		Nerve , NOS	
+C0027740	T024	nerve		Nerve structure ( body structure )	
+C0028259	T020	nodule		Nodule	
+C0028259	T020	nodule		Nodule , NOS	
+C0028259	T020	nodule		Nodule ( morphologic abnormality )	
+C0028784	T023	occipital		Occipital bone structure	
+C0028784	T023	occipital		Occipital bone	
+C0028784	T023	occipital		Occipital bone , NOS	
+C0028784	T023	occipital		Occipital bone structure ( body structure )	
+C0029053	T033	decreased		Decreased translucency	
+C0029053	T033	opacity		Opacity	
+C0029053	T033	increased		Increased density	
+C0029053	T033	decreased		Decreased translucency ( finding )	
+C0029053	T033	increased		Increased density ( finding )	
+C0029053	T033	increased		Increased mass to volume ratio	
+C0029408	T047	degenerative		Degenerative polyarthritis	
+C0029408	T047	degenerative		Degenerative polyarthritis	
+C0029408	T047	degenerative		Degenerative polyarthritis	
+C0029408	T047	degenerative		Degenerative polyarthritis	
+C0029408	T047	degenerative		Degenerative polyarthritis , NOS	
+C0029408	T047	degenerative		Degenerative arthritis	
+C0029408	T047	degenerative		Degenerative arthritis	
+C0029408	T047	degenerative		Degenerative arthritis	
+C0029408	T047	degenerative		Degenerative arthritis	
+C0029408	T047	degenerative		Degenerative arthritis , NOS	
+C0029408	T047	hypertrophic		Hypertrophic arthritis	
+C0029408	T047	hypertrophic		Hypertrophic arthritis	
+C0029408	T047	hypertrophic		Hypertrophic arthritis	
+C0029408	T047	hypertrophic		Hypertrophic arthritis	
+C0029408	T047	hypertrophic		Hypertrophic arthritis , NOS	
+C0029408	T047	osteoarthritis		Osteoarthritis	
+C0029408	T047	osteoarthritis		Osteoarthritis	
+C0029408	T047	osteoarthritis		Osteoarthritis	
+C0029408	T047	osteoarthritis		Osteoarthritis	
+C0029408	T047	osteoarthritis		Osteoarthritis	
+C0029408	T047	osteoarthritis		Osteoarthritis	
+C0029408	T047	osteoarthritis		Osteoarthritis	
+C0029408	T047	osteoarthritis		Osteoarthritis , NOS	
+C0029408	T047	osteoarthritis		Osteoarthritis NOS	
+C0029408	T047	osteoarthritis		Osteoarthritis NOS	
+C0029408	T047	osteoarthritis		Osteoarthritis NOS	
+C0029408	T047	osteoarthritis		Osteoarthritis NOS	
+C0029408	T047	osteoarthritis		Osteoarthritis NOS	
+C0029408	T047	osteoarthritis		Osteoarthritis NOS	
+C0029408	T047	osteoarthrosis		Osteoarthrosis	
+C0029408	T047	degenerative		Degenerative arthropathy	
+C0029408	T047	degenerative		Degenerative arthropathy	
+C0029408	T047	degenerative		Degenerative arthropathy	
+C0029408	T047	degenerative		Degenerative arthropathy	
+C0029408	T047	degenerative		Degenerative arthropathy , NOS	
+C0029408	T047	degenerative		Degenerative joint disease	
+C0029408	T047	degenerative		Degenerative joint disease	
+C0029408	T047	degenerative		Degenerative joint disease	
+C0029408	T047	degenerative		Degenerative joint disease	
+C0029408	T047	degenerative		Degenerative joint disease , NOS	
+C0029408	T047	hypertrophic		Hypertrophic polyarthritis	
+C0029408	T047	hypertrophic		Hypertrophic polyarthritis	
+C0029408	T047	hypertrophic		Hypertrophic polyarthritis	
+C0029408	T047	hypertrophic		Hypertrophic polyarthritis	
+C0029408	T047	hypertrophic		Hypertrophic polyarthritis , NOS	
+C0029408	T047	oa		OA - Osteoarthritis	
+C0029408	T047	oa		OA - Osteoarthritis	
+C0029408	T047	oa		OA - Osteoarthrosis	
+C0029408	T047	oa		OA - Osteoarthrosis	
+C0029408	T047	osteoarthritis		Osteoarthritis NOS , of unspecified site	
+C0029408	T047	osteoarthritis		Osteoarthritis ( & [ allied disorders ] )	
+C0029408	T047	osteoarthritis		Osteoarthritis ( & [ allied disorders ] )	
+C0029408	T047	osteoarthritis		Osteoarthritis and allied disorders	
+C0029408	T047	degenerative		Degenerative arthropathy ( disorder )	
+C0029408	T047	joint		Joint degeneration	
+C0029408	T047	[		[ Joint degeneration ] or [ osteoarthritis NOS ]	
+C0029408	T047	[		[ Joint degeneration ] or [ osteoarthritis NOS ]	
+C0029408	T047	degenerative		Degenerative joint disease ( disorder )	
+C0029408	T047	degenerative		Degenerative polyarthritis ( disorder )	
+C0029408	T047	osteoarthritis		Osteoarthritis ( disorder )	
+C0029408	T047	osteoarthritis		Osteoarthritis ( disorder )	
+C0029408	T047	osteoarthritis		Osteoarthritis ( disorder )	
+C0029408	T047	osteoarthritis		Osteoarthritis NOS ( disorder )	
+C0029408	T047	osteoarthritis		Osteoarthritis NOS ( disorder )	
+C0029408	T047	osteoarthritis		Osteoarthritis NOS ( disorder )	
+C0029408	T047	osteoarthritis		Osteoarthritis NOS , of unspecified site ( disorder )	
+C0029408	T047	[		[ Joint degeneration ] or [ osteoarthritis NOS ] ( disorder )	
+C0029453	T046	osteopenia		Osteopenia	
+C0029453	T046	osteopenia		Osteopenia	
+C0029453	T046	osteopenia		Osteopenia	
+C0029453	T046	osteopenia		Osteopenia	
+C0029453	T046	osteopenia		Osteopenia	
+C0029453	T046	osteopenia		Osteopenia	
+C0029453	T046	osteopenia		Osteopenia ( morphologic abnormality )	
+C0029453	T046	osteopenia		Osteopenia ( disorder )	
+C0029453	T046	osteopenia		Osteopenia ( disorder )	
+C0029453	T046	osteopenia		Osteopenia ( disorder )	
+C0030193	T184	pain		Pain	
+C0030193	T184	pain		Pain	
+C0030193	T184	pain		Pain	
+C0030193	T184	pain		Pain	
+C0030193	T184	pain		Pain	
+C0030193	T184	pain		Pain	
+C0030193	T184	pain		Pain , NOS	
+C0030193	T184	dolor		Dolor	
+C0030193	T184	painful		Painful	
+C0030193	T184	part		Part hurts	
+C0030193	T184	pain		Pain observations	
+C0030193	T184	pain		Pain observations	
+C0030193	T184	pain		Pain finding ( finding )	
+C0030193	T184	pain		Pain ( finding )	
+C0030193	T184	pain		Pain ( finding )	
+C0030193	T184	pain		Pain ( finding )	
+C0030193	T184	pain		Pain finding	
+C0030274	T023	pancreatic		Pancreatic structure	
+C0030274	T023	exocrine		Exocrine and endocrine pancreas	
+C0030274	T023	exocrine		Exocrine and endocrine pancreas , NOS	
+C0030274	T023	pancreas		Pancreas	
+C0030274	T023	pancreas		Pancreas , NOS	
+C0030274	T023	pancreatic		Pancreatic structure ( body structure )	
+C0030305	T047	pancreatitis		Pancreatitis	
+C0030305	T047	pancreatitis		Pancreatitis	
+C0030305	T047	pancreatitis		Pancreatitis	
+C0030305	T047	pancreatitis		Pancreatitis	
+C0030305	T047	pancreatitis		Pancreatitis , NOS	
+C0030305	T047	pancreatitis		Pancreatitis ( disorder )	
+C0030305	T047	pancreatitis		Pancreatitis ( disorder )	
+C0030797	T029	pelvic		Pelvic	
+C0030797	T029	pelvic		Pelvic structure	
+C0030797	T029	pelvis		Pelvis	
+C0030797	T029	pelvis		Pelvis , NOS	
+C0030797	T029	pelvic		Pelvic region	
+C0030797	T029	pelvic		Pelvic structure ( body structure )	
+C0030797	T029	pelvic		Pelvic ( qualifier value )	
+C0031039	T047	pericardial		Pericardial effusion	
+C0031039	T047	pericardial		Pericardial effusion	
+C0031039	T047	pericardial		Pericardial effusion , NOS	
+C0031039	T047	pericardial		Pericardial effusion ( disorder )	
+C0031039	T047	pericardial		Pericardial effusion ( disorder )	
+C0032105	T031	plasma		Plasma	
+C0032105	T031	blood		Blood plasma	
+C0032105	T031	plasma		Plasma ( substance )	
+C0032105	T031	blood		Blood plasma ( product )	
+C0032112	T025	plasma		Plasma cell	
+C0032112	T025	plasma		Plasma cell , NOS	
+C0032112	T025	plasmacyte		Plasmacyte	
+C0032112	T025	plasmocyte		Plasmocyte	
+C0032112	T025	plasma		Plasma cell ( body structure )	
+C0032112	T025	plasma		Plasma cell ( cell )	
+C0032227	T047	pleural		Pleural effusion	
+C0032227	T047	pleural		Pleural effusion	
+C0032227	T047	pleural		Pleural effusion	
+C0032227	T047	pleural		Pleural effusion , NOS	
+C0032227	T047	pleural		Pleural effusion NOS	
+C0032227	T047	pleural		Pleural effusion NOS	
+C0032227	T047	pleural		Pleural effusion NOS	
+C0032227	T047	pleural		Pleural effusion NOS	
+C0032227	T047	pleural		Pleural effusion NOS	
+C0032227	T047	pleural		Pleural effusion ( disorder )	
+C0032227	T047	pleural		Pleural effusion ( disorder )	
+C0032227	T047	pleural		Pleural effusion NOS ( disorder )	
+C0032227	T047	pleural		Pleural effusion NOS ( disorder )	
+C0032326	T047	pneumothorax		Pneumothorax	
+C0032326	T047	pneumothorax		Pneumothorax	
+C0032326	T047	pneumothorax		Pneumothorax	
+C0032326	T047	pneumothorax		Pneumothorax , NOS	
+C0032326	T047	pneumothorax		Pneumothorax NOS	
+C0032326	T047	pneumothorax		Pneumothorax NOS	
+C0032326	T047	pneumothorax		Pneumothorax NOS	
+C0032326	T047	pneumothorax		Pneumothorax ( disorder )	
+C0032326	T047	pneumothorax		Pneumothorax ( disorder )	
+C0032326	T047	pneumothorax		Pneumothorax NOS ( disorder )	
+C0032326	T047	pneumothorax		Pneumothorax NOS ( disorder )	
+C0032718	T023	portal		Portal vein structure	
+C0032718	T023	portal		Portal vein	
+C0032718	T023	portal		Portal vein , NOS	
+C0032718	T023	portal		Portal vein structure ( body structure )	
+C0033572	T023	prostatic		Prostatic	
+C0033572	T023	prostate		Prostate	
+C0033572	T023	prostate		Prostate , NOS	
+C0033572	T023	prostatic		Prostatic structure	
+C0033572	T023	prostatic		Prostatic structure ( body structure )	
+C0033572	T023	prostatic		Prostatic ( qualifier value )	
+C0033573	T061	prostatectomy		Prostatectomy	
+C0033573	T061	prostatectomy		Prostatectomy	
+C0033573	T061	prostatectomy		Prostatectomy	
+C0033573	T061	prostatectomy		Prostatectomy , NOS	
+C0033573	T061	prostatectomy		Prostatectomy NOS	
+C0033573	T061	prostatectomy		Prostatectomy NOS	
+C0033573	T061	prostatectomy		Prostatectomy NOS	
+C0033573	T061	prostate		Prostate excision	
+C0033573	T061	prostate		Prostate excision	
+C0033573	T061	prostate		Prostate excision	
+C0033573	T061	prostatectomy		Prostatectomy ( procedure )	
+C0033573	T061	prostatectomy		Prostatectomy ( procedure )	
+C0033573	T061	prostatectomy		Prostatectomy NOS ( procedure )	
+C0033573	T061	prostatectomy		Prostatectomy NOS ( procedure )	
+C0033573	T061	prostate		Prostate excision ( procedure )	
+C0035359	T030	retroperitoneal		Retroperitoneal	
+C0035359	T030	retroperitoneal		Retroperitoneal space	
+C0035359	T030	retroperitoneal		Retroperitoneal space , NOS	
+C0035359	T030	retroperitoneum		Retroperitoneum	
+C0035359	T030	retroperitoneum		Retroperitoneum , NOS	
+C0035359	T030	retroperitoneal		Retroperitoneal structure	
+C0035359	T030	retroperitoneal		Retroperitoneal structure ( body structure )	
+C0035359	T030	retroperitoneal		Retroperitoneal ( qualifier value )	
+C0035522	T037	fracture		Fracture of rib	
+C0035522	T037	fracture		Fracture of rib	
+C0035522	T037	fracture		Fracture of rib	
+C0035522	T037	fracture		Fracture of rib	
+C0035522	T037	fracture		Fracture of rib	
+C0035522	T037	fracture		Fracture of rib , NOS	
+C0035522	T037	rib		Rib fracture	
+C0035522	T037	rib		Rib fracture NOS	
+C0035522	T037	rib		Rib fracture NOS	
+C0035522	T037	fracture		Fracture of rib ( disorder )	
+C0035522	T037	fracture		Fracture of rib ( disorder )	
+C0035522	T037	fracture		Fracture of rib ( disorder )	
+C0035522	T037	rib		Rib fracture NOS ( disorder )	
+C0035561	T023	bone		Bone structure of rib	
+C0035561	T023	rib		Rib	
+C0035561	T023	rib		Rib , NOS	
+C0035561	T023	bone		Bone structure of rib ( body structure )	
+C0036037	T023	bone		Bone structure of sacrum	
+C0036037	T023	sacrum		Sacrum	
+C0036037	T023	sacrum		Sacrum , NOS	
+C0036037	T023	sacral		Sacral bone	
+C0036037	T023	bone		Bone structure of sacrum ( body structure )	
+C0036098	T023	salivary		Salivary gland structure	
+C0036098	T023	salivary		Salivary gland	
+C0036098	T023	salivary		Salivary gland	
+C0036098	T023	salivary		Salivary gland , NOS	
+C0036098	T023	salivary		Salivary apparatus	
+C0036098	T023	[		[ SO ] Salivary apparatus	
+C0036098	T023	salivary		Salivary gland structure ( body structure )	
+C0036098	T023	salivary		Salivary structure ( body structure )	
+C0036098	T023	[		[ SO ] Salivary gland	
+C0036098	T023	salivary		Salivary structure	
+C0037004	T029	shoulder		Shoulder region structure	
+C0037004	T029	shoulder		Shoulder	
+C0037004	T029	shoulder		Shoulder , NOS	
+C0037004	T029	shoulder		Shoulder region	
+C0037004	T029	shoulder		Shoulder region structure ( body structure )	
+C0037580	T033	soft		Soft tissue swelling	
+C0037580	T033	soft		Soft tissue swelling ( finding )	
+C0037663	T116	somatotropin		Somatotropin preparation	
+C0037663	T116	growth		Growth hormone	
+C0037663	T116	somatotropin		Somatotropin	
+C0037663	T116	somatotrophin		Somatotrophin	
+C0037663	T116	gh		GH - Growth hormone	
+C0037663	T116	growth		Growth hormone preparation	
+C0037663	T116	growth		Growth hormone product	
+C0037663	T116	somatotropic		Somatotropic hormone	
+C0037663	T116	somatrophic		Somatrophic hormone	
+C0037663	T116	sth		STH	
+C0037663	T116	somatrophic		Somatrophic hormone ( product )	
+C0037663	T116	somatrophic		Somatrophic hormone ( substance )	
+C0037663	T116	somatotropin		Somatotropin preparation ( product )	
+C0037663	T116	somatotropin		Somatotropin preparation ( substance )	
+C0037993	T023	splenic		Splenic structure	
+C0037993	T023	spleen		Spleen	
+C0037993	T023	spleen		Spleen , NOS	
+C0037993	T023	splenic		Splenic structure ( body structure )	
+C0038351	T023	stomach		Stomach structure	
+C0038351	T023	stomach		Stomach	
+C0038351	T023	stomach		Stomach , NOS	
+C0038351	T023	ventriculus		Ventriculus	
+C0038351	T023	stomach		Stomach structure ( body structure )	
+C0038999	T033	swelling		Swelling	
+C0038999	T033	swelling		Swelling	
+C0038999	T033	swelling		Swelling	
+C0038999	T033	swelling		Swelling	
+C0038999	T033	swelling		Swelling	
+C0038999	T033	swelling		Swelling	
+C0038999	T033	swelling		Swelling	
+C0038999	T033	swelling		Swelling	
+C0038999	T033	swelling		Swelling , NOS	
+C0038999	T033	tumefaction		Tumefaction	
+C0038999	T033	tumescence		Tumescence	
+C0038999	T033	part		Part of body puffy	
+C0038999	T033	part		Part of body puffy	
+C0038999	T033	part		Part of body swollen	
+C0038999	T033	part		Part of body swollen	
+C0038999	T033	bulging		Bulging	
+C0038999	T033	bulge		Bulge	
+C0038999	T033	bulge		Bulge , NOS	
+C0038999	T033	observation		Observation of swelling	
+C0038999	T033	finding		Finding of swelling ( finding )	
+C0038999	T033	swelling		Swelling ( finding )	
+C0038999	T033	swelling		Swelling ( finding )	
+C0038999	T033	swelling		Swelling ( finding )	
+C0038999	T033	swelling		Swelling ( finding )	
+C0038999	T033	finding		Finding of swelling	
+C0038999	T033	bulging		Bulging ( morphologic abnormality )	
+C0038999	T033	swelling		Swelling ( morphologic abnormality )	
+C0039318	T030	intertarsal		Intertarsal joint structure	
+C0039318	T030	intertarsal		Intertarsal joint	
+C0039318	T030	intertarsal		Intertarsal joint	
+C0039318	T030	tarsal		Tarsal joint	
+C0039318	T030	articulationes		Articulationes intertarseae	
+C0039318	T030	intertarsal		Intertarsal joint structure ( body structure )	
+C0039318	T030	intertarsal		Intertarsal joint - RETIRED -	
+C0039318	T030	intertarsal		Intertarsal joint - RETIRED -	
+C0039318	T030	intertarsal		Intertarsal joint ( body structure )	
+C0039484	T023	temporal		Temporal bone structure	
+C0039484	T023	temporal		Temporal bone	
+C0039484	T023	temporal		Temporal bone , NOS	
+C0039484	T023	temporal		Temporal bone structure ( body structure )	
+C0039508	T023	tendon		Tendon structure	
+C0039508	T023	tendon		Tendon	
+C0039508	T023	tendon		Tendon , NOS	
+C0039508	T023	tendon		Tendon structure ( body structure )	
+C0040067	T023	thumb		Thumb structure	
+C0040067	T023	thumb		Thumb	
+C0040067	T023	thumb		Thumb , NOS	
+C0040067	T023	thumb		Thumb structure ( body structure )	
+C0040132	T023	thyroid		Thyroid structure	
+C0040132	T023	thyroid		Thyroid gland	
+C0040132	T023	thyroid		Thyroid gland , NOS	
+C0040132	T023	thyroid		Thyroid	
+C0040132	T023	thyroid		Thyroid , NOS	
+C0040132	T023	thyroid		Thyroid structure ( body structure )	
+C0040184	T023	bone		Bone structure of tibia	
+C0040184	T023	tibia		Tibia	
+C0040184	T023	tibia		Tibia , NOS	
+C0040184	T023	bone		Bone structure of tibia ( body structure )	
+C0040300	T024	body		Body tissue structure	
+C0040300	T024	tissue		Tissue	
+C0040300	T024	tissue		Tissue , NOS	
+C0040300	T024	body		Body tissue	
+C0040300	T024	body		Body tissue , NOS	
+C0040300	T024	body		Body tissue structure ( body structure )	
+C0041618	T060	ultrasonography		Ultrasonography	
+C0041618	T060	ultrasonography		Ultrasonography	
+C0041618	T060	ultrasonography		Ultrasonography , NOS	
+C0041618	T060	echography		Echography	
+C0041618	T060	echography		Echography	
+C0041618	T060	echography		Echography	
+C0041618	T060	echography		Echography , NOS	
+C0041618	T060	ultrasound		Ultrasound diagnostic procedure	
+C0041618	T060	ultrasound		Ultrasound	
+C0041618	T060	ultrasound		Ultrasound	
+C0041618	T060	ultrasound		Ultrasound procedure	
+C0041618	T060	ultrasound		Ultrasound procedure	
+C0041618	T060	ultrasound		Ultrasound procedure	
+C0041618	T060	ultrasound		Ultrasound procedure	
+C0041618	T060	ultrasound		Ultrasound procedure , NOS	
+C0041618	T060	diagnostic		Diagnostic ultrasonography	
+C0041618	T060	diagnostic		Diagnostic ultrasonography , NOS	
+C0041618	T060	diagnostic		Diagnostic sonar	
+C0041618	T060	ultrasound		Ultrasound scan	
+C0041618	T060	ultrasound		Ultrasound scan	
+C0041618	T060	ultrasound		Ultrasound scan	
+C0041618	T060	ultrasound		Ultrasound scan	
+C0041618	T060	ultrasound		Ultrasound scan	
+C0041618	T060	ultrasound		Ultrasound scan	
+C0041618	T060	ultrasound		Ultrasound scan , NOS	
+C0041618	T060	ultrasonogram		Ultrasonogram	
+C0041618	T060	ultrasonogram		Ultrasonogram	
+C0041618	T060	us		US - Ultrasound	
+C0041618	T060	us		US - Ultrasound	
+C0041618	T060	uss		USS - Ultrasound scan	
+C0041618	T060	uss		USS - Ultrasound scan	
+C0041618	T060	ultrasound		Ultrasound diagnostic procedure ( procedure )	
+C0041618	T060	diagnostic		Diagnostic ultrasonography ( procedure )	
+C0041618	T060	echography		Echography ( procedure )	
+C0041618	T060	ultrasonography		Ultrasonography ( procedure )	
+C0041618	T060	ultrasound		Ultrasound scan ( procedure )	
+C0041618	T060	ultrasound		Ultrasound scan ( procedure )	
+C0041618	T060	ultrasound		Ultrasound procedure ( procedure )	
+C0042036	T031	urine		Urine	
+C0042036	T031	urine		Urine ( substance )	
+C0042449	T023	venous		Venous structure	
+C0042449	T023	vein		Vein	
+C0042449	T023	vein		Vein , NOS	
+C0042449	T023	venous		Venous structure ( body structure )	
+C0042591	T029	vessel		Vessel	
+C0042591	T029	vessel		Vessel ( attribute )	
+C0043246	T037	laceration		Laceration	
+C0043246	T037	laceration		Laceration	
+C0043246	T037	laceration		Laceration NOS	
+C0043246	T037	laceration		Laceration NOS	
+C0043246	T037	laceration		Laceration , NOS	
+C0043246	T037	lacerations		Lacerations	
+C0043246	T037	lacerations		Lacerations	
+C0043246	T037	tear		Tear	
+C0043246	T037	tear		Tear , NOS	
+C0043246	T037	wound		Wound , lacerated	
+C0043246	T037	tear		Tear - wound	
+C0043246	T037	laceration		Laceration - injury	
+C0043246	T037	laceration		Laceration ( morphologic abnormality )	
+C0043246	T037	laceration		Laceration - injury ( disorder )	
+C0043246	T037	laceration		Laceration NOS ( disorder )	
+C0043251	T037	trauma		Trauma	
+C0043251	T037	trauma		Trauma	
+C0043251	T037	trauma		Trauma , NOS	
+C0085639	T033	falls		Falls	
+C0085639	T033	falls		Falls	
+C0085639	T033	falls		Falls	
+C0085639	T033	fall		Fall	
+C0085639	T033	fall		Fall , NOS	
+C0085639	T033	[		[ X ] Falls	
+C0085639	T033	[		[ X ] Unspecified fall	
+C0085639	T033	falls		Falls ( finding )	
+C0085639	T033	fall		Fall ( finding )	
+C0085639	T033	[		[ X ] Unspecified fall ( finding )	
+C0085639	T033	fall		Fall ( event )	
+C0085639	T033	[		[ X ] Unspecified fall ( event )	
+C0086511	T061	arthroplasty		Arthroplasty of knee	
+C0086511	T061	arthroplasty		Arthroplasty of knee , NOS	
+C0086511	T061	arthroplasty		Arthroplasty of the knee	
+C0086511	T061	knee		Knee arthroplasty	
+C0086511	T061	knee		Knee arthroplasty	
+C0086511	T061	total		Total replacement of knee	
+C0086511	T061	total		Total knee replacement	
+C0086511	T061	repair		Repair of knee joint	
+C0086511	T061	repair		Repair of knee joint , NOS	
+C0086511	T061	knee		Knee replacement	
+C0086511	T061	knee		Knee replacement	
+C0086511	T061	prosthetic		Prosthetic total arthroplasty of the knee	
+C0086511	T061	prosthetic		Prosthetic total arthroplasty of the knee	
+C0086511	T061	prosthetic		Prosthetic total arthroplasty of the knee	
+C0086511	T061	tkr		TKR - Total knee replacement	
+C0086511	T061	arthroplasty		Arthroplasty of knee ( procedure )	
+C0086511	T061	total		Total replacement of knee ( procedure )	
+C0086511	T061	prosthetic		Prosthetic total arthroplasty of the knee ( procedure )	
+C0087111	T061	therapeutic		Therapeutic procedure	
+C0087111	T061	therapeutic		Therapeutic procedure	
+C0087111	T061	therapeutic		Therapeutic procedure	
+C0087111	T061	procedure		Procedure - therapeutic	
+C0087111	T061	procedure		Procedure - therapeutic	
+C0087111	T061	therapeutic		Therapeutic procedure , NOS	
+C0087111	T061	therapy		Therapy	
+C0087111	T061	therapy		Therapy	
+C0087111	T061	therapy		Therapy	
+C0087111	T061	therapy		Therapy , NOS	
+C0087111	T061	therapeutic		Therapeutic procedure [ Ambiguous ]	
+C0087111	T061	therapeutic		Therapeutic procedure ( procedure )	
+C0087111	T061	therapeutic		Therapeutic procedure ( procedure )	
+C0087111	T061	therapy		Therapy ( regime / therapy ) ( procedure )	
+C0087111	T061	therapy		Therapy ( regime / therapy )	
+C0149726	T033	lung		Lung mass	
+C0149726	T033	lung		Lung mass ( finding )	
+C0152013	T191	adenocarcinoma		Adenocarcinoma of lung	
+C0152013	T191	adenocarcinoma		Adenocarcinoma of lung ( disorder )	
+C0159658	T037	fracture		Fracture of clavicle	
+C0159658	T037	fracture		Fracture of clavicle	
+C0159658	T037	fracture		Fracture of clavicle	
+C0159658	T037	fracture		Fracture of clavicle , NOS	
+C0159658	T037	fracture		Fracture of clavicle NOS	
+C0159658	T037	collar		Collar bone fracture	
+C0159658	T037	fracture		Fracture of collar bone	
+C0159658	T037	fracture		Fracture of clavicle ( disorder )	
+C0159658	T037	fracture		Fracture of clavicle ( disorder )	
+C0159658	T037	fracture		Fracture of clavicle NOS ( disorder )	
+C0162385	T037	intertrochanteric		Intertrochanteric fracture	
+C0162385	T037	intertrochanteric		Intertrochanteric fracture of femur	
+C0162385	T037	intertrochanteric		Intertrochanteric fracture ( disorder )	
+C0162870	T047	aneurysm		Aneurysm of iliac artery	
+C0162870	T047	aneurysm		Aneurysm of iliac artery NOS	
+C0162870	T047	iliac		Iliac artery aneurysm	
+C0162870	T047	iliac		Iliac artery aneurysm	
+C0162870	T047	aneurysm		Aneurysm of iliac artery ( disorder )	
+C0162870	T047	aneurysm		Aneurysm of iliac artery NOS ( disorder )	
+C0162870	T047	iliac		Iliac artery aneurysm ( disorder )	
+C0169964	T116	somatropin		Somatropin	
+C0169964	T116	somatropin		Somatropin	
+C0169964	T116	somatropin		Somatropin	
+C0169964	T116	somatropin		Somatropin	
+C0169964	T116	somatropin		Somatropin	
+C0169964	T116	growth		Growth hormone	
+C0169964	T116	somatotrophin		Somatotrophin	
+C0169964	T116	biosynthetic		Biosynthetic human growth hormone	
+C0169964	T116	biosynthetic		Biosynthetic human growth hormone	
+C0169964	T116	gh		GH - Growth hormone	
+C0169964	T116	hgh		HGH - Growth hormone	
+C0169964	T116	human		Human growth hormone	
+C0169964	T116	human		Human growth hormone	
+C0169964	T116	hgh		HGH	
+C0169964	T116	somatotropic		Somatotropic hormone	
+C0169964	T116	somatropin		Somatropin [ 2 ] ( product )	
+C0169964	T116	somatropin		Somatropin [ 2 ]	
+C0169964	T116	somatropin		Somatropin [ 2 ] ( substance )	
+C0169964	T116	human		Human growth hormone ( substance )	
+C0169964	T116	somatropin		Somatropin ( product )	
+C0169964	T116	somatropin		Somatropin ( substance )	
+C0169964	T116	somatropin		Somatropin ( substance )	
+C0169964	T116	somatropin		Somatropin ( substance )	
+C0175677	T037	traumatic		Traumatic injury	
+C0175677	T037	injury		Injury	
+C0175677	T037	injury		Injury	
+C0175677	T037	injury		Injury	
+C0175677	T037	injury		Injury	
+C0175677	T037	injuries		Injuries	
+C0175677	T037	injury		Injury NOS	
+C0175677	T037	injury		Injury NOS	
+C0175677	T037	injury		Injury NOS	
+C0175677	T037	injury		Injury NOS	
+C0175677	T037	injury		Injury NOS	
+C0175677	T037	injury		Injury , NOS	
+C0175677	T037	trauma		Trauma	
+C0175677	T037	injury		Injury - disorder	
+C0175677	T037	injury		Injury - disorder	
+C0175677	T037	injury		Injury ( disorder )	
+C0175677	T037	injury		Injury NOS ( disorder )	
+C0175677	T037	injury		Injury NOS ( disorder )	
+C0175677	T037	injury		Injury NOS ( disorder )	
+C0175677	T037	traumatic		Traumatic AND / OR non-traumatic injury ( disorder )	
+C0175677	T037	traumatic		Traumatic injury ( disorder )	
+C0175677	T037	traumatic		Traumatic AND / OR non-traumatic injury	
+C0185792	T061	sternotomy		Sternotomy	
+C0185792	T061	incision		Incision of sternum ( procedure )	
+C0185792	T061	incision		Incision of sternum	
+C0185792	T061	incision		Incision of sternum	
+C0185792	T061	sternotomy		Sternotomy ( procedure )	
+C0194810	T061	radical		Radical prostatectomy	
+C0194810	T061	radical		Radical prostatectomy	
+C0194810	T061	radical		Radical prostatectomy	
+C0194810	T061	radical		Radical prostatectomy , NOS	
+C0194810	T061	prostatovesiculectomy		Prostatovesiculectomy	
+C0194810	T061	total		Total prostatectomy	
+C0194810	T061	radical		Radical prostatectomy ( procedure )	
+C0194810	T061	radical		Radical prostatectomy ( procedure )	
+C0203120	T060	magnetic		Magnetic resonance imaging of prostate	
+C0203120	T060	mri		MRI of prostate	
+C0203120	T060	magnetic		Magnetic resonance imaging of prostate ( procedure )	
+C0205042	T023	coronary		Coronary artery structure	
+C0205042	T023	coronary		Coronary artery	
+C0205042	T023	coronary		Coronary artery , NOS	
+C0205042	T023	coronary		Coronary artery structure ( body structure )	
+C0205054	T029	portal		Portal	
+C0205054	T029	portal		Portal ( qualifier value )	
+C0205400	T033	thickened		Thickened	
+C0205400	T033	thickened		Thickened	
+C0205400	T033	thickening		Thickening	
+C0205400	T033	increased		Increased thickness	
+C0205400	T033	increased		Increased thickness ( finding )	
+C0205400	T033	thickened		Thickened ( qualifier value )	
+C0206332	T023	structure		Structure of patellar ligament	
+C0206332	T023	patellar		Patellar ligament	
+C0206332	T023	infrapatellar		Infrapatellar tendon	
+C0206332	T023	patellar		Patellar tendon	
+C0206332	T023	structure		Structure of patellar ligament ( body structure )	
+C0206332	T023	patellar		Patellar tendon ( body structure )	
+C0206332	T023	structure		Structure of patellar tendon	
+C0206332	T023	structure		Structure of patellar tendon ( body structure )	
+C0221198	T033	lesion		Lesion	
+C0221198	T033	lesion		Lesion	
+C0221198	T033	lesion		Lesion , NOS	
+C0221198	T033	lesion		Lesion - RETIRED -	
+C0221198	T033	lesion		Lesion - RETIRED -	
+C0221198	T033	lesion		Lesion ( morphologic abnormality )	
+C0221204	T033	lytic		Lytic lesion	
+C0221204	T033	lytic		Lytic lesion ( qualifier value )	
+C0221434	T046	bony		Bony sclerosis	
+C0221434	T046	eburnation		Eburnation	
+C0221434	T046	bony		Bony sclerosis ( morphologic abnormality )	
+C0222670	T023	apophysis		Apophysis	
+C0222670	T023	apophysis		Apophysis , NOS	
+C0222670	T023	apophysis		Apophysis ( body structure )	
+C0222679	T029	structure		Structure of articular surface of bone	
+C0222679	T029	articular		Articular surface of bone	
+C0222679	T029	articular		Articular surface of bone , NOS	
+C0222679	T029	articular		Articular facet	
+C0222679	T029	articular		Articular facet , NOS	
+C0222679	T029	facet		Facet	
+C0222679	T029	facet		Facet , NOS	
+C0222679	T029	structure		Structure of articular surface of bone ( body structure )	
+C0222682	T023	phalanx		Phalanx structure	
+C0222682	T023	phalanx		Phalanx	
+C0222682	T023	phalanx		Phalanx	
+C0222682	T023	phalanx		Phalanx	
+C0222682	T023	phalanx		Phalanx , NOS	
+C0222682	T023	phalanx		Phalanx structure ( body structure )	
+C0222682	T023	phalanx		Phalanx ( body structure )	
+C0222847	T023	bone		Bone structure of third rib	
+C0222847	T023	third		Third rib	
+C0222847	T023	third		Third rib , NOS	
+C0222847	T023	bone		Bone structure of third rib ( body structure )	
+C0222889	T023	bone		Bone structure of sixth rib	
+C0222889	T023	sixth		Sixth rib	
+C0222889	T023	sixth		Sixth rib , NOS	
+C0222889	T023	bone		Bone structure of sixth rib ( body structure )	
+C0223751	T023	entire		Entire first metacarpal	
+C0223751	T023	first		First metacarpal	
+C0223751	T023	mc1		MC1 - First metacarpal	
+C0223751	T023	entire		Entire first metacarpal ( body structure )	
+C0223976	T023	entire		Entire first metatarsal	
+C0223976	T023	first		First metatarsal	
+C0223976	T023	fm		FM - First metatarsal	
+C0223976	T023	mt1		MT1 - First metatarsal	
+C0223976	T023	entire		Entire first metatarsal ( body structure )	
+C0224001	T023	entire		Entire fourth metatarsal	
+C0224001	T023	fourth		Fourth metatarsal	
+C0224001	T023	mt4		MT4 - Fourth metatarsal	
+C0224001	T023	entire		Entire fourth metatarsal ( body structure )	
+C0224229	T023	entire		Entire supraspinatus	
+C0224229	T023	supraspinatus		Supraspinatus	
+C0224229	T023	entire		Entire supraspinatus ( body structure )	
+C0224230	T023	entire		Entire infraspinatus	
+C0224230	T023	infraspinatus		Infraspinatus	
+C0224230	T023	entire		Entire infraspinatus ( body structure )	
+C0224233	T023	entire		Entire subscapularis	
+C0224233	T023	subscapularis		Subscapularis	
+C0224233	T023	entire		Entire subscapularis ( body structure )	
+C0224497	T030	articular		Articular space	
+C0224497	T030	articular		Articular space , NOS	
+C0224497	T030	joint		Joint space	
+C0224497	T030	joint		Joint space , NOS	
+C0224497	T030	articular		Articular space ( body structure )	
+C0224520	T030	symphysis		Symphysis structure	
+C0224520	T030	fibrocartilaginous		Fibrocartilaginous joint	
+C0224520	T030	symphysis		Symphysis	
+C0224520	T030	symphysis		Symphysis structure ( body structure )	
+C0224521	T030	zygapophyseal		Zygapophyseal joint structure	
+C0224521	T030	facet		Facet joint	
+C0224521	T030	facet		Facet joint	
+C0224521	T030	zygapophyseal		Zygapophyseal joint	
+C0224521	T030	vertebral		Vertebral arch joint	
+C0224521	T030	zygapophysial		Zygapophysial intervertebral joint	
+C0224521	T030	intervertebral		Intervertebral facet joint	
+C0224521	T030	facet		Facet joint structure ( body structure )	
+C0224521	T030	zygapophyseal		Zygapophyseal joint structure ( body structure )	
+C0224521	T030	facet		Facet joint structure	
+C0224853	T030	structure		Structure of tendon insertion	
+C0224853	T030	tendon		Tendon insertion	
+C0224853	T030	tendon		Tendon insertion , NOS	
+C0224853	T030	structure		Structure of tendon insertion ( body structure )	
+C0224941	T023	structure		Structure of quadriceps tendon	
+C0224941	T023	quadriceps		Quadriceps tendon	
+C0224941	T023	structure		Structure of quadriceps tendon ( body structure )	
+C0225317	T024	soft		Soft tissues	
+C0225317	T024	soft		Soft tissues , NOS	
+C0225317	T024	soft		Soft tissue	
+C0225317	T024	soft		Soft tissue NOS	
+C0225317	T024	soft		Soft tissues ( body structure )	
+C0225317	T024	soft		Soft tissue ( body structure )	
+C0225317	T024	soft		Soft tissue NOS ( body structure )	
+C0225317	T024	soft		Soft tissue ( navigational concept )	
+C0225317	T024	soft		Soft tissue NOS ( navigational concept )	
+C0225326	T121	fiber		Fiber	
+C0225326	T121	fiber		Fiber	
+C0225326	T121	fiber		Fiber	
+C0225326	T121	fiber		Fiber	
+C0225326	T121	fiber		Fiber , NOS	
+C0225326	T121	fibre		Fibre	
+C0225326	T121	fibre		Fibre	
+C0225326	T121	fibre		Fibre	
+C0225326	T121	fiber		Fiber ( product )	
+C0225326	T121	fiber		Fiber - RETIRED -	
+C0225326	T121	fiber		Fiber - RETIRED -	
+C0225326	T121	fibre		Fibre - RETIRED -	
+C0225326	T121	fiber		Fiber ( substance )	
+C0225326	T121	fiber		Fiber ( substance )	
+C0225991	T023	structure		Structure of great blood vessel ( organ )	
+C0225991	T023	great		Great vessel	
+C0225991	T023	great		Great vessels , NOS	
+C0225991	T023	structure		Structure of great blood vessel ( organ ) ( body structure )	
+C0225991	T023	great		Great blood vessel ( organ )	
+C0226025	T023	structure		Structure of infrarenal aorta	
+C0226025	T023	infrarenal		Infrarenal aorta	
+C0226025	T023	structure		Structure of infrarenal aorta ( body structure )	
+C0226735	T023	structure		Structure of trunk of portal vein	
+C0226735	T023	portal		Portal vein	
+C0226735	T023	trunk		Trunk of portal vein	
+C0226735	T023	trunk		Trunk of portal vein , NOS	
+C0226735	T023	structure		Structure of trunk of portal vein ( body structure )	
+C0227613	T023	right		Right kidney structure	
+C0227613	T023	right		Right kidney	
+C0227613	T023	right		Right kidney structure ( body structure )	
+C0227614	T023	left		Left kidney structure	
+C0227614	T023	left		Left kidney	
+C0227614	T023	left		Left kidney structure ( body structure )	
+C0229671	T031	serum		Serum	
+C0229671	T031	serum		Serum ( substance )	
+C0230370	T023	structure		Structure of right hand	
+C0230370	T023	right		Right hand	
+C0230370	T023	structure		Structure of right hand ( body structure )	
+C0230371	T023	structure		Structure of left hand	
+C0230371	T023	left		Left hand	
+C0230371	T023	structure		Structure of left hand ( body structure )	
+C0230403	T023	little		Little finger structure	
+C0230403	T023	fifth		Fifth finger	
+C0230403	T023	fifth		Fifth finger , NOS	
+C0230403	T023	little		Little finger	
+C0230403	T023	finger		Finger , little	
+C0230403	T023	little		Little finger , NOS	
+C0230403	T023	little		Little finger structure ( body structure )	
+C0230431	T023	structure		Structure of right knee	
+C0230431	T023	right		Right knee	
+C0230431	T023	structure		Structure of right knee ( body structure )	
+C0230432	T023	structure		Structure of left knee	
+C0230432	T023	left		Left knee	
+C0230432	T023	structure		Structure of left knee ( body structure )	
+C0230443	T023	structure		Structure of left lower leg	
+C0230443	T023	left		Left leg	
+C0230443	T023	structure		Structure of left lower leg ( body structure )	
+C0230443	T023	left		Left lower leg	
+C0230461	T023	structure		Structure of left foot	
+C0230461	T023	left		Left foot	
+C0230461	T023	structure		Structure of left foot ( body structure )	
+C0231881	T033	resonance		Resonance	
+C0231881	T033	resonance		Resonance , NOS	
+C0231881	T033	pulmonary		Pulmonary resonance	
+C0231881	T033	pulmonary		Pulmonary resonance , NOS	
+C0231881	T033	resonance		Resonance , function ( observable entity )	
+C0231881	T033	resonance		Resonance , function	
+C0231881	T033	resonance		Resonance ( function )	
+C0242275	T116	epidermal		Epidermal growth factor	
+C0242275	T116	epidermal		Epidermal growth factor	
+C0242275	T116	urogastrone		Urogastrone	
+C0242275	T116	urogastrone		Urogastrone	
+C0242275	T116	urogastrone		Urogastrone	
+C0242275	T116	anthelone		Anthelone U	
+C0242275	T116	anthelone		Anthelone U	
+C0242275	T116	anthelone		Anthelone U	
+C0242275	T116	egf		EGF - Epidermal growth factor	
+C0242275	T116	epidermal		Epidermal growth factor ( substance ) [ Ambiguous ]	
+C0242275	T116	epidermal		Epidermal growth factor ( substance )	
+C0242275	T116	epidermal		Epidermal growth factor ( substance )	
+C0242275	T116	urogastrone		Urogastrone ( substance )	
+C0243095	T033	finding		Finding	
+C0243095	T033	finding		Finding ( finding )	
+C0262926	T033	history		History of	
+C0262926	T033	history		History	
+C0262926	T033	history		History of ( contextual qualifier ) ( qualifier value )	
+C0262926	T033	history		History of ( contextual qualifier )	
+C0264545	T046	thickening		Thickening of pleura	
+C0264545	T046	pleural		Pleural cuirasse	
+C0264545	T046	pleural		Pleural thickening	
+C0264545	T046	thickening		Thickening of pleura ( disorder )	
+C0264556	T047	acute		Acute pneumothorax	
+C0264556	T047	acute		Acute pneumothorax NOS	
+C0264556	T047	acute		Acute pneumothorax ( disorder )	
+C0264556	T047	acute		Acute pneumothorax NOS ( disorder )	
+C0277565	T047	local		Local disease	
+C0277565	T047	local		Local disease , NOS	
+C0277565	T047	localized		Localized disease	
+C0277565	T047	localized		Localized disease , NOS	
+C0277565	T047	localised		Localised disease	
+C0277565	T047	local		Local disease ( finding )	
+C0302142	T190	deformity		Deformity	
+C0302142	T190	deformity		Deformity	
+C0302142	T190	deformity		Deformity , NOS	
+C0302142	T190	deformity		Deformity ( morphologic abnormality )	
+C0302142	T190	deformity		Deformity ( finding )	
+C0308403	T121	balance		BALANCE PREPARATION	
+C0308403	T121	balance		BALANCE	
+C0308403	T121	balance		BALANCE PREPARATION ( product )	
+C0308403	T121	balance		BALANCE PREPARATION ( substance )	
+C0308718	T121	control		CONTROL	
+C0308718	T121	control		CONTROL ( substance )	
+C0308718	T121	control		CONTROL ( product )	
+C0311392	T033	sign		Sign	
+C0311392	T033	sign		Sign , NOS	
+C0311392	T033	physical		Physical finding	
+C0311392	T033	physical		Physical finding , NOS	
+C0311392	T033	physical		Physical sign	
+C0311392	T033	physical		Physical sign , NOS	
+C0311392	T033	physical		Physical signs	
+C0311392	T033	physical		Physical signs	
+C0311392	T033	physical		Physical signs	
+C0311392	T033	signs		Signs - physical	
+C0311392	T033	signs		Signs - physical	
+C0311392	T033	physical		Physical signs ( finding )	
+C0311392	T033	sign		Sign ( finding )	
+C0332441	T033	normal		Normal tissue	
+C0332441	T033	normal		Normal tissue , NOS	
+C0332441	T033	normal		Normal appearance	
+C0332441	T033	normal		Normal appearance , NOS	
+C0332441	T033	normal		Normal appearance of tissue	
+C0332441	T033	normal		Normal appearance of tissue , NOS	
+C0332441	T033	normal		Normal tissue morphology	
+C0332441	T033	normal		Normal tissue morphology , NOS	
+C0332441	T033	normal		Normal tissue ( finding )	
+C0332448	T046	infiltration		Infiltration	
+C0332448	T046	infiltration		Infiltration , NOS	
+C0332448	T046	infiltrate		Infiltrate	
+C0332448	T046	infiltrate		Infiltrate , NOS	
+C0332448	T046	tissue		Tissue infiltration	
+C0332448	T046	tissue		Tissue infiltration , NOS	
+C0332448	T046	infiltration		Infiltration ( morphologic abnormality )	
+C0332523	T033	retraction		Retraction	
+C0332523	T033	retraction		Retraction , NOS	
+C0332523	T033	retraction		Retraction ( finding )	
+C0332711	T037	fracture		Fracture , oblique	
+C0332711	T037	oblique		Oblique fracture	
+C0332711	T037	oblique		Oblique fracture	
+C0332711	T037	linear		Linear oblique	
+C0332711	T037	fracture		Fracture , oblique ( morphologic abnormality )	
+C0332711	T037	oblique		Oblique fracture ( disorder )	
+C0332712	T037	fracture		Fracture , spiral	
+C0332712	T037	spiral		Spiral fracture	
+C0332712	T037	spiral		Spiral fracture	
+C0332712	T037	[		[ Q ] Spiral	
+C0332712	T037	[		[ Q ] Spiral	
+C0332712	T037	linear		Linear spiral	
+C0332712	T037	fracture		Fracture , spiral ( morphologic abnormality )	
+C0332712	T037	spiral		Spiral fracture ( disorder )	
+C0332768	T037	subluxation		Subluxation of joint	
+C0332768	T037	dislocation		Dislocation , incomplete	
+C0332768	T037	incomplete		Incomplete dislocation	
+C0332768	T037	dislocation		Dislocation , incomplete , NOS	
+C0332768	T037	subluxation		Subluxation	
+C0332768	T037	subluxations		Subluxations	
+C0332768	T037	subluxations		Subluxations	
+C0332768	T037	subluxations		Subluxations	
+C0332768	T037	subluxations		Subluxations	
+C0332768	T037	subluxation		Subluxation - lesion	
+C0332768	T037	dislocation		Dislocation , incomplete ( morphologic abnormality )	
+C0332768	T037	subluxation		Subluxation of joint ( disorder )	
+C0332768	T037	subluxations		Subluxations ( disorder )	
+C0332768	T037	subluxation		Subluxation - lesion ( qualifier value )	
+C0333641	T046	atrophy		Atrophy	
+C0333641	T046	atrophy		Atrophy	
+C0333641	T046	atrophy		Atrophy , NOS	
+C0333641	T046	atrophic		Atrophic	
+C0333641	T046	atrophic		Atrophic	
+C0333641	T046	atrophy		Atrophy [ dup ] ( morphologic abnormality )	
+C0333641	T046	atrophy		Atrophy ( morphologic abnormality )	
+C0333641	T046	atrophy		Atrophy ( morphologic abnormality )	
+C0333650	T046	fatty		Fatty atrophy	
+C0333650	T046	fat		Fat atrophy	
+C0333650	T046	adipositas		Adipositas ex vacuo	
+C0333650	T046	fatty		Fatty atrophy ( morphologic abnormality )	
+C0334277	T191	adenocarcinoma		Adenocarcinoma , metastatic	
+C0334277	T191	metastatic		Metastatic adenocarcinoma	
+C0334277	T191	adenocarcinoma		Adenocarcinoma , metastatic , NOS	
+C0334277	T191	[		[ M ] Adenocarcinoma , metastatic , NOS	
+C0334277	T191	[		[ M ] Adenocarcinoma , metastatic , NOS ( morphologic abnormality )	
+C0334277	T191	adenocarcinoma		Adenocarcinoma , metastatic ( morphologic abnormality )	
+C0342649	T046	vascular		Vascular calcification	
+C0342649	T046	vascular		Vascular calcification	
+C0342649	T046	vascular		Vascular calcification ( disorder )	
+C0343166	T046	knee		Knee joint effusion	
+C0343166	T046	knee		Knee joint effusion	
+C0343166	T046	knee		Knee joint effusion	
+C0343166	T046	knee		Knee joint effusion	
+C0343166	T046	effusion		Effusion of knee	
+C0343166	T046	knee		Knee joint effusion ( disorder )	
+C0343166	T046	knee		Knee joint effusion ( disorder )	
+C0391861	T047	plasma		Plasma cell inflammation	
+C0391861	T047	plasma		Plasma cell inflammation , NOS	
+C0391861	T047	plasma		Plasma cell infiltration	
+C0391861	T047	plasma		Plasma cell infiltration , NOS	
+C0391861	T047	plasmacytic		Plasmacytic infiltrate	
+C0391861	T047	plasmacytic		Plasmacytic infiltrate , NOS	
+C0391861	T047	plasma		Plasma cell inflammation ( morphologic abnormality )	
+C0392905	T022	articular		Articular system structure	
+C0392905	T022	joints		Joints	
+C0392905	T022	joint		Joint , NOS	
+C0392905	T022	joints		Joints , NOS	
+C0392905	T022	articular		Articular system	
+C0392905	T022	articular		Articular system , NOS	
+C0392905	T022	articular		Articular system structure ( body structure )	
+C0423772	T190	skin		Skin sinus	
+C0423772	T190	skin		Skin sinus	
+C0423772	T190	skin		Skin sinus	
+C0423772	T190	external		External fistula	
+C0423772	T190	fistula		Fistula of skin	
+C0423772	T190	fistula		Fistula of skin , NOS	
+C0423772	T190	cutaneous		Cutaneous fistula	
+C0423772	T190	cutaneous		Cutaneous fistula	
+C0423772	T190	cutaneous		Cutaneous fistula	
+C0423772	T190	cutaneous		Cutaneous fistula	
+C0423772	T190	sinus		Sinus	
+C0423772	T190	external		External fistula ( morphologic abnormality )	
+C0423772	T190	fistula		Fistula of skin ( disorder )	
+C0423772	T190	skin		Skin sinus ( disorder )	
+C0423772	T190	skin		Skin sinus ( disorder )	
+C0423772	T190	cutaneous		Cutaneous fistula ( disorder )	
+C0423772	T190	cutaneous		Cutaneous fistula ( disorder )	
+C0426952	T033	leg		Leg length	
+C0426952	T033	leg		Leg length ( observable entity )	
+C0426953	T033	apparent		Apparent leg length	
+C0426953	T033	apparent		Apparent leg length ( observable entity )	
+C0427965	T033	antimicrobial		Antimicrobial susceptibility - finding	
+C0427965	T033	finding		Finding of antimicrobial susceptibility	
+C0427965	T033	sensitivities		Sensitivities	
+C0427965	T033	sensitivity		Sensitivity	
+C0427965	T033	antimicrobial		Antimicrobial susceptibility	
+C0427965	T033	antibiotic		Antibiotic susceptibility	
+C0427965	T033	finding		Finding of antimicrobial susceptibility ( finding )	
+C0430420	T059	antigen		Antigen assay	
+C0430420	T059	antigen		Antigen detection	
+C0430420	T059	in		In vitro immunologic test to detect , identify , characterize AND / OR quantify an antigen	
+C0430420	T059	in		In vitro immunologic test to detect , identify , characterise AND / OR quantify an antigen	
+C0430420	T059	antigen		Antigen assay ( procedure )	
+C0430420	T059	antigen		Antigen level	
+C0430420	T059	antigen		Antigen level	
+C0430420	T059	antigen		Antigen level	
+C0430420	T059	antigen		Antigen level	
+C0430420	T059	antigen		Antigen level	
+C0430420	T059	antigen		Antigen level ( procedure )	
+C0430420	T059	antigen		Antigen level ( procedure )	
+C0439631	T061	primary		Primary operation	
+C0439631	T061	primary		Primary	
+C0439631	T061	primary		Primary operation ( qualifier value )	
+C0440744	T024	human		Human tissue	
+C0440744	T024	human		Human tissue ( substance )	
+C0442031	T029	pericardial		Pericardial	
+C0442031	T029	pericardial		Pericardial ( qualifier value )	
+C0442739	T033	no		No status change	
+C0442739	T033	no		No change	
+C0442739	T033	no		No status change ( qualifier value )	
+C0442739	T033	unchanged		Unchanged	
+C0442739	T033	id		Id status quo	
+C0443146	T046	autoimmune		Autoimmune reaction	
+C0443146	T046	autoimmune		Autoimmune reaction , NOS	
+C0443146	T046	autoimmune		Autoimmune	
+C0443146	T046	ai		AI - autoimmune	
+C0443146	T046	autoimmune		Autoimmune reaction ( finding )	
+C0443146	T046	autoimmune		Autoimmune ( qualifier value )	
+C0443213	T033	extrusion		Extrusion	
+C0443213	T033	extrusion		Extrusion ( qualifier value )	
+C0445223	T033	related		Related	
+C0445223	T033	related		Related ( finding )	
+C0447050	T023	entire		Entire infrarenal aorta	
+C0447050	T023	infrarenal		Infrarenal abdominal aorta	
+C0447050	T023	entire		Entire infrarenal aorta ( body structure )	
+C0447798	T030	compartment		Compartment of knee	
+C0447798	T030	compartment		Compartment of knee ( body structure )	
+C0447800	T030	lateral		Lateral compartment of knee	
+C0447800	T030	lateral		Lateral compartment of knee ( body structure )	
+C0447801	T030	structure		Structure of patellofemoral joint	
+C0447801	T030	femoropatellar		Femoropatellar joint	
+C0447801	T030	patellofemoral		Patellofemoral joint	
+C0447801	T030	structure		Structure of patellofemoral joint ( body structure )	
+C0448265	T023	entire		Entire head of metatarsal	
+C0448265	T023	head		Head of metatarsal	
+C0448265	T023	head		Head of metatarsal bone	
+C0448265	T023	entire		Entire head of metatarsal ( body structure )	
+C0448536	T023	entire		Entire tendon of supraspinatus muscle	
+C0448536	T023	supraspinatus		Supraspinatus tendon	
+C0448536	T023	entire		Entire tendon of supraspinatus muscle ( body structure )	
+C0448540	T023	biceps		Biceps tendon structure	
+C0448540	T023	biceps		Biceps tendon	
+C0448540	T023	tendon		Tendon of biceps brachii	
+C0448540	T023	biceps		Biceps tendon structure ( body structure )	
+C0449201	T029	per		PER	
+C0449201	T029	per		PER ( body structure )	
+C0449255	T033	context		Context	
+C0449255	T033	context		Context ( attribute )	
+C0449381	T033	observation		Observation parameter	
+C0449381	T033	parameters		Parameters	
+C0449381	T033	observation		Observation parameter ( observable entity )	
+C0449416	T033	source		Source	
+C0449416	T033	source		Source ( attribute )	
+C0456973	T046	hilar		Hilar lymphadenopathy	
+C0456973	T046	hilar		Hilar lymphadenopathy ( disorder )	
+C0457021	T061	nerve		Nerve sparing	
+C0457021	T061	nerve		Nerve sparing ( qualifier value )	
+C0458398	T029	entire		Entire pole of kidney	
+C0458398	T029	pole		Pole of kidney	
+C0458398	T029	entire		Entire pole of kidney ( body structure )	
+C0458580	T023	tracheobronchial		Tracheobronchial structure	
+C0458580	T023	tracheobronchial		Tracheobronchial tree	
+C0458580	T023	tracheobronchial		Tracheobronchial structure ( body structure )	
+C0459473	T030	thumb		Thumb joint structure	
+C0459473	T030	joint		Joint of thumb	
+C0459473	T030	thumb		Thumb joint structure ( body structure )	
+C0475371	T033	t0		T0 category	
+C0475371	T033	to		TO	
+C0475371	T033	t0		T0 stage	
+C0475371	T033	tumor		Tumor stage T0	
+C0475371	T033	tumour		Tumour stage T0	
+C0475371	T033	t0		T0 stage ( finding )	
+C0475371	T033	t0		T0 stage ( tumor staging )	
+C0475371	T033	t0		T0 category ( finding )	
+C0475806	T033	1		1 / 3 meter	
+C0475806	T033	1		1 / 3 metre	
+C0475806	T033	near		Near	
+C0475806	T033	nr		Nr - Near	
+C0475806	T033	1		1 / 3 meter ( finding )	
+C0475806	T033	1		1 / 3 metre ( finding )	
+C0476171	T037	fracture		Fracture , comminuted	
+C0476171	T037	comminuted		Comminuted fracture	
+C0476171	T037	comminuted		Comminuted fracture	
+C0476171	T037	comminuted		Comminuted	
+C0476171	T037	[		[ Q ] Comminuted	
+C0476171	T037	[		[ Q ] Comminuted	
+C0476171	T037	fracture		Fracture , comminuted ( morphologic abnormality )	
+C0476171	T037	comminuted		Comminuted fracture ( morphologic abnormality )	
+C0497156	T033	lymphadenopathy		Lymphadenopathy	
+C0497156	T033	lymphadenopathy		Lymphadenopathy	
+C0497156	T033	lymphadenopathy		Lymphadenopathy	
+C0497156	T033	lymphadenopathy		Lymphadenopathy	
+C0497156	T033	lymphadenopathy		Lymphadenopathy	
+C0497156	T033	lymphadenopathy		Lymphadenopathy	
+C0497156	T033	lymphadenopathy		Lymphadenopathy	
+C0497156	T033	lymphadenopathy		Lymphadenopathy , NOS	
+C0497156	T033	adenopathy		Adenopathy	
+C0497156	T033	adenopathy		Adenopathy	
+C0497156	T033	enlargement		Enlargement of lymph nodes	
+C0497156	T033	enlargement		Enlargement of lymph nodes , NOS	
+C0497156	T033	enlarged		Enlarged lymph nodes	
+C0497156	T033	enlarged		Enlarged lymph nodes	
+C0497156	T033	swollen		Swollen glands	
+C0497156	T033	swelling		Swelling of lymph nodes	
+C0497156	T033	swelling		Swelling of lymph nodes , NOS	
+C0497156	T033	swollen		Swollen lymph nodes	
+C0497156	T033	swelling		Swelling of lymph node	
+C0497156	T033	[		[ D ] Lymph node enlargement	
+C0497156	T033	[		[ D ] Lymph node enlargement	
+C0497156	T033	[		[ D ] Lymph node enlargement	
+C0497156	T033	[		[ D ] Lymph node enlargement NOS	
+C0497156	T033	[		[ D ] Lymph node enlargement NOS	
+C0497156	T033	[		[ D ] Lymph node enlargement NOS	
+C0497156	T033	[		[ D ] Swollen glands	
+C0497156	T033	[		[ D ] Swollen glands	
+C0497156	T033	[		[ D ] Swollen glands	
+C0497156	T033	[		[ D ] Lymphadenopathy	
+C0497156	T033	[		[ D ] Lymphadenopathy	
+C0497156	T033	[		[ D ] Lymphadenopathy	
+C0497156	T033	enlarged		Enlarged glands	
+C0497156	T033	swollen		Swollen lymph glands	
+C0497156	T033	lymphadenopathy		Lymphadenopathy - swelling	
+C0497156	T033	la		LA - Lymphadenopathy	
+C0497156	T033	ln		LN - Lymphadenopathy	
+C0497156	T033	[		[ D ] Lymph node enlargement NOS ( context - dependent category )	
+C0497156	T033	[		[ D ] Lymph node enlargement ( context - dependent category )	
+C0497156	T033	[		[ D ] Swollen glands ( context - dependent category )	
+C0497156	T033	[		[ D ] Lymphadenopathy ( context - dependent category )	
+C0497156	T033	lymphadenopathy		Lymphadenopathy ( disorder )	
+C0497156	T033	unspecified		Unspecified lymphadenopathy	
+C0497156	T033	[		[ D ] Lymphadenopathy ( situation )	
+C0497156	T033	[		[ D ] Lymphadenopathy ( situation )	
+C0497156	T033	[		[ D ] Lymph node enlargement ( situation )	
+C0497156	T033	[		[ D ] Lymph node enlargement ( situation )	
+C0497156	T033	[		[ D ] Lymph node enlargement NOS ( situation )	
+C0497156	T033	[		[ D ] Lymph node enlargement NOS ( situation )	
+C0497156	T033	[		[ D ] Swollen glands ( situation )	
+C0497156	T033	[		[ D ] Swollen glands ( situation )	
+C0497156	T033	lymphadenopathy		Lymphadenopathy ( finding )	
+C0497156	T033	lymphadenopathy		Lymphadenopathy ( finding )	
+C0497156	T033	lymphadenopathy		Lymphadenopathy ( finding )	
+C0520743	T047	mediastinal		Mediastinal lymphadenopathy	
+C0520743	T047	mediastinal		Mediastinal lymphadenopathy ( disorder )	
+C0521169	T046	compression		Compression fracture	
+C0521169	T046	compression		Compression fracture	
+C0521169	T046	compression		Compression fracture ( morphologic abnormality )	
+C0521169	T046	compression		Compression fracture ( disorder )	
+C0521530	T047	lung		Lung consolidation	
+C0521530	T047	lung		Lung consolidation	
+C0521530	T047	lung		Lung consolidation	
+C0521530	T047	consolidation		Consolidation of lung , NOS	
+C0521530	T047	consolidation		Consolidation of lung	
+C0521530	T047	lung		Lung consolidation ( disorder )	
+C0521530	T047	lung		Lung consolidation ( disorder )	
+C0524414	T023	structure		Structure of condyle	
+C0524414	T023	articular		Articular condyle	
+C0524414	T023	condyle		Condyle	
+C0524414	T023	structure		Structure of condyle ( body structure )	
+C0524468	T029	structure		Structure of right shoulder region	
+C0524468	T029	right		Right shoulder	
+C0524468	T029	structure		Structure of right shoulder region ( body structure )	
+C0524468	T029	right		Right shoulder region	
+C0524470	T029	right		Right hip region structure	
+C0524470	T029	right		Right hip	
+C0524470	T029	right		Right hip region structure ( body structure )	
+C0543467	T060	surgery		Surgery	
+C0543467	T060	operative		Operative procedure	
+C0543467	T060	operative		Operative procedure	
+C0543467	T060	operative		Operative procedure , NOS	
+C0543467	T060	operative		Operative procedures	
+C0543467	T060	operation		Operation	
+C0543467	T060	operation		Operation	
+C0543467	T060	operation		Operation , NOS	
+C0543467	T060	surgical		Surgical	
+C0543467	T060	surgical		Surgical procedure	
+C0543467	T060	surgical		Surgical procedure	
+C0543467	T060	surgical		Surgical procedure , NOS	
+C0543467	T060	surgical		Surgical procedures	
+C0543467	T060	surgical		Surgical procedures	
+C0543467	T060	surgical		Surgical procedure ( procedure )	
+C0543467	T060	surgical		Surgical procedure ( procedure )	
+C0543467	T060	surgery		Surgery ( qualifier value )	
+C0543467	T060	surgical		Surgical ( qualifier value )	
+C0553730	T047	calcium		Calcium pyrophosphate deposition disease	
+C0553730	T047	calcium		Calcium pyrophosphate deposition disease	
+C0553730	T047	chondrocalcinosis		Chondrocalcinosis	
+C0553730	T047	chondrocalcinosis		Chondrocalcinosis	
+C0553730	T047	chondrocalcinosis		Chondrocalcinosis	
+C0553730	T047	chondrocalcinosis		Chondrocalcinosis	
+C0553730	T047	chondrocalcinosis		Chondrocalcinosis	
+C0553730	T047	chondrocalcinosis		Chondrocalcinosis NOS	
+C0553730	T047	chondrocalcinosis		Chondrocalcinosis articularis	
+C0553730	T047	cpdd		CPDD	
+C0553730	T047	chondrocalcinosis		Chondrocalcinosis due to pyrophosphate crystals	
+C0553730	T047	chondrocalcinosis		Chondrocalcinosis due to pyrophosphate crystals	
+C0553730	T047	chondrocalcinosis		Chondrocalcinosis due to pyrophosphate crystals , NOS	
+C0553730	T047	calcium		Calcium pyrophosphate arthritis and periarthritis	
+C0553730	T047	cppd		CPPD - Calcium pyrophosphate deposition disease	
+C0553730	T047	chondrocalcinosis		Chondrocalcinosis unspecified , of unspecified site	
+C0553730	T047	chondrocalcinosis		Chondrocalcinosis , unspecified	
+C0553730	T047	cpdd		CPDD - Calcium pyrophosphate deposition disease	
+C0553730	T047	calcium		Calcium pyrophosphate deposition disease ( disorder )	
+C0553730	T047	chondrocalcinosis		Chondrocalcinosis due to pyrophosphate crystals ( disorder )	
+C0553730	T047	chondrocalcinosis		Chondrocalcinosis due to pyrophosphate crystals , NOS ( disorder )	
+C0553730	T047	chondrocalcinosis		Chondrocalcinosis ( disorder )	
+C0553730	T047	chondrocalcinosis		Chondrocalcinosis NOS ( disorder )	
+C0553730	T047	chondrocalcinosis		Chondrocalcinosis unspecified , of unspecified site ( disorder )	
+C0553730	T047	chondrocalcinosis		Chondrocalcinosis , unspecified ( disorder )	
+C0557985	T061	observation		Observation regimes	
+C0557985	T061	observation		Observation	
+C0557985	T061	observation		Observation procedure ( procedure )	
+C0557985	T061	observation		Observation regimes ( regime / therapy ) ( procedure )	
+C0557985	T061	observation		Observation regimes ( regime / therapy )	
+C0559982	T023	entire		Entire tendon of infraspinatus muscle	
+C0559982	T023	infraspinatus		Infraspinatus tendon	
+C0559982	T023	entire		Entire tendon of infraspinatus muscle ( body structure )	
+C0559987	T023	entire		Entire tendon of subscapularis muscle	
+C0559987	T023	subscapularis		Subscapularis tendon	
+C0559987	T023	entire		Entire tendon of subscapularis muscle ( body structure )	
+C0560630	T037	injury		Injury of coccyx	
+C0560630	T037	injury		Injury of coccyx ( disorder )	
+C0565514	T061	compression		Compression - action	
+C0565514	T061	compression		Compression - action	
+C0565514	T061	compression		Compression - action	
+C0565514	T061	compression		Compression	
+C0565514	T061	compression		Compression NOS	
+C0565514	T061	compression		Compression NOS	
+C0565514	T061	compression		Compression NOS	
+C0565514	T061	compression		Compression NOS ( procedure )	
+C0565514	T061	compression		Compression NOS ( procedure )	
+C0565514	T061	compression		Compression - action ( qualifier value )	
+C0565514	T061	compression		Compression - action ( procedure )	
+C0574068	T184	rib		Rib pain	
+C0574068	T184	rib		Rib pain	
+C0574068	T184	rib		Rib pain	
+C0574068	T184	rib		Rib pain	
+C0574068	T184	rib		Rib pain	
+C0574068	T184	rib		Rib pain ( finding )	
+C0574068	T184	rib		Rib pain ( finding )	
+C0574068	T184	rib		Rib pain ( finding )	
+C0575043	T033	joint		Joint normal	
+C0575043	T033	joint		Joint normal ( finding )	
+C0576239	T033	foot		Foot normal	
+C0576239	T033	foot		Foot normal ( finding )	
+C0576462	T023	entire		Entire proximal phalanx	
+C0576462	T023	proximal		Proximal phalanx	
+C0576462	T023	entire		Entire proximal phalanx ( body structure )	
+C0577077	T033	finding		Finding of pancreas	
+C0577077	T033	observation		Observation of pancreas	
+C0577077	T033	finding		Finding of pancreas ( finding )	
+C0577559	T033	mass		Mass of body structure	
+C0577559	T033	lump		Lump	
+C0577559	T033	lump		Lump	
+C0577559	T033	lump		Lump	
+C0577559	T033	lump		Lump , NOS	
+C0577559	T033	mass		Mass	
+C0577559	T033	mass		Mass	
+C0577559	T033	mass		Mass , NOS	
+C0577559	T033	localized		Localized mass	
+C0577559	T033	localized		Localized mass , NOS	
+C0577559	T033	localised		Localised mass	
+C0577559	T033	a		A mass	
+C0577559	T033	a		A mass	
+C0577559	T033	observation		Observation of a mass	
+C0577559	T033	finding		Finding of a mass ( finding )	
+C0577559	T033	finding		Finding of a mass	
+C0577559	T033	mass		Mass ( morphologic abnormality )	
+C0577559	T033	mass		Mass of body structure ( finding )	
+C0577559	T033	lump		Lump ( finding )	
+C0578735	T046	axillary		Axillary lymphadenopathy	
+C0578735	T046	axillary		Axillary lymphadenopathy ( disorder )	
+C0582802	T023	digit		Digit structure	
+C0582802	T023	digit		Digit	
+C0582802	T023	digit		Digit	
+C0582802	T023	digit		Digit , NOS	
+C0582802	T023	digit		Digit , NOS	
+C0582802	T023	digit		Digit structure ( body structure )	
+C0582802	T023	digit		Digit - RETIRED -	
+C0582802	T023	digit		Digit - RETIRED -	
+C0582802	T023	digit		Digit ( body structure )	
+C0584640	T023	tibial		Tibial plateau structure	
+C0584640	T023	condyle		Condyle of tibia	
+C0584640	T023	condyle		Condyle of tibia , NOS	
+C0584640	T023	tibial		Tibial plateau	
+C0584640	T023	tibial		Tibial plateau	
+C0584640	T023	tibial		Tibial plateau , NOS	
+C0584640	T023	structure		Structure of condyle of tibia ( body structure )	
+C0584640	T023	tibial		Tibial plateau structure ( body structure )	
+C0584640	T023	structure		Structure of condyle of tibia	
+C0584646	T030	musculotendinous		Musculotendinous junction	
+C0584646	T030	myotendinous		Myotendinous junction	
+C0584646	T030	musculotendinous		Musculotendinous junction ( body structure )	
+C0585059	T037	fracture		Fracture with displacement	
+C0585059	T037	displaced		Displaced fracture	
+C0585059	T037	displaced		Displaced fracture	
+C0585059	T037	displaced		Displaced fracture ( morphologic abnormality )	
+C0585059	T037	fracture		Fracture with displacement ( morphologic abnormality )	
+C0586596	T024	specimen		Specimen from prostate	
+C0586596	T024	prostate		Prostate sample	
+C0586596	T024	specimen		Specimen from prostate ( specimen )	
+C0586598	T024	prostate		Prostate biopsy sample	
+C0586598	T024	prostate		Prostate biopsy sample ( specimen )	
+C0589120	T033	follow		Follow - up status	
+C0589120	T033	follow		Follow - up status ( finding )	
+C0589120	T033	follow		Follow up ( finding )	
+C0589120	T033	follow		Follow up ( finding )	
+C0589120	T033	follow		Follow - up	
+C0589120	T033	follow		Follow up	
+C0589120	T033	follow		Follow up	
+C0589120	T033	follow		Follow up	
+C0589120	T033	follow		Follow up	
+C0589120	T033	follow		Follow up	
+C0589120	T033	follow		Follow up ( administrative concept )	
+C0677862	T024	biopsy		Biopsy sample	
+C0677862	T024	biopsy		Biopsy sample ( specimen )	
+C0683836	T033	source		Source of information	
+C0683836	T033	source		Source of information ( attribute )	
+C0687028	T023	duct		Duct ( organ ) structure	
+C0687028	T023	duct		Duct	
+C0687028	T023	duct		Duct ( organ ) structure ( body structure )	
+C0700638	T190	common		Common iliac aneurysm	
+C0700638	T190	aneurysm		Aneurysm of common iliac artery	
+C0700638	T190	common		Common iliac aneurysm ( disorder )	
+C0702249	T061	infiltration		Infiltration	
+C0702249	T061	infiltrations		Infiltrations	
+C0702249	T061	infiltration		Infiltration ( procedure )	
+C0702249	T061	infiltrations		Infiltrations ( procedure )	
+C0744631	T033	swelling		Swelling of head	
+C0744631	T033	head		Head swelling	
+C0744631	T033	swelling		Swelling of head ( finding )	
+C0817096	T029	thoracic		Thoracic	
+C0817096	T029	chest		Chest	
+C0817096	T029	thorax		Thorax	
+C0817096	T029	thorax		Thorax , NOS	
+C0817096	T029	thoracic		Thoracic structure	
+C0817096	T029	thoracic		Thoracic structure ( body structure )	
+C0817096	T029	thoracic		Thoracic ( qualifier value )	
+C0825675	T023	structure		Structure of head of metatarsal bone	
+C0825675	T023	head		Head of metatarsal	
+C0825675	T023	head		Head of metatarsal bone	
+C0825675	T023	head		Head of metatarsal bone ( body structure )	
+C0825675	T023	head		Head of metatarsal ( body structure )	
+C0825675	T023	structure		Structure of head of metatarsal bone ( body structure )	
+C1140621	T029	lower		Lower leg structure	
+C1140621	T029	leg		Leg	
+C1140621	T029	leg		Leg , NOS	
+C1140621	T029	lower		Lower leg	
+C1140621	T029	crural		Crural region	
+C1140621	T029	lower		Lower leg structure ( body structure )	
+C1253936	T047	effusion		Effusion of joint	
+C1253936	T047	effusion		Effusion of joint	
+C1253936	T047	effusion		Effusion of joint , NOS	
+C1253936	T047	joint		Joint effusion	
+C1253936	T047	joint		Joint effusion	
+C1253936	T047	joint		Joint effusion	
+C1253936	T047	joint		Joint effusion	
+C1253936	T047	effusion		Effusion of joint NOS	
+C1253936	T047	effusion		Effusion of joint NOS	
+C1253936	T047	effusion		Effusion of joint NOS	
+C1253936	T047	hydrarthrosis		Hydrarthrosis	
+C1253936	T047	hydrarthrosis		Hydrarthrosis	
+C1253936	T047	hydrarthrosis		Hydrarthrosis , NOS	
+C1253936	T047	effusion		Effusion into joint	
+C1253936	T047	effusion		Effusion into joint	
+C1253936	T047	joint		Joint effusion of unspecified site	
+C1253936	T047	effusion		Effusion of joint ( disorder )	
+C1253936	T047	effusion		Effusion of joint ( disorder )	
+C1253936	T047	effusion		Effusion of joint NOS ( disorder )	
+C1253936	T047	effusion		Effusion of joint NOS ( disorder )	
+C1253936	T047	joint		Joint effusion ( disorder )	
+C1253936	T047	joint		Joint effusion of unspecified site ( disorder )	
+C1261084	T023	common		Common iliac artery structure	
+C1261084	T023	common		Common iliac artery	
+C1261084	T023	common		Common iliac artery , NOS	
+C1261084	T023	common		Common iliac artery structure ( body structure )	
+C1265570	T033	morphology		Morphology within normal limits	
+C1265570	T033	morphology		Morphology within normal limits ( finding )	
+C1265570	T033	within		Within Normal Limits	
+C1265876	T046	opacity		Opacity	
+C1265876	T046	abnormally		Abnormally opaque structure ( morphologic abnormality )	
+C1265876	T046	abnormally		Abnormally opaque structure	
+C1265896	T046	diffuse		Diffuse atrophy	
+C1265896	T046	diffuse		Diffuse atrophy ( morphologic abnormality )	
+C1266908	T023	entire		Entire bone ( organ )	
+C1266908	T023	bone		Bone	
+C1266908	T023	bone		Bone , NOS	
+C1266908	T023	bone		Bone ( organ )	
+C1266908	T023	entire		Entire bone ( organ ) ( body structure )	
+C1266908	T023	individual		Individual bone	
+C1266909	T022	entire		Entire bony skeleton	
+C1266909	T022	bones		Bones	
+C1266909	T022	bone		Bone	
+C1266909	T022	skeletal		Skeletal bones	
+C1266909	T022	entire		Entire bony skeleton ( body structure )	
+C1266909	T022	bone		Bone ( system )	
+C1266909	T022	bony		Bony skeleton	
+C1266909	T022	pars		Pars ossea systematis skeletalis	
+C1266909	T022	osseous		Osseous part of the skeletal system	
+C1266915	T023	entire		Entire condyle	
+C1266915	T023	articular		Articular condyle	
+C1266915	T023	articular		Articular condyle , NOS	
+C1266915	T023	condyle		Condyle	
+C1266915	T023	condyle		Condyle , NOS	
+C1266915	T023	entire		Entire condyle ( body structure )	
+C1267072	T023	entire		Entire vertebral column	
+C1267072	T023	backbone		Backbone	
+C1267072	T023	spinal		Spinal column	
+C1267072	T023	spinal		Spinal column , NOS	
+C1267072	T023	spine		Spine	
+C1267072	T023	spine		Spine , NOS	
+C1267072	T023	vertebral		Vertebral column	
+C1267072	T023	vertebral		Vertebral column , NOS	
+C1267072	T023	entire		Entire vertebral column ( body structure )	
+C1267116	T030	entire		Entire symphysis	
+C1267116	T030	fibrocartilaginous		Fibrocartilaginous joint	
+C1267116	T030	symphysis		Symphysis	
+C1267116	T030	symphysis		Symphysis , NOS	
+C1267116	T030	entire		Entire symphysis ( body structure )	
+C1267117	T030	entire		Entire zygapophyseal joint	
+C1267117	T030	facet		Facet joint	
+C1267117	T030	zygapophysial		Zygapophysial joint	
+C1267117	T030	vertebral		Vertebral arch joint	
+C1267117	T030	entire		Entire zygapophyseal joint ( body structure )	
+C1267211	T023	entire		Entire duct ( organ )	
+C1267211	T023	duct		Duct	
+C1267211	T023	duct		Duct , NOS	
+C1267211	T023	entire		Entire duct ( organ ) ( body structure )	
+C1268233	T029	entire		Entire right hip region	
+C1268233	T029	right		Right hip	
+C1268233	T029	entire		Entire right hip region ( body structure )	
+C1268989	T023	entire		Entire adrenal gland	
+C1268989	T023	adrenal		Adrenal gland	
+C1268989	T023	suprarenal		Suprarenal gland	
+C1268989	T023	entire		Entire adrenal gland ( body structure )	
+C1269001	T023	entire		Entire gallbladder	
+C1269001	T023	gallbladder		Gallbladder	
+C1269001	T023	gb		GB - Gallbladder	
+C1269001	T023	entire		Entire gallbladder ( body structure )	
+C1269008	T023	entire		Entire coronary artery	
+C1269008	T023	coronary		Coronary artery	
+C1269008	T023	ca		CA - Coronary artery	
+C1269008	T023	entire		Entire coronary artery ( body structure )	
+C1269047	T023	entire		Entire lymph node	
+C1269047	T023	lymph		Lymph node	
+C1269047	T023	ln		LN - Lymph node	
+C1269047	T023	entire		Entire lymph node ( body structure )	
+C1269052	T023	entire		Entire tibial plateau	
+C1269052	T023	tibial		Tibial plateau	
+C1269052	T023	tibial		Tibial plafond	
+C1269052	T023	entire		Entire tibial plateau ( body structure )	
+C1269064	T023	entire		Entire metacarpal	
+C1269064	T023	metacarpal		Metacarpal	
+C1269064	T023	mc		MC - Metacarpal	
+C1269064	T023	entire		Entire metacarpal ( body structure )	
+C1269071	T030	entire		Entire patellofemoral joint	
+C1269071	T030	patellofemoral		Patellofemoral joint	
+C1269071	T030	pfj		PFJ - Patellofemoral joint	
+C1269071	T030	entire		Entire patellofemoral joint ( body structure )	
+C1269073	T030	entire		Entire knee joint	
+C1269073	T030	knee		Knee joint	
+C1269073	T030	genual		Genual joint	
+C1269073	T030	entire		Entire knee joint ( body structure )	
+C1269079	T023	entire		Entire lower limb	
+C1269079	T023	leg		Leg	
+C1269079	T023	lower		Lower limb	
+C1269079	T023	ll		LL - Lower limb	
+C1269079	T023	entire		Entire lower limb ( body structure )	
+C1269079	T023	hind		Hind limb	
+C1269080	T023	entire		Entire ligament	
+C1269080	T023	ligament		Ligament	
+C1269080	T023	[		[ SO ] Ligaments of joints	
+C1269080	T023	entire		Entire ligament ( body structure )	
+C1269542	T023	entire		Entire sacrum	
+C1269542	T023	sacrum		Sacrum	
+C1269542	T023	sacral		Sacral bone	
+C1269542	T023	sacral		Sacral bone	
+C1269542	T023	entire		Entire sacral bone ( body structure )	
+C1269542	T023	entire		Entire sacrum ( body structure )	
+C1269542	T023	entire		Entire sacral bone	
+C1269542	T023	entire		Entire sacral bone	
+C1269609	T023	entire		Entire metatarsal	
+C1269609	T023	metatarsal		Metatarsal	
+C1269609	T023	mt		MT - Metatarsal	
+C1269609	T023	entire		Entire metatarsal ( body structure )	
+C1269611	T030	entire		Entire joint	
+C1269611	T030	joint		Joint	
+C1269611	T030	jt		Jt - Joint	
+C1269611	T030	entire		Entire joint ( body structure )	
+C1269613	T023	entire		Entire thumb	
+C1269613	T023	thumb		Thumb	
+C1269613	T023	pollux		Pollux	
+C1269613	T023	entire		Entire thumb ( body structure )	
+C1269647	T025	entire		Entire cell	
+C1269647	T025	cell		Cell	
+C1269647	T025	entire		Entire cell ( body structure )	
+C1269647	T025	entire		Entire cell ( cell )	
+C1269765	T033	assisted		Assisted	
+C1269765	T033	assisted		Assisted ( qualifier value )	
+C1269765	T033	requires		Requires assistance	
+C1269830	T033	tumor		Tumor margin status	
+C1269830	T033	tumour		Tumour margin status	
+C1269830	T033	margin		Margin	
+C1269830	T033	tumor		Tumor margin status ( observable entity )	
+C1269882	T023	entire		Entire abdominal aorta	
+C1269882	T023	abdominal		Abdominal aorta	
+C1269882	T023	descending		Descending abdominal aorta	
+C1269882	T023	entire		Entire abdominal aorta ( body structure )	
+C1273937	T033	not		Not significant	
+C1273937	T033	not		Not significant	
+C1273937	T033	not		Not significant	
+C1273937	T033	not		Not significant ( qualifier value )	
+C1273937	T033	not		Not significant ( qualifier value )	
+C1278878	T023	entire		Entire thyroid gland	
+C1278878	T023	thyroid		Thyroid gland	
+C1278878	T023	entire		Entire thyroid gland ( body structure )	
+C1278900	T023	entire		Entire frontal sinus	
+C1278900	T023	frontal		Frontal sinus	
+C1278900	T023	entire		Entire frontal sinus ( body structure )	
+C1278908	T023	entire		Entire lung	
+C1278908	T023	lung		Lung	
+C1278908	T023	entire		Entire lung ( body structure )	
+C1278909	T023	entire		Entire mediastinum	
+C1278909	T023	mediastinum		Mediastinum	
+C1278909	T023	entire		Entire mediastinum ( body structure )	
+C1278917	T023	entire		Entire salivary gland	
+C1278917	T023	salivary		Salivary gland	
+C1278917	T023	entire		Entire salivary gland ( body structure )	
+C1278920	T023	entire		Entire stomach	
+C1278920	T023	stomach		Stomach	
+C1278920	T023	entire		Entire stomach ( body structure )	
+C1278929	T023	entire		Entire liver	
+C1278929	T023	liver		Liver	
+C1278929	T023	entire		Entire liver ( body structure )	
+C1278931	T023	entire		Entire pancreas	
+C1278931	T023	pancreas		Pancreas	
+C1278931	T023	entire		Entire pancreas ( body structure )	
+C1278932	T023	entire		Entire spleen	
+C1278932	T023	spleen		Spleen	
+C1278932	T023	entire		Entire spleen ( body structure )	
+C1278934	T023	entire		Entire aorta	
+C1278934	T023	aorta		Aorta	
+C1278934	T023	entire		Entire aorta ( body structure )	
+C1278960	T023	entire		Entire vein	
+C1278960	T023	vein		Vein	
+C1278960	T023	entire		Entire vein ( body structure )	
+C1278978	T023	entire		Entire kidney	
+C1278978	T023	kidney		Kidney	
+C1278978	T023	entire		Entire kidney ( body structure )	
+C1278980	T023	entire		Entire prostate	
+C1278980	T023	prostate		Prostate	
+C1278980	T023	entire		Entire prostate ( body structure )	
+C1279054	T023	entire		Entire temporal bone	
+C1279054	T023	temporal		Temporal bone	
+C1279054	T023	entire		Entire temporal bone ( body structure )	
+C1279055	T023	entire		Entire occipital bone	
+C1279055	T023	occipital		Occipital bone	
+C1279055	T023	entire		Entire occipital bone ( body structure )	
+C1279070	T023	entire		Entire clavicle	
+C1279070	T023	clavicle		Clavicle	
+C1279070	T023	entire		Entire clavicle ( body structure )	
+C1279075	T023	entire		Entire humerus	
+C1279075	T023	humerus		Humerus	
+C1279075	T023	entire		Entire humerus ( body structure )	
+C1279101	T023	entire		Entire coccyx	
+C1279101	T023	coccyx		Coccyx	
+C1279101	T023	entire		Entire coccyx ( body structure )	
+C1279112	T023	entire		Entire femur	
+C1279112	T023	femur		Femur	
+C1279112	T023	entire		Entire femur ( body structure )	
+C1279118	T023	entire		Entire tibia	
+C1279118	T023	tibia		Tibia	
+C1279118	T023	entire		Entire tibia ( body structure )	
+C1279571	T023	entire		Entire right knee	
+C1279571	T023	right		Right knee	
+C1279571	T023	entire		Entire right knee ( body structure )	
+C1279572	T023	entire		Entire left knee	
+C1279572	T023	left		Left knee	
+C1279572	T023	entire		Entire left knee ( body structure )	
+C1279606	T023	entire		Entire left lower leg	
+C1279606	T023	left		Left leg	
+C1279606	T023	entire		Entire left lower leg ( body structure )	
+C1279864	T023	entire		Entire pelvis	
+C1279864	T023	pelvis		Pelvis	
+C1279864	T023	entire		Entire pelvis ( body structure )	
+C1279997	T023	entire		Entire metatarsal joint	
+C1279997	T023	metatarsal		Metatarsal joint	
+C1279997	T023	entire		Entire metatarsal joint ( body structure )	
+C1279999	T023	entire		Entire left foot	
+C1279999	T023	left		Left foot	
+C1279999	T023	entire		Entire left foot ( body structure )	
+C1280065	T023	entire		Entire spine	
+C1280065	T023	spine		Spine	
+C1280065	T023	entire		Entire spine ( body structure )	
+C1280172	T023	entire		Entire iliac artery	
+C1280172	T023	iliac		Iliac artery	
+C1280172	T023	entire		Entire iliac artery ( body structure )	
+C1280209	T030	entire		Entire joint of thumb	
+C1280209	T030	joint		Joint of thumb	
+C1280209	T030	entire		Entire joint of thumb ( body structure )	
+C1280232	T023	entire		Entire third rib	
+C1280232	T023	third		Third rib	
+C1280232	T023	entire		Entire third rib ( body structure )	
+C1280235	T023	entire		Entire sixth rib	
+C1280235	T023	sixth		Sixth rib	
+C1280235	T023	entire		Entire sixth rib ( body structure )	
+C1280538	T023	entire		Entire tendon	
+C1280538	T023	tendon		Tendon	
+C1280538	T023	entire		Entire tendon ( body structure )	
+C1280541	T023	entire		Entire nerve	
+C1280541	T023	nerve		Nerve	
+C1280541	T023	entire		Entire nerve ( body structure )	
+C1280889	T023	entire		Entire bile duct	
+C1280889	T023	bile		Bile duct	
+C1280889	T023	entire		Entire bile duct ( body structure )	
+C1281374	T023	entire		Entire digit of hand	
+C1281374	T023	digit		Digit of hand	
+C1281374	T023	entire		Entire digit of hand ( body structure )	
+C1281393	T023	entire		Entire trunk of portal vein	
+C1281393	T023	portal		Portal vein	
+C1281393	T023	trunk		Trunk of portal vein	
+C1281393	T023	entire		Entire trunk of portal vein ( body structure )	
+C1281570	T023	entire		Entire heart	
+C1281570	T023	heart		Heart	
+C1281570	T023	entire		Entire heart ( body structure )	
+C1281571	T023	entire		Entire thoracic aorta	
+C1281571	T023	thoracic		Thoracic aorta	
+C1281571	T023	entire		Entire thoracic aorta ( body structure )	
+C1281573	T023	entire		Entire bladder	
+C1281573	T023	bladder		Bladder	
+C1281573	T023	entire		Entire bladder ( body structure )	
+C1281577	T023	entire		Entire rib	
+C1281577	T023	rib		Rib	
+C1281577	T023	entire		Entire rib ( body structure )	
+C1281583	T023	entire		Entire hand	
+C1281583	T023	hand		Hand	
+C1281583	T023	entire		Entire hand ( body structure )	
+C1281584	T023	entire		Entire finger	
+C1281584	T023	finger		Finger	
+C1281584	T023	entire		Entire finger ( body structure )	
+C1281587	T023	entire		Entire foot	
+C1281587	T023	foot		Foot	
+C1281587	T023	entire		Entire foot ( body structure )	
+C1281590	T023	entire		Entire head	
+C1281590	T023	head		Head	
+C1281590	T023	entire		Entire head ( body structure )	
+C1282752	T030	entire		Entire tendon insertion	
+C1282752	T030	tendon		Tendon insertion	
+C1282752	T030	entire		Entire tendon insertion ( body structure )	
+C1282845	T023	entire		Entire great blood vessel ( organ )	
+C1282845	T023	great		Great vessels	
+C1282845	T023	entire		Entire great blood vessel ( organ ) ( body structure )	
+C1283792	T029	entire		Entire shoulder region	
+C1283792	T029	shoulder		Shoulder	
+C1283792	T029	entire		Entire shoulder region ( body structure )	
+C1283831	T030	entire		Entire tarsal joint	
+C1283831	T030	tarsal		Tarsal joint	
+C1283831	T030	entire		Entire tarsal joint ( body structure )	
+C1283838	T029	entire		Entire knee region	
+C1283838	T029	knee		Knee	
+C1283838	T029	entire		Entire knee region ( body structure )	
+C1283839	T029	entire		Entire ankle region	
+C1283839	T029	ankle		Ankle	
+C1283839	T029	entire		Entire ankle region ( body structure )	
+C1283912	T023	entire		Entire digit	
+C1283912	T023	digit		Digit	
+C1283912	T023	entire		Entire digit ( body structure )	
+C1283926	T023	entire		Entire tracheobronchial tree	
+C1283926	T023	tracheobronchial		Tracheobronchial tree	
+C1283926	T023	entire		Entire tracheobronchial tree ( body structure )	
+C1284862	T029	entire		Entire chin	
+C1284862	T029	chin		Chin	
+C1284862	T029	mental		Mental region of face	
+C1284862	T029	entire		Entire chin ( body structure )	
+C1284862	T029	entire		Entire mental region of face	
+C1285009	T029	entire		Entire lower leg , from knee to ankle	
+C1285009	T029	leg		Leg	
+C1285009	T029	entire		Entire lower leg , from knee to ankle ( body structure )	
+C1285092	T023	gland		Gland	
+C1285092	T023	gland		Gland , NOS	
+C1285092	T023	gland		Gland ( body structure )	
+C1285092	T023	gland		Gland structure ( body structure )	
+C1285092	T023	gland		Gland structure	
+C1288313	T030	structure		Structure of metatarsal joint	
+C1288313	T030	metatarsal		Metatarsal joint	
+C1288313	T030	structure		Structure of metatarsal joint ( body structure )	
+C1288639	T029	entire		Entire right shoulder region	
+C1288639	T029	right		Right shoulder	
+C1288639	T029	entire		Entire right shoulder region ( body structure )	
+C1288948	T023	entire		Entire right hand	
+C1288948	T023	right		Right hand	
+C1288948	T023	entire		Entire right hand ( body structure )	
+C1288949	T023	entire		Entire left hand	
+C1288949	T023	left		Left hand	
+C1288949	T023	entire		Entire left hand ( body structure )	
+C1290905	T033	discrepancy		Discrepancy	
+C1290905	T033	discrepancy		Discrepancy ( finding )	
+C1293097	T061	division		Division	
+C1293097	T061	division		Division , NOS	
+C1293097	T061	section		Section , NOS	
+C1293097	T061	surgical		Surgical division	
+C1293097	T061	division		Division - action	
+C1293097	T061	division		Division - action	
+C1293097	T061	division		Division - action	
+C1293097	T061	division		Division - action ( qualifier value )	
+C1293097	T061	division		Division - action ( qualifier value )	
+C1293097	T061	division		Division ( procedure )	
+C1293130	T061	stabilization		Stabilization	
+C1293130	T061	stabilisation		Stabilisation	
+C1293130	T061	stabilization		Stabilization ( procedure )	
+C1305312	T023	entire		Entire lateral meniscus	
+C1305312	T023	lateral		Lateral meniscus	
+C1305312	T023	lm		LM - Lateral meniscus	
+C1305312	T023	entire		Entire lateral meniscus ( body structure )	
+C1305316	T023	entire		Entire medial meniscus	
+C1305316	T023	medial		Medial meniscus	
+C1305316	T023	mm		MM - Medial meniscus	
+C1305316	T023	entire		Entire medial meniscus ( body structure )	
+C1305627	T023	entire		Entire superior ramus of pubis	
+C1305627	T023	superior		Superior pubic ramus	
+C1305627	T023	entire		Entire superior ramus of pubis ( body structure )	
+C1305775	T023	entire		Entire portal vein	
+C1305775	T023	portal		Portal vein	
+C1305775	T023	pv		PV - Portal vein	
+C1305775	T023	entire		Entire portal vein ( body structure )	
+C1306459	T191	primary		Primary malignant neoplasm	
+C1306459	T191	neoplasm		Neoplasm , malignant ( primary )	
+C1306459	T191	malignant		Malignant neoplasm , primary	
+C1306459	T191	cancer		Cancer	
+C1306459	T191	malignancy		Malignancy	
+C1306459	T191	malignant		Malignant neoplasm	
+C1306459	T191	neoplasm		Neoplasm , malignant	
+C1306459	T191	tumor		Tumor , malignant	
+C1306459	T191	tumor		Tumor , malignant , NOS	
+C1306459	T191	tumour		Tumour , malignant	
+C1306459	T191	unclassified		Unclassified tumor , malignant	
+C1306459	T191	unclassified		Unclassified tumour , malignant	
+C1306459	T191	cancer		Cancer morphology	
+C1306459	T191	malignant		Malignant tumor morphology	
+C1306459	T191	malignant		Malignant tumour morphology	
+C1306459	T191	malignant		Malignant neoplasm , primary ( morphologic abnormality )	
+C1306459	T191	malignant		Malignant neoplastic disease ( primary )	
+C1306459	T191	disorder		Disorder : Primary malignant neoplasm ( disorder )	
+C1306459	T191	primary		Primary malignant neoplasm ( disorder )	
+C1306645	T060	plain		Plain radiography	
+C1306645	T060	roentgenography		Roentgenography	
+C1306645	T060	x-ray		X-ray	
+C1306645	T060	x-rays		X-rays	
+C1306645	T060	x-rays		X-rays	
+C1306645	T060	plain		Plain film	
+C1306645	T060	plain		Plain film	
+C1306645	T060	plain		Plain film	
+C1306645	T060	radiogram		Radiogram	
+C1306645	T060	roentgenogram		Roentgenogram	
+C1306645	T060	skiagram		Skiagram	
+C1306645	T060	radiograph		Radiograph	
+C1306645	T060	plain		Plain film diagnostic procedure	
+C1306645	T060	plain		Plain film diagnostic procedure ( procedure )	
+C1306645	T060	plain		Plain film ( procedure )	
+C1306645	T060	plain		Plain film ( procedure )	
+C1306645	T060	plain		Plain x-ray	
+C1306645	T060	plain		Plain radiography ( procedure )	
+C1456822	T047	claudication		Claudication	
+C1456822	T047	claudication		Claudication	
+C1456822	T047	claudication		Claudication	
+C1456822	T047	claudication		Claudication ( finding )	
+C1510438	T059	assay		Assay technique	
+C1510438	T059	assay		Assay	
+C1510438	T059	assay		Assay ( qualifier value )	
+C1510438	T059	assay		Assay technique ( qualifier value )	
+C1522460	T023	thoracic		Thoracic aorta structure	
+C1522460	T023	thoracic		Thoracic aorta	
+C1522460	T023	thoracic		Thoracic aorta , NOS	
+C1522460	T023	thoracic		Thoracic aorta structure ( body structure )	
+C1533591	T033	calcification		Calcification	
+C1533591	T033	calcification		Calcification	
+C1533591	T033	calcification		Calcification	
+C1533591	T033	calcification		Calcification , NOS	
+C1533591	T033	mineralization		Mineralization , NOS	
+C1533591	T033	calcium		Calcium deposition , NOS	
+C1533591	T033	calcium		Calcium deposition	
+C1533591	T033	calcified		Calcified structure	
+C1533591	T033	calcified		Calcified structure	
+C1533591	T033	calcification		Calcification ( morphologic abnormality )	
+C1533591	T033	calcified		Calcified structure ( morphologic abnormality )	
+C1611184	T046	calcification		Calcification of coronary artery	
+C1611184	T046	calcification		Calcification of coronary artery ( disorder )	
+C1627358	T061	refractive		Refractive surgery enhancement	
+C1627358	T061	enhancement		Enhancement	
+C1627358	T061	refractive		Refractive surgery enhancement ( procedure )	
+C1827621	T023	entire		Entire patellar tendon	
+C1827621	T023	infrapatellar		Infrapatellar tendon	
+C1827621	T023	patellar		Patellar tendon	
+C1827621	T023	entire		Entire patellar tendon ( body structure )	
+C1956089	T047	osteophyte		Osteophyte	
+C1956089	T047	osteophyte		Osteophyte	
+C1956089	T047	osteophyte		Osteophyte	
+C1956089	T047	osteophyte		Osteophyte	
+C1956089	T047	bone		Bone spur NOS	
+C1956089	T047	bone		Bone spur NOS	
+C1956089	T047	bony		Bony spur	
+C1956089	T047	osteophyma		Osteophyma	
+C1956089	T047	osteophyte		Osteophyte of unspecified site	
+C1956089	T047	osteophyte		Osteophyte ( morphologic abnormality )	
+C1956089	T047	bone		Bone spur NOS ( disorder )	
+C1956089	T047	osteophyte		Osteophyte ( disorder )	
+C1956089	T047	osteophyte		Osteophyte ( finding )	
+C1963703	T029	knee		Knee region structure	
+C1963703	T029	knee		Knee	
+C1963703	T029	knee		Knee , NOS	
+C1963703	T029	knee		Knee region structure ( body structure )	
+C2317432	T031	effusion		Effusion	
+C2317432	T031	effusion		Effusion ( substance )	
+C2609129	T047	autoimmune		Autoimmune pancreatitis	
+C2609129	T047	autoimmune		Autoimmune pancreatitis ( disorder )	
+C2728259	T121	program		Program	
+C2946261	T121	level		Level	
+C2948600	T121	aim		Aim	
+C2948600	T121	aim		Aim "	
+C0011649	T191	dermoid		Dermoid cyst - RETIRED -	
+C0011649	T191	"		" Dermoid " tumor ( morphologic abnormality )	

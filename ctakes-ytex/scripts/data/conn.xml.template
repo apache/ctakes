@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<conn xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://jdl-prj.googlecode.com/files/xdl.xsd">
+	<jdbc>
+		<driver>@db.driver@</driver>
+		<url>@db.url@</url>
+		<username>@db.username@</username>
+		<password>@db.password@</password>
+	</jdbc>
+</conn>

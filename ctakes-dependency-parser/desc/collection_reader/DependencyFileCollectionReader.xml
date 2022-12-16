@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<collectionReaderDescription xmlns="http://uima.apache.org/resourceSpecifier">
+  <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
+  <implementationName>org.apache.ctakes.dependency.parser.DependencyFileCollectionReader</implementationName>
+  <processingResourceMetaData>
+    <name>DependencyCollectionReader</name>
+    <description>For training dependency parsers.
+
+Reads dependency nodes (lines) from a file and creates DependencyNode annotations.  Optionally assigns all CONLL attributes.</description>
+    <version>1.0</version>
+    <vendor/>
+    <configurationParameters>
+      <configurationParameter>
+        <name>DependencyFile</name>
+        <type>String</type>
+        <multiValued>false</multiValued>
+        <mandatory>true</mandatory>
+      </configurationParameter>
+      <configurationParameter>
+        <name>InputFormat</name>
+        <description>The default is CONLL-x tab-delimited format, with underscores for empty fields.  Options (case insensitive):
+ MIN - 4 fields (ID, FORM, HEAD, DEPREL)
+ MPOS - 5 fields (add POSTAG)
+ MLEM - 5 fields (with LEMMA instead of POSTAG)
+ DEP - 6 fields (with LEMMA and POSTAG)
+ CONLL - 10 fields (add CPOSTAG, FEATS, PHEAD, PDEPREL)</description>
+        <type>String</type>
+        <multiValued>false</multiValued>
+        <mandatory>false</mandatory>
+      </configurationParameter>
+      <configurationParameter>
+        <name>TrainingMode</name>
+        <description>If TrainingMode is true, a ConllDependencyNode will be posted to the CAS corresponding to the input.  If not, this is assumed to be a test mode, with only BaseTokens being posted to the CAS.</description>
+        <type>Boolean</type>
+        <multiValued>false</multiValued>
+        <mandatory>false</mandatory>
+      </configurationParameter>
+    </configurationParameters>
+    <configurationParameterSettings>
+      <nameValuePair>
+        <name>DependencyFile</name>
+        <value>
+          <string>data/clinques-train.dep</string>
+        </value>
+      </nameValuePair>
+      <nameValuePair>
+        <name>InputFormat</name>
+        <value>
+          <string>dep</string>
+        </value>
+      </nameValuePair>
+      <nameValuePair>
+        <name>TrainingMode</name>
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </nameValuePair>
+    </configurationParameterSettings>
+    <typeSystemDescription>
+      <imports>
+        <import location="../TypeSystem.xml"/>
+      </imports>
+    </typeSystemDescription>
+    <typePriorities/>
+    <fsIndexCollection/>
+    <capabilities>
+      <capability>
+        <inputs/>
+        <outputs/>
+        <languagesSupported/>
+      </capability>
+    </capabilities>
+    <operationalProperties>
+      <modifiesCas>true</modifiesCas>
+      <multipleDeploymentAllowed>false</multipleDeploymentAllowed>
+      <outputsNewCASes>true</outputsNewCASes>
+    </operationalProperties>
+  </processingResourceMetaData>
+  <resourceManagerConfiguration/>
+</collectionReaderDescription>

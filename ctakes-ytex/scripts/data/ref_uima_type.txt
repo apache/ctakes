@@ -1,0 +1,38 @@
+1	org.apache.ctakes.typesystem.type.textsem.DateAnnotation	
+2	org.apache.ctakes.typesystem.type.textsem.FractionAnnotation	
+3	org.apache.ctakes.typesystem.type.textsem.MeasurementAnnotation	
+4	org.apache.ctakes.typesystem.type.textsem.PersonTitleAnnotation	
+5	org.apache.ctakes.typesystem.type.textsem.RangeAnnotation	
+6	org.apache.ctakes.typesystem.type.textsem.RomanNumeralAnnotation	
+7	org.apache.ctakes.typesystem.type.textsem.TimeAnnotation	
+8	org.apache.ctakes.typesystem.type.textsem.EntityMention	anno_named_entity
+9	org.apache.ctakes.typesystem.type.textspan.Sentence	anno_sentence
+12	org.apache.ctakes.typesystem.type.textspan.Segment	anno_segment	
+20	org.apache.ctakes.typesystem.type.syntax.ContractionToken	
+21	org.apache.ctakes.typesystem.type.syntax.NewlineToken	
+22	org.apache.ctakes.typesystem.type.syntax.NumToken	anno_token
+23	org.apache.ctakes.typesystem.type.syntax.PunctuationToken	
+24	org.apache.ctakes.typesystem.type.syntax.SymbolToken	
+25	org.apache.ctakes.typesystem.type.syntax.WordToken	anno_token
+27	org.apache.ctakes.typesystem.type.syntax.NP	
+28	org.apache.ctakes.typesystem.type.syntax.VP	
+29	org.apache.ctakes.typesystem.type.refsem.OntologyConcept	anno_ontology_concept
+30	org.apache.ctakes.ytex.uima.types.OntologyConcept	anno_ontology_concept
+31	org.apache.ctakes.typesystem.type.refsem.UmlsConcept	anno_ontology_concept
+32	org.apache.ctakes.typesystem.type.textsem.MedicationEventMention	anno_med_event
+33	org.apache.ctakes.coreference.type.Markable	anno_markable	
+34	org.apache.ctakes.coreference.type.DemMarkable	anno_markable	
+35	org.apache.ctakes.coreference.type.NEMarkable	anno_markable	
+36	org.apache.ctakes.coreference.type.PronounMarkable	anno_markable	
+40	org.apache.ctakes.typesystem.type.syntax.TreebankNode	anno_treebank_node
+41	org.apache.ctakes.typesystem.type.syntax.TopTreebankNode	anno_treebank_node	
+42	org.apache.ctakes.typesystem.type.syntax.TerminalTreebankNode	anno_treebank_node	
+50	org.apache.ctakes.ytex.uima.types.Date	
+100	gov.nih.nlm.nls.metamap.uima.ts.Document	
+101	org.metamap.uima.ts.Phrase	
+102	org.metamap.uima.ts.Candidate	anno_mm_candidate
+103	gov.nih.nlm.nls.metamap.uima.ts.AcronymAbbrev	anno_mm_acronym
+104	org.metamap.uima.ts.Utterance	anno_mm_utterance
+105	org.metamap.uima.ts.CuiConcept	anno_mm_cuiconcept
+106	org.metamap.uima.ts.Span	
+107	org.metamap.uima.ts.Negation	anno_mm_negation

@@ -1,0 +1,8 @@
+// Thread Safe Clinical Pipeline with sectionization, paragraph and list detection with
+// events, times, event-event and event-time relations plus event-document creation time relations
+
+// Default Clinical Pipeline with sectionization, paragraph and list detection
+load TsSectionedFastPipeline
+
+// event, time, event-event, event-time, dtr
+load TsTemporalSubPipe

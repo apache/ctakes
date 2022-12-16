@@ -1,0 +1,14 @@
+// Commands and parameters to create a default entity attributes processing sub-pipeline.  This is not a full pipeline.
+
+// Add the Dependency parser for use by assertion
+addDescription ClearNLPDependencyParserAE
+// Add the Semantic Role Labeler parser for use by assertion
+addLogged ClearNLPSemanticRoleLabelerAE
+
+// Add the assertion packages for class lookups
+package org.apache.ctakes.assertion.medfacts
+package org.apache.ctakes.assertion.attributes
+add ConceptConverterAnalysisEngine
+add AssertionAnalysisEngineFit
+add GenericAttributeAnalysisEngine
+add SubjectAttributeAnalysisEngine

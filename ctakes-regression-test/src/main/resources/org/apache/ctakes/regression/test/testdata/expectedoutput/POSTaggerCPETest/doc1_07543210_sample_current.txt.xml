@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CAS version="2">
+    <uima.cas.Sofa _indexed="0" _id="3" sofaNum="1" sofaID="_InitialView" mimeType="text" sofaString="Miss. CM is a energetic young woman who has had bouts with sleeplessness for the past year or so.  She said that her insomnia began with the death of her father who was killed in a train accident last year.&#13;&#10;Patient is 25 and claims she has smoked for the last five years or so. She used to smoke about half a pack a day, but for the last month she has been down to about 3-5 cigarettes a day. She is having trouble stopping altogether."/>
+    <org.apache.ctakes.typesystem.type.structured.DocumentID _indexed="1" _id="1" documentID="doc1_07543210_sample_current.txt"/>
+    <uima.tcas.DocumentAnnotation _indexed="1" _id="10" _ref_sofa="3" begin="0" end="436" language="x-unspecified"/>
+    <org.apache.ctakes.typesystem.type.textspan.Segment _indexed="1" _id="15" _ref_sofa="3" begin="0" end="436" id="SIMPLE_SEGMENT"/>
+    <org.apache.ctakes.typesystem.type.syntax.NewlineToken _indexed="1" _id="20" _ref_sofa="3" begin="206" end="208" tokenNumber="0"/>
+    <org.apache.ctakes.typesystem.type.textspan.Sentence _indexed="1" _id="28" _ref_sofa="3" begin="0" end="206" sentenceNumber="0"/>
+    <org.apache.ctakes.typesystem.type.textspan.Sentence _indexed="1" _id="34" _ref_sofa="3" begin="208" end="393" sentenceNumber="1"/>
+    <org.apache.ctakes.typesystem.type.textspan.Sentence _indexed="1" _id="40" _ref_sofa="3" begin="394" end="436" sentenceNumber="2"/>
+</CAS>

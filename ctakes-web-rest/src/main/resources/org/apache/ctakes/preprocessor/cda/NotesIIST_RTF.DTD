@@ -1,0 +1,1413 @@
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<!-- edited with XML Spy v4.3 U (http://www.xmlspy.com) by Mayo Foundation (Mayo Foundation) -->
+<!--
+*==================================================================================*
+*   File name: NotesIIST_RTF.dtd                                                   *
+*          04/26/2002                     Removed template element from            *
+*                                         clinical_document_header.                *
+*==================================================================================*
+-->
+<!ENTITY % null-att.code.set '(NI|NA|UNK|NASK|ASKU|NAV|OTH|PINF|NINF)'>
+<!ENTITY % null-att 'NULL 	%null-att.code.set;      #IMPLIED'>
+<!ENTITY % boolean.code.set '(true|false)'>
+<!ENTITY % BL-cont.model '(NOTE?, CONFID?)'>
+<!ENTITY % prob-atts 'PROB			CDATA		#IMPLIED
+	PROB-T		NMTOKEN	#FIXED	"REAL"
+	PROB-HL7_NAME	CDATA		#FIXED	"probability"'>
+<!ENTITY % ivl-atts '	VT			CDATA		#IMPLIED
+	VT-T			NMTOKEN	#FIXED	"IVL_TS"
+	VT-HL7_NAME		CDATA		#FIXED	"validTime"'>
+<!ENTITY % BL-attrib.list '
+ 	T			NMTOKEN	#FIXED	"BL"
+	%null-att;
+	V			%boolean.code.set; #IMPLIED
+	V-T			NMTOKEN	#FIXED	"BL"
+	V-HL7_NAME		CDATA		#FIXED	"value"
+	%ivl-atts;
+	%prob-atts;'>
+<!ENTITY % ED-cont.model '(#PCDATA | REF | THUMBNAIL | NOTE | CONFID)*'>
+<!ENTITY % ED-attrib.list '
+	T			(ST|ED) "ED"
+	%null-att;
+	ENC			(B64|TXT) "TXT"
+	MT			CDATA		"text/plain"
+	MT-T			NMTOKEN	#FIXED	"CS"
+	MT-DOMAIN		NMTOKEN	#FIXED	"2.16.840.1.113883.6.10"
+	MT-HL7_NAME		CDATA		#FIXED	"type"
+	xml:lang		NMTOKEN	#IMPLIED
+	xml:lang-T		NMTOKEN	#FIXED	"CS"
+	xml:lang-HL7_NAME CDATA		#FIXED	"language"
+	COMPN			(DF|GZ|ZL|Z) #IMPLIED
+	COMPN-T		NMTOKEN	#FIXED	"CS"
+	COMPN-HL7_NAME	CDATA		#FIXED	"compression"
+	COMPN-DOMAIN	NMTOKEN	#FIXED	"2.16.840.1.113883.5.1009"
+	IC			CDATA		#IMPLIED
+	IC-T			NMTOKEN	#FIXED	"BIN"
+	IC-HL7_NAME		CDATA		#FIXED	"integrityCheck"
+	%ivl-atts;
+	%prob-atts;'>
+<!ENTITY % ST-cont.model '(#PCDATA | NOTE | CONFID)*'>
+<!ENTITY % ST-attrib.list '
+	T			CDATA		#FIXED	"ST"
+	%null-att;
+	MT			CDATA		#FIXED	"text/plain"
+	MT-T			NMTOKEN	#FIXED	"CS"
+	MT-HL7_NAME		CDATA		#FIXED	"type"
+	xml:lang		NMTOKEN	#IMPLIED
+	xml:lang-T		NMTOKEN	#FIXED	"CS"
+	xml:lang-HL7_NAME CDATA		#FIXED	"language"
+	%ivl-atts;
+	%prob-atts;'>
+<!ENTITY % CD-cont.model '(TRANSLTN*, ORIGTXT?, MODIFIER*, NOTE?, CONFID?)'>
+<!ENTITY % CD-attrib.list '
+	T			(CD|CE|CV|CS)	"CD"
+	%null-att;
+	V			CDATA		#IMPLIED
+	V-T			NMTOKEN	#FIXED	"ST"
+	V-HL7_NAME		CDATA		#FIXED	"code"
+	DN			CDATA		#IMPLIED
+	DN-T			NMTOKEN	#FIXED	"ST"
+	DN-HL7_NAME		CDATA		#FIXED	"displayName"
+	S			CDATA		#IMPLIED
+	S-T			NMTOKEN	#FIXED	"OID"
+	S-HL7_NAME		CDATA		#FIXED	"codeSystem"
+	SN			CDATA		#IMPLIED
+	SN-T			NMTOKEN	#FIXED	"ST"
+	SN-HL7_NAME		CDATA		#FIXED	"codeSystemName"
+	SV			CDATA		#IMPLIED
+	SV-T			NMTOKEN	#FIXED	"ST"
+	SV-HL7_NAME		CDATA		#FIXED	"codeSystemVersion"
+	ORIGTXT		IDREF		#IMPLIED
+	ORIGTXT-T		NMTOKEN	#FIXED	"ST"
+	ORIGTXT-HL7_NAME	CDATA		#FIXED	"originalText"
+	%ivl-atts;
+	%prob-atts;'>
+<!ENTITY % CR-cont.model '(NAME?, %CD-cont.model;)'>
+<!ENTITY % CR-attrib.list '
+	T			NMTOKEN	#FIXED	"CR"
+	%null-att;
+	V			CDATA		#IMPLIED
+	V-T			NMTOKEN	#FIXED	"ST"
+	V-HL7_NAME		CDATA		#FIXED	"code"
+	DN			CDATA		#IMPLIED
+	DN-T			NMTOKEN	#FIXED	"ST"
+	DN-HL7_NAME		CDATA		#FIXED	"displayName"
+	ORIGTXT		IDREF		#IMPLIED
+	ORIGTXT-T		NMTOKEN	#FIXED	"ST"
+	ORIGTXT-HL7_NAME	CDATA		#FIXED	"originalText"
+	INV			%boolean.code.set;	"false"
+	INV-T			NMTOKEN	#FIXED	"BL"
+	INV-HL7_NAME	CDATA		#FIXED	"inverted"
+	%ivl-atts;
+	%prob-atts;'>
+<!ENTITY % CS-cont.model '(NOTE?, CONFID?)'>
+<!ENTITY % CS-attrib.list '
+	T			NMTOKEN	#FIXED	"CS"
+	%null-att;
+	V			CDATA		#IMPLIED
+	V-T			NMTOKEN	#FIXED	"ST"
+	V-HL7_NAME		CDATA		#FIXED	"code"
+	DN			CDATA		#IMPLIED
+	DN-T			NMTOKEN	#FIXED	"ST"
+	DN-HL7_NAME		CDATA		#FIXED	"displayName"
+	%ivl-atts;
+	%prob-atts;'>
+<!ENTITY % CV-cont.model '(ORIGTXT?, NOTE?, CONFID?)'>
+<!ENTITY % CV-attrib.list '
+	T			(CS|CV)			"CV"
+	%null-att;
+	V			CDATA		#IMPLIED
+	V-T			NMTOKEN	#FIXED	"ST"
+	V-HL7_NAME		CDATA		#FIXED	"code"
+	DN			CDATA		#IMPLIED
+	DN-T			NMTOKEN	#FIXED	"ST"
+	DN-HL7_NAME		CDATA		#FIXED	"displayName"
+	S			CDATA		#IMPLIED
+	S-T			NMTOKEN	#FIXED	"OID"
+	S-HL7_NAME		CDATA		#FIXED	"codeSystem"
+	SN			CDATA		#IMPLIED
+	SN-T			NMTOKEN	#FIXED	"ST"
+	SN-HL7_NAME		CDATA		#FIXED	"codeSystemName"
+	SV			CDATA		#IMPLIED
+	SV-T			NMTOKEN	#FIXED	"OID"
+	SV-HL7_NAME		CDATA		#FIXED	"codeSystemVersion"
+	ORIGTXT		IDREF		#IMPLIED
+	ORIGTXT-T		NMTOKEN	#FIXED	"ST"
+	ORIGTXT-HL7_NAME	CDATA		#FIXED	"originalText"
+	%ivl-atts;
+	%prob-atts;'>
+<!ENTITY % CE-cont.model '(ORIGTXT?, TRANSLTN*, NOTE?, CONFID?)'>
+<!ENTITY % CE-attrib.list '
+	T			(CS|CV|CE)			"CE"
+	%null-att;
+	V			CDATA		#IMPLIED
+	V-T			NMTOKEN	#FIXED	"ST"
+	V-HL7_NAME		CDATA		#FIXED	"code"
+	DN			CDATA		#IMPLIED
+	DN-T			NMTOKEN	#FIXED	"ST"
+	DN-HL7_NAME		CDATA		#FIXED	"displayName"
+	S			CDATA		#IMPLIED
+	S-T			NMTOKEN	#FIXED	"OID"
+	S-HL7_NAME		CDATA		#FIXED	"codeSystem"
+	SN			CDATA		#IMPLIED
+	SN-T			NMTOKEN	#FIXED	"ST"
+	SN-HL7_NAME		CDATA		#FIXED	"codeSystemName"
+	SV			CDATA		#IMPLIED
+	SV-T			NMTOKEN	#FIXED	"OID"
+	SV-HL7_NAME		CDATA		#FIXED	"codeSystemVersion"
+	ORIGTXT		IDREF		#IMPLIED
+	ORIGTXT-T		NMTOKEN	#FIXED	"ST"
+	ORIGTXT-HL7_NAME	CDATA		#FIXED	"originalText"
+	%ivl-atts;
+	%prob-atts;'>
+<!ENTITY % II-cont.model '(TYPE?, NOTE?, CONFID?)'>
+<!ENTITY % II-attrib.list '
+	T			NMTOKEN	#FIXED	"II"
+	%null-att;
+	EX			CDATA		#IMPLIED
+	EX-T			NMTOKEN	#FIXED	"ST"
+	EX-HL7_NAME		CDATA		#FIXED	"extension"
+	RT			CDATA		#IMPLIED
+	RT-T			NMTOKEN	#FIXED	"OID"
+	RT-HL7_NAME		CDATA		#FIXED	"root"
+	AAN			CDATA		#IMPLIED
+	AAN-T			NMTOKEN	#FIXED	"ST"
+	AAN-HL7_NAME	CDATA		#FIXED	"assigningAuthorityName"
+	%ivl-atts;
+	%prob-atts;'>
+<!ENTITY % TEL-cont.model '(NOTE?, CONFID?)'>
+<!ENTITY % TEL-attrib.list '
+	T			NMTOKEN	#FIXED	"TEL"
+	%null-att;
+	V			CDATA		#IMPLIED
+	V-T			NMTOKEN	#FIXED	"URL"
+	V-HL7_NAME		CDATA		#FIXED	"value"
+	USE			NMTOKENS	#IMPLIED
+	USE-T			NMTOKEN	#FIXED	"SET_CS"
+	USE-DOMAIN		CDATA		#FIXED	"2.16.840.1.113883.5.1011"
+	USE-HL7_NAME	CDATA		#FIXED	"use"
+	VT			CDATA		#IMPLIED
+	VT-T			NMTOKEN	#FIXED	"GTS"
+	VT-HL7_NAME		CDATA		#FIXED	"validTime"
+	%prob-atts;'>
+<!ENTITY % ADXP-cont.model '(NOTE?, CONFID?)'>
+<!ENTITY % ADXP-attrib.list '
+	T			NMTOKEN	#FIXED	"ADXP"
+	%null-att;
+	V			CDATA		#IMPLIED
+	V-T			NMTOKEN	#FIXED	"ST"
+	V-HL7_NAME		CDATA		#FIXED	"value"
+	%ivl-atts;
+	%prob-atts;'>
+<!ENTITY % AD-cont.model '((LIT|DEL|CNT|STA|CTY|ZIP|STR|HNR|DIR|ADL|POB)*, NOTE?, CONFID?)'>
+<!ENTITY % AD-attrib.list '
+	T			NMTOKEN	#FIXED	"AD"
+	%null-att;
+	V			CDATA		#IMPLIED
+	V-T			NMTOKEN	#FIXED	"ST"
+	V-HL7_NAME		CDATA		#FIXED	"formated"
+	USE			NMTOKENS	#IMPLIED
+	USE-T			NMTOKEN	#FIXED	"SET_CS"
+	USE-DOMAIN		CDATA		#FIXED	"2.16.840.1.113883.5.1012"
+	USE-HL7_NAME	CDATA		#FIXED	"use"
+	VT			CDATA		#IMPLIED
+	VT-T			NMTOKEN	#FIXED	"GTS"
+	VT-HL7_NAME		CDATA		#FIXED	"validTime"
+	%prob-atts;'>
+<!ENTITY % PNXP-cont.model '(NOTE?, CONFID?)'>
+<!ENTITY % PNXP-attrib.list '
+	T			NMTOKEN	#FIXED	"PNXP"
+	%null-att;
+	V			CDATA		#IMPLIED
+	V-T			NMTOKEN	#FIXED	"ST"
+	V-HL7_NAME		CDATA		#FIXED	"value"
+	QUAL			NMTOKENS	#IMPLIED
+	QUAL-T		NMTOKEN	#FIXED	"SET_CS"
+	QUAL-DOMAIN		CDATA		#FIXED	"2.16.840.1.113883.5.1014"
+	QUAL-HL7_NAME	CDATA		#FIXED	"qualifier"
+	%ivl-atts;
+	%prob-atts;'>
+<!ENTITY % PN-cont.model '((GIV|MID|FAM|PFX|SFX|DEL)*, NOTE?, CONFID?)'>
+<!ENTITY % PN-attrib.list '
+	T			NMTOKEN	#FIXED	"PN"
+	%null-att;
+	V			CDATA		#IMPLIED
+	V-T			NMTOKEN	#FIXED	"ST"
+	V-HL7_NAME		CDATA		#FIXED	"formated"
+	%ivl-atts;
+	%prob-atts;'>
+<!ENTITY % ON-cont.model '(NOTE?, CONFID?)'>
+<!ENTITY % ON-attrib.list '
+	T			NMTOKEN	#FIXED	"ON"
+	%null-att;
+	V			CDATA		#IMPLIED
+	V-T			NMTOKEN	#FIXED	"ST"
+	V-HL7_NAME		CDATA		#FIXED	"value"
+	TYPE			(L|A|ST)	#IMPLIED
+	TYPE-T		NMTOKEN	#FIXED	"CS"
+	TYPE-DOMAIN		CDATA		#FIXED	"2.16.840.1.113883.5.1015"
+	TYPE-HL7_NAME	CDATA		#FIXED	"type"
+	%ivl-atts;
+	%prob-atts;'>
+<!ENTITY % QTY-cont.model '(NOTE?, CONFID?)'>
+<!ENTITY % QTY-default.value '#IMPLIED'>
+<!ENTITY % QTY-attrib.list '
+	T			(INT|REAL|PQ|MO|TS)	"INT"
+	%null-att;
+	V			CDATA		%QTY-default.value;
+	V-T			NMTOKEN	#FIXED	"ST"
+	V-HL7_NAME		CDATA		#FIXED	"value"
+	U			CDATA		#IMPLIED
+	U-T			NMTOKEN	#FIXED	"CS"
+	U-HL7_NAME		CDATA		#FIXED	"unit"
+	%ivl-atts;
+	%prob-atts;'>
+<!ENTITY % INT-cont.model '(NOTE?, CONFID?)'>
+<!ENTITY % INT-attrib.list '
+	T			NMTOKEN	#FIXED	"INT"
+	%null-att;
+	V			CDATA		#IMPLIED
+	V-T			NMTOKEN	#FIXED	"ST"
+	V-HL7_NAME		CDATA		#FIXED	"value"
+	%ivl-atts;
+	%prob-atts;'>
+<!ENTITY % REAL-cont.model '(NOTE?, CONFID?)'>
+<!ENTITY % REAL-attrib.list '
+	T			NMTOKEN	#FIXED	"REAL"
+	%null-att;
+	V			CDATA		#IMPLIED
+	V-T			NMTOKEN	#FIXED	"ST"
+	V-HL7_NAME		CDATA		#FIXED	"value"
+	%ivl-atts;
+	%prob-atts;'>
+<!ENTITY % RTO-cont.model '((NUM, DENOM)?, NOTE?, CONFID?)'>
+<!ENTITY % RTO-attrib.list '
+	T			NMTOKEN	#FIXED	"RTO"
+	%null-att;
+	%ivl-atts;
+	%prob-atts;'>
+<!ENTITY % PQ-cont.model '(NOTE?, CONFID?)'>
+<!ENTITY % PQ-attrib.list '
+	T			NMTOKEN	#FIXED	"PQ"
+	%null-att;
+	V			CDATA		#IMPLIED
+	V-T			NMTOKEN	#FIXED	"REAL"
+	V-HL7_NAME		CDATA		#FIXED	"value"
+	U			CDATA		#IMPLIED
+	U-T			NMTOKEN	#FIXED	"CS"
+	U-HL7_NAME		CDATA		#FIXED	"unit"
+	%ivl-atts;
+	%prob-atts;'>
+<!ENTITY % MO-cont.model '(NOTE?, CONFID?)'>
+<!ENTITY % MO-attrib.list '
+	T			NMTOKEN	#FIXED	"MO"
+	%null-att;
+	V			CDATA		#IMPLIED
+	V-T			NMTOKEN	#FIXED	"REAL"
+	V-HL7_NAME		CDATA		#FIXED	"value"
+	U			CDATA		#IMPLIED
+	U-T			NMTOKEN	#FIXED	"CS"
+	U-DOMAIN		CDATA		#FIXED	"2.16.840.1.113883.6.9"
+	U-HL7_NAME		CDATA		#FIXED	"currency"
+	%ivl-atts;
+	%prob-atts;'>
+<!ENTITY % TS-cont.model '(NOTE?, CONFID?)'>
+<!ENTITY % TS-attrib.list '
+	T			NMTOKEN	#FIXED	"TS"
+	%null-att;
+	V			CDATA		#IMPLIED
+	V-T			NMTOKEN	#FIXED	"ST"
+	V-HL7_NAME		CDATA		#FIXED	"value"
+	%ivl-atts;
+	%prob-atts;'>
+<!ENTITY % IVL_PQ-cont.model '(NOTE?, CONFID?)'>
+<!ENTITY % IVL_PQ-attrib.list '
+	T			(IVL_PQ|PQ) "IVL_PQ"
+	%null-att;
+	V			CDATA		#IMPLIED
+	V-T			NMTOKEN	#FIXED	"REAL"
+	V-HL7_NAME		CDATA		#FIXED	"value"
+	U			CDATA		#IMPLIED
+	U-T			NMTOKEN	#FIXED	"CS"
+	U-HL7_NAME		CDATA		#FIXED	"unit"
+	%ivl-atts;
+	%prob-atts;'>
+<!ENTITY % IVL_TS-cont.model '(NOTE?, CONFID?)'>
+<!ENTITY % IVL_TS-attrib.list '
+	T			NMTOKEN	#FIXED	"IVL_TS"
+	%null-att;
+	V			CDATA		#IMPLIED
+	V-T			NMTOKEN	#FIXED	"TS"
+	V-HL7_NAME		CDATA		#FIXED	"value"
+	%ivl-atts;
+	%prob-atts;'>
+<!ENTITY % GTS-cont.model '(NOTE?, CONFID?)'>
+<!ENTITY % GTS-attrib.list '
+	T			NMTOKEN	#FIXED	"GTS"
+	%null-att;
+	V			CDATA		#IMPLIED
+	V-T			NMTOKEN	#FIXED	"GTS"
+	V-HL7_NAME		CDATA		#FIXED	"value"
+	%ivl-atts;
+	%prob-atts;'>
+<!ENTITY % PPD_QTY-cont.model '(NOTE?, CONFID?)'>
+<!ENTITY % PPD_QTY-attrib.list '
+	T			(PPD_INT|PPD_REAL|PPD_PQ|PPD_MO|PPD_TS) "PPD_INT"
+	%null-att;
+	V			CDATA		#IMPLIED
+	V-T			NMTOKEN	#FIXED	"REAL"
+	V-HL7_NAME		CDATA		#FIXED	"value"
+	U			CDATA		#IMPLIED
+	U-T			NMTOKEN	#FIXED	"ST"
+	U-HL7_NAME		CDATA		#FIXED	"unit"
+	SD			CDATA		#IMPLIED
+	SD-T			NMTOKEN	#FIXED	"REAL"
+	SD-HL7_NAME		CDATA		#FIXED	"standardDeviation"
+	SDU			CDATA		#IMPLIED
+	SDU-T			NMTOKEN	#FIXED	"CS"
+	SDU-HL7_NAME	CDATA		#FIXED	"standardDeviation unit"
+	TY			(U|N|LN|G|E|X2|T|F|B) #IMPLIED
+	TY-T			NMTOKEN	#FIXED	"CS"
+	TY-DOMAIN		CDATA		#FIXED	"2.16.840.1.113883.5.1019"
+	TY-HL7_NAME		CDATA		#FIXED	"type"
+	%ivl-atts;
+	%prob-atts;'>
+<!ENTITY % PPD_REAL-cont.model '(NOTE?, CONFID?)'>
+<!ENTITY % PPD_REAL-attrib.list '
+	T			NMTOKEN	#FIXED	"PPD_REAL"
+	%null-att;
+	V			CDATA		#IMPLIED
+	V-T			NMTOKEN	#FIXED	"REAL"
+	V-HL7_NAME		CDATA		#FIXED	"value"
+	SD			CDATA		#IMPLIED
+	SD-T			NMTOKEN	#FIXED	"REAL"
+	SD-HL7_NAME		CDATA		#FIXED	"standardDeviation"
+	TY			(U|N|LN|G|E|X2|T|F|B) #IMPLIED
+	TY-T			NMTOKEN	#FIXED	"CS"
+	TY-DOMAIN		CDATA		#FIXED	"2.16.840.1.113883.5.1019"
+	TY-HL7_NAME		CDATA		#FIXED	"type"
+	%ivl-atts;
+	%prob-atts;'>
+<!ENTITY % PPD_PQ-cont.model '(NOTE?, CONFID?)'>
+<!ENTITY % PPD_PQ-attrib.list '
+	T			NMTOKEN	#FIXED	"PPD_PQ"
+	%null-att;
+	V			CDATA		#IMPLIED
+	V-T			NMTOKEN	#FIXED	"REAL"
+	V-HL7_NAME		CDATA		#FIXED	"value"
+	U			CDATA		#IMPLIED
+	U-T			NMTOKEN	#FIXED	"ST"
+	U-HL7_NAME		CDATA		#FIXED	"unit"
+	SD			CDATA		#IMPLIED
+	SD-T			NMTOKEN	#FIXED	"REAL"
+	SD-HL7_NAME		CDATA		#FIXED	"standardDeviation"
+	SDU			CDATA		#IMPLIED
+	SDU-T			NMTOKEN	#FIXED	"CS"
+	SDU-HL7_NAME	CDATA		#FIXED	"standardDeviation unit"
+	TY			(U|N|LN|G|E|X2|T|F|B) #IMPLIED
+	TY-T			NMTOKEN	#FIXED	"CS"
+	TY-DOMAIN		CDATA		#FIXED	"2.16.840.1.113883.5.1019"
+	TY-HL7_NAME		CDATA		#FIXED	"type"
+	%ivl-atts;
+	%prob-atts;'>
+<!ENTITY % PPD_TS-cont.model '(NOTE?, CONFID?)'>
+<!ENTITY % PPD_TS-attrib.list '
+	T			NMTOKEN	#FIXED	"PPD_TS"
+	%null-att;
+	V			CDATA		#IMPLIED
+	V-T			NMTOKEN	#FIXED	"REAL"
+	V-HL7_NAME		CDATA		#FIXED	"value"
+	SD			CDATA		#IMPLIED
+	SD-T			NMTOKEN	#FIXED	"REAL"
+	SD-HL7_NAME		CDATA		#FIXED	"standardDeviation"
+	SDU			CDATA		#IMPLIED
+	SDU-T			NMTOKEN	#FIXED	"CS"
+	SDU-HL7_NAME	CDATA		#FIXED	"standardDeviation unit"
+	TY			(U|N|LN|G|E|X2|T|F|B) #IMPLIED
+	TY-T			NMTOKEN	#FIXED	"CS"
+	TY-DOMAIN		CDATA		#FIXED	"2.16.840.1.113883.5.1019"
+	TY-HL7_NAME		CDATA		#FIXED	"type"
+	%ivl-atts;
+	%prob-atts;'>
+<!ELEMENT NOTE %CE-cont.model;>
+<!ATTLIST NOTE
+	%CE-attrib.list; 
+	HL7_NAME CDATA #FIXED "note"
+>
+<!ELEMENT CONFID %CV-cont.model;>
+<!ATTLIST CONFID
+	%CV-attrib.list; 
+	HL7_NAME CDATA #FIXED "confidence"
+>
+<!ELEMENT REF %TEL-cont.model;>
+<!ATTLIST REF
+	%TEL-attrib.list; 
+	HL7_NAME CDATA #FIXED "reference"
+>
+<!ELEMENT THUMBNAIL %ED-cont.model;>
+<!ATTLIST THUMBNAIL
+	%ED-attrib.list; 
+	HL7_NAME CDATA #FIXED "thumbnail"
+>
+<!ELEMENT ORIGTXT %ED-cont.model;>
+<!ATTLIST ORIGTXT
+	%ED-attrib.list; 
+	HL7_NAME CDATA #FIXED "originalText"
+>
+<!ELEMENT MODIFIER %CR-cont.model;>
+<!ATTLIST MODIFIER
+	%CR-attrib.list; 
+	HL7_NAME CDATA #FIXED "modifier"
+>
+<!ELEMENT TRANSLTN %CD-cont.model;>
+<!ATTLIST TRANSLTN
+	%CD-attrib.list; 
+	HL7_NAME CDATA #FIXED "translation"
+>
+<!ELEMENT NAME %CV-cont.model;>
+<!ATTLIST NAME
+	%CV-attrib.list; 
+	HL7_NAME CDATA #FIXED "name"
+>
+<!ELEMENT TYPE %CV-cont.model;>
+<!ATTLIST TYPE
+	%CV-attrib.list; 
+	HL7_NAME CDATA #FIXED "type"
+>
+<!ELEMENT LIT %ADXP-cont.model;>
+<!ATTLIST LIT
+	%ADXP-attrib.list; 
+	HL7_NAME CDATA #FIXED "literal"
+>
+<!ELEMENT DEL %ADXP-cont.model;>
+<!ATTLIST DEL
+	%ADXP-attrib.list; 
+	HL7_NAME CDATA #FIXED "delimiter"
+>
+<!ELEMENT CNT %ADXP-cont.model;>
+<!ATTLIST CNT
+	%ADXP-attrib.list; 
+	HL7_NAME CDATA #FIXED "country"
+>
+<!ELEMENT CTY %ADXP-cont.model;>
+<!ATTLIST CTY
+	%ADXP-attrib.list; 
+	HL7_NAME CDATA #FIXED "city"
+>
+<!ELEMENT STA %ADXP-cont.model;>
+<!ATTLIST STA
+	%ADXP-attrib.list; 
+	HL7_NAME CDATA #FIXED "state"
+>
+<!ELEMENT ZIP %ADXP-cont.model;>
+<!ATTLIST ZIP
+	%ADXP-attrib.list; 
+	HL7_NAME CDATA #FIXED "postal code"
+>
+<!ELEMENT STR %ADXP-cont.model;>
+<!ATTLIST STR
+	%ADXP-attrib.list; 
+	HL7_NAME CDATA #FIXED "street name"
+>
+<!ELEMENT HNR %ADXP-cont.model;>
+<!ATTLIST HNR
+	%ADXP-attrib.list; 
+	HL7_NAME CDATA #FIXED "house number"
+>
+<!ELEMENT DIR %ADXP-cont.model;>
+<!ATTLIST DIR
+	%ADXP-attrib.list; 
+	HL7_NAME CDATA #FIXED "direction"
+>
+<!ELEMENT ADL %ADXP-cont.model;>
+<!ATTLIST ADL
+	%ADXP-attrib.list; 
+	HL7_NAME CDATA #FIXED "address locator"
+>
+<!ELEMENT POB %ADXP-cont.model;>
+<!ATTLIST POB
+	%ADXP-attrib.list; 
+	HL7_NAME CDATA #FIXED "post office box"
+>
+<!ELEMENT FAM %PNXP-cont.model;>
+<!ATTLIST FAM
+	%PNXP-attrib.list; 
+	HL7_NAME CDATA #FIXED "family"
+>
+<!ELEMENT GIV %PNXP-cont.model;>
+<!ATTLIST GIV
+	%PNXP-attrib.list; 
+	HL7_NAME CDATA #FIXED "given"
+>
+<!ELEMENT MID %PNXP-cont.model;>
+<!ATTLIST MID
+	%PNXP-attrib.list; 
+	HL7_NAME CDATA #FIXED "middle"
+>
+<!ELEMENT PFX %PNXP-cont.model;>
+<!ATTLIST PFX
+	%PNXP-attrib.list; 
+	HL7_NAME CDATA #FIXED "prefix"
+>
+<!ELEMENT SFX %PNXP-cont.model;>
+<!ATTLIST SFX
+	%PNXP-attrib.list; 
+	HL7_NAME CDATA #FIXED "suffix"
+>
+<!ELEMENT PN.DEL %PNXP-cont.model;>
+<!ATTLIST PN.DEL
+	%PNXP-attrib.list; 
+	HL7_NAME CDATA #FIXED "delimiter"
+>
+<!ELEMENT NUM %QTY-cont.model;>
+<!ENTITY % QTY-default.value '1'>
+<!ATTLIST NUM
+	%QTY-attrib.list; 
+	HL7_NAME CDATA #FIXED "numerator"
+>
+<!ELEMENT DENOM %QTY-cont.model;>
+<!ATTLIST DENOM
+	%QTY-attrib.list; 
+	HL7_NAME CDATA #FIXED "denominator"
+>
+<!ENTITY % QTY-default.value '#IMPLIED'>
+<!ENTITY % common_atts "
+  ID ID #IMPLIED
+  NotInsertable  CDATA  #IMPLIED
+  ReadOnly  CDATA  #IMPLIED">
+<!ELEMENT cursor EMPTY>
+<!ELEMENT clinical_document_header (id, set_id?, version_nbr?, document_type_cd, service_tmr?, origination_dttm, copy_dttm?, confidentiality_cd*, document_relationship*, fulfills_order?, patient_encounter?, authenticator*, legal_authenticator?, intended_recipient*, originator*, originating_organization?, transcriptionist?, provider+, service_actor*, patient, originating_device*, service_target*, status_cd?, dismissal_cd?, cn1_admin_data?, document_title?, rpc*, local_header*)>
+<!ATTLIST clinical_document_header
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "document_service_as_clinical_document_header"
+	T CDATA #FIXED "service"
+	RIM-VERSION CDATA #FIXED "0.98"
+>
+<!ELEMENT id %II-cont.model;>
+<!ATTLIST id
+	%II-attrib.list; 
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "id"
+>
+<!ELEMENT set_id %II-cont.model;>
+<!ATTLIST set_id
+	%II-attrib.list; 
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "set_id"
+>
+<!ELEMENT version_nbr %INT-cont.model;>
+<!ATTLIST version_nbr
+	%INT-attrib.list; 
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "version_nbr"
+>
+<!ELEMENT document_type_cd %CE-cont.model;>
+<!ATTLIST document_type_cd
+	%CE-attrib.list; 
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "service_cd"
+>
+<!ELEMENT service_tmr %GTS-cont.model;>
+<!ATTLIST service_tmr
+	%GTS-attrib.list; 
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "service_tmr"
+>
+<!ELEMENT origination_dttm %TS-cont.model;>
+<!ATTLIST origination_dttm
+	%TS-attrib.list; 
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "origination_dttm"
+>
+<!ELEMENT copy_dttm %TS-cont.model;>
+<!ATTLIST copy_dttm
+	%TS-attrib.list; 
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "copy_dttm"
+>
+<!ELEMENT confidentiality_cd %CE-cont.model;>
+<!ATTLIST confidentiality_cd
+	%CE-attrib.list; 
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "confidentiality_cd"
+>
+<!ELEMENT document_relationship (document_relationship.type_cd, related_document, local_header*)>
+<!ATTLIST document_relationship
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "is_source_for_service_relationship"
+	T CDATA #FIXED "service_relationship"
+>
+<!ELEMENT document_relationship.type_cd %CS-cont.model;>
+<!ATTLIST document_relationship.type_cd
+	T NMTOKEN #FIXED "CS"
+	V (APND | RPLC) #REQUIRED
+	V-T NMTOKEN #FIXED "ST"
+	V-HL7_NAME CDATA #FIXED "code"
+	DN CDATA #IMPLIED
+	DN-T NMTOKEN #FIXED "ST"
+	DN-HL7_NAME CDATA #FIXED "displayName"
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "type_cd"
+>
+<!ELEMENT related_document (id, set_id?, version_nbr?, local_header*)>
+<!ATTLIST related_document
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "has_target_service"
+	T CDATA #FIXED "service"
+>
+<!ELEMENT fulfills_order (fulfills_order.type_cd, order+, local_header*)>
+<!ATTLIST fulfills_order
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "is_source_for_service_relationship"
+	T CDATA #FIXED "service_relationship"
+>
+<!ELEMENT fulfills_order.type_cd %CS-cont.model;>
+<!ATTLIST fulfills_order.type_cd
+	T NMTOKEN #FIXED "CS"
+	V CDATA #FIXED "FLFS"
+	V-T NMTOKEN #FIXED "ST"
+	V-HL7_NAME CDATA #FIXED "code"
+	DN CDATA #IMPLIED
+	DN-T NMTOKEN #FIXED "ST"
+	DN-HL7_NAME CDATA #FIXED "displayName"
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "type_cd"
+>
+<!ELEMENT order (id, local_header*)>
+<!ATTLIST order
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "has_target_service"
+	T CDATA #FIXED "service"
+>
+<!ELEMENT patient_encounter (id?, practice_setting_cd?, encounter_tmr, service_location?, facility?, local_header*)>
+<!ATTLIST patient_encounter
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "is_assigned_to_patient_encounter"
+	T CDATA #FIXED "patient_encounter"
+>
+<!ELEMENT facility (id*, organization*, addr*, local_header*)>
+<!ATTLIST facility
+	%common_atts; 
+>
+<!ELEMENT practice_setting_cd %CE-cont.model;>
+<!ATTLIST practice_setting_cd
+	%CE-attrib.list; 
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "practice_setting_cd"
+>
+<!ELEMENT encounter_tmr %IVL_TS-cont.model;>
+<!ATTLIST encounter_tmr
+	%IVL_TS-attrib.list; 
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "encounter_tmr"
+>
+<!ELEMENT service_location (id?, addr?, local_header*)>
+<!ATTLIST service_location
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "has_master_patient_service_location"
+	T CDATA #FIXED "master_patient_service_location"
+>
+<!ELEMENT addr %AD-cont.model;>
+<!ATTLIST addr
+	%AD-attrib.list; 
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "addr"
+>
+<!ELEMENT person (id+, person_name*, addr*, telecom*, local_header*)>
+<!ATTLIST person
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "participation_of_person"
+	T CDATA #FIXED "person"
+>
+<!ELEMENT person_name (effective_tmr?, nm, person_name.type_cd?, local_header*)>
+<!ATTLIST person_name
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "has_person_name"
+	T CDATA #FIXED "person_name"
+>
+<!ELEMENT effective_tmr %IVL_TS-cont.model;>
+<!ATTLIST effective_tmr
+	%IVL_TS-attrib.list; 
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "effective_tmr"
+>
+<!ELEMENT nm %PN-cont.model;>
+<!ATTLIST nm
+	%PN-attrib.list; 
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "nm"
+>
+<!ELEMENT person_name.type_cd %CE-cont.model;>
+<!ATTLIST person_name.type_cd
+	%CE-attrib.list; 
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "type_cd"
+>
+<!ELEMENT telecom %TEL-cont.model;>
+<!ATTLIST telecom
+	%TEL-attrib.list; 
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "phon"
+>
+<!ELEMENT authenticator (authenticator.type_cd, participation_tmr, signature_cd, person, local_header*)>
+<!ATTLIST authenticator
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "has_service_actor"
+	T CDATA #FIXED "service_actor"
+>
+<!ELEMENT authenticator.type_cd %CS-cont.model;>
+<!ATTLIST authenticator.type_cd
+	T NMTOKEN #FIXED "CS"
+	V CDATA #FIXED "VRF"
+	V-T NMTOKEN #FIXED "ST"
+	V-HL7_NAME CDATA #FIXED "code"
+	DN CDATA #IMPLIED
+	DN-T NMTOKEN #FIXED "ST"
+	DN-HL7_NAME CDATA #FIXED "displayName"
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "type_cd"
+>
+<!ELEMENT participation_tmr %IVL_TS-cont.model;>
+<!ATTLIST participation_tmr
+	%IVL_TS-attrib.list; 
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "tmr"
+>
+<!ELEMENT signature_cd %CS-cont.model;>
+<!ATTLIST signature_cd
+	T NMTOKEN #FIXED "CS"
+	V (S | X) "S"
+	V-T NMTOKEN #FIXED "ST"
+	V-HL7_NAME CDATA #FIXED "code"
+	DN CDATA #IMPLIED
+	DN-T NMTOKEN #FIXED "ST"
+	DN-HL7_NAME CDATA #FIXED "displayName"
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "signature_cd"
+>
+<!ELEMENT legal_authenticator (legal_authenticator.type_cd, participation_tmr, signature_cd, person, local_header*)>
+<!ATTLIST legal_authenticator
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "has_service_actor"
+	T CDATA #FIXED "service_actor"
+>
+<!ELEMENT legal_authenticator.type_cd %CS-cont.model;>
+<!ATTLIST legal_authenticator.type_cd
+	T NMTOKEN #FIXED "CS"
+	V CDATA #FIXED "SPV"
+	V-T NMTOKEN #FIXED "ST"
+	V-HL7_NAME CDATA #FIXED "code"
+	DN CDATA #IMPLIED
+	DN-T NMTOKEN #FIXED "ST"
+	DN-HL7_NAME CDATA #FIXED "displayName"
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "type_cd"
+>
+<!ELEMENT intended_recipient (intended_recipient.type_cd, person, local_header*)>
+<!ATTLIST intended_recipient
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "has_service_actor"
+	T CDATA #FIXED "service_actor"
+>
+<!ELEMENT intended_recipient.type_cd %CS-cont.model;>
+<!ATTLIST intended_recipient.type_cd
+	T NMTOKEN #FIXED "CS"
+	V CDATA #FIXED "TRC"
+	V-T NMTOKEN #FIXED "ST"
+	V-HL7_NAME CDATA #FIXED "code"
+	DN CDATA #IMPLIED
+	DN-T NMTOKEN #FIXED "ST"
+	DN-HL7_NAME CDATA #FIXED "displayName"
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "type_cd"
+>
+<!ELEMENT originator (originator.type_cd, participation_tmr, person, local_header*)>
+<!ATTLIST originator
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "has_service_actor"
+	T CDATA #FIXED "service_actor"
+>
+<!ELEMENT originator.type_cd %CS-cont.model;>
+<!ATTLIST originator.type_cd
+	T NMTOKEN #FIXED "CS"
+	V CDATA #FIXED "AUT"
+	V-T NMTOKEN #FIXED "ST"
+	V-HL7_NAME CDATA #FIXED "code"
+	DN CDATA #IMPLIED
+	DN-T NMTOKEN #FIXED "ST"
+	DN-HL7_NAME CDATA #FIXED "displayName"
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "type_cd"
+>
+<!ELEMENT originating_organization (originating_organization.type_cd, organization, local_header*)>
+<!ATTLIST originating_organization
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "has_service_actor"
+	T CDATA #FIXED "service_actor"
+>
+<!ELEMENT originating_organization.type_cd %CS-cont.model;>
+<!ATTLIST originating_organization.type_cd
+	T NMTOKEN #FIXED "CS"
+	V CDATA #FIXED "CST"
+	V-T NMTOKEN #FIXED "ST"
+	V-HL7_NAME CDATA #FIXED "code"
+	DN CDATA #IMPLIED
+	DN-T NMTOKEN #FIXED "ST"
+	DN-HL7_NAME CDATA #FIXED "displayName"
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "type_cd"
+>
+<!ELEMENT organization (id*, organization.nm*, addr*, local_header*)>
+<!ATTLIST organization
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "participation_of_organization"
+	T CDATA #FIXED "organization"
+>
+<!ELEMENT organization.nm %ON-cont.model;>
+<!ATTLIST organization.nm
+	%ON-attrib.list; 
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "nm"
+>
+<!ELEMENT transcriptionist (transcriptionist.type_cd, participation_tmr?, person, local_header*)>
+<!ATTLIST transcriptionist
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "has_service_actor"
+	T CDATA #FIXED "service_actor"
+>
+<!ELEMENT transcriptionist.type_cd %CS-cont.model;>
+<!ATTLIST transcriptionist.type_cd
+	T NMTOKEN #FIXED "CS"
+	V CDATA #FIXED "ENT"
+	V-T NMTOKEN #FIXED "ST"
+	V-HL7_NAME CDATA #FIXED "code"
+	DN CDATA #IMPLIED
+	DN-T NMTOKEN #FIXED "ST"
+	DN-HL7_NAME CDATA #FIXED "displayName"
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "type_cd"
+>
+<!ELEMENT provider (provider.type_cd, function_cd?, participation_tmr?, person, local_header*)>
+<!ATTLIST provider
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "has_service_actor"
+	T CDATA #FIXED "service_actor"
+>
+<!ELEMENT provider.type_cd %CS-cont.model;>
+<!ATTLIST provider.type_cd
+	T NMTOKEN #FIXED "CS"
+	V (ASS | CON | PRF) "PRF"
+	V-T NMTOKEN #FIXED "ST"
+	V-HL7_NAME CDATA #FIXED "code"
+	DN CDATA #IMPLIED
+	DN-T NMTOKEN #FIXED "ST"
+	DN-HL7_NAME CDATA #FIXED "displayName"
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "type_cd"
+>
+<!ELEMENT function_cd %CE-cont.model;>
+<!ATTLIST function_cd
+	%CE-attrib.list; 
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "function_cd"
+>
+<!ELEMENT service_actor (service_actor.type_cd, participation_tmr?, signature_cd?, (person | organization), local_header*)>
+<!ATTLIST service_actor
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "has_service_actor"
+	T CDATA #FIXED "service_actor"
+>
+<!ELEMENT service_actor.type_cd %CE-cont.model;>
+<!ATTLIST service_actor.type_cd
+	%CE-attrib.list; 
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "type_cd"
+>
+<!ELEMENT patient (patient.type_cd, participation_tmr?, person, is_known_by*, birth_dttm?, administrative_gender_cd?, local_header*)>
+<!ATTLIST patient
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "has_service_target"
+	T CDATA #FIXED "service_target"
+>
+<!ELEMENT patient.type_cd %CS-cont.model;>
+<!ATTLIST patient.type_cd
+	T NMTOKEN #FIXED "CS"
+	V (PAT | PATSBJ) "PATSBJ"
+	V-T NMTOKEN #FIXED "ST"
+	V-HL7_NAME CDATA #FIXED "code"
+	DN CDATA #IMPLIED
+	DN-T NMTOKEN #FIXED "ST"
+	DN-HL7_NAME CDATA #FIXED "displayName"
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "type_cd"
+>
+<!ELEMENT is_known_by (id+, is_known_to, local_header*)>
+<!ATTLIST is_known_by
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "is_known_by"
+	T CDATA #FIXED "person_provider_association"
+>
+<!ELEMENT is_known_to (id+, local_header*)>
+<!ATTLIST is_known_to
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "is_known_to"
+	T CDATA #FIXED "healthcare_service_provider"
+>
+<!ELEMENT birth_dttm %TS-cont.model;>
+<!ATTLIST birth_dttm
+	%TS-attrib.list; 
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "birth_dttm"
+>
+<!ELEMENT administrative_gender_cd %CE-cont.model;>
+<!ATTLIST administrative_gender_cd
+	%CE-attrib.list; 
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "administrative_gender_cd"
+>
+<!ELEMENT originating_device (originating_device.type_cd, participation_tmr?, device, local_header*)>
+<!ATTLIST originating_device
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "has_service_target"
+	T CDATA #FIXED "service_target"
+>
+<!ELEMENT originating_device.type_cd %CS-cont.model;>
+<!ATTLIST originating_device.type_cd
+	T NMTOKEN #FIXED "CS"
+	V CDATA #FIXED "ODV"
+	V-T NMTOKEN #FIXED "ST"
+	V-HL7_NAME CDATA #FIXED "code"
+	DN CDATA #IMPLIED
+	DN-T NMTOKEN #FIXED "ST"
+	DN-HL7_NAME CDATA #FIXED "displayName"
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "type_cd"
+>
+<!ELEMENT device (id+, responsibility*, local_header*)>
+<!ATTLIST device
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "participation_of_material"
+	T CDATA #FIXED "device"
+>
+<!ELEMENT responsibility (responsibility.type_cd?, responsibility_tmr?, person, local_header*)>
+<!ATTLIST responsibility
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "is_the_responsibility"
+	T CDATA #FIXED "responsibility"
+>
+<!ELEMENT responsibility.type_cd %CE-cont.model;>
+<!ATTLIST responsibility.type_cd
+	%CE-attrib.list; 
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "type_cd"
+>
+<!ELEMENT responsibility_tmr %IVL_TS-cont.model;>
+<!ATTLIST responsibility_tmr
+	%IVL_TS-attrib.list; 
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "tmr"
+>
+<!ELEMENT service_target (service_target.type_cd, participation_tmr?, person, local_header*)>
+<!ATTLIST service_target
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "has_service_target"
+	T CDATA #FIXED "service_target"
+>
+<!ELEMENT service_target.type_cd %CE-cont.model;>
+<!ATTLIST service_target.type_cd
+	%CE-attrib.list; 
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "type_cd"
+>
+<!ELEMENT status_cd %CV-cont.model;>
+<!ATTLIST status_cd
+	%CV-attrib.list; 
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "status_cd"
+	V-DOMAIN CDATA #FIXED "CWE: HL7 Table 0271"
+>
+<!ELEMENT rpc (parm)*>
+<!ATTLIST rpc
+	rpc.name CDATA #REQUIRED
+>
+<!ELEMENT parm EMPTY>
+<!ATTLIST parm
+	parm.name CDATA #REQUIRED
+	parm.value CDATA #REQUIRED
+>
+<!ELEMENT local_header (#PCDATA | local_header | local_attr)*>
+<!ATTLIST local_header
+	ignore (all | markup) "markup"
+	descriptor CDATA #IMPLIED
+	render CDATA #IMPLIED
+	%common_atts; 
+	xml:lang NMTOKEN #IMPLIED
+>
+<!ELEMENT local_attr EMPTY>
+<!ATTLIST local_attr
+	name NMTOKEN #REQUIRED
+	value CDATA #REQUIRED
+	%common_atts; 
+	xml:lang NMTOKEN #IMPLIED
+>
+<!ELEMENT dismissal_cd %CV-cont.model;>
+<!ATTLIST dismissal_cd
+	%CV-attrib.list; 
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "dismissal_cd"
+>
+<!ELEMENT cn1_admin_data (cn1_status_cd, cn1_service_cd, cn1_event_cd, cn1_document_id, cn1_revision_nbr, cn1_site_cd)?>
+<!ATTLIST cn1_admin_data
+	%common_atts; 
+>
+<!ELEMENT cn1_status_cd %CV-cont.model;>
+<!ATTLIST cn1_status_cd
+	%CV-attrib.list; 
+	%common_atts; 
+>
+<!ELEMENT cn1_service_cd %CV-cont.model;>
+<!ATTLIST cn1_service_cd
+	%CV-attrib.list; 
+	%common_atts; 
+>
+<!ELEMENT cn1_event_cd %CV-cont.model;>
+<!ATTLIST cn1_event_cd
+	%CV-attrib.list; 
+	%common_atts; 
+>
+<!ELEMENT cn1_document_id %II-cont.model;>
+<!ATTLIST cn1_document_id
+	%II-attrib.list; 
+	%common_atts; 
+>
+<!ELEMENT cn1_revision_nbr %INT-cont.model;>
+<!ATTLIST cn1_revision_nbr
+	%INT-attrib.list; 
+	%common_atts; 
+>
+<!ELEMENT cn1_site_cd %CV-cont.model;>
+<!ATTLIST cn1_site_cd
+	%CV-attrib.list; 
+	%common_atts; 
+>
+<!ELEMENT document_title %CE-cont.model;>
+<!ATTLIST document_title
+	%CE-attrib.list; 
+>
+<!ENTITY % body_atts "
+  %common_atts;
+  originator 	IDREFS 	#IMPLIED
+  confidentiality IDREFS 	#IMPLIED
+  xml:lang 		NMTOKEN 	#IMPLIED
+  relevance ( pos | neg | mis | na ) 'na'">
+<!ENTITY % detail-atts "KBANodeID		CDATA		#IMPLIED
+  KBADisplayNodeID	CDATA		#IMPLIED">
+<!ENTITY % variable-atts "FileName		CDATA		#IMPLIED
+  replacementText	CDATA		#IMPLIED">
+<!ENTITY % binary-atts "ElementID	CDATA		#IMPLIED
+  ReferenceID	CDATA		#IMPLIED
+  FileName		CDATA		#IMPLIED
+  AlteredOffline	CDATA		#IMPLIED
+  LastUpdate	CDATA		#IMPLIED">
+<!ENTITY % eform-atts "KBANodeID	CDATA		#IMPLIED
+  KBADisplayNodeID	CDATA	#IMPLIED
+  eformTitle	CDATA		#IMPLIED
+  documentName	CDATA		#IMPLIED">
+<!ENTITY % alignment-atts "alignment	CDATA	#IMPLIED">
+<!ENTITY % notesII " b | i | u | br | t | em | bib | bug | abn | add">
+<!ENTITY % xmlDP " hide | detail | media | eform | cursor">
+<!ENTITY % entries "#PCDATA | content | id | activity_tmr | value | link |
+coded_entry | observation_media | %notesII; | %xmlDP; | local_markup">
+<!ENTITY % text "#PCDATA">
+<!ENTITY % structures "paragraph | list | table">
+<!ENTITY % column-atts "width	CDATA	#IMPLIED">
+<!ENTITY % name-atts "name	CDATA	#IMPLIED">
+<!ENTITY % commontable-atts "index	CDATA	#IMPLIED">
+<!ELEMENT levelone (clinical_document_header, body)>
+<!ATTLIST levelone
+	%body_atts; 
+>
+<!ELEMENT body ((section+, cursor*) | non_xml)>
+<!ATTLIST body
+	%body_atts; 
+>
+<!ELEMENT section (caption?, (%structures; | section | cursor)*, coded_entry*)>
+<!ATTLIST section
+	%body_atts; 
+>
+<!ELEMENT non_xml %ED-cont.model;>
+<!ATTLIST non_xml
+	%common_atts; 
+	originator IDREFS #IMPLIED
+	confidentiality IDREFS #IMPLIED
+	%ED-attrib.list; 
+>
+<!ELEMENT content (%entries;)*>
+<!ATTLIST content
+	%body_atts; 
+>
+<!ELEMENT link (link_html)>
+<!ATTLIST link
+	%body_atts; 
+>
+<!ELEMENT link_html (#PCDATA)>
+<!ATTLIST link_html
+	name CDATA #IMPLIED
+	href CDATA #IMPLIED
+	rel CDATA #IMPLIED
+	rev CDATA #IMPLIED
+	title CDATA #IMPLIED
+	%body_atts; 
+>
+<!ELEMENT coded_entry (coded_entry.id?, coded_entry.value, local_markup*)>
+<!ATTLIST coded_entry
+	%body_atts; 
+>
+<!ELEMENT coded_entry.id %II-cont.model;>
+<!ATTLIST coded_entry.id
+	%common_atts; 
+	%II-attrib.list; 
+>
+<!ELEMENT coded_entry.value %CD-cont.model;>
+<!ATTLIST coded_entry.value
+	%CD-attrib.list; 
+	%common_atts; 
+>
+<!ELEMENT media (%text; | observation_media)*>
+<!ATTLIST media
+	%binary-atts; 
+	%common_atts; 
+>
+<!ELEMENT observation_media (observation_media.id?, observation_media.value, local_markup*)>
+<!ATTLIST observation_media
+	%body_atts; 
+	%binary-atts; 
+	HL7-NAME CDATA #FIXED "observation"
+	T CDATA #FIXED "observation"
+>
+<!ELEMENT observation_media.id %II-cont.model;>
+<!ATTLIST observation_media.id
+	%common_atts; 
+	%II-attrib.list; 
+	HL7-NAME CDATA #FIXED "id"
+>
+<!ELEMENT observation_media.value %ED-cont.model;>
+<!ATTLIST observation_media.value
+	%common_atts; 
+	%ED-attrib.list; 
+	HL7-NAME CDATA #FIXED "value"
+>
+<!ELEMENT em (%entries;)*>
+<!ATTLIST em
+	%common_atts; 
+>
+<!ELEMENT bib (%entries;)*>
+<!ATTLIST bib
+	%common_atts; 
+>
+<!ELEMENT bug (%entries;)*>
+<!ATTLIST bug
+	%common_atts; 
+>
+<!ELEMENT abn (%entries;)*>
+<!ATTLIST abn
+	severity (HI | LOW | PANIC) #IMPLIED
+	%common_atts; 
+>
+<!ELEMENT add (%entries;)*>
+<!ATTLIST add
+	%common_atts; 
+>
+<!ELEMENT b (%entries;)*>
+<!ATTLIST b
+	%common_atts; 
+>
+<!ELEMENT i (%entries;)*>
+<!ATTLIST i
+	%common_atts; 
+>
+<!ELEMENT u (%entries;)*>
+<!ATTLIST u
+	%common_atts; 
+>
+<!ELEMENT br EMPTY>
+<!ATTLIST br
+	%common_atts; 
+>
+<!ELEMENT t EMPTY>
+<!ELEMENT hide (%entries;)*>
+<!ATTLIST hide
+	%common_atts; 
+>
+<!ELEMENT detail (%text; | content | id | activity_tmr | value | link | coded_entry | observation_media | b | i | u | br | em | bib | bug | abn | add | hide | local_markup | cursor | variable)*>
+<!ATTLIST detail
+	%detail-atts; 
+	%common_atts; 
+>
+<!ELEMENT variable (%text; | content | id | activity_tmr | value | link | coded_entry | observation_media | b | i | u | br | em | bib | bug | abn | add | hide | media | local_markup | cursor)*>
+<!ATTLIST variable
+	%variable-atts; 
+	%common_atts; 
+>
+<!ELEMENT eform (%text; | detail | cursor)*>
+<!ATTLIST eform
+	%eform-atts; 
+	%common_atts; 
+>
+<!ELEMENT local_markup (%entries; | local_attr)*>
+<!ATTLIST local_markup
+	ignore (all | markup) "markup"
+	descriptor CDATA #IMPLIED
+	render CDATA #IMPLIED
+	%body_atts; 
+>
+<!ELEMENT paragraph (caption?, content*)>
+<!ATTLIST paragraph
+	%alignment-atts; 
+	%body_atts; 
+>
+<!ELEMENT list (caption?, item+)>
+<!ATTLIST list
+	%body_atts; 
+	list_type (ordered | unordered | single | multiple) "unordered"
+	type CDATA "1"
+>
+<!ELEMENT item (caption?, (content | %structures;)*)>
+<!ATTLIST item
+	%body_atts; 
+	selected (1 | 0) "0"
+>
+<!ENTITY % Character "CDATA">
+<!ENTITY % Length "CDATA">
+<!ENTITY % MultiLength "CDATA">
+<!ENTITY % Number "CDATA">
+<!ENTITY % Pixels "CDATA">
+<!ENTITY % Text "CDATA">
+<!ENTITY % TFrame "(void|above|below|hsides|lhs|rhs|vsides|box|border)">
+<!ENTITY % TRules "(none | groups | rows | cols | all)">
+<!ENTITY % cellhalign "align      (left|center|right|justify|char) #IMPLIED
+   char       %Character;    #IMPLIED
+   charoff    %Length;       #IMPLIED">
+<!ENTITY % cellvalign "valign     (top|middle|bottom|baseline) #IMPLIED">
+<!ELEMENT table (caption?, (col* | colgroup*), thead?, tfoot?, (tbody+ | tr+))>
+<!ELEMENT caption (#PCDATA | link | caption_cd | cursor)*>
+<!ELEMENT caption_cd %CE-cont.model;>
+<!ELEMENT thead (tr)+>
+<!ELEMENT tfoot (tr)+>
+<!ELEMENT tbody (tr)+>
+<!ELEMENT colgroup (col)*>
+<!ELEMENT col EMPTY>
+<!ELEMENT tr (th | td)+>
+<!ELEMENT th (#PCDATA | link | caption_cd | activity_tmr | cursor | br)*>
+<!ELEMENT td (%entries; | paragraph | list)*>
+<!ATTLIST table
+	%body_atts; 
+	summary %Text; #IMPLIED
+	width %Length; #IMPLIED
+	border %Pixels; #IMPLIED
+	frame %TFrame; #IMPLIED
+	rules %TRules; #IMPLIED
+	cellspacing %Length; #IMPLIED
+	cellpadding %Length; #IMPLIED
+	%name-atts; 
+>
+<!ATTLIST caption
+	%body_atts; 
+>
+<!ATTLIST caption_cd
+	%body_atts; 
+	%CE-attrib.list; 
+>
+<!ATTLIST colgroup
+	%body_atts; 
+	span %Number; "1"
+	width %MultiLength; #IMPLIED
+	%cellhalign; 
+	%cellvalign; 
+>
+<!ATTLIST col
+	%body_atts; 
+	span %Number; "1"
+	width %MultiLength; #IMPLIED
+	%cellhalign; 
+	%cellvalign; 
+>
+<!ATTLIST thead
+	%body_atts; 
+	%cellhalign; 
+	%cellvalign; 
+>
+<!ATTLIST tfoot
+	%body_atts; 
+	%cellhalign; 
+	%cellvalign; 
+>
+<!ATTLIST tbody
+	%body_atts; 
+	%cellhalign; 
+	%cellvalign; 
+>
+<!ATTLIST tr
+	%body_atts; 
+	%cellhalign; 
+	%cellvalign; 
+	%commontable-atts; 
+>
+<!ENTITY % Scope "(row|col|rowgroup|colgroup)">
+<!ATTLIST th
+	%body_atts; 
+	abbr %Text; #IMPLIED
+	axis CDATA #IMPLIED
+	headers IDREFS #IMPLIED
+	scope %Scope; #IMPLIED
+	rowspan %Number; "1"
+	colspan %Number; "1"
+	%cellhalign; 
+	%cellvalign; 
+	%column-atts; 
+	%commontable-atts; 
+>
+<!ATTLIST td
+	%body_atts; 
+	abbr %Text; #IMPLIED
+	axis CDATA #IMPLIED
+	headers IDREFS #IMPLIED
+	scope %Scope; #IMPLIED
+	rowspan %Number; "1"
+	colspan %Number; "1"
+	%cellhalign; 
+	%cellvalign; 
+	%alignment-atts; 
+	%column-atts; 
+	%commontable-atts; 
+>
+<!ELEMENT activity_tmr %GTS-cont.model;>
+<!ATTLIST activity_tmr
+	%GTS-attrib.list; 
+	%common_atts; 
+	HL7-NAME CDATA #FIXED "activity_tmr"
+>
+<!ELEMENT value %QTY-cont.model;>
+<!ATTLIST value
+	%QTY-attrib.list; 
+	HL7_NAME CDATA #FIXED "value"
+>

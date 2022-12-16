@@ -1,0 +1,27 @@
+
+A part-of-speech tagging model and tag dictionary are included with this project.
+
+The model derives from a combination of GENIA, Penn Treebank (Wall Street Journal) and anonymized
+clinical data per Safe Harbor HIPAA guidelines. Prior to model building, the clinical data was 
+deidentified for patient names to preserve patient confidentiality. Any person name in the model 
+will originate from non-patient data sources.
+
+
+To build a model of your own, you need to
+
+1) obtain training data - see data/pos/training/README
+2) build a model using the training data. 
+
+After you have obtained training data, you can build a model by running the following:
+
+java opennlp.tools.postag.POSTaggerME <training-data> <model-name> <iterations> <cutoff>
+where <training-data> is an OpenNLP training data file as described in data/pos/training/README
+      <model-name> The file name of the resulting model.  The name should end with either '.txt'
+                   (for a plain text model) or '.bin.gz' (for a compressed binary model).  
+      <iterations> The iterations argument determines how many training iterations will be 
+                   performed.  The default is 100.  
+      <cutoff>     The cutoff argument determines the minimum number of times a feature has to be
+                   seen to be considered for inclusion in the model.  The default cutoff is 5.  
+
+The arguments <iterations> and <cutoff> are, taken together, optional - i.e. you should provide 
+both or provide neither.  

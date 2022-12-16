@@ -1,0 +1,8 @@
+// No automatic abbreviation extraction for tim, but some synonyms
+( possession )
+( rush against )
+( release )
+( better )
+( obedience )
+( alcohol or other drugs )
+( beliefs )

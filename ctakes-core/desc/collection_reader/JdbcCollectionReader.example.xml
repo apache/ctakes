@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<collectionReaderDescription xmlns="http://uima.apache.org/resourceSpecifier">
+  <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
+  <implementationName>org.apache.ctakes.core.cr.JdbcCollectionReader</implementationName>
+  <processingResourceMetaData>
+    <name>JdbcCollectionReader</name>
+    <description>Collection Reader that pulls documents to be processed from a database.</description>
+    <version>1.0</version>
+    <vendor>Mayo</vendor>
+    <configurationParameters>
+      <configurationParameter>
+        <name>SqlStatement</name>
+        <description>SQL statement used to retrieve documents from DB.</description>
+        <type>String</type>
+        <multiValued>false</multiValued>
+        <mandatory>true</mandatory>
+      </configurationParameter>
+      <configurationParameter>
+        <name>DocTextColName</name>
+        <description>Name of column that contains the document.</description>
+        <type>String</type>
+        <multiValued>false</multiValued>
+        <mandatory>true</mandatory>
+      </configurationParameter>
+      <configurationParameter>
+        <name>DbConnResrcName</name>
+        <description>Name of external resource for database connection.</description>
+        <type>String</type>
+        <multiValued>false</multiValued>
+        <mandatory>true</mandatory>
+      </configurationParameter>
+      <configurationParameter>
+        <name>DocIdColNames</name>
+        <description>Name of column names used to form an ID for each document.</description>
+        <type>String</type>
+        <multiValued>true</multiValued>
+        <mandatory>false</mandatory>
+      </configurationParameter>
+      <configurationParameter>
+        <name>DocIdDelimiter</name>
+        <description>Delmiter used to separate ID values to form the complete document ID.</description>
+        <type>String</type>
+        <multiValued>false</multiValued>
+        <mandatory>false</mandatory>
+      </configurationParameter>
+      <configurationParameter>
+        <name>ValueFileResrcName</name>
+        <description>Name of external resource for prepared statement value file.</description>
+        <type>String</type>
+        <multiValued>false</multiValued>
+        <mandatory>false</mandatory>
+      </configurationParameter>      
+    </configurationParameters>
+    <configurationParameterSettings>
+      <nameValuePair>
+        <name>SqlStatement</name>
+        <value>
+          <string>SELECT ORIG_DOC, DOC_LINK_ID, DOC_REVISION_ID FROM TEXT01P.CNITB_NOTE_TEXT WHERE DOC_LINK_ID &gt; 0000 AND DOC_LINK_ID &lt; 11111</string>
+        </value>
+      </nameValuePair>
+      <nameValuePair>
+        <name>DocTextColName</name>
+        <value>
+          <string>ORIG_DOC</string>
+        </value>
+      </nameValuePair>
+      <nameValuePair>
+        <name>DbConnResrcName</name>
+        <value>
+          <string>DbConnection</string>
+        </value>
+      </nameValuePair>
+      <nameValuePair>
+        <name>DocIdColNames</name>
+        <value>
+          <array>
+            <string>DOC_LINK_ID</string>
+            <string>DOC_REVISION_ID</string>
+          </array>
+        </value>
+      </nameValuePair>
+      <nameValuePair>
+        <name>DocIdDelimiter</name>
+        <value>
+          <string>_</string>
+        </value>
+      </nameValuePair>
+    </configurationParameterSettings>
+    <typeSystemDescription/>
+    <typePriorities/>
+    <fsIndexCollection/>
+    <capabilities/>
+    <operationalProperties>
+      <modifiesCas>true</modifiesCas>
+      <multipleDeploymentAllowed>false</multipleDeploymentAllowed>
+    </operationalProperties>
+  </processingResourceMetaData>
+  <externalResourceDependencies>
+    <externalResourceDependency>
+      <key>DbConnection</key>
+      <description/>
+      <interfaceName>org.apache.ctakes.core.resource.JdbcConnectionResource</interfaceName>
+      <optional>false</optional>
+    </externalResourceDependency>
+  </externalResourceDependencies>
+  <resourceManagerConfiguration>
+    <externalResources>
+      <externalResource>
+        <name>DbConnectionImpl</name>
+        <description/>
+        <configurableDataResourceSpecifier>
+          <url/>
+          <resourceMetaData>
+            <name/>
+            <configurationParameters>
+              <configurationParameter>
+                <name>DriverClassName</name>
+                <type>String</type>
+                <multiValued>false</multiValued>
+                <mandatory>true</mandatory>
+              </configurationParameter>
+              <configurationParameter>
+                <name>URL</name>
+                <type>String</type>
+                <multiValued>false</multiValued>
+                <mandatory>true</mandatory>
+              </configurationParameter>
+              <configurationParameter>
+                <name>Username</name>
+                <type>String</type>
+                <multiValued>false</multiValued>
+                <mandatory>true</mandatory>
+              </configurationParameter>
+              <configurationParameter>
+                <name>Password</name>
+                <type>String</type>
+                <multiValued>false</multiValued>
+                <mandatory>true</mandatory>
+              </configurationParameter>
+              <configurationParameter>
+                <name>KeepConnectionAlive</name>
+                <type>String</type>
+                <multiValued>false</multiValued>
+                <mandatory>true</mandatory>
+              </configurationParameter>
+            </configurationParameters>
+            <configurationParameterSettings>
+              <nameValuePair>
+                <name>DriverClassName</name>
+                <value>
+                  <string>com.ibm.db2.jcc.DB2Driver</string>
+                </value>
+              </nameValuePair>
+              <nameValuePair>
+                <name>URL</name>
+                <value>
+                  <string>jdbc:db2://localhost:0000/changeme</string>
+                </value>
+              </nameValuePair>
+              <nameValuePair>
+                <name>Username</name>
+                <value>
+                  <string>changeme</string>
+                </value>
+              </nameValuePair>
+              <nameValuePair>
+                <name>Password</name>
+                <value>
+                  <string>changeme</string>
+                </value>
+              </nameValuePair>
+              <nameValuePair>
+                <name>KeepConnectionAlive</name>
+                <value>
+                  <string>false</string>
+                </value>
+              </nameValuePair>
+            </configurationParameterSettings>
+          </resourceMetaData>
+        </configurableDataResourceSpecifier>
+        <implementationName>org.apache.ctakes.core.resource.JdbcConnectionResourceImpl</implementationName>
+      </externalResource>
+    </externalResources>
+    <externalResourceBindings>
+      <externalResourceBinding>
+        <key>DbConnection</key>
+        <resourceName>DbConnectionImpl</resourceName>
+      </externalResourceBinding>
+    </externalResourceBindings>
+  </resourceManagerConfiguration>
+</collectionReaderDescription>

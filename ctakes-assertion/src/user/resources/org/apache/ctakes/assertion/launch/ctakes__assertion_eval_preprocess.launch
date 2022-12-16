@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
+<stringAttribute key="bad_container_name" value="/ctakes-assertion/resour"/>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/ctakes-assertion/src/main/java/org/apache/ctakes/assertion/eval/AssertionEvaluation.java"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="1"/>
+</listAttribute>
+<stringAttribute key="org.eclipse.debug.ui.ATTR_CAPTURE_IN_FILE" value="/tmp/assertion.log"/>
+<stringAttribute key="org.eclipse.jdt.launching.CLASSPATH_PROVIDER" value="org.eclipse.m2e.launchconfig.classpathProvider"/>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="org.apache.ctakes.assertion.eval.AssertionEvaluation"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="--train-dir data/train --test-dir data/test --models-dir data/model/eval.model --dev-dir data/dev --preprocess-only &quot;H:\SHARP\Corpora\\Mayo\UMLS_CEM&quot;"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="ctakes-assertion"/>
+<stringAttribute key="org.eclipse.jdt.launching.SOURCE_PATH_PROVIDER" value="org.eclipse.m2e.launchconfig.sourcepathProvider"/>
+</launchConfiguration>

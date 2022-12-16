@@ -1,0 +1,8 @@
+When you've abandoned all hope ...
+
+=====================================
+
+
+- "Stream Closed" message from hsql:  hsql requires a url to be all lower-case only.  database names and directory locations must therefore also be all lower-case.  This is absolutely true for Linux, but Windows will perform magic tricks for the user.
+
+

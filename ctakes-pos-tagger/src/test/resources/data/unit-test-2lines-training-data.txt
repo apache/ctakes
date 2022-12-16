@@ -1,0 +1,2 @@
+IL-2_NN IL-2_CC IL-2_IN gene_NN expression_NN and_CC NF-kappa_NN B_NN activation_NN through_IN CD28_NN requires_VBZ reactive_JJ oxygen_NN production_NN by_IN 5-lipoxygenase_NN ._. 
+Activation_NN of_IN the_DT CD28_NN surface_NN receptor_NN provides_VBZ a_DT major_JJ costimulatory_JJ signal_NN for_IN T_NN cell_NN activation_NN resulting_VBG in_IN enhanced_VBN production_NN of_IN interleukin-2_NN (_( IL-2_NN )_) and_CC cell_NN proliferation_NN ._. 

@@ -1,0 +1,26 @@
+#################
+additional models
+#################
+
+There is an additional model available from the ClearTK downloads page:
+
+https://code.google.com/p/clearnlp/
+
+and is called mayo-en-dep-1.3.0.jar.  This model is built from
+both the training data and development data from the CoNLL 2009 shared task (see
+links above).  This model was provided by Jinho Choi.
+
+#####
+Notes
+#####
+
+- Both models were trained using PennTreebank part-of-speech tags.  So, your input part-of-speech
+tags should match the tags used for training this model.  The part-of-speech tag for punctuation 
+symbols such as "." "," ":" ";" "(" ")" etc. are the symbols themselves (i.e. the part-of-speech tag
+for the token ")" should be ")".)  This may be inconsistent with other PTB-derived tagging schemes that
+may use tags such as "COLON" or "RRB".  Your part-of-speech tags should be modified to be consistent with
+the tagging scheme used here.
+
+- The dependency labeling scheme produced by the models provided here is separate/different from that of
+the Malt parser models used by ClearTK's wrapper of the Malt parser.  You should not assume that 
+the wrapper for the Clear Parser can be used interchangeably with the wrapper for the Malt Parser.      

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<set>
+
+<import resource="GENIAontology.daml" prefix="G"></import>
+<article>
+<articleinfo>
+<bibliomisc>MEDLINE:97175006</bibliomisc>
+</articleinfo>
+<title>
+<sentence><w c="JJ">Pancreatic</w> <w c="NN">development</w> <w c="CC">and</w> <w c="NN">maturation</w> <w c="IN">of</w> <w c="DT">the</w> <w c="NN">islet</w> <w c="NN">B</w> <w c="NN">cell</w><w c=".">.</w></sentence>
+<sentence><w c="NNS">Studies</w> <w c="IN">of</w> <w c="JJ">pluripotent</w> <w c="NN">islet</w> <w c="NNS">cultures</w><w c=".">.</w></sentence>
+</title>
+<abstract>
+<sentence><w c="NN">Pancreas</w> <w c="NN">organogenesis</w> <w c="VBZ">is</w> <w c="DT">a</w> <w c="RB">highly</w> <w c="VBN">regulated</w> <w c="NN">process</w><w c=",">,</w> <w c="IN">in</w> <w c="WDT">which</w> <w c="CD">two</w> <w c="NNS|FW">anlage</w> <w c="VBP">evaginate</w> <w c="IN">from</w> <w c="DT">the</w> <w c="JJ">primitive</w> <w c="NN">gut</w><w c=".">.</w></sentence>
+<sentence><w c="PRP">They</w> <w c="RB">later</w> <w c="VBP">fuse</w><w c=",">,</w> <w c="CC">and</w><w c=",">,</w> <w c="IN">under</w> <w c="DT">the</w> <w c="NN">influence</w> <w c="IN">of</w> <w c="DT">the</w> <w c="VBG">surrounding</w> <w c="NN">mesenchyme</w><w c=",">,</w> <w c="DT">the</w> <w c="JJ">mature</w> <w c="NN">organ</w> <w c="VBZ">develops</w><w c=",">,</w> <w c="VBG">being</w> <w c="RB">mainly</w> <w c="VBN">composed</w> <w c="IN">of</w> <w c="JJ">ductal</w><w c=",">,</w> <w c="JJ">exocrine</w> <w c="CC">and</w> <w c="JJ">endocrine</w> <w c="NNS">compartments</w><w c=".">.</w></sentence>
+<sentence><w c="JJ">Early</w> <w c="NNS">buds</w> <w c="VBP">are</w> <w c="VBN">characterized</w> <w c="IN">by</w> <w c="DT">a</w> <w c="VBG">branching</w> <w c="NN">morphogenesis</w> <w c="IN">of</w> <w c="DT">the</w> <w c="JJ">ductal</w> <w c="NN">epithelium</w> <w c="IN">from</w> <w c="WDT">which</w> <w c="JJ">endocrine</w> <w c="CC">and</w> <w c="JJ">exocrine</w> <w c="NN">precursor</w> <w c="NNS">cells</w> <w c="VBP">bud</w> <w c="TO">to</w> <w c="RB">eventually</w> <w c="VB">form</w> <w c="DT">the</w> <w c="CD">two</w> <w c="JJ">other</w> <w c="NNS">compartments</w><w c=".">.</w></sentence>
+<sentence><w c="DT">The</w> <w c="CD">three</w> <w c="NNS">compartments</w> <w c="VBP">are</w> <w c="VBN">thought</w> <w c="TO">to</w> <w c="VB">be</w> <w c="IN">of</w> <w c="JJ">common</w> <w c="JJ">endodermal</w> <w c="NN">origin</w><w c=":">;</w> <w c="IN">in</w> <w c="NN">contrast</w> <w c="TO">to</w> <w c="JJR">earlier</w> <w c="NNS">hypotheses</w><w c=",">,</w> <w c="WDT">which</w> <w c="VBD">suggested</w> <w c="IN">that</w> <w c="DT">the</w> <w c="JJ">endocrine</w> <w c="NN">compartment</w> <w c="VBD">was</w> <w c="IN">of</w> <w c="JJ">neuroectodermal</w> <w c="NN">origin</w><w c=".">.</w></sentence>
+<sentence><w c="PRP">It</w> <w c="VBZ">is</w> <w c="RB">thus</w> <w c="RB">generally</w> <w c="VBN">believed</w> <w c="IN">that</w> <w c="DT">the</w> <w c="JJ">pancreatic</w> <w c="NN">endocrine-lineage</w> <w c="VBZ">possesses</w> <w c="DT">the</w> <w c="NN">ability</w> <w c="TO">to</w> <w c="VB">mature</w> <w c="IN">along</w> <w c="DT">a</w> <w c="NN">differentiation</w> <w c="NN">pathway</w> <w c="WDT">that</w> <w c="VBZ">shares</w> <w c="JJ">many</w> <w c="NNS">characteristics</w> <w c="IN">with</w> <w c="DT">those</w> <w c="IN">of</w> <w c="JJ">neuronal</w> <w c="NN">differentiation</w><w c=".">.</w></sentence>
+<sentence><w c="IN">During</w> <w c="JJ">recent</w> <w c="NNS">years</w><w c=",">,</w> <w c="NNS">studies</w> <w c="IN">of</w> <w c="JJ">insulin-gene</w> <w c="NN">regulation</w> <w c="CC">and</w><w c=",">,</w> <w c="IN">in</w> <w c="JJ">particular</w><w c=",">,</w> <w c="DT">the</w> <w c="JJ">tissue-specific</w> <w c="JJ">transcriptional</w> <w c="NN">control</w> <w c="IN">of</w> <w c="JJ">insulin-gene</w> <w c="NN">activity</w> <w c="VBP">have</w> <w c="VBN">provided</w> <w c="NN">information</w> <w c="IN">on</w> <w c="NN">pancreas</w> <w c="NN">development</w> <w c="IN">in</w> <w c="JJ">general</w><w c=".">.</w></sentence>
+<sentence><w c="DT">The</w> <w c="JJ">present</w> <w c="NN">review</w> <w c="VBZ">summarizes</w> <w c="DT">these</w> <w c="NNS">findings</w><w c=",">,</w> <w c="IN">with</w> <w c="DT">a</w> <w c="JJ">special</w> <w c="NN">focus</w> <w c="IN">on</w> <w c="PRP$">our</w> <w c="JJ">own</w> <w c="NNS">studies</w> <w c="IN">on</w> <w c="JJ">pluripotent</w> <w c="JJ">endocrine</w> <w c="NNS">cultures</w> <w c="IN">of</w> <w c="NN">rat</w> <w c="NN">pancreas</w><w c=".">.</w></sentence>
+</abstract>
+</article>
+<article>
+<articleinfo>
+<bibliomisc>MEDLINE:97128276</bibliomisc>
+</articleinfo>
+<title>
+<sentence><w c="NN">Octamer</w> <w c="JJ">independent</w> <w c="NN">activation</w> <w c="IN">of</w> <w c="NN">transcription</w> <w c="IN">from</w> <w c="DT">the</w> <w c="NN">kappa</w> <w c="NN">immunoglobulin</w> <w c="NN">germline</w> <w c="NN">promoter</w><w c=".">.</w></sentence>
+</title>
+<abstract>
+<sentence><w c="JJ">Previous</w> <w c="NNS">analyses</w> <w c="IN">of</w> <w c="NN">immunoglobulin</w> <w c="JJ">V</w> <w c="NN">region</w> <w c="NNS">promoters</w> <w c="VBZ">has</w> <w c="VBN">led</w> <w c="TO">to</w> <w c="DT">the</w> <w c="NN">discovery</w> <w c="IN">of</w> <w c="DT">a</w> <w c="JJ">common</w> <w c="NN">octamer</w> <w c="NN">motif</w> <w c="WDT">which</w> <w c="VBZ">is</w> <w c="RB">functionally</w> <w c="JJ">important</w> <w c="IN">in</w> <w c="DT">the</w> <w c="JJ">tissue-specific</w> <w c="CC">and</w> <w c="RB">developmentally</w> <w c="VBN">regulated</w> <w c="JJ">transcriptional</w> <w c="NN">activation</w> <w c="IN">of</w> <w c="NN">immunoglobulin</w> <w c="NNS">genes</w><w c=".">.</w></sentence>
+<sentence><w c="DT">The</w> <w c="NN">germline</w> <w c="NNS">promoters</w> <w c="(">(</w><w c="NN">Ko</w><w c=")">)</w> <w c="JJ">located</w> <w c="RB">upstream</w> <w c="IN">of</w> <w c="DT">the</w> <w c="JJ">J</w> <w c="NN">region</w> <w c="NN">gene</w> <w c="NNS">segments</w> <w c="IN">of</w> <w c="DT">the</w> <w c="NN">kappa</w> <w c="NN">locus</w> <w c="RB">also</w> <w c="VBP">contain</w> <w c="DT">an</w> <w c="NN">octamer</w> <w c="NN">motif</w> <w c="(">(</w><w c="VBG">containing</w> <w c="DT">a</w> <w c="JJ">single</w> <w c="NN">base</w> <w c="NN">pair</w> <w c="NN">mutation</w> <w c="CC">and</w> <w c="VBN">referred</w> <w c="TO">to</w> <w c="IN">as</w> <w c="DT">the</w> <w c="JJ">variant</w> <w c="NN">octamer</w><w c=")">)</w> <w c="WDT">which</w> <w c="VBZ">has</w> <w c="VBN">been</w> <w c="VBN">shown</w> <w c="RB">previously</w> <w c="TO">to</w> <w c="VB">bind</w> <w c="NN">Oct-1</w> <w c="CC">and</w> <w c="NN">Oct-2</w> <w c="NN">transcription</w> <w c="NNS">factors</w> <w c="FW">in</w> <w c="FW">vitro</w><w c=".">.</w></sentence>
+<sentence><w c="TO">To</w> <w c="RB">further</w> <w c="VB">elucidate</w> <w c="DT">the</w> <w c="NN">role</w> <w c="IN">of</w> <w c="DT">this</w> <w c="JJ">variant</w> <w c="NN">octamer</w> <w c="NN">motif</w> <w c="IN">in</w> <w c="DT">the</w> <w c="NN">regulation</w> <w c="IN">of</w> <w c="NN">germline</w> <w c="NN">transcription</w> <w c="IN">from</w> <w c="DT">the</w> <w c="JJ">unrearranged</w> <w c="NN">kappa</w> <w c="NN">locus</w><w c=",">,</w> <w c="PRP">we</w> <w c="VBP">have</w> <w c="VBN">quantitated</w> <w c="DT">the</w> <w c="JJ">relative</w> <w c="NN">binding</w> <w c="NN">affinity</w> <w c="IN">of</w> <w c="NN">Oct-1</w> <w c="CC">and</w> <w c="NN">Oct-2</w> <w c="IN">for</w> <w c="DT">the</w> <w c="JJ">variant</w> <w c="NN">octamer</w> <w c="NN">motif</w> <w c="CC">and</w> <w c="VBD">determined</w> <w c="DT">the</w> <w c="JJ">functional</w> <w c="NN">role</w> <w c="IN">of</w> <w c="DT">this</w> <w c="NN">octamer</w> <w c="NN">motif</w> <w c="IN">in</w> <w c="JJ">transcriptional</w> <w c="NN">activation</w><w c=".">.</w></sentence>
+<sentence><w c="PRP">We</w> <w c="VBP">find</w> <w c="IN">that</w><w c=",">,</w> <w c="IN">although</w> <w c="DT">the</w> <w c="JJ">variant</w> <w c="NN">octamer</w> <w c="NN">motif</w> <w c="VBZ">binds</w> <w c="NN">Oct-1</w> <w c="CC">and</w> <w c="NN">Oct-2</w> <w c="FW">in</w> <w c="FW">vitro</w> <w c="IN">with</w> <w c="JJ">5-fold</w> <w c="JJR">lower</w> <w c="NN">affinity</w> <w c="IN">than</w> <w c="DT">the</w> <w c="NN">consensus</w> <w c="NN">octamer</w> <w c="NN">motif</w><w c=",">,</w> <w c="NN">mutation</w> <w c="IN">of</w> <w c="DT">the</w> <w c="JJ">variant</w> <w c="NN">octamer</w> <w c="NN">motif</w> <w c="TO">to</w> <w c="CC">either</w> <w c="DT">a</w> <w c="NN">consensus</w> <w c="NN">octamer</w> <w c="CC">or</w> <w c="*">non-</w><w c="JJ">octamer</w> <w c="NN">motif</w> <w c="VBZ">has</w> <w c="DT">no</w> <w c="NN">effect</w> <w c="IN">on</w> <w c="JJ">transcriptional</w> <w c="NN">activation</w> <w c="IN">from</w> <w c="DT">the</w> <w c="NN">germline</w> <w c="NN">promoter</w><w c=".">.</w></sentence>
+<sentence><w c="PRP">We</w> <w c="RB">also</w> <w c="VBP">find</w> <w c="JJ">significant</w> <w c="NNS">differences</w> <w c="IN">in</w> <w c="NN">activation</w> <w c="IN">of</w> <w c="NN">germline</w> <w c="CC">and</w> <w c="JJ">V</w> <w c="NN">region</w> <w c="NNS">promoters</w> <w c="IN">by</w> <w c="NN">kappa</w> <w c="NNS">enhancers</w><w c=".">.</w></sentence>
+<sentence><w c="PRP$">Our</w> <w c="NNS">results</w> <w c="VBP">suggest</w> <w c="IN">that</w> <w c="DT">the</w> <w c="NN">germline</w> <w c="NNS">promoters</w> <w c="CC">and</w> <w c="JJ">V</w> <w c="NN">region</w> <w c="NNS">promoters</w> <w c="VBP">differ</w> <w c="IN">in</w> <w c="PRP$">their</w> <w c="NN">dependence</w> <w c="IN">on</w> <w c="NN">octamer</w> <w c="IN">for</w> <w c="NN">activation</w> <w c="CC">and</w> <w c="VBP">respond</w> <w c="RB">differently</w> <w c="TO">to</w> <w c="NN">enhancer</w> <w c="NN">activation</w><w c=".">.</w></sentence>
+<sentence><w c="DT">These</w> <w c="NNS">findings</w> <w c="VBP">have</w> <w c="JJ">important</w> <w c="NNS">implications</w> <w c="IN">in</w> <w c="NN">regulation</w> <w c="IN">of</w> <w c="NN">germline</w> <w c="NN">transcription</w> <w c="RB">as</w> <w c="RB">well</w> <w c="IN">as</w> <w c="JJ">concomitant</w> <w c="NN">activation</w> <w c="IN">of</w> <w c="DT">the</w> <w c="JJ">V-J</w> <w c="NN">recombination</w> <w c="IN">of</w> <w c="DT">the</w> <w c="NN">kappa</w> <w c="JJ">light</w> <w c="NN">chain</w> <w c="NN">locus</w><w c=".">.</w></sentence>
+</abstract>
+</article>
+</set>

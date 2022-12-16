@@ -1,0 +1,5 @@
+doc1_07543210_sample_current.txt|CURRENT_SMOKER
+doc1_07543210_sample_past_smoker.txt|PAST_SMOKER
+doc1_07543210_sample_unknown.txt|UNKNOWN
+doc2_07543210_sample_current.txt|CURRENT_SMOKER
+doc2_07543210_sample_past_smoker.txt|PAST_SMOKER

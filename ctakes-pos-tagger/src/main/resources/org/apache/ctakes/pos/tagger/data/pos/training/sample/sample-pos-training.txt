@@ -1,0 +1,6 @@
+History_NN of_IN colon_NN polyps_NNS ._. 
+He_PRP is_VBZ not_RB anemic_JJ ._.
+She_PRP has_VBZ no_DT angina_NN ._. 
+Patient_NN complains_VBZ of_IN sinus_NN drainage_NN ._. 
+She_PRP saw_VBD the_DT patient_NN ._. 
+He_PRP acts_VBZ cheery_JJ and_CC patient_JJ ._.

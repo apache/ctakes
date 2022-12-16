@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<lookupSpecification>
+    <dictionaries>
+        <dictionary>
+            <name>LabAnnotatorTestDict</name>
+            <implementationName>org.apache.ctakes.dictionary.lookup2.dictionary.BsvRareWordDictionary
+            </implementationName>
+            <properties>
+                <property key="bsvPath" value="org/apache/ctakes/examples/dictionary/lookup/fast/tinyDict.bsv"/>
+            </properties>
+        </dictionary>
+    </dictionaries>
+
+    <conceptFactories>
+        <conceptFactory>
+            <name>LabAnnotatorTestConcepts</name>
+            <implementationName>org.apache.ctakes.dictionary.lookup2.concept.BsvConceptFactory</implementationName>
+            <properties>
+                <property key="bsvPath" value="org/apache/ctakes/examples/dictionary/lookup/fast/tinyDict.bsv"/>
+            </properties>
+        </conceptFactory>
+    </conceptFactories>
+
+    <!--  Defines what terms and concepts will be used  -->
+    <dictionaryConceptPairs>
+        <dictionaryConceptPair>
+            <name>LabAnnotatorPair</name>
+            <dictionaryName>LabAnnotatorTestDict</dictionaryName>
+            <conceptFactoryName>LabAnnotatorTestConcepts</conceptFactoryName>
+        </dictionaryConceptPair>
+    </dictionaryConceptPairs>
+
+    <rareWordConsumer>
+        <name>Term Consumer</name>
+        <implementationName>org.apache.ctakes.dictionary.lookup2.consumer.DefaultTermConsumer</implementationName>
+        <properties>
+            <property key="codingScheme" value="custom"/>
+        </properties>
+    </rareWordConsumer>
+
+</lookupSpecification>

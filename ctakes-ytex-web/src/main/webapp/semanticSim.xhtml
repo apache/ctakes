@@ -1,0 +1,162 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:icecore="http://www.icefaces.org/icefaces/core"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ice="http://www.icesoft.com/icefaces/component">
+
+<h:body>
+	<ui:composition template="WEB-INF/inc-templates/commonLayout.xhtml">
+		<!-- params for page titles-->
+		<ui:param name="pageTitle" value="Semantic Similarity" />
+		<ui:param name="contentHeader" value="Semantic Similarity" />
+
+		<!-- header content here  -->
+		<ui:define name="pageName">
+                #{contentHeader}
+        </ui:define>
+
+		<!-- insert content here -->
+		<ui:define name="pageContent">
+			<ice:form id="conceptGraphFrom">
+				<ice:panelGrid columns="1">
+					<ice:panelGroup>
+						<table border="0">
+							<tr valign="top">
+								<td><ice:outputLabel id="conceptGraphLabel"
+										value="Concept Graph:" /></td>
+								<td><ice:selectOneMenu
+										value="#{semanticSimBean.conceptGraphName}"
+										valueChangeListener="#{semanticSimBean.updateConceptGraph}"
+										partialSubmit="true">
+										<f:selectItems
+											value="#{semanticSimBean.semanticSimRegistryBean.semanticSimDescriptionMap}" />
+									</ice:selectOneMenu></td>
+							</tr>
+						</table>
+					</ice:panelGroup>
+				</ice:panelGrid>
+			</ice:form>
+			<ice:form id="umlsSearch">
+				<ice:panelGrid columns="1">
+					<ice:panelGroup>
+						<table border="0">
+							<tr valign="top">
+								<td><ice:outputLabel id="codeLabel1" value="Concept 1:" />
+								</td>
+								<td><ice:selectInputText id="codeInput1" rows="30"
+										width="300"
+										valueChangeListener="#{semanticSimBean.concept1.updateList}"
+										required="true">
+										<f:selectItems value="#{semanticSimBean.concept1.list}" />
+									</ice:selectInputText>
+								</td>
+							</tr>
+							<tr valign="top">
+								<td><ice:outputLabel id="codeLabel2" value="Concept 2:" />
+								</td>
+								<td><ice:selectInputText id="codeInput2" rows="30"
+										width="300"
+										valueChangeListener="#{semanticSimBean.concept2.updateList}"
+										required="true">
+										<f:selectItems value="#{semanticSimBean.concept2.list}" />
+									</ice:selectInputText>
+								</td>
+							</tr>
+							<tr>
+								<td valign="top">Metrics:</td>
+								<td><ui:include src="metricCheckboxes.xhtml" /></td>
+							</tr>
+						</table>
+						<ice:commandButton id="Similarity" value="Similarity"
+							title="ComputeSimilarity"
+							actionListener="#{semanticSimBean.simListen}" />
+						<ice:commandButton id="Reset" value="Reset" title="Reset"
+							actionListener="#{semanticSimBean.resetListen}" />
+					</ice:panelGroup>
+				</ice:panelGrid>
+			</ice:form>
+			<ice:form>
+				<ice:outputText
+					value="Concept 1: #{semanticSimBean.concept1.searchCUI.text} [#{semanticSimBean.concept1.searchCUI.conceptId}]" />
+				<br />
+				<ice:outputText
+					value="Concept 2: #{semanticSimBean.concept2.searchCUI.text} [#{semanticSimBean.concept2.searchCUI.conceptId}]" />
+				<!-- similarity for each metric -->
+				<ice:dataTable value="#{semanticSimBean.similarityMap}" var="entry">
+					<ice:column>
+						<f:facet name="header">
+							<ice:outputText value="Metric" />
+						</f:facet>
+						<ice:outputText value="#{msg[entry.key]}" />
+					</ice:column>
+					<ice:column>
+						<f:facet name="header">
+							<ice:outputText value="Similarity" />
+						</f:facet>
+						<ice:outputText value="#{entry.value}">
+							<f:convertNumber maxFractionDigits="4" minFractionDigits="4" />
+						</ice:outputText>
+					</ice:column>
+				</ice:dataTable>
+				<c:if test="${!empty semanticSimBean.simInfo.corpusLcs}">
+					<br />
+					<ice:outputText
+						value="Corpus LCS: #{semanticSimBean.corpusLcsTerm} [#{semanticSimBean.simInfo.corpusLcs}]" />
+				</c:if>
+				<c:if test="${!empty semanticSimBean.simInfo.intrinsicLcs}">
+					<br />
+					<ice:outputText
+						value="Intrinsic LCS: #{semanticSimBean.intrinsicLcsTerm} [#{semanticSimBean.simInfo.intrinsicLcs}]" />
+				</c:if>
+				<c:if test="${!empty semanticSimBean.lcsPathMap}">
+					<br />
+					<!-- detailed lcs info -->
+					<ice:dataTable value="#{semanticSimBean.lcsPathMap}" var="lcsEntry">
+						<ice:column>
+							<f:facet name="header">
+								<ice:outputText value="LCS" />
+							</f:facet>
+							<ice:outputText value="#{lcsEntry.key}" />
+						</ice:column>
+						<ice:column>
+							<f:facet name="header">
+								<ice:outputText value="Path" />
+							</f:facet>
+							<ice:outputText value="#{lcsEntry.value}" />
+						</ice:column>
+					</ice:dataTable>
+				</c:if>
+			</ice:form>
+		</ui:define>
+
+
+	</ui:composition>
+
+</h:body>
+
+</html>

@@ -1,0 +1,34 @@
+// Pipeline for: sections, paragraphs, sentences, lists, entities and attributes, relations, temporal info, coreferences
+
+// set the thread count
+threads 3
+
+// Advanced Tokenization: Regex sectionization, BIO Sentence Detector (lumper), Paragraphs, Lists
+load TsFullTokenizerPipeline
+
+// Always need these ...
+add ContextDependentTokenizerAnnotator
+add concurrent.ThreadSafePosTagger
+
+// Chunkers
+load TsChunkerSubPipe
+
+// Default fast dictionary lookup
+set minimumSpan=2
+load TsDictionarySubPipe
+
+// Cleartk Entity Attributes (negation, uncertainty, etc.)
+load TsAttributeCleartkSubPipe
+
+// Entity Relations (degree/severity, anatomical location)
+load TsRelationSubPipe
+
+// Temporal (event, time, dtr, tlink)
+load TsTemporalSubPipe
+
+// Coreferences (e.g. patient = he)
+load TsCorefSubPipe
+
+// Html output
+add pretty.html.HtmlTextWriter
+

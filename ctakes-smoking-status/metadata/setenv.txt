@@ -1,0 +1,22 @@
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements.  See the NOTICE file distributed with
+# this work for additional information regarding copyright ownership.
+# The ASF licenses this file to You under the Apache License, Version 2.0
+# (the "License"); you may not use this file except in compliance with
+# the License.  You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+### Add the following environment variables
+### to appropriate existing environment variables
+### to run the smoking status component
+
+CLASSPATH=$main_root/bin;/Applications/eclipse/plugins/org.junit_4.8.1.v4_8_1_v20100427-1100/junit.jar;/Applications/eclipse/plugins/org.hamcrest.core_1.1.0.v20090501071000.jar;$main_root/bin;$main_root/../ctakes-core/bin;$main_root/../ctakes-core/resources;$main_root/../ctakes-core/lib/opennlp-tools-1.4.3.jar;$main_root/../ctakes-core/lib/maxent-2.5.0.jar;$main_root/../ctakes-core/lib/jdom.jar;$main_root/../ctakes-core/lib/log4j-1.2.8.jar;$main_root/../ctakes-core/lib/lucene-core-3.0.2.jar;$main_root/../ctakes-core/lib/trove.jar;$main_root/../ctakes-core/lib/OpenAI_FSM.jar;/Applications/apache-uima/lib/uimaj-bootstrap.jar;/Applications/apache-uima/lib/uima-tools.jar;/Applications/apache-uima/lib/uima-examples.jar;/Applications/apache-uima/lib/uima-document-annotation.jar;/Applications/apache-uima/lib/uima-cpe.jar;/Applications/apache-uima/lib/uima-core.jar;/Applications/apache-uima/lib/uima-adapter-vinci.jar;/Applications/apache-uima/lib/uima-adapter-soap.jar;/Applications/apache-uima/lib/jVinci.jar;/Applications/eclipse/plugins/org.junit_4.8.1.v4_8_1_v20100427-1100/junit.jar;/Applications/eclipse/plugins/org.hamcrest.core_1.1.0.v20090501071000.jar;$main_root/../ctakes-core/lib/MIRUtility.jar;$main_root/../ctakes-ne-contexts/bin;$main_root/../ctakes-dictionary-lookup/bin;$main_root/../ctakes-dictionary-lookup/resources;$main_root/../ctakes-context-tokenizer/bin;$main_root/../ctakes-chunker/bin;$main_root/../ctakes-chunker/resources;$main_root/../ctakes-pos-tagger/bin;$main_root/../ctakes-pos-tagger/resources;$main_root/../ctakes-lvg/bin;$main_root/../ctakes-lvg/resources;$main_root/../ctakes-lvg/lib/lvg2008dist.jar;$main_root/resources;$main_root/desc;$main_root/../ctakes-clinical-pipeline/bin;$main_root/../ctakes-clinical-pipeline/resources;$main_root/../ctakes-preprocessor/bin;$main_root/../ctakes-preprocessor/lib/log4j-1.2.8.jar;$main_root/../ctakes-preprocessor/resources;$main_root/../ctakes-preprocessor/lib/xercesImpl.jar;$main_root/../ctakes-preprocessor/lib/xml-apis.jar;$main_root/../ctakes-preprocessor/lib/xmlParserAPIs.jar;$main_root/lib/libsvm-2.91.jar;$main_root/lib/lucene-core-3.0.2.jar;$main_root/resources;$main_root/desc;$main_root/lib/libsvm-2.91.jar;$main_root/lib/lucene-core-3.0.2.jar;
+#PATH=/Users/m039575/Documents/ctakes_workspace/smoking status/bin
+#uima.datapath=

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="jdbcType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="driver" type="xs:token" />
+      <xs:element minOccurs="0" name="url" type="xs:token" />
+      <xs:element minOccurs="0" name="username" type="xs:token" />
+      <xs:element minOccurs="0" name="password" type="xs:token" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="connType">
+    <xs:choice>
+      <xs:element name="jdbc" type="jdbcType" />
+    </xs:choice>
+  </xs:complexType>
+  <xs:simpleType name="sqlCallType">
+    <xs:restriction base="xs:normalizedString" />
+  </xs:simpleType>
+  <xs:simpleType name="sqlNameType">
+    <xs:restriction base="xs:token">
+      <xs:maxLength value="256" />
+      <xs:pattern value="[a-zA-Z\[\]]{1}([\[\]\.a-zA-Z0-9_#$])*" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="xpathExpressionType">
+    <xs:restriction base="xs:token">
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="columnCsvLoadType">
+    <xs:choice minOccurs="0">
+      <xs:element name="constant" type="xs:string" />
+      <xs:element name="seq" type="xs:nonNegativeInteger" />
+    </xs:choice>
+    <xs:attribute name="name" type="sqlNameType" use="required" />
+    <xs:attribute name="skip" type="xs:boolean" />
+    <xs:attribute name="format" type="xs:string" />
+    <xs:attribute name="pattern" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="csvLoadType">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="column">
+        <xs:complexType>
+          <xs:complexContent mixed="false">
+            <xs:extension base="columnCsvLoadType" />
+          </xs:complexContent>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="table" type="sqlNameType" use="required" />
+    <xs:attribute name="commit" type="xs:positiveInteger" />
+    <xs:attribute name="skip" type="xs:positiveInteger" />
+    <xs:attribute default="," name="delimiter">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:length value="1" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="encapsulator">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:length value="1" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="columnXmlLoadType">
+    <xs:choice>
+      <xs:element name="constant" type="xs:string" />
+      <xs:element name="seq" type="xs:nonNegativeInteger" />
+      <xs:element name="xpath" type="xpathExpressionType" />
+      <xs:element name="xleaf" type="xpathExpressionType" />
+    </xs:choice>
+    <xs:attribute name="name" type="sqlNameType" use="required" />
+  </xs:complexType>
+  <xs:complexType name="xmlLoadType">
+    <xs:sequence>
+      <xs:element minOccurs="0" default="/" name="xroot" type="xpathExpressionType" />
+      <xs:element maxOccurs="unbounded" name="column">
+        <xs:complexType>
+          <xs:complexContent mixed="false">
+            <xs:extension base="columnXmlLoadType" />
+          </xs:complexContent>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="table" type="sqlNameType" use="required" />
+    <xs:attribute name="commit" type="xs:positiveInteger" />
+  </xs:complexType>
+  <xs:complexType name="loadType">
+    <xs:choice>
+      <xs:element name="csv">
+        <xs:complexType>
+          <xs:complexContent mixed="false">
+            <xs:extension base="csvLoadType" />
+          </xs:complexContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="xml">
+        <xs:complexType>
+          <xs:complexContent mixed="false">
+            <xs:extension base="xmlLoadType" />
+          </xs:complexContent>
+        </xs:complexType>
+      </xs:element>
+    </xs:choice>
+  </xs:complexType>
+  <xs:element name="conn" type="connType" />
+  <xs:element name="load" type="loadType" />
+</xs:schema>

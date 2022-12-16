@@ -1,0 +1,34 @@
+- retired code
+- retired -
+- retired
+( reassigned )
+[ obsolete ]
+( deprecated )
+// Added for form cleanup 11/3/2014 spf
+( # _ _ _ )
+( / _ _ _ )
+( _ _ _ / )
+( j _ _ _ )
+( _ _ _ 0 , 2 )
+( _ _ _ 0 - 30 )
+( _ _ _ bpm )
+( _ _ _ cm )
+( _ _ _ _ cm )
+( _ _ _ _ _ cm )
+( _ _ _ cm2 )
+( _ _ _ degrees )
+( _ _ _ m2 )
+( _ _ _ mets )
+( _ _ _ min )
+( _ _ _ minutes each time )
+( _ _ _ per hpf )
+( minus _ _ _ )
+( _ _ _ ml / hr )
+( _ _ _ ml per second )
+( plus _ _ _ )
+( _ _ _ sec )
+: plus _ _ _
+_ _ _ %
+_ _ _ cm
+add _ _ _
+

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><taeDescription xmlns="http://uima.apache.org/resourceSpecifier">
+  <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
+  <primitive>false</primitive>
+  <delegateAnalysisEngineSpecifiers>
+    <delegateAnalysisEngine key="NegationAnnotator">
+      <import name="org.apache.ctakes.necontexts.desc.NegationAnnotator"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="SentenceAdjuster">
+      <import location="SentenceAdjuster.xml"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="SmokingStatusDictionaryLookupAnnotator">
+      <import location="SmokingStatusDictionaryLookupAnnotator.xml"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="PcsClassifierAnnotator_libsvm">
+      <import location="PcsClassifierAnnotator_libsvm.xml"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="ArtificialSentenceAnnotator">
+      <import location="ArtificialSentenceAnnotator.xml"/>
+    </delegateAnalysisEngine>
+  </delegateAnalysisEngineSpecifiers>
+  <analysisEngineMetaData>
+    <name>Smoking Status AE</name>
+    <description>Aggregate AE used to run the Smoking Status pipeline.  This should be followed by the RecordResolutionCasConsumer.</description>
+    <version/>
+    <vendor/>
+    <configurationParameters searchStrategy="language_fallback"/>
+    <configurationParameterSettings/>
+    <flowConstraints>
+      <fixedFlow>
+        <node>PcsClassifierAnnotator_libsvm</node>
+        <node>ArtificialSentenceAnnotator</node>
+        <node>SentenceAdjuster</node>
+        <node>SmokingStatusDictionaryLookupAnnotator</node>
+        <node>NegationAnnotator</node>
+      </fixedFlow>
+    </flowConstraints>
+    <fsIndexCollection/>
+    <capabilities>
+      <capability>
+        <inputs/>
+        <outputs/>
+        <languagesSupported/>
+      </capability>
+    </capabilities>
+    <operationalProperties>
+      <modifiesCas>true</modifiesCas>
+      <multipleDeploymentAllowed>true</multipleDeploymentAllowed>
+      <outputsNewCASes>false</outputsNewCASes>
+    </operationalProperties>
+  </analysisEngineMetaData>
+  <resourceManagerConfiguration/>
+</taeDescription>

@@ -1,0 +1,7 @@
+// Clinical Pipeline with sectionization, paragraph and list detection and degree-of and location-of relations
+
+// Default Clinical Pipeline with sectionization, paragraph and list detection
+load SectionedFastPipeline
+
+// degree-of, relation-of
+load RelationSubPipe

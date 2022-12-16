@@ -1,0 +1,130 @@
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<project name="ytex.classpath" default="echoproperties" xmlns:artifact="antlib:org.apache.maven.artifact.ant">
+	<description>
+	<![CDATA[
+
+	]]>
+	</description>
+	<property environment="env" />
+	<!-- 
+	if this file is imported, figure out the directory in which the file is located 
+	-->
+	<property name="ant.file.ytex.classpath" value="${ant.file}" />
+	<dirname file="${ant.file.ytex.classpath}" property="scripts.dir" />
+	<!--
+	when running in production mode, assume CTAKES_HOME is set
+	when running in development mode, assume CTAKES_HOME=workspace loc which is 2 directories up
+	-->
+	<condition property="ctakes.home.rel" value="${env.CTAKES_HOME}" else="${scripts.dir}/../..">
+		<isset property="env.CTAKES_HOME" />
+	</condition>
+	<!-- convert to absolute path -->
+	<property name="ctakes.home" location="${ctakes.home.rel}" />
+	<!-- set a property to switch between development and production mode -->
+	<condition property="ctakes.dev.mode">
+		<available file="${ctakes.home}/ctakes-ytex" type="dir" />
+	</condition>
+	<!-- 
+	resources directory
+	in development mode use ctakes-ytex-res
+	in production mode, use ctakes.home/resources
+	-->
+	<condition property="ytex.resources.home" value="${ctakes.home}/ctakes-ytex/src/main/resources" else="${ctakes.home}/resources">
+		<isset property="ctakes.dev.mode" />
+	</condition>
+	<!-- 
+	generated/local config directory
+	in development mode use build output directory for generated resources
+	in production mode, use ctakes.home/resources
+	-->
+	<condition property="config.local" value="${ctakes.home}/ctakes-ytex/target/classes" else="${ytex.resources.home}">
+		<isset property="ctakes.dev.mode" />
+	</condition>
+	<!-- load ytex properties -->
+	<property file="${config.local}/org/apache/ctakes/ytex/ytex.properties" />
+	<!-- 
+	log4j
+	development mode: by default use ytex test log4j props
+	production mode: use ctakes log4j props
+	-->
+	<condition property="log4j.conf" value="${ctakes.home}/ctakes-ytex/src/test/resources/log4j.properties" else="${ctakes.home}/config/log4j.xml">
+		<isset property="ctakes.dev.mode" />
+	</condition>
+	<!-- set concept graph directory -->
+	<property name="ytex.conceptGraphDir" value="${config.local}/org/apache/ctakes/ytex/conceptGraph" />
+	<!-- metamap -->
+	<condition property="mm.home" value="${env.MM_HOME}">
+		<isset property="env.MM_HOME" />
+	</condition>
+	<!-- cp for ant extension libraries -->
+	<path id="ant.cp.dev">
+		<pathelement location="${ctakes.home}/ctakes-ytex/target/lib/ant-contrib-1.0b3.jar" />
+		<pathelement location="${ctakes.home}/ctakes-ytex-uima/target/lib/ant-contrib-1.0b3.jar" />
+	</path>
+	<path id="ant.cp.prod">
+		<pathelement location="${ctakes.home}/lib/ant-contrib-1.0b3.jar" />
+	</path>
+	<condition property="ant.cp" value="ant.cp.dev" else="ant.cp.prod">
+		<isset property="ctakes.dev.mode" />
+	</condition>
+	<taskdef name="for" classname="net.sf.antcontrib.logic.ForTask" onerror="ignore" classpathref="${ant.cp}" />
+	<taskdef name="if" classname="net.sf.antcontrib.logic.IfTask" onerror="ignore" classpathref="${ant.cp}" />
+	<taskdef name="propertycopy" classname="net.sf.antcontrib.property.PropertyCopy" onerror="ignore" classpathref="${ant.cp}" />
+	<taskdef name="math" classname="net.sf.antcontrib.math.MathTask" onerror="ignore" classpathref="${ant.cp}" />
+	<path id="kernel.cp.dev">
+		<pathelement location="${config.local}" />
+		<dirset dir="${ctakes.home}" includes="**/src/main/resources" />
+		<dirset dir="${ctakes.home}" includes="**/target/classes" />
+		<dirset dir="${ctakes.home}" includes="**/desc" />
+		<fileset dir="${ctakes.home}" includes="ctakes-assertion/lib/*.jar,ctakes-ytex/target/lib/*.jar,ctakes-ytex-uima/target/lib/*.jar" excludes="**/ant-*.jar" />
+	</path>
+	<path id="kernel.cp.prod">
+		<pathelement location="${config.local}" />
+		<pathelement location="${ctakes.home}/desc" />
+		<pathelement location="${ctakes.home}/resources" />
+		<fileset dir="${ctakes.home}/lib" includes="**/*.jar" excludes="**/ant-*.jar" />
+	</path>
+	<condition property="kernel.cp" value="kernel.cp.dev" else="kernel.cp.prod">
+		<isset property="ctakes.dev.mode" />
+	</condition>
+	<makeurl property="log4j.url" file="${log4j.conf}" />
+	<property name="log4j.configuration" value="${log4j.url}" />
+	<property name="log4j.arg" value="-Dlog4j.configuration=${log4j.configuration}" />
+	<property name="java.util.logging.config.file" value="${java.log.arg}" />
+	<propertyset id="ytex.jvm.props">
+		<propertyref name="log4j.configuration" />
+	</propertyset>
+	<property name="db.name" value="" />
+	<property name="umls.catalog" value="${db.name}" />
+	<property name="umls.schema" value="${db.schema}" />
+	<condition property="umls.prefix" value="">
+		<equals arg1="hsql" arg2="${db.type}" />
+	</condition>
+	<condition property="umls.prefix" value="${umls.catalog}.${umls.schema}." else="${umls.schema}.">
+		<equals arg1="mssql" arg2="${db.type}" />
+	</condition>
+	<target name="echoproperties">
+		<pathconvert property="ant.cp.path" refid="${ant.cp}" />
+		<pathconvert property="kernel.cp.path" refid="${kernel.cp}" />
+		<echoproperties />
+	</target>
+</project>

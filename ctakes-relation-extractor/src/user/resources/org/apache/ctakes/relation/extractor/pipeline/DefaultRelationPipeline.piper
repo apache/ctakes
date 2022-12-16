@@ -1,0 +1,7 @@
+// Default Clinical Pipeline with degree-of and location-of relations
+
+// Default Clinical Pipeline
+load DefaultFastPipeline
+
+// degree-of, relation-of
+load RelationSubPipe

@@ -1,0 +1,1 @@
+classpath*:org/apache/ctakes/assertion/zoner/types/TypeSystem.xml

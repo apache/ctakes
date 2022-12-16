@@ -1,0 +1,149 @@
+not|not|negation
+n't|not|negation
+&apos;t|not|negation
+didn't|not|negation
+doesn't|not|negation
+don't|not|negation
+isn't|not|negation
+aren't|not|negation
+wasn't|not|negation
+weren't|not|negation
+hadn't|not|negation
+hasn't|not|negation
+haven't|not|negation
+won't|not|negation
+wouldn't|not|negation
+never|not|negation
+no longer|not|negation
+in no way|not|negation
+neither|neither|negation
+nor|neither|negation
+none|none|negation
+nobody|none|negation
+no one|none|negation
+nowhere|none|negation
+no place|none|negation
+no|no|negation
+without|no|negation
+absence of|no|negation
+free of|no|negation
+clear of|no|negation
+clear to|no|negation
+negative for|no|negation
+neg for|no|negation
+negative for|no|negation
+unremarkable for|no|negation
+unassociated with|no|negation
+( - )|no|negation
+non|no|negation
+lack of|no|negation
+lack|no|negation
+lacked|no|negation
+lacks|no|negation
+lacking|no|negation
+impossible|fail|negation
+cannot|fail|negation
+can't|fail|negation
+couldn't|fail|negation
+inability|fail|negation
+unable|fail|negation
+forget|fail|negation
+forgets|fail|negation
+forgetting|fail|negation
+forgot|fail|negation
+forgotten|fail|negation
+fail|fail|negation
+failed|fail|negation
+failing|fail|negation
+fails|fail|negation
+failure|fail|negation
+free of|absent|negation
+free|absent|negation
+absent|absent|negation
+immune to|absent|negation
+denied|deny|negation
+denies|deny|negation
+deny|deny|negation
+denying|deny|negation
+avoided|avoid|negation
+avoids|avoid|negation
+prevented|avoid|negation
+prevents|avoid|negation
+prophylaxis against|avoid|negation
+shouldn't|avoid|negation
+mustn't|avoid|negation
+unwilling|decline|negation
+unwillingness|decline|negation
+reluctance|decline|negation
+reluctant|decline|negation
+decline|decline|negation
+declined|decline|negation
+declines|decline|negation
+declining|decline|negation
+refusal|decline|negation
+refuse|decline|negation
+refused|decline|negation
+refuses|decline|negation
+refusing|decline|negation
+excluded|ruleout|negation
+excludes|ruleout|negation
+ruled out|ruleout|negation
+rules out|ruleout|negation
+discontinuance|stop|negation
+discontinuation|stop|negation
+discontinue|stop|negation
+discontinued|stop|negation
+discontinues|stop|negation
+discontinuing|stop|negation
+quit|stop|negation
+quits|stop|negation
+quitting|stop|negation
+stop|stop|negation
+stopped|stop|negation
+stopping|stop|negation
+stops|stop|negation
+used to|stop|negation
+held|stop|negation
+hold|stop|negation
+holding|stop|negation
+holds|stop|negation
+on hold|stop|negation
+off|stop|negation
+elimination|stop|negation
+eliminate|stop|negation
+eliminated|stop|negation
+eliminates|stop|negation
+eliminating|stop|negation
+eradication|stop|negation
+eradicate|stop|negation
+eradicated|stop|negation
+eradicates|stop|negation
+eradicating|stop|negation
+removal|stop|negation
+remove|stop|negation
+removed|stop|negation
+removes|stop|negation
+removing|stop|negation
+purge|stop|negation
+purged|stop|negation
+purges|stop|negation
+purging|stop|negation
+wipe out|stop|negation
+wiped out|stop|negation
+wipes out|stop|negation
+wiping out|stop|negation
+rid|stop|negation
+interrupt|stop|negation
+interruption|stop|negation
+interruptions|stop|negation
+resolved|disappear|negation
+resolution|disappear|negation
+disappeared|disappear|negation
+disappearance|disappear|negation
+rather than|exception|negation
+instead of|exception|negation
+except|exception|negation
+exception|exception|negation
+besides|exception|negation
+aside from|exception|negation
+other than|exception|negation

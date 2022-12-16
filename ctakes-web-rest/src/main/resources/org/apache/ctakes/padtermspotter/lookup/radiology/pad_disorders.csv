@@ -1,0 +1,84 @@
+balloon|balloon angioplasty|STAND_ALONE
+angioplasty|angioplasty|2
+aortobifemoral|aortobifemoral graft|7
+aortobifemoral|aortobifemoral bypass|7
+aortobiiliac|aortobiiliac graft|7
+aortobi-iliac|aortobi-iliac graft|7
+aortofemoral|aortofemoral bypass graft|7
+artery|artery bypass graft|7
+artery|artery bypass|7
+axillobifemoral|axillobifemoral graft|7
+atherosclerotic|atherosclerotic calcification|7
+aso|aso|2
+complete|complete occlusion|2
+crossover|crossover graft|7
+cross-over|cross-over graft|7
+distal|distal occlusion|2
+endarterectomy|endarterectomy|2
+extensive|extensive atheromatous plaque|2
+extensive|extensive collatoral formation|2
+fem-pop|fem-pop graft|7
+focal|focal stenosis|8
+high|high grade stenosis|8
+high-grade|high-grade stenosis|8
+focal|focal stenoses|8
+high|high grade stenoses|8
+high-grade|high-grade stenoses|8
+large|large atherosclerotic plaque|2
+atherosclerosis|atherosclerosis|2
+moderate|moderate arthromatous|2
+moderate|moderate atheromatous changes|2
+moderate|moderate atheromatous plaque|STAND_ALONE
+moderate|moderate atheromatous|2
+moderate|moderate atherosclerosis|2
+moderate|moderate atherosclerotic disease|2
+moderate|moderate focal stenosis|2
+moderate|moderate focal stenosis|2
+moderate|moderate iliac stenosis|2
+moderate|moderate focal stenoses|2
+moderate|moderate focal stenoses|2
+moderate|moderate iliac stenoses|2
+moderate|moderate narrowing|2
+moderate|moderate stenoses|2
+moderate|moderate stenosis|2
+stenosis|stenosis|2
+multi|multi-focus stenosis|8
+multi-focus|multi-focus stenosis|8
+multi|multi-focus stenoses|8
+multi-focus|multi-focus stenoses|8
+near|near occlusion|2
+occluded|occluded|2
+occludes|occludes|2
+occlusion|occlusion|2
+one-vessel|one-vessel run-off|STAND_ALONE
+patent|patent graft|STAND_ALONE
+peroneal|peroneal graft|7
+popliteal|popliteal graft|7
+proximal|proximal occlusion|2
+PTA|PTA|2
+recanalization|recanalization|2
+severe|severe arthromatous|2
+severe|severe atheromatous plaque|2
+severe|severe atherosclerosis|2
+severe|severe atherosclerotic disease|STAND_ALONE
+severe|severe atherosclerotic stenosis|STAND_ALONE
+severe|severe iliac stenosis|8
+severe|severe narrowing|2
+severe|severe plaque|2
+severe|severe stenoses|8
+severe|severe stenosis|8
+severe|severe tibial disease|STAND_ALONE
+tibial|tibial disease|2
+SFA|SFA occlusion|STAND_ALONE
+significant|significant atheromatous plaque|STAND_ALONE
+significant|significant atheromatous plaque|STAND_ALONE
+significant|significant stenosis|8
+single|single vessel runoff|STAND_ALONE
+single|single vessel run-off|STAND_ALONE
+diffusely|diffusely diseased|2
+stent|stent|7
+atheromatous|atheromatous stenosis|8
+stented|stented arteries|7
+no|no flow|8
+ulcerated|ulcerated plaque|7
+extensive|extensive collaterals|2

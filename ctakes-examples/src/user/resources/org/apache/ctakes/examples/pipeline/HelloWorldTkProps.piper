@@ -1,0 +1,11 @@
+// This file contains commands and parameters to run the ctakes-examples "Hello World" pipeline
+// with Entity Property output
+
+// Load a simple token processing pipeline from another file
+load org/apache/ctakes/examples/pipeline/HelloWorld.piper
+
+// Add Cleartk Entity Attribute annotators
+load AttributeCleartkSubPipe.piper
+
+// Collect discovered Entity information for post-run access
+collectEntities

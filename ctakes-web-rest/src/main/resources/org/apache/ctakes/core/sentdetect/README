@@ -1,0 +1,110 @@
+Contents:
+- Included sentence detector model 
+- Training a sentence detector model from the included sample data  
+- Training a sentence detector model from other training data  
+- Verifying you can train a sentence detector model successfully          
+- FYI - Using opennlp directly
+- Running the SentenceDetectorAnnotator analysis engine
+	- SentenceDetectorAggregate.xml
+	- SentenceDetectorCPE.xml
+	- SentenceDetectorAnnotator.xml
+
+
+################################################################
+Included sentence detector model  
+################################################################
+A sentence detector model is included with this project.
+
+The model derives from a combination of GENIA, Penn Treebank (Wall Street Journal) and anonymized
+clinical data per Safe Harbor HIPAA guidelines. Prior to model building, the clinical data was 
+deidentified for patient names to preserve patient confidentiality. Any person name in the model 
+will originate from non-patient data sources.
+
+
+################################################################
+Training a sentence detector model from the included sample data  
+################################################################
+   
+To train a sentence detector that recognizes the same set of candidate
+end-of-sentence characters that the SentenceDetectorAnnotator uses, 
+using the included sample training sentences, use the included launch 
+called "SentenceDetector - train a new model", or use:
+  java org.apache.ctakes.core.ae.SentenceDetector 
+        data/test/sample_sd_training_sentences.txt 
+        resources/sentdetect/sample_sd.mod
+        
+
+###########################################################
+Training a sentence detector model from other training data 
+###########################################################
+
+To train a sentence detector that recognizes the same set of candidate
+end-of-sentence characters that the SentenceDetectorAnnotator uses, 
+on the Run dialog within eclipse, set the Program arguments on the Arguments 
+tab (the first argument is your sentences training data file) for the 
+included launch called "SentenceDetector - train a new model".
+
+The first argument is your sentences training data file
+The second argument is the name of the model file to be created
+The third argument is the number of iterations for training
+The fourth argument is the cutoff value used
+
+An alternative to using the launch is to use:
+  java org.apache.ctakes.core.ae.SentenceDetector sents_file model iters? cut?
+where sents_file contains one sentence per line,
+model is the file that is to be created, 
+and iters and cut are optional parameters.
+
+For example, sents_file could contain the following four lines:
+The boy ran.
+Did the girl run too?
+Yes, she did.
+Where did she go?
+
+
+##############################################################
+Verifying you can train a sentence detector model successfully          
+##############################################################
+
+Train a sentence detector model from the included sample data, as described 
+above.
+Compare the contents of your sentence detector model to the included sample
+sentence detector model.  You might use diff, like this:
+diff  resources/sentdetect/sample_sd.mod   resources/sentdetect/sample_sd_included.mod
+
+        
+############################
+FYI - Using opennlp directly
+############################
+ 
+You can train a sentence detector directly using the opennlp sentence detector 
+(SentenceDetectorME) with the default set of candidate end-of-sentence 
+characters, using 
+  java opennlp.tools.sentdetect.SentenceDetectorME infile outfile (iters cut)?
+where infile contains one sentence per line (new lines separating sentences)  
+For example, infile could contain the following four lines:
+The boy ran.
+Did the girl run too?
+Yes, she did.
+Where did she go?
+
+
+######################################################
+Running the SentenceDetectorAnnotator analysis engine
+######################################################
+
+Launch the "SentenceDetector annotator" run configuration.
+Open CPE SentenceDetectorCPE.xml, which uses the analysis
+engines listed in SentenceDetectorAggregate.xml.
+
+The aggregate analysis engine is defined to read from plain text file(s) in 
+data\test\sample_notes_plaintext
+using the FilesInDirectoryCollectionReader.
+
+Since the sentence annotator processes the text one section at a time, there 
+must be at least one section (segment) annotation for the SentenceDetectorAnnotator
+to add Sentence annotations. 
+Therefore the first analysis engine is the SimpleSegmentAnnotator, which
+creates a single Segment annotation that covers the entire text.
+Then the SentenceDetectorAnnotator analysis engine adds Sentence annotations.
+

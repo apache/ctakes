@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<taeDescription xmlns="http://uima.apache.org/resourceSpecifier">
+	<frameworkImplementation>org.apache.uima.java</frameworkImplementation>
+	<primitive>true</primitive>
+	<annotatorImplementationName>org.apache.ctakes.preprocessor.ae.CdaCasInitializer
+	</annotatorImplementationName>
+	<analysisEngineMetaData>
+		<name>CdaCasInitializer</name>
+		<description>Creates a plaintext view from a CDA view.
+			This does not
+			handle all CDA documents.
+			The CDA must conform to the DTD resource.
+		</description>
+		<version>2.1</version>
+		<vendor>Mayo Clinic</vendor>
+		<configurationParameters>
+			<configurationParameter>
+				<name>HyphenFile</name>
+				<description></description>
+				<type>String</type>
+				<multiValued>false</multiValued>
+				<mandatory>false</mandatory>
+			</configurationParameter>
+			<configurationParameter>
+				<name>DtdFile</name>
+				<description></description>
+				<type>String</type>
+				<multiValued>false</multiValued>
+				<mandatory>false</mandatory>
+			</configurationParameter>			
+		</configurationParameters>
+		<configurationParameterSettings>
+			<nameValuePair>
+				<name>HyphenFile</name>
+				<value>
+					<string>org/apache/ctakes/preprocessor/tokenizer/hyphenated.txt</string>
+				</value>
+			</nameValuePair>
+			<nameValuePair>
+				<name>DtdFile</name>
+				<value>
+					<string>org/apache/ctakes/preprocessor/cda/NotesIIST_RTF.DTD</string>
+				</value>
+			</nameValuePair>			
+		</configurationParameterSettings>
+		<typeSystemDescription>
+			<imports>
+			</imports>
+		</typeSystemDescription>
+		<typePriorities />
+		<fsIndexCollection />
+		<capabilities>
+			<capability>
+				<inputs>
+					<type allAnnotatorFeatures="true">org.apache.ctakes.typesystem.type.syntax.BaseToken
+					</type>
+				</inputs>
+				<outputs>
+					<type allAnnotatorFeatures="true">org.apache.ctakes.typesystem.type.textspan.Segment
+					</type>
+					<type allAnnotatorFeatures="true">uima.tcas.DocumentAnnotation</type>
+				</outputs>
+				<outputSofas>
+					<sofaName>plaintext</sofaName>
+				</outputSofas>
+				<languagesSupported />
+			</capability>
+		</capabilities>
+		<operationalProperties>
+			<modifiesCas>true</modifiesCas>
+			<multipleDeploymentAllowed>true</multipleDeploymentAllowed>
+			<outputsNewCASes>false</outputsNewCASes>
+		</operationalProperties>
+	</analysisEngineMetaData>
+</taeDescription>

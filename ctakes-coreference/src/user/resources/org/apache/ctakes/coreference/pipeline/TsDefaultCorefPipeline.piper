@@ -1,0 +1,7 @@
+// Thread Safe Default Clinical Pipeline with  coreference resolution
+
+// Default Clinical Pipeline
+load TsDefaultFastPipeline
+
+// Coreference resolution
+load TsCorefSubPipe

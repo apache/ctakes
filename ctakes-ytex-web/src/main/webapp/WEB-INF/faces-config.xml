@@ -1,0 +1,110 @@
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
+	version="2.0">
+	<application>
+		<variable-resolver>org.springframework.web.jsf.DelegatingVariableResolver
+		</variable-resolver>
+		<locale-config>
+			<default-locale>en_US</default-locale>
+		</locale-config>
+		<resource-bundle>
+			<base-name>org.apache.ctakes.ytex.web.messages</base-name>
+			<var>msg</var>
+		</resource-bundle>
+	</application>
+
+	<managed-bean>
+		<managed-bean-name>semanticSearchBean</managed-bean-name>
+		<managed-bean-class>org.apache.ctakes.ytex.web.search.SemanticSearchBean
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>umlsFirstWordService</property-name>
+			<value>#{umlsFirstWordService}</value>
+		</managed-property>
+		<managed-property>
+			<property-name>documentSearchService</property-name>
+			<value>#{documentSearchService}</value>
+		</managed-property>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>documentViewBean</managed-bean-name>
+		<managed-bean-class>org.apache.ctakes.ytex.web.search.DocumentViewBean
+		</managed-bean-class>
+		<managed-bean-scope>view</managed-bean-scope>
+		<managed-property>
+			<property-name>dataSource</property-name>
+			<property-class></property-class>
+			<value>#{dataSource}</value>
+		</managed-property>
+		<managed-property>
+			<property-name>searchProperties</property-name>
+			<property-class></property-class>
+			<value>#{searchProperties}</value>
+		</managed-property>
+		<managed-property>
+			<property-name>ytexProperties</property-name>
+			<property-class></property-class>
+			<value>#{ytexProperties}</value>
+		</managed-property>		
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>concept1</managed-bean-name>
+		<managed-bean-class>org.apache.ctakes.ytex.web.search.ConceptLookupBean
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>umlsFirstWordService</property-name>
+			<value>#{umlsFirstWordService}</value>
+		</managed-property>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>concept2</managed-bean-name>
+		<managed-bean-class>org.apache.ctakes.ytex.web.search.ConceptLookupBean
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>umlsFirstWordService</property-name>
+			<value>#{umlsFirstWordService}</value>
+		</managed-property>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>semanticSimBean</managed-bean-name>
+		<managed-bean-class>org.apache.ctakes.ytex.web.search.SemanticSimBean
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>concept1</property-name>
+			<value>#{concept1}</value>
+		</managed-property>
+		<managed-property>
+			<property-name>concept2</property-name>
+			<value>#{concept2}</value>
+		</managed-property>
+		<managed-property>
+			<property-name>semanticSimRegistryBean</property-name>
+			<value>#{semanticSimRegistryBean}</value>
+		</managed-property>
+	</managed-bean>
+</faces-config>

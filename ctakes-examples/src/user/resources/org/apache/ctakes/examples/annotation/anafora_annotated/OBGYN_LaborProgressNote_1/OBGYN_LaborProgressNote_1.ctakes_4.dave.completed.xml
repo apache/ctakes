@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<data>
+    <info>
+        <savetime>10:58:58 09-01-2017</savetime>
+        <progress>completed</progress>
+    </info>
+
+    <schema path="./" protocol="file">temporal.schema.xml</schema>
+
+    <annotations>
+        <entity>
+            <id>1@e@OBGYN_LaborProgressNote_1@dave</id>
+            <span>204,208</span>
+            <type>Sign_symptom</type>
+            <parentsType>UMLSEntities</parentsType>
+            <properties>
+                <alleviating_factor></alleviating_factor>
+                <start_time></start_time>
+                <duration></duration>
+                <end_time></end_time>
+                <negation_indicator></negation_indicator>
+                <associatedCode>C0030193</associatedCode>
+                <conditional></conditional>
+                <generic></generic>
+                <subject></subject>
+                <uncertainty_indicator></uncertainty_indicator>
+                <historyOf></historyOf>
+                <exacerbating_factor></exacerbating_factor>
+                <course></course>
+                <body_location></body_location>
+                <severity></severity>
+                <relative_temporal_context></relative_temporal_context>
+            </properties>
+        </entity>
+
+        <entity>
+            <id>2@e@OBGYN_LaborProgressNote_1@dave</id>
+            <span>188,196</span>
+            <type>Procedure</type>
+            <parentsType>UMLSEntities</parentsType>
+            <properties>
+                <negation_indicator></negation_indicator>
+                <associatedCode>C0002913</associatedCode>
+                <conditional></conditional>
+                <generic></generic>
+                <subject></subject>
+                <uncertainty_indicator></uncertainty_indicator>
+                <historyOf>3@e@OBGYN_LaborProgressNote_1@dave</historyOf>
+                <device></device>
+                <start_time></start_time>
+                <duration></duration>
+                <end_time></end_time>
+                <relative_temporal_context></relative_temporal_context>
+            </properties>
+        </entity>
+
+        <entity>
+            <id>3@e@OBGYN_LaborProgressNote_1@dave</id>
+            <span>184,187</span>
+            <type>historyOf_indicator_class</type>
+            <parentsType>Attributes_general</parentsType>
+            <properties>
+                <historyOf_normalization>true</historyOf_normalization>
+            </properties>
+        </entity>
+
+        <entity>
+            <id>4@e@OBGYN_LaborProgressNote_1@dave</id>
+            <span>369,373</span>
+            <type>Procedure</type>
+            <parentsType>UMLSEntities</parentsType>
+            <properties>
+                <negation_indicator></negation_indicator>
+                <associatedCode>C1384591</associatedCode>
+                <conditional></conditional>
+                <generic></generic>
+                <subject></subject>
+                <uncertainty_indicator></uncertainty_indicator>
+                <historyOf></historyOf>
+                <device></device>
+                <start_time></start_time>
+                <duration></duration>
+                <end_time></end_time>
+                <relative_temporal_context></relative_temporal_context>
+            </properties>
+        </entity>
+
+    </annotations>
+
+</data>

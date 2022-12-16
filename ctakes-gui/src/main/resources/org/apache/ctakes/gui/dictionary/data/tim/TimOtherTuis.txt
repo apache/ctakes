@@ -1,0 +1,33 @@
+// ACTI Activities & Behaviors
+T051
+T052
+T053
+T054
+T055
+T056
+T057
+T064
+T066
+// DEVI Devices
+// 74 is medical device OBJ
+T074
+// 75 is research device OBJ
+T075
+// 203 is drug delivery OBJ  -  but has too many drugs and amounts
+// T203
+// OBJC Objects
+T167
+T168
+T071
+T072
+T073
+// OCCU Occupations
+T090
+T091
+// PROC Procedures
+// 58 is health care ACTI, not covered by cTakes
+T058
+// 62 is research ACTI, not covered by cTakes
+T062
+// 65 is educational ACTI, not covered by cTakes
+T065

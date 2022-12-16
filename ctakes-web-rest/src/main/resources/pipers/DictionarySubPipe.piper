@@ -1,0 +1,10 @@
+//  Commands and parameters to create a default dictionary lookup sub-pipeline.  This is not a full pipeline.
+
+// path to the xml file containing information for dictionary lookup configuration.
+cli LookupXml=org/apache/ctakes/dictionary/lookup/fast/customDictionary.xml
+// umls credentials
+cli umlsUser=user
+cli umlsPass=pass
+
+// Default fast dictionary lookup
+add DefaultJCasTermAnnotator LookupXml=org/apache/ctakes/dictionary/lookup/fast/customDictionary.xml

@@ -1,0 +1,21 @@
+SideEffectWord|side effect|side effects|side-effect|side-effects|reaction|reactions
+CauseWord|caused|causing|induced|inducing|made|got|resulted|resulting|yielded|yielding
+DueToWord|due to|secondary to|because of|associated with|induced by|attributed to|associate with|associates with|account for|accounts for
+StartVerb|started  
+DiscontVerb|discontinued|stopped
+IncreaseVerb|increased  
+DecreaseVerb|decreased|tapered|lowered  
+NoteVerb|noted|developed|reported|described|had
+AfterDrugWord|after taking|after starting|since
+NoticeVerb|noticed|found
+BecomeVerb|become|became|grew
+FeelWord|feel like|feels like|felt|feeling
+AvoidWord|to avoid
+InitiationNoun|initiation|start
+WithPrep|with
+ForPrep|for
+FromPrep|from
+WhenConj|when
+AfterConj|after
+BecauseConj|because|as    
+HumanSubj|he|she

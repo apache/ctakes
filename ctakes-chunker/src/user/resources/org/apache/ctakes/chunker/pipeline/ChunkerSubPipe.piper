@@ -1,0 +1,5 @@
+// Commands and parameters to create a default chunker processing sub-pipeline.  This is not a full pipeline.
+
+add Chunker
+addDescription adjuster.ChunkAdjuster NP,NP 1
+addDescription adjuster.ChunkAdjuster NP,PP,NP 2
