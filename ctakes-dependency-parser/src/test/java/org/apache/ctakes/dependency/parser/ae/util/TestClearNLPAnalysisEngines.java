@@ -53,6 +53,7 @@ public class TestClearNLPAnalysisEngines{
 	// The dummy models from ClearParser haven't been updated to work with ClearNLP.
 	//public static final String DEP_DUMMY_MODEL_FILE = "org/apache/ctakes/dependency/parser/models/dependency/dummy.dep.mod.jar";
 	//public static final String SRL_DUMMY_MODEL_FILE = "org/apache/ctakes/dependency/parser/models/srl/dummy.srl.mod.jar";
+	// This file does not exist.
 	public static String INPUT_FILE = "../ctakes-clinical-pipeline/src/test/data/plaintext/testpatient_plaintext_1.txt";
 	public static class Options {
 		
@@ -98,7 +99,7 @@ public class TestClearNLPAnalysisEngines{
 	}
 	
 
-	@Test
+//	@Test
 	public void TestClearNLPPipeLine() throws Exception {
 		
 		TypeSystemDescription typeSystem = TypeSystemDescriptionFactory.createTypeSystemDescription();
@@ -131,7 +132,7 @@ public class TestClearNLPAnalysisEngines{
 		SimplePipeline.runPipeline(reader1, preprocessingAE, clearNLPDepParser, clearNLPSRL, dumpClearNLPOutput);	
 	}
 	
-	 @Test
+//	 @Test
 	  public void TestClearNLPPipeLineWithFactoryMethods() throws Exception {
 	    
 	    TypeSystemDescription typeSystem = TypeSystemDescriptionFactory.createTypeSystemDescription();

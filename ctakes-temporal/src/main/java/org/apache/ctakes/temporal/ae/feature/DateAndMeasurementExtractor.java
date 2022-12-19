@@ -91,4 +91,29 @@ public class DateAndMeasurementExtractor implements FeatureExtractor1<Annotation
 	  return features;
   }
 
+
+	public List<Feature> extract( final JCas view, final Annotation annotation,
+											final Collection<DateAnnotation> dates,
+											final Collection<MeasurementAnnotation> measurements,
+											final Collection<NumToken> numbers ) throws CleartkExtractorException {
+		final List<Feature> features = new ArrayList<>();
+		for (@SuppressWarnings("unused") DateAnnotation date : dates ) {
+			final Feature indicator = new Feature( "DateXNearby", this.name );
+			features.add(indicator);
+			break;
+		}
+		for (@SuppressWarnings("unused") MeasurementAnnotation date : measurements ) {
+			final Feature indicator = new Feature( "MeasurementNearby", "measure" );
+			features.add( indicator );
+			break;
+		}
+		for (@SuppressWarnings("unused") NumToken date : numbers ) {
+			final Feature indicator = new Feature( "NumTokenNearby", "NumToken" );
+			features.add( indicator );
+			break;
+		}
+		return features;
+	}
+
+
 }

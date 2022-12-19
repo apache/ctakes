@@ -18,11 +18,7 @@
  */
 package org.apache.ctakes.temporal.ae.feature;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 //import java.util.logging.Logger;
 
 import org.apache.ctakes.typesystem.type.syntax.WordToken;
@@ -84,5 +80,33 @@ public class ClosestVerbExtractor implements FeatureExtractor1 {
 	  }
 	  return features;
   }
+
+	public List<Feature> extract( final JCas view, final Annotation annotation, final Collection<WordToken> words )
+			throws CleartkExtractorException {
+		final List<Feature> features = new ArrayList<>();
+		final int annotationBegin = annotation.getBegin();
+		int closestDistance = Integer.MAX_VALUE;
+		WordToken closestToken = null;
+		for ( WordToken wt : words ) {
+			String pos = wt.getPartOfSpeech();
+			if ( pos.startsWith( "VB" ) ) {
+				final int distance = Math.abs( wt.getBegin() - annotationBegin );
+				if ( distance < closestDistance ) {
+					closestDistance = distance;
+					closestToken = wt;
+				}
+			}
+		}
+		if ( closestToken == null ) {
+			return Collections.emptyList();
+		}
+		final Feature feature = new Feature( this.name+"_token", closestToken.getCoveredText() );
+		features.add( feature );
+		//logger.info("found nearby closest verb: "+ entry.getValue().getCoveredText() + " POS:" + entry.getValue().getPartOfSpeech());
+		final Feature posfeature = new Feature( this.name, closestToken.getPartOfSpeech() );
+		features.add( posfeature );
+		return features;
+	}
+
 
 }

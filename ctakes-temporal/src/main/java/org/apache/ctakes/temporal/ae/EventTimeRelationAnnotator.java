@@ -36,6 +36,7 @@ import org.apache.ctakes.typesystem.type.textspan.Sentence;
 import org.apache.log4j.Logger;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
+import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.factory.AnalysisEngineFactory;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
@@ -129,6 +130,12 @@ public class EventTimeRelationAnnotator extends RelationExtractorAnnotator {
       }
 //      LOGGER.info( "Finished." );
    }
+
+	@Override
+	public void process(JCas jCas) throws AnalysisEngineProcessException {
+		LOGGER.info( "Finding Event-Time Relations ..." );
+		super.process( jCas );
+	}
 
 	@Override
 	protected List<RelationFeaturesExtractor<IdentifiedAnnotation,IdentifiedAnnotation>> getFeatureExtractors()

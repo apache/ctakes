@@ -124,6 +124,7 @@ abstract public class RegexSectionizer extends JCasAnnotator_ImplBase {
     */
    @Override
    public void initialize( final UimaContext context ) throws ResourceInitializationException {
+      LOGGER.info( "Initializing ..." );
       super.initialize( context );
       synchronized (SECTION_TYPE_LOCK) {
          if ( !_sectionsLoaded ) {
@@ -138,7 +139,7 @@ abstract public class RegexSectionizer extends JCasAnnotator_ImplBase {
     */
    @Override
    public void process( final JCas jcas ) throws AnalysisEngineProcessException {
-      LOGGER.info( "Annotating Sections ..." );
+      LOGGER.info( "Finding Sections ..." );
       if ( _sectionTypes.isEmpty() ) {
          LOGGER.info( "Finished processing, no section types defined" );
          return;
@@ -156,7 +157,7 @@ abstract public class RegexSectionizer extends JCasAnnotator_ImplBase {
          dividerLines.putAll( findDividerLines( docText ) );
       }
       createSegments( jcas, headerTags, footerTags, dividerLines );
-      LOGGER.info( "Finished processing" );
+//      LOGGER.info( "Finished processing" );
    }
 
 

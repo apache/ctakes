@@ -40,11 +40,11 @@ final public class ParagraphSentenceFixer extends JCasAnnotator_ImplBase {
       LOGGER.info( "Adjusting Sentences overlapping Paragraphs ..." );
       final Collection<Paragraph> paragraphs = JCasUtil.select( jcas, Paragraph.class );
       if ( paragraphs == null || paragraphs.isEmpty() ) {
-         LOGGER.info( "Finished Processing" );
+//         LOGGER.info( "Finished Processing" );
          return;
       }
       adjustParagraphSentences( jcas, paragraphs );
-      LOGGER.info( "Finished Processing" );
+//      LOGGER.info( "Finished Processing" );
    }
 
    static private void adjustParagraphSentences( final JCas jCas, final Collection<Paragraph> paragraphs ) {

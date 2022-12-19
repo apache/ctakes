@@ -88,6 +88,7 @@ final public class ListAnnotator extends JCasAnnotator_ImplBase {
     */
    @Override
    public void initialize( final UimaContext context ) throws ResourceInitializationException {
+      LOGGER.info( "Initializing ..." );
       super.initialize( context );
       if ( _listTypesPath == null ) {
          LOGGER.error( "No " + LIST_TYPES_DESC );
@@ -104,7 +105,7 @@ final public class ListAnnotator extends JCasAnnotator_ImplBase {
       } catch ( IOException ioE ) {
          throw new ResourceInitializationException( ioE );
       }
-      LOGGER.info( "Finished Parsing" );
+//      LOGGER.info( "Finished Parsing" );
    }
 
    /**
@@ -136,7 +137,7 @@ final public class ListAnnotator extends JCasAnnotator_ImplBase {
             createLists( jcas, uniqueListTypes, section.getCoveredText(), section.getBegin() );
          }
       }
-      LOGGER.info( "Finished processing" );
+//      LOGGER.info( "Finished processing" );
    }
 
 

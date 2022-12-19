@@ -39,6 +39,7 @@ import org.apache.ctakes.typesystem.type.textsem.EventMention;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
+import org.apache.log4j.Logger;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -78,6 +79,7 @@ import java.util.Random;
 public class EventAnnotator extends TemporalEntityAnnotator_ImplBase {
 
   public static final String PARAM_PROBABILITY_OF_KEEPING_A_NEGATIVE_EXAMPLE = "ProbabilityOfKeepingANegativeExample";
+  static private final Logger LOGGER = Logger.getLogger( "EventAnnotator" );
 
   @ConfigurationParameter(
       name = PARAM_PROBABILITY_OF_KEEPING_A_NEGATIVE_EXAMPLE,
@@ -191,6 +193,7 @@ public class EventAnnotator extends TemporalEntityAnnotator_ImplBase {
 
   @Override
   public void initialize(UimaContext context) throws ResourceInitializationException {
+    LOGGER.info( "Initializing ..." );
     super.initialize(context);
 
     // define chunkings
@@ -229,6 +232,12 @@ public class EventAnnotator extends TemporalEntityAnnotator_ImplBase {
         }
       }
     }
+  }
+
+  @Override
+  public void process(JCas jCas) throws AnalysisEngineProcessException {
+    LOGGER.info( "Finding Events ..." );
+    super.process( jCas );
   }
 
   @Override

@@ -73,7 +73,6 @@ public class MarkableSalienceAnnotator extends CleartkAnnotator<Boolean> {
     extractors.add( new GrammaticalRoleFeatureExtractor() );
     extractors.add( new SemanticEnvironmentFeatureExtractor() );
     extractors.add( new ClinicalFeatureExtractor() );
-    LOGGER.info( "Finished." );
   }
   
   @Override
@@ -96,6 +95,5 @@ public class MarkableSalienceAnnotator extends CleartkAnnotator<Boolean> {
         markable.setConfidence(outcomes.get(true).floatValue());
       }
     }
-    LOGGER.info( "Finished." );
   }
 }

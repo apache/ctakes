@@ -72,4 +72,23 @@ public class SectionHeaderExtractor implements FeatureExtractor1 {
 		return features;
 	}
 
+	public List<Feature> extract( final JCas view, final Annotation annotation, final Collection<Segment> sections )
+			throws CleartkExtractorException {
+		if ( sections == null || sections.isEmpty() ) {
+			return extract( view, annotation );
+		}
+		final List<Feature> features = new ArrayList<>();
+		//2 get Verb Tense
+		for ( Segment seg : sections ) {
+			String segname = seg.getId();
+			if ( segname.equals( "SIMPLE_SEGMENT" ) ) {
+				//ignore simple segment
+				continue;
+			}
+			features.add( new Feature( this.name, segname ) );
+		}
+		return features;
+	}
+
+
 }

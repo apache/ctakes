@@ -25,7 +25,10 @@ import org.apache.ctakes.temporal.utils.SoftMaxUtil;
 import org.apache.ctakes.typesystem.type.refsem.Event;
 import org.apache.ctakes.typesystem.type.refsem.EventProperties;
 import org.apache.ctakes.typesystem.type.syntax.BaseToken;
-import org.apache.ctakes.typesystem.type.textsem.EventMention;
+import org.apache.ctakes.typesystem.type.syntax.NumToken;
+import org.apache.ctakes.typesystem.type.syntax.WordToken;
+import org.apache.ctakes.typesystem.type.textsem.*;
+import org.apache.ctakes.typesystem.type.textspan.Segment;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
 import org.apache.log4j.Logger;
 import org.apache.uima.UimaContext;
@@ -36,6 +39,7 @@ import org.apache.uima.fit.descriptor.ConfigurationParameter;
 import org.apache.uima.fit.factory.AnalysisEngineFactory;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
+import org.apache.uima.jcas.tcas.Annotation;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.cleartk.ml.CleartkAnnotator;
 import org.cleartk.ml.DataWriter;
@@ -51,9 +55,8 @@ import org.cleartk.ml.jar.GenericJarClassifierFactory;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 //import java.io.IOException;
 //import java.util.Map;
@@ -190,6 +193,7 @@ public class DocTimeRelAnnotator extends CleartkAnnotator<String> {
 
 	@Override
 	public void process(JCas jCas) throws AnalysisEngineProcessException {
+		LOGGER.info( "Finding DocTimeRel ..." );
 		for (EventMention eventMention : JCasUtil.select(jCas, EventMention.class)) {
 			List<Sentence> sents = JCasUtil.selectCovering(jCas, Sentence.class, eventMention);
 			List<Feature> features = new ArrayList<>();
@@ -210,7 +214,7 @@ public class DocTimeRelAnnotator extends CleartkAnnotator<String> {
 //			features.addAll(this.umlsExtractor.extract(jCas, eventMention)); //add umls features
 			features.addAll(this.verbTensePatternExtractor.extract(jCas, eventMention));//add nearby verb POS pattern feature
 
-			//    
+			//
 			features.addAll(this.dateExtractor.extract(jCas, eventMention)); //add the closest NE type
 //			features.addAll(this.durationExtractor.extract(jCas, eventMention)); //add duration feature
 //			features.addAll(this.disSemExtractor.extract(jCas, eventMention)); //add distributional semantic features
@@ -265,4 +269,181 @@ public class DocTimeRelAnnotator extends CleartkAnnotator<String> {
 			}
 		}
 	}
+
+//	@Override
+//	public void process(JCas jCas) throws AnalysisEngineProcessException {
+//		LOGGER.info( "Finding DocTimeRel ..." );
+//		final Map<Segment, Collection<Sentence>> sectionSentenceMap = JCasUtil.indexCovered( jCas,
+//																														 Segment.class,
+//																														 Sentence.class );
+//		final Map<Sentence,Collection<IdentifiedAnnotation>> sentenceAnnotationsMap = JCasUtil.indexCovered( jCas,
+//																														 Sentence.class,
+//																														 IdentifiedAnnotation.class );
+//		final Map<Sentence,Collection<BaseToken>> sentenceTokensMap = JCasUtil.indexCovered( jCas,
+//																																 Sentence.class,
+//																																BaseToken.class );
+//		final Collection<EventMention> handled = new HashSet<>();
+//		for ( Map.Entry<Segment,Collection<Sentence>> sectionSentences : sectionSentenceMap.entrySet() ) {
+//			handleSection( jCas, sectionSentences.getKey(), sectionSentences.getValue(), sentenceAnnotationsMap,
+//							sentenceTokensMap, handled );
+//		}
+//	}
+
+	private void handleSection( final JCas jCas,
+										 final Segment section,
+												  final Collection<Sentence> sentences,
+												  final Map<Sentence, Collection<IdentifiedAnnotation>> sentenceAnnotationsMap,
+										 final Map<Sentence,Collection<BaseToken>> sentenceTokensMap,
+												  final Collection<EventMention> handled ) throws AnalysisEngineProcessException {
+		if ( sentences == null ) {
+			return;
+		}
+		for ( Sentence sentence : sentences ) {
+			handleSentence( jCas, section, sentence, sentenceAnnotationsMap.get( sentence ),
+								 sentenceTokensMap.get( sentence ),
+								 handled );
+		}
+	}
+
+	private void handleSentence( final JCas jCas,
+										  final Segment section,
+													final Sentence sentence,
+													final Collection<IdentifiedAnnotation> annotations,
+													final Collection<BaseToken> tokens,
+													final Collection<EventMention> handled ) throws AnalysisEngineProcessException {
+		if ( annotations == null ) {
+			return;
+		}
+		final Collection<EventMention> events = new ArrayList<>();
+		final Collection<TimeMention> timexes = new ArrayList<>();
+		final Collection<TimeAnnotation> times = new ArrayList<>();
+		final Collection<DateAnnotation> dates = new ArrayList<>();
+		final Collection<MeasurementAnnotation> measurements = new ArrayList<>();
+		for ( IdentifiedAnnotation annotation : annotations ) {
+			if ( annotation instanceof EventMention ) {
+				events.add( (EventMention)annotation );
+			} else if ( annotation instanceof TimeMention ) {
+				timexes.add( (TimeMention) annotation );
+			} else if ( annotation instanceof TimeAnnotation ) {
+				times.add( (TimeAnnotation) annotation );
+			} else if ( annotation instanceof DateAnnotation ) {
+				dates.add( (DateAnnotation) annotation );
+			} else if ( annotation instanceof MeasurementAnnotation ) {
+				measurements.add( (MeasurementAnnotation) annotation );
+			}
+		}
+		if ( events.isEmpty() ) {
+			return;
+		}
+		final List<BaseToken> sortedTokens = tokens.stream()
+																 .sorted( Comparator.comparingInt( BaseToken::getBegin )
+																						  .thenComparingInt( BaseToken::getEnd ) )
+																 .collect( Collectors.toList() );
+
+		final List<WordToken> sortedWords = new ArrayList<>();
+		final List<NumToken> sortedNumbers = new ArrayList<>();
+		for ( BaseToken token : sortedTokens ) {
+			if ( token instanceof WordToken ) {
+				sortedWords.add( (WordToken) token );
+			} else if ( token instanceof NumToken ) {
+				sortedNumbers.add( (NumToken) token );
+			}
+		}
+		final int sentenceEnd = sentence.getEnd();
+		final List<Feature> features = new ArrayList<>();
+		for ( EventMention event : events ) {
+			if ( handled.contains( event ) ) {
+				// Can't we exit here?  Why was the old method continuing with the addition of other features?
+				continue;
+			}
+			if ( event.getEnd() > sentenceEnd ) {
+				features.addAll( this.contextExtractor.extractWithin( jCas, event, sentence ) );
+				features.addAll( this.tokenVectorContext.extractWithin( jCas, event, sentence ) );
+				features.addAll( this.tokenVectorContext2.extractWithin( jCas, event, sentence ) );
+				handled.add( event );
+			} else {
+				features.addAll( this.contextExtractor.extract( jCas, event ) );
+				features.addAll( this.tokenVectorContext.extract( jCas, event ) );
+				features.addAll( this.tokenVectorContext2.extract( jCas, event ) );
+			}
+			//add section heading
+			features.addAll( this.sectionIDExtractor.extract( jCas, event, Collections.singletonList( section ) ) );
+			//add closest verb
+			features.addAll( this.closestVerbExtractor.extract( jCas, event, sortedWords ) );
+			//add the closest time expression types
+			features.addAll(
+					this.timeXExtractor.extract( jCas, event, events, timexes, times, dates ) );
+			//add the closest raw time expression types
+			features.addAll( this.genericExtractor.extract( jCas, event, events, sortedTokens, sortedWords ) );
+			//			features.addAll(this.umlsExtractor.extract(jCas, eventMention)); //add umls features
+			//add nearby verb POS pattern feature
+			features.addAll(
+					this.verbTensePatternExtractor.extract( jCas, event, sortedWords ) );
+			//add the closest NE
+			features.addAll( this.dateExtractor.extract( jCas, event, dates, measurements, sortedNumbers ) );
+
+			// type
+			//			features.addAll(this.durationExtractor.extract(jCas, eventMention)); //add duration feature
+			//			features.addAll(this.disSemExtractor.extract(jCas, eventMention)); //add distributional semantic features
+			if ( this.isTraining() ) {
+				if ( event.getEvent() != null ) {
+					final String outcome = event.getEvent()
+														  .getProperties()
+														  .getDocTimeRel();
+					this.dataWriter.write( new Instance<>( outcome, features ) );
+				}
+			} else {
+				//        String outcome = this.classifier.classify(features);
+				final Map<String, Double> scores = this.classifier.score( features );
+				Map.Entry<String, Double> maxEntry = null;
+				for ( Map.Entry<String, Double> entry : scores.entrySet() ) {
+					if ( maxEntry == null || entry.getValue()
+															.compareTo( maxEntry.getValue() ) > 0 ) {
+						maxEntry = entry;
+					}
+				}
+
+				if ( probViewname != null ) {
+					Map<String, Double> probs = SoftMaxUtil.getDistributionFromScores( scores );
+					try {
+						JCas probView = jCas.getView( probViewname );
+						for ( String label : probs.keySet() ) {
+							final EventMention mention = new EventMention( probView );
+							mention.setId( event.getId() );
+							mention.setConfidence( probs.get( label )
+																 .floatValue() );
+							final Event viewEvent = new Event( probView );
+							final EventProperties props = new EventProperties( probView );
+							props.setDocTimeRel( label );
+							viewEvent.setProperties( props );
+							mention.setEvent( viewEvent );
+							mention.addToIndexes();
+						}
+					} catch ( CASException e ) {
+						e.printStackTrace();
+						throw new AnalysisEngineProcessException( e );
+					}
+
+				}
+
+				if ( event.getEvent() == null ) {
+					Event casEvent = new Event( jCas );
+					event.setEvent( casEvent );
+					EventProperties props = new EventProperties( jCas );
+					casEvent.setProperties( props );
+				}
+				if ( maxEntry != null ) {
+					event.getEvent()
+									.getProperties()
+									.setDocTimeRel( maxEntry.getKey() );
+					event.getEvent()
+									.setConfidence( maxEntry.getValue()
+																	.floatValue() );
+					//        	System.out.println("event DocTimeRel confidence:"+maxEntry.getValue().floatValue());
+				}
+			}
+		}
+
+	}
+
 }

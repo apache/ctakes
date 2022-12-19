@@ -44,7 +44,7 @@ public class MaxentParserWrapper implements ParserWrapper {
 
 	Parser parser = null;
 	private String parseStr = "";
-	Logger logger = Logger.getLogger(this.getClass().getName());
+   static private final Logger LOGGER = Logger.getLogger( "MaxentParserWrapper" );
     private int maxTokens;
 
 	public MaxentParserWrapper(InputStream in){
@@ -78,7 +78,7 @@ public class MaxentParserWrapper implements ParserWrapper {
 	@Override
    public void createAnnotations( final JCas jcas ) throws AnalysisEngineProcessException {
       final String docId = DocIdUtil.getDocumentID( jcas );
-      logger.info( "Started processing: " + docId );
+      LOGGER.info( "Started processing: " + docId );
       // iterate over sentences
 		Parse parse = null;
 //      final Collection<Sentence> allSentences = org.apache.uima.fit.util.JCasUtil.select( jcas, Sentence.class );
@@ -103,7 +103,7 @@ public class MaxentParserWrapper implements ParserWrapper {
          final TopTreebankNode top = TreeUtils.buildAlignedTree( jcas, parse, terminalArray, sentence );
          top.addToIndexes();
 		}
-      logger.info( "Done parsing: " + docId );
+//      LOGGER.info( "Done parsing: " + docId );
    }
 
    /**

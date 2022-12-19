@@ -21,6 +21,7 @@ package org.apache.ctakes.constituency.parser.util;
 import opennlp.tools.parser.AbstractBottomUpParser;
 import opennlp.tools.parser.Parse;
 import opennlp.tools.util.Span;
+import org.apache.ctakes.core.util.StringUtil;
 import org.apache.ctakes.typesystem.type.syntax.*;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
 import org.apache.ctakes.utils.tree.SimpleTree;
@@ -30,10 +31,7 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.FSArray;
 import org.apache.uima.jcas.cas.StringArray;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.regex.Pattern;
 
 final public class TreeUtils {
@@ -59,7 +57,7 @@ final public class TreeUtils {
 
 
 	public static List<TreebankNode> getNodeList(TopTreebankNode tree){
-		ArrayList<TreebankNode> list = new ArrayList<TreebankNode>();
+		List<TreebankNode> list = new ArrayList<>();
 		list.add(tree);
 		int ind = 0;	
 		while(ind < list.size()){
@@ -72,41 +70,39 @@ final public class TreeUtils {
 		return list;
 	}
 	
-	public static List<Parse> getNodeList(Parse tree){
-		ArrayList<Parse> list = new ArrayList<Parse>();
-		list.add(tree);
-		int ind = 0;	
-		while(ind < list.size()){
-			Parse cur = list.get(ind);
-			Parse[] children = cur.getChildren();
-			for(int i = 0; i < children.length; i++){
-				list.add(children[i]);
-			}
-			ind++;
+	public static List<Parse> getNodeList( final Parse tree ) {
+		final List<Parse> list = new ArrayList<>();
+		list.add( tree );
+		int index = 0;
+		while ( index < list.size() ) {
+			Parse parent = list.get( index );
+			Collections.addAll( list, parent.getChildren() );
+			index++;
 		}
 		return list;
 	}
 	
-	public static String tree2str(TreebankNode pathTree){
-		StringBuffer buff = new StringBuffer();
-		buff.append("(");
-		try{
-		buff.append(pathTree.getNodeType());
-		}catch(Exception e){
+	public static String tree2str( final TreebankNode pathTree ) {
+		StringBuilder sb = new StringBuilder();
+		sb.append( "(" );
+		try {
+			sb.append( pathTree.getNodeType() );
+		} catch(Exception e){
 			System.err.println("Caught NPE");
 		}
-		if(pathTree.getLeaf()){ //pathTree.getChildren().size() == 1 && pathTree.getChildren(0).getLeaf()){
-			buff.append(" ");
-			buff.append(pathTree.getNodeValue());
+		if ( pathTree.getLeaf() ) {
+			//pathTree.getChildren().size() == 1 && pathTree.getChildren(0).getLeaf()){
+			sb.append( " " ).append( pathTree.getNodeValue() );
 //			buff.append(")");
-		}else{
-			for(int i = 0; i < pathTree.getChildren().size(); i++){
-				buff.append(" ");
-				buff.append(tree2str(pathTree.getChildren(i)));
+		} else {
+			final FSArray children = pathTree.getChildren();
+			final int size = children.size();
+			for ( int i = 0; i < size; i++ ) {
+				sb.append( " " ).append( tree2str( (TreebankNode)children.get( i ) ) );
 			}
 		}
-		buff.append(")");
-		return buff.toString();
+		sb.append( ")" );
+		return sb.toString();
 	}
 
 //	public static boolean contains(TreebankNode n, SimpleTree frag){
@@ -160,23 +156,23 @@ final public class TreeUtils {
 	  return count;
 	}
 	
-	private static boolean fragmentMatch(SimpleTree node, SimpleTree frag, boolean ignoreCase){
-		boolean same = false;
-		if((ignoreCase && node.cat.equalsIgnoreCase(frag.cat)) || (!ignoreCase && node.cat.equals(frag.cat))){
-			if((frag.children.size() == 0 || node.children.size() == frag.children.size())){
 
-				same = true;
-				for(int i = 0; i < frag.children.size(); i++){
-					if(!fragmentMatch(node.children.get(i), frag.children.get(i), ignoreCase)){
-						same = false;
-						break;
-					}
+	private static boolean fragmentMatch( final SimpleTree node, final SimpleTree frag, final boolean ignoreCase ) {
+		if ( !catsEqual( node, frag, ignoreCase ) ) {
+			return false;
+		}
+		if ( frag.children.isEmpty()
+			  || node.children.size() == frag.children.size() ) {
+			for ( int i = 0; i < frag.children.size(); i++ ) {
+				if ( !fragmentMatch( node.children.get(i), frag.children.get(i), ignoreCase ) ) {
+					return false;
 				}
 			}
+			return true;
 		}
-		return same;
+		return false;
 	}
-	
+
 	public static int countDepFrags(SimpleTree node, SimpleTree frag){
 	  int count = 0;
 	  if(depFragmentMatch(node, frag, true)) count++;
@@ -200,26 +196,30 @@ final public class TreeUtils {
 	  return false;
 	}
 	
-	private static boolean depFragmentMatch(SimpleTree node, SimpleTree frag, boolean ignoreCase){
-	  boolean same = false;
-	  if(frag.children.size() > 1){
-	    System.err.println("Only chain fragments are currently supported!");
-	    throw new UIMA_UnsupportedOperationException();
-	  }
-	  
-	  if((ignoreCase && node.cat.equalsIgnoreCase(frag.cat)) || (!ignoreCase && node.cat.equals(frag.cat))){
-	    if(frag.children.size() == 0){
-	      return true;
-	    }
-	    for(int i = 0; i < node.children.size(); i++){
-	      if(depFragmentMatch(node.children.get(i), frag.children.get(0), ignoreCase)){
-	        return true;
-	      }
-	    }
-	  }
-	  
-	  return same;
+	private static boolean depFragmentMatch( final SimpleTree node, final SimpleTree frag, final boolean ignoreCase ) {
+		if ( frag.children.size() > 1 ) {
+			System.err.println("Only chain fragments are currently supported!");
+			throw new UIMA_UnsupportedOperationException();
+		}
+		if ( !catsEqual( node, frag, ignoreCase ) ) {
+			return false;
+		}
+		if ( frag.children.isEmpty() ) {
+			return true;
+		}
+		for ( int i = 0; i < node.children.size(); i++ ) {
+			if ( depFragmentMatch( node.children.get(i), frag.children.get(0), ignoreCase ) ) {
+				return true;
+			}
+		}
+		return false;
 	}
+
+	static private boolean catsEqual( final SimpleTree node, final SimpleTree frag, final boolean ignoreCase ) {
+		return ignoreCase ? node.cat.equalsIgnoreCase( frag.cat ) : node.cat.equals( frag.cat );
+	}
+
+
 
 	public static int getHighestIndexTerm(TreebankNode inTree) {
 		if(inTree instanceof TerminalTreebankNode){
@@ -228,19 +228,16 @@ final public class TreeUtils {
 			return getHighestIndexTerm(inTree.getChildren(inTree.getChildren().size()-1));
 	}
 
-	public static TopTreebankNode getTopNode(TreebankNode inTree) {
+	public static TopTreebankNode getTopNode( final TreebankNode inTree ) {
 		TreebankNode cur = inTree;
-		TopTreebankNode top = null;
-		
-		while(!(cur instanceof TopTreebankNode)){
+		while ( !(cur instanceof TopTreebankNode) ) {
 			cur = cur.getParent();
 		}
-		top = (TopTreebankNode) cur;
-		return top;
+		return (TopTreebankNode) cur;
 	}
 
 
-   /**
+	/**
     * @param jcas     ye olde ...
     * @param parse    opennlp parse
     * @param sentence -
@@ -296,31 +293,36 @@ final public class TreeUtils {
 	 * @return terminals for the sentence
 	 */
 	public static FSArray getTerminals( final JCas jcas, final List<BaseToken> baseTokens ) {
-		final List<BaseToken> wordList = new ArrayList<>();
-		for ( BaseToken baseToken : baseTokens ) {
-			if ( !(baseToken instanceof NewlineToken) ) {
-				wordList.add( baseToken );
-			}
-		}
-		final FSArray terminals = new FSArray( jcas, wordList.size() );
+		final Collection<TerminalTreebankNode> nodeList = new ArrayList<>();
 		int termIndex = 0;
-		for ( BaseToken word : wordList ) {
-			final TerminalTreebankNode ttn = new TerminalTreebankNode( jcas, word.getBegin(), word.getEnd() );
+		for ( BaseToken baseToken : baseTokens ) {
+			if ( (baseToken instanceof NewlineToken) ) {
+				continue;
+			}
+			final TerminalTreebankNode ttn = new TerminalTreebankNode( jcas, baseToken.getBegin(), baseToken.getEnd() );
 			ttn.setChildren( null );
 			ttn.setIndex( termIndex );
 			ttn.setTokenIndex( termIndex );
 			ttn.setLeaf( true );
 			ttn.setNodeTags( null );
-			final String wordText = word.getCoveredText();
-			if ( word instanceof PunctuationToken && BRACKET_MAP.containsKey( wordText ) ) {
+			final String wordText = baseToken.getCoveredText();
+			if ( baseToken instanceof PunctuationToken && BRACKET_MAP.containsKey( wordText ) ) {
 				ttn.setNodeValue( BRACKET_MAP.get( wordText ) );
 			} else {
 				ttn.setNodeValue( wordText );
 			}
 //			ttn.addToIndexes();
-			terminals.set( termIndex, ttn );
+			nodeList.add( ttn );
+//			terminals.set( termIndex, ttn );
 			termIndex++;
 		}
+		final FSArray terminals = new FSArray( jcas, nodeList.size() );
+		int arrIdx = 0;
+		for ( TerminalTreebankNode ttn : nodeList ) {
+			terminals.set( arrIdx, ttn );
+			arrIdx++;
+		}
+		terminals.addToIndexes( jcas );
 		return terminals;
 	}
 
@@ -342,11 +344,11 @@ final public class TreeUtils {
 	
 	private static void recursivelyCreateStructure(JCas jcas, TreebankNode parent, Parse parse, TopTreebankNode root) throws AnalysisEngineProcessException{
 		String[] typeParts;
-		if(parse.getType().startsWith("-")){
+		if ( parse.getType().charAt( 0 ) == '-' ) {
 			// check for dash at the start (for escaped types like -RRB- and so forth that cannot take function tags anyways)
 			typeParts = new String[]{parse.getType()};
-		}else{
-			typeParts = parse.getType().split("-");
+		} else {
+			typeParts = StringUtil.fastSplit( parse.getType(), '-' );
 		}
 		parent.setNodeType(typeParts[0]);
 		parent.setNodeValue(null);
@@ -390,19 +392,23 @@ final public class TreeUtils {
 //		parent.addToIndexes();
 	}
 
-	public static void replaceChild(TreebankNode parent, TreebankNode oldTree,
-			TreebankNode newTree) {
+	public static void replaceChild( final TreebankNode parent, final TreebankNode oldTree,
+											  final TreebankNode newTree) {
 		// if parent is null that means we're already at the top -- no pointers to fix.
-		if(parent != null){
-			for(int i = 0; i < parent.getChildren().size(); i++){
-				if(parent.getChildren(i) == oldTree){
-					parent.setChildren(i, newTree);
-            }
-         }
-      }
-   }
+		if ( parent == null ) {
+			return;
+		}
+		final FSArray parentChildren = parent.getChildren();
+		final int size = parentChildren.size();
+		for ( int i = 0; i < size; i++ ) {
+			if ( parentChildren.get( i ).equals( oldTree ) ) {
+				parentChildren.set( i, newTree );
+			}
+		}
+	}
 
-   /**
+
+	/**
     * @param sentenceOffset begin offest character index for sentence
     * @param text           text of the sentence
     * @param terminalArray  [token] terminals in the sentence
@@ -411,8 +417,9 @@ final public class TreeUtils {
    public static Parse ctakesTokensToOpennlpTokens( final int sentenceOffset, final String text,
                                                     final FSArray terminalArray ) {
       // based on the first part of parseLine in the opennlp libraries
-      final Parse sentenceParse = new Parse( text, new Span( 0, text
-            .length() ), AbstractBottomUpParser.INC_NODE, 0, 0 );
+      final Parse sentenceParse = new Parse( text,
+															new Span( 0, text.length() ),
+															AbstractBottomUpParser.INC_NODE, 0, 0 );
       for ( int i = 0; i < terminalArray.size(); i++ ) {
          final TerminalTreebankNode token = (TerminalTreebankNode)terminalArray.get( i );
          final Span span = new Span( token.getBegin() - sentenceOffset, token.getEnd() - sentenceOffset );
@@ -421,12 +428,10 @@ final public class TreeUtils {
       return sentenceParse;
    }
 
-   public static String escapePunct(String in){
-     if(BRACKET_MAP.containsKey(in)){
-       return BRACKET_MAP.get(in);
-     }
-     return in;
-   }
+	public static String escapePunct( final String in ) {
+		return BRACKET_MAP.getOrDefault( in, in );
+	}
+
 
 }
 

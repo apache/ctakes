@@ -235,7 +235,7 @@ public class MentionClusterCoreferenceAnnotator extends CleartkAnnotator<String>
     } else if ( this.isTraining() ) {
       classDataWriter = this.dataWriter;
     }
-    LOGGER.info( "Finished." );
+//    LOGGER.info( "Finished." );
   }
 
   public void process( final JCas jCas ) throws AnalysisEngineProcessException {
@@ -254,7 +254,7 @@ public class MentionClusterCoreferenceAnnotator extends CleartkAnnotator<String>
       }
       processDocument( jCas, null, relationLookup );
       removeSingletonClusters( jCas );
-      LOGGER.info( "Finished." );
+//      LOGGER.info( "Finished." );
       return;
     }
     // If we get this far then we have multiple views, so we are processing a patient CAS.
@@ -276,7 +276,7 @@ public class MentionClusterCoreferenceAnnotator extends CleartkAnnotator<String>
     } catch ( IOException ioE ) {
       LOGGER.error( ioE.getMessage() );
     }
-    LOGGER.info( "Finished." );
+//    LOGGER.info( "Finished." );
   }
 
   private void processDocument( final JCas jCas, final JCas prevCas, final Map<CollectionTextRelationIdentifiedAnnotationPair, CollectionTextRelationIdentifiedAnnotationRelation>

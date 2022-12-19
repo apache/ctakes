@@ -28,10 +28,15 @@ import org.apache.ctakes.typesystem.type.relation.RelationArgument;
 import org.apache.ctakes.typesystem.type.textsem.EventMention;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
 import org.apache.ctakes.typesystem.type.textsem.Modifier;
+import org.apache.ctakes.typesystem.type.textspan.Segment;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
+import org.apache.log4j.Logger;
+import org.apache.uima.UimaContext;
+import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
+import org.apache.uima.resource.ResourceInitializationException;
 
 /**
  * Identifies Degree_Of relations between {@link EventMention}s and
@@ -45,6 +50,19 @@ import org.apache.uima.jcas.tcas.Annotation;
       products = { PipeBitInfo.TypeProduct.DEGREE_RELATION }
 )
 public class DegreeOfRelationExtractorAnnotator extends RelationExtractorAnnotator {
+  static private final Logger LOGGER = Logger.getLogger( "DegreeOfRelationExtractorAnnotator" );
+
+  @Override
+  public void initialize( UimaContext context ) throws ResourceInitializationException {
+    LOGGER.info( "Initializing ..." );
+    super.initialize( context );
+  }
+
+  @Override
+  public void process(JCas jCas) throws AnalysisEngineProcessException {
+    LOGGER.info( "Finding Degree Of ..." );
+    super.process( jCas );
+  }
 
   @Override
   protected Class<? extends BinaryTextRelation> getRelationClass() {

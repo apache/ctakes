@@ -41,11 +41,11 @@ final public class ListSentenceFixer extends JCasAnnotator_ImplBase {
       LOGGER.info( "Adjusting Sentences overlapping Lists ..." );
       final Collection<List> lists = JCasUtil.select( jcas, List.class );
       if ( lists == null || lists.isEmpty() ) {
-         LOGGER.info( "Finished Processing" );
+//         LOGGER.info( "Finished Processing" );
          return;
       }
       adjustListEntrySentences( jcas );
-      LOGGER.info( "Finished Processing" );
+//      LOGGER.info( "Finished Processing" );
    }
 
 

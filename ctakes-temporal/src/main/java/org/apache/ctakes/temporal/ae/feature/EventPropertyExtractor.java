@@ -231,4 +231,103 @@ public class EventPropertyExtractor implements FeatureExtractor1<Annotation> {
 		return feats;
 	}
 
+
+	public List<Feature> extract( final JCas view, final Annotation annotation,
+											final Collection<EventMention> events,
+											final List<BaseToken> sortedTokens,
+											final List<WordToken> sortedWords ) throws CleartkExtractorException {
+		final List<Feature> features = new ArrayList<>();
+		//get Document ID:
+		String fname;
+		try {
+			final String docID = DocIdUtil.getDocumentID( view );//ViewUriUtil.getURI(view).toString();
+			int begin = docID.lastIndexOf( "_" );
+			fname = docID.substring( begin+1 );
+			features.add( new Feature( "docName", fname ) );
+			if ( fname.equals( "RAD" ) || fname.equals( "SP" ) ) {
+				features.add( new Feature( "docName:RAD+SP" ) );
+			}else{
+				features.add( new Feature( "docName:others" ) );
+			}
+		} catch ( org.apache.uima.cas.CASRuntimeException casRTE ) { // for unit tests that don't set up the UriView
+			casRTE.printStackTrace();
+			features.add( new Feature( "docName", "CASRuntimeException.UnableToGetDocIdFromUriView" ) );
+		}
+
+		//1 get event:
+		final EventMention event = (EventMention)annotation;
+		final List<EventMention> realEvents = new ArrayList<>();
+		for ( EventMention eventa : events ) {
+			// filter out umls events  --> I am not sure that this is good.  Perhaps EventMention.getEvent() == null ?
+			if( eventa.getClass().equals( EventMention.class ) ) {
+				realEvents.add( eventa );
+			}
+		}
+		if ( realEvents.size() > 0 ) {
+			if ( event.equals( realEvents.get( 0 ) ) ) {
+				// Event is anchor, first "real event"
+				features.add( new Feature( "LeftMostEvent" ) );
+			} else if ( event.equals( realEvents.get(realEvents.size()-1) ) ) {
+				// event is end, last "real event"
+				features.add( new Feature( "RightMostEvent" ) );
+			}
+		}
+
+		//check if this event is generic:
+		final int eventBegin = event.getBegin();
+		int wordIndex = 0;
+		for ( int i=0; i<sortedWords.size(); i++ ) {
+			if ( sortedWords.get( i ).getBegin() >= eventBegin ) {
+				wordIndex = i;
+				break;
+			}
+		}
+		final int lowLimit = Math.max( 0, wordIndex-15 );
+		final int highLimit = Math.min( sortedWords.size(), wordIndex + 16 );
+		for ( int i=lowLimit; i<highLimit; i++ ) {
+			if ( i == wordIndex ) {
+				continue;
+			}
+			if ( genericWords.contains( sortedWords.get( i ).getCoveredText().toLowerCase() ) ) {
+				features.add( new Feature( "GenericEvent" ) );
+				break;
+			}
+		}
+		int tokenIndex = 0;
+		for ( int i=0; i<sortedTokens.size(); i++ ) {
+			if ( sortedTokens.get( i ).getBegin() >= eventBegin ) {
+				tokenIndex = i;
+				break;
+			}
+		}
+		int crLimit = Math.max( 0, tokenIndex-20 );
+		//check if there is any newLine token in close vicinity:
+		int newlineNum = 0;
+		for ( int i=crLimit; i<tokenIndex; i++ ) {
+			if ( sortedTokens.get( i ) instanceof NewlineToken ) {
+				newlineNum++;
+			}
+		}
+		if ( newlineNum > 0 ) {
+			features.add( new Feature( "hasPrecedingNewline" ) );
+			features.add( new Feature( "newLineNum_preceding", newlineNum ) );
+		}
+		crLimit = Math.min( sortedTokens.size(), tokenIndex + 21 );
+		newlineNum = 0;
+		for ( int i=tokenIndex+1; i<crLimit; i++ ) {
+			if ( sortedTokens.get( i ) instanceof NewlineToken ) {
+				newlineNum++;
+			}
+		}
+		if ( newlineNum > 0 ) {
+			features.add( new Feature( "hasFollowingNewline" ) );
+			features.add( new Feature( "newLineNum_following", newlineNum ) );
+		}
+		features.addAll( getEventFeats( "mentionProperty", event ) );
+		return features;
+	}
+
+
+
+
 }

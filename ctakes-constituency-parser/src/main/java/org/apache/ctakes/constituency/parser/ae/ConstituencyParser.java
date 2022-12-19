@@ -61,24 +61,24 @@ public class ConstituencyParser extends JCasAnnotator_ImplBase {
 	
 	
 	private ParserWrapper parser = null;
-	private Logger logger = Logger.getLogger(this.getClass());
+	static private final Logger LOGGER = Logger.getLogger( "ConstituencyParser" );
 
 	@Override
 	public void initialize( final UimaContext aContext ) throws ResourceInitializationException {
+		LOGGER.info( "Initializing ..." );
 		super.initialize( aContext );
-		logger.info( "Initializing ..." );
 		try ( DotLogger dotter = new DotLogger() ) {
 			parser = new MaxentParserWrapper( FileLocator.getAsStream( modelFilename ), this.maxTokens );
 		} catch ( IOException ioE ) {
-			logger.error( "Error reading parser model file/directory: " + ioE.getMessage() );
+			LOGGER.error( "Error reading parser model file/directory: " + ioE.getMessage() );
 			throw new ResourceInitializationException( ioE );
 		}
-		logger.info( "Finished." );
 	}
 
 
 	@Override
 	public void process(JCas jcas) throws AnalysisEngineProcessException {
+		LOGGER.info( "Processing ..." );
 		parser.createAnnotations(jcas);
 	}
 	

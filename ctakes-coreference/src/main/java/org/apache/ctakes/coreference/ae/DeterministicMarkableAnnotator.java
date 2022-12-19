@@ -10,6 +10,7 @@ import org.apache.ctakes.typesystem.type.textsem.EventMention;
 import org.apache.ctakes.typesystem.type.textsem.Markable;
 import org.apache.ctakes.typesystem.type.textsem.TimeMention;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
+import org.apache.log4j.Logger;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
@@ -34,19 +35,21 @@ import static org.apache.ctakes.dependency.parser.util.DependencyUtility.*;
       products = { MARKABLE }
 )
 public class DeterministicMarkableAnnotator extends JCasAnnotator_ImplBase {
+  static private final Logger LOGGER = Logger.getLogger( "DeterministicMarkableAnnotator" );
 
   // list starters like A.  or #1    or 3)
   static Pattern headerPatt = Pattern.compile("^(([A-Z][\\.\\:\\)])|(#\\d+)|(\\d+[\\.\\:\\)])) *");
 
   @Override
   public void initialize(UimaContext uc) throws ResourceInitializationException{
+    LOGGER.info( "Initializing ..." );
     super.initialize(uc);
   }
 
   @Override
-  public void process(JCas jCas)
-      throws AnalysisEngineProcessException {
-    
+  public void process(JCas jCas) throws AnalysisEngineProcessException {
+    LOGGER.info( "Processing ..." );
+
 //    createMarkablesUsingConstituencyTrees(jCas);
     createMarkablesUsingDependencyTrees(jCas);
     

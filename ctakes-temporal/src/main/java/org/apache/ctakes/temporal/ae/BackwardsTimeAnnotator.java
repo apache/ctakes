@@ -190,6 +190,12 @@ public class BackwardsTimeAnnotator extends TemporalEntityAnnotator_ImplBase {
   }
 
   @Override
+  public void process(JCas jCas) throws AnalysisEngineProcessException {
+    LOGGER.info( "Finding Times ..." );
+    super.process( jCas );
+  }
+
+  @Override
   public void process(JCas jCas, Segment segment) throws AnalysisEngineProcessException {
     // classify tokens within each sentence
     for (Sentence sentence : JCasUtil.selectCovered(jCas, Sentence.class, segment)) {

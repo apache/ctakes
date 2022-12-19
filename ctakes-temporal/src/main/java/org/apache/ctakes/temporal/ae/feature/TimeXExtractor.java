@@ -18,11 +18,7 @@
  */
 package org.apache.ctakes.temporal.ae.feature;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 //import java.util.logging.Logger;
 
 import org.apache.ctakes.typesystem.type.syntax.NumToken;
@@ -164,5 +160,82 @@ public class TimeXExtractor implements FeatureExtractor1 {
 
 	  return features;
   }
+
+
+
+	public List<Feature> extract( final JCas view,
+											final Annotation annotation,
+											final Collection<EventMention> events,
+											final Collection<TimeMention> timexes,
+											final Collection<TimeAnnotation> times,
+											final Collection<DateAnnotation> dates ) throws CleartkExtractorException {
+		//1 get covering sentence:
+		final EventMention targetTokenAnnotation = (EventMention)annotation;
+		final int eventBegin = annotation.getBegin();
+		int closestDistance = Integer.MAX_VALUE;
+		IdentifiedAnnotation closestTime = null;
+		for ( TimeMention timex : timexes ) {
+			final int distance = Math.abs( timex.getBegin() - eventBegin );
+			if ( distance < closestDistance ) {
+				closestDistance = distance;
+				closestTime = timex;
+			}
+		}
+		for ( TimeAnnotation time : times ) {
+			final int distance = Math.abs( time.getBegin() - eventBegin );
+			if ( distance < closestDistance ) {
+				closestDistance = distance;
+				closestTime = time;
+			}
+		}
+		for ( DateAnnotation date : dates ) {
+			final int distance = Math.abs( date.getBegin() - eventBegin );
+			if ( distance < closestDistance ) {
+				closestDistance = distance;
+				closestTime = date;
+			}
+		}
+		if ( closestTime == null ) {
+			return Collections.emptyList();
+		}
+		final List<Feature> features = new ArrayList<>();
+		final Feature feature = new Feature( this.name, closestTime.getCoveredText() );
+		features.add( feature );
+		//			  logger.info("add time feature: "+ entry.getValue().getCoveredText() + entry.getValue().getTimeClass());
+		final Feature indicator = new Feature( "TimeXNearby", this.name );
+		features.add( indicator );
+		final Feature type = new Feature( "TimeXType", closestTime.getClass() );
+		features.add( type );
+
+		//add PP get Heading preposition
+		for ( TreebankNode treebankNode : JCasUtil.selectCovering(
+				view,
+				TreebankNode.class,
+				closestTime.getBegin(),
+				closestTime.getEnd() ) ) {
+			if ( treebankNode.getNodeType().equals( "PP" ) ) {
+				Feature PPNodeType = new Feature( "Timex_PPNodeType", treebankNode.getNodeType() );
+				features.add( PPNodeType );
+				break;
+			}
+		}
+
+		//add path tree, timex attributes
+		try {
+			features.addAll( this.attr.extract( view, targetTokenAnnotation, closestTime ) );//add temporal attribute
+			// features
+			features.addAll( this.timewd.extract( view,closestTime ) );
+		} catch ( AnalysisEngineProcessException aeE ) {
+			throw new IllegalArgumentException( "error in gererating path feature:" + features );
+		}
+		return features;
+	}
+
+
+
+
+
+
+
 
 }

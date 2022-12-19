@@ -73,6 +73,7 @@ final public class ParagraphAnnotator extends JCasAnnotator_ImplBase {
     */
    @Override
    public void initialize( final UimaContext context ) throws ResourceInitializationException {
+      LOGGER.info( "Initializing ..." );
       super.initialize( context );
       if ( _paragraphTypesPath == null ) {
          LOGGER.info( "No " + PARAGRAPH_TYPES_DESC );
@@ -91,7 +92,7 @@ final public class ParagraphAnnotator extends JCasAnnotator_ImplBase {
       } catch ( IOException ioE ) {
          throw new ResourceInitializationException( ioE );
       }
-      LOGGER.info( "Finished Parsing" );
+//      LOGGER.info( "Finished Parsing" );
    }
 
    /**
@@ -105,7 +106,7 @@ final public class ParagraphAnnotator extends JCasAnnotator_ImplBase {
          return;
       }
       createParagraphs( jcas );
-      LOGGER.info( "Finished processing" );
+//      LOGGER.info( "Finished processing" );
    }
 
 

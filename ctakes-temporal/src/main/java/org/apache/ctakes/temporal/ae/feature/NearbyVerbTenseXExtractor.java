@@ -49,13 +49,13 @@ public class NearbyVerbTenseXExtractor implements FeatureExtractor1 {
   @Override
   public List<Feature> extract(JCas view, Annotation annotation) throws CleartkExtractorException {
 	  List<Feature> features = new ArrayList<>();
-	  
+
 	  //1 get covering sentence:
 	  Map<EventMention, Collection<Sentence>> coveringMap =
 			  JCasUtil.indexCovering(view, EventMention.class, Sentence.class);
 	  EventMention targetTokenAnnotation = (EventMention)annotation;
 	  Collection<Sentence> sentList = coveringMap.get(targetTokenAnnotation);
-	  
+
 	  //2 get Verb Tense
 	  if (sentList != null && !sentList.isEmpty()){
 		  for(Sentence sent : sentList) {
@@ -72,9 +72,29 @@ public class NearbyVerbTenseXExtractor implements FeatureExtractor1 {
 			  features.add(feature);
 			  //logger.info("found nearby verb's pos tag: "+ verbTP);
 		  }
-		  
+
 	  }
 	  return features;
   }
 
+
+	public List<Feature> extract( final JCas view, final Annotation annotation, final Collection<WordToken> tokens )
+			throws CleartkExtractorException {
+		final List<Feature> features = new ArrayList<>();
+		StringBuilder verbTP = new StringBuilder();
+		for ( WordToken wt : tokens ) {
+			if ( wt != null ) {
+				String pos = wt.getPartOfSpeech();
+				if ( pos.startsWith( "VB" ) ) {
+					verbTP.append( "_" )
+							.append( pos );
+				}
+			}
+		}
+		final Feature feature = new Feature( this.name, verbTP.toString() );
+		features.add( feature );
+		return features;
+	}
+
+	
 }
