@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Objects;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
@@ -27,6 +28,7 @@ final public class IdentifiedAnnotationBuilder {
    static private final Pair<Integer> NULL_SPAN = new Pair<>( -1, -1 );
 
    private Pair<Integer> _textSpan = NULL_SPAN;
+   private Function<JCas, ? extends IdentifiedAnnotation> _creator;
    private SemanticGroup _group = SemanticGroup.UNKNOWN;
    private SemanticTui _type = SemanticTui.UNKNOWN;
    private final Collection<OntologyConcept> _concepts = new HashSet<>();
@@ -57,6 +59,16 @@ final public class IdentifiedAnnotationBuilder {
     */
    public IdentifiedAnnotationBuilder span( final Pair<Integer> textSpan ) {
       _textSpan = textSpan;
+      return this;
+   }
+
+   /**
+    * Allow for creation of IdentifiedAnnotations outside those created/determined by Semantic Group
+    * @param creator some IdentifiedAnnotation creation function, e.g.TimeAnnotation::new
+    * @return this builder
+    */
+   public IdentifiedAnnotationBuilder creator( final Function<JCas, ? extends IdentifiedAnnotation> creator ) {
+      _creator = creator;
       return this;
    }
 
@@ -194,6 +206,13 @@ final public class IdentifiedAnnotationBuilder {
       return _group;
    }
 
+   public Function<JCas, ? extends IdentifiedAnnotation> getCreator( final SemanticGroup group ) {
+      if ( _creator != null ) {
+         return _creator;
+      }
+      return group.getCreator();
+   }
+
    private void addConcepts( final JCas jCas, final IdentifiedAnnotation annotation ) {
       if ( !_concepts.isEmpty() ) {
          final FSArray conceptArr = new FSArray( jCas, _concepts.size() );
@@ -294,7 +313,7 @@ final public class IdentifiedAnnotationBuilder {
          return null;
       }
       final SemanticGroup group = getGroup();
-      final IdentifiedAnnotation annotation = group.getCreator()
+      final IdentifiedAnnotation annotation = getCreator( group )
                                                    .apply( jcas );
       annotation.setTypeID( group.getCode() );
       annotation.setBegin( _textSpan.getValue1() );

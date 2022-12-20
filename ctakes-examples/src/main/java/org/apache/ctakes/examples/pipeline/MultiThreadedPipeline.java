@@ -57,7 +57,7 @@ public class MultiThreadedPipeline {
 //        FilesInDirectoryCollectionReader.class,
         FileTreeReader.class,
         ConfigParameterConstants.PARAM_INPUTDIR,
-        "src/user/resources/org/apache/ctakes/examples/annotation/anafora_annotated/" );
+        "org/apache/ctakes/examples/annotation/anafora_annotated/" );
 //        FilesInDirectoryCollectionReader.PARAM_RECURSE,
 //        true);
 

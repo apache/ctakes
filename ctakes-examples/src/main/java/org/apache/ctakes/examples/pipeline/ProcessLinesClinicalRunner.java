@@ -26,11 +26,9 @@ final public class ProcessLinesClinicalRunner {
 
    static private final Logger LOGGER = Logger.getLogger( "ProcessLinesClinicalRunner" );
 
-   static private final String PIPER_FILE_PATH = "src/user/resources/org/apache/ctakes/clinical/pipeline"
-                                                 + "/DefaultFastPipeline.piper";
+   static private final String PIPER_FILE_PATH = "org/apache/ctakes/clinical/pipeline/DefaultFastPipeline.piper";
 
-   static private final String INPUT_FILE_PATH = "src/user/resources/org/apache/ctakes/examples/notes"
-                                                 + "/right_knee_arthroscopy";
+   static private final String INPUT_FILE_PATH = "org/apache/ctakes/examples/notes/right_knee_arthroscopy";
 
    private ProcessLinesClinicalRunner() {
    }

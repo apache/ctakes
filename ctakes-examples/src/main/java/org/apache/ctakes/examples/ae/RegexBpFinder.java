@@ -29,7 +29,8 @@ final public class RegexBpFinder extends JCasAnnotator_ImplBase {
 
    static private final Logger LOGGER = Logger.getLogger( "RegexBpFinder" );
 
-   static private final Collection<String> BP_SECTIONS = Arrays.asList( "Vital Signs", "General Exam", "Objective", "SIMPLE_SEGMENT" );
+   static private final Collection<String> BP_SECTIONS
+         = Arrays.asList( "Vital Signs", "General Exam", "Objective", "SIMPLE_SEGMENT" );
    static private final String BP_TRIGGER = "\\bB\\/?P(?:\\s*:)?\\s+";
    static private final String VIT_BP_TRIGGER = "^VITS?:\\s+";
 
@@ -61,7 +62,8 @@ final public class RegexBpFinder extends JCasAnnotator_ImplBase {
          return;
       }
       Collection<Pair<Integer>> spans = new ArrayList<>();
-      try ( RegexSpanFinder finder = new RegexSpanFinder( VIT_BP_TRIGGER, Pattern.CASE_INSENSITIVE | Pattern.MULTILINE, 1000 ) ) {
+      try ( RegexSpanFinder finder
+                  = new RegexSpanFinder( VIT_BP_TRIGGER, Pattern.CASE_INSENSITIVE | Pattern.MULTILINE, 1000 ) ) {
          spans.addAll( finder.findSpans( sectionText ) );
       } catch ( IllegalArgumentException iaE ) {
          LOGGER.error( iaE.getMessage() );

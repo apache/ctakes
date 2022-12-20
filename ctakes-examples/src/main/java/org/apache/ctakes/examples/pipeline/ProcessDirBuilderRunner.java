@@ -23,7 +23,7 @@ final public class ProcessDirBuilderRunner {
 
    static private final Logger LOGGER = Logger.getLogger( "ProcessDirBuilderRunner" );
 
-   static private final String INPUT_DIR = "src/user/resources/org/apache/ctakes/examples/notes";
+   static private final String INPUT_DIR = "org/apache/ctakes/examples/notes/annotated";
 
    private ProcessDirBuilderRunner() {
    }

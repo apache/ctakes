@@ -1,7 +1,7 @@
 package org.apache.ctakes.examples.pipeline;
 
 import org.apache.ctakes.clinicalpipeline.ClinicalPipelineFactory;
-import org.apache.ctakes.examples.ae.ExampleHelloWorldAnnotator;
+import org.apache.ctakes.examples.ae.ConfigParameterExample;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
 import org.apache.uima.fit.factory.AggregateBuilder;
 import org.apache.uima.fit.factory.JCasFactory;
@@ -36,7 +36,7 @@ public class HelloWorldAggregatePipeline {
       builder.add( ClinicalPipelineFactory.getTokenProcessingPipeline() );
 
       //Add the new HelloWorld Example:
-      builder.add( ExampleHelloWorldAnnotator.createAnnotatorDescription() );
+      builder.add( ConfigParameterExample.createAnnotatorDescription() );
 
       //Run the Aggregate Pipeline
       SimplePipeline.runPipeline( jcas, builder.createAggregateDescription() );

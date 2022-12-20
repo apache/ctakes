@@ -3,8 +3,11 @@ package org.apache.ctakes.examples.ae;
 import org.apache.ctakes.core.ae.TokenizerAnnotatorPTB;
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.core.pipeline.PipelineBuilder;
+import org.apache.ctakes.core.util.annotation.ConceptBuilder;
+import org.apache.ctakes.core.util.annotation.IdentifiedAnnotationBuilder;
+import org.apache.ctakes.core.util.annotation.SemanticGroup;
+import org.apache.ctakes.core.util.annotation.SemanticTui;
 import org.apache.ctakes.core.util.doc.TextBySentenceBuilder;
-import org.apache.ctakes.typesystem.type.refsem.UmlsConcept;
 import org.apache.ctakes.typesystem.type.syntax.WordToken;
 import org.apache.ctakes.typesystem.type.textsem.AnatomicalSiteMention;
 import org.apache.ctakes.typesystem.type.textsem.BodySideModifier;
@@ -17,7 +20,6 @@ import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
 import org.apache.uima.fit.pipeline.SimplePipeline;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
-import org.apache.uima.jcas.cas.FSArray;
 import org.apache.uima.jcas.tcas.Annotation;
 
 import java.io.IOException;
@@ -61,34 +63,37 @@ final public class BodySideFinder extends JCasAnnotator_ImplBase {
    private enum Side {
       RIGHT( "C0205090", "right", "dextro" ),
       LEFT( "C0205091", "left", "levo" );
-      final private String _cui;
       final private Collection<String> _patterns;
+      // Set up a builder for body side modifiers.
+      final private IdentifiedAnnotationBuilder _sideBuilder
+            = new IdentifiedAnnotationBuilder().creator( BodySideModifier::new );
+      // Set up a builder for conceptual entities.
+      final private ConceptBuilder _cuiBuilder
+            = new ConceptBuilder().type( SemanticTui.T077 );
 
       Side( final String cui, final String... patterns ) {
-         _cui = cui;
+         // Assign cui and preferred text to the concept builder for this side.
+         _cuiBuilder.cui( cui ).preferredText( patterns[ 0 ] );
          _patterns = Arrays.asList( patterns );
       }
 
       boolean isMatch( final WordToken word ) {
+         // The word token covers text in the document that matches one of the patterns, case-insensitive.
          return _patterns.stream()
                          .anyMatch( word.getCoveredText()::equalsIgnoreCase );
       }
 
       BodySideModifier createModifier( final JCas jCas, final WordToken word ) {
-         final BodySideModifier side = new BodySideModifier( jCas, word.getBegin(), word.getEnd() );
-         final UmlsConcept umlsConcept = new UmlsConcept( jCas );
-         umlsConcept.setCui( _cui );
-         final FSArray conceptArr = new FSArray( jCas, 1 );
-         conceptArr.set( 0, umlsConcept );
-         side.setOntologyConceptArr( conceptArr );
-         side.addToIndexes( jCas );
-         return side;
+         // Set the span to match the word, set the concept (built with our concept builder), build the side modifier.
+         return (BodySideModifier) _sideBuilder.span( word.getBegin(), word.getEnd() )
+                                               .concept( _cuiBuilder.build( jCas ) )
+                                               .build( jCas );
       }
    }
 
    /**
     * Process Sentence -by- Sentence.
-    * If a sentence has anatomic site(s) and wordtokens that match a body side synonym,
+    * If a sentence has anatomic site(s) and WordToken that match a body side synonym,
     * BodySideModifier(s) are created and attached to anatomic sites that follow in the sentence.
     * {@inheritDoc}
     */
@@ -102,7 +107,8 @@ final public class BodySideFinder extends JCasAnnotator_ImplBase {
       final Map<Sentence, Collection<WordToken>> sentenceWordMap
             = JCasUtil.indexCovered( jCas, Sentence.class, WordToken.class );
 
-      sentenceSiteMap.entrySet().stream()
+      sentenceSiteMap.entrySet()
+                     .stream()
                      .filter( e -> !e.getValue().isEmpty() )
                      .forEach( e -> assignSides( jCas, e.getValue(), sentenceWordMap.get( e.getKey() ) ) );
 
@@ -152,17 +158,21 @@ final public class BodySideFinder extends JCasAnnotator_ImplBase {
       final String sentence = "He had a slight fracture in the proximal right fibula";
       final int index = sentence.indexOf( "fibula" );
       try {
-         final AnalysisEngineDescription analysisEngine = new PipelineBuilder()
-               .add( TokenizerAnnotatorPTB.class )
-               .add( BodySideFinder.class )
-               .getAnalysisEngineDesc();
+         // TextBySentenceBuilder builds a jCas from appended sentences.
+         // This does more than just setting the document text.
          final JCas jCas = new TextBySentenceBuilder()
                .addSentence( sentence )
                .build();
-         final AnatomicalSiteMention site = new AnatomicalSiteMention( jCas, index, index + 6 );
-         site.addToIndexes( jCas );
-
-         SimplePipeline.runPipeline( jCas, analysisEngine );
+         // IdentifiedAnnotationBuilder creates an identified annotation and adds it to the cas.
+         final AnatomicalSiteMention site
+               = (AnatomicalSiteMention) new IdentifiedAnnotationBuilder().group( SemanticGroup.ANATOMY )
+                                                                          .span( index, index + 6 )
+                                                                          .build( jCas );
+         // PipelineBuilder creates and can run pipelines.
+         new PipelineBuilder()
+               .add( TokenizerAnnotatorPTB.class )
+               .add( BodySideFinder.class )
+               .run( jCas );
 
          LOGGER.info( site.getCoveredText() + " has body side " + site.getBodySide().getCoveredText() );
       } catch ( IOException | UIMAException uE ) {

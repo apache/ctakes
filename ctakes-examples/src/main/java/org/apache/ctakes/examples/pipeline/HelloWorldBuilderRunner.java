@@ -6,7 +6,7 @@ import org.apache.ctakes.core.ae.SentenceDetector;
 import org.apache.ctakes.core.ae.SimpleSegmentAnnotator;
 import org.apache.ctakes.core.ae.TokenizerAnnotatorPTB;
 import org.apache.ctakes.core.pipeline.PipelineBuilder;
-import org.apache.ctakes.examples.ae.ExampleHelloWorldAnnotator;
+import org.apache.ctakes.examples.ae.ConfigParameterExample;
 import org.apache.ctakes.postagger.POSTagger;
 import org.apache.log4j.Logger;
 import org.apache.uima.UIMAException;
@@ -48,7 +48,7 @@ final public class HelloWorldBuilderRunner {
                // The POSTagger has a -complex- startup, but it can create its own description to handle it
                .addDescription( POSTagger.createAnnotatorDescription() )
                // add the simple Hello World Annotator
-               .add( ExampleHelloWorldAnnotator.class );
+               .add( ConfigParameterExample.class );
          if ( args.length > 0 ) {
             // Example to save the Aggregate descriptor to an xml file for external use such as the UIMA CVD
             builder.writeXMIs( args[ 0 ] );

@@ -23,7 +23,6 @@ import java.util.Collection;
 import org.apache.ctakes.typesystem.type.syntax.BaseToken;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
 import org.apache.log4j.Logger;
-import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.jcas.JCas;
@@ -33,16 +32,19 @@ import org.apache.uima.fit.descriptor.ConfigurationParameter;
 import org.apache.uima.fit.factory.AnalysisEngineFactory;
 import org.apache.uima.fit.util.JCasUtil;
 
-public class ExampleHelloWorldAnnotator extends JCasAnnotator_ImplBase {
+
+public class ConfigParameterExample extends JCasAnnotator_ImplBase {
 
 	public static final String PARAM_SAVE_ANN = "PARAM_SAVE_ANN";
 	public static final String PARAM_PRINT_ANN = "PARAM_PRINT_ANN";
 	private Logger LOG = Logger.getLogger(getClass().getName());
 
-	@ConfigurationParameter(name = PARAM_SAVE_ANN, mandatory = false, description = "Example of Options/Parameters Save Annotation?")
+	@ConfigurationParameter(name = PARAM_SAVE_ANN, mandatory = false,
+									description = "Example of Options/Parameters Save Annotation?")
 	protected boolean saveAnnotation = true;
 
-	@ConfigurationParameter(name = PARAM_PRINT_ANN, mandatory = false, description = "Example of Options/Parameters Print Annotation?")
+	@ConfigurationParameter(name = PARAM_PRINT_ANN, mandatory = false,
+									description = "Example of Options/Parameters Print Annotation?")
 	protected boolean printAnnotation = true;
 
 	@Override
@@ -66,26 +68,20 @@ public class ExampleHelloWorldAnnotator extends JCasAnnotator_ImplBase {
 		}
 	}
 
-	@Override
-	public void initialize(UimaContext context)
-			throws ResourceInitializationException {
-		super.initialize(context);
-	}
-
 	public static AnalysisEngineDescription createAnnotatorDescription(
 			boolean saveAnn, boolean printAnn)
 			throws ResourceInitializationException {
 		return AnalysisEngineFactory.createEngineDescription(
-				ExampleHelloWorldAnnotator.class,
-				ExampleHelloWorldAnnotator.PARAM_SAVE_ANN, saveAnn,
-				ExampleHelloWorldAnnotator.PARAM_PRINT_ANN, printAnn);
+				ConfigParameterExample.class,
+				ConfigParameterExample.PARAM_SAVE_ANN, saveAnn,
+				ConfigParameterExample.PARAM_PRINT_ANN, printAnn );
 	}
 
 	public static AnalysisEngineDescription createAnnotatorDescription()
 			throws ResourceInitializationException {
 		return AnalysisEngineFactory.createEngineDescription(
-				ExampleHelloWorldAnnotator.class,
-				ExampleHelloWorldAnnotator.PARAM_SAVE_ANN, true,
-				ExampleHelloWorldAnnotator.PARAM_PRINT_ANN, true);
+				ConfigParameterExample.class,
+				ConfigParameterExample.PARAM_SAVE_ANN, true,
+				ConfigParameterExample.PARAM_PRINT_ANN, true );
 	}
 }
