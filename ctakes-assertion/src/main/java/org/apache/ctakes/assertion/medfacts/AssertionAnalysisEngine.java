@@ -48,12 +48,17 @@ import java.util.Set;
 
 //import org.jfree.util.Log;
 
+/**
+ * Stub classes must be replaced.  See https://issues.apache.org/jira/browse/CTAKES-76
+ * @deprecated   Use AssertionAnalysisEngineFit.
+ */
 @PipeBitInfo(
       name = "Assertion Engine",
       description = "Adds Negation, Uncertainty, Conditional and Subject to annotations.",
       role = PipeBitInfo.Role.ANNOTATOR,
       dependencies = { PipeBitInfo.TypeProduct.IDENTIFIED_ANNOTATION }
 )
+@Deprecated
 public class AssertionAnalysisEngine extends JCasAnnotator_ImplBase
 {
   private static Logger logger = Logger.getLogger(AssertionAnalysisEngine.class.getName());

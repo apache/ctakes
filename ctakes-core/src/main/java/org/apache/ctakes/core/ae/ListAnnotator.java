@@ -238,7 +238,13 @@ final public class ListAnnotator extends JCasAnnotator_ImplBase {
       }
       final Collection<ListEntry> listEntries = new ArrayList<>( separators.size() + 1 );
       final List<Pair<Integer>> boundsList = new ArrayList<>( separators );
-      boundsList.sort( ( p1, p2 ) -> p1.getValue1() - p2.getValue2() );
+      try {
+         boundsList.sort( ( p1, p2 ) -> p1.getValue1() - p2.getValue2() );
+      } catch ( IllegalArgumentException iaE ) {
+         // TimSort sometimes throws an exception.  Rare but unfortunate.
+         LOGGER.error( iaE.getMessage() + ", ignoring possible list entries." );
+         return Collections.emptyList();
+      }
       Pair<Integer> leftBounds;
       int previousEntryEnd = listBegin;
       final int length = boundsList.size();

@@ -26,6 +26,8 @@ import static org.apache.ctakes.typesystem.type.constants.CONST.ATTR_SUBJECT_PAT
 
 
 /**
+ * Stub classes must be replaced.  See https://issues.apache.org/jira/browse/CTAKES-76
+ *
  * @author SPF , chip-nlp
  * @version %I%
  * @since 10/19/2016
