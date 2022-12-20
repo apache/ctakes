@@ -1,6 +1,8 @@
 package org.apache.ctakes.core.util;
 
 
+import org.apache.ctakes.core.util.annotation.IdentifiedAnnotationBuilder;
+import org.apache.ctakes.core.util.annotation.SemanticTui;
 import org.apache.ctakes.typesystem.type.refsem.Date;
 import org.apache.ctakes.typesystem.type.refsem.Time;
 import org.apache.ctakes.typesystem.type.textsem.TimeMention;
@@ -59,6 +61,10 @@ final public class CalendarUtil {
 
    static private final Collection<DateFormat> DATE_FORMATS = new ArrayList<>();
    static private final Collection<DateFormat> DATE_TIME_FORMATS = new ArrayList<>();
+
+   static private final IdentifiedAnnotationBuilder _builder
+         = new IdentifiedAnnotationBuilder().creator( TimeMention::new )
+                                            .type( SemanticTui.T079 );
 
    static {
       for ( String date : DATE_FORMAT_CODES ) {
@@ -143,7 +149,7 @@ final public class CalendarUtil {
                                                 final Calendar calendar ) {
       final Date date = createTypeDate( jCas, calendar );
       final Time time = createTypeTime( jCas, calendar );
-      final TimeMention timeMention = new TimeMention( jCas );
+      final TimeMention timeMention = (TimeMention)_builder.build( jCas );
       timeMention.setDate( date );
       timeMention.setTime( time );
       // Right now there is only one time class.
