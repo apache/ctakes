@@ -37,6 +37,7 @@ import java.util.ArrayList;
 
 /**
  * A simple collection reader that reads CASes in XMI format from a directory in the filesystem.
+ * @deprecated use XmiTreeReader, with configuration parameter Extensions=xmi if necessary.
  */
 @PipeBitInfo(
       name = "XMI in Dir Reader (1)",
@@ -44,6 +45,7 @@ import java.util.ArrayList;
       role = PipeBitInfo.Role.READER,
       products = { PipeBitInfo.TypeProduct.DOCUMENT_ID }
 )
+@Deprecated
 public class XmiCollectionReaderCtakes extends CollectionReader_ImplBase {
   /**
    * Name of configuration parameter that must be set to the path of a directory containing the XMI

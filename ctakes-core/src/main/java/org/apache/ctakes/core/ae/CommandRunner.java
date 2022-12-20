@@ -2,11 +2,9 @@ package org.apache.ctakes.core.ae;
 
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.core.util.external.SystemUtil;
-import org.apache.ctakes.core.util.log.DotLogger;
 import org.apache.log4j.Logger;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
-import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
 import org.apache.uima.fit.descriptor.ConfigurationParameter;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
@@ -23,7 +21,7 @@ import java.io.IOException;
       description = "Runs an external process.",
       role = PipeBitInfo.Role.SPECIAL
 )
-public class CommandRunner extends JCasAnnotator_ImplBase {
+public class CommandRunner extends PausableFileLoggerAE {
 
    static private final Logger LOGGER = Logger.getLogger( "CommandRunner" );
 
@@ -65,15 +63,6 @@ public class CommandRunner extends JCasAnnotator_ImplBase {
    )
    private String _perDoc;
 
-   static public final String PAUSE_PARAM = "Pause";
-   static public final String PAUSE_DESC = "Pause for some seconds after launching.  Default is 0";
-   @ConfigurationParameter(
-         name = PAUSE_PARAM,
-         description = PAUSE_DESC,
-         mandatory = false
-   )
-   private int _pause = 0;
-
    static public final String WAIT_PARAM = "Wait";
    static public final String WAIT_DESC = "Wait for the launched command to finish.  Default is no.";
    @ConfigurationParameter(
@@ -94,15 +83,13 @@ public class CommandRunner extends JCasAnnotator_ImplBase {
    private String _logName;
 
 
-   static public final String LOG_FILE_PARAM = "LogFile";
-   static public final String LOG_FILE_DESC = "File to which the command's output should be sent.  This overrides Log.";
-   @ConfigurationParameter(
-         name = LOG_FILE_PARAM,
-         description = LOG_FILE_DESC,
-         mandatory = false
-   )
-   private String _logFile;
+   boolean processPerDoc() {
+      return _perDoc.equalsIgnoreCase( "yes" ) || _perDoc.equalsIgnoreCase( "true" );
+   }
 
+   public void logInfo( final String info ) {
+      LOGGER.info( info );
+   }
 
    /**
     * {@inheritDoc}
@@ -119,7 +106,7 @@ public class CommandRunner extends JCasAnnotator_ImplBase {
       if ( _dir != null && !_dir.isEmpty() && !new File( _dir ).exists() ) {
          LOGGER.warn( "Cannot find Directory " + _dir );
       }
-      if ( _perDoc.equalsIgnoreCase( "yes" ) || _perDoc.equalsIgnoreCase( "true" ) ) {
+      if ( processPerDoc() ) {
          return;
       }
       try {
@@ -134,7 +121,7 @@ public class CommandRunner extends JCasAnnotator_ImplBase {
     */
    @Override
    public void process( final JCas jcas ) throws AnalysisEngineProcessException {
-      if ( !_perDoc.equalsIgnoreCase( "yes" ) && !_perDoc.equalsIgnoreCase( "true" ) ) {
+      if ( !processPerDoc() ) {
          return;
       }
       try {
@@ -145,11 +132,12 @@ public class CommandRunner extends JCasAnnotator_ImplBase {
    }
 
 
-   private void runCommand() throws IOException {
+   void runCommand() throws IOException {
       final String command = ( _cmdDir == null || _cmdDir.isEmpty() ) ? _cmd : _cmdDir + File.separator + _cmd;
       final SystemUtil.CommandRunner runner = new SystemUtil.CommandRunner( command );
-      if ( _logFile != null && !_logFile.isEmpty() ) {
-         runner.setLogFiles( _logFile );
+      final String logFile = getLogFile();
+      if ( logFile != null && !logFile.isEmpty() ) {
+         runner.setLogFiles( logFile );
       } else {
          final Logger logger = getRunLogger();
          runner.setLogger( logger );
@@ -161,20 +149,11 @@ public class CommandRunner extends JCasAnnotator_ImplBase {
          runner.setDirectory( _dir );
       }
       LOGGER.info( "Running " + command + " ..." );
-      if ( _logFile != null && !_logFile.isEmpty() ) {
-         LOGGER.info( "Log File is " + _logFile );
+      if ( logFile != null && !logFile.isEmpty() ) {
+         LOGGER.info( "Log File is " + logFile );
       }
       SystemUtil.run( runner );
-      if ( _pause < 1 ) {
-         return;
-      }
-      final long pause = _pause * 1000L;
-      LOGGER.info( "Pausing " + _pause + " seconds ..." );
-      try ( DotLogger dotter = new DotLogger() ) {
-         Thread.sleep( pause );
-      } catch ( IOException | InterruptedException multE ) {
-         // do nothing
-      }
+      pause();
    }
 
    private Logger getRunLogger() {

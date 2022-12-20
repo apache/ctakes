@@ -14,11 +14,6 @@ import java.io.IOException;
  * @author SPF , chip-nlp
  * @since {7/29/2022}
  */
-@PipeBitInfo(
-      name = "PausableAE",
-      description = "Can be extended to add Pause capabilities to an Annotation Engine",
-      role = PipeBitInfo.Role.ANNOTATOR
-)
 abstract public class PausableAE extends JCasAnnotator_ImplBase {
 
    static public final String PAUSE_PARAM = "Pause";
@@ -39,18 +34,14 @@ abstract public class PausableAE extends JCasAnnotator_ImplBase {
       super.initialize( context );
    }
 
-   protected void pause() {
-      pause( null );
-   }
+   protected void logInfo( final String info ) {}
 
-   protected void pause( final Logger logger ) {
-      if ( _pause <= 0 ) {
+   final protected void pause() {
+      if ( _pause < 1 ) {
          return;
       }
       final long pause = _pause * 1000L;
-      if ( logger != null ) {
-         logger.info( "Pausing " + _pause + " seconds ..." );
-      }
+      logInfo( "Pausing " + _pause + " seconds ..." );
       try ( DotLogger dotter = new DotLogger() ) {
          Thread.sleep( pause );
       } catch ( IOException | InterruptedException multE ) {

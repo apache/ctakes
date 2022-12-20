@@ -40,6 +40,10 @@ public class ExitForcer extends PausableAE {
       // Do nothing
    }
 
+   protected void logInfo( final String info ) {
+      LOGGER.info( info );
+   }
+
    /**
     * Forcibly exit.  If ctakes happens to be running within a gui then a message dialog is displayed.
     * {@inheritDoc}
@@ -47,7 +51,7 @@ public class ExitForcer extends PausableAE {
    @Override
    public void collectionProcessComplete() throws AnalysisEngineProcessException {
       super.collectionProcessComplete();
-      pause( LOGGER );
+      pause();
       final Frame[] frames = Frame.getFrames();
       if ( frames != null && frames.length > 0 ) {
          JOptionPane.showMessageDialog( null, "Processing Complete.  Click OK to exit." );

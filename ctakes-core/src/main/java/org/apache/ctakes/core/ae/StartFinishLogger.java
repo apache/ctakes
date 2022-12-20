@@ -14,7 +14,7 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
 
 /**
- * All Annotation Engines should be logger their start and finish.
+ * All Annotation Engines should be logging their start and finish.
  * Such logging not only keeps track of what is actually in the pipeline, but it also helps with debugging and profiling
  *
  * @author SPF , chip-nlp
