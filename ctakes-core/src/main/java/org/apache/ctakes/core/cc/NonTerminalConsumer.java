@@ -28,7 +28,9 @@ import org.apache.uima.collection.CasConsumer;
  * the output can be returned.
  *  
  * @author Mayo Clinic
+ * @deprecated This is outdated.
  */
+@Deprecated
 public interface NonTerminalConsumer extends CasConsumer
 {
     /**

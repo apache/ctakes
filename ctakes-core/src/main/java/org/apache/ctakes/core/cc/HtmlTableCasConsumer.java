@@ -40,14 +40,15 @@ import java.util.*;
  * the document text.
  * 
  * @author Mayo Clinic
- * 
+ * @deprecated Consider using SemanticTableFileWriter or some other extension of AbstractTableFileWriter
  */
 @PipeBitInfo(
       name = "HTML Table Writer",
       description = "Writes HTML files with a Table representation of extracted information.",
       role = PipeBitInfo.Role.WRITER,
-      dependencies = { PipeBitInfo.TypeProduct.BASE_TOKEN }
+         dependencies = { PipeBitInfo.TypeProduct.BASE_TOKEN }
 )
+@Deprecated
 public class HtmlTableCasConsumer extends CasConsumer_ImplBase
 {
     private File iv_outputDir;

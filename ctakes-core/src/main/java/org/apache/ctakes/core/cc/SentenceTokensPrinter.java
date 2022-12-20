@@ -32,6 +32,7 @@ import static org.apache.ctakes.core.config.ConfigParameterConstants.PARAM_OUTPU
  * @author SPF , chip-nlp
  * @version %I%
  * @since 9/22/2014
+ * @deprecated this is pretty old.  Use pretty.plaintext.PrettyTextWriterFit
  */
 @PipeBitInfo(
       name = "Sentences Writer",
@@ -40,6 +41,7 @@ import static org.apache.ctakes.core.config.ConfigParameterConstants.PARAM_OUTPU
       dependencies = { PipeBitInfo.TypeProduct.DOCUMENT_ID, PipeBitInfo.TypeProduct.SENTENCE,
                        PipeBitInfo.TypeProduct.BASE_TOKEN }
 )
+@Deprecated
 public class SentenceTokensPrinter extends CasConsumer_ImplBase {
 
    // LOG4J logger based on interface name
