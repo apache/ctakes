@@ -24,7 +24,7 @@ final public class FileUtil {
       if ( dirPath == null || dirPath.isEmpty() ) {
          return parseDirText( "." );
       } else if ( dirPath.startsWith( "~" ) ) {
-         return parseDirText( dirPath.replaceAll( "~", System.getProperty( "user.home" ) ) );
+         return parseDirText( dirPath.replace( "~", System.getProperty( "user.home" ) ) );
       } else if ( dirPath.equals( "." ) ) {
          final String userDir = System.getProperty( "user.dir" );
          if ( userDir == null || userDir.isEmpty() ) {

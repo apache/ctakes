@@ -21,6 +21,7 @@ public class SingleDocumentProcessor {
 	
 	public Object addConcept(ApiConcept ac) {
 		// TODO Auto-generated method stub
+		LOGGER.warn("This class cannot be used until CTAKES-76 is implemented.");
 		return null;
 	}
 	
@@ -46,6 +47,7 @@ public class SingleDocumentProcessor {
 
 	public Map<Integer, String> getAssertionTypeMap() {
 		// TODO Auto-generated method stub
+		LOGGER.warn("This class cannot be used until CTAKES-76 is implemented.");
 		return null;
 	}
 
@@ -74,6 +76,7 @@ public class SingleDocumentProcessor {
 
 	public String[][] getTokenArrays() {
 		// TODO Auto-generated method stub
+		LOGGER.warn("This class cannot be used until CTAKES-76 is implemented.");
 		return null;
 	}
 

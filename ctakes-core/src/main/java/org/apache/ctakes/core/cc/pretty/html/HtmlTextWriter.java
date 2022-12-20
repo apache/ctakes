@@ -775,11 +775,16 @@ final public class HtmlTextWriter extends AbstractJCasFileWriter {
       if ( text == null || text.isEmpty() ) {
          return "";
       }
-      String safeText = text.replaceAll( "'", "&apos;" );
-      safeText = safeText.replaceAll( "\"", "&quot;" );
-      safeText = safeText.replaceAll( "@", "&amp;" );
-      safeText = safeText.replaceAll( "<", "&lt;" );
-      safeText = safeText.replaceAll( ">", "&gt;" );
+//      String safeText = text.replaceAll( "'", "&apos;" );
+//      safeText = safeText.replaceAll( "\"", "&quot;" );
+//      safeText = safeText.replaceAll( "@", "&amp;" );
+//      safeText = safeText.replaceAll( "<", "&lt;" );
+//      safeText = safeText.replaceAll( ">", "&gt;" );
+      String safeText = text.replace( "'", "&apos;" );
+      safeText = safeText.replace( "\"", "&quot;" );
+      safeText = safeText.replace( "@", "&amp;" );
+      safeText = safeText.replace( "<", "&lt;" );
+      safeText = safeText.replace( ">", "&gt;" );
       return safeText;
    }
 
