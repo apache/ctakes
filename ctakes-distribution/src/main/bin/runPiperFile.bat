@@ -25,8 +25,7 @@
 ::   -s , --subDir {subDirectory}  (for i/o)
 ::   --xmiOut {xmiOutputDirectory} (if different from -o)
 ::   -l , --lookupXml {dictionaryConfigFile} (fast only)
-::   --user {umlsUsername}
-::   --pass {umlsPassword}
+::   --key {umlsKey}
 ::   -? , --help
 ::
 ::   Other parameters may be declared in the piper file using the cli command:

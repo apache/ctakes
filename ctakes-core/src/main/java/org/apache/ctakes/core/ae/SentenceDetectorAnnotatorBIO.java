@@ -78,6 +78,7 @@ public class SentenceDetectorAnnotatorBIO extends CleartkAnnotator<String>{
   @Override
   public void initialize(UimaContext context)
       throws ResourceInitializationException {
+    logger.info( "Initializing ..." );
     super.initialize(context);
     try{
       Scanner scanner = new Scanner(FileLocator.getAsStream(tokenCountFile));
@@ -95,6 +96,7 @@ public class SentenceDetectorAnnotatorBIO extends CleartkAnnotator<String>{
   
   @Override
   public void process(JCas jcas) throws AnalysisEngineProcessException {
+    logger.info( "Processing ..." );
     String uri=null;
     try{
       uri = ViewUriUtil.getURI(jcas).toString();

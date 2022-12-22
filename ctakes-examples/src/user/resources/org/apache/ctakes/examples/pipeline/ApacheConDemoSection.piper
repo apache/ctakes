@@ -5,7 +5,7 @@ add SimpleSegmentAnnotator
 //add ParagraphAnnotator
 
 //add SentenceDetector
-addLogged SentenceDetectorAnnotatorBIO classifierJarPath=/org/apache/ctakes/core/models/sentdetect/model.jar
+add SentenceDetectorAnnotatorBIO classifierJarPath=/org/apache/ctakes/core/models/sentdetect/model.jar
 
 // Save simple information
 add ApacheConSentenceWriter

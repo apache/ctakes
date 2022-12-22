@@ -118,9 +118,9 @@ public class ClearNLPSemanticRoleLabelerAE extends JCasAnnotator_ImplBase {
 
    @Override
    public void initialize( UimaContext context ) throws ResourceInitializationException {
+      logger.info("Initializing ...");
       super.initialize( context );
 
-      logger.info("Initializing ClearNLP semantic role labeler");
       try {
         if(this.predModel == null){
           this.identifier = SRLSharedPredictionModel.getDefaultModel();
@@ -144,6 +144,7 @@ public class ClearNLPSemanticRoleLabelerAE extends JCasAnnotator_ImplBase {
 
    @Override
    public void process( JCas jCas ) throws AnalysisEngineProcessException {
+      logger.info("Processing ...");
       for ( Sentence sentence : JCasUtil.select( jCas, Sentence.class ) ) {
          List<BaseToken> printableTokens = new ArrayList<>();
          for ( BaseToken token : JCasUtil.selectCovered( jCas, BaseToken.class, sentence ) ) {

@@ -5,17 +5,11 @@
 addDescription ClearNLPDependencyParserAE
 // Add the Semantic Role Labeler parser for use by cleartk.
 // Not necessary for assertion anymore, but it is used for temporal, coref, and others so be careful removing this.
-addLogged ClearNLPSemanticRoleLabelerAE
+add ClearNLPSemanticRoleLabelerAE
 
-// Add the cleartk package for cleartk class lookups
-package org.apache.ctakes.assertion.medfacts.cleartk
-
-// Add the cleartk attribute engines, logging for them as a block
-add StartFinishLogger LOGGER_NAME=CleartkAnalysisEngine LOGGER_TASK="Assigning Attributes" IS_START=true
 addDescription PolarityCleartkAnalysisEngine
 addDescription UncertaintyCleartkAnalysisEngine
 addDescription HistoryCleartkAnalysisEngine
 addDescription ConditionalCleartkAnalysisEngine
 addDescription GenericCleartkAnalysisEngine
 addDescription SubjectCleartkAnalysisEngine
-add StartFinishLogger LOGGER_NAME=CleartkAnalysisEngine LOGGER_TASK="Assigning Attributes"

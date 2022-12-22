@@ -9,7 +9,9 @@ import org.apache.uima.collection.CollectionReader;
 import org.apache.uima.collection.CollectionReaderDescription;
 import org.apache.uima.fit.factory.AnalysisEngineFactory;
 import org.apache.uima.fit.factory.CollectionReaderFactory;
+import org.apache.uima.fit.factory.TypeSystemDescriptionFactory;
 import org.apache.uima.resource.ResourceInitializationException;
+import org.apache.uima.resource.metadata.TypeSystemDescription;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -34,7 +36,17 @@ public enum PropertyAeFactory {
 
    // Use a single hashmap so that multiple properties files can be used
    final private Map<String, Object> _properties = new HashMap<>();
+   private TypeSystemDescription _typeSystemDescription;
 
+   PropertyAeFactory() {
+      try {
+         _typeSystemDescription = TypeSystemDescriptionFactory.createTypeSystemDescription();
+      } catch ( ResourceInitializationException riE ) {
+         Logger.getLogger( "PropertyAeFactory" )
+               .error( "Could not initialize cTAKES Type System\n" + riE.getMessage() );
+         System.exit( -1 );
+      }
+   }
 
    /**
     * Add key value pairs to the stored properties
@@ -158,7 +170,7 @@ public enum PropertyAeFactory {
                                                        final Object... parameters )
          throws ResourceInitializationException {
       final Object[] allParameters = getAllParameters( parameters );
-      return AnalysisEngineFactory.createEngineDescription( classType, allParameters );
+      return AnalysisEngineFactory.createEngineDescription( classType, _typeSystemDescription, allParameters );
    }
 
    /**

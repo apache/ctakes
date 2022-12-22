@@ -4,7 +4,7 @@
 add BsvRegexSectionizer
 
 // The sentence detector needs our custom model path, otherwise default values are used.
-//addLogged SentenceDetectorAnnotatorBIO classifierJarPath=/org/apache/ctakes/core/sentdetect/model.jar
+//add SentenceDetectorAnnotatorBIO classifierJarPath=/org/apache/ctakes/core/sentdetect/model.jar
 
 // The SentenceDetectorAnnotatorBIO is a "lumper" that works well for notes in which end of line does not indicate a sentence.
 // If that is not your case, then you may get better results using the more standard SentenceDetector

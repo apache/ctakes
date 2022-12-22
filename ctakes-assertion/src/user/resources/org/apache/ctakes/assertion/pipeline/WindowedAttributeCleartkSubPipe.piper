@@ -3,7 +3,7 @@
 // Add the Dependency parser for use by cleartk
 addDescription ClearNLPDependencyParserAE
 // Add the Semantic Role Labeler parser for use by cleartk
-addLogged ClearNLPSemanticRoleLabelerAE
+add ClearNLPSemanticRoleLabelerAE
 
 // Add the cleartk package for cleartk class lookups
 package org.apache.ctakes.assertion.medfacts.cleartk

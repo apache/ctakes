@@ -7,7 +7,7 @@ load org/apache/ctakes/examples/pipeline/HelloWorld.piper
 // Assertion engines require dependencies
 addDescription ClearNLPDependencyParserAE
 // Add the Semantic Role Labeler parser for use by assertion
-addLogged ClearNLPSemanticRoleLabelerAE
+add ClearNLPSemanticRoleLabelerAE
 
 // Use the assertion mini pipeline
 // load parameters used by the following engines

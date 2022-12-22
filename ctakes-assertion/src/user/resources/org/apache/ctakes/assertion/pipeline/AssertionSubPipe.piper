@@ -3,7 +3,7 @@
 // Add the Dependency parser for use by assertion
 addDescription ClearNLPDependencyParserAE
 // Add the Semantic Role Labeler parser for use by assertion
-addLogged ClearNLPSemanticRoleLabelerAE
+add ClearNLPSemanticRoleLabelerAE
 
 // Add the assertion packages for class lookups
 package org.apache.ctakes.assertion.medfacts

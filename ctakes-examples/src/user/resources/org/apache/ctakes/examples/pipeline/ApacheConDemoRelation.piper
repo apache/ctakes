@@ -16,7 +16,7 @@ load DictionarySubPipe
 load AttributeCleartkSubPipe
 
 // Location.
-//addLogged LocationOfRelationExtractorAnnotator classifierJarPath=/org/apache/ctakes/relationextractor/models/location_of/model.jar
+//add LocationOfRelationExtractorAnnotator classifierJarPath=/org/apache/ctakes/relationextractor/models/location_of/model.jar
 
 // Temporal (event, time, dtr, tlink)
 //load TemporalSubPipe
