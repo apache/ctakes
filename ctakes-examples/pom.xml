@@ -27,7 +27,7 @@
     <version>5.0.0-SNAPSHOT</version>
   </parent>
   <artifactId>ctakes-examples</artifactId>
-  <name>ctakes-examples</name>
+  <name>Apache cTAKES Examples</name>
   <description>Apache cTAKES Examples</description>
   <dependencies>
       <!--  coreference module has dependencies on almost everything, use it to maximize example possibilities.  -->

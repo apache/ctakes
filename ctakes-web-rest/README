@@ -16,7 +16,8 @@ This configuration exists because:
 - building ctakes-web-rest with the main ctakes maven project adds to the build time.
 - building ctakes-web-rest with the main ctakes maven project adds to the disk footprint of the build.  i.e. it has its own huge target/ directory.
 - including ctakes-web-rest in the main Apache cTAKES binary distributable essentially puts two copies of cTAKES in the distributable.
-
+- building ctakes-web-rest with the main ctakes maven project will NOT put any changed code or resources in the war.
+- ^ Unless you mvn install.  Making ctakes-web-rest a separate build reinforces the separation.
 
 
 

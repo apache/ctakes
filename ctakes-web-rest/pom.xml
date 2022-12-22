@@ -5,9 +5,11 @@
 	<groupId>org.apache.ctakes</groupId>
 	<artifactId>ctakes-web-rest</artifactId>
 	<version>5.0.0</version>
-	<name>ctakes-web-rest</name>
+	<name>Apache cTAKES Web REST</name>
 	<packaging>war</packaging>
-	<description></description>
+	<description>REST interface for Apache cTAKES</description>
+   <url>http://ctakes.apache.org</url>
+   <inceptionYear>2012</inceptionYear>
 	<properties>
 		<ctakes.version>5.0.0-SNAPSHOT</ctakes.version>
 		<springframework.version>4.3.12.RELEASE</springframework.version>
@@ -18,7 +20,9 @@
 		<jettyVersion>9.2.6.v20141205</jettyVersion>
 	</properties>
 	<dependencies>
+<!--      Can I just throw ctakes in here as the main module??    -->
       <!-- cTAKES module versions-->
+<!--      TODO   Exclusions.  See the pom files in dockhand goal/rest/pom/ -->
       <dependency>
          <groupId>org.apache.ctakes</groupId>
          <artifactId>ctakes-type-system</artifactId>
@@ -101,7 +105,7 @@
       </dependency>
       <dependency>
          <groupId>org.apache.ctakes</groupId>
-         <artifactId>ctakes-assertion-model</artifactId>
+         <artifactId>ctakes-assertion-models</artifactId>
          <version>${ctakes.version}</version>
       </dependency>
       <dependency>
@@ -116,7 +120,7 @@
       </dependency>
       <dependency>
          <groupId>org.apache.ctakes</groupId>
-         <artifactId>ctakes-constituency-parser-model</artifactId>
+         <artifactId>ctakes-constituency-parser-models</artifactId>
          <version>${ctakes.version}</version>
 		</dependency>
 		<dependency>
@@ -126,7 +130,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.apache.ctakes</groupId>
-         <artifactId>ctakes-coreference-model</artifactId>
+         <artifactId>ctakes-coreference-models</artifactId>
          <version>${ctakes.version}</version>
       </dependency>
       <dependency>
@@ -141,7 +145,7 @@
       </dependency>
       <dependency>
          <groupId>org.apache.ctakes</groupId>
-         <artifactId>ctakes-side-effect-model</artifactId>
+         <artifactId>ctakes-side-effect-models</artifactId>
          <version>${ctakes.version}</version>
 		</dependency>
 		<dependency>
@@ -151,7 +155,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.apache.ctakes</groupId>
-         <artifactId>ctakes-smoking-status-model</artifactId>
+         <artifactId>ctakes-smoking-status-models</artifactId>
          <version>${ctakes.version}</version>
       </dependency>
       <dependency>
@@ -161,7 +165,7 @@
       </dependency>
       <dependency>
          <groupId>org.apache.ctakes</groupId>
-         <artifactId>ctakes-dependency-parser-model</artifactId>
+         <artifactId>ctakes-dependency-parser-models</artifactId>
          <version>${ctakes.version}</version>
       </dependency>
       <dependency>
@@ -171,7 +175,7 @@
       </dependency>
       <dependency>
          <groupId>org.apache.ctakes</groupId>
-         <artifactId>ctakes-relation-extractor-model</artifactId>
+         <artifactId>ctakes-relation-extractor-models</artifactId>
          <version>${ctakes.version}</version>
       </dependency>
       <dependency>
@@ -181,8 +185,13 @@
 		</dependency>
 		<dependency>
 			<groupId>org.apache.ctakes</groupId>
-         <artifactId>ctakes-temporal-model</artifactId>
+         <artifactId>ctakes-temporal-models</artifactId>
 			<version>${ctakes.version}</version>
+      </dependency>
+      <dependency>
+         <groupId>org.apache.ctakes</groupId>
+         <artifactId>ctakes-user-resources</artifactId>
+         <version>${ctakes.version}</version>
       </dependency>
       <dependency>
          <groupId>org.apache.uima</groupId>
@@ -249,10 +258,39 @@
             <version>${jackson.version}</version>
         </dependency>
 	</dependencies>
-	<build>
+
+
+   <repositories>
+      <repository>
+         <id>apache.snapshots</id>
+         <name>Apache Development Snapshot Repository</name>
+         <url>https://repository.apache.org/content/groups/snapshots/</url>
+         <releases>
+            <enabled>false</enabled>
+         </releases>
+         <snapshots>
+            <enabled>true</enabled>
+         </snapshots>
+      </repository>
+   </repositories>
+
+
+   <build>
 		<finalName>ctakes-web-rest</finalName>
 		<plugins>
-			<plugin>
+
+         <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-war-plugin</artifactId>
+            <version>3.2.3</version>
+            <configuration>
+               <warName>ctakes-web-rest</warName>
+               <outputDirectory>${project.build.directory}</outputDirectory>
+            </configuration>
+         </plugin>
+
+
+         <plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>2.4</version>
 				<configuration>
@@ -266,28 +304,28 @@
                                      There should not be complete copies of all resources from other modules.
                                      Instead, those resources should be copied when this artifact is built.
                                      Doing so saves space and keeps the resources up-to-date.   -->
-         <!--         <plugin>-->
-         <!--            <artifactId>maven-resources-plugin</artifactId>-->
-         <!--            <version>3.0.2</version>-->
-         <!--            <executions>-->
-         <!--               <execution>-->
-         <!--                  <id>copy-resources</id>-->
-         <!--                  <phase>compile</phase>-->
-         <!--                  <goals>-->
-         <!--                     <goal>copy-resources</goal>-->
-         <!--                  </goals>-->
-         <!--                  <configuration>-->
-         <!--                     <outputDirectory>${basedir}/target/classes/org/apache/ctakes/dockhand/goal/rest/webapp</outputDirectory>-->
-         <!--                     <resources>-->
-         <!--                        <resource>-->
-         <!--                           <directory>${basedir}/../ctakes-tiny-rest/src/main/webapp</directory>-->
-         <!--                           <filtering>true</filtering>-->
-         <!--                        </resource>-->
-         <!--                     </resources>-->
-         <!--                  </configuration>-->
-         <!--               </execution>-->
-         <!--            </executions>-->
-         <!--         </plugin>-->
+<!--                  <plugin>-->
+<!--                     <artifactId>maven-resources-plugin</artifactId>-->
+<!--                     <version>3.0.2</version>-->
+<!--                     <executions>-->
+<!--                        <execution>-->
+<!--                           <id>copy-resources</id>-->
+<!--                           <phase>compile</phase>-->
+<!--                           <goals>-->
+<!--                              <goal>copy-resources</goal>-->
+<!--                           </goals>-->
+<!--                           <configuration>-->
+<!--                              <outputDirectory>${basedir}/target/classes/org/apache/ctakes/dockhand/goal/rest/webapp</outputDirectory>-->
+<!--                              <resources>-->
+<!--                                 <resource>-->
+<!--                                    <directory>${basedir}/../ctakes-tiny-rest/src/main/webapp</directory>-->
+<!--                                    <filtering>true</filtering>-->
+<!--                                 </resource>-->
+<!--                              </resources>-->
+<!--                           </configuration>-->
+<!--                        </execution>-->
+<!--                     </executions>-->
+<!--                  </plugin>-->
 
       </plugins>
 	</build>

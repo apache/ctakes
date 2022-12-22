@@ -202,6 +202,7 @@
 		<module>ctakes-dictionary-lookup-fast</module>
       <module>ctakes-dockhand</module>
       <module>ctakes-tiny-rest</module>
+		<module>ctakes-user-resources</module>
 	</modules>
 	<dependencyManagement>
 		<dependencies>
@@ -745,8 +746,13 @@
             <artifactId>ctakes-tiny-rest</artifactId>
             <version>${project.version}</version>
          </dependency>
+			<dependency>
+				<groupId>org.apache.ctakes</groupId>
+				<artifactId>ctakes-user-resources</artifactId>
+				<version>${project.version}</version>
+			</dependency>
 
-         <!-- cTAKES Resources -->
+			<!-- cTAKES dictionary Resources -->
 			<dependency>
 				<groupId>net.sourceforge.ctakesresources</groupId>
 				<artifactId>ctakes-resources-lvg2008</artifactId>
@@ -804,6 +810,23 @@
 									</resource>
 								</resources>
 								<outputDirectory>${project.basedir}/../resources</outputDirectory>
+							</configuration>
+						</execution>
+						<execution>
+							<!--	Copy resources that should be user-editable to ctakes-user-resources  -->
+							<!--	This makes these resources available as a jar in maven central. -->
+							<id>copy-to-user-resources</id>
+							<phase>package</phase>
+							<goals>
+								<goal>copy-resources</goal>
+							</goals>
+							<configuration>
+								<resources>
+									<resource>
+										<directory>src/user/resources</directory>
+									</resource>
+								</resources>
+								<outputDirectory>${project.basedir}/../ctakes-user-resources/target/classes</outputDirectory>
 							</configuration>
 						</execution>
 					</executions>

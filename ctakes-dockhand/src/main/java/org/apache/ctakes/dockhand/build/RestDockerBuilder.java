@@ -48,7 +48,7 @@ final public class RestDockerBuilder implements Runnable {
       final Collection<String> piperCommands = _wizardController.getPiperCommands();
 
       final Collection<CopyFileSpec> extraFiles = new ArrayList<>();
-      extraFiles.add( new CopyFileSpec( SOURCE_URLDIR + "README.txt", "README.txt" ) );
+      extraFiles.add( new CopyFileSpec( SOURCE_URLDIR + "README", "README" ) );
       extraFiles.add( new CopyFileSpec( DOCKER_DIR + "Dockerfile", "Dockerfile" ) );
       extraFiles.add( new CopyFileSpec( PIPER_DIR + "TinyRestPipeline.piper", "TinyRestPipeline.piper" ) );
       Arrays.stream( SCRIPTS )

@@ -10,7 +10,7 @@
    </parent>
 
    <artifactId>ctakes-gui</artifactId>
-   <name>ctakes-gui</name>
+   <name>Apache cTAKES GUI</name>
    <description>module with gui components and simple run tools</description>
 
    <dependencies>

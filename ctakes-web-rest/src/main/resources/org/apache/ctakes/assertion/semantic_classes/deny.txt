@@ -1,5 +1,0 @@
-deny
-denies
-denied
-denying
-denial

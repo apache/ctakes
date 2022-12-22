@@ -1,6 +1,0 @@
-episode
-episodes
-instance
-instances
-case
-cases
