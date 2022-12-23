@@ -56,7 +56,7 @@
                      <goal>unpack-dependencies</goal>
                   </goals>
                   <configuration>
-                     <!-- copy the hsql database to ${basedir}/resources to work with IDE -->
+                     <!-- copy the hsql database to ${project.basedir}/resources to work with IDE -->
                      <includeArtifactIds>ctakes-resources-sno_rx</includeArtifactIds>
                      <excludes>**/META-INF/**</excludes>
                      <outputDirectory>${project.basedir}/../resources</outputDirectory>

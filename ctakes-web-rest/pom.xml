@@ -38,11 +38,11 @@
          <artifactId>ctakes-core</artifactId>
          <version>${ctakes.version}</version>
       </dependency>
-      <dependency>
-         <groupId>org.apache.ctakes</groupId>
-         <artifactId>ctakes-core-models</artifactId>
-         <version>${ctakes.version}</version>
-      </dependency>
+<!--      <dependency>-->
+<!--         <groupId>org.apache.ctakes</groupId>-->
+<!--         <artifactId>ctakes-core-models</artifactId>-->
+<!--         <version>${ctakes.version}</version>-->
+<!--      </dependency>-->
       <dependency>
          <groupId>org.apache.ctakes</groupId>
          <artifactId>ctakes-dictionary-lookup</artifactId>
@@ -63,21 +63,21 @@
          <artifactId>ctakes-pos-tagger</artifactId>
          <version>${ctakes.version}</version>
       </dependency>
-      <dependency>
-         <groupId>org.apache.ctakes</groupId>
-         <artifactId>ctakes-pos-tagger-models</artifactId>
-         <version>${ctakes.version}</version>
-      </dependency>
+<!--      <dependency>-->
+<!--         <groupId>org.apache.ctakes</groupId>-->
+<!--         <artifactId>ctakes-pos-tagger-models</artifactId>-->
+<!--         <version>${ctakes.version}</version>-->
+<!--      </dependency>-->
       <dependency>
          <groupId>org.apache.ctakes</groupId>
          <artifactId>ctakes-chunker</artifactId>
          <version>${ctakes.version}</version>
       </dependency>
-      <dependency>
-         <groupId>org.apache.ctakes</groupId>
-         <artifactId>ctakes-chunker-models</artifactId>
-         <version>${ctakes.version}</version>
-      </dependency>
+<!--      <dependency>-->
+<!--         <groupId>org.apache.ctakes</groupId>-->
+<!--         <artifactId>ctakes-chunker-models</artifactId>-->
+<!--         <version>${ctakes.version}</version>-->
+<!--      </dependency>-->
       <dependency>
          <groupId>org.apache.ctakes</groupId>
          <artifactId>ctakes-lvg</artifactId>
@@ -103,11 +103,11 @@
          <artifactId>ctakes-assertion</artifactId>
          <version>${ctakes.version}</version>
       </dependency>
-      <dependency>
-         <groupId>org.apache.ctakes</groupId>
-         <artifactId>ctakes-assertion-models</artifactId>
-         <version>${ctakes.version}</version>
-      </dependency>
+<!--      <dependency>-->
+<!--         <groupId>org.apache.ctakes</groupId>-->
+<!--         <artifactId>ctakes-assertion-models</artifactId>-->
+<!--         <version>${ctakes.version}</version>-->
+<!--      </dependency>-->
       <dependency>
          <groupId>org.apache.ctakes</groupId>
          <artifactId>ctakes-assertion-zoner</artifactId>
@@ -118,21 +118,21 @@
          <artifactId>ctakes-constituency-parser</artifactId>
          <version>${ctakes.version}</version>
       </dependency>
-      <dependency>
-         <groupId>org.apache.ctakes</groupId>
-         <artifactId>ctakes-constituency-parser-models</artifactId>
-         <version>${ctakes.version}</version>
-		</dependency>
+<!--      <dependency>-->
+<!--         <groupId>org.apache.ctakes</groupId>-->
+<!--         <artifactId>ctakes-constituency-parser-models</artifactId>-->
+<!--         <version>${ctakes.version}</version>-->
+<!--		</dependency>-->
 		<dependency>
 			<groupId>org.apache.ctakes</groupId>
 			<artifactId>ctakes-coreference</artifactId>
          <version>${ctakes.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>org.apache.ctakes</groupId>
-         <artifactId>ctakes-coreference-models</artifactId>
-         <version>${ctakes.version}</version>
-      </dependency>
+<!--		<dependency>-->
+<!--			<groupId>org.apache.ctakes</groupId>-->
+<!--         <artifactId>ctakes-coreference-models</artifactId>-->
+<!--         <version>${ctakes.version}</version>-->
+<!--      </dependency>-->
       <dependency>
          <groupId>org.apache.ctakes</groupId>
          <artifactId>ctakes-drug-ner</artifactId>
@@ -143,51 +143,51 @@
 			<artifactId>ctakes-side-effect</artifactId>
          <version>${ctakes.version}</version>
       </dependency>
-      <dependency>
-         <groupId>org.apache.ctakes</groupId>
-         <artifactId>ctakes-side-effect-models</artifactId>
-         <version>${ctakes.version}</version>
-		</dependency>
+<!--      <dependency>-->
+<!--         <groupId>org.apache.ctakes</groupId>-->
+<!--         <artifactId>ctakes-side-effect-models</artifactId>-->
+<!--         <version>${ctakes.version}</version>-->
+<!--		</dependency>-->
 		<dependency>
 			<groupId>org.apache.ctakes</groupId>
 			<artifactId>ctakes-smoking-status</artifactId>
          <version>${ctakes.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>org.apache.ctakes</groupId>
-         <artifactId>ctakes-smoking-status-models</artifactId>
-         <version>${ctakes.version}</version>
-      </dependency>
+<!--		<dependency>-->
+<!--			<groupId>org.apache.ctakes</groupId>-->
+<!--         <artifactId>ctakes-smoking-status-models</artifactId>-->
+<!--         <version>${ctakes.version}</version>-->
+<!--      </dependency>-->
       <dependency>
          <groupId>org.apache.ctakes</groupId>
          <artifactId>ctakes-dependency-parser</artifactId>
          <version>${ctakes.version}</version>
       </dependency>
-      <dependency>
-         <groupId>org.apache.ctakes</groupId>
-         <artifactId>ctakes-dependency-parser-models</artifactId>
-         <version>${ctakes.version}</version>
-      </dependency>
+<!--      <dependency>-->
+<!--         <groupId>org.apache.ctakes</groupId>-->
+<!--         <artifactId>ctakes-dependency-parser-models</artifactId>-->
+<!--         <version>${ctakes.version}</version>-->
+<!--      </dependency>-->
       <dependency>
          <groupId>org.apache.ctakes</groupId>
          <artifactId>ctakes-relation-extractor</artifactId>
          <version>${ctakes.version}</version>
       </dependency>
-      <dependency>
-         <groupId>org.apache.ctakes</groupId>
-         <artifactId>ctakes-relation-extractor-models</artifactId>
-         <version>${ctakes.version}</version>
-      </dependency>
+<!--      <dependency>-->
+<!--         <groupId>org.apache.ctakes</groupId>-->
+<!--         <artifactId>ctakes-relation-extractor-models</artifactId>-->
+<!--         <version>${ctakes.version}</version>-->
+<!--      </dependency>-->
       <dependency>
          <groupId>org.apache.ctakes</groupId>
          <artifactId>ctakes-temporal</artifactId>
 			<version>${ctakes.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>org.apache.ctakes</groupId>
-         <artifactId>ctakes-temporal-models</artifactId>
-			<version>${ctakes.version}</version>
-      </dependency>
+<!--		<dependency>-->
+<!--			<groupId>org.apache.ctakes</groupId>-->
+<!--         <artifactId>ctakes-temporal-models</artifactId>-->
+<!--			<version>${ctakes.version}</version>-->
+<!--      </dependency>-->
       <!--   ctakes-user-resources exists specifically for standalone products like ctakes-web-rest   -->
       <dependency>
          <groupId>org.apache.ctakes</groupId>
@@ -291,7 +291,6 @@
             </configuration>
          </plugin>
 
-
          <plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>2.4</version>
@@ -301,33 +300,6 @@
 					<compilerArgument>-Xlint</compilerArgument>
 				</configuration>
 			</plugin>
-
-         <!--         !!! TODO !!!   This is a snippet from the ctakes-dockhand pom.
-                                     There should not be complete copies of all resources from other modules.
-                                     Instead, those resources should be copied when this artifact is built.
-                                     Doing so saves space and keeps the resources up-to-date.   -->
-<!--                  <plugin>-->
-<!--                     <artifactId>maven-resources-plugin</artifactId>-->
-<!--                     <version>3.0.2</version>-->
-<!--                     <executions>-->
-<!--                        <execution>-->
-<!--                           <id>copy-resources</id>-->
-<!--                           <phase>compile</phase>-->
-<!--                           <goals>-->
-<!--                              <goal>copy-resources</goal>-->
-<!--                           </goals>-->
-<!--                           <configuration>-->
-<!--                              <outputDirectory>${basedir}/target/classes/org/apache/ctakes/dockhand/goal/rest/webapp</outputDirectory>-->
-<!--                              <resources>-->
-<!--                                 <resource>-->
-<!--                                    <directory>${basedir}/../ctakes-tiny-rest/src/main/webapp</directory>-->
-<!--                                    <filtering>true</filtering>-->
-<!--                                 </resource>-->
-<!--                              </resources>-->
-<!--                           </configuration>-->
-<!--                        </execution>-->
-<!--                     </executions>-->
-<!--                  </plugin>-->
 
       </plugins>
 	</build>

@@ -144,10 +144,10 @@
 							<goal>copy-resources</goal>
 						</goals>
 						<configuration>
-							<outputDirectory>${basedir}/target/classes</outputDirectory>
+							<outputDirectory>${project.basedir}/target/classes</outputDirectory>
 							<resources>
 								<resource>
-									<directory>${basedir}/../ctakes-ytex/src/main/resources</directory>
+									<directory>${project.basedir}/../ctakes-ytex/src/main/resources</directory>
 									<filtering>true</filtering>
 								</resource>
 							</resources>

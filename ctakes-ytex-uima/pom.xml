@@ -147,7 +147,7 @@
 						</goals>
 						<configuration>
 							<includeScope>compile</includeScope>
-							<outputDirectory>${basedir}/target/lib</outputDirectory>
+							<outputDirectory>${project.basedir}/target/lib</outputDirectory>
 							<overWriteReleases>false</overWriteReleases>
 							<overWriteSnapshots>false</overWriteSnapshots>
 							<overWriteIfNewer>true</overWriteIfNewer>
@@ -181,7 +181,7 @@
 							<target>
 								<!-- default to hsql, override via -D -->
 								<property name="db.type" value="hsql" />
-								<ant antfile="build-setup.xml" dir="${basedir}/../ctakes-ytex/scripts" target="test.setup">
+								<ant antfile="build-setup.xml" dir="${project.basedir}/../ctakes-ytex/scripts" target="test.setup">
 									<property name="config.local" value="${project.build.testOutputDirectory}" />
 									<property name="db.type" value="${db.type}" />
 									<property name="ytex.test" value="true" />

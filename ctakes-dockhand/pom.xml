@@ -62,10 +62,10 @@
                      <goal>copy-resources</goal>
                   </goals>
                   <configuration>
-                     <outputDirectory>${basedir}/target/classes/org/apache/ctakes/dockhand/goal/rest/webapp</outputDirectory>
+                     <outputDirectory>${project.basedir}/target/classes/org/apache/ctakes/dockhand/goal/rest/webapp</outputDirectory>
                      <resources>
                         <resource>
-                           <directory>${basedir}/../ctakes-tiny-rest/src/main/webapp</directory>
+                           <directory>${project.basedir}/../ctakes-tiny-rest/src/main/webapp</directory>
                            <filtering>true</filtering>
                         </resource>
                      </resources>

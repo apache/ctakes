@@ -75,7 +75,7 @@ Database connection parameters are taken from ytex.properties.
 		<condition property="hsql">
 			<equals arg1="${db.type}" arg2="hsql" />
 		</condition>
-		<condition property="umls.data" value="${java.io.tmpdir}" else="${basedir}/umls">
+		<condition property="umls.data" value="${java.io.tmpdir}" else="${project.basedir}/umls">
 			<isset property="umls.zip.available" />
 		</condition>
 		<!-- what to do when errors occur while dropping tables.  ignore these for oracle -->
@@ -200,7 +200,7 @@ Database connection parameters are taken from ytex.properties.
 			<sequential>
 				<antcall target="jdl">
 					<param name="jdl.data" value="${rrf.home}/META/@{rrf.base}.RRF" />
-					<param name="jdl.format" value="${basedir}/umls/@{rrf.base}.xml" />
+					<param name="jdl.format" value="${project.basedir}/umls/@{rrf.base}.xml" />
 				</antcall>
 			</sequential>
 		</for>
@@ -208,7 +208,7 @@ Database connection parameters are taken from ytex.properties.
 			<sequential>
 				<antcall target="jdl">
 					<param name="jdl.data" value="${rrf.home}/NET/@{rrf.base}" />
-					<param name="jdl.format" value="${basedir}/umls/@{rrf.base}.xml" />
+					<param name="jdl.format" value="${project.basedir}/umls/@{rrf.base}.xml" />
 				</antcall>
 			</sequential>
 		</for>
@@ -229,12 +229,12 @@ Database connection parameters are taken from ytex.properties.
 		<echo>import MRCONSO</echo>
 		<antcall target="jdl">
 			<param name="jdl.data" value="${umls.data}/MRCONSO.RRF" />
-			<param name="jdl.format" value="${basedir}/umls/MRCONSO.xml" />
+			<param name="jdl.format" value="${project.basedir}/umls/MRCONSO.xml" />
 		</antcall>
 		<echo>import MRSTY</echo>
 		<antcall target="jdl">
 			<param name="jdl.data" value="${umls.data}/MRSTY.RRF" />
-			<param name="jdl.format" value="${basedir}/umls/MRSTY.xml" />
+			<param name="jdl.format" value="${project.basedir}/umls/MRSTY.xml" />
 		</antcall>
 		<echo>index umls tables</echo>
 		<antcall target="jdbc.sqlcmd">
@@ -283,7 +283,7 @@ Database connection parameters are taken from ytex.properties.
 		</delete>
 	</target>
 	<target name="umls.import.view" depends="init.conn" description="load v_snomed_fword_lookup.txt. Use file from resources directory if it exists and if ytex.test is not defined">
-		<condition property="view.jdl.data" value="${ytex.resources.home}/org/apache/ctakes/ytex/dictionary/lookup/v_snomed_fword_lookup.txt" else="${basedir}/umls/v_snomed_fword_lookup.txt">
+		<condition property="view.jdl.data" value="${ytex.resources.home}/org/apache/ctakes/ytex/dictionary/lookup/v_snomed_fword_lookup.txt" else="${project.basedir}/umls/v_snomed_fword_lookup.txt">
 			<and>
 				<available file="${ytex.resources.home}/org/apache/ctakes/ytex/dictionary/lookup/v_snomed_fword_lookup.txt" />
 				<not>
@@ -294,7 +294,7 @@ Database connection parameters are taken from ytex.properties.
 		<echo>import v_snomed_fword_lookup from ${view.jdl.data}.  Be patient, this can take a while.</echo>
 		<antcall target="jdl">
 			<param name="jdl.data" value="${view.jdl.data}" />
-			<param name="jdl.format" value="${basedir}/umls/v_snomed_fword_lookup.xml" />
+			<param name="jdl.format" value="${project.basedir}/umls/v_snomed_fword_lookup.xml" />
 		</antcall>
 	</target>
 	<target name="umls.insert.view" depends="init.conn" description="create view by joining the mrconso, mrsty and umls_aui_fword tables">
@@ -346,7 +346,7 @@ Database connection parameters are taken from ytex.properties.
 		<echo>import umls tables into ${umls.schema} schema.  Be patient, this can take a while.</echo>
 		<antcall target="jdl">
 			<param name="jdl.data" value="${umls.data}/umls_aui_fword.txt" />
-			<param name="jdl.format" value="${basedir}/umls/umls_aui_fword.xml" />
+			<param name="jdl.format" value="${project.basedir}/umls/umls_aui_fword.xml" />
 		</antcall>
 	</target>
 	<target name="umls.drop.view" depends="init" description="drop and create umls tables">
@@ -528,7 +528,7 @@ ${sql.delimiter}
 		</antcall>
 	</target>
 	<target name="init.conn">
-		<copy file="${basedir}/conn.xml.template" tofile="${java.io.tmpdir}/conn.xml" overwrite="yes">
+		<copy file="${project.basedir}/conn.xml.template" tofile="${java.io.tmpdir}/conn.xml" overwrite="yes">
 			<filterset>
 				<filter token="db.driver" value="${db.driver}" />
 				<filter token="db.url" value="${db.url}" />
@@ -584,15 +584,15 @@ ${sql.delimiter}
 		<property name="prefix" value="sct2" />
 		<antcall target="jdl">
 			<param name="jdl.data" value="${sct.home}/${prefix}_Concept_Snapshot_INT_${sct.version}.txt" />
-			<param name="jdl.format" value="${basedir}/snomedct/${prefix}_concept.xml" />
+			<param name="jdl.format" value="${project.basedir}/snomedct/${prefix}_concept.xml" />
 		</antcall>
 		<antcall target="jdl">
 			<param name="jdl.data" value="${sct.home}/${prefix}_Relationship_Snapshot_INT_${sct.version}.txt" />
-			<param name="jdl.format" value="${basedir}/snomedct/${prefix}_relationship.xml" />
+			<param name="jdl.format" value="${project.basedir}/snomedct/${prefix}_relationship.xml" />
 		</antcall>
 		<antcall target="jdl">
 			<param name="jdl.data" value="${sct.home}/${prefix}_Description_Snapshot-en_INT_${sct.version}.txt" />
-			<param name="jdl.format" value="${basedir}/snomedct/${prefix}_description.xml" />
+			<param name="jdl.format" value="${project.basedir}/snomedct/${prefix}_description.xml" />
 		</antcall>
 		<antcall target="jdbc.sqlcmd">
 			<param name="sqlcmd.dir" value="snomedct" />
