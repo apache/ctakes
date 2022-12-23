@@ -816,7 +816,8 @@
 							<!--	Copy resources that should be user-editable to ctakes-user-resources  -->
 							<!--	This makes these resources available as a jar in maven central. -->
 							<id>copy-to-user-resources</id>
-							<phase>package</phase>
+<!--							<phase>package</phase>-->
+							<phase>prepare-package</phase>
 							<goals>
 								<goal>copy-resources</goal>
 							</goals>

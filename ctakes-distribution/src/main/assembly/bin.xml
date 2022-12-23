@@ -76,18 +76,18 @@
 				<exclude>org.apache.ctakes:ctakes-coreference-models</exclude>
 				<exclude>org.apache.ctakes:ctakes-core-models</exclude>
 				<exclude>org.apache.ctakes:ctakes-dependency-parser-models</exclude>
-				<exclude>org.apache.ctakes:ctakes-dependency-parser-models-clear</exclude>
+<!--				<exclude>org.apache.ctakes:ctakes-dependency-parser-models-clear</exclude>-->
 				<exclude>org.apache.ctakes:ctakes-pos-tagger-models</exclude>
 				<exclude>org.apache.ctakes:ctakes-relation-extractor-models</exclude>
 				<exclude>org.apache.ctakes:ctakes-side-effect-models</exclude>
 				<exclude>org.apache.ctakes:ctakes-smoking-status-models</exclude>
 				<exclude>org.apache.ctakes:ctakes-temporal-models</exclude>
-					<!-- exclude non-asf compliant dependencies used by ytex -->
+					<!-- exclude non-asf compliant dependencies used by ctakes-ytex -->
 				<exclude>org.hibernate:*</exclude>
 				<exclude>nz.ac.waikato.cms.weka:*</exclude>
 				<exclude>mysql:*</exclude>
-				<exclude>com.microsoft.sqlserver:*</exclude>
-				<exclude>oracle.jdbc:*</exclude>
+<!--				<exclude>com.microsoft.sqlserver:*</exclude>-->
+<!--				<exclude>oracle.jdbc:*</exclude>-->
 		  </excludes>
 			<outputDirectory>lib</outputDirectory>
 			<unpack>false</unpack>

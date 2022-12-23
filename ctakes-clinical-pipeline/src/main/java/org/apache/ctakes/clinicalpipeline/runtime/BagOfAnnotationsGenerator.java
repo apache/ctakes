@@ -46,8 +46,8 @@ public abstract class BagOfAnnotationsGenerator<T extends Annotation,K> {
 	private Class<T> classOfT;
 	
 	/**
-	 * @throws IOException
-	 * @throws UIMAException 
+	 * @throws IOException -
+	 * @throws UIMAException  -
 	 */
 	public BagOfAnnotationsGenerator(String inputDir, String outputDir) throws UIMAException, IOException{
 		this(inputDir, outputDir, null);

@@ -19,6 +19,8 @@
 package org.apache.ctakes.clinicalpipeline.ae;
 
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
+import org.apache.ctakes.core.util.annotation.IdentifiedAnnotationUtil;
+import org.apache.ctakes.core.util.annotation.OntologyConceptUtil;
 import org.apache.ctakes.core.util.annotation.WordTokenUtil;
 import org.apache.ctakes.typesystem.type.refsem.OntologyConcept;
 import org.apache.ctakes.typesystem.type.syntax.BaseToken;
@@ -31,6 +33,7 @@ import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.FSIterator;
+import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.JFSIndexRepository;
 import org.apache.uima.jcas.cas.FSArray;
@@ -38,9 +41,7 @@ import org.apache.uima.jcas.cas.TOP;
 import org.apache.uima.jcas.tcas.Annotation;
 import org.apache.uima.resource.ResourceInitializationException;
 
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
+import java.util.*;
 
 /**
  * UIMA annotator that prepares the CAS for output - performs
@@ -148,50 +149,18 @@ public class ExtractionPrepAnnotator extends JCasAnnotator_ImplBase {
     * Assigns OID and segmentID values to NamedEntities
     */
    private void assignNamedEntityFeats( JCas jcas ) {
-      JFSIndexRepository indexes = jcas.getJFSIndexRepository();
-      // Set keySet = new HashSet();
-      // List dupList = new ArrayList();
-
-      Set segmentSet = new HashSet();
-      Iterator segmentItr = indexes.getAnnotationIndex( Segment.type ).iterator();
-      while ( segmentItr.hasNext() ) {
-         segmentSet.add( segmentItr.next() );
-      }
-
-      // For each NE, assign segment ID and assign ontology concept OIDs if applicable
-      Iterator neItr = indexes.getAnnotationIndex( IdentifiedAnnotation.type ).iterator();
-      while ( neItr.hasNext() ) {
-
-         IdentifiedAnnotation neAnnot = (IdentifiedAnnotation)neItr.next();
-
-         // assign segment ID
-         Iterator segItr = segmentSet.iterator();
-         while ( segItr.hasNext() ) {
-            Segment seg = (Segment)segItr.next();
-            // see if NE is inside this segment
-            if ( (neAnnot.getBegin() >= seg.getBegin())
-                 && (neAnnot.getEnd() <= seg.getEnd()) ) {
-               // found segment for this NE
-               neAnnot.setSegmentID( seg.getId() );
-               break;
-            }
-         }
-
-         // assign ontology concept OID values
-         FSArray ocArr = neAnnot.getOntologyConceptArr();
-         if ( ocArr != null ) {
-            for ( int i = 0; i < ocArr.size(); i++ ) {
-               OntologyConcept oc = (OntologyConcept)ocArr.get( i );
-               String code = oc.getCode();
-               String scheme = oc.getCodingScheme();
-
-               StringBuffer oid = new StringBuffer();
-               oid.append( code );
-               oid.append( "#" );
-               oid.append( scheme );
-               oc.setOid( oid.toString() );
+      final Map<Segment,Collection<IdentifiedAnnotation>> sectionAnnotationsMap
+            = JCasUtil.indexCovered( jcas, Segment.class, IdentifiedAnnotation.class );
+      for ( Map.Entry<Segment,Collection<IdentifiedAnnotation>> sectionAnnotations
+            : sectionAnnotationsMap.entrySet() ) {
+         final String segmentId = sectionAnnotations.getKey().getId();
+         for ( IdentifiedAnnotation annotation : sectionAnnotations.getValue() ) {
+            annotation.setSegmentID( segmentId );
+            for ( OntologyConcept concept : OntologyConceptUtil.getOntologyConcepts( annotation ) ) {
+               concept.setOid( concept.getCode() + '#' + concept.getCodingScheme() );
             }
          }
       }
    }
+
 }

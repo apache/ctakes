@@ -140,10 +140,10 @@ public class DBAnnotationViewerDialog extends JDialog implements ActionListener 
    * 
    * @param aParentFrame
    *          frame containing this panel
-   * @param aTitle
+   * @param aDialogTitle
    *          title to display for the dialog
-   * @param aInputDir
-   *          directory containing input files (in XCAS foramt) to read
+//   * @param aInputDir
+//   *          directory containing input files (in XCAS foramt) to read
    * @param aStyleMapFile
    *          filename of style map to be used to view files in HTML
    * @param aPerformanceStats
@@ -519,10 +519,10 @@ public class DBAnnotationViewerDialog extends JDialog implements ActionListener 
    */
 
   public void getColorsForTypesFromFile(CasAnnotationViewer viewer, File aStyleMapFile) {
-    List colorList = new ArrayList();
-    ArrayList typeList = new ArrayList();
-    ArrayList notCheckedList = new ArrayList();
-    ArrayList hiddenList = new ArrayList();
+    List<Color> colorList = new ArrayList<>();
+    ArrayList<String> typeList = new ArrayList<>();
+    ArrayList<String> notCheckedList = new ArrayList<>();
+    ArrayList<String> hiddenList = new ArrayList<>();
     hiddenList.add("uima.cpm.FileLocation");
 
     if (aStyleMapFile.exists()) {
@@ -533,15 +533,7 @@ public class DBAnnotationViewerDialog extends JDialog implements ActionListener 
         stream = new FileInputStream(aStyleMapFile);
         DocumentBuilder db = DocumentBuilderFactory.newInstance().newDocumentBuilder();
         parse = db.parse(stream);
-      } catch (FileNotFoundException e) {
-        throw new UIMARuntimeException(e);
-      } catch (ParserConfigurationException e) {
-        throw new UIMARuntimeException(e);
-      } catch (FactoryConfigurationError e) {
-        throw new UIMARuntimeException(e);
-      } catch (SAXException e) {
-        throw new UIMARuntimeException(e);
-      } catch (IOException e) {
+      } catch ( ParserConfigurationException | FactoryConfigurationError | SAXException | IOException e) {
         throw new UIMARuntimeException(e);
       }
       Node node0 = parse.getDocumentElement();

@@ -420,11 +420,11 @@ public class DBAnnotationViewerMain extends JFrame {
 	}
 
 	/**
-	 * @param tae
+	 * @param tad -
 	 *            // *
-	 * @param taeDescFileName
-	 * @return
-	 * @throws IOException
+	 * @param descFileName -
+	 * @return -
+	 * @throws IOException -
 	 */
 	private File getStyleMapFile(AnalysisEngineDescription tad,
 			String descFileName) throws IOException {
@@ -444,11 +444,11 @@ public class DBAnnotationViewerMain extends JFrame {
 	}
 
 	/**
-	 * @param tae
+	 * @param tsd -
 	 *            // *
-	 * @param taeDescFileName
-	 * @return
-	 * @throws IOException
+	 * @param descFileName -
+	 * @return -
+	 * @throws IOException -
 	 */
 	private File getStyleMapFile(TypeSystemDescription tsd, String descFileName)
 			throws IOException {
@@ -717,10 +717,10 @@ public class DBAnnotationViewerMain extends JFrame {
 	 */
 	public void getColorsForTypesFromFile(CasAnnotationViewer viewer,
 			File aStyleMapFile) {
-		List colorList = new ArrayList();
-		ArrayList typeList = new ArrayList();
-		ArrayList notCheckedList = new ArrayList();
-		ArrayList hiddenList = new ArrayList();
+		List<Color> colorList = new ArrayList<>();
+		ArrayList<String> typeList = new ArrayList<>();
+		ArrayList<String> notCheckedList = new ArrayList<>();
+		ArrayList<String> hiddenList = new ArrayList<>();
 		hiddenList.add("uima.cpm.FileLocation");
 
 		if (aStyleMapFile.exists()) {
@@ -732,16 +732,10 @@ public class DBAnnotationViewerMain extends JFrame {
 				DocumentBuilder db = DocumentBuilderFactory.newInstance()
 						.newDocumentBuilder();
 				parse = db.parse(stream);
-			} catch (FileNotFoundException e) {
-				throw new UIMARuntimeException(e);
-			} catch (ParserConfigurationException e) {
-				throw new UIMARuntimeException(e);
-			} catch (FactoryConfigurationError e) {
-				throw new UIMARuntimeException(e);
-			} catch (SAXException e) {
-				throw new UIMARuntimeException(e);
-			} catch (IOException e) {
-				throw new UIMARuntimeException(e);
+			} catch ( ParserConfigurationException
+					| FactoryConfigurationError
+					| SAXException | IOException multE ) {
+				throw new UIMARuntimeException( multE );
 			}
 			Node node0 = parse.getDocumentElement();
 			// Node node1 = getFirstChildByName(parse.getDocumentElement(),
