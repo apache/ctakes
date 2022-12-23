@@ -188,11 +188,13 @@
          <artifactId>ctakes-temporal-models</artifactId>
 			<version>${ctakes.version}</version>
       </dependency>
+      <!--   ctakes-user-resources exists specifically for standalone products like ctakes-web-rest   -->
       <dependency>
          <groupId>org.apache.ctakes</groupId>
          <artifactId>ctakes-user-resources</artifactId>
          <version>${ctakes.version}</version>
       </dependency>
+
       <dependency>
          <groupId>org.apache.uima</groupId>
          <artifactId>uimaj-core</artifactId>

@@ -1,0 +1,133 @@
+[meta rev_date="05/02/2014" start_date="05/02/2014" rev="0001"]
+
+[start section id="20114"]
+
+DEMOGRAPHIC INFORMATION
+
+Clinic Number: 3-303-925
+Patient Name: Dan Testing
+Age: 55 Y
+Birthdate: 23-Jun-1958  Sex: F
+Address: 100 Quality Control Avenue  City: Test Patient, MN 55905-0001
+
+Service Date/Time: 02-May-2014 11:33
+Provider: Johnny Cash, MD  Pager: 4-$$$$
+Service: GI  Type/Desc: MIS  Status: Trx  Revision #: 2
+
+[end section id="20114"]
+
+
+[start section id="20112"]
+
+CHIEF COMPLAINT/PURPOSE OF VISIT
+
+#1 Colorectal Cancer
+
+[end section id="20112"]
+
+[start section id="20103"]
+
+HISTORY OF PRESENT ILLNESS
+
+The patient is a 55-year-old man referred by Dr. Good for recently diagnosed colorectal cancer.  The patient was well till 6 months ago, when he started having a little blood with stool.  He initially thought it was hemorrhoids related, and saw his primary physician after a few weeks of symptoms.  As physical examination by the primary care provided did show small hemorrhoids but, as stool was strongly positive for blood, he was referred for a repeat colonoscopy. Due to family circumstances this was postponed for a few months. He had a prior colonoscopy at age 50, which revealed 5 or 6 polyps, all adenomatous, and the maximum size of the largest polyp was about 1 cm. This polyp was located in the cecum.  
+
+The repeat colonoscopy on March 16, 2014, showed a 4 cm likely colorectal cancer in the cecum, just behind the ileocecal valve.  Biopsies were positive for grade 3 out of 4 adenocarcinoma.  Stains for HNPCC genes were negative.  Patient did bring the slides of the colonoscopy biopsies but left these in his hotel room.
+
+The patient underwent a staging CT scan early April, which did not reveal obvious intra-abdominal spread and large lymph nodes, or metastatic lesions in his liver.  We do not have the images available today.
+
+The patient is now here at our institution for evaluation of possible surgery.
+
+[end section id="20103"]
+
+[start section id="20104"]
+
+CURRENT MEDICATIONS
+
+Synthroid one tablet per day.
+Methroxate 50 mg per week.
+Nonsteroidal anti-inflammatory drugs, such as ibuprofen 200-800 mg per day as needed.
+
+[end section id="20104"]
+
+[start section id="20105"]
+
+ALLERGIES/ADVERSE REACTIONS
+
+Medication :
+    PENICILLINS - GI Upset
+    CEFZIL - Itching
+Food :
+    EGGS - Hives
+    SALMON - Itching
+
+Allergies above current as of Friday, 02-May-2014 at 11:44.
+
+[end section id="20105"]
+
+[start section id="20107"]
+
+PAST MEDICAL/SURGICAL HISTORY
+
+The patient has a history of psoriatic arthritis.  For this he has taken initially nonsteroidal anti-inflammatory drugs but, for the last 10 years, he has been on methotrexate 50 mg per week with good control of his arthritis, but with minimal control of his psoriasis.  For this, he has undergone tar treatments, and currently uses intermittently topical steroid-containing creams.  
+
+He also has a history of thyroid insufficiency, and has been on Synthroid for the last 25 years.  
+
+Surgical history includes tonsils and adenoids resection at age 8, a torn meniscus at age 18, which was partially removed, and a torn left Achilles tendon, surgically repaired when he was 25 years old.
+
+[end section id="20107"]
+
+
+[start section id="20111"]
+
+PHYSICAL EXAMINATION
+
+ENT:  Examined and normal.
+Skin: Psoriasis over the kneecaps and elbows, and within his hair.
+Lymph:  Examined and normal.
+Thyroid:  Not enlarged.
+Heart:  Core S1, S2, no murmur.
+Lungs:  Examined and normal.
+Abdomen:  Soft and nontender.  No obvious masses.
+Extremities:  No signs of joint damage due to his psoriatic arthritis. Ankle scar on left from surgery. Right knee arthroscopy scar.  
+Pulses:  Normal.
+Neuro:  Reflexes are normal.  
+Rect:  Normal prostate, no masses palpable.
+
+[end section id="20111"]
+
+[start section id="20112"]
+
+IMPRESSION/REPORT/PLAN
+
+#1 Colorectal cancer of the cecum, biopsy proven.  No evidence for metastatic disease
+#2 Thyroid insufficiency, on treatment
+#3 Psoriatic arthritis, adequately treatment with methotrexate and topical steroid creams
+
+[end section id="20112"]
+
+[start section id="20126"]
+
+PLANS/RECOMMENDATIONS:
+
+1. A surgical consultation for possible right hemicolectomy in the next 1-2 weeks.
+2. Complete pre-anesthetic medical evaluation, and obtain electrocardiogram.
+3. Obtain the outside CT scan and have it formally reviewed by Mayo Clinic radiologist.
+4. Obtain the outside colorectal biopsies and have these formally reviewed by Mayo Clinic pathologist.  
+
+I have discussed the plan in great detail with the patient and his wife, answered multiple questions related to surgery, the possibility of requiring chemotherapy in the postoperative period, the likelihood of this being an inherited versus a non-inherited condition, repercussions for his children, and complications of anesthesia.  For post-surgical complications I referred the patient and his wife to the discussion that he will have with one of our surgeons.  
+
+The patient and his wife are pleased with the information provided, and are willing to proceed as outlined above.
+
+[end section id="20126"]
+
+[start section id="20114"]
+
+BILLING
+Margin Code: P4   Total Time: 60 minutes     Counseling Time:
+
+Original: JC/EMR
+
+[end section id="20114"]
+
+
+

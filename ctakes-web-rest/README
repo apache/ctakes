@@ -1,12 +1,15 @@
 * Project Apache cTAKES Web Rest
 * module: ctakes-web-rest
 
+
+The ctakes-web-rest module builds a standalone product, Apache cTaKES Web REST.  
+
 ctakes-web-rest is not compiled or built when the main Apache cTAKES code is built with maven.   
 ctakes-web-rest is not contained within the main Apache cTAKES binary distributable zipped files.   
-ctakes-web-rest is a standalone project that is part of the larger Apache cTAKES Project, but that is not the same as being part of the main maven project.   
 
-You must build the ctakes-web-rest module alone.  Doing so will create its own self-contained Web Application Resource (aka Web ARchive) (WAR) file.  
-The WAR file contains a build of the main Apache cTAKES binary distributable. 
+You must build the Apache cTAKES Web REST product alone.
+Doing so will create its own self-contained Web Application Resource (aka Web ARchive) (WAR) file.  
+The WAR file contains a large segment of the main Apache cTAKES binary distributable. 
 
 If you are running maven by the command line then you must run in the ctakes-web-rest directory or direct maven to the ctakes-web-rest pom.   
 If you are running maven in an IDE, then you must add ctakes-web-rest as its own maven project and execute maven commands on that project.   

@@ -1,0 +1,532 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+  <annotations>
+    <!--Overlaps 5/2/1989 .. 5/2/2014-->
+    <entity>
+      <text>[thyroid insufficiency] ... [Thyroid insufficiency]</text>
+      <span>2902,2923;3910,3931</span>
+      <type>Disease or Disorder</type>
+      <startDate>5/2/1989</startDate>
+      <startTime>12:00 AM</startTime>
+      <startDir>overlapping</startDir>
+      <stopDate>5/2/2014</stopDate>
+      <stopTime>11:59 PM</stopTime>
+      <stopDir>overlapping</stopDir>
+    </entity>
+    <entity>
+      <text>history of</text>
+      <span>2891,2901</span>
+      <type>Event</type>
+      <startDate>5/2/1989</startDate>
+      <startTime>12:00 AM</startTime>
+      <startDir>overlapping</startDir>
+      <stopDate>5/2/2014</stopDate>
+      <stopTime>11:59 PM</stopTime>
+      <stopDir>overlapping</stopDir>
+    </entity>
+    <!--Overlaps, ends after 5/2/1989 .. 5/2/2014-->
+    <entity>
+      <text>[history]</text>
+      <span>2482,2489</span>
+      <type>Event</type>
+      <startDate>5/2/1989</startDate>
+      <startTime>12:00 AM</startTime>
+      <startDir>overlapping</startDir>
+      <stopDate>5/2/2014</stopDate>
+      <stopTime>11:59 PM</stopTime>
+      <stopDir>after</stopDir>
+    </entity>
+    <!--Within 5/2/1989 .. 5/2/2014-->
+    <entity>
+      <text>Synthroid</text>
+      <span>2941,2950</span>
+      <type>Medication</type>
+      <startDate>5/2/1989</startDate>
+      <startTime>12:00 AM</startTime>
+      <startDir>after</startDir>
+      <stopDate>5/2/2014</stopDate>
+      <stopTime>11:59 PM</stopTime>
+      <stopDir>before</stopDir>
+    </entity>
+    <!--Overlaps 5/2/2004 .. 5/2/2014-->
+    <entity>
+      <text>arthritis</text>
+      <span>2707,2716</span>
+      <type>Disease or Disorder</type>
+      <startDate>5/2/2004</startDate>
+      <startTime>12:00 AM</startTime>
+      <startDir>overlapping</startDir>
+      <stopDate>5/2/2014</stopDate>
+      <stopTime>11:59 PM</stopTime>
+      <stopDir>overlapping</stopDir>
+    </entity>
+    <entity>
+      <text>psoriasis</text>
+      <span>2750,2759</span>
+      <type>Disease or Disorder</type>
+      <startDate>5/2/2004</startDate>
+      <startTime>12:00 AM</startTime>
+      <startDir>overlapping</startDir>
+      <stopDate>5/2/2014</stopDate>
+      <stopTime>11:59 PM</stopTime>
+      <stopDir>overlapping</stopDir>
+    </entity>
+    <entity>
+      <text>psoriatic arthritis</text>
+      <span>2520,2539;2530,2539</span>
+      <type>Disease or Disorder</type>
+      <startDate>5/2/2004</startDate>
+      <startTime>12:00 AM</startTime>
+      <startDir>overlapping</startDir>
+      <stopDate>5/2/2014</stopDate>
+      <stopTime>11:59 PM</stopTime>
+      <stopDir>overlapping</stopDir>
+    </entity>
+    <entity>
+      <text>[control]</text>
+      <span>2692,2699</span>
+      <type>Event</type>
+      <startDate>5/2/2004</startDate>
+      <startTime>12:00 AM</startTime>
+      <startDir>overlapping</startDir>
+      <stopDate>5/2/2014</stopDate>
+      <stopTime>11:59 PM</stopTime>
+      <stopDir>overlapping</stopDir>
+    </entity>
+    <entity>
+      <text>[control]</text>
+      <span>2735,2742</span>
+      <type>Event</type>
+      <startDate>5/2/2004</startDate>
+      <startTime>12:00 AM</startTime>
+      <startDir>overlapping</startDir>
+      <stopDate>5/2/2014</stopDate>
+      <stopTime>11:59 PM</stopTime>
+      <stopDir>overlapping</stopDir>
+    </entity>
+    <entity>
+      <text>history of</text>
+      <span>2509,2519</span>
+      <type>Event</type>
+      <startDate>5/2/2004</startDate>
+      <startTime>12:00 AM</startTime>
+      <startDir>overlapping</startDir>
+      <stopDate>5/2/2014</stopDate>
+      <stopTime>11:59 PM</stopTime>
+      <stopDir>overlapping</stopDir>
+    </entity>
+    <!--Within 5/2/2004 .. 5/2/2014-->
+    <entity>
+      <text>methotrexate</text>
+      <span>2654,2666</span>
+      <type>Medication</type>
+      <startDate>5/2/2004</startDate>
+      <startTime>12:00 AM</startTime>
+      <startDir>after</startDir>
+      <stopDate>5/2/2014</stopDate>
+      <stopTime>11:59 PM</stopTime>
+      <stopDir>before</stopDir>
+    </entity>
+    <!--Overlaps 10/18/2013 .. 11/17/2013-->
+    <entity>
+      <text>blood with stool</text>
+      <span>779,795</span>
+      <type>Sign or Symptom</type>
+      <startDate>10/18/2013</startDate>
+      <startTime>12:00 AM</startTime>
+      <startDir>overlapping</startDir>
+      <stopDate>11/17/2013</stopDate>
+      <stopTime>12:00 AM</stopTime>
+      <stopDir>overlapping</stopDir>
+    </entity>
+    <entity>
+      <text>[history]</text>
+      <span>582,589</span>
+      <type>Event</type>
+      <startDate>10/18/2013</startDate>
+      <startTime>12:00 AM</startTime>
+      <startDir>overlapping</startDir>
+      <stopDate>11/17/2013</stopDate>
+      <stopTime>12:00 AM</stopTime>
+      <stopDir>overlapping</stopDir>
+    </entity>
+    <entity>
+      <text>well</text>
+      <span>723,727</span>
+      <type>Event</type>
+      <startDate>10/18/2013</startDate>
+      <startTime>12:00 AM</startTime>
+      <startDir>overlapping</startDir>
+      <stopDate>11/17/2013</stopDate>
+      <stopTime>12:00 AM</stopTime>
+      <stopDir>overlapping</stopDir>
+    </entity>
+    <!--Within 10/18/2013 .. 11/17/2013-->
+    <entity>
+      <text>[started]</text>
+      <span>755,762</span>
+      <type>Event</type>
+      <startDate>10/18/2013</startDate>
+      <startTime>12:00 AM</startTime>
+      <startDir>after</startDir>
+      <stopDate>11/17/2013</stopDate>
+      <stopTime>12:00 AM</stopTime>
+      <stopDir>before</stopDir>
+    </entity>
+    <!--Within 3/16/2014 .. 3/16/2014-->
+    <entity>
+      <text>colonoscopy</text>
+      <span>1337,1348</span>
+      <type>Procedure</type>
+      <startDate>3/16/2014</startDate>
+      <startTime>12:00 AM</startTime>
+      <startDir>after</startDir>
+      <stopDate>3/16/2014</stopDate>
+      <stopTime>11:59 PM</stopTime>
+      <stopDir>before</stopDir>
+    </entity>
+    <entity>
+      <text>Biopsies</text>
+      <span>1455,1463</span>
+      <type>Procedure</type>
+      <startDate>3/16/2014</startDate>
+      <startTime>12:00 AM</startTime>
+      <startDir>after</startDir>
+      <stopDate>3/16/2014</stopDate>
+      <stopTime>11:59 PM</stopTime>
+      <stopDir>before</stopDir>
+    </entity>
+    <entity>
+      <text>adenocarcinoma</text>
+      <span>1499,1513</span>
+      <type>Disease or Disorder</type>
+      <startDate>3/16/2014</startDate>
+      <startTime>12:00 AM</startTime>
+      <startDir>after</startDir>
+      <stopDate>3/16/2014</stopDate>
+      <stopTime>11:59 PM</stopTime>
+      <stopDir>before</stopDir>
+    </entity>
+    <entity>
+      <text>Stains</text>
+      <span>1516,1522</span>
+      <type>Procedure</type>
+      <startDate>3/16/2014</startDate>
+      <startTime>12:00 AM</startTime>
+      <startDir>after</startDir>
+      <stopDate>3/16/2014</stopDate>
+      <stopTime>11:59 PM</stopTime>
+      <stopDir>before</stopDir>
+    </entity>
+    <entity>
+      <text>colorectal cancer</text>
+      <span>1389,1406;1400,1406</span>
+      <type>Disease or Disorder</type>
+      <startDate>3/16/2014</startDate>
+      <startTime>12:00 AM</startTime>
+      <startDir>after</startDir>
+      <stopDate>3/16/2014</stopDate>
+      <stopTime>11:59 PM</stopTime>
+      <stopDir>before</stopDir>
+    </entity>
+    <entity>
+      <text>negative</text>
+      <span>1544,1552</span>
+      <type>Event</type>
+      <startDate>3/16/2014</startDate>
+      <startTime>12:00 AM</startTime>
+      <startDir>after</startDir>
+      <stopDate>3/16/2014</stopDate>
+      <stopTime>11:59 PM</stopTime>
+      <stopDir>before</stopDir>
+    </entity>
+    <entity>
+      <text>[showed]</text>
+      <span>1368,1374</span>
+      <type>Event</type>
+      <startDate>3/16/2014</startDate>
+      <startTime>12:00 AM</startTime>
+      <startDir>after</startDir>
+      <stopDate>3/16/2014</stopDate>
+      <stopTime>11:59 PM</stopTime>
+      <stopDir>before</stopDir>
+    </entity>
+    <!--After 3/16/2014 .. 3/16/2014-->
+    <entity>
+      <text>[left]</text>
+      <span>1616,1620</span>
+      <type>Event</type>
+      <startDate>3/16/2014</startDate>
+      <startTime>11:59 PM</startTime>
+      <startDir>after</startDir>
+      <stopDate>3/16/2014</stopDate>
+      <stopTime>11:59 PM</stopTime>
+      <stopDir>after</stopDir>
+    </entity>
+    <entity>
+      <text>[bring]</text>
+      <span>1567,1572</span>
+      <type>Event</type>
+      <startDate>3/16/2014</startDate>
+      <startTime>11:59 PM</startTime>
+      <startDir>after</startDir>
+      <stopDate>3/16/2014</stopDate>
+      <stopTime>11:59 PM</stopTime>
+      <stopDir>after</stopDir>
+    </entity>
+    <!--Within 4/1/2014 .. 4/30/2014-->
+    <entity>
+      <text>staging CT scan</text>
+      <span>1671,1686</span>
+      <type>Procedure</type>
+      <startDate>4/1/2014</startDate>
+      <startTime>12:00 AM</startTime>
+      <startDir>after</startDir>
+      <stopDate>4/30/2014</stopDate>
+      <stopTime>11:59 PM</stopTime>
+      <stopDir>before</stopDir>
+    </entity>
+    <entity>
+      <text>[intra-abdominal spread] ... [large lymph nodes]</text>
+      <span>1729,1751;1745,1751;1756,1773</span>
+      <type>Sign or Symptom</type>
+      <startDate>4/1/2014</startDate>
+      <startTime>12:00 AM</startTime>
+      <startDir>after</startDir>
+      <stopDate>4/30/2014</stopDate>
+      <stopTime>11:59 PM</stopTime>
+      <stopDir>before</stopDir>
+    </entity>
+    <entity>
+      <text>lesions</text>
+      <span>1789,1796</span>
+      <type>Disease or Disorder</type>
+      <startDate>4/1/2014</startDate>
+      <startTime>12:00 AM</startTime>
+      <startDir>after</startDir>
+      <stopDate>4/30/2014</stopDate>
+      <stopTime>11:59 PM</stopTime>
+      <stopDir>before</stopDir>
+    </entity>
+    <entity>
+      <text>[reveal]</text>
+      <span>1714,1720</span>
+      <type>Event</type>
+      <startDate>4/1/2014</startDate>
+      <startTime>12:00 AM</startTime>
+      <startDir>after</startDir>
+      <stopDate>4/30/2014</stopDate>
+      <stopTime>11:59 PM</stopTime>
+      <stopDir>before</stopDir>
+    </entity>
+    <!--Overlaps 5/2/2014 .. 5/16/2014-->
+    <entity>
+      <text>PLANS</text>
+      <span>4091,4096</span>
+      <type>Event</type>
+      <startDate>5/2/2014</startDate>
+      <startTime>12:00 AM</startTime>
+      <startDir>overlapping</startDir>
+      <stopDate>5/16/2014</stopDate>
+      <stopTime>12:00 AM</stopTime>
+      <stopDir>overlapping</stopDir>
+    </entity>
+    <entity>
+      <text>[recommendations]</text>
+      <span>4097,4112</span>
+      <type>Event</type>
+      <startDate>5/2/2014</startDate>
+      <startTime>12:00 AM</startTime>
+      <startDir>overlapping</startDir>
+      <stopDate>5/16/2014</stopDate>
+      <stopTime>12:00 AM</stopTime>
+      <stopDir>overlapping</stopDir>
+    </entity>
+    <!--Overlaps 5/2/2014 .. 6/1/2014-->
+    <entity>
+      <text>surgery</text>
+      <span>4581,4588</span>
+      <type>Procedure</type>
+      <startDate>5/2/2014</startDate>
+      <startTime>12:00 AM</startTime>
+      <startDir>overlapping</startDir>
+      <stopDate>6/1/2014</stopDate>
+      <stopTime>11:59 PM</stopTime>
+      <stopDir>overlapping</stopDir>
+    </entity>
+    <!--Within 5/2/2014 .. 5/2/2014-->
+    <entity>
+      <text>steroid-containing creams</text>
+      <span>2847,2872</span>
+      <type>Medication</type>
+      <startDate>5/2/2014</startDate>
+      <startTime>12:00 AM</startTime>
+      <startDir>after</startDir>
+      <stopDate>5/2/2014</stopDate>
+      <stopTime>11:59 PM</stopTime>
+      <stopDir>before</stopDir>
+    </entity>
+    <entity>
+      <text>[available]</text>
+      <span>1838,1847</span>
+      <type>Event</type>
+      <startDate>5/2/2014</startDate>
+      <startTime>12:00 AM</startTime>
+      <startDir>after</startDir>
+      <stopDate>5/2/2014</stopDate>
+      <stopTime>11:59 PM</stopTime>
+      <stopDir>before</stopDir>
+    </entity>
+    <!--Within 5/2/2014 .. 5/16/2014-->
+    <entity>
+      <text>surgical consultation</text>
+      <span>4120,4141</span>
+      <type>Procedure</type>
+      <startDate>5/2/2014</startDate>
+      <startTime>12:00 AM</startTime>
+      <startDir>after</startDir>
+      <stopDate>5/16/2014</stopDate>
+      <stopTime>12:00 AM</stopTime>
+      <stopDir>before</stopDir>
+    </entity>
+    <!--Within 5/2/2014 .. 6/1/2014-->
+    <entity>
+      <text>post-surgical complications</text>
+      <span>4807,4834;4821,4834</span>
+      <type>Disease or Disorder</type>
+      <startDate>5/2/2014</startDate>
+      <startTime>12:00 AM</startTime>
+      <startDir>after</startDir>
+      <stopDate>6/1/2014</stopDate>
+      <stopTime>11:59 PM</stopTime>
+      <stopDir>before</stopDir>
+    </entity>
+    <entity>
+      <text>chemotherapy</text>
+      <span>4619,4631</span>
+      <type>Procedure</type>
+      <startDate>5/2/2014</startDate>
+      <startTime>12:00 AM</startTime>
+      <startDir>after</startDir>
+      <stopDate>6/1/2014</stopDate>
+      <stopTime>11:59 PM</stopTime>
+      <stopDir>before</stopDir>
+    </entity>
+    <!--Before 5/2/2014 .. 5/2/2014-->
+    <entity>
+      <text>torn meniscus</text>
+      <span>3046,3059</span>
+      <type>Disease or Disorder</type>
+      <startDate>5/2/2014</startDate>
+      <startTime>11:33 AM</startTime>
+      <startDir>before</startDir>
+      <stopDate>5/2/2014</stopDate>
+      <stopTime>11:33 AM</stopTime>
+      <stopDir>before</stopDir>
+    </entity>
+    <entity>
+      <text>thyroid insufficiency</text>
+      <span>2902,2923</span>
+      <type>Disease or Disorder</type>
+      <startDate>5/2/2014</startDate>
+      <startTime>11:33 AM</startTime>
+      <startDir>before</startDir>
+      <stopDate>5/2/2014</stopDate>
+      <stopTime>11:33 AM</stopTime>
+      <stopDir>before</stopDir>
+    </entity>
+    <entity>
+      <text>hemorrhoids</text>
+      <span>826,837</span>
+      <type>Disease or Disorder</type>
+      <startDate>5/2/2014</startDate>
+      <startTime>11:33 AM</startTime>
+      <startDir>before</startDir>
+      <stopDate>5/2/2014</stopDate>
+      <stopTime>11:33 AM</stopTime>
+      <stopDir>before</stopDir>
+    </entity>
+    <!--Overlaps 5/2/2014 .. 5/2/2014-->
+    <entity>
+      <text>Colorectal Cancer</text>
+      <span>509,526;520,526</span>
+      <type>Disease or Disorder</type>
+      <startDate>5/2/2014</startDate>
+      <startTime>11:33 AM</startTime>
+      <startDir>overlapping</startDir>
+      <stopDate>5/2/2014</stopDate>
+      <stopTime>11:33 AM</stopTime>
+      <stopDir>overlapping</stopDir>
+    </entity>
+    <entity>
+      <text>condition</text>
+      <span>4726,4735</span>
+      <type>Disease or Disorder</type>
+      <startDate>5/2/2014</startDate>
+      <startTime>11:33 AM</startTime>
+      <startDir>overlapping</startDir>
+      <stopDate>5/2/2014</stopDate>
+      <stopTime>11:33 AM</stopTime>
+      <stopDir>overlapping</stopDir>
+    </entity>
+    <entity>
+      <text>Age</text>
+      <span>169,172</span>
+      <type>Event</type>
+      <startDate>5/2/2014</startDate>
+      <startTime>11:33 AM</startTime>
+      <startDir>overlapping</startDir>
+      <stopDate>5/2/2014</stopDate>
+      <stopTime>11:33 AM</stopTime>
+      <stopDir>overlapping</stopDir>
+    </entity>
+    <entity>
+      <text>year-old</text>
+      <span>630,638</span>
+      <type>Event</type>
+      <startDate>5/2/2014</startDate>
+      <startTime>11:33 AM</startTime>
+      <startDir>overlapping</startDir>
+      <stopDate>5/2/2014</stopDate>
+      <stopTime>11:33 AM</stopTime>
+      <stopDir>overlapping</stopDir>
+    </entity>
+    <!--After 5/2/2014 .. 5/2/2014-->
+    <entity>
+      <text>surgery</text>
+      <span>1926,1933</span>
+      <type>Procedure</type>
+      <startDate>5/2/2014</startDate>
+      <startTime>11:33 AM</startTime>
+      <startDir>after</startDir>
+      <stopDate>5/2/2014</stopDate>
+      <stopTime>11:33 AM</stopTime>
+      <stopDir>after</stopDir>
+    </entity>
+    <!--Within 5/2/2014 .. 5/2/2014-->
+    <entity>
+      <text>evaluation</text>
+      <span>1903,1913</span>
+      <type>Procedure</type>
+      <startDate>5/2/2014</startDate>
+      <startTime>11:59 AM</startTime>
+      <startDir>after</startDir>
+      <stopDate>5/2/2014</stopDate>
+      <stopTime>12:00 PM</stopTime>
+      <stopDir>before</stopDir>
+    </entity>
+    <!--After 5/16/2014 .. 5/16/2014-->
+    <entity>
+      <text>hemicolectomy</text>
+      <span>4161,4174</span>
+      <type>Procedure</type>
+      <startDate>5/16/2014</startDate>
+      <startTime>12:00 AM</startTime>
+      <startDir>after</startDir>
+      <stopDate>5/16/2014</stopDate>
+      <stopTime>12:00 AM</stopTime>
+      <stopDir>after</stopDir>
+    </entity>
+  </annotations>
+</data>
+

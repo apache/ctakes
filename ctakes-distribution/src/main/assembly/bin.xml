@@ -302,12 +302,6 @@
 		</fileSet>
 
 		<fileSet>
-			<directory>../ctakes-web-rest/src/user/resources</directory>
-			<outputDirectory>resources</outputDirectory>
-			<fileMode>644</fileMode>
-			<directoryMode>755</directoryMode>
-		</fileSet>
-		<fileSet>
 			<directory>../ctakes-ytex/src/user/resources</directory>
 			<outputDirectory>resources</outputDirectory>
 			<fileMode>644</fileMode>

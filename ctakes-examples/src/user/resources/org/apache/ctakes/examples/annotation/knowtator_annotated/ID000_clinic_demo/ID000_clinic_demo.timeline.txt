@@ -1,0 +1,58 @@
+Tuesday, May 2, 1989 through Friday, May 2, 2014
+	Overlaps
+		[thyroid insufficiency] ... [Thyroid insufficiency]
+	Within
+		Synthroid
+Sunday, May 2, 2004 through Friday, May 2, 2014
+	Overlaps
+		arthritis
+		psoriatic arthritis
+		psoriasis
+	Within
+		methotrexate
+(Roughly) Friday, October 18, 2013 through Sunday, November 17, 2013
+	Overlaps
+		blood with stool
+Sunday, March 16, 2014
+	Within
+		colonoscopy
+		Stains
+		colorectal cancer
+		adenocarcinoma
+		Biopsies
+(Roughly) April, 2014
+	Within
+		lesions
+		[intra-abdominal spread] ... [large lymph nodes]
+		staging CT scan
+(Roughly) Friday, May 2, 2014 through Sunday, June 1, 2014
+	Overlaps
+		surgery
+Friday, May 2, 2014
+	Within
+		steroid-containing creams
+(Roughly) Friday, May 2, 2014 through Friday, May 16, 2014
+	Within
+		surgical consultation
+(Roughly) Friday, May 2, 2014 through Sunday, June 1, 2014
+	Within
+		post-surgical complications
+		chemotherapy
+Friday, May 2, 2014 11:33 AM
+	Before
+		torn meniscus
+		hemorrhoids
+		thyroid insufficiency
+Friday, May 2, 2014 11:33 AM through Friday, May 2, 2014 11:33 AM
+	Overlaps
+		Colorectal Cancer
+		condition
+Friday, May 2, 2014 11:33 AM
+	After
+		surgery
+Friday, May 2, 2014 11:59 AM through Friday, May 2, 2014 12:00 PM
+	Within
+		evaluation
+(Roughly) Friday, May 16, 2014
+	After
+		hemicolectomy
