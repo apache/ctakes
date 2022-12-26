@@ -125,7 +125,7 @@
 		<maven-assembly-plugin.version>3.4.2</maven-assembly-plugin.version>
 		<maven-failsafe-plugin.version>2.20.1</maven-failsafe-plugin.version>
 		<maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
-		<maven-war-plugin.version>3.3.2</maven-war-plugin.version>
+		<maven-war-plugin.version>3.2.3</maven-war-plugin.version>
 		<maven-license-plugin.version>1.9.0</maven-license-plugin.version>
 		<maven-clean-plugin.version>3.2.0</maven-clean-plugin.version>
 		<maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
@@ -198,10 +198,9 @@
 		<module>ctakes-examples</module>
 		<module>ctakes-ytex</module>
 		<module>ctakes-ytex-uima</module>
-      <!--		<module>ctakes-ytex-web</module>-->
 		<module>ctakes-dictionary-lookup-fast</module>
       <module>ctakes-dockhand</module>
-      <module>ctakes-tiny-rest</module>
+		<module>ctakes-tiny-rest</module>
 		<module>ctakes-user-resources</module>
 	</modules>
 	<dependencyManagement>
@@ -724,11 +723,6 @@
 				<artifactId>ctakes-ytex-uima</artifactId>
 				<version>${project.version}</version>
 			</dependency>
-         <!--			<dependency>-->
-         <!--				<groupId>org.apache.ctakes</groupId>-->
-         <!--				<artifactId>ctakes-ytex-web</artifactId>-->
-         <!--				<version>${project.version}</version>-->
-         <!--			</dependency>-->
 			<dependency>
 				<groupId>org.apache.ctakes</groupId>
 				<artifactId>
@@ -1096,6 +1090,50 @@
 		</pluginManagement>
 	</build>
 	<profiles>
+
+		<profile>
+			<!--		ctakes-web-rest contains a full copy of ctakes in its target/WEB-INF/lib	-->
+			<!--		and another full copy in target/ctakes-web-rest.war	-->
+			<!--		This requires over 1.75 GB	of disk space, in addition to extra build time.  -->
+			<!--		We do not distribute the ctakes-web-rest.war with the ctakes distributable, so why build it? 	-->
+			<!--		It can be built when wanted by enabling this profile ( web-rest-build ).	-->
+			<id>web-rest-build</id>
+			<modules>
+				<module>ctakes-web-rest</module>
+			</modules>
+			<dependencyManagement>
+				<dependencies>
+					<dependency>
+						<groupId>org.apache.ctakes</groupId>
+						<artifactId>ctakes-web-rest</artifactId>
+						<version>${project.version}</version>
+					</dependency>
+				</dependencies>
+			</dependencyManagement>
+		</profile>
+
+		<profile>
+			<!--		ctakes-ytex-web contains a full copy of ctakes in its target/WEB-INF/lib	-->
+			<!--		and another full copy in target/ctakes-ytex-web.war	-->
+			<!--		This requires over 1.75 GB	of disk space, in addition to extra build time.  -->
+			<!--		We do not distribute the ctakes-web-rest.war with the ctakes distributable, so why build it? 	-->
+			<!--		It can be built when wanted by enabling this profile ( web-rest-build ).	-->
+			<id>ytex-web-build</id>
+			<modules>
+				<module>ctakes-ytex-web</module>
+			</modules>
+			<dependencyManagement>
+				<dependencies>
+					<dependency>
+						<groupId>org.apache.ctakes</groupId>
+						<artifactId>ctakes-ytex-web</artifactId>
+						<version>${project.version}</version>
+					</dependency>
+				</dependencies>
+			</dependencyManagement>
+		</profile>
+
+
 		<profile>
 			<id>disable-java8-doclint</id>
 			<activation>
@@ -1105,11 +1143,10 @@
 				<additionalparam>-Xdoclint:none</additionalparam>
 			</properties>
 		</profile>
-		<!--  START SNIPPET: release-profile -->
 		<!-- !IMPORTANT: Overrides the official org.apache:apache (parent pom) -->
 		<profile>
 			<id>apache-release</id>
-                            <build>
+			 <build>
 				<plugins>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
@@ -1124,6 +1161,6 @@
 				</plugins>
 			</build>
 		</profile>
-		<!--  END SNIPPET: release-profile  -->
+
 	</profiles>
 </project>

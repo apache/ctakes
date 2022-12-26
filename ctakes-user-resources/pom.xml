@@ -24,9 +24,8 @@
 	<artifactId>ctakes-user-resources</artifactId>
 	<name>Apache cTAKES user resources</name>
 	<description>For external projects to utilize user resources, e.g. piper files and bsv definitions.</description>
-<!--	This is not a normal module.  There should not be code or resources in this module.  -->
-<!--	This module, in conjunction with the main ctakes pom, creates a ctakes-user-resources jar that can be -->
-<!--	a dependency for other projects.  -->
+<!--	This is not a normal module.  There should not be main code or main resources in this module.  -->
+<!--	This module creates a ctakes-user-resources jar that can be a dependency for other projects.  -->
 <!--	Follow me here ...  -->
 <!--	1.  We want to place user resources ( pipers, regex bsvs, stop words, etc.) in separate modules.  -->
 <!--	2.  For editable 'runtime' dev flexibility we want said resources in the resources/ directory upon compile. -->
@@ -146,12 +145,6 @@
 			<groupId>org.apache.ctakes</groupId>
 			<artifactId>ctakes-ytex-uima</artifactId>
 		</dependency>
-		<!--		<dependency>-->
-		<!--			<groupId>org.apache.ctakes</groupId>-->
-		<!--			<artifactId>ctakes-ytex-web</artifactId>-->
-		<!--			<version>${project.version}</version>-->
-		<!--			<classifier>classes</classifier>-->
-		<!--		</dependency>-->
 		<dependency>
 			<groupId>org.apache.ctakes</groupId>
 			<artifactId>ctakes-gui</artifactId>

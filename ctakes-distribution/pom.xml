@@ -163,10 +163,10 @@
 	<profiles>
 		<profile>
 <!--			Because I got tired of building multiple zips when all I wanted were jars.  -->
-			<id>no-build-zips</id>
+			<id>no-zips-build</id>
 		</profile>
 		<profile>
-			<id>zips</id>
+			<id>zips-build</id>
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
