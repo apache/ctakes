@@ -1,4 +1,4 @@
-/**
+/*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
  * distributed with this work for additional information
@@ -43,7 +43,6 @@ import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.lang.reflect.Constructor;
@@ -112,50 +111,53 @@ final public class LookupParseUtilitiesRefactor {
          }
          final Element implEl = (Element) rootDictEl.getChild( "implementation" ).getChildren().get( 0 );
          final String implType = implEl.getName();
-         if ( implType.equals( "luceneImpl" ) ) {
-            if ( !(extResrc instanceof LuceneIndexReaderResource) ) {
-               throw new ResourceAccessException( "Expected external resource to be:"
-                                          + LuceneIndexReaderResource.class, new Object[]{extResrc} );
-            }
-            final IndexReader indexReader = ((LuceneIndexReaderResource) extResrc).getIndexReader();
-            final IndexSearcher indexSearcher = new IndexSearcher( indexReader );
-            // Added 'MaxListSize' ohnlp-Bugs-3296301
-            dict = new LuceneDictionaryImpl( indexSearcher, lookupFieldName, MAX_LIST_SIZE );
-         } else if ( implType.equals( "jdbcImpl" ) ) {
-            final String tableName = implEl.getAttributeValue( "tableName" );
-            if ( !(extResrc instanceof JdbcConnectionResource) ) {
-               throw new ResourceAccessException( "Expected external resource to be:"
-                                          + JdbcConnectionResource.class, new Object[]{extResrc} );
-            }
-            final Connection conn = ((JdbcConnectionResource) extResrc).getConnection();
-            dict = new JdbcDictionaryImpl( conn, tableName, lookupFieldName );
-         } else if ( implType.equals( "csvImpl" ) ) {
-            final String fieldDelimiter = implEl.getAttributeValue( "delimiter" );
-            if ( !(extResrc instanceof FileResource) ) {
-               throw new ResourceAccessException( "Expected external resource to be:"
-                                          + FileResource.class, new Object[]{extResrc} );
-            }
+         switch ( implType ) {
+            case "luceneImpl":
+               if ( !( extResrc instanceof LuceneIndexReaderResource ) ) {
+                  throw new ResourceAccessException( "Expected external resource to be:"
+                                                     + LuceneIndexReaderResource.class, new Object[]{ extResrc } );
+               }
+               final IndexReader indexReader = ( (LuceneIndexReaderResource) extResrc ).getIndexReader();
+               final IndexSearcher indexSearcher = new IndexSearcher( indexReader );
+               // Added 'MaxListSize' ohnlp-Bugs-3296301
+               dict = new LuceneDictionaryImpl( indexSearcher, lookupFieldName, MAX_LIST_SIZE );
+               break;
+            case "jdbcImpl":
+               final String tableName = implEl.getAttributeValue( "tableName" );
+               if ( !( extResrc instanceof JdbcConnectionResource ) ) {
+                  throw new ResourceAccessException( "Expected external resource to be:"
+                                                     + JdbcConnectionResource.class, new Object[]{ extResrc } );
+               }
+               final Connection conn = ( (JdbcConnectionResource) extResrc ).getConnection();
+               dict = new JdbcDictionaryImpl( conn, tableName, lookupFieldName );
+               break;
+            case "csvImpl":
+               final String fieldDelimiter = implEl.getAttributeValue( "delimiter" );
+               if ( !( extResrc instanceof FileResource ) ) {
+                  throw new ResourceAccessException( "Expected external resource to be:"
+                                                     + FileResource.class, new Object[]{ extResrc } );
+               }
 
-            final String idxFieldNameStr = implEl.getAttributeValue( "indexedFieldNames" );
-            final StringTokenizer st = new StringTokenizer( idxFieldNameStr, "," );
-            int arrIdx = 0;
-            String[] idxFieldNameArr = new String[st.countTokens()];
-            while ( st.hasMoreTokens() ) {
-               idxFieldNameArr[arrIdx++] = st.nextToken().trim();
-            }
+               final String idxFieldNameStr = implEl.getAttributeValue( "indexedFieldNames" );
+               final StringTokenizer st = new StringTokenizer( idxFieldNameStr, "," );
+               int arrIdx = 0;
+               String[] idxFieldNameArr = new String[ st.countTokens() ];
+               while ( st.hasMoreTokens() ) {
+                  idxFieldNameArr[ arrIdx++ ] = st.nextToken()
+                                                  .trim();
+               }
 
-            final File csvFile = ((FileResource) extResrc).getFile();
-            try {
-               final StringTable strTable = StringTableFactory.build( new FileReader( csvFile ),
-                     fieldDelimiter, idxFieldNameArr, true );
-               dict = new StringTableDictionaryImpl( strTable, lookupFieldName );
-            } catch ( FileNotFoundException fnfE ) {
-               throw new ResourceAccessException( "Could not open csv file", new Object[]{csvFile} );
-            } catch (IOException ioE ) {
-               throw new ResourceAccessException( "Could not open csv file", new Object[]{csvFile} );
-            }
-         } else {
-            throw new ResourceAccessException( "Unsupported impl type:" + implType, new Object[]{implType} );
+               final File csvFile = ( (FileResource) extResrc ).getFile();
+               try {
+                  final StringTable strTable = StringTableFactory.build( new FileReader( csvFile ),
+                                                                         fieldDelimiter, idxFieldNameArr, true );
+                  dict = new StringTableDictionaryImpl( strTable, lookupFieldName );
+               } catch ( IOException fnfE ) {
+                  throw new ResourceAccessException( "Could not open csv file", new Object[]{ csvFile } );
+               }
+               break;
+            default:
+               throw new ResourceAccessException( "Unsupported impl type:" + implType, new Object[]{ implType } );
          }
 
          final List<Element> rootDictChildren = rootDictEl.getChild( "metaFields" ).getChildren();
@@ -240,6 +242,7 @@ final public class LookupParseUtilitiesRefactor {
                }
             }
 
+            assert lcConstr != null;
             final LookupConsumer lc = (LookupConsumer) lcConstr.newInstance( lcArgs );
             final LookupAlgorithm la = li.getLookupAlgorithm( dictEngine );
 
@@ -247,35 +250,12 @@ final public class LookupParseUtilitiesRefactor {
 
             lsSet.add( ls );
          }
-         // TODO refactor to catch ( ex1 | ex2 | ex3 ) when cTakes moves to java 7
-      } catch ( ClassNotFoundException cnfE ) {
-         // thrown by Class.forName(..)
+      } catch ( ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException
+            | IllegalAccessException | InvocationTargetException | AnnotatorInitializationException
+            | ClassCastException | NullPointerException cnfE ) {
          throw new AnnotatorContextException( cnfE );
-      } catch ( NoSuchMethodException nsmE ) {
-         // thrown by Class.getConstructor(..)
-         throw new AnnotatorContextException( nsmE );
-      } catch ( SecurityException secE ) {
-         // thrown by Class.getConstructor(..)
-         throw new AnnotatorContextException( secE );
-      } catch ( InstantiationException instE ) {
-         // thrown by Class.newInstance(..)
-         throw new AnnotatorContextException( instE );
-      } catch ( IllegalAccessException iaE ) {
-         // thrown by Class.newInstance(..)
-         throw new AnnotatorContextException( iaE );
-      } catch ( InvocationTargetException itE ) {
-         // thrown by Class.newInstance(..)
-         throw new AnnotatorContextException( itE );
-      } catch ( AnnotatorInitializationException aiE ) {
-         // thrown by LookupInitializer.getLookupAlgorithm(..)
-         throw new AnnotatorContextException( aiE );
-      } catch ( ClassCastException ccE ) {
-         // thrown everywhere in this method ...
-         throw new AnnotatorContextException( ccE );
-      } catch ( NullPointerException npE ) {
-         // thrown everywhere in this method ...
-         throw new AnnotatorContextException( npE );
       }
+
       return lsSet;
    }
 
