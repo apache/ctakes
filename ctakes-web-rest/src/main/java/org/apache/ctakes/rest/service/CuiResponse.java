@@ -18,20 +18,22 @@
  */
 package org.apache.ctakes.rest.service;
 
+import org.apache.ctakes.core.util.annotation.OntologyConceptUtil;
+import org.apache.ctakes.typesystem.type.refsem.OntologyConcept;
 import org.apache.ctakes.typesystem.type.refsem.UmlsConcept;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
-import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.tcas.Annotation;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by tmill on 12/20/18.
  */
 public class CuiResponse {
+    // TODO - We don't seem to be returning relations (etc.) anywhere, so why does the war contain so many modules?
+    // TODO - consider having multiple return types available.  see ctakes-tiny-rest service/response/* and
+    //  service/TinyController.
+    // TODO - consider an additional json such as UmlsJsonFormatter.
     final private String _type;
     public int begin;
     public int end;
@@ -46,17 +48,19 @@ public class CuiResponse {
         text = annotation.getCoveredText();
 
         if(annotation instanceof IdentifiedAnnotation) {
-            IdentifiedAnnotation ia = (IdentifiedAnnotation) annotation;
+            final IdentifiedAnnotation ia = (IdentifiedAnnotation) annotation;
             polarity = ia.getPolarity();
-            if(ia.getOntologyConceptArr() != null) {
-                for (UmlsConcept concept : JCasUtil.select(ia.getOntologyConceptArr(), UmlsConcept.class)) {
-                    Map<String, String> atts = new HashMap<>();
-                    atts.put("codingScheme", concept.getCodingScheme());
-                    atts.put("cui", concept.getCui());
-                    atts.put("code", concept.getCode() == null ? "n/a" : concept.getCode());
-                    atts.put("tui", concept.getTui());
-                    conceptAttributes.add(atts);
+            final Collection<OntologyConcept> concepts
+                  = OntologyConceptUtil.getOntologyConcepts( ia );
+            for ( OntologyConcept concept : concepts ) {
+                final Map<String,String> attributes = new HashMap<>();
+                attributes.put( "codingScheme", concept.getCodingScheme() );
+                attributes.put( "code", concept.getCode() == null ? "n/a" : concept.getCode() );
+                if ( concept instanceof UmlsConcept ) {
+                    attributes.put( "cui", ( (UmlsConcept) concept ).getCui() );
+                    attributes.put("tui", ( (UmlsConcept) concept ).getTui() );
                 }
+                conceptAttributes.add( attributes );
             }
         }
     }

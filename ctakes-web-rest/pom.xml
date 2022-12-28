@@ -14,13 +14,20 @@
 		<ctakes.version>5.0.0-SNAPSHOT</ctakes.version>
 		<springframework.version>4.3.12.RELEASE</springframework.version>
 		<jackson.version>2.9.7</jackson.version>
+      <maven.compiler.plugin.version>3.10.1</maven.compiler.plugin.version>
+      <maven.war.plugin.version>3.2.3</maven.war.plugin.version>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jettyVersion>9.2.6.v20141205</jettyVersion>
+      <spring.version>4.3.12.RELEASE</spring.version>
+      <uimafit.version>2.4.0</uimafit.version>
+      <uimaj.version>2.10.2</uimaj.version>
+      <servlet.version>2.5</servlet.version>
+      <mysql.connect.version>6.0.6</mysql.connect.version>
 	</properties>
 	<dependencies>
-<!--      TODO   Exclusions.  See the pom files in dockhand goal/rest/pom/ -->
+<!--      TODO   Any Exclusions?  See the pom files in dockhand goal/rest/pom/ -->
       <dependency>
          <groupId>org.apache.ctakes</groupId>
          <artifactId>ctakes-type-system</artifactId>
@@ -141,28 +148,28 @@
       <dependency>
          <groupId>org.apache.uima</groupId>
          <artifactId>uimaj-core</artifactId>
-         <version>2.10.2</version>
+         <version>${uimaj.version}</version>
       </dependency>
         <dependency>
             <groupId>org.apache.uima</groupId>
             <artifactId>uimaj-json</artifactId>
-            <version>2.10.2</version>
+            <version>${uimaj.version}</version>
         </dependency>
       <dependency>
          <groupId>org.apache.uima</groupId>
          <artifactId>uimafit-core</artifactId>
-         <version>2.4.0</version>
+         <version>${uimafit.version}</version>
       </dependency>
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>6.0.6</version>
+			<version>${mysql.connect.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
-			<version>2.5</version>
+			<version>${servlet.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -227,7 +234,7 @@
          <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-war-plugin</artifactId>
-            <version>3.2.3</version>
+            <version>${maven.war.plugin.version}</version>
             <configuration>
                <warName>ctakes-web-rest</warName>
                <outputDirectory>${project.build.directory}</outputDirectory>
@@ -236,7 +243,7 @@
 
          <plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.4</version>
+				<version>${maven.compiler.plugin.version}</version>
 				<configuration>
 					<source>1.8</source>
 					<target>1.8</target>
