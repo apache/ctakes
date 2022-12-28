@@ -1,4 +1,4 @@
-/**
+/*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
  * distributed with this work for additional information
@@ -48,6 +48,10 @@ import org.apache.commons.collections.map.CaseInsensitiveMap;
 import org.apache.commons.jxpath.JXPathContext;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.ctakes.typesystem.type.relation.LocationOfTextRelation;
+import org.apache.ctakes.typesystem.type.textsem.DiseaseDisorderMention;
+import org.apache.ctakes.typesystem.type.textsem.ProcedureMention;
+import org.apache.ctakes.typesystem.type.textsem.SignSymptomMention;
 import org.apache.ctakes.ytex.dao.DBUtil;
 import org.apache.ctakes.ytex.uima.model.Document;
 import org.apache.ctakes.ytex.uima.model.DocumentAnnotation;
@@ -589,8 +593,8 @@ public class DocumentMapperServiceImpl implements DocumentMapperService,
 	/**
 	 * load mapping info
 	 * 
-	 * @param type
-	 * @return
+	 * @param fs -
+	 * @return -
 	 */
 	private AnnoMappingInfo initMapInfo(final FeatureStructure fs) {
 		final Type type = fs.getType();
@@ -1153,7 +1157,7 @@ public class DocumentMapperServiceImpl implements DocumentMapperService,
 	/**
 	 * save the annotation properties for a given type
 	 * 
-	 * @param mapIdToAnno
+	 * @param mapAnnoToId
 	 *            map of all annoIDs to Annotation
 	 * @param annoIds
 	 *            annotation ids for a single type
@@ -1203,6 +1207,39 @@ public class DocumentMapperServiceImpl implements DocumentMapperService,
 						Annotation anno = mapIdToAnno.get(annoId);
 						saveAnnoBindVariables(type, mapInfo, ps, annoId, anno,
 								mapAnnoToId);
+
+						// Pull out bodyLocation relation (and severity relation?) for anno_link table
+   						  if(anno instanceof DiseaseDisorderMention ) {
+  						    LocationOfTextRelation blRel = ((DiseaseDisorderMention)anno).getBodyLocation();
+  						    //DegreeOfTextRelation dtRel = ((DiseaseDisorderMention)anno).getSeverity();
+    						if(blRel != null) {
+                              Annotation site = blRel.getArg2().getArgument(); // get AnatomicalSiteLocation
+                              Integer anatSiteAnnoId = mapAnnoToId.get(site);
+                              if (anatSiteAnnoId != null) {
+                                listAnnoLinks.add(new AnnoLink(annoId, anatSiteAnnoId, "bodyLocation"));
+                              }
+    						}
+  						  } else if (anno instanceof SignSymptomMention ){
+  						    LocationOfTextRelation blRel = ((SignSymptomMention)anno).getBodyLocation();
+  						    //DegreeOfTextRelation dtRel = ((SignSymptomMention)anno).getSeverity();
+  						    if(blRel != null) {
+                              Annotation site = blRel.getArg2().getArgument(); // get AnatomicalSiteLocation
+                              Integer anatSiteAnnoId = mapAnnoToId.get(site);
+                              if (anatSiteAnnoId != null) {
+                                listAnnoLinks.add(new AnnoLink(annoId, anatSiteAnnoId, "bodyLocation"));
+                              }
+                            }
+  						  } else if (anno instanceof ProcedureMention ){
+                            LocationOfTextRelation blRel = ((ProcedureMention)anno).getBodyLocation();
+                            if(blRel != null) {
+                              Annotation site = blRel.getArg2().getArgument(); // get AnatomicalSiteLocation
+                              Integer anatSiteAnnoId = mapAnnoToId.get(site);
+                              if (anatSiteAnnoId != null) {
+                                listAnnoLinks.add(new AnnoLink(annoId, anatSiteAnnoId, "bodyLocation"));
+                              }
+                            }
+                          }
+
 						// pull out the composite fields for storage
 						for (String fieldName : fsNames) {
 							Feature feat = type.getFeatureByBaseName(fieldName);
