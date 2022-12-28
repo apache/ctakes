@@ -50,6 +50,9 @@ import org.apache.uima.resource.ResourceInitializationException;
  * UIMA annotator that identified entities based on lookup.
  * 
  * @author Mayo Clinic
+ *
+ * @deprecated Use the dictionary-lookup-fast module.
+ * It is much faster and the same or better accuracy according to tests on multiple annotated corpora.
  */
 @PipeBitInfo(
 		name = "Dictionary Lookup (Old)",
