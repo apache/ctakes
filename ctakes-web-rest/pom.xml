@@ -22,7 +22,7 @@
 		<jettyVersion>9.2.6.v20141205</jettyVersion>
       <spring.version>4.3.12.RELEASE</spring.version>
       <uimafit.version>2.4.0</uimafit.version>
-      <uimaj.version>2.10.2</uimaj.version>
+      <uimaj.version>3.3.1</uimaj.version>
       <servlet.version>2.5</servlet.version>
       <mysql.connect.version>6.0.6</mysql.connect.version>
 	</properties>
