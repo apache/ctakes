@@ -25,7 +25,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -36,13 +35,13 @@ import java.util.Set;
 import java.util.StringTokenizer;
 
 import org.apache.log4j.Logger;
-import org.apache.uima.pear.tools.PackageInstaller;
 import org.apache.uima.UIMAFramework;
 import org.apache.uima.UimaContext;
-import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
 import org.apache.uima.analysis_engine.AnalysisEngine;
+import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.analysis_engine.annotator.AnnotatorProcessException;
 import org.apache.uima.cas.FSIterator;
+import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.JFSIndexRepository;
 import org.apache.uima.jcas.cas.TOP;
@@ -72,6 +71,8 @@ import org.apache.ctakes.smokingstatus.type.libsvm.NominalAttributeValue;
  */
 public class ClassifiableEntries extends JCasAnnotator_ImplBase {
 
+
+	// TODO @ConfigurationParameter all of these parameters.
 
 	/**
 	 * Name of configuration parameter that must be set to the filepath of the
@@ -112,12 +113,10 @@ public class ClassifiableEntries extends JCasAnnotator_ImplBase {
 	 */
 	public static final String PARAM_IGNORE_SECTIONS = "SectionsToIgnore";
 
-	public void initialize(UimaContext aContext)
-			throws ResourceInitializationException {
+	public void initialize( final UimaContext aContext ) throws ResourceInitializationException {
+		super.initialize( aContext );
 		boolean windowsSystem = true;
 		try {
-			super.initialize(aContext);
-
 			ResMgr = UIMAFramework.newDefaultResourceManager();
 			iv_procEntryList = new ArrayList<ClassifiableEntry>();
 			iv_entryIndexMap = new HashMap<String, List<ClassifiableEntry>>();
@@ -278,7 +277,7 @@ public class ClassifiableEntries extends JCasAnnotator_ImplBase {
 	 * apache.uima.jcas.impl.JCas,
 	 * org.apache.uima.analysis_engine.ResultSpecification)
 	 */
-	public void process(JCas jcas) {
+	public void process( final JCas jcas ) throws AnalysisEngineProcessException {
 		// cleanup
 
 		iv_entryIndexMap.clear();
@@ -528,8 +527,7 @@ public class ClassifiableEntries extends JCasAnnotator_ImplBase {
 	 * Given all the unique classifications for a given record, resolve it down
 	 * to a single final classifcation.
 	 * 
-	 * @param cList
-	 * @return
+	 * @return -
 	 */
 	private String resolveClassification() {
 		// If (all sentences in a report are classified as UNKNOWN)

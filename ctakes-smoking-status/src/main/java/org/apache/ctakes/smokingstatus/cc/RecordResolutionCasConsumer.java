@@ -6,9 +6,9 @@
  * to you under the Apache License, Version 2.0 (the
  * "License"); you may not use this file except in compliance
  * with the License.  You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
  * Unless required by applicable law or agreed to in writing,
  * software distributed under the License is distributed on an
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -18,185 +18,192 @@
  */
 package org.apache.ctakes.smokingstatus.cc;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.Iterator;
+import java.io.*;
+import java.util.Collection;
 
-import org.apache.uima.cas.CAS;
-import org.apache.uima.cas.FSIterator;
-import org.apache.uima.collection.CasConsumer_ImplBase;
-import org.apache.uima.jcas.JFSIndexRepository;
+import org.apache.ctakes.core.cc.AbstractFileWriter;
+import org.apache.ctakes.core.util.doc.DocIdUtil;
+import org.apache.log4j.Logger;
+import org.apache.uima.UimaContext;
+import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
+import org.apache.uima.cas.CASException;
+import org.apache.uima.fit.descriptor.ConfigurationParameter;
+import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
-import org.apache.uima.jcas.cas.TOP;
 import org.apache.uima.resource.ResourceInitializationException;
-import org.apache.uima.resource.ResourceProcessException;
-import org.apache.uima.util.ProcessTrace;
 
 import org.apache.ctakes.smokingstatus.type.SmokingDocumentClassification;
 
-import org.apache.ctakes.smokingstatus.patientLevel.PatientLevelSmokingStatus;
-import org.apache.ctakes.typesystem.type.structured.DocumentID;
+// TODO Rename.  Also, extend AbstractTableFileWriter.
+public class RecordResolutionCasConsumer extends AbstractFileWriter<String> {
 
-public class RecordResolutionCasConsumer extends CasConsumer_ImplBase
-{
-  /**
-   * The name of the parameter that is specifies the path of the output file.
-   */
-  public static final String PARAM_OUTPUT_FILE = "OutputFile";
+   static private final Logger LOGGER = Logger.getLogger( "RecordResolutionCasConsumer" );
 
-  /**
-   * The name of the parameter that is specifies the delimiter for the output
-   * file.
-   */
-  public static final String PARAM_DELIMITER = "Delimiter";
-  
-  /**
-   * Specifies whether the cas should be handled as CDA (via 'plaintext' sofa view) or default (flat file)
-   *  
-   */
-  public static final String CDA_PROCESSING = "ProcessingCDADocument";
-  
-  /**
-   * Specifies whether post process should be run which provides the patient level classification
-   */
-  public static final String PATIENT_LEVEL_PROCESSING = "RunPatientLevelClassification";
-  
-  /**
-   * Optional path and file name of the output file which holds the patient level classification summary
-   * 
-   */
-  public static final String FINAL_CLASS_FILE = "FinalClassificationOutputFile";
-  
-  public void initialize() throws ResourceInitializationException 
-  {
-    File outFile;
-    
-    iv_sb = new StringBuffer();
-    
-    try
-    {
-        String filename = (String) getConfigParameterValue(PARAM_OUTPUT_FILE);
-        outFile = new File(filename);
-        if (!outFile.exists())
-          outFile.createNewFile();
-        iv_bw = new BufferedWriter(new FileWriter(outFile));
-        
-        iv_delimiter = (String) getConfigParameterValue(PARAM_DELIMITER);
-        iv_useCDAProcess = (Boolean) getConfigParameterValue(CDA_PROCESSING);
-        iv_postPatientLvlProcess = (Boolean) getConfigParameterValue(PATIENT_LEVEL_PROCESSING);
-        iv_patient_level_file = (String) getConfigParameterValue(FINAL_CLASS_FILE);
-        
-        if (iv_postPatientLvlProcess) {
-    		patientSmokingStatus = new PatientLevelSmokingStatus();
-    		patientSmokingStatus.setInputFile(filename);
-        }
+   @ConfigurationParameter(
+         name = "OutputFile",
+         description = "Name of file to which smoking status for the corpus should be written."
+   )
+   private String _outputFile;
 
-    } catch (Exception ioe)
-    {
-        throw new ResourceInitializationException(ioe);
-    }
-  }
-  
-  public void processCas(CAS cas) throws ResourceProcessException
-  {
-    try
-    {
-      JCas jcas;
-      if (iv_useCDAProcess)
-    	  jcas = cas.getJCas().getView("plaintext");
-      else 
-    	  jcas = cas.getJCas();
-      JFSIndexRepository indexes = jcas.getJFSIndexRepository();
-      
-	 	FSIterator<TOP> documentIDIterator = indexes.getAllIndexedFS(DocumentID.type);
-      if(documentIDIterator.hasNext())
-      {
-        DocumentID dia = (DocumentID)documentIDIterator.next();
-        iv_sb.append(dia.getDocumentID());
+   @ConfigurationParameter(
+         name = "Delimiter",
+         description = "Name of the parameter that is specifies the delimiter for the output."
+   )
+   private String iv_delimiter;
+
+   @ConfigurationParameter(
+         name = "ProcessingCDADocument",
+         description = "Specifies whether the cas should be handled as CDA (via 'plaintext' sofa view) or default "
+                       + "(flat file).",
+         mandatory = false
+   )
+   private boolean iv_useCDAProcess = false;
+
+//   @ConfigurationParameter(
+//         name = "RunPatientLevelClassification",
+//         description = "Specifies whether post process should be run which provides the patient level classification.",
+//         mandatory = false
+//   )
+//   private boolean iv_postPatientLvlProcess = false;
+//
+//   @ConfigurationParameter(
+//         name = "FinalClassificationOutputFile",
+//         description = "Optional path and file name of the output file which holds the patient level classification summary.",
+//         mandatory = false
+//   )
+//   private String iv_patient_level_file;
+
+
+
+   static private final String PLAIN_TEXT_VIEW = "plaintext";
+
+   private final StringBuilder _sb = new StringBuilder();
+
+
+
+   /**
+    * System new line character
+    * @throws ResourceInitializationException -
+    */
+   static private final String NEW_LINE = System.getProperty( "line.separator" );
+//   private PatientLevelSmokingStatus patientSmokingStatus = null;
+
+
+
+   /**
+    * @param jCas the jcas passed to the process( jcas ) method.
+    */
+   @Override
+   protected void createData( final JCas jCas ) {
+      // This makes some pretty ugly output.  It would be better to use a TableWriter.
+      final String documentId = DocIdUtil.getDocumentIdForFile( jCas );
+      _sb.append( documentId );
+      _sb.append( iv_delimiter );
+      final Collection<SmokingDocumentClassification> smokeStats
+            = JCasUtil.select( jCas, SmokingDocumentClassification.class );
+      if ( smokeStats.isEmpty() ) {
+         _sb.append( "Error in RecordResolutionCasConsumer:NO classification" );
       }
-      else
-      {
-        iv_sb.append("Error in CasInitializer(?) NO_DOC_ID");
+      for ( SmokingDocumentClassification smokeStat : smokeStats ) {
+         //there should be just one SmokingDocumentClassification
+         _sb.append( smokeStat.getClassification() );
+         _sb.append( NEW_LINE );
       }
-      
-      iv_sb.append(iv_delimiter);
-      
-      Iterator<?> docClsItr = indexes.getAnnotationIndex(SmokingDocumentClassification.type).iterator();
-      
-      //there should be just one SmokingDocumentClassification
-      if (docClsItr.hasNext())
-      {
-        SmokingDocumentClassification dc = (SmokingDocumentClassification)docClsItr.next();
-        iv_sb.append(dc.getClassification());
-        iv_sb.append(NEW_LINE);
-      }
-      else
-      {
-        iv_sb.append("Error in RecordResolutionCasConsumer:NO classification");
-      }
-      
-      iv_bw.write(iv_sb.toString());      
-    }
-    catch(Exception exception)
-    {
-      throw new ResourceProcessException(exception);
-    }
-    finally
-    {
-      iv_sb.delete(0, iv_sb.length());
-    }
-  }
+   }
 
-  public void collectionProcessComplete(ProcessTrace arg0) throws ResourceProcessException, IOException
-  {
-    super.collectionProcessComplete(arg0);
-    File outFile = null;
-    try
-    {
-      iv_bw.flush();
-      iv_bw.close();
-   
-    }
-    catch(Exception e)
-    { throw new ResourceProcessException(e); }
-    if (iv_postPatientLvlProcess) {
-        String filename = (String) getConfigParameterValue(PARAM_OUTPUT_FILE);
-        
-        if (iv_patient_level_file != null)
-        	outFile = new File(iv_patient_level_file);
-        else
-        	outFile = new File(filename.replace(filename, filename+"_patientLevel.txt"));
-        
-        if (!outFile.exists())
-          outFile.createNewFile();
-        patientSmokingStatus.setOutputFile(outFile.getAbsolutePath());
-	    patientSmokingStatus.collectCounts("\\"+iv_delimiter);
-	    patientSmokingStatus.assignPatientLevelSmokingStatus();
-	    patientSmokingStatus.printToFile();
-    }
-  }
-  
-  /**
-   * The buffered writer used to write the document classification
-   */
-  private BufferedWriter iv_bw = null;
-  
-  /**
-   * buffer used to compile results of a given doc
-   */
-  private StringBuffer iv_sb;
+   /**
+    * @return completed patient JCases
+    */
+   @Override
+   protected String getData() {
+      return _sb.toString();
+   }
 
-  private String iv_patient_level_file = null;
-  private String iv_delimiter;
-  
-  /**
-   * System new line character
-   * @throws ResourceInitializationException
-   */
-  private static String NEW_LINE = System.getProperty("line.separator");
-  private boolean iv_postPatientLvlProcess = false;
-  private boolean iv_useCDAProcess = false;
-  private PatientLevelSmokingStatus patientSmokingStatus = null;
+   /**
+    * Does nothing.
+    * @param data -
+    */
+   @Override
+   protected void writeComplete( final String data ) {}
+
+   /**
+    * {@inheritDoc}
+    */
+   @Override
+   public void initialize( final UimaContext aContext ) throws ResourceInitializationException {
+      super.initialize( aContext );
+//      if ( iv_postPatientLvlProcess ) {
+//         if ( iv_patient_level_file != null && !iv_patient_level_file.isEmpty() ) {
+//            patientSmokingStatus = new PatientLevelSmokingStatus();
+//            patientSmokingStatus.setInputFile( iv_patient_level_file );
+//         } else {
+//            LOGGER.error( "RunPatientLevelClassification true, but no FinalClassificationOutputFile given." );
+//         }
+//      }
+   }
+
+   /**
+    * {@inheritDoc}
+    */
+   @Override
+   public void process( final JCas jcas ) throws AnalysisEngineProcessException {
+      if ( iv_useCDAProcess ) {
+         try {
+            createData( jcas.getView( PLAIN_TEXT_VIEW ) );
+         } catch ( CASException casE ) {
+            LOGGER.error( casE.getMessage() );
+         }
+      } else {
+         createData( jcas );
+      }
+   }
+
+   /**
+    * {@inheritDoc}
+    */
+   @Override
+   public void writeFile( final String data, final String outputDir, final String documentId, final String fileName )
+         throws IOException {
+      final File file = new File( outputDir, fileName );
+      LOGGER.info( "Writing smoking status for the corpus to " + file.getPath() + " ..." );
+      try ( Writer writer = new BufferedWriter( new FileWriter( file ) ) ) {
+         writer.write( getData() );
+      }
+   }
+
+   /**
+    * {@inheritDoc}
+    */
+   @Override
+   public void collectionProcessComplete() throws AnalysisEngineProcessException {
+      super.collectionProcessComplete();
+      final String outputDir = getSimpleSubDirectory().isEmpty()
+                               ? getRootDirectory()
+                               : getRootDirectory() + "/" + getSimpleSubDirectory();
+      try {
+         writeFile( getData(), outputDir, "", _outputFile );
+      } catch ( IOException ioE ) {
+         LOGGER.error( ioE.getMessage() );
+      }
+      //  !! This did not work as advertised.  There should be 2 writers,
+      //  one for corpus-level and one for patient-level
+
+//      if ( iv_postPatientLvlProcess ) {
+//         String filename = (String) getConfigParameterValue( PARAM_OUTPUT_FILE );
+//
+//         if ( iv_patient_level_file != null ) {
+//            outFile = new File( iv_patient_level_file );
+//         } else {
+//            outFile = new File( filename.replace( filename, filename + "_patientLevel.txt" ) );
+//         }
+//         if ( !outFile.exists() ) {
+//            outFile.createNewFile();
+//         }
+//         patientSmokingStatus.setOutputFile( outFile.getAbsolutePath() );
+//         patientSmokingStatus.collectCounts( "\\" + iv_delimiter );
+//         patientSmokingStatus.assignPatientLevelSmokingStatus();
+//         patientSmokingStatus.printToFile();
+      }
+
+
 }

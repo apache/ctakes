@@ -54,6 +54,7 @@ import org.apache.ctakes.smokingstatus.type.libsvm.NominalAttributeValue;
  * @author Mayo Clinic
  * 
  */
+// This isn't actually an ae and should be moved.
 public class ResolutionAnnotator 
 {
     Set<String> conWords; //contradiction words for negation -- if this word appears in sentence do not negate

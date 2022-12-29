@@ -25,6 +25,7 @@ package org.apache.ctakes.smokingstatus;
  */
 public interface Const
 {
+    // TODO make this an enum
     public static final String CLASS_PAST_SMOKER = "PAST_SMOKER";
     public static final String CLASS_CURR_SMOKER = "CURRENT_SMOKER";
     public static final String CLASS_SMOKER = "SMOKER";

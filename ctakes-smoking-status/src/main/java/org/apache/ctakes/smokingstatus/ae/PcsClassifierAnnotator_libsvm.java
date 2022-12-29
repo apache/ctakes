@@ -34,7 +34,8 @@ import libsvm.svm;
 import libsvm.svm_model;
 import libsvm.svm_node;
 import org.apache.uima.UimaContext;
-import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
+import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
+import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
 import org.apache.uima.jcas.JFSIndexRepository;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
@@ -52,15 +53,19 @@ public class PcsClassifierAnnotator_libsvm extends JCasAnnotator_ImplBase {
 	Map<?, ?> tokenCounts;
 	svm_model model; // trained libsvm model
 
-	public void initialize(UimaContext aContext)
-			throws ResourceInitializationException {
-		super.initialize(aContext);
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void initialize( final UimaContext aContext ) throws ResourceInitializationException {
+		super.initialize( aContext );
 
 		tokenCounts = new HashMap();
 		stopWords = new HashSet<String>();
 		goWords = new ArrayList<String>();
 
 		try {
+			// TODO @ConfigurationParam
 			Object paramValue = aContext
 					.getConfigParameterValue("CaseSensitive");
 			if (paramValue != null)
@@ -83,7 +88,7 @@ public class PcsClassifierAnnotator_libsvm extends JCasAnnotator_ImplBase {
 		}
 	}
 
-	public void process(JCas jcas) {
+	public void process( final JCas jcas ) throws AnalysisEngineProcessException {
 		List<Double> feature = new ArrayList<Double>();
 
 		JFSIndexRepository indexes = jcas.getJFSIndexRepository();

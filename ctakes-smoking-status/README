@@ -269,7 +269,9 @@ Debugging issues
  
 One of the next releases will look into addressing the following:
   - class 'org.apache.ctakes.smokingstatus.machine.NegationFSM.java' must inherit from 'core/org.apache.ctakes.core.fsm.machine.NegationFSM.java'
+  - !!! smokingstatus negation removed as it was identical to that in ctakes-core.
   - org.apache.ctakes.smokingstatus.context.negation.NegationContextAnalyzer - needs to use 'NE Contexts/org.apache.ctakes.necontexts.negation.NegationContextAnalyzer'
+  - !!! smokingstatus NegationContextAnalyzer removed as it was identical to that in ctakes-ne-contexts.
   - ResolutionAnnotator.java references 'TypeSystemConst.NE_CERTAINTY_NEGATED' which has been commented out, uncomment in both places for next major release
   - FIXED -Parameters probably need to be changed? /smoking status/desc/analysis_engine/ClassifiableEntriesAnnotator.xml
   - FIXED - CdaCasInitializer.xml must be used from 'document preprocessor'

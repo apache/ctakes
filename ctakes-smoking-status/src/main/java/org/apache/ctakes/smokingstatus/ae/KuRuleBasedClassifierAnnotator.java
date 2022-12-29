@@ -27,7 +27,8 @@ import java.util.Iterator;
 import java.util.Set;
 
 import org.apache.uima.UimaContext;
-import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
+import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
+import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.JFSIndexRepository;
 import org.apache.uima.resource.ResourceInitializationException;
@@ -45,8 +46,7 @@ public class KuRuleBasedClassifierAnnotator extends JCasAnnotator_ImplBase {
 	String classAttributeName;
 	boolean caseSensitive = true;
 
-	public void initialize(UimaContext aContext)
-			throws ResourceInitializationException {
+	public void initialize( final UimaContext aContext ) throws ResourceInitializationException {
 
 		super.initialize(aContext);
 
@@ -76,7 +76,7 @@ public class KuRuleBasedClassifierAnnotator extends JCasAnnotator_ImplBase {
 
 	}
 
-	public void process(JCas jcas) {
+	public void process( final JCas jcas ) throws AnalysisEngineProcessException {
 		JFSIndexRepository indexes = jcas.getJFSIndexRepository();
 		Iterator<?> tokenItr = indexes.getAnnotationIndex(WordToken.type)
 				.iterator();

@@ -26,9 +26,9 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 import org.apache.uima.UimaContext;
-import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.analysis_engine.annotator.AnnotatorContextException;
+import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
 import org.apache.uima.jcas.JFSIndexRepository;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
@@ -47,6 +47,7 @@ import org.apache.ctakes.typesystem.type.textspan.Sentence;
  * 
  */
 public class SentenceAdjuster extends JCasAnnotator_ImplBase {
+	// TODO @ConfigurationParam
 	/**
 	 * The list of words ("and" "&") to ignore in pattern matching.
 	 */
@@ -67,14 +68,10 @@ public class SentenceAdjuster extends JCasAnnotator_ImplBase {
 	 * the configuration parameters. This method is not invoked for every
 	 * document processed.
 	 * 
-	 * @see com.ibm.uima.analysis_engine.annotator.BaseAnnotator#initialize(UimaContext)
 	 */
-	public void initialize(UimaContext aContext)
-			throws ResourceInitializationException
-
-	{
-
-		super.initialize(aContext);
+	@Override
+	public void initialize( final UimaContext aContext ) throws ResourceInitializationException {
+		super.initialize( aContext );
 
 		context = aContext;
 		try {
@@ -91,6 +88,7 @@ public class SentenceAdjuster extends JCasAnnotator_ImplBase {
 	private void configInit() throws AnnotatorContextException {
 		// populate the HashSet of words that we will ignore when pattern
 		// matching
+		// TODO @ConfigurationParam
 		String[] ignoreWords = (String[]) context
 				.getConfigParameterValue(PARAM_IGNORE_WORDS);
 
@@ -138,7 +136,7 @@ public class SentenceAdjuster extends JCasAnnotator_ImplBase {
 	 * Invokes this annotator's analysis logic. Invoked for each document
 	 * processed.
 	 */
-	public void process(JCas jcas) throws AnalysisEngineProcessException {
+	public void process( final JCas jcas ) throws AnalysisEngineProcessException {
 		String text = jcas.getDocumentText();
 		try {
 			// just one sentence
