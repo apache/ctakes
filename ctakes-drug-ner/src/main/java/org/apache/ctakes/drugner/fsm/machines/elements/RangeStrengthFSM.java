@@ -1,4 +1,4 @@
-/**
+/*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
  * distributed with this work for additional information
@@ -49,13 +49,13 @@ import net.openai.util.fsm.State;
 public class RangeStrengthFSM 
 {
 	// text fractions
-	Set iv_textNumberSet = new HashSet();
+	Set<String> iv_textNumberSet = new HashSet<>();
 	// range text
-	Set iv_rangeSet = new HashSet();
+	Set<String> iv_rangeSet = new HashSet<>();
 
-	Set iv_hyphenatedSet = new HashSet();
+	Set<String> iv_hyphenatedSet = new HashSet<>();
 	// contains the finite state machines
-	private Set iv_machineSet = new HashSet();
+	final private Set<Machine> iv_machineSet = new HashSet<>();
 
 	/**
 	 * Constructor
@@ -200,7 +200,7 @@ public class RangeStrengthFSM
 	 * 		<li>25.4-30.4</li>
 	 * 		<li>32.1-three</li>
 	 * </ol>
-	 * @return
+	 * @return -
 	 */
 	private Machine getDashDashMachine()
 	{
@@ -258,7 +258,7 @@ public class RangeStrengthFSM
 	 * 		<li>25.4-30.4</li>
 	 * 		<li>32.1-three</li>
 	 * </ol>
-	 * @return
+	 * @return -
 	 */
 	private Machine getDashMachine()
 	{
@@ -309,7 +309,7 @@ public class RangeStrengthFSM
 	 * 		<li>two-three</li>
 	 * 		<li>two-to-three</li>
 	 * </ol>
-	 * @return
+	 * @return -
 	 */
 	private Machine getDotDashMachine()
 	
@@ -368,25 +368,25 @@ public class RangeStrengthFSM
 
 	/**
 	 * Executes the finite state machines.
-	 * @param tokens
+	 * @param tokens -
 	 * @return Set of RangeToken objects.
-	 * @throws Exception
+	 * @throws Exception -
 	 */
-	public Set execute(List tokens, Set overrideSet) throws Exception
+	public Set<RangeStrengthToken> execute(List<BaseToken> tokens, Set<BaseToken> overrideSet) throws Exception
 	{
-		Set rangeSet = new HashSet();
+		Set<RangeStrengthToken> rangeSet = new HashSet<>();
 
 		// maps a fsm to a token start index
 		// key = fsm , value = token start index
-		Map tokenStartMap = new HashMap();
+		Map<Machine,Integer> tokenStartMap = new HashMap<>();
 
-		Iterator overrideTokenItr = overrideSet.iterator();
+		Iterator<BaseToken> overrideTokenItr = overrideSet.iterator();
 		// key = start offset, value = override BaseToken object
-		Map overrideTokenMap = new HashMap();
+		Map<Integer,BaseToken> overrideTokenMap = new HashMap<>();
 		while (overrideTokenItr.hasNext())
 		{
-			BaseToken t = (BaseToken)overrideTokenItr.next();
-			Integer key = new Integer(t.getStartOffset());
+			BaseToken t = overrideTokenItr.next();
+			Integer key = t.getStartOffset();
 			overrideTokenMap.put(key, t);
 		}
 
@@ -394,9 +394,9 @@ public class RangeStrengthFSM
 		int overrideEndOffset = -1;
 		for (int i = 0; i < tokens.size(); i++)
 		{
-			BaseToken token = (BaseToken) tokens.get(i);
+			BaseToken token = tokens.get(i);
 
-			Integer key = new Integer(token.getStartOffset());						
+			Integer key = token.getStartOffset();
 			
 			if (overrideOn)
 			{
@@ -417,48 +417,37 @@ public class RangeStrengthFSM
 				{
 					// override one or more tokens until the override
 					// token is complete
-					token = (BaseToken)overrideTokenMap.get(key);
+					token = overrideTokenMap.get(key);
 					overrideOn = true;
 					overrideEndOffset = token.getEndOffset();
 				}
 			}
 
-			Iterator machineItr = iv_machineSet.iterator();
-			while (machineItr.hasNext())
-			{
-				Machine fsm = (Machine) machineItr.next();
-
-				fsm.input(token);
+			for ( final Machine fsm : iv_machineSet ) {
+				fsm.input( token );
 
 				State currentState = fsm.getCurrentState();
-				if (currentState.getStartStateFlag())
-				{
-					tokenStartMap.put(fsm, new Integer(i));
+				if ( currentState.getStartStateFlag() ) {
+					tokenStartMap.put( fsm, i );
 				}
-				if (currentState.getEndStateFlag())
-				{
-					Object o = tokenStartMap.get(fsm);
+				if ( currentState.getEndStateFlag() ) {
+					Integer o = tokenStartMap.get( fsm );
 					int tokenStartIndex;
-					if (o == null)
-					{
+					if ( o == null ) {
 						// By default, all machines start with
 						// token zero.
 						tokenStartIndex = 0;
-					}
-					else
-					{
-						tokenStartIndex = ((Integer) o).intValue();
+					} else {
+						tokenStartIndex = o;
 						// skip ahead over single token we don't want
-						tokenStartIndex++;						
+						tokenStartIndex++;
 					}
-					BaseToken startToken =
-						(BaseToken) tokens.get(tokenStartIndex);
-					BaseToken endToken = token;
+					BaseToken startToken = tokens.get( tokenStartIndex );
 					RangeStrengthToken segmentToken =
-						new RangeStrengthToken(
-							startToken.getStartOffset(),
-							endToken.getEndOffset());
-					rangeSet.add(segmentToken);
+							new RangeStrengthToken(
+									startToken.getStartOffset(),
+									token.getEndOffset() );
+					rangeSet.add( segmentToken );
 					fsm.reset();
 				}
 			}
@@ -468,10 +457,7 @@ public class RangeStrengthFSM
 		tokenStartMap.clear();
 
 		// reset machines
-		Iterator itr = iv_machineSet.iterator();
-		while (itr.hasNext())
-		{
-			Machine fsm = (Machine) itr.next();
+		for ( final Machine fsm : iv_machineSet ) {
 			fsm.reset();
 		}
 
@@ -480,48 +466,45 @@ public class RangeStrengthFSM
 
 	/**
 	 * Executes the finite state machines.
-	 * @param tokens
+	 * @param tokens -
 	 * @return Set of FractionToken objects.
-	 * @throws Exception
+	 * @throws Exception -
 	 */
-	public Set execute(List tokens) throws Exception {
-		Set fractionSet = new HashSet();
+	public Set<RangeStrengthToken> execute(List<BaseToken> tokens) throws Exception {
+		Set<RangeStrengthToken> fractionSet = new HashSet<>();
 	
 		// maps a fsm to a token start index
 		// key = fsm , value = token start index
-		Map tokenStartMap = new HashMap();
+		Map<Machine,Integer> tokenStartMap = new HashMap<>();
 	
 		for (int i = 0; i < tokens.size(); i++) {
-			BaseToken token = (BaseToken) tokens.get(i);
-	
-			Iterator machineItr = iv_machineSet.iterator();
-			while (machineItr.hasNext()) {
-				Machine fsm = (Machine) machineItr.next();
-	
-				fsm.input(token);
-	
+			BaseToken token = tokens.get(i);
+
+			for ( final Machine fsm : iv_machineSet ) {
+				fsm.input( token );
+
 				State currentState = fsm.getCurrentState();
-				if (currentState.getStartStateFlag()) {
-					tokenStartMap.put(fsm, new Integer(i));
+				if ( currentState.getStartStateFlag() ) {
+					tokenStartMap.put( fsm, i );
 				}
-				if (currentState.getEndStateFlag()) {
-					Object o = tokenStartMap.get(fsm);
+				if ( currentState.getEndStateFlag() ) {
+					Integer o = tokenStartMap.get( fsm );
 					int tokenStartIndex;
-					if (o == null) {
+					if ( o == null ) {
 						// By default, all machines start with
 						// token zero.
 						tokenStartIndex = 0;
 					} else {
-						tokenStartIndex = ((Integer) o).intValue();
+						tokenStartIndex = o;
 						// skip ahead over single token we don't want
 						tokenStartIndex++;
 					}
-					BaseToken startToken = (BaseToken) tokens
-							.get(tokenStartIndex);
-					BaseToken endToken = token;
-					RangeStrengthToken fractionToken = new RangeStrengthToken(startToken
-							.getStartOffset(), endToken.getEndOffset());
-					fractionSet.add(fractionToken);
+					BaseToken startToken = tokens
+							.get( tokenStartIndex );
+					RangeStrengthToken fractionToken = new RangeStrengthToken( startToken
+																										  .getStartOffset(),
+																								  token.getEndOffset() );
+					fractionSet.add( fractionToken );
 					fsm.reset();
 				}
 			}
@@ -531,9 +514,7 @@ public class RangeStrengthFSM
 		tokenStartMap.clear();
 	
 		// reset machines
-		Iterator itr = iv_machineSet.iterator();
-		while (itr.hasNext()) {
-			Machine fsm = (Machine) itr.next();
+		for ( final Machine fsm : iv_machineSet ) {
 			fsm.reset();
 		}
 	

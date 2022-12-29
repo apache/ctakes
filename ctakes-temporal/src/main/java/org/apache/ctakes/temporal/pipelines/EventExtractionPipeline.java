@@ -20,7 +20,7 @@ package org.apache.ctakes.temporal.pipelines;
 
 import com.lexicalscope.jewel.cli.CliFactory;
 import com.lexicalscope.jewel.cli.Option;
-import org.apache.ctakes.core.cc.XmiWriterCasConsumerCtakes;
+import org.apache.ctakes.core.cc.FileTreeXmiWriter;
 import org.apache.ctakes.core.config.ConfigParameterConstants;
 import org.apache.ctakes.temporal.ae.EventAnnotator;
 import org.apache.uima.analysis_engine.AnalysisEngine;
@@ -61,8 +61,8 @@ public class EventExtractionPipeline extends TemporalExtractionPipeline_ImplBase
 		aggregateBuilder.add(EventAnnotator.createAnnotatorDescription(new File(options.getModelDirectory())));
 		
     AnalysisEngine xWriter = AnalysisEngineFactory.createEngine(
-        XmiWriterCasConsumerCtakes.class,
-        XmiWriterCasConsumerCtakes.PARAM_OUTPUTDIR,
+			 FileTreeXmiWriter.class,
+        ConfigParameterConstants.PARAM_OUTPUTDIR,
         options.getOutputDirectory());
 		
     SimplePipeline.runPipeline(
