@@ -808,11 +808,6 @@
 						</execution>
 					</executions>
 				</plugin>
-				<!-- TODO: remove dependency upon Apache Ant -->
-				<plugin>
-					<artifactId>maven-antrun-plugin</artifactId>
-					<version>${maven-antrun-plugin.version}</version>
-				</plugin>
 				<plugin>
 					<groupId>com.mycila.maven-license-plugin</groupId>
 					<artifactId>maven-license-plugin</artifactId>
@@ -978,6 +973,7 @@
 								<!-- version control -->
 								<exclude>.git/**/*</exclude>
 								<exclude>.gitignore</exclude>
+								<exclude>.github/**/*</exclude>
 								<!-- Eclipse files -->
 								<exclude>**/.*</exclude>
 								<exclude>**/.settings/*</exclude>
@@ -1116,7 +1112,7 @@
 			<!--		ctakes-ytex-web contains a full copy of ctakes in its target/WEB-INF/lib	-->
 			<!--		and another full copy in target/ctakes-ytex-web.war	-->
 			<!--		This requires over 1.75 GB	of disk space, in addition to extra build time.  -->
-			<!--		We do not distribute the ctakes-web-rest.war with the ctakes distributable, so why build it? 	-->
+			<!--		We do not distribute the ctakes-ytex-web.war with the ctakes distributable, so why build it? 	-->
 			<!--		It can be built when wanted by enabling this profile ( web-rest-build ).	-->
 			<id>ytex-web-build</id>
 			<modules>

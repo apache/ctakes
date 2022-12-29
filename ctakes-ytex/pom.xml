@@ -236,6 +236,8 @@
 				</configuration>
 			</plugin>
 			<!-- ant scripts need project dependencies in the target/lib directory -->
+			<!--	This ant script need (above) needs to go.
+			A full copy of ctakes in a target/lib directory is undesirable.		-->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
