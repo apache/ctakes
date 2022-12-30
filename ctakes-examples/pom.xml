@@ -55,13 +55,6 @@
      	<groupId>org.apache.uima</groupId>
      	<artifactId>uimafit-cpe</artifactId>
      </dependency>
-     <dependency>
-        <groupId>org.junit.jupiter</groupId>
-        <artifactId>junit-jupiter</artifactId>
-        <!--        <version>RELEASE</version>-->
-        <version>5.8.2</version>
-        <scope>compile</scope>
-     </dependency>
   </dependencies>
     <profiles>
         <profile>
@@ -134,5 +127,70 @@
              </plugins>
           </build>
        </profile>
+       <profile>
+          <id>runCPE</id>
+          <activation>
+             <property>
+                <name>runCPE</name>
+             </property>
+          </activation>
+          <!--  ctakes does NOT require the uimaj tools, but the cpe profile does  -->
+          <dependencies>
+             <dependency>
+                <groupId>org.apache.uima</groupId>
+                <artifactId>uimaj-tools</artifactId>
+             </dependency>
+          </dependencies>
+          <build>
+             <plugins>
+                <plugin>
+                   <groupId>org.codehaus.mojo</groupId>
+                   <artifactId>exec-maven-plugin</artifactId>
+                   <configuration>
+                      <mainClass>org.apache.uima.tools.cpm.CpmFrame</mainClass>
+                      <arguments>
+                         <argument />
+                      </arguments>
+                   </configuration>
+                   <dependencies/>
+                </plugin>
+             </plugins>
+          </build>
+       </profile>
+
+       <profile>
+          <id>runCVD</id>
+          <activation>
+             <property>
+                <name>runCVD</name>
+             </property>
+          </activation>
+          <!--  ctakes does NOT require the uimaj tools, but the cvd profile does  -->
+          <dependencies>
+             <dependency>
+                <groupId>org.apache.uima</groupId>
+                <artifactId>uimaj-tools</artifactId>
+             </dependency>
+          </dependencies>
+          <build>
+             <plugins>
+                <plugin>
+                   <groupId>org.codehaus.mojo</groupId>
+                   <artifactId>exec-maven-plugin</artifactId>
+                   <configuration>
+                      <mainClass>org.apache.uima.tools.cvd.CVD</mainClass>
+                      <!-- Have to specify at least one parameter otherwise, CVD thinks
+                         it's an invalid param because MVN passes null when joining to the mvn thread -->
+                      <arguments>
+                         <argument>-lookandfeel</argument>
+                         <argument>javax.swing.plaf.metal.MetalLookAndFeel</argument>
+                      </arguments>
+                   </configuration>
+                   <dependencies/>
+                </plugin>
+             </plugins>
+          </build>
+       </profile>
+
     </profiles>
 </project>

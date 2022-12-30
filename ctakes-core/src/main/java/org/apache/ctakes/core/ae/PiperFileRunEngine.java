@@ -48,18 +48,18 @@ public class PiperFileRunEngine extends JCasAnnotator_ImplBase {
    @Override
    public void initialize( final UimaContext context ) throws ResourceInitializationException {
       super.initialize( context );
-      if ( _piperParams == null || _piperParams.trim().isEmpty() ) {
-         LOGGER.error( "No Piper Parameters were specified using PiperParams.\n"
-                       + "Mandatory parameter is:\n"
-                       + " -p piperFilePath\n"
-                       + "Typical optional parameters are:\n"
-                       + " -i inputDirectory\n"
-                       + " -o outputDirectory\n"
-                       + " --key umlsPassKey" );
-         System.exit( 1 );
+      if ( _piperParams == null ) {
+         usage();
       }
-      LOGGER.info( "Initializing Piper File with parameters " + _piperParams + " ...");
-      initialize( _piperParams.split( "\\s+" ) );
+      String piperParams = _piperParams.trim();
+      if ( piperParams.startsWith( "\"" ) && piperParams.endsWith( "\"" ) ) {
+         piperParams = piperParams.substring( 1, piperParams.length()-1 ).trim();
+      }
+      if ( piperParams.isEmpty() ) {
+         usage();
+      }
+      LOGGER.info( "Initializing Piper File with parameters " + piperParams + " ...");
+      initialize( piperParams.split( "\\s+" ) );
    }
 
    private void initialize( final String ... args ) {
@@ -124,6 +124,17 @@ public class PiperFileRunEngine extends JCasAnnotator_ImplBase {
       } catch ( AnalysisEngineProcessException aepE ) {
          error( aepE );
       }
+   }
+
+   static private void usage() {
+      LOGGER.error( "No Piper Parameters were specified using PiperParams.\n"
+                    + "Mandatory parameter is:\n"
+                    + " -p piperFilePath\n"
+                    + "Typical optional parameters are:\n"
+                    + " -i inputDirectory\n"
+                    + " -o outputDirectory\n"
+                    + " --key umlsPassKey" );
+      System.exit( 1 );
    }
 
    static private void error( final Exception multE ) {
