@@ -1788,7 +1788,7 @@ This instantiates a manages/treats relation which should be marked as conditiona
     </typeDescription>
     <typeDescription>
       <name>org.apache.ctakes.typesystem.type.textsem.MedicationEventMention</name>
-      <description>As of cTAKEs 3.1, see org.apache.ctakes.typesystem.type.textsem.MedicationMention.</description>
+      <description>Deprecated.  As of cTAKEs 3.1, see org.apache.ctakes.typesystem.type.textsem.MedicationMention.</description>
       <supertypeName>org.apache.ctakes.typesystem.type.textsem.EventMention</supertypeName>
       <features>
         <featureDescription>
@@ -2511,5 +2511,105 @@ More qualifying information on how the procedure was done.</description>
         </featureDescription>
       </features>
     </typeDescription>
+     <typeDescription>
+        <name>org.apache.ctakes.typesystem.type.textspan.Episode</name>
+        <description>An annotation within a text span for an Episode.</description>
+        <supertypeName>uima.tcas.Annotation</supertypeName>
+        <features>
+           <featureDescription>
+              <name>episodeType</name>
+              <description/>
+              <rangeTypeName>uima.cas.String</rangeTypeName>
+           </featureDescription>
+        </features>
+     </typeDescription>
+     <typeDescription>
+        <name>org.apache.ctakes.typesystem.type.refsem.Regimen</name>
+        <description>A Therapeutic or Preventive Procedure that consists of individual notable events.  No Text Span.</description>
+        <supertypeName>org.apache.ctakes.typesystem.type.refsem.Event</supertypeName>
+        <features>
+           <featureDescription>
+              <name>startTime</name>
+              <description/>
+              <rangeTypeName>org.apache.ctakes.typesystem.type.refsem.Time</rangeTypeName>
+           </featureDescription>
+           <featureDescription>
+              <name>endTime</name>
+              <description/>
+              <rangeTypeName>org.apache.ctakes.typesystem.type.refsem.Time</rangeTypeName>
+           </featureDescription>
+           <featureDescription>
+              <name>duration</name>
+              <description/>
+              <rangeTypeName>org.apache.ctakes.typesystem.type.relation.TemporalRelation</rangeTypeName>
+           </featureDescription>
+           <featureDescription>
+              <name>relativeTemporalContext</name>
+              <description/>
+              <rangeTypeName>org.apache.ctakes.typesystem.type.relation.TemporalRelation</rangeTypeName>
+           </featureDescription>
+           <!--     Arrays for Procedures (e.g. RadioTherapy) and Medications (e.g. ChemoTherapy)       -->
+           <featureDescription>
+              <name>procedures</name>
+              <description/>
+              <rangeTypeName>uima.cas.FSArray</rangeTypeName>
+              <elementType>org.apache.ctakes.typesystem.type.refsem.Procedure</elementType>
+           </featureDescription>
+           <featureDescription>
+              <name>medications</name>
+              <description/>
+              <rangeTypeName>uima.cas.FSArray</rangeTypeName>
+              <elementType>org.apache.ctakes.typesystem.type.refsem.Medication</elementType>
+           </featureDescription>
+        </features>
+     </typeDescription>
+
+     <typeDescription>
+        <name>org.apache.ctakes.typesystem.type.textsem.RegimenMention</name>
+        <description>A Therapeutic or Preventive Procedure that consists of individual notable events.  Text Span.</description>
+        <supertypeName>org.apache.ctakes.typesystem.type.textsem.EventMention</supertypeName>
+        <features>
+           <!--     Temporal information common to all Regimen types       -->
+           <featureDescription>
+              <name>startDate</name>
+              <description/>
+              <rangeTypeName>org.apache.ctakes.typesystem.type.textsem.TimeMention</rangeTypeName>
+           </featureDescription>
+           <featureDescription>
+              <name>endDate</name>
+              <description/>
+              <rangeTypeName>org.apache.ctakes.typesystem.type.textsem.TimeMention</rangeTypeName>
+           </featureDescription>
+           <featureDescription>
+              <name>duration</name>
+              <description/>
+              <rangeTypeName>org.apache.ctakes.typesystem.type.relation.TemporalTextRelation</rangeTypeName>
+           </featureDescription>
+           <featureDescription>
+              <name>frequency</name>
+              <description/>
+              <rangeTypeName>org.apache.ctakes.typesystem.type.relation.TemporalTextRelation</rangeTypeName>
+           </featureDescription>
+           <featureDescription>
+              <name>relativeTemporalContext</name>
+              <description/>
+              <rangeTypeName>org.apache.ctakes.typesystem.type.relation.TemporalTextRelation</rangeTypeName>
+           </featureDescription>
+           <!--     Arrays for Procedures (e.g. RadioTherapy) and Medications (e.g. ChemoTherapy)       -->
+           <featureDescription>
+              <name>procedures</name>
+              <description/>
+              <rangeTypeName>uima.cas.FSArray</rangeTypeName>
+              <elementType>org.apache.ctakes.typesystem.type.textsem.ProcedureMention</elementType>
+           </featureDescription>
+           <featureDescription>
+              <name>medications</name>
+              <description/>
+              <rangeTypeName>uima.cas.FSArray</rangeTypeName>
+              <elementType>org.apache.ctakes.typesystem.type.textsem.MedicationMention</elementType>
+           </featureDescription>
+        </features>
+     </typeDescription>
+
   </types>
 </typeSystemDescription>

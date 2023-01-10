@@ -877,12 +877,6 @@
 					<artifactId>maven-deploy-plugin</artifactId>
 					<version>${maven-deploy-plugin.version}</version>
 				</plugin>
-				<!--				The maven eclipse plugin is retired and no longer supported.-->
-				<!--				https://maven.apache.org/plugins/maven-eclipse-plugin/      -->
-				<!--				<plugin>-->
-				<!--					<artifactId>maven-eclipse-plugin</artifactId>-->
-				<!--					<version>2.9</version>-->
-				<!--				</plugin>-->
 				<plugin>
 					<artifactId>maven-gpg-plugin</artifactId>
 					<version>${maven-gpg-plugin.version}</version>
