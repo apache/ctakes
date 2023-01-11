@@ -26,7 +26,7 @@ github:
     - apache
   features:
     wiki: true
-	issues: true
+    issues: true
   dependabot_alerts: true
   dependabot_updates: false
   del_branch_on_merge: true
@@ -35,4 +35,4 @@ notifications:
     commits: commits@ctakes.apache.org
     pullrequests: commits@ctakes.apache.org
     issues: dev@ctakes.apache.org
-	discussions: dev@ctakes.apache.org
+    discussions: dev@ctakes.apache.org
