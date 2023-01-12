@@ -21,7 +21,9 @@ github:
   labels:
     - ctakes
     - nlp
-    - natural language processing
+    - cnlp
+    - natural language
+    - language processing
     - clinical text
     - apache
   features:
