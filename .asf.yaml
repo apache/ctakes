@@ -22,9 +22,11 @@ github:
     - ctakes
     - nlp
     - cnlp
-    - natural language
-    - language processing
-    - clinical text
+    - clinical
+    - text
+    - natural
+    - language
+    - processing
     - apache
   features:
     wiki: true
