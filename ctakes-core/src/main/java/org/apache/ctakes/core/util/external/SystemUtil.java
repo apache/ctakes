@@ -416,7 +416,10 @@ final public class SystemUtil {
          if ( _logger == null ) {
             if ( _outLog != null && !_outLog.isEmpty() ) {
                final File log = new File( _outLog );
-               log.getParentFile().mkdirs();
+               if ( log.getParentFile() != null ) {
+                  log.getParentFile()
+                     .mkdirs();
+               }
                command += " > " + _outLog + " 2>&1";
             } else {
                command += " > " + getDefaultLogFile() + " 2>&1";
