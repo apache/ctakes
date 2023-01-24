@@ -60,9 +60,11 @@ public class NamedEntityFeaturesExtractor implements RelationFeaturesExtractor<I
   /**
    * Number of named entities between the two mentions
    */
+  @SuppressWarnings("unchecked")
   private DistanceExtractor nEntityMentionsBetween = new DistanceExtractor(null, EntityMention.class);
 
   @Override
+  @SuppressWarnings("unchecked")
   public List<Feature> extract(JCas jCas, IdentifiedAnnotation arg1, IdentifiedAnnotation arg2)
       throws AnalysisEngineProcessException {
 

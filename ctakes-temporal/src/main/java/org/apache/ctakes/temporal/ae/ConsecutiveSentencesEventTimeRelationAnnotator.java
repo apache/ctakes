@@ -70,6 +70,7 @@ public class ConsecutiveSentencesEventTimeRelationAnnotator extends RelationExtr
 				new File(modelDirectory, "model.jar"));
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	protected List<RelationFeaturesExtractor<IdentifiedAnnotation,IdentifiedAnnotation>> getFeatureExtractors()
 			throws ResourceInitializationException {

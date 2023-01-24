@@ -272,6 +272,7 @@ public abstract class WindowedAssertionCleartkAnalysisEngine extends
       entityTreeExtractors = new ArrayList<>();
    }
 
+   @SuppressWarnings("unchecked")
    @Override
    public void process( JCas jCas ) throws AnalysisEngineProcessException {
       String documentId = DocIdUtil.getDocumentID( jCas );

@@ -40,7 +40,7 @@ public class CtakesRunner extends PausableFileLoggerAE {
 
    private String _logFile;
 
-   boolean processPerDoc() {
+   protected boolean processPerDoc() {
       return false;
    }
 
@@ -97,7 +97,7 @@ public class CtakesRunner extends PausableFileLoggerAE {
       return piper;
    }
 
-   void runCommand() throws IOException {
+   protected void runCommand() throws IOException {
       final String java_home = System.getProperty( "java.home" );
       final SystemUtil.CommandRunner runner =
             new SystemUtil.CommandRunner( "\"" + java_home + File.separator + "bin" + File.separator

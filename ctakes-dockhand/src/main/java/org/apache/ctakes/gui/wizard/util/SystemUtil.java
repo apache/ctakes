@@ -158,6 +158,7 @@ final public class SystemUtil {
          env.put( "JAVA_HOME", System.getProperty( "java.home" ) );
       }
       final Process process = processBuilder.start();
+//      NoteProgressDialog.getInstance().setProcess( process );
       int exitCode = process.waitFor();
       return true;
    }
@@ -174,6 +175,7 @@ final public class SystemUtil {
             .redirectOutput( new File( outLog ) )
             .redirectError( new File( errLog ) );
       final Process process = processBuilder.start();
+//      NoteProgressDialog.getInstance().setProcess( process );
       int exitCode = process.waitFor();
       return true;
    }

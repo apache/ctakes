@@ -16,13 +16,15 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.apache.ctakes.template.filler.ae;
+package org.apache.ctakes.core.ae;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
+import org.apache.ctakes.typesystem.type.constants.CONST;
+import org.apache.ctakes.typesystem.type.refsem.*;
+import org.apache.ctakes.typesystem.type.relation.BinaryTextRelation;
+import org.apache.ctakes.typesystem.type.relation.DegreeOfTextRelation;
+import org.apache.ctakes.typesystem.type.relation.LocationOfTextRelation;
+import org.apache.ctakes.typesystem.type.relation.RelationArgument;
+import org.apache.ctakes.typesystem.type.textsem.*;
 import org.apache.log4j.Logger;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
@@ -35,60 +37,24 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.JFSIndexRepository;
 import org.apache.uima.jcas.tcas.Annotation;
 import org.apache.uima.resource.ResourceInitializationException;
-import org.apache.ctakes.typesystem.type.constants.CONST;
 
-import org.apache.ctakes.typesystem.type.refsem.Date;
-import org.apache.ctakes.typesystem.type.refsem.MedicationDosage;
-import org.apache.ctakes.typesystem.type.refsem.MedicationDuration;
-import org.apache.ctakes.typesystem.type.refsem.MedicationForm;
-import org.apache.ctakes.typesystem.type.refsem.MedicationFrequency;
-import org.apache.ctakes.typesystem.type.refsem.MedicationRoute;
-import org.apache.ctakes.typesystem.type.refsem.MedicationStatusChange;
-import org.apache.ctakes.typesystem.type.refsem.MedicationStrength;
-import org.apache.ctakes.typesystem.type.relation.BinaryTextRelation;
-import org.apache.ctakes.typesystem.type.relation.DegreeOfTextRelation;
-import org.apache.ctakes.typesystem.type.relation.LocationOfTextRelation;
-import org.apache.ctakes.typesystem.type.relation.RelationArgument;
-import org.apache.ctakes.typesystem.type.textsem.AnatomicalSiteMention;
-import org.apache.ctakes.typesystem.type.textsem.DiseaseDisorderMention;
-import org.apache.ctakes.typesystem.type.textsem.EntityMention;
-import org.apache.ctakes.typesystem.type.textsem.EventMention;
-import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
-import org.apache.ctakes.typesystem.type.textsem.MedicationDosageModifier;
-import org.apache.ctakes.typesystem.type.textsem.MedicationDurationModifier;
-import org.apache.ctakes.typesystem.type.textsem.MedicationEventMention;
-import org.apache.ctakes.typesystem.type.textsem.MedicationFormModifier;
-import org.apache.ctakes.typesystem.type.textsem.MedicationFrequencyModifier;
-import org.apache.ctakes.typesystem.type.textsem.MedicationMention;
-import org.apache.ctakes.typesystem.type.textsem.MedicationRouteModifier;
-import org.apache.ctakes.typesystem.type.textsem.MedicationStatusChangeModifier;
-import org.apache.ctakes.typesystem.type.textsem.MedicationStrengthModifier;
-import org.apache.ctakes.typesystem.type.textsem.Modifier;
-import org.apache.ctakes.typesystem.type.textsem.ProcedureMention;
-import org.apache.ctakes.typesystem.type.textsem.SignSymptomMention;
-import org.apache.ctakes.typesystem.type.textsem.TimeMention;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-/**
- * @deprecated Use the TemplateFillerAnnotator in ctakes-core
- */
-@Deprecated
 public class TemplateFillerAnnotator extends JCasAnnotator_ImplBase{
 
     // LOG4J logger based on class name
-    private Logger logger = Logger.getLogger(getClass().getName());
-    private UimaContext uimaContext;
+    static private final Logger LOGGER = Logger.getLogger( "TemplateFillerAnnotator" );
 
 
+	/**
+	 * {@inheritDoc}
+	 */
     @Override
-    public void initialize(UimaContext aContext) throws ResourceInitializationException {
-
-		 logger.warn( "TemplateFillerAnnotator in ctakes-template-filler has been deprecated."
-						  + "  Please use the TemplateFillerAnnotator in ctakes-core." );
-    	super.initialize(aContext);
-    	uimaContext = aContext;
-
-    	logger.info("Initializing " +  TemplateFillerAnnotator.class.getName());
-	
+    public void initialize( final UimaContext aContext ) throws ResourceInitializationException {
+    	super.initialize( aContext );
     }
 
     /**
@@ -98,7 +64,7 @@ public class TemplateFillerAnnotator extends JCasAnnotator_ImplBase{
      * attributes like dosage from the MedicationEventMention attributes.
      * @param mention The annotation to copy values to
      * @param original The annotation to copy values from
-     * @throws CASException
+     * @throws CASException -
      */
     private void setAttributesFromOriginal(IdentifiedAnnotation mention, IdentifiedAnnotation original) throws CASException {
     	mention.setBegin(original.getBegin());
@@ -195,7 +161,7 @@ public class TemplateFillerAnnotator extends JCasAnnotator_ImplBase{
     @Override
     public void process(JCas jcas) throws AnalysisEngineProcessException {
 	
-	logger.debug("process(JCas) in " + TemplateFillerAnnotator.class.getName());
+	LOGGER.debug( "process(JCas) in " + TemplateFillerAnnotator.class.getName() );
 	
 	// Get all IdentifiedAnnotations
 	FSIterator<Annotation> identifiedAnnotationsIter = getAllAnnotations(jcas, IdentifiedAnnotation.type);
@@ -282,9 +248,9 @@ public class TemplateFillerAnnotator extends JCasAnnotator_ImplBase{
 	    				AnatomicalSiteMention asm = (AnatomicalSiteMention) loc;
 	    				//asm.setBodyLocation(binaryTextRelation); // uncomment iff AnatomicalSiteMention ends up with a bodyLocation attribute
 	    			} else {
-	    				logger.error("Need to implement cases for handling EntityMention " + entityMention + " within relation: " + relation);
-	    				logger.error("   loc " + loc + " in relation " + relation + " with/to " + entityMention);
-	    				logger.error("   Using covered text: loc " + loc.getCoveredText() + " in relation " + relation + " with/to " + entityMention.getCoveredText());
+	    				LOGGER.error( "Need to implement cases for handling EntityMention " + entityMention + " within relation: " + relation );
+	    				LOGGER.error( "   loc " + loc + " in relation " + relation + " with/to " + entityMention );
+	    				LOGGER.error( "   Using covered text: loc " + loc.getCoveredText() + " in relation " + relation + " with/to " + entityMention.getCoveredText() );
 	    			}
 
 	    		} else { 
@@ -301,12 +267,12 @@ public class TemplateFillerAnnotator extends JCasAnnotator_ImplBase{
 	    				SignSymptomMention ssm = (SignSymptomMention) eventMention;
 	    				ssm.setBodyLocation(locationOfTextRelation);
 	    			} else {
-	    				logger.error("Need to implement more cases for handling EventMention " + eventMention + " within relation: " + relation);
+	    				LOGGER.error( "Need to implement more cases for handling EventMention " + eventMention + " within relation: " + relation );
 	    			}
 	    			
 	    		}
 	    	} else {
-	    		logger.error("Need to implement more cases for relation: " + relation);
+	    		LOGGER.error( "Need to implement more cases for relation: " + relation );
 	    	}
 	    }
 	}
@@ -341,9 +307,9 @@ public class TemplateFillerAnnotator extends JCasAnnotator_ImplBase{
 	    		IdentifiedAnnotation ia = mapToMentions.get(arg1Arg);
 	    		if (ia instanceof EntityMention) {
 	    			EntityMention entityMention = (EntityMention) ia;
-	    			logger.error("Need to implement cases for handling EntityMention " + entityMention + " within relation: " + relation);
-	    			logger.error("   severity " + severity + " in relation " + relation + " with/to " + entityMention);
-	    			logger.error("   Using covered text: severity " + severity.getCoveredText() + " in relation " + relation + " with/to " + entityMention.getCoveredText());
+	    			LOGGER.error( "Need to implement cases for handling EntityMention " + entityMention + " within relation: " + relation );
+	    			LOGGER.error( "   severity " + severity + " in relation " + relation + " with/to " + entityMention );
+	    			LOGGER.error( "   Using covered text: severity " + severity.getCoveredText() + " in relation " + relation + " with/to " + entityMention.getCoveredText() );
 	    		} else { 
 	    			EventMention eventMention = (EventMention) ia;
 	    			if (eventMention instanceof DiseaseDisorderMention) {
@@ -353,7 +319,7 @@ public class TemplateFillerAnnotator extends JCasAnnotator_ImplBase{
 	    				SignSymptomMention ssm = (SignSymptomMention) eventMention;
 	    				ssm.setSeverity(degreeOfTextRelation);
 	    			} else {
-	    				logger.error("Need to implement more cases for handling EventMention " + eventMention + " within relation: " + relation);
+	    				LOGGER.error( "Need to implement more cases for handling EventMention " + eventMention + " within relation: " + relation );
 	    			}
 	    		}
 	    		
@@ -363,7 +329,7 @@ public class TemplateFillerAnnotator extends JCasAnnotator_ImplBase{
 	    		// location_of has its own loop.
 	    		
 	    	} else {
-	    		logger.error("Need to implement more cases for relation: " + relation);
+	    		LOGGER.error( "Need to implement more cases for relation: " + relation );
 	    	}
 	    }
 	}	 

@@ -22,8 +22,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>ctakes-template-filler</artifactId>
-	<name>Apache cTAKES template filler</name>
-	<description>Fill CEM-based templates</description>
+	<name>Apache cTAKES Template Filler (deprecated)</name>
+	<description>Deprecated.  There is a single AE (TemplateFillerAnnotator) that has been moved to ctakes-core.</description>
 	<parent>
 		<groupId>org.apache.ctakes</groupId>
 		<artifactId>ctakes</artifactId>

@@ -191,6 +191,7 @@ public class EventAnnotator extends TemporalEntityAnnotator_ImplBase {
     return new File(outputDirectoryName, FEATURE_SELECTION_NAME + "_Chi2_extractor.dat").toURI();
   }
 
+  @SuppressWarnings("unchecked")
   @Override
   public void initialize(UimaContext context) throws ResourceInitializationException {
     LOGGER.info( "Initializing ..." );
@@ -240,6 +241,7 @@ public class EventAnnotator extends TemporalEntityAnnotator_ImplBase {
     super.process( jCas );
   }
 
+  @SuppressWarnings("unchecked")
   @Override
   public void process(JCas jCas, Segment segment) throws AnalysisEngineProcessException {
     PredicateArgumentExtractor predicateArgumentExtractor = new PredicateArgumentExtractor(jCas);

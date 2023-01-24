@@ -62,9 +62,9 @@ final public class LocalInstallBuilder implements Runnable {
       if ( finished ) {
          DialogUtil.showInstalledDialog( INSTALL_TYPE, installPath );
       }
-      if ( DialogUtil.showStartGui() ) {
-         startGui( "Running Apache cTAKES ...<BR>   RunPiperGui", installPath + "/" + INSTALL_DIRNAME );
-      }
+//      if ( DialogUtil.showStartGui() ) {
+//         startGui( "Running Apache cTAKES ...<BR>   RunPiperGui", installPath + "/" + INSTALL_DIRNAME );
+//      }
    }
 
    static private boolean cleanup( final String installPath ) {

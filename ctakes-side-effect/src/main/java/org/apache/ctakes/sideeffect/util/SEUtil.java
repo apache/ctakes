@@ -233,8 +233,9 @@ public class SEUtil {
 	 * @param end
 	 * @return
 	 */
+	@SuppressWarnings( "unchecked" )
 	public static int getNumOfWordTokensInSpan(JCas jcas, int begin, int end) {
-		Set ignoreWords = new HashSet();
+		Set<String> ignoreWords = new HashSet();
 		ignoreWords.add("and");
 		ignoreWords.add("or");
 

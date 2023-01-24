@@ -151,7 +151,8 @@ public class ConstituencyBasedTimeAnnotator extends TemporalEntityAnnotator_Impl
   private static final String LOOKUP_PATH = "/org/apache/ctakes/temporal/time_word_types.txt";
   
   private Map<String, String> wordTypes;
-  
+
+  @SuppressWarnings("unchecked")
   @Override
   public void initialize(UimaContext context)
       throws ResourceInitializationException {
@@ -211,6 +212,7 @@ public class ConstituencyBasedTimeAnnotator extends TemporalEntityAnnotator_Impl
     }
   }
 
+  @SuppressWarnings("unchecked")
   private double recursivelyProcessNode(JCas jCas, TreebankNode node, Set<TimeMention> mentions, double parentScore) throws AnalysisEngineProcessException {
     // accumulate features:
     double score=0.0;

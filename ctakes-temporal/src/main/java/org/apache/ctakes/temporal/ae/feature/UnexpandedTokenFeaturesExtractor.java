@@ -23,6 +23,7 @@ import org.cleartk.ml.feature.extractor.NamingExtractor1;
 import org.cleartk.ml.feature.extractor.FeatureExtractor1;
 import org.cleartk.ml.feature.extractor.CombinedExtractor1;
 
+@SuppressWarnings("unchecked")
 public class UnexpandedTokenFeaturesExtractor extends TokenFeaturesExtractor {
 
 	private FeatureExtractor1 coveredText = new CoveredTextExtractor();

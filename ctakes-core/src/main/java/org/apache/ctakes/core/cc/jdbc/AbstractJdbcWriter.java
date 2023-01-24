@@ -156,6 +156,7 @@ abstract public class AbstractJdbcWriter<T> extends JCasAnnotator_ImplBase {
     * @param data data to be written.
     * @throws SQLException if anything goes wrong.
     */
+   @SuppressWarnings("unchecked")
    public void writeJdbc( final T data ) throws SQLException {
       for ( JdbcTable<T> table : getJdbcTables( (Class<T>)data.getClass() ) ) {
          table.writeValue( data );

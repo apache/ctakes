@@ -152,6 +152,10 @@
       </dependency>
 		<dependency>
 			<groupId>org.apache.ctakes</groupId>
+			<artifactId>ctakes-pbj</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.ctakes</groupId>
 			<artifactId>ctakes-tiny-rest</artifactId>
 		</dependency>
 		<dependency>

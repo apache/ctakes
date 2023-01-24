@@ -44,6 +44,7 @@ abstract public class AbstractWindowedContext implements CleartkExtractor.Contex
       return this.name;
    }
 
+   @SuppressWarnings("unchecked")
    protected <T extends Annotation> List<T> selectCovered( final Annotation covering, final Class<T> coveredClass ) {
 //      System.out.print( "LastCoveredContext focusAnnotation "
 //                          + covering.getClass().getName() + " " + covering.getCoveredText()

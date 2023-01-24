@@ -152,6 +152,7 @@ public class BackwardsTimeAnnotator extends TemporalEntityAnnotator_ImplBase {
   
   private BioChunking<BaseToken, TimeMention> timeChunking;
 
+  @SuppressWarnings("unchecked")
   @Override
   public void initialize(UimaContext context) throws ResourceInitializationException {
      LOGGER.info( "Initializing ..." );
@@ -195,6 +196,7 @@ public class BackwardsTimeAnnotator extends TemporalEntityAnnotator_ImplBase {
     super.process( jCas );
   }
 
+  @SuppressWarnings("unchecked")
   @Override
   public void process(JCas jCas, Segment segment) throws AnalysisEngineProcessException {
     // classify tokens within each sentence

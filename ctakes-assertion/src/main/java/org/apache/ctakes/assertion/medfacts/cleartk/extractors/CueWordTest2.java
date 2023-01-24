@@ -44,6 +44,7 @@ import org.cleartk.ml.feature.extractor.CombinedExtractor1;
 import org.cleartk.ml.feature.extractor.CoveredTextExtractor;
 import org.cleartk.ml.feature.extractor.TypePathExtractor;
 
+@SuppressWarnings("unchecked")
 public class CueWordTest2
 {
   Logger logger = Logger.getLogger(CueWordTest2.class.getName());

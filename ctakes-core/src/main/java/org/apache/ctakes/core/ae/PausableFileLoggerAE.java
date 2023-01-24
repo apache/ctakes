@@ -24,11 +24,23 @@ abstract public class PausableFileLoggerAE extends PausableAE {
    )
    private String _logFile;
 
-   abstract boolean processPerDoc();
+   /**
+    *
+    * @return true if the process should be run for each document.
+    */
+   abstract protected boolean processPerDoc();
 
-   abstract void runCommand() throws IOException;
+   /**
+    * Some command to run.
+    * @throws IOException -
+    */
+   abstract protected void runCommand() throws IOException;
 
-   final protected String getLogFile() {
+   /**
+    *
+    * @return the path of a file to which logs should be written.
+    */
+   protected String getLogFile() {
       return _logFile;
    }
 

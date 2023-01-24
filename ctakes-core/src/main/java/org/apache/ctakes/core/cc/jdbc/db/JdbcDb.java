@@ -28,6 +28,7 @@ public interface JdbcDb {
     * @param dataClass class of data.
     * @return all registered tables that handle that type of data.
     */
+   @SuppressWarnings("unchecked")
    default <T> Collection<JdbcTable<T>> getTables( final Class<T> dataClass ) {
       final Collection<JdbcTable<T>> tables = new ArrayList<>();
       for ( JdbcTable<?> table : getTables() ) {

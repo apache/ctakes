@@ -83,7 +83,7 @@ public class CommandRunner extends PausableFileLoggerAE {
    private String _logName;
 
 
-   boolean processPerDoc() {
+   protected boolean processPerDoc() {
       return _perDoc.equalsIgnoreCase( "yes" ) || _perDoc.equalsIgnoreCase( "true" );
    }
 
@@ -132,7 +132,7 @@ public class CommandRunner extends PausableFileLoggerAE {
    }
 
 
-   void runCommand() throws IOException {
+    protected void runCommand() throws IOException {
       final String command = ( _cmdDir == null || _cmdDir.isEmpty() ) ? _cmd : _cmdDir + File.separator + _cmd;
       final SystemUtil.CommandRunner runner = new SystemUtil.CommandRunner( command );
       final String logFile = getLogFile();

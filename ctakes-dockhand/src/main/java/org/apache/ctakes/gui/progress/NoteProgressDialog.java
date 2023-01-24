@@ -22,6 +22,7 @@ public enum NoteProgressDialog {
    private JDialog _dialog;
    private JLabel _processLabel;
    private JLabel _progressLabel;
+//   private final InfoPanel _infoPanel = new InfoPanel();;
 
    private void createDialog() {
       if ( _dialog != null ) {
@@ -57,6 +58,7 @@ public enum NoteProgressDialog {
       panel.setBackground( Color.WHITE );
       panel.add( notePanel, BorderLayout.WEST );
       panel.add( labelPanel, BorderLayout.CENTER );
+//      panel.add( _infoPanel, BorderLayout.CENTER );
 
       _dialog.add( panel );
    }
@@ -103,7 +105,31 @@ public enum NoteProgressDialog {
       _dialog.setVisible( false );
       _dialog.dispose();
       _dialog = null;
+//      _infoPanel.clearText();
    }
 
+//   public void setProcess( final Process process ) {
+//      final ExecutorService executors = Executors.newFixedThreadPool( 2 );
+//      executors.submit( new OutputLogger( process.getInputStream() ) );
+//      executors.submit( new OutputLogger( process.getErrorStream() ) );
+//      _dialog.setVisible( true );
+//      ProgressNote.getInstance().startProgress();
+//   }
+//
+//   private class OutputLogger implements Runnable {
+//      final private InputStream _stream;
+//
+//      private OutputLogger( final InputStream stream ) {
+//         _stream = stream;
+//      }
+//      public void run() {
+//         try ( BufferedReader reader = new BufferedReader( new InputStreamReader( _stream ) ) ) {
+//            reader.lines()
+//                  .forEach( _infoPanel::appendText );
+//         } catch ( IOException ioE ) {
+//            //
+//         }
+//      }
+//   }
 
 }

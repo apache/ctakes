@@ -123,6 +123,7 @@ public class TimexAdmissionTimeAnnotator extends CleartkAnnotator<String> {
 	//  private CoveredTextToValuesExtractor disSemExtractor;
 	//  private DurationExpectationFeatureExtractor durationExtractor;
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void initialize(UimaContext context) throws ResourceInitializationException {
 		super.initialize(context);
@@ -145,6 +146,7 @@ public class TimexAdmissionTimeAnnotator extends CleartkAnnotator<String> {
 //		this.umlsExtractor = new UmlsSingleFeatureExtractor();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void process(JCas jCas) throws AnalysisEngineProcessException {
 		//get discharge Time id: T1:

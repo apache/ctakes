@@ -220,7 +220,8 @@ public class FractionStrengthFSM
      * @return Set of FractionToken objects.
      * @throws Exception
      */
-    public Set execute(List tokens) throws Exception
+	 @SuppressWarnings("unchecked")
+	 public Set execute(List tokens) throws Exception
     {
         Set<FractionStrengthToken> fractionSet = new HashSet<FractionStrengthToken>();
 

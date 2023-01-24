@@ -45,6 +45,7 @@ import java.util.Map;
  * @author CH151862
  *
  */
+@SuppressWarnings("unchecked")
 public class MultiTokenFeaturesExtractor implements RelationFeaturesExtractor<IdentifiedAnnotation,IdentifiedAnnotation> {
 
 	private FeatureExtractor1 coveredText = new CoveredTextExtractor();

@@ -23,6 +23,7 @@ public class PrecedingContext extends AbstractRightToLeftContext {
       super( begin, end );
    }
 
+   @SuppressWarnings("unchecked")
    protected <T extends Annotation> List<T> select( final JCas jCas,
                                                     final Annotation focusAnnotation,
                                                     final Class<T> annotationClass,

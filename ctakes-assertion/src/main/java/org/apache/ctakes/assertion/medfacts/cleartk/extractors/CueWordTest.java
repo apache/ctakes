@@ -58,7 +58,8 @@ public class CueWordTest
     CueWordTest t = new CueWordTest();
     t.execute();
   }
-  
+
+  @SuppressWarnings("unchecked")
   public void execute() throws UIMAException, IOException
   {
     logger.info("starting");

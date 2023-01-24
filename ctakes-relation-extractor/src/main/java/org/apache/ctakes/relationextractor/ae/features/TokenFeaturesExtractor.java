@@ -45,6 +45,7 @@ import org.cleartk.ml.feature.extractor.DistanceExtractor;
 import org.cleartk.ml.feature.extractor.FeatureExtractor1;
 import org.cleartk.ml.feature.extractor.NamingExtractor1;
 
+@SuppressWarnings("unchecked")
 public class TokenFeaturesExtractor implements RelationFeaturesExtractor<IdentifiedAnnotation,IdentifiedAnnotation> {
 
   private FeatureExtractor1 coveredText = new CoveredTextExtractor();

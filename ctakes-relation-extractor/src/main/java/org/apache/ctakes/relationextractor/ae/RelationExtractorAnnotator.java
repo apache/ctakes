@@ -91,6 +91,7 @@ private List<RelationFeaturesExtractor<IdentifiedAnnotation,IdentifiedAnnotation
 	 * 
 	 * @return The list of feature extractors to use.
 	 */
+	@SuppressWarnings("unchecked")
 	protected List<RelationFeaturesExtractor<IdentifiedAnnotation,IdentifiedAnnotation>> getFeatureExtractors()
 			throws ResourceInitializationException {
 		return Lists.newArrayList(

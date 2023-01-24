@@ -131,6 +131,7 @@ public class EventEventI2B2RelationAnnotator extends RelationExtractorAnnotator 
 				new File(modelDirectory, "model.jar"));
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	protected List<RelationFeaturesExtractor<IdentifiedAnnotation,IdentifiedAnnotation>> getFeatureExtractors()
 			throws ResourceInitializationException {

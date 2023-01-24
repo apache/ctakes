@@ -22,7 +22,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>ctakes-type-system</artifactId>
-	<name>Apache cTAKES common type system</name>
+	<name>Apache cTAKES Common Type System</name>
 	<description>Defines the cTAKES type system UIMA annotation classes.</description>	
 	<parent>
 		<groupId>org.apache.ctakes</groupId>

@@ -184,6 +184,7 @@ public class FirstTokenPermutationImpl implements LookupAlgorithm {
       return namedMetaDataHits;
    }
 
+   @SuppressWarnings("unchecked")
    private Collection<LookupHit> getLookupHits( final Collection<MetaDataHit> firstTokenHits,
                                                 final List<LookupToken> wLookupTokenList,
                                                 final int firstTokenIndex ) throws Exception {
