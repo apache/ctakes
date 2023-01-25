@@ -1,5 +1,4 @@
 import cassis
-# CTAKES_TYPE_SYSTEM = "ctakes-pbj/src/main/python/ctakes_pbj/type_system/TypeSystem.xml"
 XMI_INDICATOR = "xmlns:xmi"
 CTAKES_TYPE_SYSTEM = "resources/org/apache/ctakes/pbj/types/TypeSystem.xml"
 
