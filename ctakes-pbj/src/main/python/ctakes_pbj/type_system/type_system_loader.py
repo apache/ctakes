@@ -11,8 +11,8 @@ class TypeSystemLoader:
         self.type_system_file = type_system_file
 
     def load_type_system(self):
-        print("loading typesystem ...")
         if self.typesystem is None:
+            print("loading typesystem ...")
             with open(self.type_system_file, 'rb') as f:
                 self.typesystem = cassis.load_typesystem(f)
 

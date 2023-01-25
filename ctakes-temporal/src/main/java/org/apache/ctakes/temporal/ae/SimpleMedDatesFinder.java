@@ -89,6 +89,7 @@ final public class SimpleMedDatesFinder extends JCasAnnotator_ImplBase {
    /**
     * {@inheritDoc}
     */
+   @SuppressWarnings( "unchecked" )
    @Override
    public void initialize( final UimaContext context ) throws ResourceInitializationException {
       // Always call the super first

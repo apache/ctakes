@@ -2,9 +2,8 @@ package org.apache.ctakes.pbj.util;
 
 
 
-public final class PbjUtil {
-    private PbjUtil() {
-
+public final class PbjConstants {
+    private PbjConstants() {
     }
 
     public static final String DEFAULT_HOST = "localhost";

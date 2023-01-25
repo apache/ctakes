@@ -2060,6 +2060,7 @@ public class DrugMentionAnnotator extends JCasAnnotator_ImplBase
 		return checkSpan;
 			}
 
+	@SuppressWarnings( "unchecked" )
 	private int[] generateAdditionalNER(JCas jcas,
 			DrugMentionAnnotation tokenDrugNER,
 			DrugChangeStatusAnnotation drugChangeStatus, int beginSpan, int endSpan,
@@ -2623,6 +2624,7 @@ public class DrugMentionAnnotator extends JCasAnnotator_ImplBase
    * @param end
    * @return int[] - int[0] is begin offset and int[1] is end offset of subsequent sentence end (if available)
    */
+  @SuppressWarnings( "unchecked" )
 private int[] getNarrativeSpansContainingGivenSpanType(JCas jcas, int begin, int annotType)
 {
   JFSIndexRepository indexes = jcas.getJFSIndexRepository();

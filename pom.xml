@@ -201,6 +201,7 @@
 		<module>ctakes-dictionary-lookup-fast</module>
       <module>ctakes-dockhand</module>
 		<module>ctakes-tiny-rest</module>
+		<module>ctakes-pbj</module>
 		<module>ctakes-user-resources</module>
 	</modules>
 	<dependencyManagement>
@@ -743,6 +744,11 @@
 			<dependency>
 				<groupId>org.apache.ctakes</groupId>
 				<artifactId>ctakes-user-resources</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.ctakes</groupId>
+				<artifactId>ctakes-pbj</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 

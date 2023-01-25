@@ -142,6 +142,7 @@ public class EventEventCRFRelationAnnotator extends TemporalSequenceAnnotator_Im
 
 	}
 
+	@SuppressWarnings( "unchecked" )
 	protected List<RelationFeaturesExtractor<IdentifiedAnnotation,IdentifiedAnnotation>> getFeatureExtractors()
 			throws ResourceInitializationException {
 		return Lists.newArrayList(

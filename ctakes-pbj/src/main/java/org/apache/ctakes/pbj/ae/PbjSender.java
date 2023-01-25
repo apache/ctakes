@@ -38,6 +38,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.ConnectException;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
 import java.util.UUID;
@@ -45,7 +46,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-import static org.apache.ctakes.pbj.util.PbjUtil.*;
+import static org.apache.ctakes.pbj.util.PbjConstants.*;
 
 
 /**
@@ -272,8 +273,12 @@ public class PbjSender extends JCasAnnotator_ImplBase {
       _executor.scheduleAtFixedRate( reconnecter, 0, wait, TimeUnit.SECONDS );
    }
 
+   /**
+    * Stop the loop that reconnects to the artemis broker.
+    * @throws IOException -
+    */
    private void stopTimeOutLoop() throws IOException {
-      _executor.shutdown();
+      _executor.shutdownNow();
    }
 
    /**
@@ -320,13 +325,16 @@ public class PbjSender extends JCasAnnotator_ImplBase {
       if ( _sendStop.equalsIgnoreCase( "yes" ) ) {
          try {
             sendStop();
-            _stop = true;
-            stopTimeOutLoop();
-            disconnect( _id );
-//            System.exit( 0 );
          } catch ( IOException ioE ) {
             throw new AnalysisEngineProcessException( ioE );
          }
+      }
+      _stop = true;
+      try {
+         disconnect( _id );
+         stopTimeOutLoop();
+      } catch ( IOException ioE ) {
+         throw new AnalysisEngineProcessException( ioE );
       }
    }
 
@@ -415,7 +423,12 @@ public class PbjSender extends JCasAnnotator_ImplBase {
     */
    static private Socket createSocket( final String host, final int port ) throws IOException {
       synchronized ( SOCKET_LOCK ) {
-         return new Socket( host, port );
+         try {
+            return new Socket( host, port );
+         } catch ( ConnectException cE ) {
+            LOGGER.error( "Cannot connect to Artemis.  It is possible that Artemis is not running." );
+            throw cE;
+         }
       }
    }
 
@@ -460,22 +473,6 @@ public class PbjSender extends JCasAnnotator_ImplBase {
    //    Socket Reconnect.  Convenience methods.
    ////////////////////////////////////////////////////////////////////////////////////////
 
-   /**
-    * Can put a pause between disconnect and reconnect.  Testing never shows that it is necessary.  Not used.
-    * @param host -
-    * @param port -
-    * @param id -
-    * @param wait between disconnect and connect, in seconds.
-    * @throws IOException -
-    * @throws InterruptedException -
-    */
-   private void reconnect( final String host, final int port,
-                           final String id, final long wait ) throws IOException,
-                                                                     InterruptedException {
-      disconnect( id );
-      TimeUnit.SECONDS.sleep( wait );
-      connect( host, port, id );
-   }
 
    /**
     * Convenience method to disconnect and immediately connect.

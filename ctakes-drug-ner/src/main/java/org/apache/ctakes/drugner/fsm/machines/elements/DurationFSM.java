@@ -44,6 +44,7 @@ import net.openai.util.fsm.State;
  * 
  * @author Mayo Clinic
  */
+@SuppressWarnings( "unchecked" )
 public class DurationFSM {
 
 	Set iv_middleNumericTermSet = new HashSet();

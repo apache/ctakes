@@ -7,6 +7,7 @@ class WordFinder(CasAnnotator):
 
     def process(self, cas):
 
+        print('Checking Doc', cas.select(DocumentID))
 
         #  While we could use ct.create_type to create and add types, for each type lookup the cas array is searched.
         #  So it is faster to get the types first and then create instances with ct.add_type

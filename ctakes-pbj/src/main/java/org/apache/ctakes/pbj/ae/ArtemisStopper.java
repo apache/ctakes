@@ -26,6 +26,8 @@ public class ArtemisStopper extends ArtemisController {
 
     static private final Logger LOGGER = Logger.getLogger( "ArtemisStopper" );
 
+    private boolean _stopped = false;
+
     /**
      * {@inheritDoc}
      * @return
@@ -41,6 +43,7 @@ public class ArtemisStopper extends ArtemisController {
     @Override
     public void initialize( final UimaContext context ) throws ResourceInitializationException {
         super.initialize( context );
+        registerShutdownHook();
     }
 
     /**
@@ -62,6 +65,7 @@ public class ArtemisStopper extends ArtemisController {
      */
     @Override
     protected void runCommand() throws IOException {
+        _stopped = true;
         pause();
         final SystemUtil.CommandRunner runner
               = new SystemUtil.CommandRunner( "bin" + File.separatorChar + "artemis stop" );
@@ -77,6 +81,7 @@ public class ArtemisStopper extends ArtemisController {
 
 
 
+
     static public AnalysisEngineDescription createEngineDescription( final String artemisRootDir )
             throws ResourceInitializationException {
         return AnalysisEngineFactory.createEngineDescription( ArtemisStopper.class,
@@ -84,5 +89,22 @@ public class ArtemisStopper extends ArtemisController {
                                                               artemisRootDir );
     }
 
+    /**
+     * Registers a shutdown hook for the process so that it shuts down when the VM exits.
+     * This includes kill signals and user actions like "Ctrl-C".
+     */
+    private void registerShutdownHook() {
+        Runtime.getRuntime()
+               .addShutdownHook( new Thread( () -> {
+                   try {
+                       if ( _stopped ) {
+                           return;
+                       }
+                       runCommand();
+                   } catch ( IOException ioE ) {
+                       LOGGER.error( "Could not stop Artemis.", ioE );
+                   }
+               } ) );
+    }
 
 }

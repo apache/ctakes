@@ -18,15 +18,10 @@
  */
 package org.apache.ctakes.relationextractor.eval;
 
-import com.google.common.base.Function;
-import com.google.common.base.Functions;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Ordering;
-import com.lexicalscope.jewel.cli.CliFactory;
-import com.lexicalscope.jewel.cli.Option;
 import org.apache.ctakes.core.ae.SHARPKnowtatorXMLReader;
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
-import org.apache.ctakes.core.util.DocumentIDAnnotationUtil;
+import org.apache.ctakes.core.util.doc.DocIdUtil;
 import org.apache.ctakes.typesystem.type.structured.DocumentID;
 import org.apache.uima.UIMAFramework;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -38,14 +33,11 @@ import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
 import org.apache.uima.fit.component.ViewCreatorAnnotator;
 import org.apache.uima.fit.factory.AggregateBuilder;
 import org.apache.uima.fit.factory.AnalysisEngineFactory;
-import org.apache.uima.fit.factory.CollectionReaderFactory;
-import org.apache.uima.fit.factory.TypeSystemDescriptionFactory;
 import org.apache.uima.fit.pipeline.JCasIterator;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.util.XMLInputSource;
 import org.apache.uima.util.XMLParser;
 import org.apache.uima.util.XMLSerializer;
-import org.cleartk.eval.AnnotationStatistics;
 import org.cleartk.util.ViewUriUtil;
 import org.cleartk.util.ae.UriToDocumentTextAnnotator;
 import org.cleartk.util.cr.UriCollectionReader;
@@ -174,7 +166,8 @@ public class SHARPXMI extends CorpusXMI {
       for ( Iterator<JCas> casIter = new JCasIterator( reader, builder.createAggregate() ); casIter.hasNext(); ) {
          JCas jCas = casIter.next();
          JCas goldView = jCas.getView(GOLD_VIEW_NAME);
-         String documentID = DocumentIDAnnotationUtil.getDocumentID(goldView);
+         String documentID = DocIdUtil.getDocumentID( goldView );
+
          if (documentID == null) {//|| documentID.equals( DocumentIDAnnotationUtil.NO_DOCUMENT_ID ) ) {
             throw new IllegalArgumentException("No documentID for CAS:\n" + jCas);
          }

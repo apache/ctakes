@@ -44,6 +44,7 @@ import net.openai.util.fsm.State;
  * 
  * @author Mayo Clinic
  */
+@SuppressWarnings( "unchecked" )
 public class SuffixStrengthFSM {
 	// text fractions
 	Set iv_textSuffixSet = new HashSet();
@@ -87,6 +88,7 @@ public class SuffixStrengthFSM {
 	 * 
 	 * @return
 	 */
+	@SuppressWarnings( "unchecked" )
 	private Machine getDashMachine() {
 		State startState = new NamedState("START");
 		State endState = new NamedState("END");
@@ -128,6 +130,7 @@ public class SuffixStrengthFSM {
 	 * @return Set of RangeToken objects.
 	 * @throws Exception
 	 */
+	@SuppressWarnings( "unchecked" )
 	public Set execute(List tokens, Set overrideSet) throws Exception {
 		Set rangeSet = new HashSet();
 

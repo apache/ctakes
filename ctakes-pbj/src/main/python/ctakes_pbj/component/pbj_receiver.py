@@ -26,6 +26,7 @@ class PBJReceiver(stomp.ConnectionListener):
         self.password = password
         self.username = username
         self.typesystem = None
+        print('Starting Python Bridge to Java Receiver on', self.source_host, self.source_queue)
         self.conn = stomp.Connection([(self.source_host, self.source_port)])
         self.conn.set_listener('', self)
         self.stop = False
@@ -45,7 +46,6 @@ class PBJReceiver(stomp.ConnectionListener):
             type_system_accessor = TypeSystemLoader()
             type_system_accessor.load_type_system()
             self.set_typesystem(type_system_accessor.get_type_system())
-            print("typesystem print")
 
         return self.typesystem
 
@@ -71,11 +71,8 @@ class PBJReceiver(stomp.ConnectionListener):
             # should we just stop the receiver after one sent message or keep it open for multiple messages?
 
             if XMI_INDICATOR in frame.body:
-                print("got xmi")
                 cas = cassis.load_cas_from_xmi(frame.body, self.get_typesystem())
-                print("cas loaded")
                 self.pipeline.process(cas)
-                print("cas processed")
             else:
                 print(frame.body)
 

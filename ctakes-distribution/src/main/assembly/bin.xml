@@ -63,7 +63,8 @@
 				<include>org.apache.ctakes:ctakes-ytex</include>
 				<include>org.apache.ctakes:ctakes-ytex-uima</include>
 				<include>org.apache.ctakes:ctakes-examples</include>
-<!--				<include>org.apache.ctakes:ctakes-ytex-web</include>-->
+				<include>org.apache.ctakes:ctakes-pbj</include>
+				<!--				<include>org.apache.ctakes:ctakes-ytex-web</include>-->
 			</includes>
 			
 			<excludes>
@@ -296,6 +297,12 @@
 		</fileSet>
 		<fileSet>
 			<directory>../ctakes-utils/src/user/resources</directory>
+			<outputDirectory>resources</outputDirectory>
+			<fileMode>644</fileMode>
+			<directoryMode>755</directoryMode>
+		</fileSet>
+		<fileSet>
+			<directory>../ctakes-pbj/src/user/resources</directory>
 			<outputDirectory>resources</outputDirectory>
 			<fileMode>644</fileMode>
 			<directoryMode>755</directoryMode>

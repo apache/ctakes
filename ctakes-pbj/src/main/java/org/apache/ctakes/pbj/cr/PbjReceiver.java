@@ -3,13 +3,9 @@ package org.apache.ctakes.pbj.cr;
 import org.apache.activemq.artemis.jms.client.ActiveMQBytesMessage;
 import org.apache.activemq.artemis.jms.client.ActiveMQConnectionFactory;
 import org.apache.activemq.artemis.jms.client.ActiveMQQueue;
-import org.apache.ctakes.core.cc.pretty.plaintext.PrettyTextWriterFit;
-import org.apache.ctakes.core.config.ConfigParameterConstants;
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
-import org.apache.ctakes.core.pipeline.PipelineBuilder;
 import org.apache.ctakes.core.util.doc.JCasBuilder;
 import org.apache.log4j.Logger;
-import org.apache.uima.UIMAException;
 import org.apache.uima.UimaContext;
 import org.apache.uima.cas.impl.XmiCasDeserializer;
 import org.apache.uima.collection.CollectionException;
@@ -29,7 +25,7 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-import static org.apache.ctakes.pbj.util.PbjUtil.*;
+import static org.apache.ctakes.pbj.util.PbjConstants.*;
 
 
 
@@ -121,7 +117,7 @@ public class PbjReceiver extends JCasCollectionReader_ImplBase {
       Connection connection = null;
       try {
          InitialContext initialContext = new InitialContext();
-         LOGGER.info( "Starting Python Bridging Java Receiver on " + _hostName + " " + _queueName + " ..." );
+         LOGGER.info( "Starting Python Bridge to Java Receiver on " + _hostName + " " + _queueName + " ..." );
          final ActiveMQConnectionFactory cf
                = new ActiveMQConnectionFactory( "tcp://" + _hostName + ":" + _port );
          // Time To Live TTL of -1 asks server to never close this connection.

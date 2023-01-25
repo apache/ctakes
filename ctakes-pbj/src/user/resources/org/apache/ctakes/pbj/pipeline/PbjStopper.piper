@@ -6,7 +6,13 @@
 #  This piper will stop the Apache Artemis broker pointed to by the -a parameter on the command line.
 #
 // Set the command line parameter -a to accept the directory of the Artemis installation.
-cli ArtemisRoot=a
+cli ArtemisBroker=a
 
 // Stop the Artemis Broker
 add ArtemisStopper
+
+// Add the Finished Logger for some run statistics.
+add util.log.FinishedLogger
+
+// Force a stop, just in case some external process is trying to stay connected.
+addLast ExitForcer

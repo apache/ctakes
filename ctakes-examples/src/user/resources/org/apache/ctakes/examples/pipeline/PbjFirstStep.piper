@@ -2,39 +2,40 @@
 #  This is an example piper file that will spin up a complete pbj pipeline.
 #
 #  This piper will start the Apache Artemis broker pointed to by the -a parameter on the command line.
-#  It will pause for 10 seconds to allow artemis to fully launch.
+#  It will pause for 5 seconds to allow Artemis to fully launch.
 #
 #  This piper will then launch another instance of Apache cTAKES.
-#  That instance of cTAKES will run the third and final bit of the entire pbj pipeline.
+#  That instance of cTAKES will run the third and final bit of the entire PBJ pipeline.
 #
-#  This piper will then launch a python pbj bit of the entire pipeline.
+#  This piper will then launch a python PBJ bit of the entire pipeline.
 #
 
 load PbjStarter
 
-
 //
 // Start another instance of cTAKES, running the pipeline in StartAllExample_end.piper
 // $OutputDirectory will substitute the value of this cTAKES pipeline's value for OutputDirectory.
-// $ArtemisRoot will substitute the value of this cTAKES pipeline's value for ArtemisRoot.
+// $ArtemisBroker will substitute the value of this cTAKES pipeline's value for ArtemisBroker.
 //
 
-add CtakesRunner Pipe="-p org/apache/ctakes/examples/pipeline/PbjSecondStep.piper -o $OutputDirectory -a $ArtemisRoot"
+add CtakesRunner Pipe="-p PbjThirdStep -o $OutputDirectory -a $ArtemisBroker"
 
 
 //
 // Start the python bit of the full pipeline.
 // pip the dependency packages if your environment doesn't have them.
 //
+// Declare the python pipeline defining the second step in the total pipeline.
+set PbjSecondStep=ctakes-pbj/src/main/python/ctakes_pbj/examples/word_finder_pipeline.py
 
-add CommandRunner Command="python ctakes-pbj/src/main/python/ctakes_pbj/examples/word_finder_pipeline.py JavaToPy PyToJava" LogFile=example_pbj_py.log
+// There is a fixed order to queue specification in python pipelines.
+// The incoming (receiver) queue is named first, the outgoing (sender) queue is named second.
+add CommandRunner Command="python $PbjSecondStep JavaToPy PyToJava" LogFile=word_finder_pipeline.log
+
 
 //
 // The pipeline run by this instance of cTAKES.
 //
-
-// Write nice big banners when ctakes starts and finishes.
-set WriteBanner=yes
 
 // Load a simple token processing pipeline from another pipeline file
 load DefaultTokenizerPipeline

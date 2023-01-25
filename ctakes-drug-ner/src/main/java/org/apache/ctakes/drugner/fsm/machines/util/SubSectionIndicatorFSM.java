@@ -45,6 +45,7 @@ import net.openai.util.fsm.State;
  * 
  * @author Mayo Clinic
  */
+@SuppressWarnings( "unchecked" )
 public class SubSectionIndicatorFSM implements FSM {
 
 	// contains the finite state machines

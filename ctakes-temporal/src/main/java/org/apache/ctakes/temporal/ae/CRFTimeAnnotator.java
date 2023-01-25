@@ -140,6 +140,7 @@ public class CRFTimeAnnotator extends TemporalSequenceAnnotator_ImplBase {
 
   private BioChunking<BaseToken, TimeMention> timeChunking;
 
+   @SuppressWarnings( "unchecked" )
   @Override
   public void initialize(UimaContext context) throws ResourceInitializationException {
     super.initialize(context);
@@ -169,7 +170,8 @@ public class CRFTimeAnnotator extends TemporalSequenceAnnotator_ImplBase {
 //    this.parseFeatureExtractors.add(new ParseSpanFeatureExtractor());
     parseExtractor = new ParseSpanFeatureExtractor();
   }
-  
+
+  @SuppressWarnings( "unchecked" )
   @Override
   public void process(JCas jCas, Segment segment)
       throws AnalysisEngineProcessException {

@@ -57,11 +57,6 @@ public class CtakesRunner extends PausableFileLoggerAE {
       super.initialize( context );
       _cli = SystemUtil.subVariableParameters( _cli, context );
       try {
-         final String piper = getPiper();
-         final String logFile = getLogFile();
-         if ( logFile == null || logFile.isEmpty() ) {
-            _logFile = "ctakes_" + piper + ".log";
-         }
          runCommand();
       } catch ( IOException ioE ) {
          throw new ResourceInitializationException( ioE );
@@ -74,6 +69,25 @@ public class CtakesRunner extends PausableFileLoggerAE {
    @Override
    public void process( final JCas jcas ) throws AnalysisEngineProcessException {
       // Implementation of the process(..) method is mandatory, even if it does nothing.
+   }
+
+   /**
+    *
+    * {@inheritDoc}
+    */
+   @Override
+   protected String getLogFile() {
+      final String logFile = super.getLogFile();
+      if ( logFile != null && !logFile.isEmpty() ) {
+         return logFile;
+      }
+      String piper = "UnknownPiper";
+      try {
+         piper = getPiper();
+      } catch ( IOException ioE ) {
+         LOGGER.error( ioE.getMessage() );
+      }
+      return getLogFile( "ctakes_" + piper + ".log" );
    }
 
 
@@ -94,6 +108,9 @@ public class CtakesRunner extends PausableFileLoggerAE {
       if ( slashIndex >= 0 ) {
          piper = piper.substring( slashIndex + 1 );
       }
+      if ( piper.endsWith( ".piper" ) ) {
+         piper = piper.substring( 0, piper.length()-6 );
+      }
       return piper;
    }
 
@@ -102,7 +119,8 @@ public class CtakesRunner extends PausableFileLoggerAE {
       final SystemUtil.CommandRunner runner =
             new SystemUtil.CommandRunner( "\"" + java_home + File.separator + "bin" + File.separator
                                           + "java\" " + JAVA_CMD + " " + _cli );
-      runner.setLogFiles( _logFile );
+      final String logFile = getLogFile();
+      runner.setLogFiles( logFile );
 //      LOGGER.info( "Starting cTAKES with " + _cli + " ..." );
       LOGGER.info( "Starting external cTAKES pipeline with " + _cli + " ..." );
       SystemUtil.run( runner );

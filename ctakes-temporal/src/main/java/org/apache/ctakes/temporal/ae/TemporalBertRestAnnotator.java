@@ -66,6 +66,7 @@ public class TemporalBertRestAnnotator extends JCasAnnotator_ImplBase {
         }
     }
 
+    @SuppressWarnings( "unchecked" )
     @Override
     public void process(JCas jCas) throws AnalysisEngineProcessException {
         long start = System.currentTimeMillis();

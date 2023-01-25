@@ -2,10 +2,6 @@
 #  This piper file just listens to a queue and saves cas information to output files.
 #
 
-// Add this project's packages.
-package org.apache.ctakes.pbj.cr
-package org.apache.ctakes.pbj.ae
-
 // Get cas from Artemis.
 reader PbjReceiver ReceiveQueue=PyToJava
 
@@ -18,10 +14,5 @@ add pretty.html.HtmlTextWriter SubDirectory=html
 // Save marked text.
 add pretty.plaintext.PrettyTextWriterFit SubDirectory=text
 
-// Add the Finished Logger for some run statistics.
-add util.log.FinishedLogger
-
-// Force a stop, just in case some external process is trying to stay connected.
-addLast ExitForcer
-
+// Perform steps to stop the pbj pipeline
 load PbjStopper

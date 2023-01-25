@@ -135,6 +135,7 @@ public class EventEventRelationAnnotator extends TemporalRelationExtractorAnnota
 		super.process( jCas );
 	}
 
+	@SuppressWarnings( "unchecked" )
 	@Override
 	protected List<RelationFeaturesExtractor<IdentifiedAnnotation,IdentifiedAnnotation>> getFeatureExtractors() {
 		final String vectorFile = "org/apache/ctakes/temporal/gloveresult_3";
