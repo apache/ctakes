@@ -331,6 +331,7 @@ final public class SystemUtil {
       private boolean _wait;
       private boolean _stopOnExit;
       private InputFeeder _inputFeeder;
+      private boolean _setJavaHome = true;
 
       public CommandRunner( final String command ) {
          _command = command;
@@ -369,6 +370,10 @@ final public class SystemUtil {
          return _inputFeeder;
       }
 
+      public void setSetJavaHome( final boolean setJavaHome ) {
+         _setJavaHome = setJavaHome;
+      }
+
       private String getDefaultLogFile() {
          final String ext = String.valueOf( new Random().nextLong() );
          final int spaceIndex = _command.indexOf( ' ' );
@@ -394,7 +399,9 @@ final public class SystemUtil {
                .stream()
                .filter( n -> n.startsWith( ENV_VAR_PREFIX ) )
                .forEach( n -> env.put( n.substring( ENV_VAR_PREFIX.length() ), System.getProperty( n ) ) );
+         if ( _setJavaHome ) {
             env.put( "JAVA_HOME", System.getProperty( "java.home" ) );
+         }
          if ( !env.containsKey( "CTAKES_HOME" ) ) {
             String cTakesHome = System.getenv( "CTAKES_HOME" );
             if ( cTakesHome == null || cTakesHome.isEmpty() ) {

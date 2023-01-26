@@ -45,6 +45,16 @@ abstract public class ArtemisController extends PausableFileLoggerAE {
     )
     protected String _wait;
 
+    static public final String SET_JAVAHOME_PARAM = "SetJavaHome";
+    static public final String SET_JAVAHOME_DESC = "Set JAVA_HOME to the Java running cTAKES.  Default is yes.";
+    @ConfigurationParameter(
+          name = SET_JAVAHOME_PARAM,
+          description = SET_JAVAHOME_DESC,
+          defaultValue = "yes",
+          mandatory = false
+    )
+    private String _setJavaHome;
+
     /**
      *
      * @return a suffix for the default log file.
@@ -58,6 +68,10 @@ abstract public class ArtemisController extends PausableFileLoggerAE {
     @Override
     protected boolean processPerDoc() {
         return false;
+    }
+
+    protected boolean setJavaHome() {
+        return _setJavaHome.equalsIgnoreCase( "yes" ) || _setJavaHome.equalsIgnoreCase( "true" );
     }
 
     /**

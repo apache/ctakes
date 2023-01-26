@@ -82,9 +82,23 @@ public class CommandRunner extends PausableFileLoggerAE {
    )
    private String _logName;
 
+   static public final String SET_JAVAHOME_PARAM = "SetJavaHome";
+   static public final String SET_JAVAHOME_DESC = "Set JAVA_HOME to the Java running cTAKES.  Default is yes.";
+   @ConfigurationParameter(
+         name = SET_JAVAHOME_PARAM,
+         description = SET_JAVAHOME_DESC,
+         defaultValue = "yes",
+         mandatory = false
+   )
+   private String _setJavaHome;
+
 
    protected boolean processPerDoc() {
       return _perDoc.equalsIgnoreCase( "yes" ) || _perDoc.equalsIgnoreCase( "true" );
+   }
+
+   protected boolean setJavaHome() {
+      return _setJavaHome.equalsIgnoreCase( "yes" ) || _setJavaHome.equalsIgnoreCase( "true" );
    }
 
    public void logInfo( final String info ) {
@@ -144,6 +158,9 @@ public class CommandRunner extends PausableFileLoggerAE {
       }
       if ( _wait.equalsIgnoreCase( "yes" ) || _wait.equalsIgnoreCase( "true" ) ) {
          runner.wait( true );
+      }
+      if ( !setJavaHome() ) {
+         runner.setSetJavaHome( false );
       }
       if ( _dir != null && !_dir.isEmpty() ) {
          runner.setDirectory( _dir );

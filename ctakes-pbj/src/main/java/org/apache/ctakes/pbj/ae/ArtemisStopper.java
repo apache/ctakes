@@ -75,6 +75,9 @@ public class ArtemisStopper extends ArtemisController {
         if ( _wait.equalsIgnoreCase( "yes" ) || _wait.equalsIgnoreCase( "true" ) ) {
             runner.wait( true );
         }
+        if ( !setJavaHome() ) {
+            runner.setSetJavaHome( false );
+        }
         LOGGER.info( "Stopping Apache Artemis ..." );
         SystemUtil.run( runner );
     }
