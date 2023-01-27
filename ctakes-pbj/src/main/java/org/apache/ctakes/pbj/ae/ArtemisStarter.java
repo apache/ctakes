@@ -61,9 +61,7 @@ public class ArtemisStarter extends ArtemisController {
       if ( _wait.equalsIgnoreCase( "yes" ) || _wait.equalsIgnoreCase( "true" ) ) {
          runner.wait( true );
       }
-      if ( !setJavaHome() ) {
-         runner.setSetJavaHome( false );
-      }
+      runner.setSetJavaHome( false );
       LOGGER.info( "Starting Apache Artemis ..." );
       SystemUtil.run( runner );
       pause();
