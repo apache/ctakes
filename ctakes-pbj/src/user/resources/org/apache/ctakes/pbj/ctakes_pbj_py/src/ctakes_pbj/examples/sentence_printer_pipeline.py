@@ -5,8 +5,8 @@
 import warnings
 
 
-from ctakes_pbj.component.pbj_receiver import *
-from ctakes_pbj.examples.sentence_printer import *
+from ctakes_pbj.component.pbj_receiver import start_receiver
+from ctakes_pbj.examples.sentence_printer import SentencePrinter
 from ctakes_pbj.component.pbj_sender import PBJSender
 from ctakes_pbj.pipeline.pbj_pipeline import PBJPipeline
 

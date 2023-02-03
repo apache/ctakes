@@ -1,8 +1,6 @@
 package org.apache.ctakes.core.ae.inert;
 
-import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.core.util.log.DotLogger;
-import org.apache.log4j.Logger;
 import org.apache.uima.UimaContext;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
 import org.apache.uima.fit.descriptor.ConfigurationParameter;
@@ -26,6 +24,16 @@ abstract public class PausableAE extends JCasAnnotator_ImplBase {
    )
    private int _pause = 0;
 
+   static public final String WAIT_PARAM = "Wait";
+   static public final String WAIT_DESC = "Wait for the process to finish.  Default is no.";
+   @ConfigurationParameter(
+         name = WAIT_PARAM,
+         description = WAIT_DESC,
+         defaultValue = "no",
+         mandatory = false
+   )
+   private String _wait;
+
    /**
     * {@inheritDoc}
     */
@@ -35,6 +43,10 @@ abstract public class PausableAE extends JCasAnnotator_ImplBase {
    }
 
    protected void logInfo( final String info ) {}
+
+   protected boolean shouldWait() {
+      return _wait.equalsIgnoreCase( "yes" ) || _wait.equalsIgnoreCase( "true" );
+   }
 
    final protected void pause() {
       if ( _pause < 1 ) {

@@ -94,6 +94,7 @@ abstract public class AbstractJCasTermAnnotator extends JCasAnnotator_ImplBase
     * {@inheritDoc}
     */
    @Override
+   @SuppressWarnings( "unchecked" )
    public void initialize( final UimaContext uimaContext ) throws ResourceInitializationException {
       super.initialize( uimaContext );
       try {
@@ -109,7 +110,6 @@ abstract public class AbstractJCasTermAnnotator extends JCasAnnotator_ImplBase
       }
 
       LOGGER.info( "Using dictionary lookup window type: " + _windowClassName );
-//      _lookupWindowType = JCasUtil.getType( _windowClassName );
       final String[] tagArr = _exclusionPosTags.split( "," );
       for ( String tag : tagArr ) {
          _exclusionPartsOfSpeech.add( tag.toUpperCase() );

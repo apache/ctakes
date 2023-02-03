@@ -7,7 +7,9 @@
 #  This piper will then launch another instance of Apache cTAKES.
 #  That instance of cTAKES will run the third and final bit of the entire PBJ pipeline.
 #
-#  This piper will then launch a python PBJ bit of the entire pipeline.
+#  This piper will then launch a python PBJ pipeline that runs the negation model from the external project
+#  Clinical NLP Transformers (cnlp_transformers), which can be found at
+#  https://github.com/Machine-Learning-for-Medical-Language/cnlp_transformers
 #
 
 #
@@ -18,7 +20,6 @@
 #  -i {Input Document Directory}
 #  -o {Output Directory}
 #
-
 
 //  Sets up required parameters, starts your Artemis Broker, pips the PBJ project.
 load PbjStarter
@@ -36,12 +37,13 @@ add CtakesRunner Pipeline="-p PbjThirdStep -o $OutputDirectory -a $ArtemisBroker
 // Start the python bit of the full pipeline.
 //
 
-// Declare the python pipeline defining the second step in the total pipeline.
-set PbjSecondStep=ctakes_pbj.examples.word_finder_pipeline
+// pip the cnlp_transformers project and its dependencies.
+add PythonRunner Command="-m pip install resources/org/apache/ctakes/examples/ctakes_cnlpt_py/" Wait=yes
+
 
 // There is a fixed order to queue specification in python pipelines.
 // The incoming (receiver) queue is named first, the outgoing (sender) queue is named second.
-add PythonRunner Command="-m $PbjSecondStep JavaToPy PyToJava" LogFile=word_finder_pipeline.log
+add PythonRunner Command="-m ctakes_cnlpt.negation_pipeline JavaToPy PyToJava --output_dir $OutputDirectory" LogFile=negation_pipeline.log
 
 
 //
@@ -50,6 +52,7 @@ add PythonRunner Command="-m $PbjSecondStep JavaToPy PyToJava" LogFile=word_find
 
 // Load a simple token processing pipeline from another pipeline file
 load DefaultTokenizerPipeline
+load DictionarySubPipe
 
 // Send CAS to Artemis at the specified queue.  Send stop signal when processing has finished.
 add PbjSender SendQueue=JavaToPy SendStop=yes

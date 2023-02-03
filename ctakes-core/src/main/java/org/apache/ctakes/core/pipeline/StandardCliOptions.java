@@ -21,6 +21,7 @@ public interface StandardCliOptions {
    static public final String SUB_DIR = "subDir";
    static public final String XMI_OUT_DIR = "xmiOut";
    static public final String HTML_OUT_DIR = "htmlOut";
+   static public final String PIP_PBJ = "pipPbj";
 
 
    @Option(
@@ -88,6 +89,12 @@ public interface StandardCliOptions {
          description = "UMLS API Key.",
          defaultValue = "" )
    String getUmlsApiKey();
+
+   @Option(
+         longName = PIP_PBJ,
+         description = "pip ctakes-PBJ.",
+         defaultValue = "yes" )
+   String getPipPbj();
 
 
    @Option(

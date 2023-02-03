@@ -29,7 +29,8 @@ class FSListIterator<T> implements Iterator<T> {
   public boolean hasNext() {
     return (list instanceof NonEmptyFSList);
   }
-  
+
+  @SuppressWarnings( "unchecked" )
   public T next() {
     T element = (T) ((NonEmptyFSList)list).getHead();
     list = ((NonEmptyFSList)list).getTail();

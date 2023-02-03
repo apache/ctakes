@@ -3,6 +3,7 @@ DEFAULT_HOST = 'localhost'
 DEFAULT_PORT = 61616
 DEFAULT_USER = 'guest'
 DEFAULT_PASS = 'guest'
+DEFAULT_OUT_DIR = 'pbj_output/'
 
 
 def get_args():
@@ -17,6 +18,7 @@ def get_args():
     parser.add_argument('-pn', '--port_name', default=DEFAULT_PORT)
     parser.add_argument('-u', '--username', default=DEFAULT_USER)
     parser.add_argument('-p', '--password', default=DEFAULT_PASS)
+    parser.add_argument('-o', '--output_dir', default=DEFAULT_OUT_DIR)
 
     parser.parse_args()
     args = parser.parse_args()

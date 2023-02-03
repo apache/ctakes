@@ -3,7 +3,8 @@ from threading import Event
 import stomp
 from ctakes_pbj.type_system.type_system_loader import *
 from ctakes_pbj.pipeline.pbj_pipeline import STOP_MESSAGE
-from ctakes_pbj import arg_parser
+from ctakes_pbj.pbj_tools import arg_parser
+
 args = arg_parser.get_args()
 
 exit_event = Event()

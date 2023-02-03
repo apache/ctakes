@@ -33,6 +33,7 @@ import org.cleartk.ml.feature.extractor.DistanceExtractor;
 import org.cleartk.ml.feature.extractor.FeatureExtractor1;
 import org.cleartk.ml.feature.extractor.NamingExtractor1;
 
+// TODO If this is in use then it should be updated to modern jdk standards
 public class NamedEntityFeaturesExtractor implements RelationFeaturesExtractor<IdentifiedAnnotation,IdentifiedAnnotation> {
 
   private FeatureExtractor1 namedEntityType = new FeatureExtractor1() {
@@ -46,6 +47,7 @@ public class NamedEntityFeaturesExtractor implements RelationFeaturesExtractor<I
   /**
    * All extractors for mention 1, with features named to distinguish them from mention 2
    */
+  @SuppressWarnings( "unchecked" )
   private FeatureExtractor1 mention1FeaturesExtractor = new NamingExtractor1(
       "mention1",
       namedEntityType);
@@ -53,7 +55,8 @@ public class NamedEntityFeaturesExtractor implements RelationFeaturesExtractor<I
   /**
    * All extractors for mention 2, with features named to distinguish them from mention 1
    */
-  private FeatureExtractor1 mention2FeaturesExtractor = new NamingExtractor1(
+  @SuppressWarnings( "unchecked" )
+  final private FeatureExtractor1 mention2FeaturesExtractor = new NamingExtractor1(
       "mention2",
       namedEntityType);
 
@@ -61,7 +64,7 @@ public class NamedEntityFeaturesExtractor implements RelationFeaturesExtractor<I
    * Number of named entities between the two mentions
    */
   @SuppressWarnings("unchecked")
-  private DistanceExtractor nEntityMentionsBetween = new DistanceExtractor(null, EntityMention.class);
+  final private DistanceExtractor nEntityMentionsBetween = new DistanceExtractor(null, EntityMention.class);
 
   @Override
   @SuppressWarnings("unchecked")

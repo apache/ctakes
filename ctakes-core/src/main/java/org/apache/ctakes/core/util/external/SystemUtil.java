@@ -332,6 +332,7 @@ final public class SystemUtil {
       private boolean _stopOnExit;
       private InputFeeder _inputFeeder;
       private boolean _setJavaHome = true;
+      private String _venv;
 
       public CommandRunner( final String command ) {
          _command = command;
@@ -372,6 +373,10 @@ final public class SystemUtil {
 
       public void setSetJavaHome( final boolean setJavaHome ) {
          _setJavaHome = setJavaHome;
+      }
+
+      public void setVenv( final String venv ) {
+         _venv = venv;
       }
 
       private String getDefaultLogFile() {
@@ -416,6 +421,32 @@ final public class SystemUtil {
             }
          }
          env.putAll( _userEnvVars );
+         if ( _venv != null && !_venv.trim().isEmpty() ) {
+            env.put( "VIRTUAL_ENV", _venv );
+            final String WinPath = env.get( "Path" );
+            if ( WinPath != null ) {
+               env.put( "Path", getVenvPath() + WinPath );
+            }
+            final String UxPath = env.get( "PATH" );
+            if ( UxPath != null ) {
+               env.put( "PATH", getVenvPath() + UxPath );
+            }
+         }
+      }
+
+      static private final String[] VENV_EXTENSIONS
+            = { "Library/mingw-w64/bin", "Library/usr/bin", "Library/bin", "Scripts", "bin", "lib/site-packages" };
+
+      private String getVenvPath() {
+         final StringBuilder sb = new StringBuilder( _venv + File.pathSeparator );
+         for ( String extension : VENV_EXTENSIONS ) {
+            final String envPath = _venv + File.separator + extension.replace( '/', File.separatorChar );
+            if ( new File( envPath ).isDirectory() ) {
+               sb.append( envPath )
+                   .append( File.pathSeparator );
+            }
+         }
+         return sb.toString();
       }
 
       public Boolean call() throws IOException, InterruptedException {

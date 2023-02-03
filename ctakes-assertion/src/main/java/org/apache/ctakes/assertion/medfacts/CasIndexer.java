@@ -51,7 +51,8 @@ public class CasIndexer<T extends Annotation>
   public CasIndexer()
   {
   }
-  
+
+  @SuppressWarnings( "unchecked" )
   public void initialize()
   {
     AnnotationIndex<Annotation> annotationIndex = null;

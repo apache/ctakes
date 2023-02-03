@@ -1,7 +1,8 @@
 import stomp
 from ctakes_pbj.component import cas_annotator
 from ctakes_pbj.pipeline.pbj_pipeline import STOP_MESSAGE
-from ctakes_pbj import arg_parser
+from ctakes_pbj.pbj_tools import arg_parser
+
 args = arg_parser.get_args()
 
 
@@ -17,6 +18,7 @@ class PBJSender(cas_annotator.CasAnnotator):
         self.username = username
 
     def process(self, cas):
+        print("Sending processed information to " + self.target_queue + " ...")
         xmi = cas.to_xmi()
         conn = stomp.Connection([(self.target_host, self.target_port)])
         conn.connect(self.username, self.password, wait=True)
@@ -31,6 +33,7 @@ class PBJSender(cas_annotator.CasAnnotator):
         conn.send(self.target_queue, text)
 
     def send_stop(self):
+        print("Sending Stop code to " + self.target_queue + " ...")
         conn = stomp.Connection([(self.target_host, self.target_port)])
         conn.connect(self.username, self.password, wait=True)
         conn.send(self.target_queue, STOP_MESSAGE)

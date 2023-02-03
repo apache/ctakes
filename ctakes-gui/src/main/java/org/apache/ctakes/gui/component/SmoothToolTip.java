@@ -1,7 +1,7 @@
 package org.apache.ctakes.gui.component;
 
 
-import sun.swing.SwingUtilities2;
+//import sun.swing.SwingUtilities2;
 
 import javax.swing.*;
 import javax.swing.plaf.ToolTipUI;
@@ -92,7 +92,8 @@ public class SmoothToolTip extends JToolTip {
       @Override
       public void paint( final Graphics g, final JComponent comp ) {
          final Font font = comp.getFont();
-         final FontMetrics metrics = SwingUtilities2.getFontMetrics( comp, g, font );
+//         final FontMetrics metrics = SwingUtilities2.getFontMetrics( comp, g, font );
+         final FontMetrics metrics = comp.getFontMetrics( font );
          final Dimension size = comp.getSize();
 
          final Color background = Color.YELLOW;//c.getBackground();

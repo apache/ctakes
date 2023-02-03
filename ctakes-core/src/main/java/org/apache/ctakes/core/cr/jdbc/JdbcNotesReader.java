@@ -812,6 +812,7 @@ final public class JdbcNotesReader extends JCasCollectionReader_ImplBase {
     * @return a decryptor
     * @throws ResourceInitializationException -
     */
+   @SuppressWarnings( "unchecked" )
    static private Decryptor createWrappedDecryptor( final Class decryptorThingClass )
          throws ResourceInitializationException {
       final Object[] emptyObjectArray = new Object[ 0 ];

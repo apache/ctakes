@@ -86,7 +86,8 @@ public abstract class BagOfAnnotationsGenerator<T extends Annotation,K> {
 	}
 	
 	protected abstract K extractInformation(T t);
-	
+
+	@SuppressWarnings( "unchecked" )
 	private Class<T> getClassOfT() {
 		ParameterizedType superclass = (ParameterizedType) getClass().getGenericSuperclass();
 		return (Class<T>) superclass.getActualTypeArguments()[0];

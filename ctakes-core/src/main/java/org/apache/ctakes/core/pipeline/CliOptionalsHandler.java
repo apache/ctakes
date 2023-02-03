@@ -43,6 +43,8 @@ final public class CliOptionalsHandler {
             return optionals.getHtmlOutDirectory();
          case StandardCliOptions.SUB_DIR:
             return optionals.getSubDirectory();
+         case StandardCliOptions.PIP_PBJ:
+            return optionals.getPipPbj();
          case "a":
             return optionals.getOption_a();
          case "b":

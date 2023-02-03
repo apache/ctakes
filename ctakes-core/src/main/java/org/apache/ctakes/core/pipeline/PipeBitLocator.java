@@ -22,6 +22,7 @@ import java.util.stream.Collectors;
  * @version %I%
  * @since 11/18/2017
  */
+@SuppressWarnings( "unchecked" )
 public enum PipeBitLocator {
    INSTANCE;
 

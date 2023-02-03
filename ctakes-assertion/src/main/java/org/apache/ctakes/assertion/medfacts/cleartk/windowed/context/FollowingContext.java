@@ -44,6 +44,7 @@ public class FollowingContext extends AbstractLeftToRightContext {
     * {@inheritDoc}
     */
    @Override
+   @SuppressWarnings( "unchecked" )
    protected <T extends Annotation> List<T> select( final JCas jCas,
                                                     final Annotation focusAnnotation,
                                                     final Class<T> annotationClass,

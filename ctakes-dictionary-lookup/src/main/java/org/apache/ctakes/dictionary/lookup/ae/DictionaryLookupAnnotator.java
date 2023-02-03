@@ -60,6 +60,7 @@ import org.apache.uima.resource.ResourceInitializationException;
 		dependencies = { PipeBitInfo.TypeProduct.CHUNK, PipeBitInfo.TypeProduct.BASE_TOKEN },
 		products = PipeBitInfo.TypeProduct.IDENTIFIED_ANNOTATION
 )
+@Deprecated
 public class DictionaryLookupAnnotator extends JCasAnnotator_ImplBase
 {
 	// LOG4J logger based on class name
@@ -82,7 +83,9 @@ public class DictionaryLookupAnnotator extends JCasAnnotator_ImplBase
 
 		iv_context = aContext;
 		configInit();
-
+		iv_logger.info( "\nThe ctakes-dictionary-lookup module has been deprecated.\n"
+							 + "Please consider using ctakes-dictionary-lookup-fast.\n"
+							 + "ctakes-dictionary-lookup-fast is better than or equal in accuracy but ~1000x faster." );
 	}
 
 	/**

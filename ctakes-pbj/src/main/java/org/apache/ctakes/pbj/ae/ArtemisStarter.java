@@ -58,9 +58,7 @@ public class ArtemisStarter extends ArtemisController {
       final String logFile = getLogFile();
       runner.setLogFiles( logFile );
       runner.setDirectory( _artemisRoot );
-      if ( _wait.equalsIgnoreCase( "yes" ) || _wait.equalsIgnoreCase( "true" ) ) {
-         runner.wait( true );
-      }
+      runner.wait( shouldWait() );
       runner.setSetJavaHome( false );
       LOGGER.info( "Starting Apache Artemis ..." );
       SystemUtil.run( runner );

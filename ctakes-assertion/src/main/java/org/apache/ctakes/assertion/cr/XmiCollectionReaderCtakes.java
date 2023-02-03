@@ -36,6 +36,7 @@ import java.util.ArrayList;
 
 /**
  * A simple collection reader that reads CASes in XMI format from a directory in the filesystem.
+ * @deprecated Use XmiTreeReader in ctakes-core
  */
 @PipeBitInfo(
       name = "XMI in Dir Reader (2)",
@@ -43,6 +44,7 @@ import java.util.ArrayList;
       role = PipeBitInfo.Role.READER,
       products = { PipeBitInfo.TypeProduct.DOCUMENT_ID }
 )
+@Deprecated
 public class XmiCollectionReaderCtakes extends CollectionReader_ImplBase {
   /**
    * Name of configuration parameter that must be set to the path of a directory containing the XMI
@@ -65,6 +67,7 @@ public class XmiCollectionReaderCtakes extends CollectionReader_ImplBase {
   /**
    * @see org.apache.uima.collection.CollectionReader_ImplBase#initialize()
    */
+  @SuppressWarnings( "unchecked" )
   public void initialize() throws ResourceInitializationException {
 	mFailOnUnknownType = (Boolean) getConfigParameterValue(PARAM_FAILUNKNOWN);
 	if (null == mFailOnUnknownType) {

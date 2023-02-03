@@ -426,7 +426,9 @@ public class PbjSender extends JCasAnnotator_ImplBase {
          try {
             return new Socket( host, port );
          } catch ( ConnectException cE ) {
-            LOGGER.error( "Cannot connect to Artemis.  It is possible that Artemis is not running." );
+            LOGGER.error( "Cannot connect to Artemis.  It is possible that Artemis is not running on " + host + "." );
+            LOGGER.error( "Cannot connect to Artemis.  It is possible that port " + port + " is in use." );
+            LOGGER.error( "Please check the Artemis log file, in the output directory by default." );
             throw cE;
          }
       }

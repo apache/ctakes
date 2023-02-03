@@ -35,16 +35,6 @@ abstract public class ArtemisController extends PausableFileLoggerAE {
     )
     protected String _artemisRoot;
 
-    static public final String WAIT_PARAM = "Wait";
-    static public final String WAIT_DESC = "Wait for the launched command to finish.  Default is no.";
-    @ConfigurationParameter(
-          name = WAIT_PARAM,
-          description = WAIT_DESC,
-          defaultValue = "no",
-          mandatory = false
-    )
-    protected String _wait;
-
     /**
      *
      * @return a suffix for the default log file.

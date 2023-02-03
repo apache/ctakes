@@ -46,6 +46,9 @@ import java.net.URLEncoder;
  * UIMA annotator that identified entities based on lookup.
  *
  * @author Mayo Clinic
+ *
+ * @deprecated Use the dictionary-lookup-fast module.
+ * It is much faster and the same or better accuracy according to tests on multiple annotated corpora.
  */
 @PipeBitInfo(
       name = "UMLS Dictionary Lookup (Old)",
@@ -53,6 +56,7 @@ import java.net.URLEncoder;
       dependencies = { PipeBitInfo.TypeProduct.CHUNK, PipeBitInfo.TypeProduct.BASE_TOKEN },
       products = PipeBitInfo.TypeProduct.IDENTIFIED_ANNOTATION
 )
+@Deprecated
 public class UmlsDictionaryLookupAnnotator extends DictionaryLookupAnnotator {
    /* Special implementation to pre bundle the UMLS SnowmedCT/RxNorm dictionaries
     * Performs a check for user's UMLS licence at init time via their RESTful API

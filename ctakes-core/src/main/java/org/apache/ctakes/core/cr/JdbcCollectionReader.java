@@ -182,6 +182,7 @@ public class JdbcCollectionReader extends JCasCollectionReader_ImplBase {
     * @param valueFile -
     * @throws IOException -
     */
+   @SuppressWarnings( "unchecked" )
    private void loadValueFile( File valueFile ) throws IOException {
       List<String> lineList = new ArrayList<>();
       BufferedReader br = new BufferedReader( new FileReader( valueFile ) );
