@@ -138,6 +138,7 @@ public class EventTimeSelfRelationAnnotator extends TemporalRelationExtractorAnn
 	private RelationSyntacticETEmbeddingFeatureExtractor embedingExtractor;
 
 	@Override
+	@SuppressWarnings( "unchecked" )
 	protected List<RelationFeaturesExtractor<IdentifiedAnnotation,IdentifiedAnnotation>> getFeatureExtractors()
 			throws ResourceInitializationException {
 		final String vectorFile = "org/apache/ctakes/temporal/gloveresult_3";
@@ -147,6 +148,7 @@ public class EventTimeSelfRelationAnnotator extends TemporalRelationExtractorAnn
 			System.err.println("cannot find file: "+ vectorFile);
 			e.printStackTrace();
 		}
+		// TODO get rid of these google commons collection creators.
 		return Lists.newArrayList(
 				new UnexpandedTokenFeaturesExtractor()//new TokenFeaturesExtractor()	
 				, embedingExtractor

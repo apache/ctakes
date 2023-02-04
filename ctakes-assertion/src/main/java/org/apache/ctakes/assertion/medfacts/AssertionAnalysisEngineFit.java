@@ -178,7 +178,7 @@ public class AssertionAnalysisEngineFit extends JCasAnnotator_ImplBase {
    // hypothetical
    // possible
    // Changed from original implementation by information in https://www.mitre.org/sites/default/files/pdf/10_4676.pdf
-   static private void mapI2B2AssertionValueToCtakes( final String assertionType,
+   static public void mapI2B2AssertionValueToCtakes( final String assertionType,
                                                       final IdentifiedAnnotation annotation )
          throws AnalysisEngineProcessException {
       if ( assertionType == null ) {

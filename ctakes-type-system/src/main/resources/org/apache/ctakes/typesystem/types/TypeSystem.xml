@@ -20,6 +20,19 @@
     under the License.
 
 -->
+<!--  The more I look into the type system the less it makes sense.
+      Types that have slots that are populated with relations that refer back to the original object?
+      Why not just populate it with the other argument of the relation?
+      There are attributes and modifiers that are actually under-representations of full events/mentions.
+      e.g. medicationAllergy.  Allergy is a "disorder".  Why annotate a span twice?
+      e.g. "associatedSignSymptom" takes a ManifestationOf relation.  It seems -obvious- this should be just a S/S type.
+      As that associatedSignSymptom, why is the slot for just 1?  D/D can have multiple S/S.
+      Why do some Types use TimeMention to fill a slot when other same-level types use DateMention?
+      Not to mention that the naming is inconsistent.
+      Why is Medication Duration an attribute/modifier while all the other durations are temporalRelations?
+      The Type System was put together piecemeal over a long time, it is "living".
+         TODO: Add, Deprecate, migrate code, then get rid of -nonsense-.
+         -->
 <typeSystemDescription xmlns="http://uima.apache.org/resourceSpecifier">
   <name>org.apache.ctakes.typesystem.types.TypeSystem</name>
   <description>This is a Apache cTAKES Common Type System for clinical NLP. It includes general types necessary to store annotations and interface with clinical element models</description>
@@ -654,7 +667,9 @@ More qualifying information on how the procedure was done.</description>
       <description>This is an Event from the UMLS semantic group of Chemicals and Drugs, pruned by RxNORM source.  Based on generic Clinical Element Models (CEMs)</description>
       <supertypeName>org.apache.ctakes.typesystem.type.refsem.Event</supertypeName>
       <features>
-        <featureDescription>
+         <!--  features named Medication* are Deprecated in v5.
+         Please migrate all references to non-Medication specific types.  -->
+         <featureDescription>
           <name>medicationFrequency</name>
           <description/>
           <rangeTypeName>org.apache.ctakes.typesystem.type.refsem.MedicationFrequency</rangeTypeName>
@@ -704,6 +719,48 @@ More qualifying information on how the procedure was done.</description>
           <description/>
           <rangeTypeName>org.apache.ctakes.typesystem.type.relation.TemporalRelation</rangeTypeName>
         </featureDescription>
+      <!--  New in ctakes 5    -->
+         <featureDescription>
+            <name>dosageCount</name>
+            <description/>
+            <rangeTypeName>org.apache.ctakes.typesystem.type.refsem.DosageCount</rangeTypeName>
+         </featureDescription>
+         <featureDescription>
+            <name>dose</name>
+            <description/>
+            <rangeTypeName>org.apache.ctakes.typesystem.type.refsem.Dose</rangeTypeName>
+         </featureDescription>
+         <featureDescription>
+            <name>totalDose</name>
+            <description/>
+            <rangeTypeName>org.apache.ctakes.typesystem.type.refsem.TotalDose</rangeTypeName>
+         </featureDescription>
+         <featureDescription>
+            <name>form</name>
+            <description/>
+            <rangeTypeName>org.apache.ctakes.typesystem.type.refsem.Form</rangeTypeName>
+         </featureDescription>
+         <featureDescription>
+            <name>route</name>
+            <description/>
+            <rangeTypeName>org.apache.ctakes.typesystem.type.refsem.Route</rangeTypeName>
+         </featureDescription>
+         <featureDescription>
+            <name>frequency</name>
+            <description/>
+            <rangeTypeName>org.apache.ctakes.typesystem.type.refsem.Frequency</rangeTypeName>
+         </featureDescription>
+         <featureDescription>
+            <name>duration</name>
+            <description/>
+            <rangeTypeName>org.apache.ctakes.typesystem.type.refsem.Duration</rangeTypeName>
+         </featureDescription>
+         <featureDescription>
+            <name>statusChange</name>
+            <description/>
+            <rangeTypeName>org.apache.ctakes.typesystem.type.refsem.StatusChange</rangeTypeName>
+         </featureDescription>
+
       </features>
     </typeDescription>
     <typeDescription>
@@ -722,6 +779,7 @@ More qualifying information on how the procedure was done.</description>
           <rangeTypeName>org.apache.ctakes.typesystem.type.refsem.BodySide</rangeTypeName>
         </featureDescription>
         <featureDescription>
+         <!-- Why is this a relation?  This procedure will be an argument in the relation!  Why not just the Anatomic Site?   -->
           <name>bodyLocation</name>
           <description/>
           <rangeTypeName>org.apache.ctakes.typesystem.type.relation.LocationOf</rangeTypeName>
@@ -731,11 +789,12 @@ More qualifying information on how the procedure was done.</description>
           <description/>
           <rangeTypeName>org.apache.ctakes.typesystem.type.refsem.ProcedureDevice</rangeTypeName>
         </featureDescription>
-        <featureDescription>
-          <name>duration</name>
-          <description/>
-          <rangeTypeName>org.apache.ctakes.typesystem.type.relation.TemporalRelation</rangeTypeName>
-        </featureDescription>
+<!--        <featureDescription>-->
+<!--         Changed to Duration Attribute.  I don't know why this was special as a relation.  This procedure would be an arg.  -->
+<!--          <name>duration</name>-->
+<!--          <description/>-->
+<!--          <rangeTypeName>org.apache.ctakes.typesystem.type.relation.TemporalRelation</rangeTypeName>-->
+<!--        </featureDescription>-->
         <featureDescription>
           <name>endTime</name>
           <description/>
@@ -756,6 +815,48 @@ More qualifying information on how the procedure was done.</description>
           <description/>
           <rangeTypeName>org.apache.ctakes.typesystem.type.relation.TemporalRelation</rangeTypeName>
         </featureDescription>
+         <!--  New in ctakes 5    -->
+         <featureDescription>
+            <name>dosageCount</name>
+            <description/>
+            <rangeTypeName>org.apache.ctakes.typesystem.type.refsem.DosageCount</rangeTypeName>
+         </featureDescription>
+         <featureDescription>
+            <name>dose</name>
+            <description/>
+            <rangeTypeName>org.apache.ctakes.typesystem.type.refsem.Dose</rangeTypeName>
+         </featureDescription>
+         <featureDescription>
+            <name>totalDose</name>
+            <description/>
+            <rangeTypeName>org.apache.ctakes.typesystem.type.refsem.TotalDose</rangeTypeName>
+         </featureDescription>
+         <featureDescription>
+            <name>form</name>
+            <description/>
+            <rangeTypeName>org.apache.ctakes.typesystem.type.refsem.Form</rangeTypeName>
+         </featureDescription>
+         <featureDescription>
+            <name>route</name>
+            <description/>
+            <rangeTypeName>org.apache.ctakes.typesystem.type.refsem.Route</rangeTypeName>
+         </featureDescription>
+         <featureDescription>
+            <name>frequency</name>
+            <description/>
+            <rangeTypeName>org.apache.ctakes.typesystem.type.refsem.Frequency</rangeTypeName>
+         </featureDescription>
+         <featureDescription>
+            <name>duration</name>
+            <description/>
+            <rangeTypeName>org.apache.ctakes.typesystem.type.refsem.Duration</rangeTypeName>
+         </featureDescription>
+         <featureDescription>
+            <name>statusChange</name>
+            <description/>
+            <rangeTypeName>org.apache.ctakes.typesystem.type.refsem.StatusChange</rangeTypeName>
+         </featureDescription>
+
       </features>
     </typeDescription>
     <typeDescription>
@@ -1786,6 +1887,9 @@ This instantiates a manages/treats relation which should be marked as conditiona
         </featureDescription>
       </features>
     </typeDescription>
+
+     <!--  MedicationEventMention is Deprecated in v5.
+         Please migrate all references to Medication type.  If it has a span it should be a MedicationMention.   -->
     <typeDescription>
       <name>org.apache.ctakes.typesystem.type.textsem.MedicationEventMention</name>
       <description>Deprecated.  As of cTAKEs 3.1, see org.apache.ctakes.typesystem.type.textsem.MedicationMention.</description>
@@ -1838,7 +1942,10 @@ This instantiates a manages/treats relation which should be marked as conditiona
         </featureDescription>
       </features>
     </typeDescription>
-    <typeDescription>
+     <!--  MedicationEventMention is Deprecated in v5.
+    Please migrate all references to Medication type.  If it has a span it should be a MedicationMention.   -->
+
+     <typeDescription>
       <name>org.apache.ctakes.typesystem.type.textsem.TimeMention</name>
       <description>A text string (IdentifiedAnnotation) that refers to a Time (i.e., TIMEX3).</description>
       <supertypeName>org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation</supertypeName>
@@ -2220,10 +2327,13 @@ More qualifying information on how the procedure was done.</description>
       <supertypeName>org.apache.ctakes.typesystem.type.textsem.EventMention</supertypeName>
       <features>
         <featureDescription>
+         <!-- Is medicationAllergy a necessary modifier?  Allergy is a disease/disorder.  -->
           <name>medicationAllergy</name>
           <description/>
           <rangeTypeName>org.apache.ctakes.typesystem.type.textsem.MedicationAllergyModifier</rangeTypeName>
         </featureDescription>
+         <!--  features named Medication* are Deprecated in v5.
+         Please migrate all references to non-Medication specific types.  -->
         <featureDescription>
           <name>medicationFrequency</name>
           <description/>
@@ -2274,6 +2384,47 @@ More qualifying information on how the procedure was done.</description>
           <description/>
           <rangeTypeName>org.apache.ctakes.typesystem.type.relation.TemporalTextRelation</rangeTypeName>
         </featureDescription>
+         <!--  New in ctakes 5    -->
+         <featureDescription>
+            <name>dosageCount</name>
+            <description/>
+            <rangeTypeName>org.apache.ctakes.typesystem.type.textsem.DosageCountModifier</rangeTypeName>
+         </featureDescription>
+         <featureDescription>
+            <name>dose</name>
+            <description/>
+            <rangeTypeName>org.apache.ctakes.typesystem.type.textsem.DoseModifier</rangeTypeName>
+         </featureDescription>
+         <featureDescription>
+            <name>totalDose</name>
+            <description/>
+            <rangeTypeName>org.apache.ctakes.typesystem.type.textsem.TotalDoseModifier</rangeTypeName>
+         </featureDescription>
+         <featureDescription>
+            <name>form</name>
+            <description/>
+            <rangeTypeName>org.apache.ctakes.typesystem.type.textsem.FormModifier</rangeTypeName>
+         </featureDescription>
+         <featureDescription>
+            <name>route</name>
+            <description/>
+            <rangeTypeName>org.apache.ctakes.typesystem.type.textsem.RouteModifier</rangeTypeName>
+         </featureDescription>
+         <featureDescription>
+            <name>frequency</name>
+            <description/>
+            <rangeTypeName>org.apache.ctakes.typesystem.type.textsem.FrequencyModifier</rangeTypeName>
+         </featureDescription>
+         <featureDescription>
+            <name>duration</name>
+            <description/>
+            <rangeTypeName>org.apache.ctakes.typesystem.type.textsem.DurationModifier</rangeTypeName>
+         </featureDescription>
+         <featureDescription>
+            <name>statusChange</name>
+            <description/>
+            <rangeTypeName>org.apache.ctakes.typesystem.type.textsem.StatusChangeModifier</rangeTypeName>
+         </featureDescription>
       </features>
     </typeDescription>
     <typeDescription>
@@ -2301,11 +2452,12 @@ More qualifying information on how the procedure was done.</description>
           <description/>
           <rangeTypeName>org.apache.ctakes.typesystem.type.textsem.ProcedureDeviceModifier</rangeTypeName>
         </featureDescription>
-        <featureDescription>
-          <name>duration</name>
-          <description/>
-          <rangeTypeName>org.apache.ctakes.typesystem.type.relation.TemporalTextRelation</rangeTypeName>
-        </featureDescription>
+<!--        <featureDescription>-->
+<!--         Changed to Duration Modifier.  I don't know why this was special as a relation.  This procedure would be an arg.  -->
+<!--          <name>duration</name>-->
+<!--          <description/>-->
+<!--          <rangeTypeName>org.apache.ctakes.typesystem.type.relation.TemporalTextRelation</rangeTypeName>-->
+<!--        </featureDescription>-->
         <featureDescription>
           <name>endTime</name>
           <description/>
@@ -2326,6 +2478,47 @@ More qualifying information on how the procedure was done.</description>
           <description/>
           <rangeTypeName>org.apache.ctakes.typesystem.type.relation.TemporalTextRelation</rangeTypeName>
         </featureDescription>
+         <!--  New in ctakes 5    -->
+         <featureDescription>
+            <name>dosageCount</name>
+            <description/>
+            <rangeTypeName>org.apache.ctakes.typesystem.type.textsem.DosageCountModifier</rangeTypeName>
+         </featureDescription>
+         <featureDescription>
+            <name>dose</name>
+            <description/>
+            <rangeTypeName>org.apache.ctakes.typesystem.type.textsem.DoseModifier</rangeTypeName>
+         </featureDescription>
+         <featureDescription>
+            <name>totalDose</name>
+            <description/>
+            <rangeTypeName>org.apache.ctakes.typesystem.type.textsem.TotalDoseModifier</rangeTypeName>
+         </featureDescription>
+         <featureDescription>
+            <name>form</name>
+            <description/>
+            <rangeTypeName>org.apache.ctakes.typesystem.type.textsem.FormModifier</rangeTypeName>
+         </featureDescription>
+         <featureDescription>
+            <name>route</name>
+            <description/>
+            <rangeTypeName>org.apache.ctakes.typesystem.type.textsem.RouteModifier</rangeTypeName>
+         </featureDescription>
+         <featureDescription>
+            <name>frequency</name>
+            <description/>
+            <rangeTypeName>org.apache.ctakes.typesystem.type.textsem.FrequencyModifier</rangeTypeName>
+         </featureDescription>
+         <featureDescription>
+            <name>duration</name>
+            <description/>
+            <rangeTypeName>org.apache.ctakes.typesystem.type.textsem.DurationModifier</rangeTypeName>
+         </featureDescription>
+         <featureDescription>
+            <name>statusChange</name>
+            <description/>
+            <rangeTypeName>org.apache.ctakes.typesystem.type.textsem.StatusChangeModifier</rangeTypeName>
+         </featureDescription>
       </features>
     </typeDescription>
     <typeDescription>
@@ -2523,92 +2716,182 @@ More qualifying information on how the procedure was done.</description>
            </featureDescription>
         </features>
      </typeDescription>
+
+      <!--  Medication attributes do not really account for things like:
+         "1.5 pills in the morning and 1 pill in the evening."
+           There are two dosageCounts: 1.5 and 1.  The frequency is 2 / day.
+           Should it be split into 2 medications?  1.5 pill x 1 / day   and   1 pill x 1 / day ?   -->
+
+     <!--     Replacements for Medication*** attribute types.  They also apply to Procedures.  -->
+     <!--           One       10 mg    Pill    by Mouth    4 times per day    for one month  starting today.  -->
+     <!--     [dosage count]  [dose]  [form]   [route]       [frequency]        [duration]   [status change]  -->
      <typeDescription>
-        <name>org.apache.ctakes.typesystem.type.refsem.Regimen</name>
-        <description>A Therapeutic or Preventive Procedure that consists of individual notable events.  No Text Span.</description>
-        <supertypeName>org.apache.ctakes.typesystem.type.refsem.Event</supertypeName>
+        <!-- !! Note that the original attribute name "Dosage" can be confusing !!
+        Dosage is actually the whole Dose, Frequency, Duration, etc. expression.  So this is really a "count of Dosages." -->
+        <name>org.apache.ctakes.typesystem.type.refsem.DosageCount</name>
+        <description>How many Medication or Procedure Dosage expressions.  e.g. "one" in "one 5 mg tablet twice-a-day for 2 weeks"</description>
+        <supertypeName>org.apache.ctakes.typesystem.type.refsem.Attribute</supertypeName>
         <features>
            <featureDescription>
-              <name>startTime</name>
+              <name>value</name>
               <description/>
-              <rangeTypeName>org.apache.ctakes.typesystem.type.refsem.Time</rangeTypeName>
+              <rangeTypeName>uima.cas.String</rangeTypeName>
+           </featureDescription>
+        </features>
+     </typeDescription>
+     <typeDescription>
+        <!-- While this is the "medication strength" per common language, according to the AMA this is "Dose". -->
+        <name>org.apache.ctakes.typesystem.type.refsem.Dose</name>
+        <description>Dose indicates the 'strength' number and unit of a medication or procedure.  e.g. 5 mg, 100 cGy, etc.</description>
+        <supertypeName>org.apache.ctakes.typesystem.type.refsem.Attribute</supertypeName>
+        <features>
+           <featureDescription>
+              <name>number</name>
+              <description/>
+              <rangeTypeName>uima.cas.String</rangeTypeName>
            </featureDescription>
            <featureDescription>
-              <name>endTime</name>
+              <name>unit</name>
+              <description>the unit of dose measurement</description>
+              <rangeTypeName>uima.cas.String</rangeTypeName>
+           </featureDescription>
+        </features>
+     </typeDescription>
+     <typeDescription>
+        <!-- While this is the "medication strength" per common language, according to the AMA this is "Dose". -->
+        <name>org.apache.ctakes.typesystem.type.refsem.TotalDose</name>
+        <description>Indicates the total dose number and unit of a medication or procedure.  e.g. Two 5mg tabs = 10mg.</description>
+        <supertypeName>org.apache.ctakes.typesystem.type.refsem.Attribute</supertypeName>
+        <features>
+           <featureDescription>
+              <name>number</name>
               <description/>
-              <rangeTypeName>org.apache.ctakes.typesystem.type.refsem.Time</rangeTypeName>
+              <rangeTypeName>uima.cas.String</rangeTypeName>
            </featureDescription>
            <featureDescription>
-              <name>duration</name>
+              <name>unit</name>
+              <description>the unit of dose measurement</description>
+              <rangeTypeName>uima.cas.String</rangeTypeName>
+           </featureDescription>
+        </features>
+     </typeDescription>
+     <typeDescription>
+        <name>org.apache.ctakes.typesystem.type.refsem.Form</name>
+        <description>Form of a medication or procedure.  e.g. tablet, brachytherapy, etc.</description>
+        <supertypeName>org.apache.ctakes.typesystem.type.refsem.Attribute</supertypeName>
+        <features>
+           <featureDescription>
+              <name>value</name>
               <description/>
-              <rangeTypeName>org.apache.ctakes.typesystem.type.relation.TemporalRelation</rangeTypeName>
+              <rangeTypeName>uima.cas.String</rangeTypeName>
+           </featureDescription>
+        </features>
+     </typeDescription>
+     <typeDescription>
+        <name>org.apache.ctakes.typesystem.type.refsem.Route</name>
+        <description>Means by which the medication or procedure was taken or administered. e.g. Oral, beam path, etc.</description>
+        <supertypeName>org.apache.ctakes.typesystem.type.refsem.Attribute</supertypeName>
+        <features>
+           <featureDescription>
+              <name>value</name>
+              <description/>
+              <rangeTypeName>uima.cas.String</rangeTypeName>
+           </featureDescription>
+        </features>
+     </typeDescription>
+     <typeDescription>
+        <name>org.apache.ctakes.typesystem.type.refsem.Frequency</name>
+        <description>How often a Medication or Procedure should occur. e.g., BID or b.i.d. or "twice-a-day" would have a number=2 and unit=day.</description>
+        <supertypeName>org.apache.ctakes.typesystem.type.refsem.Attribute</supertypeName>
+        <features>
+           <featureDescription>
+              <name>number</name>
+              <description/>
+              <rangeTypeName>uima.cas.String</rangeTypeName>
            </featureDescription>
            <featureDescription>
-              <name>relativeTemporalContext</name>
-              <description/>
-              <rangeTypeName>org.apache.ctakes.typesystem.type.relation.TemporalRelation</rangeTypeName>
+              <name>unit</name>
+              <description>The periodic unit used, e.g day, month, hour, etc.</description>
+              <rangeTypeName>uima.cas.String</rangeTypeName>
            </featureDescription>
-           <!--     Arrays for Procedures (e.g. RadioTherapy) and Medications (e.g. ChemoTherapy)       -->
+        </features>
+     </typeDescription>
+     <typeDescription>
+        <name>org.apache.ctakes.typesystem.type.refsem.Duration</name>
+        <description>Amount of time over which a medication or procedure should occur. e.g. 2 weeks</description>
+        <supertypeName>org.apache.ctakes.typesystem.type.refsem.Attribute</supertypeName>
+        <features>
            <featureDescription>
-              <name>procedures</name>
+              <name>number</name>
               <description/>
-              <rangeTypeName>uima.cas.FSArray</rangeTypeName>
-              <elementType>org.apache.ctakes.typesystem.type.refsem.Procedure</elementType>
+              <rangeTypeName>uima.cas.String</rangeTypeName>
            </featureDescription>
            <featureDescription>
-              <name>medications</name>
-              <description/>
-              <rangeTypeName>uima.cas.FSArray</rangeTypeName>
-              <elementType>org.apache.ctakes.typesystem.type.refsem.Medication</elementType>
+              <name>unit</name>
+              <description>the unit of time measurement. e.g day, month, hour, etc.</description>
+              <rangeTypeName>uima.cas.String</rangeTypeName>
+           </featureDescription>
+        </features>
+     </typeDescription>
+     <typeDescription>
+        <name>org.apache.ctakes.typesystem.type.refsem.StatusChange</name>
+        <description>Does this Medication or Procedure represent a change in state. e.g. start of use, increase of strength, no change.</description>
+        <supertypeName>org.apache.ctakes.typesystem.type.refsem.Attribute</supertypeName>
+        <features>
+            <!-- !!  Change can occur for more than one attribute.  e.g. strength increase while frequency decrease. -->
+           <featureDescription>
+              <name>value</name>
+              <description>Indicates the change status of 'stop', 'start', 'increase', 'decrease', 'noChange', 'boost'.</description>
+              <rangeTypeName>uima.cas.String</rangeTypeName>
            </featureDescription>
         </features>
      </typeDescription>
 
+     <!--     Replacements for Medication*** modifier types.  They also apply to Procedures.  -->
+     <!--           One       10 mg    Pill    by Mouth    4 times per day    for one month  starting today.  -->
+     <!--     [dosage count]  [dose]  [form]   [route]       [frequency]        [duration]   [status change]  -->
      <typeDescription>
-        <name>org.apache.ctakes.typesystem.type.textsem.RegimenMention</name>
-        <description>A Therapeutic or Preventive Procedure that consists of individual notable events.  Text Span.</description>
-        <supertypeName>org.apache.ctakes.typesystem.type.textsem.EventMention</supertypeName>
-        <features>
-           <!--     Temporal information common to all Regimen types       -->
-           <featureDescription>
-              <name>startDate</name>
-              <description/>
-              <rangeTypeName>org.apache.ctakes.typesystem.type.textsem.TimeMention</rangeTypeName>
-           </featureDescription>
-           <featureDescription>
-              <name>endDate</name>
-              <description/>
-              <rangeTypeName>org.apache.ctakes.typesystem.type.textsem.TimeMention</rangeTypeName>
-           </featureDescription>
-           <featureDescription>
-              <name>duration</name>
-              <description/>
-              <rangeTypeName>org.apache.ctakes.typesystem.type.relation.TemporalTextRelation</rangeTypeName>
-           </featureDescription>
-           <featureDescription>
-              <name>frequency</name>
-              <description/>
-              <rangeTypeName>org.apache.ctakes.typesystem.type.relation.TemporalTextRelation</rangeTypeName>
-           </featureDescription>
-           <featureDescription>
-              <name>relativeTemporalContext</name>
-              <description/>
-              <rangeTypeName>org.apache.ctakes.typesystem.type.relation.TemporalTextRelation</rangeTypeName>
-           </featureDescription>
-           <!--     Arrays for Procedures (e.g. RadioTherapy) and Medications (e.g. ChemoTherapy)       -->
-           <featureDescription>
-              <name>procedures</name>
-              <description/>
-              <rangeTypeName>uima.cas.FSArray</rangeTypeName>
-              <elementType>org.apache.ctakes.typesystem.type.textsem.ProcedureMention</elementType>
-           </featureDescription>
-           <featureDescription>
-              <name>medications</name>
-              <description/>
-              <rangeTypeName>uima.cas.FSArray</rangeTypeName>
-              <elementType>org.apache.ctakes.typesystem.type.textsem.MedicationMention</elementType>
-           </featureDescription>
-        </features>
+        <!-- !! Note that the original attribute name "Dosage" can be confusing !!
+        Dosage is actually the whole Dose, Frequency, Duration, etc. expression.  So this is really a "count of Dosages." -->
+        <name>org.apache.ctakes.typesystem.type.textsem.DosageCountModifier</name>
+        <description>How many Medication or Procedure Dosage expressions.  e.g. "one" in "one 5 mg tablet twice-a-day for 2 weeks"</description>
+        <supertypeName>org.apache.ctakes.typesystem.type.textsem.Modifier</supertypeName>
+     </typeDescription>
+     <typeDescription>
+        <name>org.apache.ctakes.typesystem.type.textsem.DoseModifier</name>
+        <description>Dose indicates the 'strength' number and unit of a medication or procedure.  e.g. 5 mg, 100 cGy, etc.</description>
+        <supertypeName>org.apache.ctakes.typesystem.type.textsem.Modifier</supertypeName>
+     </typeDescription>
+     <typeDescription>
+        <name>org.apache.ctakes.typesystem.type.textsem.TotalDoseModifier</name>
+        <description>Indicates the total dose number and unit of a medication or procedure.  e.g. Two 5mg tabs = 10mg.</description>
+        <supertypeName>org.apache.ctakes.typesystem.type.textsem.Modifier</supertypeName>
+     </typeDescription>
+     <typeDescription>
+        <name>org.apache.ctakes.typesystem.type.textsem.FormModifier</name>
+        <description>Form of a medication or procedure.  e.g. tablet, brachytherapy, etc.</description>
+        <supertypeName>org.apache.ctakes.typesystem.type.textsem.Modifier</supertypeName>
+     </typeDescription>
+     <typeDescription>
+        <name>org.apache.ctakes.typesystem.type.textsem.RouteModifier</name>
+        <description>Means by which the medication or procedure was taken or administered. e.g. Oral, beam path, etc.</description>
+        <supertypeName>org.apache.ctakes.typesystem.type.textsem.Modifier</supertypeName>
+     </typeDescription>
+     <typeDescription>
+        <name>org.apache.ctakes.typesystem.type.textsem.FrequencyModifier</name>
+        <description>How often a Medication or Procedure should occur. e.g., BID or b.i.d. or "twice-a-day" would have a number=2 and unit=day.</description>
+        <supertypeName>org.apache.ctakes.typesystem.type.textsem.Modifier</supertypeName>
+     </typeDescription>
+     <typeDescription>
+        <name>org.apache.ctakes.typesystem.type.textsem.DurationModifier</name>
+        <description>Amount of time over which a medication or procedure should occur. e.g. 2 weeks</description>
+        <supertypeName>org.apache.ctakes.typesystem.type.textsem.Modifier</supertypeName>
+     </typeDescription>
+     <typeDescription>
+        <!-- !! Change can occur for more than one attribute.  e.g. strength increase while frequency decrease. -->
+        <name>org.apache.ctakes.typesystem.type.textsem.StatusChangeModifier</name>
+        <description>Does this Medication or Procedure represent a change in state. e.g. start of use, increase of strength, no change.</description>
+        <supertypeName>org.apache.ctakes.typesystem.type.textsem.Modifier</supertypeName>
      </typeDescription>
 
   </types>

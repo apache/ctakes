@@ -26,7 +26,9 @@ import org.apache.ctakes.contexttokenizer.ae.ContextDependentTokenizerAnnotator;
 import org.apache.ctakes.core.ae.SentenceDetector;
 import org.apache.ctakes.core.ae.SimpleSegmentAnnotator;
 import org.apache.ctakes.core.ae.TokenizerAnnotatorPTB;
+import org.apache.ctakes.core.cc.FileTreeXmiWriter;
 import org.apache.ctakes.core.cc.XmiWriterCasConsumerCtakes;
+import org.apache.ctakes.core.config.ConfigParameterConstants;
 import org.apache.ctakes.dependency.parser.ae.ClearNLPDependencyParserAE;
 import org.apache.ctakes.dependency.parser.ae.ClearNLPSemanticRoleLabelerAE;
 import org.apache.ctakes.dictionary.lookup2.ae.DefaultJCasTermAnnotator;
@@ -93,9 +95,11 @@ public abstract class TemporalExtractionPipeline_ImplBase {
   
   protected static AnalysisEngine getXMIWriter(String outputDirectory) throws ResourceInitializationException{
     return AnalysisEngineFactory.createEngine(
-        XmiWriterCasConsumerCtakes.class,
-        XmiWriterCasConsumerCtakes.PARAM_OUTPUTDIR,
-        outputDirectory
+//        XmiWriterCasConsumerCtakes.class,
+//        XmiWriterCasConsumerCtakes.PARAM_OUTPUTDIR,
+          FileTreeXmiWriter.class,
+          ConfigParameterConstants.PARAM_OUTPUTDIR,
+          outputDirectory
         );
   }
   

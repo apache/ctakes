@@ -20,6 +20,7 @@ package org.apache.ctakes.temporal.pipelines;
 
 import com.lexicalscope.jewel.cli.CliFactory;
 import com.lexicalscope.jewel.cli.Option;
+import org.apache.ctakes.core.cc.FileTreeXmiWriter;
 import org.apache.ctakes.core.cc.XmiWriterCasConsumerCtakes;
 import org.apache.ctakes.core.config.ConfigParameterConstants;
 import org.apache.ctakes.temporal.ae.BackwardsTimeAnnotator;
@@ -68,10 +69,12 @@ public class EventAndTimeExtractionPipeline extends TemporalExtractionPipeline_I
 		aggregateBuilder.add(EventAnnotator.createAnnotatorDescription(new File(options.getEventModelDirectory())));
 		aggregateBuilder.add(BackwardsTimeAnnotator.createAnnotatorDescription(options.getTimeModelDirectory() + "model.jar"));
     AnalysisEngine xWriter = AnalysisEngineFactory.createEngine(
-        XmiWriterCasConsumerCtakes.class,
-        XmiWriterCasConsumerCtakes.PARAM_OUTPUTDIR,
-        options.getOutputDirectory());
-		
+//        XmiWriterCasConsumerCtakes.class,
+//        XmiWriterCasConsumerCtakes.PARAM_OUTPUTDIR,
+          FileTreeXmiWriter.class,
+          ConfigParameterConstants.PARAM_OUTPUTDIR,
+          options.getOutputDirectory());
+
     SimplePipeline.runPipeline(
         collectionReader,
         aggregateBuilder.createAggregate(),

@@ -126,6 +126,7 @@ public class EventTimeI2B2RelationAnnotator extends RelationExtractorAnnotator {
 	}
 
 	@Override
+	@SuppressWarnings( "unchecked" )
 	protected List<RelationFeaturesExtractor<IdentifiedAnnotation,IdentifiedAnnotation>> getFeatureExtractors()
 			throws ResourceInitializationException {
 		return Lists.newArrayList(

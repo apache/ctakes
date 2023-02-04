@@ -18,39 +18,27 @@
  */
 package org.apache.ctakes.assertion.medfacts;
 
-import org.apache.ctakes.assertion.stub.CharacterOffsetToLineTokenConverter;
-import org.apache.ctakes.assertion.stub.CharacterOffsetToLineTokenConverterDefaultImpl;
 import java.io.File;
-import java.io.FileInputStream;
 
 import org.apache.log4j.Logger;
-import org.apache.uima.cas.impl.XmiCasDeserializer;
 import org.xml.sax.SAXException;
-import org.apache.uima.collection.CollectionException;
 import org.apache.uima.util.CasCreationUtils;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription; 
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.CAS; 
 import org.apache.uima.cas.CASException;
 import org.apache.uima.jcas.JCas;
-import org.apache.uima.cas.TypeSystem; 
-import java.util.Collections; 
 import org.apache.uima.util.XMLParser;
 import org.apache.uima.UIMAFramework;
 import org.apache.uima.util.XMLInputSource;
 import org.apache.uima.jcas.cas.FSArray;
-import org.apache.uima.jcas.cas.Sofa; 
-import org.apache.uima.resource.metadata.TypeSystemDescription;
 import org.apache.uima.util.InvalidXMLException;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.ctakes.assertion.stub.Annotation;
 import org.apache.ctakes.assertion.stub.AssertionAnnotation;
 import org.apache.ctakes.assertion.stub.ConceptType;
-import org.apache.uima.cas.text.AnnotationIndex;
-//import org.apache.uima.jcas.tcas.Annotation;
 
 import org.apache.ctakes.assertion.stub.LineAndTokenPosition;
-import java.io.PrintWriter;
 import java.io.IOException;
 import org.apache.ctakes.assertion.stub.SingleDocumentProcessor;
 import org.apache.ctakes.assertion.stub.StringHandling;
@@ -58,8 +46,6 @@ import org.apache.ctakes.assertion.stub.LineTokenToCharacterOffsetConverter;
 import org.apache.ctakes.assertion.stub.AssertionFileProcessor;
 import java.util.List;
 
-import org.apache.ctakes.assertion.medfacts.types.Assertion;
-import org.apache.ctakes.assertion.medfacts.types.Concept;
 import org.apache.ctakes.typesystem.type.textsem.EntityMention;
 import org.apache.ctakes.typesystem.type.textsem.EventMention;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
@@ -98,9 +84,8 @@ public class Converti2b2AnnotationsToCTAKES {
 	   * @param name
 	   *          output file
 	   * @throws SAXException
-	   * @throws Exception
+	   * @throws IOException
 	   * 
-	   * @throws ResourceProcessException
 	   */
 	  private static void writeXmi(CAS aCas, File name) throws IOException, SAXException {
 	    FileOutputStream out = null;
@@ -229,8 +214,9 @@ public class Converti2b2AnnotationsToCTAKES {
 				entityOrEventMention.setOntologyConceptArr(ontologyConceptArray);
 				
 				//adjustAssertionAttributesByI2B2Convertion(entityOrEventMention, i2b2Assertion);
-				AssertionAnalysisEngine.mapI2B2AssertionValueToCtakes(i2b2Assertion.getAssertionValue().toString().toLowerCase(), entityOrEventMention);
-				
+//				AssertionAnalysisEngine.mapI2B2AssertionValueToCtakes(i2b2Assertion.getAssertionValue().toString().toLowerCase(), entityOrEventMention);
+				AssertionAnalysisEngineFit.mapI2B2AssertionValueToCtakes(i2b2Assertion.getAssertionValue().toString().toLowerCase(), entityOrEventMention);
+
 				entityOrEventMention.addToIndexes();
 				logger.info("  end assertion");
 			}

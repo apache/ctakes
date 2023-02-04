@@ -367,6 +367,7 @@ public class CreateAssertionLuceneIndexFromDelimitedFile {
 		return "java LucenePopulateDriver <dir-containing-textfile(s)> [hyphenfile] [freqcutoff]";
 	}
 
+	@SuppressWarnings( "unchecked" )
 	protected void writeToFormatLucene(String cuePhrase, String cuePhraseCategory, String cuePhraseFamily) {
 
 		Document doc = new Document();
