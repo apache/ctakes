@@ -779,7 +779,6 @@ More qualifying information on how the procedure was done.</description>
           <rangeTypeName>org.apache.ctakes.typesystem.type.refsem.BodySide</rangeTypeName>
         </featureDescription>
         <featureDescription>
-         <!-- Why is this a relation?  This procedure will be an argument in the relation!  Why not just the Anatomic Site?   -->
           <name>bodyLocation</name>
           <description/>
           <rangeTypeName>org.apache.ctakes.typesystem.type.relation.LocationOf</rangeTypeName>
@@ -816,6 +815,11 @@ More qualifying information on how the procedure was done.</description>
           <rangeTypeName>org.apache.ctakes.typesystem.type.relation.TemporalRelation</rangeTypeName>
         </featureDescription>
          <!--  New in ctakes 5    -->
+         <featureDescription>
+            <name>anatomicalSite</name>
+            <description>Anatomical site replaces the circular bodyLocation relation plus bodyLaterality and bodySide.</description>
+            <rangeTypeName>org.apache.ctakes.typesystem.type.refsem.AnatomicalSite</rangeTypeName>
+         </featureDescription>
          <featureDescription>
             <name>dosageCount</name>
             <description/>
@@ -2447,7 +2451,7 @@ More qualifying information on how the procedure was done.</description>
           <description/>
           <rangeTypeName>org.apache.ctakes.typesystem.type.relation.LocationOfTextRelation</rangeTypeName>
         </featureDescription>
-        <featureDescription>
+         <featureDescription>
           <name>procedureDevice</name>
           <description/>
           <rangeTypeName>org.apache.ctakes.typesystem.type.textsem.ProcedureDeviceModifier</rangeTypeName>
@@ -2479,6 +2483,11 @@ More qualifying information on how the procedure was done.</description>
           <rangeTypeName>org.apache.ctakes.typesystem.type.relation.TemporalTextRelation</rangeTypeName>
         </featureDescription>
          <!--  New in ctakes 5    -->
+         <featureDescription>
+            <name>anatomicalSite</name>
+            <description>Anatomical site mention replaces the circular bodyLocation relation plus bodyLaterality and bodySide.</description>
+            <rangeTypeName>org.apache.ctakes.typesystem.type.textsem.AnatomicalSiteMention</rangeTypeName>
+         </featureDescription>
          <featureDescription>
             <name>dosageCount</name>
             <description/>

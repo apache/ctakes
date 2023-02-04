@@ -56,6 +56,7 @@ import java.util.*;
 /**
  * @author Mayo Clinic
  */
+@SuppressWarnings( "unchecked" )
 final public class LookupParseUtilitiesRefactor {
 
    static private final Logger CLASS_LOGGER = Logger.getLogger( LookupParseUtilitiesRefactor.class );

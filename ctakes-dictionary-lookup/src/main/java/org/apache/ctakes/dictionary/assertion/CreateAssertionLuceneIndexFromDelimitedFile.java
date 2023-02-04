@@ -56,6 +56,7 @@ import org.apache.ctakes.core.nlp.tokenizer.TokenizerPTB;
  * hyphenated words so the dictionary entries are tokenized in the same way as
  * the clinical text will be.
  */
+@SuppressWarnings( "unchecked" )
 public class CreateAssertionLuceneIndexFromDelimitedFile {
 	private static TokenizerPTB tokenizer = new TokenizerPTB();
 
@@ -88,7 +89,7 @@ public class CreateAssertionLuceneIndexFromDelimitedFile {
 	/**
 	 * Constructor
 	 * 
-	 * @param Tokenizer
+	 * @param Tokenizer -
 	 *            Used to tokenize the dictionary entries
 	 */
 	public CreateAssertionLuceneIndexFromDelimitedFile(TokenizerPTB tokenizer)
@@ -367,7 +368,6 @@ public class CreateAssertionLuceneIndexFromDelimitedFile {
 		return "java LucenePopulateDriver <dir-containing-textfile(s)> [hyphenfile] [freqcutoff]";
 	}
 
-	@SuppressWarnings( "unchecked" )
 	protected void writeToFormatLucene(String cuePhrase, String cuePhraseCategory, String cuePhraseFamily) {
 
 		Document doc = new Document();

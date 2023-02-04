@@ -46,6 +46,7 @@ import org.apache.uima.jcas.cas.FSArray;
  * Implementation that takes Rxnorm dictionary lookup hits and stores only the
  * ones that are also present in the Orange Book.
  */
+@SuppressWarnings( "unchecked" )
 public class AssertionCuePhraseConsumerImpl extends BaseLookupConsumerImpl
 		implements LookupConsumer
 {

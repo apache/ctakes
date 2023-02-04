@@ -26,7 +26,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.apache.ctakes.core.ae.DocumentIdPrinterAnalysisEngine;
-import org.apache.ctakes.core.cc.XmiWriterCasConsumerCtakes;
+import org.apache.ctakes.core.cc.FileTreeXmiWriter;
+import org.apache.ctakes.core.config.ConfigParameterConstants;
 import org.apache.ctakes.core.cr.TextReader;
 import org.apache.log4j.Logger;
 import org.apache.uima.UIMAException;
@@ -144,9 +145,11 @@ public class RunZoner
       builder.add(mayoZonerAnnotator);
 
       AnalysisEngineDescription xWriter = AnalysisEngineFactory.createEngineDescription(
-          XmiWriterCasConsumerCtakes.class,
-          typeSystemDescription,
-          XmiWriterCasConsumerCtakes.PARAM_OUTPUTDIR,
+//          XmiWriterCasConsumerCtakes.class,
+//          typeSystemDescription,
+//          XmiWriterCasConsumerCtakes.PARAM_OUTPUTDIR,
+            FileTreeXmiWriter.class,
+            ConfigParameterConstants.PARAM_OUTPUTDIR,
           outputDirectory.toString()
           );
       

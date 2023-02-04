@@ -26,6 +26,7 @@ package org.apache.ctakes.dictionary.lookup.strtable;
  * @author Mayo Clinic
  * 
  */
+@SuppressWarnings( "unchecked" )
 public class FieldConstraintImpl implements FieldConstraint
 {
     public static final int EQ_OP = 0;

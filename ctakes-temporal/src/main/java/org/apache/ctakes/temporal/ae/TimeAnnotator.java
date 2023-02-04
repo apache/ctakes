@@ -68,6 +68,7 @@ import org.cleartk.ml.jar.GenericJarClassifierFactory;
 				PipeBitInfo.TypeProduct.BASE_TOKEN },
 		products = { PipeBitInfo.TypeProduct.TIMEX }
 )
+@SuppressWarnings( "unchecked" )
 public class TimeAnnotator extends TemporalEntityAnnotator_ImplBase {
 
 	public static final String PARAM_FEATURE_SELECTION_THRESHOLD = "WhetherToDoFeatureSelection";
