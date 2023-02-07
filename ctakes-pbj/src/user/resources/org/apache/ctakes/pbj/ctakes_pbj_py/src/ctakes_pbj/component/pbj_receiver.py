@@ -58,8 +58,8 @@ class PBJReceiver(stomp.ConnectionListener):
 
     def stop_receiver(self):
         self.conn.disconnect()
-        self.pipeline.collection_process_complete()
         exit_event.set()
+        self.pipeline.collection_process_complete()
 
     def on_message(self, frame):
         # Here we want a check for some trigger like "PBJ_SHUT_DOWN", and then call __stop.
