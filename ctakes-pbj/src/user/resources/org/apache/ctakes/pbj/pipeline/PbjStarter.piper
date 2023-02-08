@@ -7,15 +7,18 @@
 #  It will pause for 5 seconds to allow artemis to fully launch.
 #
 #  This piper will then pip the python package requirements for ctakes-pbj
-#  in an environment pointed to by the -d parameter on the command line.
+#  in an environment pointed to by the -v parameter on the command line.
+#
+#  To skip the step of runnning a pip of ctakes-pbj, set --pipPbj to "no"
 #
 
 // Set the command line parameter -a to accept the directory of the Artemis broker.
 cli ArtemisBroker=a
 // Set the command line parameter -v to accept the directory of the Python environment.
 cli VirtualEnv=v
-// Set the command line parameter --pipPbj to yes or no.
+// Set the command line parameter --pipPbj to 'no' to avoid a pip of pbj at the beginning of the run.
 cli PipPbj=pipPbj
+
 
 // Write nice big banners when ctakes starts and finishes.
 set WriteBanner=yes
@@ -33,7 +36,6 @@ add ArtemisStarter Pause=5
 //
 // pip the dependency packages in case your environment doesn't have them or needs an update.
 //
-//add PythonRunner Command="-m pip install resources/org/apache/ctakes/pbj/ctakes_pbj_py/" Wait=yes
 add PbjPipper
 
 // Add the Finished Logger for some run statistics.
