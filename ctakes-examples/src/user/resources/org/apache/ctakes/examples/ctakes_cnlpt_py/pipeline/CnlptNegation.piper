@@ -14,11 +14,16 @@
 
 #
 #  To run this pipeline from the command line, use the parameters:
-#  -p PbjFirstStep
-#  -d {python environment Directory}
+#  -p CnlptNegation
+#  -v {python environment Directory}
 #  -a {Artemis Broker Directory}
 #  -i {Input Document Directory}
 #  -o {Output Directory}
+#  --key {UMLS Key}
+#
+#  A standard command-line option is the specification of whether or not to pip the ctakes-pbj package.
+#  By default ctakes-pbj will be pip ed at the beginning of a run.  You can turn this off with:
+#  --pipPbj no
 #
 
 //  Sets up required parameters, starts your Artemis Broker, pips the PBJ project.
@@ -43,6 +48,7 @@ add PythonRunner Command="-m pip install resources/org/apache/ctakes/examples/ct
 
 // There is a fixed order to queue specification in python pipelines.
 // The incoming (receiver) queue is named first, the outgoing (sender) queue is named second.
+// TODO: Right now cnlpt isn't using --output_dir.  Need to figure out why.
 add PythonRunner Command="-m ctakes_cnlpt.negation_pipeline JavaToPy PyToJava --output_dir $OutputDirectory" LogFile=negation_pipeline.log
 
 

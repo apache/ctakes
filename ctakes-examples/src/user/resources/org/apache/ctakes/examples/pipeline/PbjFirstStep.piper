@@ -13,10 +13,14 @@
 #
 #  To run this pipeline from the command line, use the parameters:
 #  -p PbjFirstStep
-#  -d {python environment Directory}
+#  -v {python environment Directory}
 #  -a {Artemis Broker Directory}
 #  -i {Input Document Directory}
 #  -o {Output Directory}
+#
+#  A standard command-line option is the specification of whether or not to pip the ctakes-pbj package.
+#  By default ctakes-pbj will be pip ed at the beginning of a run.  You can turn this off with:
+#  --pipPbj no
 #
 
 
