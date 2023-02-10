@@ -1,14 +1,24 @@
 
 Apache cTAKES
 ==================================
-Detailed documentation can be found at:
-http://ctakes.apache.org
+
+Apache cTAKES<sup>TM</sup> is a natural language processing system for extraction of information from electronic medical record clinical free-text.
 
 Requirements
 ---------------------------------------
 Java 1.8 is required to run cTAKES
-Maven 3.0.0 is required to build cTAKES
+Maven 3 is required to build cTAKES
 
+A license for the [Unified Medical Language System (UMLS)](https://www.nlm.nih.gov/research/umls/index.html) is required to use the named entity recognition module (dictionary lookup) with the default dictionary.
 
-For information on Installation and Operation:
-https://cwiki.apache.org/confluence/display/ctakes/ctakes
+Information can be fond in the wiki concerning:
+- Developer installation.
+- User installation.
+- Running the system and its tools.
+- Example pipelines.
+- The application programming interface (API).
+- Example code.
+- Extending the system.
+- Incorporating Apache cTAKES<sup>TM</sup> in a maven project.
+
+* Documentation is currently in progress. 
