@@ -26,17 +26,20 @@ class PBJReceiver(stomp.ConnectionListener):
         self.pipeline = pipeline
         self.password = password
         self.username = username
+        self.id = '1'
         self.typesystem = None
-        print('Starting Python Bridge to Java Receiver on', self.source_host, self.source_queue)
-        self.conn = stomp.Connection([(self.source_host, self.source_port)])
-        self.conn.set_listener('', self)
+        print(time.ctime((time.time())), "Starting PBJ Receiver on", self.source_host, self.source_queue, "...")
+        # Use a heartbeat of 10 minutes  (in milliseconds)
+        self.conn = stomp.Connection12([(self.source_host, self.source_port)],
+                                       keepalive=True, heartbeats=(600000, 600000))
+        self.conn.set_listener('PBJ_Receiver', self)
         self.stop = False
         self.__connect_and_subscribe()
-        # self.waiting_for_message()c
 
     def __connect_and_subscribe(self):
         self.conn.connect(self.username, self.password, wait=True)
-        self.conn.subscribe(destination=self.source_queue, id='1', ack='auto')
+        self.conn.subscribe(destination=self.source_queue, id=self.id, ack='auto')
+        # self.conn.subscribe(destination=self.source_queue, id=self.id, ack='client')
 
     def set_typesystem(self, typesystem):
         self.typesystem = typesystem
@@ -47,7 +50,6 @@ class PBJReceiver(stomp.ConnectionListener):
             type_system_accessor = TypeSystemLoader()
             type_system_accessor.load_type_system()
             self.set_typesystem(type_system_accessor.get_type_system())
-
         return self.typesystem
 
     def set_host(self, host_name):
@@ -57,26 +59,28 @@ class PBJReceiver(stomp.ConnectionListener):
         self.stop = stop
 
     def stop_receiver(self):
+        self.conn.unsubscribe(destination=self.source_queue, id=self.id)
         self.conn.disconnect()
-        exit_event.set()
+        print(time.ctime((time.time())), "Disconnected PBJ Receiver on", self.source_host, self.source_queue)
         self.pipeline.collection_process_complete()
+        exit_event.set()
 
     def on_message(self, frame):
-        # Here we want a check for some trigger like "PBJ_SHUT_DOWN", and then call __stop.
         if frame.body == STOP_MESSAGE:
+            print(time.ctime((time.time())), "Received Stop code.")
             self.stop = True
-            time.sleep(3)
+            # time.sleep(3)
             self.stop_receiver()
-            print("\nReceiver stopped")
         else:
-            # should we just stop the receiver after one sent message or keep it open for multiple messages?
-
             if XMI_INDICATOR in frame.body:
                 cas = cassis.load_cas_from_xmi(frame.body, self.get_typesystem())
                 self.pipeline.process(cas)
             else:
-                print(frame.body)
+                print(time.ctime((time.time())), "Malformed Message:\n", frame.body)
 
     def on_disconnected(self):
-        self.__connect_and_subscribe()
+        if self.stop is False:
+            self.__connect_and_subscribe()
 
+    def on_error(self, frame):
+        print(time.ctime((time.time())), "Receiver Error:", frame.body)

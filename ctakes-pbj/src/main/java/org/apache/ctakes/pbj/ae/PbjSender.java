@@ -19,8 +19,6 @@
 package org.apache.ctakes.pbj.ae;
 
 import org.apache.ctakes.core.cc.XMISerializer;
-import org.apache.ctakes.core.pipeline.PipeBitInfo;
-import org.apache.ctakes.core.util.log.DotLogger;
 import org.apache.log4j.Logger;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -32,19 +30,9 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.xml.sax.SAXException;
 
-import javax.jms.BytesMessage;
-import javax.jms.JMSException;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.ConnectException;
-import java.net.Socket;
-import java.nio.charset.StandardCharsets;
 import java.util.UUID;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 
 import static org.apache.ctakes.pbj.util.PbjConstants.*;
 
@@ -53,21 +41,17 @@ import static org.apache.ctakes.pbj.util.PbjConstants.*;
  * @author DJ , chip-nlp
  * @since {1/10/22}
  */
-@PipeBitInfo(
-      name = "PbjSender",
-      description = "Sends jcas to Artemis Queue using Stomp",
-      role = PipeBitInfo.Role.SPECIAL
-)
-public class PbjSender extends JCasAnnotator_ImplBase {
+abstract public class PbjSender extends JCasAnnotator_ImplBase {
 
    static private final Logger LOGGER = Logger.getLogger( "PbjSender" );
-   // to add a configuration parameter, type "param" and hit tab.
+
    static public final String PARAM_SENDER_NAME = "SenderName";
    static public final String PARAM_SENDER_PASS = "SenderPass";
    static public final String PARAM_HOST = "SendHost";
    static public final String PARAM_PORT = "SendPort";
    static public final String PARAM_QUEUE = "SendQueue";
    static public final String PARAM_SEND_STOP = "SendStop";
+   static public final String PARAM_QUEUE_SIZE = "QueueSize";
 
    static public final String DESC_SENDER_NAME = "Your Artemis Username.";
    static public final String DESC_SENDER_PASS = "Your Artemis Password.";
@@ -75,6 +59,7 @@ public class PbjSender extends JCasAnnotator_ImplBase {
    static public final String DESC_PORT = "The Artemis Port to send information.";
    static public final String DESC_QUEUE = "The Artemis Queue to send information.";
    static public final String DESC_SEND_STOP = "Yes to send a stop signal to Pbj Receivers.";
+   static public final String DESC_QUEUE_SIZE = "The size of the Queue.  Default is 5 messages.";
 
    @ConfigurationParameter(
          name = PARAM_SENDER_NAME,
@@ -82,7 +67,7 @@ public class PbjSender extends JCasAnnotator_ImplBase {
          mandatory = false,
          defaultValue = DEFAULT_USER
    )
-   private String _userName;
+   protected String _userName;
 
    @ConfigurationParameter(
            name = PARAM_SENDER_PASS,
@@ -90,7 +75,7 @@ public class PbjSender extends JCasAnnotator_ImplBase {
            mandatory = false,
            defaultValue = DEFAULT_PASS
    )
-   private String _password;
+   protected String _password;
 
    @ConfigurationParameter(
          name = PARAM_HOST,
@@ -98,20 +83,20 @@ public class PbjSender extends JCasAnnotator_ImplBase {
          mandatory = false,
          defaultValue = DEFAULT_HOST
    )
-   private String _host;
+   protected String _host;
 
    @ConfigurationParameter(
          name = PARAM_PORT,
          description = DESC_PORT,
          mandatory = false
    )
-   private int _port = DEFAULT_PORT;
+   protected int _port = DEFAULT_PORT;
 
    @ConfigurationParameter(
          name = PARAM_QUEUE,
          description = DESC_QUEUE
    )
-   private String _queue;
+   protected String _queue;
 
    @ConfigurationParameter(
          name = PARAM_SEND_STOP,
@@ -119,29 +104,14 @@ public class PbjSender extends JCasAnnotator_ImplBase {
          mandatory = false,
            defaultValue = DEFAULT_SEND_STOP
    )
-   private String _sendStop;
+   protected String _sendStop;
 
-
-   ////////////////////////////////////////////////////////////////////////////////////////
-   //    Constants for the test.    In ctakes we want host, port and queue to be configurable.
-   ////////////////////////////////////////////////////////////////////////////////////////
-
-   private static final String END_OF_FRAME = "\u0000";
-
-   static private final Object SOCKET_LOCK = new Object();
-
-   ////////////////////////////////////////////////////////////////////////////////////////
-   //    Static mutable variables.  These need to go in a Singleton to maintain thread safety.
-   //      As we could -possibly- have multiple different types of senders in one pipeline,
-   //      we may want these to be in a map<String,SocketHandler>
-   //      where String is a sender name and SocketHandler is a class containing _executer and _socket.
-   //    For now we should push forward with the intention of having only one sender per pipeline.
-   ////////////////////////////////////////////////////////////////////////////////////////
-
-   static private final ScheduledExecutorService _executor = Executors.newScheduledThreadPool( 1 );
-   static private Socket _socket = null;
-   static private boolean _stop = false;
-   static private String _id = "";
+   @ConfigurationParameter(
+         name = PARAM_QUEUE_SIZE,
+         description = DESC_QUEUE_SIZE,
+         mandatory = false
+   )
+   protected int _queueSize = DEFAULT_QUEUE_SIZE;
 
 
    /**
@@ -203,34 +173,30 @@ public class PbjSender extends JCasAnnotator_ImplBase {
       _sendStop = "yes";
    }
 
-   public void initialize( final String queue ) {
-      setQueue( queue );
-   }
-
-   public void initialize( final String queue, final String host, final String port ) {
-      setQueue( queue );
-      setHost( host );
-      setPort( port );
+   /**
+    *
+    * @param queueSize of the Artemis broker host machine.
+    */
+   public void setQueueSize( final String queueSize ) {
+      try {
+         setQueueSize( Integer.parseInt( queueSize ) );
+      } catch (NumberFormatException nfE ) {
+         LOGGER.warn( "Couldn't set Queue size " + nfE.getMessage() );
+      }
    }
 
    /**
     *
-    * @param jCas ye olde ...
-    * @throws IOException -
-    * @throws SAXException -
+    * @param queueSize of the Artemis broker host machine.
     */
-   public void sendJCas( final JCas jCas ) throws IOException, SAXException {
-      sendXmi( jCas.getCas());
+   public void setQueueSize( final int queueSize ) {
+      _queueSize = queueSize;
    }
 
-   /**
-    * Send a stop code to the Artemis queue.
-    * @throws IOException -
-    */
-   public void sendStop() throws IOException {
-      LOGGER.info( "Sending Stop code to " + _queue + " ..." );
-      sendText( _queue, STOP_MESSAGE );
-   }
+
+   protected String _id = "";
+   private XmiCasSerializer _casSerializer;
+   private XMISerializer _xmiSerializer;
 
 
    /**
@@ -238,69 +204,11 @@ public class PbjSender extends JCasAnnotator_ImplBase {
     */
    @Override
    public void initialize( final UimaContext context ) throws ResourceInitializationException {
-      // If custom initialization is not necessary then this method override can be removed.
-      // If custom initialization is necessary then Always call super.initialize(..) first.
       super.initialize( context );
-      LOGGER.info( "Initializing ..." );
-      try ( DotLogger dotter = new DotLogger() ) {
-         // run long initialization process.  Caught Exception may be of some other type.
-         _id = createID();
-         startTimeOutLoop( _host, _port, _id, 30 );
-      } catch ( IOException ioE ) {
-         throw new ResourceInitializationException( ioE );
-      }
-      // If the initialization is quick then do not use the DotLogger.
-   }
-
-   ////////////////////////////////////////////////////////////////////////////////////////
-   //    TimeoutLoop     Will disconnect and reconnect the sender socket every 30 seconds.
-   ////////////////////////////////////////////////////////////////////////////////////////
-
-   /**
-    * Starts up a background thread to constantly disconnect and reconnect the sender socket.
-    *
-    * @param host -
-    * @param port -
-    * @param id   -
-    * @param wait timeout / reconnection interval in seconds
-    * @throws IOException -
-    */
-   private void startTimeOutLoop( final String host,
-                                  final int port,
-                                  final String id,
-                                  final long wait ) throws IOException {
-      final Reconnecter reconnecter = new Reconnecter( host, port, id );
-      _executor.scheduleAtFixedRate( reconnecter, 0, wait, TimeUnit.SECONDS );
-   }
-
-   /**
-    * Stop the loop that reconnects to the artemis broker.
-    * @throws IOException -
-    */
-   private void stopTimeOutLoop() throws IOException {
-      _executor.shutdownNow();
-   }
-
-   /**
-    * The Artemis implementation using Stomp times out if no information has been sent for some period of time.
-    * This will reconnect to the broker.
-    */
-   private class Reconnecter implements Runnable {
-      private final String _host;
-      private final int _port;
-      private final String _id;
-      private Reconnecter( final String host, final int port, final String id ) {
-         _host = host;
-         _port = port;
-         _id = id;
-      }
-      public void run() {
-         try {
-            reconnect( _host, _port, _id );
-         } catch ( IOException ioE ) {
-            ioE.printStackTrace();
-         }
-      }
+      LOGGER.info( "Starting PBJ Sender on " + _host + " " + _queue + " ..." );
+      _id = createID();
+      connect();
+      registerShutdownHook();
    }
 
    /**
@@ -309,12 +217,9 @@ public class PbjSender extends JCasAnnotator_ImplBase {
     */
    @Override
    public void process( final JCas jcas ) throws AnalysisEngineProcessException {
-      LOGGER.info( "Sending processed information to " + _queue + " ..." );
-      try ( DotLogger dotter = new DotLogger() ) {
-         sendJCas( jcas );
-      } catch ( IOException | SAXException ioE ) {
-         throw new AnalysisEngineProcessException( ioE );
-      }
+      LOGGER.info( "Sending processed information to " + _host + " " + _queue + " ..." );
+//      waitOnQueue();
+      sendJCas( jcas );
    }
 
    /**
@@ -322,57 +227,9 @@ public class PbjSender extends JCasAnnotator_ImplBase {
     */
    @Override
    public void collectionProcessComplete() throws AnalysisEngineProcessException {
-      if ( _sendStop.equalsIgnoreCase( "yes" ) ) {
-         try {
-            sendStop();
-         } catch ( IOException ioE ) {
-            throw new AnalysisEngineProcessException( ioE );
-         }
-      }
-      _stop = true;
-      try {
-         disconnect( _id );
-         stopTimeOutLoop();
-      } catch ( IOException ioE ) {
-         throw new AnalysisEngineProcessException( ioE );
-      }
+      sendStop();
+      disconnect();
    }
-
-   /**
-    * Serialize a CAS to a file in XMI format
-    *
-    * @param cas CAS to serialize
-    * @throws IOException  -
-    * @throws SAXException -
-    */
-   private void sendXmi( final CAS cas ) throws IOException, SAXException {
-      try ( ByteArrayOutputStream outputStream = new ByteArrayOutputStream() ) {
-         XmiCasSerializer casSerializer = new XmiCasSerializer( cas.getTypeSystem() );
-         XMISerializer xmiSerializer = new XMISerializer( outputStream );
-         casSerializer.serialize( cas, xmiSerializer.getContentHandler() );
-//         String XMI = new String( outputStream.toByteArray() );
-         String XMI = outputStream.toString();
-         sendText( _queue, XMI );
-      }
-   }
-
-
-
-   ////////////////////////////////////////////////////////////////////////////////////////
-   //
-   //    Sender stuff
-   //
-   ////////////////////////////////////////////////////////////////////////////////////////
-
-   // TODO  https://activemq.apache.org/components/artemis/documentation/1.1.0/examples.html
-   //  According to https://activemq.apache.org/components/artemis/documentation/1.0.0/interoperability.html
-   //  (about half way down), it looks like we CAN go from a jms sender to a STOMP receiver:
-   //     "The same logic applies when mapping a JMS message or a Core message to Stomp.
-   //     A Stomp client can check the presence of the content-length header
-   //     to determine the type of the message body (String or bytes)."
-   //  That might be a lot more convenient than using all of this socket garbage.
-   //  At some point we should try and test.
-
 
    /**
     *
@@ -383,192 +240,95 @@ public class PbjSender extends JCasAnnotator_ImplBase {
       return uuid.toString();
    }
 
-
+   private void sendJCas( final JCas jCas ) throws AnalysisEngineProcessException {
+      try ( ByteArrayOutputStream outputStream = new ByteArrayOutputStream() ) {
+         final CAS cas = jCas.getCas();
+         if ( _xmiSerializer == null ) {
+            _casSerializer = new XmiCasSerializer( cas.getTypeSystem() );
+         }
+         if ( _xmiSerializer == null ) {
+            _xmiSerializer = new XMISerializer();
+         }
+         _xmiSerializer.setOutputStream( outputStream );
+         _casSerializer.serialize( cas, _xmiSerializer.getContentHandler() );
+         final String xmi = outputStream.toString();
+         sendText( xmi );
+      } catch ( IOException | SAXException multE ) {
+         throw new AnalysisEngineProcessException( multE );
+      }
+   }
 
 
    ////////////////////////////////////////////////////////////////////////////////////////
-   //    Socket Create, Connect
+   //
+   //    Sender stuff
+   //
    ////////////////////////////////////////////////////////////////////////////////////////
 
    /**
-    * create a sender socket and send the "Connect" request.
-    * @param host -
-    * @param port -
-    * @param id -
-    * @throws IOException -
+    * Wait until the queue can accept more items
     */
-   private void connect( final String host, final int port, final String id ) throws IOException {
-      if ( _stop ) {
+   abstract protected void waitOnQueue();
+
+   /**
+    * Send text to the queue.
+    * @param text -
+    * @throws AnalysisEngineProcessException -
+    */
+   abstract protected void sendText( final String text ) throws AnalysisEngineProcessException;
+
+   /**
+    * Send a stop code to the Artemis queue.
+    * @throws AnalysisEngineProcessException -
+    */
+   protected void sendStop() throws AnalysisEngineProcessException {
+      if ( !_sendStop.equalsIgnoreCase( "yes" ) ) {
          return;
       }
-      final String connectFrame = "CONNECT\n" +
-                                  "accept-version:1.2\n" +
-                                  "host:" + host + "\n" +
-                                  "request-id:" + id + "\n" +
-                                  "\n" +
-                                  END_OF_FRAME;
-      synchronized ( SOCKET_LOCK ) {
-         _socket = createSocket( host, port );
-         sendFrame( connectFrame );
-         String response = receiveFrame();
-      }
-   }
-
-   /**
-    * create a socket for the sender.
-    * @param host -
-    * @param port -
-    * @return -
-    * @throws IOException -
-    */
-   static private Socket createSocket( final String host, final int port ) throws IOException {
-      synchronized ( SOCKET_LOCK ) {
-         try {
-            return new Socket( host, port );
-         } catch ( ConnectException cE ) {
-            LOGGER.error( "Cannot connect to Artemis.  It is possible that Artemis is not running on " + host + "." );
-            LOGGER.error( "Cannot connect to Artemis.  It is possible that port " + port + " is in use." );
-            LOGGER.error( "Please check the Artemis log file, in the output directory by default." );
-            throw cE;
-         }
+      LOGGER.info( "Sending Stop code to " + _host + " " + _queue + " ..." );
+      try {
+         // TODO send stop as MULTICAST to stop all receivers on the queue.  v6 ?
+         sendText( STOP_MESSAGE );
+      } catch ( AnalysisEngineProcessException ioE ) {
+         throw new AnalysisEngineProcessException( ioE );
       }
    }
 
 
    ////////////////////////////////////////////////////////////////////////////////////////
-   //    Socket Close, Disconnect
+   //    Connection, Socket Connect and Disconnect
    ////////////////////////////////////////////////////////////////////////////////////////
 
    /**
-    * Send the "Disconnect" request and then close the socket.
-    * @param id -
-    * @throws IOException -
+    * Create a connection to the queue.
+    * @throws ResourceInitializationException -
     */
-   static private void disconnect( final String id ) throws IOException {
-      String disconnectFrame = "DISCONNECT\n" +
-                               "receipt:" + id + "\n" +
-                               "\n" +
-                               END_OF_FRAME;
-      synchronized ( SOCKET_LOCK ) {
-         if ( _socket == null || !_socket.isConnected() ) {
-            return;
-         }
-         sendFrame( disconnectFrame );
-         final String response = receiveFrame();
-         closeSocket();
-      }
-   }
+   abstract protected  void connect() throws ResourceInitializationException;
 
    /**
-    * Close the socket for the sender.
-    * @throws IOException -
+    * Disconnect from the queue.
+    * @throws AnalysisEngineProcessException -
     */
-   static private void closeSocket() throws IOException {
-      // Lock may be reentrant, but use it just in case.
-      synchronized ( SOCKET_LOCK ) {
-         _socket.close();
-      }
-   }
+   abstract protected void disconnect() throws AnalysisEngineProcessException;
 
 
-   ////////////////////////////////////////////////////////////////////////////////////////
-   //    Socket Reconnect.  Convenience methods.
-   ////////////////////////////////////////////////////////////////////////////////////////
-
-
-   /**
-    * Convenience method to disconnect and immediately connect.
-    * @param host -
-    * @param port -
-    * @param id -
-    * @throws IOException -
+    /**
+    * Registers a shutdown hook for the process so that it disconnects when the VM exits.
+    * This includes kill signals and user actions like "Ctrl-C".
     */
-   private void reconnect( final String host,
-                           final int port,
-                           final String id ) throws IOException {
-      disconnect( id );
-      connect( host, port, id );
-   }
-
-
-   ////////////////////////////////////////////////////////////////////////////////////////
-   //    Send frame to Send Socket.  Convenience methods.
-   ////////////////////////////////////////////////////////////////////////////////////////
-
-   /**
-    * creates and sends frame.
-    * @param queue -
-    * @param text -
-    * @throws IOException -
-    */
-   static private void sendText( final String queue,
-                                 final String text ) throws IOException {
-      String message = "SEND\n" +
-                       "destination:" + queue + "\n" +
-                       "destination-type:ANYCAST\n" +
-//                       Using text/plain actually changes the received message to a BytesMessage instead of a
-//                       TextMessage !  As far as I can tell this content type should be declared.
-                       "content-type:text/plain\n" +
-                       "content-length:" + text.length() + "\n" +
-                       "\n" +
-                       text +
-                       END_OF_FRAME;
-      sendFrame( message );
-   }
-
-   /**
-    * Sends data to the sender socket.
-    * @param data -
-    * @throws IOException -
-    */
-   static private void sendFrame( final String data ) throws IOException {
-      byte[] bytes = data.getBytes( StandardCharsets.UTF_8 );
-      synchronized ( SOCKET_LOCK ) {
-         if ( _socket == null || _socket.isClosed() ) {
-            try {
-               TimeUnit.SECONDS.sleep( 1 );
-            } catch ( InterruptedException intE ) {
-               intE.printStackTrace();
-            }
-         }
-         final OutputStream outputStream = _socket.getOutputStream();
-         outputStream.write( bytes );
-         outputStream.flush();
-      }
-   }
-
-   /**
-    * Just in case we want to use an acknowledgement (or error) in the Sender.
-    * @return -
-    * @throws IOException -
-    */
-   static private String receiveFrame() throws IOException {
-      synchronized ( SOCKET_LOCK ) {
-         InputStream inputStream = _socket.getInputStream();
-         byte[] buffer = new byte[ 1024 ];
-         int size = inputStream.read( buffer );
-         byte[] data = new byte[ size ];
-         System.arraycopy( buffer, 0, data, 0, size );
-         return new String( data, StandardCharsets.UTF_8 );
-      }
-   }
-
-
-   /**
-    *
-    * @param message BytesMessage to consume.  Using the content-type text/plain produces a message with a byte array.
-    * @return text from bytes.
-    * @throws JMSException -
-    */
-   static private String readBytesMessage( final BytesMessage message ) throws JMSException {
-      final StringBuilder sb = new StringBuilder();
-      byte[] buffer = new byte[1024];
-      int size = message.readBytes( buffer );
-      while ( size > 0 ) {
-         sb.append( new String( buffer, 0, size ) );
-         size = message.readBytes( buffer );
-      }
-      return sb.toString();
+   private void registerShutdownHook() {
+      Runtime.getRuntime()
+             .addShutdownHook( new Thread( () -> {
+                try {
+                   sendStop();
+                   disconnect();
+                } catch ( AnalysisEngineProcessException aE ) {
+                   if ( aE.getMessage() == null || aE.getMessage().equals( "null" ) ) {
+                      return;
+                   }
+                   LOGGER.info( "Artemis Disconnect: " + aE.getMessage() );
+                }
+             } ) );
    }
 
 

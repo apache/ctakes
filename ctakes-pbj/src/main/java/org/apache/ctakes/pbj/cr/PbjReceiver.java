@@ -78,7 +78,7 @@ public class PbjReceiver extends JCasCollectionReader_ImplBase {
          mandatory = false,
          defaultValue = DEFAULT_HOST
    )
-   private String _hostName;
+   private String _host;
 
    @ConfigurationParameter(
          name = PARAM_PORT,
@@ -91,7 +91,7 @@ public class PbjReceiver extends JCasCollectionReader_ImplBase {
          name = PARAM_QUEUE,
          description = DESC_QUEUE
    )
-   private String _queueName;
+   private String _queue;
 
    @ConfigurationParameter(
          name = PARAM_ACCEPT_STOP,
@@ -101,6 +101,7 @@ public class PbjReceiver extends JCasCollectionReader_ImplBase {
    )
    private String _acceptStop;
 
+   Connection _connection;
    private MessageConsumer _consumer;
    //private boolean _stop = false;
    private int _casCount = 0;
@@ -114,28 +115,28 @@ public class PbjReceiver extends JCasCollectionReader_ImplBase {
    @Override
    public void initialize( final UimaContext context ) throws ResourceInitializationException {
       super.initialize( context );
-      Connection connection = null;
       try {
          InitialContext initialContext = new InitialContext();
-         LOGGER.info( "Starting Python Bridge to Java Receiver on " + _hostName + " " + _queueName + " ..." );
+         LOGGER.info( "Starting Python Bridge to Java Receiver on " + _host + " " + _queue + " ..." );
          final ActiveMQConnectionFactory cf
-               = new ActiveMQConnectionFactory( "tcp://" + _hostName + ":" + _port );
+               = new ActiveMQConnectionFactory( "tcp://" + _host + ":" + _port );
          // Time To Live TTL of -1 asks server to never close this connection.
          cf.setConnectionTTL( -1 );
          cf.setReconnectAttempts( -1 );
          // On the java side we don't need to parse STOMP.  JMS will automatically translate.
-         connection = cf.createConnection();
-         final Session session = connection.createSession( false, Session.AUTO_ACKNOWLEDGE );
-         final ActiveMQQueue queue = new ActiveMQQueue( _queueName );
+         _connection = cf.createConnection();
+         final Session session = _connection.createSession( false, Session.AUTO_ACKNOWLEDGE );
+         final ActiveMQQueue queue = new ActiveMQQueue( _queue );
          _consumer = session.createConsumer( queue );
-         connection.start();
+         _connection.start();
+         registerShutdownHook();
       } catch ( NamingException | JMSException multE ) {
          throw new ResourceInitializationException( multE );
       }
    }
 
    /**
-    * Will continue to get more text until it reaches 'DISCONNECT_ME' (STOP SIGNAL)
+    * Will continue to get more text until it reaches some STOP SIGNAL.
     * {@inheritDoc} - Does the same thing as it's parent
     */
    @Override
@@ -189,10 +190,10 @@ public class PbjReceiver extends JCasCollectionReader_ImplBase {
                           + "\n" + message.toString() + "\nProcessing Empty Document." );
             text = EMPTY_CAS;
          }
-         //println( "Testing this right now :" + text );
          if ( !text.isEmpty() ) {
             if ( _acceptStop.equalsIgnoreCase( "yes" ) && text.equals( STOP_MESSAGE ) ) {
-               LOGGER.info("Received Stop code.");
+               LOGGER.info( "Received Stop code." );
+               disconnect();
                return false;
             }
             _messageText = text;
@@ -212,6 +213,29 @@ public class PbjReceiver extends JCasCollectionReader_ImplBase {
       return new Progress[]{
             new ProgressImpl( _casCount, Integer.MAX_VALUE, Progress.ENTITIES )
       };
+   }
+
+
+   private void disconnect() {
+      try {
+         _connection.stop();
+         _connection.close();
+         LOGGER.info( "Disconnected PBJ Sender on " + _host + " " + _queue + " ..." );
+      } catch ( JMSException jmsE ) {
+         if ( jmsE.getMessage().equalsIgnoreCase( "Connection is closed" ) ) {
+            return;
+         }
+         LOGGER.info( "Artemis Disconnect: " + jmsE.getMessage() );
+      }
+   }
+
+   /**
+    * Registers a shutdown hook for the process so that it disconnects when the VM exits.
+    * This includes kill signals and user actions like "Ctrl-C".
+    */
+   private void registerShutdownHook() {
+      Runtime.getRuntime()
+             .addShutdownHook( new Thread( this::disconnect ) );
    }
 
 

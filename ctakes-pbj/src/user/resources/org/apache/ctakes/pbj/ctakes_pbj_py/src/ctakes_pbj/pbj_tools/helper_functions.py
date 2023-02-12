@@ -43,3 +43,10 @@ def get_covered_list(to_cover_with, to_cover):
                 break
         covered_list.append(covered)
     return covered_list
+
+
+def get_document_id(cas):
+    doc_ids = cas.select(ctakes_types.DocumentID)
+    for doc_id in doc_ids:
+        return doc_id.documentID
+    return "Unknown Document"

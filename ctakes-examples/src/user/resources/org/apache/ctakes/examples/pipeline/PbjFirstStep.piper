@@ -56,4 +56,5 @@ add PythonRunner Command="-m $PbjSecondStep JavaToPy PyToJava" LogFile=word_find
 load DefaultTokenizerPipeline
 
 // Send CAS to Artemis at the specified queue.  Send stop signal when processing has finished.
-add PbjSender SendQueue=JavaToPy SendStop=yes
+add PbjJmsSender SendQueue=JavaToPy SendStop=yes
+//add PbjStompSender SendQueue=JavaToPy SendStop=yes

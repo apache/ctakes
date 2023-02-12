@@ -13,13 +13,14 @@ class NegationDelegator(cas_annotator.CasAnnotator):
 
     # Initializes the cNLPT, which loads its Negation model.
     def initialize(self):
-        print(time.ctime((time.time())) + " Initializing cnlp-transformers negation ...")
+        print(time.ctime((time.time())), "Initializing cnlp-transformers negation ...")
         asyncio.run(self.init_caller())
-        print(time.ctime((time.time())) + " Done.")
+        print(time.ctime((time.time())), "Done.")
 
     # Processes the document to get Negation on Events from cNLPT.
     def process(self, cas):
-        print(time.ctime((time.time())) + " Processing cnlp-transformers negation ...")
+        print(time.ctime((time.time())), "Processing cnlp-transformers negation ...")
+        # print(time.ctime((time.time())), "Processing cnlp-transformers negation on", get_document_id(cas), "...")
         sentences = cas.select(ctakes_types.Sentence)
         event_mentions = cas.select(ctakes_types.EventMention)
         sentence_events = get_covered_list(sentences, event_mentions)
@@ -27,10 +28,12 @@ class NegationDelegator(cas_annotator.CasAnnotator):
         i = 0
         while i < len(sentences):
             if len(sentence_events[i]) > 0:
+                print(time.ctime((time.time())), "Processing cnlp-transformers negation on sentence",
+                      str(i), "of", str(len(sentences)), "...")
                 offsets = get_windowed_offsets(sentence_events[i], sentences[i].begin)
                 asyncio.run(self.negation_caller(cas, sentences[i].get_covered_text(), sentence_events[i], offsets))
             i += 1
-        print(time.ctime((time.time())) + " Done.")
+        print(time.ctime((time.time())), "cnlp-transformers negation Done.")
 
     async def init_caller(self):
         await negation_rest.startup_event()

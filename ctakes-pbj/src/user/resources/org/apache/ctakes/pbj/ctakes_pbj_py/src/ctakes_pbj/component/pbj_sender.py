@@ -1,4 +1,5 @@
 import stomp
+import time
 from ctakes_pbj.component import cas_annotator
 from ctakes_pbj.pipeline.pbj_pipeline import STOP_MESSAGE
 from ctakes_pbj.pbj_tools import arg_parser
@@ -16,27 +17,29 @@ class PBJSender(cas_annotator.CasAnnotator):
         self.target_port = port_name
         self.password = password
         self.username = username
+        print(time.ctime((time.time())), "Starting PBJ Sender on", self.target_host, self.target_queue, "...")
+        # Use a heartbeat of 10 minutes  (in milliseconds)
+        self.conn = stomp.Connection12([(self.target_host, self.target_port)],
+                                       keepalive=True, heartbeats=(600000, 600000))
+        self.conn.connect(self.username, self.password, wait=True)
 
     def process(self, cas):
-        print("Sending processed information to " + self.target_queue + " ...")
+        print(time.ctime((time.time())), "Sending processed information to",
+              self.target_host, self.target_queue, "...")
         xmi = cas.to_xmi()
-        conn = stomp.Connection([(self.target_host, self.target_port)])
-        conn.connect(self.username, self.password, wait=True)
-        conn.send(self.target_queue, xmi)
+        self.conn.send(self.target_queue, xmi)
 
     def collection_process_complete(self):
         self.send_stop()
 
     def send_text(self, text):
-        conn = stomp.Connection([(self.target_host, self.target_port)])
-        conn.connect(self.username, self.password, wait=True)
-        conn.send(self.target_queue, text)
+        self.conn.send(self.target_queue, text)
 
     def send_stop(self):
-        print("Sending Stop code to " + self.target_queue + " ...")
-        conn = stomp.Connection([(self.target_host, self.target_port)])
-        conn.connect(self.username, self.password, wait=True)
-        conn.send(self.target_queue, STOP_MESSAGE)
+        print(time.ctime((time.time())), "Sending Stop code to", self.target_host, self.target_queue, "...")
+        self.conn.send(self.target_queue, STOP_MESSAGE)
+        self.conn.disconnect()
+        print(time.ctime((time.time())), "Disconnected PBJ Sender on", self.target_host, self.target_queue)
 
     def set_queue(self, queue_name):
         self.target_queue = queue_name
@@ -58,7 +61,3 @@ class PBJSender(cas_annotator.CasAnnotator):
 
     def get_username(self):
         return self.username
-
-
-if __name__ == "__main__":
-    PBJSender()

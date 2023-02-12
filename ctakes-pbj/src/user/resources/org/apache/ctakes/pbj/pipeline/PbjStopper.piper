@@ -16,4 +16,4 @@ add ArtemisStopper
 add util.log.FinishedLogger
 
 // Force a stop, just in case some external process is trying to stay connected.
-addLast ExitForcer
+addLast ExitForcer Pause=3

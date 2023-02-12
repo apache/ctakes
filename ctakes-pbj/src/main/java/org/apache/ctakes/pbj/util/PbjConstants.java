@@ -12,6 +12,7 @@ public final class PbjConstants {
     public static final String DEFAULT_SEND_STOP = "yes";
     public static final String DEFAULT_USER = "guest";
     public static final String DEFAULT_PASS = "guest";
+    public static final int DEFAULT_QUEUE_SIZE = 5;
 
     public static final String STOP_MESSAGE = "Apache cTAKES PBJ Stop Message.";
 
