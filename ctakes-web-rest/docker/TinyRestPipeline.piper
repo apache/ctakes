@@ -1,0 +1,10 @@
+//   The rest module always runs a piper file with this name.
+
+//   By Default this piper file loads Default.piper
+
+//   If you would like to run a pipeline other than that in Default.piper,
+//   please create your own piper file and load it in this file instead of the Default.
+
+# This version of the default piper comments out a memory-intensive negation module. If you need to run
+# negation detection, then comment out this line.
+load Default

@@ -29,6 +29,7 @@ COPY customDictionary.xml /ctakes/ctakes-web-rest/src/main/resources/org/apache/
 # This version of the default piper comments out a memory-intensive negation module. If you need to run
 # negation detection, then comment out this line.
 COPY Default.piper /ctakes/ctakes-web-rest/src/main/resources/pipers/
+COPY TinyRestPipeline.piper /ctakes/ctakes-web-rest/src/main/resources/pipers/
 
 WORKDIR /ctakes
 #     There is a profile to skip the building of zip distributables and another to build the web-rest war.
