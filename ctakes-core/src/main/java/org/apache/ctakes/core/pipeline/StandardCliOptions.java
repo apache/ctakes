@@ -12,9 +12,8 @@ import com.lexicalscope.jewel.cli.Option;
 public interface StandardCliOptions {
 
    static public final String UMLS_KEY = "key";
-   static public final String UMLS_USER = "user";
-   static public final String UMLS_PASS = "pass";
-   static public final String LOOKUP_XML = "lookupXml";
+   static public final String USER_NAME = "user";
+   static public final String PASSWORD = "pass";
    static public final String PIPER_FILE = "piper";
    static public final String INPUT_DIR = "inputDir";
    static public final String OUTPUT_DIR = "outputDir";
@@ -46,7 +45,6 @@ public interface StandardCliOptions {
    String getOutputDirectory();
 
    @Option(
-         shortName = "s",
          longName = SUB_DIR,
          description = "path to a subdirectory for output files.",
          defaultValue = "" )
@@ -65,23 +63,16 @@ public interface StandardCliOptions {
    String getHtmlOutDirectory();
 
    @Option(
-         shortName = "l",
-         longName = LOOKUP_XML,
-         description = "path to the xml file containing information for dictionary lookup configuration.",
+         longName = USER_NAME,
+         description = "username.",
          defaultValue = "" )
-   String getLookupXml();
+   String getUserName();
 
    @Option(
-         longName = UMLS_USER,
-         description = "UMLS username.",
+         longName = PASSWORD,
+         description = "password.",
          defaultValue = "" )
-   String getUmlsUserName();
-
-   @Option(
-         longName = UMLS_PASS,
-         description = "UMLS user password.",
-         defaultValue = "" )
-   String getUmlsPassword();
+   String getPassword();
 
 
    @Option(

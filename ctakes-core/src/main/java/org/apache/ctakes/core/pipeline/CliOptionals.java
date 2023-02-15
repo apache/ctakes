@@ -65,7 +65,10 @@ public interface CliOptionals extends StandardCliOptions {
          defaultValue = "" )
    String getOption_k();
 
-   // -l is reserved for common parameter "LookupXml"
+   @Option(
+         shortName = "l",
+         defaultValue = "" )
+   String getOption_l();
 
    @Option(
          shortName = "m",
@@ -91,7 +94,10 @@ public interface CliOptionals extends StandardCliOptions {
          defaultValue = "" )
    String getOption_r();
 
-   // -s is reserved for common parameter "SubDirectory"
+   @Option(
+         shortName = "s",
+         defaultValue = "" )
+   String getOption_s();
 
    @Option(
          shortName = "t",
@@ -230,7 +236,10 @@ public interface CliOptionals extends StandardCliOptions {
          defaultValue = "" )
    String getOption_K();
 
-   // -l is reserved for common parameter "LookupXml"
+   @Option(
+         shortName = "L",
+         defaultValue = "" )
+   String getOption_L();
 
    @Option(
          shortName = "M",
@@ -256,7 +265,10 @@ public interface CliOptionals extends StandardCliOptions {
          defaultValue = "" )
    String getOption_R();
 
-   // -s is reserved for common parameter "SubDirectory"
+   @Option(
+         shortName = "S",
+         defaultValue = "" )
+   String getOption_S();
 
    @Option(
          shortName = "T",
