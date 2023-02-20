@@ -4,7 +4,7 @@ from ctakes_pbj.type_system import ctakes_types
 class EventCreator:
 
     def __init__(self, cas):
-        self.event_mention_type = cas.typesystem.get_type
+        self.event_mention_type = cas.typesystem.get_type(ctakes_types.EventMention)
         self.event_type = cas.typesystem.get_type(ctakes_types.Event)
         self.event_properties_type = cas.typesystem.get_type(ctakes_types.EventProperties)
 

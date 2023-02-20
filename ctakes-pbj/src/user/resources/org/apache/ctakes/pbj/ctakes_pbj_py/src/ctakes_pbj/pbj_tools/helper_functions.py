@@ -24,8 +24,7 @@ def get_event_mention(cas, e_mentions, e_m_begins, begin, end):
         if b == begin:
             return e_mentions[i]
         i += 1
-    i = 0
-    event_men_type = cas.typesystem.get_type(ctakes_types.Procedure)
+    event_men_type = cas.typesystem.get_type(ctakes_types.EventMention)
     return create_type.add_type(cas, event_men_type, begin, end)
 
 
