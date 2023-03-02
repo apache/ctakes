@@ -161,8 +161,11 @@ final public class EventTimeAnaforaWriter extends AbstractJCasFileWriter {
 
    static private Element createEventPropertiesElement( final EventMention eventMention,
                                                         final Document doc ) {
-      final Element properties = doc.createElement( "properties" );
       final Event event = eventMention.getEvent();
+      if ( event == null ) {
+         return createNullEventProperties( IdentifiedAnnotationUtil.isNegated( eventMention ) , doc );
+      }
+      final Element properties = doc.createElement( "properties" );
       final EventProperties eventProperties = event.getProperties();
       Element docTimeRel = doc.createElement( "DocTimeRel" );
       final String dtrContent = eventProperties.getDocTimeRel();
@@ -189,6 +192,34 @@ final public class EventTimeAnaforaWriter extends AbstractJCasFileWriter {
       properties.appendChild( Permanence );
       return properties;
    }
+
+   static private Element createNullEventProperties( final boolean isNegated, final Document doc ) {
+      final Element properties = doc.createElement( "properties" );
+      Element docTimeRel = doc.createElement( "DocTimeRel" );
+      docTimeRel.setTextContent( "Overlap" );
+      final Element eventType = doc.createElement( "Type" );
+      eventType.setTextContent( "N/A" );
+      final Element degree = doc.createElement( "Degree" );
+      degree.setTextContent( "N/A" );
+      final Element polarity = doc.createElement( "Polarity" );
+      final String polarityValue = isNegated ? "NEG" : "POS";
+      polarity.setTextContent( polarityValue );
+      final Element contextMode = doc.createElement( "ContextualModality" );
+      contextMode.setTextContent( "UNDETERMINED" );
+      final Element contextAspect = doc.createElement( "ContextualAspect" );
+      contextAspect.setTextContent( "UNDETERMINED" );
+      final Element Permanence = doc.createElement( "Permanence" );
+      Permanence.setTextContent( "UNDETERMINED" );
+      properties.appendChild( docTimeRel );
+      properties.appendChild( polarity );
+      properties.appendChild( degree );
+      properties.appendChild( eventType );
+      properties.appendChild( contextMode );
+      properties.appendChild( contextAspect );
+      properties.appendChild( Permanence );
+      return properties;
+   }
+
 
    private int addTimeElements( final JCas jCas,
                                  final String documentId,
