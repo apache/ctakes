@@ -36,19 +36,26 @@ load TemporalSubPipe
 // Coreferences (e.g. patient = he).
 load CorefSubPipe
 
+// Token covered text and token span offsets.  Write bev (default) and html styles.
+add TokenTableFileWriter SubDirectory=bsv_tokens
+add TokenTableFileWriter SubDirectory=html_tokens TableType=HTML
+
 // Html output, write to subdirectory.
 add pretty.html.HtmlTextWriter SubDirectory=html
 
 // Text output, write to subdirectory.
 add pretty.plaintext.PrettyTextWriterFit SubDirectory=text
 
-// Table output, write to subdirectory.  Write bsv (default) and html styles.
+// Table output, write to subdirectory.  Write bsv (default), csv and html styles.
 add SemanticTableFileWriter SubDirectory=bsv_table
+add SemanticTableFileWriter SubDirectory=csv_table TableType=CSV
 add SemanticTableFileWriter SubDirectory=html_table TableType=HTML
 
-// XMI output.  Warning: these can be very large.
-//writeXmis
+// XMI output, write to subdirectory.  Warning: these can be very large.
 add FileTreeXmiWriter SubDirectory=xmi
+
+// Temporal Events and Times in Anafora format, write to subdirectory.
+add EventTimeAnaforaWriter SubDirectory=anafora
 
 // Write some information about the run.
 addLast org.apache.ctakes.core.util.log.FinishedLogger

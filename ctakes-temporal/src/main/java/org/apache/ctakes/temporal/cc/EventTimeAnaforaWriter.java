@@ -1,6 +1,7 @@
 package org.apache.ctakes.temporal.cc;
 
 import org.apache.ctakes.core.cc.AbstractJCasFileWriter;
+import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.core.util.annotation.IdentifiedAnnotationUtil;
 import org.apache.ctakes.typesystem.type.refsem.Event;
 import org.apache.ctakes.typesystem.type.refsem.EventProperties;
@@ -23,10 +24,19 @@ import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+import static org.apache.ctakes.core.pipeline.PipeBitInfo.TypeProduct.BASE_TOKEN;
+import static org.apache.ctakes.core.pipeline.PipeBitInfo.TypeProduct.DOCUMENT_ID_PREFIX;
+
 /**
  * @author SPF , chip-nlp
  * @since {3/2/2023}
  */
+@PipeBitInfo(
+      name = "Event Time Anafora Writer",
+      description = "Writes Temporal Events and Times in Anafora format.",
+      role = PipeBitInfo.Role.WRITER,
+      usables = { DOCUMENT_ID_PREFIX, BASE_TOKEN }
+)
 final public class EventTimeAnaforaWriter extends AbstractJCasFileWriter {
 
    /**
