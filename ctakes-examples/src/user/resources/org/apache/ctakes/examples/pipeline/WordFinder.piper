@@ -1,0 +1,61 @@
+#
+#  This is an example piper file that will spin up a complete pbj pipeline.
+#
+#  This piper will start the Apache Artemis broker pointed to by the -a parameter on the command line.
+#  It will pause for 5 seconds to allow Artemis to fully launch.
+#
+#  This piper will then launch another instance of Apache cTAKES.
+#  That instance of cTAKES will run the third and final bit of the entire PBJ pipeline.
+#
+#  This piper will then launch a python PBJ bit of the entire pipeline.
+#
+set SetJavaHome=no
+
+#
+#  To run this pipeline from the command line, use the parameters:
+#  -p WordFinder
+#  -v {python environment Directory}
+#  -a {Artemis Broker Directory}
+#  -i {Input Document Directory}
+#  -o {Output Directory}
+#
+#  A standard command-line option is the specification of whether or not to pip the ctakes-pbj package.
+#  By default ctakes-pbj will be pip ed at the beginning of a run.  You can turn this off with:
+#  --pipPbj no
+#
+
+
+//  Sets up required parameters, starts your Artemis Broker, pips the PBJ project.
+load PbjStarter
+
+//
+// Start another instance of cTAKES, running the pipeline in StartAllExample_end.piper
+// $OutputDirectory will substitute the value of this cTAKES pipeline's value for OutputDirectory.
+// $ArtemisBroker will substitute the value of this cTAKES pipeline's value for ArtemisBroker.
+//
+
+add CtakesRunner Pipeline="-p PbjThirdStep -o $OutputDirectory -a $ArtemisBroker"
+
+
+//
+// Start the python bit of the full pipeline.
+//
+
+// Declare the python pipeline defining the second step in the total pipeline.
+set PbjSecondStep=ctakes_pbj.examples.word_finder_pipeline
+
+// There is a fixed order to queue specification in python pipelines.
+// The incoming (receiver) queue is named first, the outgoing (sender) queue is named second.
+add PythonRunner Command="-m $PbjSecondStep JavaToPy PyToJava" LogFile=word_finder_pipeline.log
+
+
+//
+// The pipeline run by this instance of cTAKES.
+//
+
+// Load a simple token processing pipeline from another pipeline file
+load DefaultTokenizerPipeline
+
+// Send CAS to Artemis at the specified queue.  Send stop signal when processing has finished.
+add PbjJmsSender SendQueue=JavaToPy SendStop=yes
+//add PbjStompSender SendQueue=JavaToPy SendStop=yes
