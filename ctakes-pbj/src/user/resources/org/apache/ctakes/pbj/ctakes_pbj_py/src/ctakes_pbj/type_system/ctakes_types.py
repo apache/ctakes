@@ -160,3 +160,9 @@ DiseaseDisorderMention = 'org.apache.ctakes.typesystem.type.textsem.DiseaseDisor
 LabMention = 'org.apache.ctakes.typesystem.type.textsem.LabMention'
 Markable = 'org.apache.ctakes.typesystem.type.textsem.Markable'
 CollectionTextRelationIdentifiedAnnotationRelation = 'org.apache.ctakes.typesystem.type.relation.CollectionTextRelationIdentifiedAnnotationRelation'
+# for RT
+DoseModifier = "org.apache.ctakes.typesystem.type.textsem.DoseModifier"
+DosageCountModifier = "org.apache.ctakes.typesystem.type.textsem.DosageCountModifier"
+TotalDosageModifier = "org.apache.ctakes.typesystem.type.textsem.TotalDoseModifier"
+FrequencyModifier = "org.apache.ctakes.typesystem.type.textsem.FrequencyModifier"
+StatusChangeModifier = "org.apache.ctakes.typesystem.type.textsem.StatusChangeModifier"
