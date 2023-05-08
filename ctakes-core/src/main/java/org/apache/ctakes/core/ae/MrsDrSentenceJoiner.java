@@ -60,6 +60,7 @@ final public class MrsDrSentenceJoiner extends JCasAnnotator_ImplBase {
          final Sentence sentence = sentences.get( i );
          final String text = sentence.getCoveredText();
          if ( ( text.endsWith( " Mr." ) || text.endsWith( " Mrs." ) || text.endsWith( " Dr." )
+                || text.endsWith( " St." )
                 || text.endsWith( " a.m." ) || text.endsWith( " p.m." )
                 || text.endsWith( "\nMr." ) || text.endsWith( "\nMrs." ) || text.endsWith( "\nDr." )
                 || text.endsWith( "\na.m." ) || text.endsWith( "\np.m." )
@@ -90,6 +91,16 @@ final public class MrsDrSentenceJoiner extends JCasAnnotator_ImplBase {
       JCasUtil.select( jCas, Sentence.class ).stream()
               .sorted( Comparator.comparingInt( Annotation::getBegin ) )
               .forEach( s -> s.setSentenceNumber( index.incrementAndGet() ) );
+   }
+
+   static private boolean isCM( final String text ) {
+      if ( text.length() > 4 && (text.endsWith( "CM." ) || text.endsWith( "cm." ) ) ) {
+         if ( Character.isDigit( text.charAt( text.length()-4 ) ) ) {
+            return true;
+         }
+         return Character.isDigit( text.charAt( text.length()-5 ) );
+      }
+      return false;
    }
 
 

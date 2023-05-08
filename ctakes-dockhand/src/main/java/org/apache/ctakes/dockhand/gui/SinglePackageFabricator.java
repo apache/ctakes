@@ -22,7 +22,7 @@ final public class SinglePackageFabricator {
    }
 
    static private JFrame createFrame() {
-      final JFrame frame = new JFrame( "cTAKES Single Package Fabricator" );
+      final JFrame frame = new JFrame( "Standard Pipeline Installation Facility" );
       frame.setDefaultCloseOperation( WindowConstants.EXIT_ON_CLOSE );
       // Use 1024 x 768 as the minimum required resolution (XGA)
       // iPhone 3 : 480 x 320 (3:2, HVGA)

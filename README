@@ -11,7 +11,7 @@ Maven 3 is required to build cTAKES
 
 A license for the [Unified Medical Language System (UMLS)](https://www.nlm.nih.gov/research/umls/index.html) is required to use the named entity recognition module (dictionary lookup) with the default dictionary.
 
-Information can be fond in the wiki concerning:
+Information can be found in the [wiki](https://github.com/apache/ctakes/wiki) concerning:
 - Developer installation.
 - User installation.
 - Running the system and its tools.
