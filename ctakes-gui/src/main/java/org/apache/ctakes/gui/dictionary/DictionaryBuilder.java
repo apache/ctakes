@@ -72,7 +72,7 @@ final class DictionaryBuilder {
       // Fill in information for all valid concepts
       MrconsoParser.parseAllConcepts( umlsDirPath, conceptMap, wantedSources, wantedTargets, umlsTermUtil,
             wantedLanguages, true, MIN_CHAR_LENGTH, MAX_CHAR_LENGTH, MAX_WORD_COUNT, MAX_SYM_COUNT );
-      removeWsdRarities( conceptMap, wantedTuis, WSD_DIVISOR, ANAT_MULTIPLIER );
+//      removeWsdRarities( conceptMap, wantedTuis, WSD_DIVISOR, ANAT_MULTIPLIER );
 //      removeUnwantedDrugs( conceptMap, wantedTuis );
       // Cull non-ANAT texts by ANAT texts as determined by ANAT tuis
 //      removeAnatTexts( conceptMap, wantedTuis );
