@@ -1,28 +1,24 @@
 import argparse
-DEFAULT_HOST = 'localhost'
-DEFAULT_PORT = 61616
-DEFAULT_USER = 'guest'
-DEFAULT_PASS = 'guest'
-DEFAULT_OUT_DIR = 'pbj_output/'
 
 
-def get_args():
-    parser = argparse.ArgumentParser(
-        prog='pbj_sender.py',
-        description='Sends...',
-        epilog='Text at the bottom of help'
-    )
-    parser.add_argument('receive_queue')
-    parser.add_argument('send_queue')
-    parser.add_argument('-hn', '--host_name', default=DEFAULT_HOST)
-    parser.add_argument('-pn', '--port_name', default=DEFAULT_PORT)
-    parser.add_argument('-u', '--username', default=DEFAULT_USER)
-    parser.add_argument('-p', '--password', default=DEFAULT_PASS)
-    parser.add_argument('-o', '--output_dir', default=DEFAULT_OUT_DIR)
+class ArgParser:
 
-    parser.parse_args()
-    args = parser.parse_args()
+    def __init__(self):
+        self.arg_parser = None
 
-    return args
+    def get_arg_parser(self):
+        if self.arg_parser is None:
+            print('Creating arg_parser')
+            self.arg_parser = argparse.ArgumentParser(
+                prog='ctakes-pbj',
+                description='Does wonderful stuff...',
+                epilog='Text at the bottom of help'
+            )
+        return self.arg_parser
 
+    def add_arg(self, *args, **kwargs):
+        self.get_arg_parser().add_argument(*args, **kwargs)
 
+    def get_args(self):
+        print('Parsing Arguments')
+        return self.get_arg_parser().parse_args()

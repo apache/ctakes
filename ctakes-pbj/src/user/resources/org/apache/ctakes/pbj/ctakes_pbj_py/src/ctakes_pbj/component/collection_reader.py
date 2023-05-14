@@ -1,7 +1,12 @@
 from abc import ABC, abstractmethod
 
 
-class CasAnnotator(ABC):
+class CollectionReader(ABC):
+
+    # Set the pipeline.  The collection reader controls the pipeline flow.
+    @abstractmethod
+    def set_pipeline(self, pipeline):
+        pass
 
     # Called once at the build of a pipeline.
     def declare_params(self, arg_parser):
@@ -15,11 +20,7 @@ class CasAnnotator(ABC):
     def initialize(self):
         pass
 
-    # Called for every cas passed through the pipeline.
+    # Called start reading cas objects and pass them to the pipeline.
     @abstractmethod
-    def process(self, cas):
-        pass
-
-    # Called once at the end of the pipeline.
-    def collection_process_complete(self):
+    def start(self):
         pass

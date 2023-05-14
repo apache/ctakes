@@ -39,7 +39,7 @@ import java.util.Enumeration;
  */
 @PipeBitInfo(
       name = "PbjJmsSender",
-      description = "Sends jcas to Artemis Queue using Stomp",
+      description = "Sends jcas to Artemis Queue using JMS",
       role = PipeBitInfo.Role.SPECIAL
 )
 public class PbjJmsSender extends PbjSender {
