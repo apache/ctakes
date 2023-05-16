@@ -35,9 +35,8 @@ import static org.apache.ctakes.pbj.util.PbjConstants.*;
       role = PipeBitInfo.Role.SPECIAL
 )
 
-public class PbjReceiver extends JCasCollectionReader_ImplBase {
+final public class PbjReceiver extends JCasCollectionReader_ImplBase {
 
-   // to add a configuration parameter, type "param" and hit tab.
    static public final String PARAM_RECEIVER_NAME = "ReceiverName";
    static public final String PARAM_RECEIVER_PASS = "ReceiverPass";
    static public final String PARAM_HOST = "ReceiveHost";
@@ -106,6 +105,31 @@ public class PbjReceiver extends JCasCollectionReader_ImplBase {
    //private boolean _stop = false;
    private int _casCount = 0;
    private String _messageText = "";
+
+
+   public void setUserName( final String userName ) {
+      _userName = userName;
+   }
+
+   public void setPassword( final String password ) {
+      _password = password;
+   }
+
+   public void setHost( final String host ) {
+      _host  = host;
+   }
+
+   public void setPort( final int port ) {
+      _port = port;
+   }
+
+   public void setQueue( final String queue ) {
+      _queue = queue;
+   }
+
+   public void setAcceptStop( final String acceptStop ) {
+      _acceptStop = acceptStop;
+   }
 
 
    /**
@@ -220,7 +244,7 @@ public class PbjReceiver extends JCasCollectionReader_ImplBase {
       try {
          _connection.stop();
          _connection.close();
-         LOGGER.info( "Disconnected PBJ Sender on " + _host + " " + _queue + " ..." );
+         LOGGER.info( "Disconnected PBJ Receiver on " + _host + " " + _queue + " ..." );
       } catch ( JMSException jmsE ) {
          if ( jmsE.getMessage().equalsIgnoreCase( "Connection is closed" ) ) {
             return;

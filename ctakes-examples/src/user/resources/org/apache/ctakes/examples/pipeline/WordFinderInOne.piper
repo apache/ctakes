@@ -4,9 +4,6 @@
 #  This piper will start the Apache Artemis broker pointed to by the -a parameter on the command line.
 #  It will pause for 5 seconds to allow Artemis to fully launch.
 #
-#  This piper will then launch another instance of Apache cTAKES.
-#  That instance of cTAKES will run the third and final bit of the entire PBJ pipeline.
-#
 #  This piper will then launch a python PBJ bit of the entire pipeline.
 #
 set SetJavaHome=no
@@ -29,15 +26,6 @@ set SetJavaHome=no
 load PbjStarter
 
 //
-// Start another instance of cTAKES, running the pipeline in StartAllExample_end.piper
-// $OutputDirectory will substitute the value of this cTAKES pipeline's value for OutputDirectory.
-// $ArtemisBroker will substitute the value of this cTAKES pipeline's value for ArtemisBroker.
-//
-
-add CtakesRunner Pipeline="-p PbjThirdStep -o $OutputDirectory -a $ArtemisBroker"
-
-
-//
 // Start the python bit of the full pipeline.
 //
 
@@ -50,7 +38,7 @@ add PythonRunner Command="-m $PbjSecondStep JavaToPy PyToJava" LogFile=word_find
 
 
 //
-// The pipeline run by this instance of cTAKES.
+// The pipeline run by this instance of cTAKES.  It includes a pbj sender and receiver.
 //
 
 // Load a simple token processing pipeline from another pipeline file
@@ -58,4 +46,21 @@ load DefaultTokenizerPipeline
 
 // Send CAS to Artemis at the specified queue.  Send stop signal when processing has finished.
 add PbjJmsSender SendQueue=JavaToPy SendStop=yes
+
+// At this point the python process should handle the cas, before sending it "back".
+
+// Receive CAS from Artemis at the specified queue.
+add PbjReceiverAE ReceiveQueue=PyToJava
+
+// Save a nice table.
+add SemanticTableFileWriter SubDirectory=table
+
+// Save HTML.
+add pretty.html.HtmlTextWriter SubDirectory=html
+
+// Save marked text.
+add pretty.plaintext.PrettyTextWriterFit SubDirectory=text
+
+// Stop the Artemis Broker
+add ArtemisStopper
 
