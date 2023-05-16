@@ -113,8 +113,8 @@ public class PythonRunner extends AbstractCommandRunner {
       final String commandDir = getCommandDir();
       final String command = getCommand();
       return ( commandDir == null || commandDir.isEmpty() )
-             ? "python " + command
-             : commandDir + File.separator + "python " + command;
+             ? "python -u " + command
+             : commandDir + File.separator + "python -u " + command;
    }
 
    protected void runCommand() throws IOException {

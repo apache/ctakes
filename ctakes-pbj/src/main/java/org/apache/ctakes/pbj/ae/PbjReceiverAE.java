@@ -78,7 +78,6 @@ public class PbjReceiverAE extends JCasAnnotator_ImplBase {
    )
    private String _acceptStop;
 
-
    private PbjReceiver _delegate;
 
 
@@ -117,5 +116,12 @@ public class PbjReceiverAE extends JCasAnnotator_ImplBase {
       }
    }
 
+   /**
+    * {@inheritDoc}
+    */
+   @Override
+   public void collectionProcessComplete() throws AnalysisEngineProcessException {
+      _delegate.disconnect();
+   }
 
 }

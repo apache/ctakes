@@ -240,7 +240,7 @@ final public class PbjReceiver extends JCasCollectionReader_ImplBase {
    }
 
 
-   private void disconnect() {
+   public void disconnect() {
       try {
          _connection.stop();
          _connection.close();
