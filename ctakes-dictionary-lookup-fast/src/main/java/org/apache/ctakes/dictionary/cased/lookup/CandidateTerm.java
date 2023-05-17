@@ -1,10 +1,10 @@
 package org.apache.ctakes.dictionary.cased.lookup;
 
 
-import jdk.nashorn.internal.ir.annotations.Immutable;
 import org.apache.ctakes.core.util.StringUtil;
 import org.apache.ctakes.dictionary.cased.util.tokenize.TokenizedTerm;
 
+import javax.annotation.concurrent.Immutable;
 import java.util.Arrays;
 
 

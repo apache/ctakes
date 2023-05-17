@@ -18,10 +18,8 @@
  */
 package org.apache.ctakes.utils.env;
 
-import jdk.nashorn.internal.ir.annotations.Immutable;
 import org.apache.uima.UimaContext;
 
-@Immutable
 final public class EnvironmentVariable {
 
    private EnvironmentVariable() {}

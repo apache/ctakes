@@ -1,7 +1,6 @@
 package org.apache.ctakes.gui.dictionary.cased.term;
 
 
-import jdk.nashorn.internal.ir.annotations.Immutable;
 import org.apache.ctakes.core.util.StringUtil;
 import org.apache.ctakes.core.util.annotation.SemanticGroup;
 import org.apache.ctakes.core.util.annotation.SemanticTui;
@@ -9,6 +8,7 @@ import org.apache.ctakes.gui.dictionary.cased.Ranks;
 import org.apache.ctakes.gui.dictionary.umls.VocabularyStore;
 import org.apache.ctakes.gui.dictionary.util.TextTokenizer;
 
+import javax.annotation.concurrent.Immutable;
 import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;

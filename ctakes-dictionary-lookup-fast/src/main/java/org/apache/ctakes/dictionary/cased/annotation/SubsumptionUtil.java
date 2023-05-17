@@ -1,11 +1,11 @@
 package org.apache.ctakes.dictionary.cased.annotation;
 
 
-import jdk.nashorn.internal.ir.annotations.Immutable;
 import org.apache.ctakes.core.util.annotation.SemanticGroup;
 import org.apache.ctakes.dictionary.cased.lookup.DiscoveredTerm;
 import org.apache.ctakes.dictionary.cased.util.textspan.MagicTextSpan;
 
+import javax.annotation.concurrent.Immutable;
 import java.util.*;
 
 /**

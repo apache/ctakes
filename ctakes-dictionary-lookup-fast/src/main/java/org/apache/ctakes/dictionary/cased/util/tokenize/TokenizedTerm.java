@@ -1,8 +1,8 @@
 package org.apache.ctakes.dictionary.cased.util.tokenize;
 
-import jdk.nashorn.internal.ir.annotations.Immutable;
 import org.apache.ctakes.dictionary.lookup2.util.CuiCodeUtil;
 
+import javax.annotation.concurrent.Immutable;
 import java.util.*;
 import java.util.stream.Collectors;
 

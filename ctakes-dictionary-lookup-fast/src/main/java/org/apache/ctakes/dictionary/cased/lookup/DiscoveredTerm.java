@@ -1,7 +1,7 @@
 package org.apache.ctakes.dictionary.cased.lookup;
 
 
-import jdk.nashorn.internal.ir.annotations.Immutable;
+import javax.annotation.concurrent.Immutable;
 
 /**
  * @author SPF , chip-nlp

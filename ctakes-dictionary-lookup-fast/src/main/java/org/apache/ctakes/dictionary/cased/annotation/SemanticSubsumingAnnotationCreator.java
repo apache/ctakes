@@ -1,7 +1,6 @@
 package org.apache.ctakes.dictionary.cased.annotation;
 
 
-import jdk.nashorn.internal.ir.annotations.Immutable;
 import org.apache.ctakes.core.util.Pair;
 import org.apache.ctakes.core.util.annotation.SemanticGroup;
 import org.apache.ctakes.core.util.annotation.SemanticTui;
@@ -12,6 +11,7 @@ import org.apache.ctakes.dictionary.cased.wsd.WsdUtil;
 import org.apache.log4j.Logger;
 import org.apache.uima.jcas.JCas;
 
+import javax.annotation.concurrent.Immutable;
 import java.util.*;
 
 import static org.apache.ctakes.core.util.annotation.SemanticGroup.*;

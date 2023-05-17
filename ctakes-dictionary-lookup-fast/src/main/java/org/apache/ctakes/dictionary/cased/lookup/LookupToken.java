@@ -1,9 +1,10 @@
 package org.apache.ctakes.dictionary.cased.lookup;
 
 
-import jdk.nashorn.internal.ir.annotations.Immutable;
 import org.apache.ctakes.core.util.Pair;
 import org.apache.ctakes.typesystem.type.syntax.BaseToken;
+
+import javax.annotation.concurrent.Immutable;
 
 /**
  * @author SPF , chip-nlp
