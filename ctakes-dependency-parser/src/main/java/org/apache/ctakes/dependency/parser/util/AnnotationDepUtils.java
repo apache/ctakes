@@ -18,22 +18,17 @@
  */
 package org.apache.ctakes.dependency.parser.util;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import org.apache.ctakes.typesystem.type.syntax.ConllDependencyNode;
-import org.apache.ctakes.utils.tree.SimpleTree;
-import org.apache.log4j.Logger;
-import org.apache.uima.jcas.JCas;
-import org.apache.uima.jcas.tcas.Annotation;
-import org.apache.uima.fit.util.JCasUtil;
-
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
+import org.apache.ctakes.typesystem.type.syntax.ConllDependencyNode;
+import org.apache.ctakes.utils.tree.SimpleTree;
+import org.apache.log4j.Logger;
+import org.apache.uima.fit.util.JCasUtil;
+import org.apache.uima.jcas.JCas;
+import org.apache.uima.jcas.tcas.Annotation;
+
+import java.util.*;
 
 public class AnnotationDepUtils {
   private static Logger logger = Logger.getLogger(AnnotationDepUtils.class);

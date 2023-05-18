@@ -18,9 +18,6 @@
  */
 package org.apache.ctakes.assertion.medfacts.cleartk.extractors;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.ctakes.typesystem.type.syntax.BaseToken;
 import org.apache.ctakes.typesystem.type.syntax.ConllDependencyNode;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
@@ -36,6 +33,9 @@ import org.apache.uima.jcas.tcas.Annotation;
 import org.cleartk.ml.Feature;
 import org.cleartk.ml.feature.extractor.CleartkExtractorException;
 import org.cleartk.ml.feature.extractor.FeatureExtractor1;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SRLFeatureExtractor implements FeatureExtractor1 {
 

@@ -20,7 +20,7 @@
 
 -->
 <load xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://jdl-prj.googlecode.com/files/xdl.xsd">
+>
 	<csv table="@umls.prefix@MRAUI" commit="10000" delimiter="|">
 		<column name="AUI1" />
 		<column name="CUI1" />

@@ -18,11 +18,6 @@
  */
 package org.apache.ctakes.temporal.ae.feature;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-
 import org.apache.ctakes.typesystem.type.syntax.NumToken;
 import org.apache.ctakes.typesystem.type.textsem.DateAnnotation;
 import org.apache.ctakes.typesystem.type.textsem.EventMention;
@@ -34,6 +29,11 @@ import org.apache.uima.jcas.tcas.Annotation;
 import org.cleartk.ml.Feature;
 import org.cleartk.ml.feature.extractor.CleartkExtractorException;
 import org.cleartk.ml.feature.extractor.FeatureExtractor1;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
 
 public class DateAndMeasurementExtractor implements FeatureExtractor1<Annotation> {
 

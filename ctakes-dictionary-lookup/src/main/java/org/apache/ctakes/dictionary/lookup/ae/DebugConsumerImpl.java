@@ -18,16 +18,15 @@
  */
 package org.apache.ctakes.dictionary.lookup.ae;
 
-import java.util.Iterator;
-import java.util.Properties;
-
 import org.apache.ctakes.dictionary.lookup.MetaDataHit;
 import org.apache.ctakes.dictionary.lookup.vo.LookupHit;
 import org.apache.log4j.Logger;
-
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.jcas.JCas;
+
+import java.util.Iterator;
+import java.util.Properties;
 
 
 /**

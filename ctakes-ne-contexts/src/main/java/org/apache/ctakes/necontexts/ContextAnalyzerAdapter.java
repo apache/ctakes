@@ -18,12 +18,12 @@
  */
 package org.apache.ctakes.necontexts;
 
-import java.util.List;
-
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.jcas.tcas.Annotation;
 import org.apache.uima.resource.ResourceInitializationException;
+
+import java.util.List;
 
 public class ContextAnalyzerAdapter implements ContextAnalyzer{
 

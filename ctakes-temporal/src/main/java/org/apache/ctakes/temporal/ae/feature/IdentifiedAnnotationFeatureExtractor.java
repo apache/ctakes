@@ -18,16 +18,8 @@
  */
 package org.apache.ctakes.temporal.ae.feature;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.charset.Charset;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.logging.Logger;
-
+import com.google.common.io.Files;
+import com.google.common.io.LineProcessor;
 import org.apache.ctakes.typesystem.type.syntax.BaseToken;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
 import org.apache.uima.fit.util.JCasUtil;
@@ -37,8 +29,11 @@ import org.cleartk.ml.Feature;
 import org.cleartk.ml.feature.extractor.CleartkExtractorException;
 import org.cleartk.ml.feature.extractor.FeatureExtractor1;
 
-import com.google.common.io.Files;
-import com.google.common.io.LineProcessor;
+import java.io.File;
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.util.*;
+import java.util.logging.Logger;
 
 /**
  * Given a token, check if this token is inside any identified annotation

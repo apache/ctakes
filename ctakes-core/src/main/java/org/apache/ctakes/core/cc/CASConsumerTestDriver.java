@@ -18,10 +18,6 @@
  */
 package org.apache.ctakes.core.cc;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
-
 import org.apache.uima.UIMAFramework;
 import org.apache.uima.analysis_engine.AnalysisEngine;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
@@ -30,6 +26,10 @@ import org.apache.uima.cas.impl.XCASDeserializer;
 import org.apache.uima.collection.CasConsumer;
 import org.apache.uima.collection.CasConsumerDescription;
 import org.apache.uima.util.XMLInputSource;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 
 
 public class CASConsumerTestDriver 

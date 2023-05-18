@@ -17,18 +17,19 @@
  * under the License.
  */
 package org.apache.ctakes.utils.xcas_comparison;
-import java.util.Hashtable;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.io.File;
+
+import org.xml.sax.Attributes;
+import org.xml.sax.Locator;
+import org.xml.sax.SAXException;
+import org.xml.sax.SAXParseException;
+import org.xml.sax.helpers.DefaultHandler;
 
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
-import org.xml.sax.Attributes;
-import org.xml.sax.SAXException;
-import org.xml.sax.SAXParseException;
-import org.xml.sax.Locator;
-import org.xml.sax.helpers.DefaultHandler;
+import java.io.File;
+import java.util.HashMap;
+import java.util.Hashtable;
+import java.util.LinkedList;
 
 /**
  * A SAX parser that parses an XCAS file.

@@ -18,38 +18,26 @@
  */
 package org.apache.ctakes.ytex.weka;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Properties;
-import java.util.SortedMap;
-
-import org.apache.commons.cli.CommandLine;
-import org.apache.commons.cli.CommandLineParser;
-import org.apache.commons.cli.GnuParser;
-import org.apache.commons.cli.HelpFormatter;
-import org.apache.commons.cli.OptionBuilder;
-import org.apache.commons.cli.Options;
-import org.apache.commons.cli.ParseException;
+import org.apache.commons.cli.*;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.ctakes.ytex.kernel.FileUtil;
-import org.apache.ctakes.ytex.kernel.KernelContextHolder;
-import org.apache.ctakes.ytex.kernel.KernelUtil;
-import org.apache.ctakes.ytex.kernel.SparseData;
-import org.apache.ctakes.ytex.kernel.SparseDataExporter;
-import org.apache.ctakes.ytex.kernel.SparseDataFormatter;
+import org.apache.ctakes.ytex.kernel.*;
 import org.apache.ctakes.ytex.kernel.dao.ClassifierEvaluationDao;
 import org.apache.ctakes.ytex.kernel.model.ClassifierEvaluation;
 import org.apache.ctakes.ytex.kernel.model.CrossValidationFold;
 import org.apache.ctakes.ytex.kernel.model.FeatureEvaluation;
 import org.apache.ctakes.ytex.kernel.model.FeatureRank;
 import org.apache.ctakes.ytex.weka.WekaFormatterFactory.WekaFormatter;
-
 import weka.attributeSelection.ASEvaluation;
 import weka.attributeSelection.AttributeSelection;
 import weka.core.Instances;
 import weka.core.converters.ConverterUtils.DataSource;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Properties;
+import java.util.SortedMap;
 
 public class WekaAttributeEvaluatorImpl implements WekaAttributeEvaluator {
 	public class WekaAttributeEvaluatorFormatter extends WekaFormatter {

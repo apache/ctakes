@@ -18,14 +18,11 @@
  */
 package org.apache.ctakes.coreference.eval.helpers;
 
+import org.apache.log4j.Logger;
 import org.junit.Test;
 
-import org.apache.log4j.Logger;
-
-import java.util.StringJoiner;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 import static org.junit.Assert.assertEquals;
 

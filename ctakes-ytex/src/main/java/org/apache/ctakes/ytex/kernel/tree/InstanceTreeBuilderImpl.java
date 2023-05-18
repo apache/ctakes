@@ -18,25 +18,13 @@
  */
 package org.apache.ctakes.ytex.kernel.tree;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.sql.DataSource;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.jdbc.core.JdbcTemplate;
+
+import javax.sql.DataSource;
+import java.io.*;
+import java.util.*;
 
 public class InstanceTreeBuilderImpl implements InstanceTreeBuilder {
 	static final Log log = LogFactory.getLog(InstanceTreeBuilderImpl.class);	

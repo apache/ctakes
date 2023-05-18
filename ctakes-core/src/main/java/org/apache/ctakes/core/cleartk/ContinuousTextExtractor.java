@@ -1,18 +1,18 @@
 package org.apache.ctakes.core.cleartk;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.ctakes.core.resource.FileLocator;
 import org.apache.ctakes.typesystem.type.syntax.BaseToken;
 import org.apache.ctakes.utils.distsem.WordEmbeddings;
 import org.apache.ctakes.utils.distsem.WordVector;
 import org.apache.ctakes.utils.distsem.WordVectorReader;
 import org.apache.uima.jcas.JCas;
+import org.cleartk.ml.Feature;
 import org.cleartk.ml.feature.extractor.CleartkExtractorException;
 import org.cleartk.ml.feature.extractor.NamedFeatureExtractor1;
-import org.cleartk.ml.Feature;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class ContinuousTextExtractor implements NamedFeatureExtractor1<BaseToken>  {

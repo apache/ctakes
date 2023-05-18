@@ -18,18 +18,12 @@
  */
 package org.apache.ctakes.dictionary.lookup.lucene;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
-import javax.annotation.concurrent.Immutable;
-
 import org.apache.ctakes.dictionary.lookup.AbstractBaseMetaDataHit;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.IndexableField;
+
+import javax.annotation.concurrent.Immutable;
+import java.util.*;
 
 
 /**

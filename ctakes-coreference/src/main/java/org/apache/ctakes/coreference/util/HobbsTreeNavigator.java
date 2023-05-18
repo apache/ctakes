@@ -18,19 +18,17 @@
  */
 package org.apache.ctakes.coreference.util;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Queue;
-
+import org.apache.ctakes.coreference.type.Markable;
+import org.apache.ctakes.typesystem.type.syntax.TopTreebankNode;
+import org.apache.ctakes.typesystem.type.syntax.TreebankNode;
 import org.apache.uima.cas.FSIterator;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
 
-import org.apache.ctakes.typesystem.type.syntax.TopTreebankNode;
-import org.apache.ctakes.typesystem.type.syntax.TreebankNode;
-import org.apache.ctakes.typesystem.type.syntax.TerminalTreebankNode;
-import org.apache.ctakes.coreference.type.Markable;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class HobbsTreeNavigator {
 

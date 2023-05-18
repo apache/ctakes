@@ -1,9 +1,5 @@
 package org.apache.ctakes.temporal.keras;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Locale;
-
 import org.apache.uima.UimaContext;
 import org.apache.uima.fit.descriptor.ConfigurationParameter;
 import org.apache.uima.fit.factory.initializable.Initializable;
@@ -16,6 +12,10 @@ import org.cleartk.ml.encoder.features.StringEncoder;
 import org.cleartk.ml.encoder.outcome.StringToIntegerOutcomeEncoder;
 import org.cleartk.ml.jar.DataWriter_ImplBase;
 import org.cleartk.ml.util.featurevector.FeatureVector;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Locale;
 
 public abstract class ScriptStringOutcomeDataWriter<T extends ScriptStringOutcomeClassifierBuilder<ScriptStringOutcomeClassifier>> 
   extends  DataWriter_ImplBase<T, FeatureVector, String,Integer> implements Initializable {

@@ -1,10 +1,5 @@
 package org.apache.ctakes.core.cleartk;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.List;
-
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
 import org.cleartk.ml.Feature;
@@ -13,6 +8,10 @@ import org.cleartk.ml.feature.extractor.CleartkExtractor.Bounds;
 import org.cleartk.ml.feature.extractor.CleartkExtractor.Context;
 import org.cleartk.ml.feature.extractor.CleartkExtractorException;
 import org.cleartk.ml.feature.extractor.FeatureExtractor1;
+
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
 
 public class SumContext implements CleartkExtractor.Context {
 

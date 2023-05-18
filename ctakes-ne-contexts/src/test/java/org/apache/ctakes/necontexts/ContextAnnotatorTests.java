@@ -18,11 +18,7 @@
  */
 package org.apache.ctakes.necontexts;
 
-import static org.junit.Assert.assertEquals;
-
-import java.io.File;
-import java.util.List;
-
+import org.apache.ctakes.utils.test.TestUtil;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngine;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -32,11 +28,9 @@ import org.apache.uima.jcas.tcas.Annotation;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.junit.Test;
 
-import org.apache.ctakes.typesystem.type.syntax.BaseToken;
-import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
-import org.apache.ctakes.typesystem.type.syntax.PunctuationToken;
-import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.ctakes.utils.test.TestUtil;
+import java.io.File;
+
+import static org.junit.Assert.assertEquals;
 
 public class ContextAnnotatorTests {
 

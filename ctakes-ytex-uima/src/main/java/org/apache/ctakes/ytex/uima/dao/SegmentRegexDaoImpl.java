@@ -19,10 +19,10 @@
 package org.apache.ctakes.ytex.uima.dao;
 
 
-import java.util.List;
-
 import org.apache.ctakes.ytex.uima.model.SegmentRegex;
 import org.hibernate.SessionFactory;
+
+import java.util.List;
 
 public class SegmentRegexDaoImpl implements SegmentRegexDao {
 	public SessionFactory getSessionFactory() {

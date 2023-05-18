@@ -18,8 +18,7 @@
  */
 package org.apache.ctakes.assertion.medfacts.cleartk.extractors;
 
-import java.util.List;
-
+import com.google.common.collect.Lists;
 import org.apache.ctakes.assertion.pipelines.GenerateDependencyRepresentation;
 import org.apache.ctakes.assertion.util.AssertionDepUtils;
 import org.apache.ctakes.assertion.util.AssertionTreeUtils;
@@ -37,7 +36,7 @@ import org.cleartk.ml.feature.extractor.CleartkExtractorException;
 import org.cleartk.ml.feature.extractor.FeatureExtractor1;
 import org.cleartk.util.CleartkInitializationException;
 
-import com.google.common.collect.Lists;
+import java.util.List;
 
 public class AssertionDependencyTreeExtractor implements FeatureExtractor1<IdentifiedAnnotation> {
   protected SemanticClasses sems = null;

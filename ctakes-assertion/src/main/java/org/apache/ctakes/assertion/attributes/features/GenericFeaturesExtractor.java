@@ -18,12 +18,6 @@
  */
 package org.apache.ctakes.assertion.attributes.features;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-
 import org.apache.ctakes.assertion.attributes.generic.GenericAttributeClassifier;
 import org.apache.ctakes.dependency.parser.util.DependencyUtility;
 import org.apache.ctakes.typesystem.type.syntax.ConllDependencyNode;
@@ -31,6 +25,8 @@ import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
 import org.apache.uima.jcas.JCas;
 import org.cleartk.ml.Feature;
 import org.cleartk.ml.feature.extractor.FeatureExtractor1;
+
+import java.util.*;
 
 
 /** SubjectFeaturesExtractor

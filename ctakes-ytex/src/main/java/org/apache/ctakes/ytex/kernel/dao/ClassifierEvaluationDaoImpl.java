@@ -18,28 +18,17 @@
  */
 package org.apache.ctakes.ytex.kernel.dao;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.ctakes.ytex.dao.DBUtil;
 import org.apache.ctakes.ytex.kernel.InfoContentEvaluator;
 import org.apache.ctakes.ytex.kernel.IntrinsicInfoContentEvaluator;
 import org.apache.ctakes.ytex.kernel.metric.ConceptInfo;
-import org.apache.ctakes.ytex.kernel.model.ClassifierEvaluation;
-import org.apache.ctakes.ytex.kernel.model.ClassifierEvaluationIRStat;
-import org.apache.ctakes.ytex.kernel.model.ClassifierInstanceEvaluation;
-import org.apache.ctakes.ytex.kernel.model.CrossValidationFold;
-import org.apache.ctakes.ytex.kernel.model.FeatureEvaluation;
-import org.apache.ctakes.ytex.kernel.model.FeatureParentChild;
-import org.apache.ctakes.ytex.kernel.model.FeatureRank;
+import org.apache.ctakes.ytex.kernel.model.*;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
-import org.hibernate.type.Type;
+
+import java.util.*;
 
 
 public class ClassifierEvaluationDaoImpl implements ClassifierEvaluationDao {

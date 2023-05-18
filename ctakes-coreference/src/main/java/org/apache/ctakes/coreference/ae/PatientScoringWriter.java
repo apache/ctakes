@@ -8,7 +8,6 @@ import org.apache.ctakes.core.patient.AbstractPatientConsumer;
 import org.apache.ctakes.core.patient.PatientNoteStore;
 import org.apache.ctakes.core.patient.PatientViewUtil;
 import org.apache.ctakes.coreference.util.ThymeCasOrderer;
-import org.apache.ctakes.temporal.eval.Evaluation_ImplBase;
 import org.apache.ctakes.typesystem.type.relation.CollectionTextRelation;
 import org.apache.ctakes.typesystem.type.syntax.BaseToken;
 import org.apache.ctakes.typesystem.type.syntax.NewlineToken;

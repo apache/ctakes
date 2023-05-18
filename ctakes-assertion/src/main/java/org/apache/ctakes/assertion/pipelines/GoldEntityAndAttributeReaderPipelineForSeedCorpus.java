@@ -19,11 +19,7 @@
 package org.apache.ctakes.assertion.pipelines;
 
 
-import java.io.File;
-import java.io.FileFilter;
-import java.io.IOException;
-import java.util.HashMap;
-
+import com.google.common.base.Function;
 import org.apache.ctakes.assertion.cr.I2B2Challenge2010CollectionReader;
 import org.apache.ctakes.assertion.cr.MiPACQKnowtatorXMLReader;
 import org.apache.ctakes.assertion.cr.NegExCorpusReader;
@@ -44,7 +40,10 @@ import org.apache.uima.fit.pipeline.SimplePipeline;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.resource.metadata.TypeSystemDescription;
 
-import com.google.common.base.Function;
+import java.io.File;
+import java.io.FileFilter;
+import java.io.IOException;
+import java.util.HashMap;
 
 /**
  * 

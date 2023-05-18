@@ -18,11 +18,13 @@
  */
 package org.apache.ctakes.template.filler.ae;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
+import org.apache.ctakes.typesystem.type.constants.CONST;
+import org.apache.ctakes.typesystem.type.refsem.*;
+import org.apache.ctakes.typesystem.type.relation.BinaryTextRelation;
+import org.apache.ctakes.typesystem.type.relation.DegreeOfTextRelation;
+import org.apache.ctakes.typesystem.type.relation.LocationOfTextRelation;
+import org.apache.ctakes.typesystem.type.relation.RelationArgument;
+import org.apache.ctakes.typesystem.type.textsem.*;
 import org.apache.log4j.Logger;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
@@ -35,38 +37,11 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.JFSIndexRepository;
 import org.apache.uima.jcas.tcas.Annotation;
 import org.apache.uima.resource.ResourceInitializationException;
-import org.apache.ctakes.typesystem.type.constants.CONST;
 
-import org.apache.ctakes.typesystem.type.refsem.Date;
-import org.apache.ctakes.typesystem.type.refsem.MedicationDosage;
-import org.apache.ctakes.typesystem.type.refsem.MedicationDuration;
-import org.apache.ctakes.typesystem.type.refsem.MedicationForm;
-import org.apache.ctakes.typesystem.type.refsem.MedicationFrequency;
-import org.apache.ctakes.typesystem.type.refsem.MedicationRoute;
-import org.apache.ctakes.typesystem.type.refsem.MedicationStatusChange;
-import org.apache.ctakes.typesystem.type.refsem.MedicationStrength;
-import org.apache.ctakes.typesystem.type.relation.BinaryTextRelation;
-import org.apache.ctakes.typesystem.type.relation.DegreeOfTextRelation;
-import org.apache.ctakes.typesystem.type.relation.LocationOfTextRelation;
-import org.apache.ctakes.typesystem.type.relation.RelationArgument;
-import org.apache.ctakes.typesystem.type.textsem.AnatomicalSiteMention;
-import org.apache.ctakes.typesystem.type.textsem.DiseaseDisorderMention;
-import org.apache.ctakes.typesystem.type.textsem.EntityMention;
-import org.apache.ctakes.typesystem.type.textsem.EventMention;
-import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
-import org.apache.ctakes.typesystem.type.textsem.MedicationDosageModifier;
-import org.apache.ctakes.typesystem.type.textsem.MedicationDurationModifier;
-import org.apache.ctakes.typesystem.type.textsem.MedicationEventMention;
-import org.apache.ctakes.typesystem.type.textsem.MedicationFormModifier;
-import org.apache.ctakes.typesystem.type.textsem.MedicationFrequencyModifier;
-import org.apache.ctakes.typesystem.type.textsem.MedicationMention;
-import org.apache.ctakes.typesystem.type.textsem.MedicationRouteModifier;
-import org.apache.ctakes.typesystem.type.textsem.MedicationStatusChangeModifier;
-import org.apache.ctakes.typesystem.type.textsem.MedicationStrengthModifier;
-import org.apache.ctakes.typesystem.type.textsem.Modifier;
-import org.apache.ctakes.typesystem.type.textsem.ProcedureMention;
-import org.apache.ctakes.typesystem.type.textsem.SignSymptomMention;
-import org.apache.ctakes.typesystem.type.textsem.TimeMention;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @deprecated Use the TemplateFillerAnnotator in ctakes-core

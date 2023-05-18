@@ -18,20 +18,15 @@
  */
 package org.apache.ctakes.ytex.svmlight;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import org.apache.ctakes.ytex.kernel.model.ClassifierInstanceEvaluation;
+import org.apache.ctakes.ytex.kernel.model.SVMClassifierEvaluation;
+import org.apache.ctakes.ytex.libsvm.LibSVMParser;
+
+import java.io.*;
 import java.util.List;
 import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import org.apache.ctakes.ytex.kernel.model.ClassifierEvaluation;
-import org.apache.ctakes.ytex.kernel.model.ClassifierInstanceEvaluation;
-import org.apache.ctakes.ytex.kernel.model.SVMClassifierEvaluation;
-import org.apache.ctakes.ytex.libsvm.LibSVMParser;
 
 
 /**

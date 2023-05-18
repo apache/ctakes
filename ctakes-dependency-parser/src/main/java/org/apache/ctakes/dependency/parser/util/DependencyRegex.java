@@ -18,14 +18,13 @@
  */
 package org.apache.ctakes.dependency.parser.util;
 
+import com.googlecode.clearnlp.dependency.DEPNode;
+import org.apache.ctakes.typesystem.type.syntax.ConllDependencyNode;
+
 import java.util.Iterator;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import org.apache.ctakes.typesystem.type.syntax.ConllDependencyNode;
-
-import com.googlecode.clearnlp.dependency.DEPNode;
 
 /*import clear.dep.DepLib;
 import clear.dep.DepNode;

@@ -18,27 +18,16 @@
  */
 package org.apache.ctakes.ytex.weka;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.Map;
-import java.util.Properties;
-import java.util.SortedMap;
-import java.util.SortedSet;
-
-import org.apache.ctakes.ytex.kernel.BaseSparseDataFormatter;
-import org.apache.ctakes.ytex.kernel.FileUtil;
-import org.apache.ctakes.ytex.kernel.InstanceData;
-import org.apache.ctakes.ytex.kernel.KernelUtil;
-import org.apache.ctakes.ytex.kernel.SparseData;
-import org.apache.ctakes.ytex.kernel.SparseDataFormatter;
-import org.apache.ctakes.ytex.kernel.SparseDataFormatterFactory;
-
+import org.apache.ctakes.ytex.kernel.*;
 import weka.core.Attribute;
 import weka.core.FastVector;
 import weka.core.Instances;
 import weka.core.SparseInstance;
 import weka.core.converters.ArffSaver;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.*;
 
 public class WekaFormatterFactory implements SparseDataFormatterFactory {
 

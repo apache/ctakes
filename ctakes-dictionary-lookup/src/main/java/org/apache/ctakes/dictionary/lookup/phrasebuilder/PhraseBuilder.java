@@ -18,9 +18,9 @@
  */
 package org.apache.ctakes.dictionary.lookup.phrasebuilder;
 
-import java.util.List;
-
 import org.apache.ctakes.dictionary.lookup.vo.LookupToken;
+
+import java.util.List;
 
 /**
  * Interface for building phrases from LookupToken objects.

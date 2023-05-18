@@ -18,12 +18,7 @@
  */
 package org.apache.ctakes.relationextractor.pipelines;
 
-import java.io.File;
-import java.util.Arrays;
-import java.util.List;
-
 import org.apache.ctakes.relationextractor.eval.XMIReader;
-import org.apache.ctakes.typesystem.type.constants.CONST;
 import org.apache.ctakes.typesystem.type.relation.BinaryTextRelation;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
@@ -40,6 +35,10 @@ import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.kohsuke.args4j.CmdLineParser;
 import org.kohsuke.args4j.Option;
+
+import java.io.File;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * View the annotations obtained by running the relation extractor on clinical notes.

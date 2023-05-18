@@ -18,9 +18,8 @@
  */
 package org.apache.ctakes.core.fsm.condition;
 
-import org.apache.ctakes.core.fsm.token.WordToken;
-
 import net.openai.util.fsm.Condition;
+import org.apache.ctakes.core.fsm.token.WordToken;
 
 /**
  * Handles case where 2:00 is a single WordToken.

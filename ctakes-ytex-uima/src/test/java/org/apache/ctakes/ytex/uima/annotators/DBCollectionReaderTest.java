@@ -18,8 +18,6 @@
  */
 package org.apache.ctakes.ytex.uima.annotators;
 
-import java.io.IOException;
-
 import org.apache.ctakes.ytex.uima.TestUtils;
 import org.apache.ctakes.ytex.uima.types.DocKey;
 import org.apache.uima.UIMAException;
@@ -27,11 +25,13 @@ import org.apache.uima.cas.CASRuntimeException;
 import org.apache.uima.cas.admin.CASAdminException;
 import org.apache.uima.collection.CollectionReader;
 import org.apache.uima.collection.metadata.CpeDescriptorException;
+import org.apache.uima.fit.factory.JCasFactory;
 import org.apache.uima.jcas.JCas;
 import org.junit.Assert;
 import org.junit.Test;
-import org.apache.uima.fit.factory.JCasFactory;
 import org.xml.sax.SAXException;
+
+import java.io.IOException;
 
 public class DBCollectionReaderTest {
 

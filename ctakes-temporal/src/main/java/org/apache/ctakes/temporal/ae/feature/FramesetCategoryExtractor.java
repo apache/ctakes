@@ -18,11 +18,10 @@
  */
 package org.apache.ctakes.temporal.ae.feature;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.List;
-import java.util.Map;
-
+import com.google.common.base.Charsets;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.io.Resources;
 import org.apache.ctakes.typesystem.type.textsem.Predicate;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
@@ -32,10 +31,10 @@ import org.cleartk.ml.Feature;
 import org.cleartk.ml.feature.extractor.CleartkExtractorException;
 import org.cleartk.ml.feature.extractor.FeatureExtractor1;
 
-import com.google.common.base.Charsets;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.io.Resources;
+import java.io.IOException;
+import java.net.URL;
+import java.util.List;
+import java.util.Map;
 
 public class FramesetCategoryExtractor implements FeatureExtractor1 {
   

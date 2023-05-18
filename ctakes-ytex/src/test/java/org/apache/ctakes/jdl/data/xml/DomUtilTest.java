@@ -18,16 +18,8 @@
  */
 package org.apache.ctakes.jdl.data.xml;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.nullValue;
-import static org.junit.Assert.assertThat;
-
-import javax.xml.parsers.ParserConfigurationException;
-
-
 import org.apache.commons.lang.StringUtils;
 import org.apache.ctakes.jdl.common.FileUtil;
-import org.apache.ctakes.jdl.data.xml.DomUtil;
 import org.apache.ctakes.jdl.test.Resources;
 import org.junit.Test;
 import org.junit.experimental.theories.DataPoint;
@@ -36,6 +28,12 @@ import org.junit.experimental.theories.Theory;
 import org.junit.runner.RunWith;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+
+import javax.xml.parsers.ParserConfigurationException;
+
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.nullValue;
+import static org.junit.Assert.assertThat;
 
 @RunWith(Theories.class)
 public final class DomUtilTest {

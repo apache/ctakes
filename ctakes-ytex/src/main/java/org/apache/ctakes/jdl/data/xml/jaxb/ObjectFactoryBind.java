@@ -18,14 +18,13 @@
  */
 package org.apache.ctakes.jdl.data.xml.jaxb;
 
-import java.io.File;
-import java.io.StringReader;
+import org.apache.ctakes.jdl.schema.xdl.ObjectFactory;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
-
-import org.apache.ctakes.jdl.schema.xdl.ObjectFactory;
+import java.io.File;
+import java.io.StringReader;
 
 
 /**

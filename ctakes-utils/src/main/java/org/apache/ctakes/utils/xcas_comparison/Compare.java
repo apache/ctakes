@@ -17,7 +17,10 @@
  * under the License.
  */
 package org.apache.ctakes.utils.xcas_comparison;
-import java.io.*;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 /**
  * This class illustrates the basic usage of this tool.

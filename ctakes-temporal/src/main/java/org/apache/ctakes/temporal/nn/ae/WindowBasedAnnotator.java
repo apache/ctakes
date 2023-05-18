@@ -1,15 +1,6 @@
 package org.apache.ctakes.temporal.nn.ae;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
+import com.google.common.collect.Lists;
 import org.apache.ctakes.temporal.ae.TemporalRelationExtractorAnnotator.IdentifiedAnnotationPair;
 import org.apache.ctakes.temporal.nn.ae.EventTimeTokenBasedAnnotator.OutputMode;
 import org.apache.ctakes.temporal.utils.TokenPreprocForWord2Vec;
@@ -30,7 +21,10 @@ import org.cleartk.ml.Feature;
 import org.cleartk.ml.Instance;
 import org.cleartk.util.ViewUriUtil;
 
-import com.google.common.collect.Lists;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.*;
 /**
  * a joint annotator for annotating both event-time and event-event relations using neural models.
  * @author chenlin

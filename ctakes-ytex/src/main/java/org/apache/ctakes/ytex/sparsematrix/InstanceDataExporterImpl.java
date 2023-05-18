@@ -18,14 +18,10 @@
  */
 package org.apache.ctakes.ytex.sparsematrix;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.StringWriter;
-import java.io.Writer;
-import java.util.Map;
-
 import org.apache.ctakes.ytex.kernel.InstanceData;
+
+import java.io.*;
+import java.util.Map;
 
 
 /**

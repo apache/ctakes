@@ -18,23 +18,18 @@
  */
 package org.apache.ctakes.temporal.ae.feature;
 
+import org.apache.ctakes.relationextractor.ae.features.RelationFeaturesExtractor;
+import org.apache.ctakes.typesystem.type.textsem.*;
+import org.apache.ctakes.typesystem.type.textspan.Sentence;
+import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
+import org.apache.uima.fit.util.JCasUtil;
+import org.apache.uima.jcas.JCas;
+import org.cleartk.ml.Feature;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
-
-import org.apache.ctakes.relationextractor.ae.features.RelationFeaturesExtractor;
-import org.apache.ctakes.typesystem.type.textsem.EventMention;
-import org.apache.ctakes.typesystem.type.textsem.FractionAnnotation;
-import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
-import org.apache.ctakes.typesystem.type.textsem.MeasurementAnnotation;
-import org.apache.ctakes.typesystem.type.textsem.RangeAnnotation;
-import org.apache.ctakes.typesystem.type.textsem.RomanNumeralAnnotation;
-import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
-import org.apache.uima.jcas.JCas;
-import org.cleartk.ml.Feature;
-import org.apache.uima.fit.util.JCasUtil;
 
 public class SpecialAnnotationRelationExtractor implements RelationFeaturesExtractor<IdentifiedAnnotation,IdentifiedAnnotation>{
 

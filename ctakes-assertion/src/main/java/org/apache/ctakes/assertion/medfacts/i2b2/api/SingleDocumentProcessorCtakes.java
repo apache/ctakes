@@ -18,42 +18,20 @@
  */
 package org.apache.ctakes.assertion.medfacts.i2b2.api;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
-import org.apache.log4j.Level;
+import org.apache.ctakes.assertion.stub.ApiConcept;
+import org.apache.ctakes.assertion.stub.LineAndTokenPosition;
+import org.apache.ctakes.assertion.stub.SingleDocumentProcessor;
+import org.apache.ctakes.typesystem.type.syntax.BaseToken;
+import org.apache.ctakes.typesystem.type.syntax.NewlineToken;
+import org.apache.ctakes.typesystem.type.textspan.Sentence;
 import org.apache.log4j.Logger;
-import java.util.regex.Pattern;
-
-import org.apache.uima.cas.ConstraintFactory;
-import org.apache.uima.cas.FSBooleanConstraint;
-import org.apache.uima.cas.FSIntConstraint;
 import org.apache.uima.cas.FSIterator;
-import org.apache.uima.cas.FSMatchConstraint;
-import org.apache.uima.cas.FSTypeConstraint;
-import org.apache.uima.cas.Feature;
-import org.apache.uima.cas.FeaturePath;
-import org.apache.uima.cas.Type;
-import org.apache.uima.cas.TypeSystem;
 import org.apache.uima.cas.text.AnnotationIndex;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
-import org.apache.ctakes.assertion.stub.ApiConcept;
-import org.apache.ctakes.assertion.stub.AssertionDecoderConfiguration;
-import org.apache.ctakes.assertion.stub.SingleDocumentProcessor;
-import org.apache.ctakes.assertion.stub.CharacterOffsetToLineTokenConverter;
-import org.apache.ctakes.assertion.stub.LineAndTokenPosition;
-import org.apache.ctakes.assertion.stub.LineTokenToCharacterOffsetConverter;
 
-import org.apache.ctakes.typesystem.type.syntax.BaseToken;
-import org.apache.ctakes.typesystem.type.syntax.PunctuationToken;
-import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.ctakes.typesystem.type.textspan.Sentence_Type;
-import org.apache.ctakes.typesystem.type.syntax.WordToken;
-import org.apache.ctakes.typesystem.type.syntax.NumToken;
-import org.apache.ctakes.typesystem.type.syntax.NewlineToken;
-import org.apache.ctakes.typesystem.type.syntax.SymbolToken;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SingleDocumentProcessorCtakes extends SingleDocumentProcessor
 {

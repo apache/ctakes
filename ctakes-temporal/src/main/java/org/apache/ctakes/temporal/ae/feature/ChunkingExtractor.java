@@ -18,15 +18,14 @@
  */
 package org.apache.ctakes.temporal.ae.feature;
 
-import java.util.List;
-
+import com.google.common.collect.Lists;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
 import org.cleartk.ml.Feature;
 import org.cleartk.ml.chunking.Chunking;
 
-import com.google.common.collect.Lists;
+import java.util.List;
 
 public class ChunkingExtractor {
 

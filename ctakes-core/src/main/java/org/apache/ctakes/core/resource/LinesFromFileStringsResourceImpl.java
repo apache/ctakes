@@ -18,15 +18,15 @@
  */
 package org.apache.ctakes.core.resource;
 
+import org.apache.uima.resource.DataResource;
+import org.apache.uima.resource.ResourceInitializationException;
+import org.apache.uima.resource.SharedResourceObject;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-
-import org.apache.uima.resource.DataResource;
-import org.apache.uima.resource.ResourceInitializationException;
-import org.apache.uima.resource.SharedResourceObject;
 
 /**
  * Reads in an array of Strings from a file - each line in the file is a string.  

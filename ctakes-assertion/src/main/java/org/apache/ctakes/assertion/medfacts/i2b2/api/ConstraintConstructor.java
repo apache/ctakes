@@ -18,17 +18,10 @@
  */
 package org.apache.ctakes.assertion.medfacts.i2b2.api;
 
-import org.apache.uima.cas.ConstraintFactory;
-import org.apache.uima.cas.FSIntConstraint;
-import org.apache.uima.cas.FSIterator;
-import org.apache.uima.cas.FSMatchConstraint;
-import org.apache.uima.cas.FSTypeConstraint;
-import org.apache.uima.cas.Feature;
-import org.apache.uima.cas.FeaturePath;
-import org.apache.uima.cas.Type;
-import org.apache.uima.cas.TypeSystem;
+import org.apache.uima.cas.*;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
+
 import java.util.Iterator;
 
 public abstract class ConstraintConstructor

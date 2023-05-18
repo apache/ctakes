@@ -18,12 +18,12 @@
  */
 package org.apache.ctakes.ytex.kernel.metric;
 
+import org.apache.ctakes.ytex.kernel.model.ConceptGraph;
+
 import java.util.BitSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
-import org.apache.ctakes.ytex.kernel.model.ConceptGraph;
 
 
 public interface ConceptSimilarityService {

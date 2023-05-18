@@ -2,7 +2,10 @@ package org.apache.ctakes.dictionary.lookup2.util.tool;
 
 import org.apache.ctakes.dictionary.lookup2.util.JdbcConnectionFactory;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  * @author SPF , chip-nlp

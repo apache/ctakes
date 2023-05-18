@@ -1,13 +1,12 @@
 #!python
 
-from keras.models import Sequential, model_from_json
-import numpy as np
-import et_cleartk_io as ctk_io
-import sys
 import os.path
 import pickle
-from keras.preprocessing.sequence import pad_sequences
+import sys
 from fnmatch import fnmatch
+from keras.models import model_from_json
+from keras.preprocessing.sequence import pad_sequences
+
 
 def main(args):
     if len(args) < 1:

@@ -18,22 +18,17 @@
  */
 package org.apache.ctakes.temporal.ae.feature;
 
-import java.util.List;
-
+import com.google.common.collect.Lists;
 import org.apache.ctakes.relationextractor.ae.features.RelationFeaturesExtractor;
-import org.apache.ctakes.typesystem.type.textsem.EventMention;
-import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
-import org.apache.ctakes.typesystem.type.textsem.Predicate;
-import org.apache.ctakes.typesystem.type.textsem.SemanticArgument;
-import org.apache.ctakes.typesystem.type.textsem.SemanticRoleRelation;
+import org.apache.ctakes.typesystem.type.textsem.*;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
+import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.FSList;
 import org.apache.uima.jcas.cas.NonEmptyFSList;
 import org.cleartk.ml.Feature;
-import org.apache.uima.fit.util.JCasUtil;
 
-import com.google.common.collect.Lists;
+import java.util.List;
 
 public class SRLRelationFeaturesExtractor implements RelationFeaturesExtractor<IdentifiedAnnotation,IdentifiedAnnotation> {
 

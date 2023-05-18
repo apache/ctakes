@@ -20,7 +20,7 @@
 
 -->
 <load xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://jdl-prj.googlecode.com/files/xdl.xsd">
+>
 	<csv table="@db.schema@.ref_uima_type" commit="10000" delimiter="&#009;">
 		<column name="uima_type_id" />
 		<column name="uima_type_name" />

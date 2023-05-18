@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 
-import numpy as np
-import sys, ConfigParser, collections
+import ConfigParser
+import collections
+import sys
+
 sys.dont_write_bytecode = True
 
 class DatasetProvider:

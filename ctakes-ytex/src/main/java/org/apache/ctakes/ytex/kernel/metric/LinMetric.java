@@ -18,10 +18,10 @@
  */
 package org.apache.ctakes.ytex.kernel.metric;
 
-import java.util.Map;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+
+import java.util.Map;
 
 /**
  * compute corpus-ic or intrinsic-ic based lin measure.

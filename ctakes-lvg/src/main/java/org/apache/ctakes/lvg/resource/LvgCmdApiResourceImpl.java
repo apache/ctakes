@@ -18,16 +18,14 @@
  */
 package org.apache.ctakes.lvg.resource;
 
-import java.io.File;
-
 import gov.nih.nlm.nls.lvg.Api.LvgCmdApi;
 import gov.nih.nlm.nls.lvg.Api.LvgLexItemApi;
-
 import org.apache.log4j.Logger;
-
 import org.apache.uima.resource.DataResource;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.resource.SharedResourceObject;
+
+import java.io.File;
 
 /**
  * Loads NLM Lvg and Norm, reading configuration information 

@@ -18,13 +18,12 @@
  */
 package org.apache.ctakes.ytex.ws;
 
-import java.util.List;
+import org.apache.ctakes.ytex.kernel.metric.ConceptPair;
+import org.apache.ctakes.ytex.kernel.metric.ConceptPairSimilarity;
 
 import javax.jws.WebMethod;
 import javax.jws.WebService;
-
-import org.apache.ctakes.ytex.kernel.metric.ConceptPair;
-import org.apache.ctakes.ytex.kernel.metric.ConceptPairSimilarity;
+import java.util.List;
 
 @WebService
 public interface ConceptSimilarityWebService {

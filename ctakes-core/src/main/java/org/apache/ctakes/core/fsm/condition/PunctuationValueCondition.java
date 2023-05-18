@@ -18,9 +18,8 @@
  */
 package org.apache.ctakes.core.fsm.condition;
 
-import org.apache.ctakes.core.fsm.token.PunctuationToken;
-
 import net.openai.util.fsm.Condition;
+import org.apache.ctakes.core.fsm.token.PunctuationToken;
 
 /**
  * 

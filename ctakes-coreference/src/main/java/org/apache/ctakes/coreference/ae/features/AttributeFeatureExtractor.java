@@ -1,14 +1,5 @@
 package org.apache.ctakes.coreference.ae.features;
 
-import static org.apache.ctakes.coreference.ae.features.TokenFeatureExtractor.isGeneric;
-import static org.apache.ctakes.coreference.ae.features.TokenFeatureExtractor.isHistory;
-import static org.apache.ctakes.coreference.ae.features.TokenFeatureExtractor.isNegated;
-import static org.apache.ctakes.coreference.ae.features.TokenFeatureExtractor.isPatient;
-import static org.apache.ctakes.coreference.ae.features.TokenFeatureExtractor.isUncertain;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.ctakes.relationextractor.ae.features.RelationFeaturesExtractor;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
 import org.apache.ctakes.typesystem.type.textsem.TimeMention;
@@ -17,6 +8,11 @@ import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
 import org.cleartk.ml.Feature;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.apache.ctakes.coreference.ae.features.TokenFeatureExtractor.*;
 
 public class AttributeFeatureExtractor implements RelationFeaturesExtractor<IdentifiedAnnotation, IdentifiedAnnotation> {
 

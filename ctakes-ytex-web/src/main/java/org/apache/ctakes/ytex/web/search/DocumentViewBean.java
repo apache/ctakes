@@ -18,14 +18,13 @@
  */
 package org.apache.ctakes.ytex.web.search;
 
-import java.io.Serializable;
-import java.util.Properties;
+import org.apache.commons.lang.StringEscapeUtils;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.faces.context.FacesContext;
 import javax.sql.DataSource;
-
-import org.apache.commons.lang.StringEscapeUtils;
-import org.springframework.jdbc.core.JdbcTemplate;
+import java.io.Serializable;
+import java.util.Properties;
 
 /**
  * JSF bean for viewing a document retrieved via semanticSearch.jspx. Relies on

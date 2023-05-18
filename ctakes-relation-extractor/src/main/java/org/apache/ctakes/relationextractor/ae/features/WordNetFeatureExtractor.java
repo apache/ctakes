@@ -18,17 +18,16 @@
  */
 package org.apache.ctakes.relationextractor.ae.features;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-
+import edu.mit.jwi.IDictionary;
 import org.apache.ctakes.typesystem.type.syntax.BaseToken;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.cleartk.ml.Feature;
 
-import edu.mit.jwi.IDictionary;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 
 /**
  * Features that are based on WordNet.

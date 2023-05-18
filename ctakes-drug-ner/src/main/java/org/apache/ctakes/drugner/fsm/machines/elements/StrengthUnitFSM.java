@@ -18,13 +18,9 @@
  */
 package org.apache.ctakes.drugner.fsm.machines.elements;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
+import net.openai.util.fsm.AnyCondition;
+import net.openai.util.fsm.Machine;
+import net.openai.util.fsm.State;
 import org.apache.ctakes.core.fsm.condition.PunctuationValueCondition;
 import org.apache.ctakes.core.fsm.condition.SymbolValueCondition;
 import org.apache.ctakes.core.fsm.condition.WordSetCondition;
@@ -35,9 +31,7 @@ import org.apache.ctakes.drugner.fsm.output.elements.StrengthUnitCombinedToken;
 import org.apache.ctakes.drugner.fsm.output.elements.StrengthUnitToken;
 import org.apache.ctakes.drugner.fsm.states.util.IndentStartState;
 
-import net.openai.util.fsm.AnyCondition;
-import net.openai.util.fsm.Machine;
-import net.openai.util.fsm.State;
+import java.util.*;
 
 /**
  * Uses one or more finite state machines to detect dosages in the given

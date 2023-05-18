@@ -18,21 +18,6 @@
  */
 package org.apache.ctakes.ytex.kernel;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.lang.ref.SoftReference;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
-import java.util.Set;
-import java.util.WeakHashMap;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.ctakes.ytex.kernel.dao.ClassifierEvaluationDao;
@@ -41,6 +26,13 @@ import org.apache.ctakes.ytex.kernel.model.ConcRel;
 import org.apache.ctakes.ytex.kernel.model.ConceptGraph;
 import org.apache.ctakes.ytex.kernel.model.FeatureEvaluation;
 import org.apache.ctakes.ytex.kernel.model.FeatureRank;
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.lang.ref.SoftReference;
+import java.lang.reflect.Array;
+import java.util.*;
 
 
 public class IntrinsicInfoContentEvaluatorImpl implements

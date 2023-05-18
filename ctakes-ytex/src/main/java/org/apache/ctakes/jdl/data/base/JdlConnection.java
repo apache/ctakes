@@ -18,14 +18,13 @@
  */
 package org.apache.ctakes.jdl.data.base;
 
+import org.apache.commons.lang.StringUtils;
+import org.apache.ctakes.jdl.schema.xdl.JdbcType;
+
 import java.sql.Connection;
 import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
-
-import org.apache.commons.lang.StringUtils;
-import org.apache.ctakes.jdl.schema.xdl.JdbcType;
 
 /**
  * Connection with db.

@@ -18,18 +18,6 @@
  */
 package org.apache.ctakes.jdl;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.not;
-import static org.junit.Assume.assumeThat;
-
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.SQLException;
-
-import javax.xml.bind.JAXBException;
-
-
-import org.apache.ctakes.jdl.AppJdl;
 import org.apache.ctakes.jdl.common.FileUtil;
 import org.apache.ctakes.jdl.data.base.JdlConnection;
 import org.apache.ctakes.jdl.data.xml.jaxb.ObjectFactoryUtil;
@@ -39,6 +27,15 @@ import org.apache.ctakes.jdl.test.Resources;
 import org.apache.ctakes.jdl.test.SqlJdl;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import javax.xml.bind.JAXBException;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
+
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.not;
+import static org.junit.Assume.assumeThat;
 
 public class AppJdlTest {
 	private static JdbcType jdbc;

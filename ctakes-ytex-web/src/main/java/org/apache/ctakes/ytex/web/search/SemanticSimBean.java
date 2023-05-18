@@ -18,25 +18,16 @@
  */
 package org.apache.ctakes.ytex.web.search;
 
+import org.apache.ctakes.ytex.kernel.metric.*;
+import org.apache.ctakes.ytex.kernel.metric.ConceptSimilarityService.SimilarityMetricEnum;
+
+import javax.faces.event.ActionEvent;
+import javax.faces.event.ValueChangeEvent;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.Serializable;
 import java.io.StringReader;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
-
-import javax.faces.event.ActionEvent;
-import javax.faces.event.ValueChangeEvent;
-
-import org.apache.ctakes.ytex.kernel.metric.ConceptPair;
-import org.apache.ctakes.ytex.kernel.metric.ConceptPairSimilarity;
-import org.apache.ctakes.ytex.kernel.metric.ConceptSimilarityService;
-import org.apache.ctakes.ytex.kernel.metric.ConceptSimilarityService.SimilarityMetricEnum;
-import org.apache.ctakes.ytex.kernel.metric.LCSPath;
-import org.apache.ctakes.ytex.kernel.metric.SimilarityInfo;
+import java.util.*;
 
 public class SemanticSimBean implements Serializable {
 	public static class SimilarityEntry implements Serializable {

@@ -18,20 +18,6 @@
  */
 package org.apache.ctakes.jdl.data.loader;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.lang.reflect.Constructor;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.text.Format;
-import java.util.HashMap;
-import java.util.Map;
-
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVStrategy;
 import org.apache.commons.lang.BooleanUtils;
@@ -42,6 +28,14 @@ import org.apache.commons.logging.LogFactory;
 import org.apache.ctakes.jdl.data.base.JdlConnection;
 import org.apache.ctakes.jdl.schema.xdl.CsvLoadType;
 import org.apache.ctakes.jdl.schema.xdl.CsvLoadType.Column;
+
+import java.io.*;
+import java.lang.reflect.Constructor;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.text.Format;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Loader of CSV file.

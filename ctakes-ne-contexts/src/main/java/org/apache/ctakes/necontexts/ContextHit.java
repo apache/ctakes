@@ -18,10 +18,10 @@
  */
 package org.apache.ctakes.necontexts;
 
+import org.apache.ctakes.core.fsm.output.BaseTokenImpl;
+
 import java.util.HashMap;
 import java.util.Map;
-
-import org.apache.ctakes.core.fsm.output.BaseTokenImpl;
 
 
 /**

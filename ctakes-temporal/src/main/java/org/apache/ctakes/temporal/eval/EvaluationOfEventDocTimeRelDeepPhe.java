@@ -53,8 +53,8 @@ import org.cleartk.util.ViewUriUtil;
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
-import java.util.logging.*;
 import java.util.logging.Formatter;
+import java.util.logging.*;
 
 public class EvaluationOfEventDocTimeRelDeepPhe extends
 Evaluation_ImplBase<Map<String, AnnotationStatistics<String>>>{

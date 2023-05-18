@@ -20,7 +20,10 @@ package org.apache.ctakes.dictionary.lookup.phrasebuilder;
 
 import org.apache.ctakes.dictionary.lookup.vo.LookupToken;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 
 /**

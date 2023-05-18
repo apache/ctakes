@@ -18,11 +18,10 @@
  */
 package org.apache.ctakes.necontexts;
 
+import org.apache.ctakes.typesystem.type.textsem.ContextAnnotation;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
-
-import org.apache.ctakes.typesystem.type.textsem.ContextAnnotation;
 
 
 public abstract class NamedEntityContextHitConsumer implements ContextHitConsumer {

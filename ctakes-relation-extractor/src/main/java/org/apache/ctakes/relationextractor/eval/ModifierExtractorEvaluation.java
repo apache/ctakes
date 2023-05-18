@@ -18,7 +18,6 @@
  */
 package org.apache.ctakes.relationextractor.eval;
 
-import com.google.common.base.Function;
 import com.google.common.collect.Lists;
 import com.lexicalscope.jewel.cli.CliFactory;
 import org.apache.ctakes.relationextractor.ae.ModifierExtractorAnnotator;
@@ -40,7 +39,6 @@ import org.cleartk.ml.jar.GenericJarClassifierFactory;
 import org.cleartk.ml.jar.JarClassifierBuilder;
 import org.cleartk.ml.liblinear.LibLinearStringOutcomeDataWriter;
 
-import javax.annotation.Nullable;
 import java.io.File;
 import java.util.*;
 

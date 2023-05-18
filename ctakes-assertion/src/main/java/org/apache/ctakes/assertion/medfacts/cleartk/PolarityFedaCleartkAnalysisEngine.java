@@ -18,10 +18,6 @@
  */
 package org.apache.ctakes.assertion.medfacts.cleartk;
 
-import java.io.File;
-import java.net.URI;
-import java.util.ArrayList;
-
 import org.apache.ctakes.assertion.attributes.features.selection.Chi2FeatureSelection;
 import org.apache.ctakes.assertion.attributes.features.selection.FeatureSelection;
 import org.apache.ctakes.assertion.medfacts.cleartk.extractors.AboveLeftFragmentExtractor;
@@ -36,6 +32,10 @@ import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.cleartk.ml.Instance;
 import org.cleartk.ml.feature.function.FeatureFunctionExtractor;
+
+import java.io.File;
+import java.net.URI;
+import java.util.ArrayList;
 
 
 

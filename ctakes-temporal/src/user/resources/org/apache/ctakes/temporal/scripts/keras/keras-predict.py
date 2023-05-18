@@ -1,10 +1,11 @@
 #!python
 
-from keras.models import Sequential, model_from_json
 import numpy as np
-import et_cleartk_io as ctk_io
-import sys
 import os.path
+import sys
+from keras.models import model_from_json
+
+import et_cleartk_io as ctk_io
 
 
 def main(args):

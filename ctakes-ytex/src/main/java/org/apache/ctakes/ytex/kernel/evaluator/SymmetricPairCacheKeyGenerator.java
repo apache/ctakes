@@ -18,9 +18,9 @@
  */
 package org.apache.ctakes.ytex.kernel.evaluator;
 
-import java.lang.reflect.Method;
-
 import org.apache.ctakes.ytex.kernel.OrderedPair;
+
+import java.lang.reflect.Method;
 
 
 /**

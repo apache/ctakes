@@ -18,14 +18,6 @@
  */
 package org.apache.ctakes.ytex.uima.annotators;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
@@ -45,6 +37,8 @@ import org.apache.uima.jcas.cas.FSArray;
 import org.apache.uima.jcas.cas.StringArray;
 import org.apache.uima.jcas.tcas.Annotation;
 import org.apache.uima.resource.ResourceInitializationException;
+
+import java.util.*;
 
 /**
  * Convert metamap concepts to ctakes named entities.

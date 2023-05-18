@@ -18,9 +18,8 @@
  */
 package org.apache.ctakes.ytex.kernel.metric;
 
-import java.io.Serializable;
-
 import javax.xml.bind.annotation.XmlAttribute;
+import java.io.Serializable;
 
 /**
  * pair of concepts. used to submit a set of concepts to the similarity service

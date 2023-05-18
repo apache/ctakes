@@ -18,11 +18,11 @@
  */
 package org.apache.ctakes.assertion.medfacts.cleartk.extractors;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.cleartk.ml.Feature;
 import org.cleartk.ml.feature.function.FeatureFunction;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class FedaFeatureFunction implements FeatureFunction {
 

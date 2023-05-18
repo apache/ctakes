@@ -20,21 +20,12 @@
 
 package org.apache.ctakes.preprocessor;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.net.URL;
-import java.net.URLDecoder;
-import java.util.Map;
-
 import org.apache.ctakes.core.resource.FileLocator;
-import org.apache.ctakes.preprocessor.ClinicalNotePreProcessor;
-import org.apache.ctakes.preprocessor.DocumentMetaData;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.io.*;
+import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;

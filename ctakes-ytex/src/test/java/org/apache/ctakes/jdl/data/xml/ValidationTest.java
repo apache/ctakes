@@ -18,20 +18,8 @@
  */
 package org.apache.ctakes.jdl.data.xml;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.nullValue;
-import static org.junit.Assert.assertThat;
-
-import java.net.URL;
-
-import javax.xml.validation.Schema;
-
-
 import org.apache.ctakes.jdl.AppJdl;
 import org.apache.ctakes.jdl.common.FileUtil;
-import org.apache.ctakes.jdl.data.xml.DomUtil;
-import org.apache.ctakes.jdl.data.xml.SchemaUtil;
-import org.apache.ctakes.jdl.data.xml.Validation;
 import org.apache.ctakes.jdl.test.Resources;
 import org.junit.After;
 import org.junit.BeforeClass;
@@ -40,6 +28,13 @@ import org.junit.experimental.theories.DataPoint;
 import org.junit.experimental.theories.Theories;
 import org.junit.experimental.theories.Theory;
 import org.junit.runner.RunWith;
+
+import javax.xml.validation.Schema;
+import java.net.URL;
+
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.nullValue;
+import static org.junit.Assert.assertThat;
 
 @RunWith(Theories.class)
 public class ValidationTest {

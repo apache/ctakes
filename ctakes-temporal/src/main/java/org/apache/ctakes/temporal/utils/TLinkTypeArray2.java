@@ -18,27 +18,15 @@
  */
 package org.apache.ctakes.temporal.utils;
 
-import org.apache.ctakes.temporal.utils.AnnotationIdCollection;
 import org.apache.ctakes.typesystem.type.relation.BinaryTextRelation;
 import org.apache.ctakes.typesystem.type.relation.RelationArgument;
 import org.apache.ctakes.typesystem.type.relation.TemporalTextRelation;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
 
+import java.util.*;
 
-import java.time.temporal.Temporal;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
-import static org.apache.ctakes.temporal.utils.TlinkType.AFTER;
-import static org.apache.ctakes.temporal.utils.TlinkType.BEFORE;
-import static org.apache.ctakes.temporal.utils.TlinkType.BEGINS_ON;
-import static org.apache.ctakes.temporal.utils.TlinkType.CONTAINS;
-import static org.apache.ctakes.temporal.utils.TlinkType.ENDS_ON;
-import static org.apache.ctakes.temporal.utils.TlinkType.OVERLAP;
+import static org.apache.ctakes.temporal.utils.TlinkType.*;
 
 /**
  * Author: SPF

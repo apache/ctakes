@@ -18,10 +18,10 @@
  */
 package org.apache.ctakes.core.sentence;
 
+import opennlp.tools.sentdetect.EndOfSentenceScanner;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import opennlp.tools.sentdetect.EndOfSentenceScanner;
 
 /**
  * End of Sentence scanner with more candidate end-of-sentence

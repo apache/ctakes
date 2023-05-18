@@ -1,13 +1,6 @@
 package org.apache.ctakes.temporal.keras;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintStream;
-import java.util.List;
-import java.util.Locale;
-
+import com.google.common.annotations.Beta;
 import org.apache.uima.UIMAFramework;
 import org.apache.uima.util.Level;
 import org.apache.uima.util.Logger;
@@ -18,7 +11,8 @@ import org.cleartk.ml.encoder.outcome.OutcomeEncoder;
 import org.cleartk.ml.jar.Classifier_ImplBase;
 import org.cleartk.ml.util.featurevector.FeatureVector;
 
-import com.google.common.annotations.Beta;
+import java.io.*;
+import java.util.List;
 
 /**
  * <br>

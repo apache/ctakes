@@ -18,19 +18,8 @@
  */
 package org.apache.ctakes.coreference.ae;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.util.HashSet;
-import java.util.LinkedList;
-
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
-import org.apache.ctakes.coreference.type.BooleanLabeledFS;
-import org.apache.ctakes.coreference.type.DemMarkable;
-import org.apache.ctakes.coreference.type.Markable;
-import org.apache.ctakes.coreference.type.MarkablePairSet;
-import org.apache.ctakes.coreference.type.NEMarkable;
-import org.apache.ctakes.coreference.type.PronounMarkable;
+import org.apache.ctakes.coreference.type.*;
 import org.apache.ctakes.coreference.util.CorefConsts;
 import org.apache.ctakes.coreference.util.FSIteratorToList;
 import org.apache.ctakes.coreference.util.PairAttributeCalculator;
@@ -46,6 +35,12 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.EmptyFSList;
 import org.apache.uima.jcas.cas.NonEmptyFSList;
 import org.apache.uima.jcas.tcas.Annotation;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.util.HashSet;
+import java.util.LinkedList;
 
 @PipeBitInfo(
 		name = "Markable Pair Creator (MiPACQ)",

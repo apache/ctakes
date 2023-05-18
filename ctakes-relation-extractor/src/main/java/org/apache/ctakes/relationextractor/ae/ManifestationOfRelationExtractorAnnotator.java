@@ -18,9 +18,6 @@
  */
 package org.apache.ctakes.relationextractor.ae;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.typesystem.type.relation.BinaryTextRelation;
 import org.apache.ctakes.typesystem.type.relation.ManifestationOfTextRelation;
@@ -32,6 +29,9 @@ import org.apache.ctakes.typesystem.type.textspan.Sentence;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Identifies manifestation_of relation.

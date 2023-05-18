@@ -1,8 +1,8 @@
 package org.apache.ctakes.assertion.stub;
 
-import java.io.File;
-
 import org.apache.log4j.Logger;
+
+import java.io.File;
 
 public class JarafeMEDecoder {
 

@@ -17,6 +17,16 @@
  * under the License.
  */
 #!/usr/bin/env groovy
+import org.apache.ctakes.core.util.CtakesFileNamer
+import org.apache.uima.analysis_engine.AnalysisEngineDescription
+import org.apache.uima.collection.CollectionReader
+import org.apache.uima.fit.component.xwriter.XWriter
+import org.apache.uima.fit.factory.*
+import org.apache.uima.fit.pipeline.SimplePipeline
+import org.apache.uima.resource.metadata.TypePriorities
+import org.apache.uima.resource.metadata.TypePriorityList
+import org.apache.uima.resource.metadata.TypeSystemDescription
+import org.cleartk.util.cr.FilesCollectionReader
 
 /**
 ** 	This script was not written to be run directly, although it could be if you 
@@ -34,38 +44,6 @@
 ** 	On Debian/Ubuntu systems, installing Groovy should be as easy as apt-get install groovy.
 ** 	You can download groovy from http://groovy.codehaus.org/
 **/
-
-import java.io.File;
-import org.apache.uima.jcas.JCas;
-import org.apache.uima.analysis_engine.AnalysisEngineDescription;
-import org.apache.uima.collection.CollectionReader;
-import org.apache.uima.resource.metadata.TypePriorities;
-import org.apache.uima.resource.metadata.TypePriorityList;
-import org.apache.uima.resource.metadata.TypeSystemDescription;
-import org.apache.uima.fit.factory.AnalysisEngineFactory;
-import org.apache.uima.fit.factory.AggregateBuilder;
-import org.apache.uima.fit.pipeline.SimplePipeline;
-import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
-import org.apache.uima.fit.component.xwriter.XWriter;
-import org.apache.uima.fit.factory.ConfigurationParameterFactory;
-import org.apache.uima.fit.factory.TypeSystemDescriptionFactory;
-import org.apache.uima.fit.factory.TypePrioritiesFactory;
-import static org.apache.uima.fit.util.JCasUtil.*;
-
-import org.apache.ctakes.typesystem.type.syntax.BaseToken;
-import org.apache.ctakes.typesystem.type.textspan.Segment;
-import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.ctakes.typesystem.type.syntax.TopTreebankNode;
-import org.apache.ctakes.core.resource.FileLocator;
-import org.apache.ctakes.core.ae.SentenceDetector;
-import org.apache.ctakes.core.ae.SimpleSegmentAnnotator;
-import org.apache.ctakes.core.ae.TokenizerAnnotatorPTB;
-import org.apache.ctakes.core.util.CtakesFileNamer;
-
-import org.cleartk.util.cr.FilesCollectionReader;
-import org.apache.ctakes.core.cr.FilesInDirectoryCollectionReader;
-
-
 def OUTPUT_DIR = "output-dir";
 def DEBUG = false;
 

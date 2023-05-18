@@ -18,16 +18,9 @@
  */
 package org.apache.ctakes.core.ae;
 
-import org.apache.uima.jcas.JCas;
-
 import org.apache.ctakes.core.nlp.tokenizer.Token;
-import org.apache.ctakes.typesystem.type.syntax.BaseToken;
-import org.apache.ctakes.typesystem.type.syntax.ContractionToken;
-import org.apache.ctakes.typesystem.type.syntax.NewlineToken;
-import org.apache.ctakes.typesystem.type.syntax.NumToken;
-import org.apache.ctakes.typesystem.type.syntax.PunctuationToken;
-import org.apache.ctakes.typesystem.type.syntax.SymbolToken;
-import org.apache.ctakes.typesystem.type.syntax.WordToken;
+import org.apache.ctakes.typesystem.type.syntax.*;
+import org.apache.uima.jcas.JCas;
 
 /**
  * Utilities methods for converting between Java Tokenizer objects and their

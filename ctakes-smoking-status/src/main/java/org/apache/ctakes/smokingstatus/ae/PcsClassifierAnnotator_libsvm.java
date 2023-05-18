@@ -18,33 +18,25 @@
  */
 package org.apache.ctakes.smokingstatus.ae;
 
+import libsvm.svm;
+import libsvm.svm_model;
+import libsvm.svm_node;
+import org.apache.ctakes.core.resource.FileResource;
+import org.apache.ctakes.smokingstatus.Const;
+import org.apache.ctakes.smokingstatus.type.libsvm.NominalAttributeValue;
+import org.apache.ctakes.typesystem.type.syntax.WordToken;
+import org.apache.uima.UimaContext;
+import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
+import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
+import org.apache.uima.jcas.JCas;
+import org.apache.uima.jcas.JFSIndexRepository;
+import org.apache.uima.resource.ResourceInitializationException;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import libsvm.svm;
-import libsvm.svm_model;
-import libsvm.svm_node;
-import org.apache.uima.UimaContext;
-import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
-import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
-import org.apache.uima.jcas.JFSIndexRepository;
-import org.apache.uima.jcas.JCas;
-import org.apache.uima.resource.ResourceInitializationException;
-
-
-import org.apache.ctakes.core.resource.FileResource;
-import org.apache.ctakes.smokingstatus.Const;
-import org.apache.ctakes.typesystem.type.syntax.WordToken;
-import org.apache.ctakes.smokingstatus.type.libsvm.NominalAttributeValue;
+import java.util.*;
 
 public class PcsClassifierAnnotator_libsvm extends JCasAnnotator_ImplBase {
 	Set<String> stopWords;

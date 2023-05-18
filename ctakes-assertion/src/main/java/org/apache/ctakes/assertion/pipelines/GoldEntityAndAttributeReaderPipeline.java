@@ -19,14 +19,14 @@
 package org.apache.ctakes.assertion.pipelines;
 
 
-import java.io.IOException;
-import java.util.Collections;
-
 import org.apache.ctakes.core.ae.SHARPKnowtatorXMLReader;
 import org.apache.ctakes.core.cc.FileTreeXmiWriter;
 import org.apache.ctakes.core.config.ConfigParameterConstants;
 import org.apache.ctakes.core.pipeline.PipelineBuilder;
 import org.apache.uima.UIMAException;
+
+import java.io.IOException;
+import java.util.Collections;
 
 /**
  * 

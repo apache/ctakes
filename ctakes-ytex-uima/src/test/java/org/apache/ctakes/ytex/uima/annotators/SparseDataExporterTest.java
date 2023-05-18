@@ -18,24 +18,20 @@
  */
 package org.apache.ctakes.ytex.uima.annotators;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.util.Properties;
-
 import org.apache.ctakes.ytex.dao.DBUtil;
 import org.apache.ctakes.ytex.kernel.SparseDataExporter;
 import org.apache.ctakes.ytex.uima.ApplicationContextHolder;
 import org.apache.ctakes.ytex.uima.TestUtils;
 import org.apache.uima.UIMAException;
+import org.apache.uima.fit.pipeline.SimplePipeline;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.util.InvalidXMLException;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.apache.uima.fit.pipeline.SimplePipeline;
+
+import java.io.*;
+import java.util.Properties;
 
 public class SparseDataExporterTest {
 	static final String instanceClassQuery = "select note_id,  fracture, case when note_set = 'train' then 1 else 0 end train from %sfracture_demo";

@@ -18,22 +18,18 @@
  */
 package org.apache.ctakes.coreference.treekernel.training;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Scanner;
-
+import libsvm.svm_node;
 import org.apache.ctakes.coreference.util.ThreadDelegator;
 import org.apache.ctakes.utils.kernel.Kernel;
 import org.apache.ctakes.utils.kernel.LinearKernel;
 import org.apache.ctakes.utils.kernel.PolyKernel;
 import org.apache.ctakes.utils.kernel.RBFKernel;
 
-
-import libsvm.svm_node;
-
-import opennlp.tools.parser.Parse;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class LinearKernelMatrixWriter implements ThreadDelegator {
 

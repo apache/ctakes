@@ -18,8 +18,7 @@
  */
 package org.apache.ctakes.temporal.pipelines;
 
-import java.net.MalformedURLException;
-
+import com.lexicalscope.jewel.cli.Option;
 import org.apache.ctakes.chunker.ae.Chunker;
 import org.apache.ctakes.constituency.parser.ae.ConstituencyParser;
 import org.apache.ctakes.contexttokenizer.ae.ContextDependentTokenizerAnnotator;
@@ -39,7 +38,7 @@ import org.apache.uima.fit.factory.AggregateBuilder;
 import org.apache.uima.fit.factory.AnalysisEngineFactory;
 import org.apache.uima.resource.ResourceInitializationException;
 
-import com.lexicalscope.jewel.cli.Option;
+import java.net.MalformedURLException;
 
 public abstract class TemporalExtractionPipeline_ImplBase {
   public static interface Options {

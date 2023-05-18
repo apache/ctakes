@@ -18,9 +18,9 @@
  */
 package org.apache.ctakes.ytex.kernel.model;
 
-import java.io.Serializable;
-
 import org.apache.ctakes.ytex.dao.DBUtil;
+
+import java.io.Serializable;
 
 
 /**

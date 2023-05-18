@@ -18,21 +18,19 @@
  */
 package org.apache.ctakes.temporal.ae.feature;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.ctakes.relationextractor.ae.features.RelationFeaturesExtractor;
-import org.apache.ctakes.typesystem.type.syntax.NewlineToken;
-import org.apache.ctakes.typesystem.type.syntax.NumToken;
 import org.apache.ctakes.typesystem.type.syntax.PunctuationToken;
 import org.apache.ctakes.typesystem.type.syntax.WordToken;
 import org.apache.ctakes.typesystem.type.textsem.EventMention;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
 import org.apache.ctakes.typesystem.type.textsem.TimeMention;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
+import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.cleartk.ml.Feature;
-import org.apache.uima.fit.util.JCasUtil;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Count the number of EventMention and TimeMention in between two arguments as features

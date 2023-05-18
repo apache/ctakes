@@ -1,8 +1,5 @@
 package org.apache.ctakes.coreference.ae.features.salience;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.ctakes.dependency.parser.util.DependencyUtility;
 import org.apache.ctakes.typesystem.type.textsem.EventMention;
 import org.apache.ctakes.typesystem.type.textsem.Markable;
@@ -12,6 +9,9 @@ import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.cleartk.ml.Feature;
 import org.cleartk.ml.feature.extractor.FeatureExtractor1;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ClinicalFeatureExtractor implements FeatureExtractor1<Markable> {
 

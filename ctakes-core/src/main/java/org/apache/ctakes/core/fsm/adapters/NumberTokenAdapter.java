@@ -18,10 +18,9 @@
  */
 package org.apache.ctakes.core.fsm.adapters;
 
+import com.google.common.base.Strings;
 import org.apache.ctakes.core.fsm.token.NumberToken;
 import org.apache.ctakes.typesystem.type.syntax.NumToken;
-
-import com.google.common.base.Strings;
 
 /**
  * Adapts JCas token annotation to interface expected by the Context Dependent

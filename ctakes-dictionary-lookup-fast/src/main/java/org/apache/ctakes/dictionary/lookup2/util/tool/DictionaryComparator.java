@@ -2,7 +2,10 @@ package org.apache.ctakes.dictionary.lookup2.util.tool;
 
 import org.apache.ctakes.core.util.StringUtil;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Collection;
 import java.util.HashSet;
 

@@ -18,19 +18,11 @@
  */
 package org.apache.ctakes.postagger.test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-
-import java.io.File;
-import java.util.Iterator;
-
-import org.apache.uima.analysis_engine.AnalysisEngine;
+import org.apache.ctakes.typesystem.type.syntax.BaseToken;
+import org.apache.ctakes.utils.test.TestUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.junit.Test;
-
-import org.apache.ctakes.typesystem.type.syntax.BaseToken;
-import org.apache.ctakes.utils.test.TestUtil;
 
 public class POSTaggerTests {
 

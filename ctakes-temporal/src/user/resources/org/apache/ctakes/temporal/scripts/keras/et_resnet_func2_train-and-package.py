@@ -1,25 +1,19 @@
 #!/usr/bin/env python
 
-import sklearn as sk
-
 import numpy as np
 np.random.seed(1337)
-
-import et_cleartk_io as ctk_io
-import nn_models
 
 import sys
 import os.path
 
 import dataset
 
-import keras as k
 from keras.utils.np_utils import to_categorical
 from keras.optimizers import RMSprop
 from keras.preprocessing.sequence import pad_sequences
-from keras.models import Sequential,Model
+from keras.models import Model
 from keras.layers import Input,merge
-from keras.layers.core import Dense, Dropout, Activation, Flatten
+from keras.layers.core import Dense, Activation, Flatten
 from keras.layers.convolutional import Convolution1D, MaxPooling1D, AveragePooling1D
 from keras.layers.embeddings import Embedding
 from keras.layers.normalization import BatchNormalization

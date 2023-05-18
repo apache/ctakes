@@ -18,24 +18,13 @@
  */
 package org.apache.ctakes.ytex.libsvm;
 
+import com.google.common.collect.BiMap;
+import org.apache.ctakes.ytex.kernel.*;
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
-import java.util.SortedMap;
-
-import org.apache.ctakes.ytex.kernel.BaseSparseDataFormatter;
-import org.apache.ctakes.ytex.kernel.FileUtil;
-import org.apache.ctakes.ytex.kernel.InstanceData;
-import org.apache.ctakes.ytex.kernel.KernelUtil;
-import org.apache.ctakes.ytex.kernel.SparseData;
-import org.apache.ctakes.ytex.kernel.SparseDataFormatter;
-import org.apache.ctakes.ytex.kernel.SparseDataFormatterFactory;
-
-import com.google.common.collect.BiMap;
+import java.util.*;
 
 
 public class LibSVMFormatterFactory implements SparseDataFormatterFactory {

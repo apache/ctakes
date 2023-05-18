@@ -18,18 +18,8 @@
  */
 package org.apache.ctakes.temporal.ae.feature;
 
-import java.util.*;
-//import java.util.logging.Logger;
-
-import org.apache.ctakes.typesystem.type.syntax.NumToken;
-//import org.apache.ctakes.temporal.ae.feature.treekernel.TemporalPETExtractor;
-//import org.apache.ctakes.temporal.ae.feature.treekernel.TemporalSingleTreeExtractor;
 import org.apache.ctakes.typesystem.type.syntax.TreebankNode;
-import org.apache.ctakes.typesystem.type.textsem.DateAnnotation;
-import org.apache.ctakes.typesystem.type.textsem.EventMention;
-import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
-import org.apache.ctakes.typesystem.type.textsem.TimeAnnotation;
-import org.apache.ctakes.typesystem.type.textsem.TimeMention;
+import org.apache.ctakes.typesystem.type.textsem.*;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.util.JCasUtil;
@@ -39,6 +29,8 @@ import org.apache.uima.resource.ResourceInitializationException;
 import org.cleartk.ml.Feature;
 import org.cleartk.ml.feature.extractor.CleartkExtractorException;
 import org.cleartk.ml.feature.extractor.FeatureExtractor1;
+
+import java.util.*;
 
 public class TimeXExtractor implements FeatureExtractor1 {
 

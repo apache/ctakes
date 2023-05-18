@@ -18,9 +18,7 @@
  */
 package org.apache.ctakes.temporal.ae;
 
-import java.io.IOException;
-import java.util.Collection;
-
+import com.google.common.collect.Lists;
 import org.apache.ctakes.dependency.parser.ae.ClearNLPDependencyParserAE;
 import org.apache.ctakes.temporal.eval.Evaluation_ImplBase.CopyNPChunksToLookupWindowAnnotations;
 import org.apache.ctakes.temporal.eval.Evaluation_ImplBase.RemoveEnclosedLookupWindows;
@@ -39,7 +37,8 @@ import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.junit.Test;
 
-import com.google.common.collect.Lists;
+import java.io.IOException;
+import java.util.Collection;
 
 public class EventTimeRelationAnnotatorTest extends TemporalTest_ImplBase {
 

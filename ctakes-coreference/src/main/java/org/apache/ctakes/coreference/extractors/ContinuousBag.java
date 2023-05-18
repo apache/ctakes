@@ -1,21 +1,17 @@
 package org.apache.ctakes.coreference.extractors;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
-
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
 import org.cleartk.ml.Feature;
+import org.cleartk.ml.feature.extractor.CleartkExtractor;
 import org.cleartk.ml.feature.extractor.CleartkExtractor.Bounds;
 import org.cleartk.ml.feature.extractor.CleartkExtractor.Context;
-import org.cleartk.ml.feature.extractor.CleartkExtractor;
 import org.cleartk.ml.feature.extractor.CleartkExtractorException;
 import org.cleartk.ml.feature.extractor.FeatureExtractor1;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.*;
 
 public class ContinuousBag implements Context {
 

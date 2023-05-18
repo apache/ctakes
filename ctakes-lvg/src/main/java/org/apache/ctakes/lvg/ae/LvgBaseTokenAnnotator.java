@@ -18,24 +18,16 @@
  */
 package org.apache.ctakes.lvg.ae;
 
+import gov.nih.nlm.nls.lvg.Api.LvgCmdApi;
+import gov.nih.nlm.nls.lvg.Api.LvgLexItemApi;
+import gov.nih.nlm.nls.lvg.Lib.Category;
+import gov.nih.nlm.nls.lvg.Lib.LexItem;
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.core.util.ListFactory;
 import org.apache.ctakes.lvg.resource.LvgCmdApiResource;
 import org.apache.ctakes.typesystem.type.syntax.BaseToken;
 import org.apache.ctakes.typesystem.type.syntax.Lemma;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
-import gov.nih.nlm.nls.lvg.Api.LvgCmdApi;
-import gov.nih.nlm.nls.lvg.Api.LvgLexItemApi;
-import gov.nih.nlm.nls.lvg.Lib.Category;
-import gov.nih.nlm.nls.lvg.Lib.LexItem;
-
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.*;
-
 import org.apache.log4j.Logger;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
@@ -46,6 +38,9 @@ import org.apache.uima.jcas.JFSIndexRepository;
 import org.apache.uima.jcas.cas.FSList;
 import org.apache.uima.jcas.tcas.Annotation;
 import org.apache.uima.resource.ResourceInitializationException;
+
+import java.io.*;
+import java.util.*;
 
 /**
  * UIMA annotator that uses the UMLS LVG package to find the canonical form of

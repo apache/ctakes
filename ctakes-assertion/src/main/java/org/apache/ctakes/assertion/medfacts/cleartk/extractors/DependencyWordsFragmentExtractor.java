@@ -18,9 +18,6 @@
  */
 package org.apache.ctakes.assertion.medfacts.cleartk.extractors;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.ctakes.assertion.pipelines.GenerateDependencyRepresentation;
 import org.apache.ctakes.assertion.util.AssertionDepUtils;
 import org.apache.ctakes.assertion.util.AssertionTreeUtils;
@@ -33,6 +30,9 @@ import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.cleartk.ml.Feature;
 import org.cleartk.util.CleartkInitializationException;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DependencyWordsFragmentExtractor extends TreeFragmentFeatureExtractor {
 

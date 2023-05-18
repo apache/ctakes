@@ -18,21 +18,10 @@
  */
 package org.apache.ctakes.smokingstatus.MLutil;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import java.util.StringTokenizer;
-
 import org.apache.ctakes.smokingstatus.Const;
+
+import java.io.*;
+import java.util.*;
 
 
 public class GenerateTrainingData {

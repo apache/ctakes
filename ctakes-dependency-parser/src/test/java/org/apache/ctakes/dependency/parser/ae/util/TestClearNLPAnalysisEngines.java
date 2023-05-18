@@ -23,7 +23,6 @@ import org.apache.ctakes.dependency.parser.ae.ClearNLPSemanticRoleLabelerAE;
 import org.apache.ctakes.dependency.parser.util.DependencyUtility;
 import org.apache.ctakes.dependency.parser.util.SRLUtility;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.uima.analysis_engine.AnalysisEngine;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.collection.CollectionReader;
@@ -36,7 +35,6 @@ import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.metadata.TypeSystemDescription;
 import org.cleartk.util.cr.FilesCollectionReader;
-import org.junit.Test;
 import org.kohsuke.args4j.Option;
 
 /**

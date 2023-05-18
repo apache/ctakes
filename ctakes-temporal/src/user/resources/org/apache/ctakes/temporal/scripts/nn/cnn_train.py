@@ -1,14 +1,10 @@
 #!/usr/bin/env python
 
-import sklearn as sk
 import numpy as np
 np.random.seed(1337)
-import et_cleartk_io as ctk_io
-import nn_models
 import sys
 import os.path
 import dataset
-import keras as k
 from keras.utils.np_utils import to_categorical
 from keras.optimizers import RMSprop
 from keras.preprocessing.sequence import pad_sequences

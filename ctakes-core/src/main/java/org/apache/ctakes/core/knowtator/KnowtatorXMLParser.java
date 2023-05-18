@@ -18,22 +18,15 @@
  */
 package org.apache.ctakes.core.knowtator;
 
-import java.io.IOException;
-import java.net.URI;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
 import org.apache.log4j.Logger;
-
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
 import org.jdom2.output.XMLOutputter;
+
+import java.io.IOException;
+import java.net.URI;
+import java.util.*;
 
 public class KnowtatorXMLParser {
 

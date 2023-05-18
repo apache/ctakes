@@ -18,11 +18,11 @@
  */
 package org.apache.ctakes.ytex.kernel;
 
+import org.apache.ctakes.ytex.kernel.model.ConceptGraph;
+
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.Properties;
-
-import org.apache.ctakes.ytex.kernel.model.ConceptGraph;
 
 
 public interface CytoscapeHelper {

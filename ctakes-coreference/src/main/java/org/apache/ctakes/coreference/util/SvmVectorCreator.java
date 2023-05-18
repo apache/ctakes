@@ -18,18 +18,9 @@
  */
 package org.apache.ctakes.coreference.util;
 
-import java.io.File;
-import java.io.IOException;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.LinkedList;
-
 import libsvm.svm;
 import libsvm.svm_model;
 import libsvm.svm_node;
-
 import org.apache.ctakes.constituency.parser.treekernel.TreeExtractor;
 import org.apache.ctakes.constituency.parser.util.TreeUtils;
 import org.apache.ctakes.core.resource.FileLocator;
@@ -38,7 +29,13 @@ import org.apache.ctakes.utils.tree.FragmentUtils;
 import org.apache.ctakes.utils.tree.SimpleTree;
 import org.apache.ctakes.utils.wiki.WikiIndex;
 import org.apache.uima.jcas.JCas;
-import org.apache.uima.pear.util.FileUtil;
+
+import java.io.IOException;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.LinkedList;
 
 public class SvmVectorCreator {
 	HashSet<String> stopwords = null;

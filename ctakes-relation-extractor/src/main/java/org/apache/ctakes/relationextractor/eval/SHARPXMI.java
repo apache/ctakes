@@ -45,7 +45,9 @@ import org.xml.sax.ContentHandler;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.regex.Pattern;
 
 public class SHARPXMI extends CorpusXMI {

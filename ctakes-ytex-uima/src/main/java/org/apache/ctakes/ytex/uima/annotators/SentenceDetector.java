@@ -18,21 +18,10 @@
  */
 package org.apache.ctakes.ytex.uima.annotators;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.util.regex.PatternSyntaxException;
-
+import com.google.common.base.Strings;
 import opennlp.tools.sentdetect.DefaultSDContextGenerator;
 import opennlp.tools.sentdetect.SentenceModel;
 import opennlp.tools.util.InvalidFormatException;
-
 import org.apache.ctakes.core.resource.FileLocator;
 import org.apache.ctakes.core.sentence.EndOfSentenceScannerImpl;
 import org.apache.ctakes.core.sentence.SentenceDetectorCtakes;
@@ -49,7 +38,16 @@ import org.apache.uima.jcas.JFSIndexRepository;
 import org.apache.uima.resource.ResourceAccessException;
 import org.apache.uima.resource.ResourceInitializationException;
 
-import com.google.common.base.Strings;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
 
 /**
  * Wraps the OpenNLP sentence detector in a UIMA annotator.

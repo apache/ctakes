@@ -1,8 +1,5 @@
 package org.apache.ctakes.coreference.ae.features;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.ctakes.dependency.parser.util.DependencyUtility;
 import org.apache.ctakes.relationextractor.ae.features.RelationFeaturesExtractor;
 import org.apache.ctakes.typesystem.type.syntax.ConllDependencyNode;
@@ -12,6 +9,9 @@ import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.cleartk.ml.Feature;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class TemporalFeatureExtractor implements RelationFeaturesExtractor<IdentifiedAnnotation,IdentifiedAnnotation> {
 

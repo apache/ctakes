@@ -18,6 +18,12 @@
  */
 package org.apache.ctakes.ytex.weka;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.apache.ctakes.ytex.kernel.model.ClassifierEvaluation;
+import org.apache.ctakes.ytex.kernel.model.ClassifierInstanceEvaluation;
+import org.hibernate.SessionFactory;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -25,12 +31,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.apache.ctakes.ytex.kernel.model.ClassifierEvaluation;
-import org.apache.ctakes.ytex.kernel.model.ClassifierInstanceEvaluation;
-import org.hibernate.SessionFactory;
 
 
 /**

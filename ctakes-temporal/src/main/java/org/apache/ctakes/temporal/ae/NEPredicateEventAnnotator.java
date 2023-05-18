@@ -18,8 +18,6 @@
  */
 package org.apache.ctakes.temporal.ae;
 
-import java.io.File;
-
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.typesystem.type.refsem.Event;
 import org.apache.ctakes.typesystem.type.textsem.EntityMention;
@@ -28,12 +26,14 @@ import org.apache.ctakes.typesystem.type.textsem.Predicate;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
+import org.apache.uima.fit.factory.AnalysisEngineFactory;
+import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.cleartk.ml.CleartkAnnotator;
 import org.cleartk.ml.jar.GenericJarClassifierFactory;
-import org.apache.uima.fit.factory.AnalysisEngineFactory;
-import org.apache.uima.fit.util.JCasUtil;
+
+import java.io.File;
 
 @PipeBitInfo(
 		name = "NE Predicate Annotator",

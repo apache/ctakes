@@ -2,7 +2,6 @@ package org.apache.ctakes.gui.pipeline.bit;
 
 
 import io.github.lukehutch.fastclasspathscanner.FastClasspathScanner;
-import io.github.lukehutch.fastclasspathscanner.ScanInterruptedException;
 import io.github.lukehutch.fastclasspathscanner.matchprocessor.SubclassMatchProcessor;
 import io.github.lukehutch.fastclasspathscanner.scanner.ScanResult;
 import org.apache.ctakes.core.util.log.DotLogger;

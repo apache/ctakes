@@ -18,28 +18,11 @@
  */
 package org.apache.ctakes.temporal.ae;
 
-import java.io.File;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashMap;
-//import java.io.IOException;
-import java.util.List;
-import java.util.Map;
-//import java.util.Map;
-
+import com.google.common.collect.Lists;
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
-import org.apache.ctakes.temporal.ae.feature.ClosestVerbExtractor;
-//import org.apache.ctakes.temporal.ae.feature.CoveredTextToValuesExtractor;
-import org.apache.ctakes.temporal.ae.feature.DateAndMeasurementExtractor;
-import org.apache.ctakes.temporal.ae.feature.EventPositionFeatureExtractor;
-import org.apache.ctakes.temporal.ae.feature.EventPropertyExtractor;
-import org.apache.ctakes.temporal.ae.feature.NearbyVerbTenseXExtractor;
-import org.apache.ctakes.temporal.ae.feature.SectionHeaderExtractor;
-import org.apache.ctakes.temporal.ae.feature.TimeXExtractor;
-import org.apache.ctakes.temporal.ae.feature.UmlsSingleFeatureExtractor;
+import org.apache.ctakes.temporal.ae.feature.*;
 import org.apache.ctakes.typesystem.type.relation.RelationArgument;
 import org.apache.ctakes.typesystem.type.relation.TemporalTextRelation;
-//import org.apache.ctakes.temporal.ae.feature.duration.DurationExpectationFeatureExtractor;
 import org.apache.ctakes.typesystem.type.syntax.BaseToken;
 import org.apache.ctakes.typesystem.type.textsem.EventMention;
 import org.apache.ctakes.typesystem.type.textsem.TimeMention;
@@ -57,19 +40,16 @@ import org.cleartk.ml.CleartkAnnotator;
 import org.cleartk.ml.DataWriter;
 import org.cleartk.ml.Feature;
 import org.cleartk.ml.Instance;
-import org.cleartk.ml.feature.extractor.CleartkExtractor;
+import org.cleartk.ml.feature.extractor.*;
 import org.cleartk.ml.feature.extractor.CleartkExtractor.Covered;
 import org.cleartk.ml.feature.extractor.CleartkExtractor.Following;
 import org.cleartk.ml.feature.extractor.CleartkExtractor.Preceding;
-import org.cleartk.ml.feature.extractor.CleartkExtractorException;
-import org.cleartk.ml.feature.extractor.CombinedExtractor1;
-import org.cleartk.ml.feature.extractor.CoveredTextExtractor;
-import org.cleartk.ml.feature.extractor.TypePathExtractor;
 import org.cleartk.ml.jar.DefaultDataWriterFactory;
 import org.cleartk.ml.jar.DirectoryDataWriterFactory;
 import org.cleartk.ml.jar.GenericJarClassifierFactory;
 
-import com.google.common.collect.Lists;
+import java.io.File;
+import java.util.*;
 
 //import com.google.common.base.Charsets;
 

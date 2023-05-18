@@ -18,12 +18,12 @@
  */
 package org.apache.ctakes.assertion.train;
 
+import org.apache.ctakes.assertion.eval.AssertionEvaluation;
+import org.apache.ctakes.assertion.util.AssertionConst;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
-
-import org.apache.ctakes.assertion.eval.AssertionEvaluation;
-import org.apache.ctakes.assertion.util.AssertionConst;
 /**
  * For each assertion attribute (polarity, conditional, etc), train a model using the data
  * in the training directories for that attribute, and store the model under the models-dir

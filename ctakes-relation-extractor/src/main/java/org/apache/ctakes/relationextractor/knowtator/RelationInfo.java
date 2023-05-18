@@ -18,9 +18,9 @@
  */
 package org.apache.ctakes.relationextractor.knowtator;
 
-import java.util.HashSet;
-
 import com.google.common.base.Objects;
+
+import java.util.HashSet;
 
 /**
  * Information about a relation that includes the info about the relation's arguments.

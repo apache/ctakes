@@ -17,6 +17,41 @@
  * under the License.
  */
 #!/usr/bin/env groovy
+import org.apache.ctakes.constituency.parser.ae.ConstituencyParser
+import org.apache.ctakes.core.ae.SentenceDetector
+import org.apache.ctakes.core.ae.SimpleSegmentAnnotator
+import org.apache.ctakes.core.ae.TokenizerAnnotatorPTB
+import org.apache.ctakes.typesystem.type.syntax.TopTreebankNode
+import org.apache.uima.cas.CAS
+import org.apache.uima.collection.CollectionReader
+import org.apache.uima.fit.factory.AggregateBuilder
+import org.apache.uima.fit.factory.AnalysisEngineFactory
+import org.apache.uima.fit.pipeline.SimplePipeline
+import org.apache.uima.fit.util.JCasUtil
+import org.apache.uima.jcas.JCas
+import org.cleartk.util.cr.FilesCollectionReader
+
+@Grab(group = 'org.apache.ctakes',
+      module = 'ctakes-core',
+      version = '4.0.0')
+@Grab(group = 'org.apache.ctakes',
+      module = 'ctakes-core-res',
+      version = '4.0.0')
+@Grab(group = 'org.apache.ctakes',
+      module = 'ctakes-constituency-parser',
+      version = '4.0.0')
+@Grab(group = 'org.apache.ctakes',
+      module = 'ctakes-constituency-parser-res',
+      version = '4.0.0')
+@Grab(group = 'org.cleartk',
+      module = 'cleartk-util',
+      version = '0.9.2')
+
+@Grab(group = 'org.apache.uima',
+      module = 'uimafit-core',
+      version = '2.2.0')
+import java.io.File
+
 /**
 ** 	This assumes that you have installed Groovy and 
 ** 	that you have the command groovy available in your path. 
@@ -27,60 +62,7 @@
 **  where inputDir contains the files to be parsed.
 ** 	Or enable more verbose status $groovy -Dgroovy.grape.report.downloads=true parser.groovy [inputDir]
 **/
-
-      
-@Grab(group='org.apache.ctakes',
-      module='ctakes-core',
-            version='4.0.0')
-@Grab(group='org.apache.ctakes',
-      module='ctakes-core-res',
-            version='4.0.0')			
-@Grab(group='org.apache.ctakes',
-      module='ctakes-constituency-parser',
-            version='4.0.0')
-@Grab(group='org.apache.ctakes',
-      module='ctakes-constituency-parser-res',
-            version='4.0.0')
-@Grab(group='org.cleartk',
-      module='cleartk-util',
-      version='0.9.2')
-      
-@Grab(group='org.apache.uima',
-      module='uimafit-core',
-      version='2.2.0')
-
-/*
-@Grab(group='org.apache.ctakes',
-      module='ctakes-clinical-pipeline',
-            version='4.0.0')
-*/
-          
-import java.io.File;
-import org.apache.uima.cas.CAS;
-import org.apache.uima.jcas.JCas;
-import org.apache.uima.analysis_engine.AnalysisEngineDescription;
-import org.apache.uima.collection.CollectionReader;
-import org.cleartk.util.cr.FilesCollectionReader;
-import org.apache.uima.fit.factory.AnalysisEngineFactory;
-import org.apache.uima.fit.factory.AggregateBuilder;
-import org.apache.uima.fit.pipeline.SimplePipeline;	
-import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
-import org.apache.uima.fit.factory.TypeSystemDescriptionFactory;
-import org.apache.uima.fit.factory.TypePrioritiesFactory;
-import static org.apache.uima.fit.util.JCasUtil.*;
-
-import org.apache.ctakes.typesystem.type.syntax.BaseToken;
-import org.apache.ctakes.typesystem.type.textspan.Segment;
-import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.ctakes.typesystem.type.syntax.TopTreebankNode;
-import org.apache.ctakes.core.resource.FileLocator;
-import org.apache.ctakes.core.ae.SentenceDetector;
-import org.apache.ctakes.core.ae.SimpleSegmentAnnotator;
-import org.apache.ctakes.core.ae.TokenizerAnnotatorPTB;
-import org.apache.ctakes.constituency.parser.ae.ConstituencyParser;
-import org.apache.uima.fit.util.JCasUtil;
-
-		if(args.length < 1) {
+if(args.length < 1) {
 		System.out.println("Please specify input directory");
 		System.exit(1);
 		}

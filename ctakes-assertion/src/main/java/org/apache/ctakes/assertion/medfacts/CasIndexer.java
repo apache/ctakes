@@ -18,21 +18,18 @@
  */
 package org.apache.ctakes.assertion.medfacts;
 
+import org.apache.log4j.Logger;
+import org.apache.uima.cas.Type;
+import org.apache.uima.cas.text.AnnotationIndex;
+import org.apache.uima.jcas.JCas;
+import org.apache.uima.jcas.tcas.Annotation;
+
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
-import org.apache.log4j.Logger;
-
-import org.apache.uima.cas.FeatureStructure;
-import org.apache.uima.cas.Type;
-import org.apache.uima.cas.text.AnnotationIndex;
-import org.apache.uima.jcas.JCas;
-import org.apache.uima.jcas.tcas.Annotation;
-
-import org.apache.ctakes.typesystem.type.textsem.EntityMention;
 
 public class CasIndexer<T extends Annotation>
 {

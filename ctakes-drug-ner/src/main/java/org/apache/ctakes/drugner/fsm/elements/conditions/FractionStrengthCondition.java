@@ -18,9 +18,8 @@
  */
 package org.apache.ctakes.drugner.fsm.elements.conditions;
 
-import org.apache.ctakes.drugner.fsm.output.util.FractionStrengthToken;
-
 import net.openai.util.fsm.Condition;
+import org.apache.ctakes.drugner.fsm.output.util.FractionStrengthToken;
 
 /**
  * Checks whether a token is a FractionStrengthToken.

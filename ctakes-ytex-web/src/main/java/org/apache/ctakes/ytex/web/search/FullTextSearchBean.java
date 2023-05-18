@@ -18,10 +18,9 @@
  */
 package org.apache.ctakes.ytex.web.search;
 
+import javax.faces.event.ActionEvent;
 import java.util.List;
 import java.util.Map;
-
-import javax.faces.event.ActionEvent;
 
 
 /**

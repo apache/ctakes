@@ -18,14 +18,14 @@
  */
 package org.apache.ctakes.dictionary.lookup.strtable;
 
+import org.apache.ctakes.dictionary.lookup.AbstractBaseDictionary;
+import org.apache.ctakes.dictionary.lookup.DictionaryException;
+import org.apache.ctakes.dictionary.lookup.MetaDataHit;
+
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
-
-import org.apache.ctakes.dictionary.lookup.AbstractBaseDictionary;
-import org.apache.ctakes.dictionary.lookup.DictionaryException;
-import org.apache.ctakes.dictionary.lookup.MetaDataHit;
 
 
 /**

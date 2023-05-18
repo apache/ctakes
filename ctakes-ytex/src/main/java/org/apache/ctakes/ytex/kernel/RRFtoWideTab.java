@@ -17,14 +17,8 @@
  * under the License.
  */
 package org.apache.ctakes.ytex.kernel;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
+
+import java.io.*;
 
 /**
  * Convert RRF files to UCS2 tab-delimited format for import into SQL Server.

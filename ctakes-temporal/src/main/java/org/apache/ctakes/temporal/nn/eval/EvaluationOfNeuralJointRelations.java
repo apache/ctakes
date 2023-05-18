@@ -18,36 +18,19 @@
  */
 package org.apache.ctakes.temporal.nn.eval;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.PrintWriter;
-import java.net.URI;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Deque;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
+import com.google.common.base.Function;
+import com.google.common.collect.*;
+import com.lexicalscope.jewel.cli.CliFactory;
+import com.lexicalscope.jewel.cli.Option;
 import org.apache.ctakes.relationextractor.eval.RelationExtractorEvaluation.HashableArguments;
 import org.apache.ctakes.temporal.eval.EvaluationOfEventTimeRelations.ParameterSettings;
-import org.apache.ctakes.temporal.keras.KerasStringOutcomeDataWriter;
-import org.apache.ctakes.temporal.keras.ScriptStringFeatureDataWriter;
-import org.apache.ctakes.temporal.nn.ae.WindowBasedAnnotator;
-//import org.apache.ctakes.temporal.nn.ae.JointRelationTokenBasedAnnotator;
-//import org.apache.ctakes.temporal.nn.ae.TwoSentenceTokenBasedAnnotator;
-//import org.apache.ctakes.temporal.nn.ae.WindowBasedAnnotator;
-//import org.apache.ctakes.temporal.nn.ae.WindowBasedStructureAnnotator;
 import org.apache.ctakes.temporal.eval.EvaluationOfTemporalRelations_ImplBase;
 import org.apache.ctakes.temporal.eval.Evaluation_ImplBase;
 import org.apache.ctakes.temporal.eval.I2B2Data;
 import org.apache.ctakes.temporal.eval.THYMEData;
-//import org.apache.ctakes.temporal.eval.Evaluation_ImplBase.WriteI2B2XML;
-//import org.apache.ctakes.temporal.eval.Evaluation_ImplBase.XMLFormat;
+import org.apache.ctakes.temporal.keras.KerasStringOutcomeDataWriter;
+import org.apache.ctakes.temporal.keras.ScriptStringFeatureDataWriter;
+import org.apache.ctakes.temporal.nn.ae.WindowBasedAnnotator;
 import org.apache.ctakes.temporal.utils.AnnotationIdCollection;
 import org.apache.ctakes.temporal.utils.TLinkTypeArray2;
 import org.apache.ctakes.typesystem.type.relation.BinaryTextRelation;
@@ -79,20 +62,15 @@ import org.cleartk.ml.jar.DefaultDataWriterFactory;
 import org.cleartk.ml.jar.DirectoryDataWriterFactory;
 import org.cleartk.ml.jar.GenericJarClassifierFactory;
 import org.cleartk.ml.jar.JarClassifierBuilder;
-//import org.cleartk.ml.libsvm.tk.TkLibSvmStringOutcomeDataWriter;
-//import org.cleartk.ml.libsvm.LIBSVMStringOutcomeDataWriter;
-//import org.cleartk.ml.tksvmlight.TKSVMlightStringOutcomeDataWriter;
 import org.cleartk.ml.tksvmlight.model.CompositeKernel.ComboOperator;
 import org.cleartk.util.ViewUriUtil;
 
-import com.google.common.base.Function;
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Multimap;
-import com.google.common.collect.Sets;
-import com.lexicalscope.jewel.cli.CliFactory;
-import com.lexicalscope.jewel.cli.Option;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.PrintWriter;
+import java.net.URI;
+import java.util.*;
 
 /**
  * This is the evaluation code to evaluate a joint neural model for predicting temporal relations, including event-time and event-event relations.

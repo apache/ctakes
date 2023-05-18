@@ -18,9 +18,8 @@
  */
 package org.apache.ctakes.drugner.fsm.elements.conditions;
 
-import org.apache.ctakes.drugner.fsm.output.elements.FrequencyUnitToken;
-
 import net.openai.util.fsm.Condition;
+import org.apache.ctakes.drugner.fsm.output.elements.FrequencyUnitToken;
 
 /**
  * Checks whether a token is a FrequencyUnitToken.

@@ -19,11 +19,9 @@
 package org.apache.ctakes.constituency.parser.treekernel;
 
 import opennlp.tools.parser.Parse;
-
 import org.apache.ctakes.constituency.parser.util.TreeUtils;
 import org.apache.ctakes.utils.kernel.Kernel;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 

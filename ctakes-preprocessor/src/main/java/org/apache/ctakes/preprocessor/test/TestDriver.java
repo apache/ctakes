@@ -18,20 +18,16 @@
  */
 package org.apache.ctakes.preprocessor.test;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-
 import org.apache.ctakes.core.resource.FileLocator;
 import org.apache.ctakes.preprocessor.ClinicalNotePreProcessor;
 import org.apache.ctakes.preprocessor.DocumentMetaData;
 import org.apache.ctakes.preprocessor.PreProcessor;
 import org.apache.ctakes.preprocessor.SegmentMetaData;
+
+import java.io.*;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 
 /**

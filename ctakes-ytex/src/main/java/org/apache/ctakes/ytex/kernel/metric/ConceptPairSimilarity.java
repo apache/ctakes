@@ -18,12 +18,11 @@
  */
 package org.apache.ctakes.ytex.kernel.metric;
 
-import java.io.Serializable;
-import java.util.List;
-
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
+import java.util.List;
 
 @XmlRootElement(name = "conceptPairSimilarity")
 public class ConceptPairSimilarity implements Serializable {

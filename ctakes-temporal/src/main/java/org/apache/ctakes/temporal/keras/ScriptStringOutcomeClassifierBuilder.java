@@ -1,19 +1,15 @@
 package org.apache.ctakes.temporal.keras;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.jar.Attributes;
-import java.util.jar.JarInputStream;
-
 import org.apache.uima.UIMAFramework;
 import org.apache.uima.util.Level;
 import org.apache.uima.util.Logger;
 import org.cleartk.ml.jar.ClassifierBuilder_ImplBase;
 import org.cleartk.ml.jar.JarStreams;
 import org.cleartk.ml.util.featurevector.FeatureVector;
+
+import java.io.*;
+import java.util.jar.Attributes;
+import java.util.jar.JarInputStream;
 
 
 public abstract class ScriptStringOutcomeClassifierBuilder<T extends ScriptStringOutcomeClassifier> extends ClassifierBuilder_ImplBase<T, FeatureVector, String, Integer> {

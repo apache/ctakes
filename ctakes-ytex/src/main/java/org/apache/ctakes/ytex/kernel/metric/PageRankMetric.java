@@ -18,9 +18,9 @@
  */
 package org.apache.ctakes.ytex.kernel.metric;
 
-import java.util.Map;
-
 import org.apache.ctakes.ytex.kernel.pagerank.PageRankService;
+
+import java.util.Map;
 
 
 public class PageRankMetric extends BaseSimilarityMetric {

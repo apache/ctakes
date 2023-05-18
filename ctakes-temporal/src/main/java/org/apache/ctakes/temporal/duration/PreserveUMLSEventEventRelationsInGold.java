@@ -18,18 +18,17 @@
  */
 package org.apache.ctakes.temporal.duration;
 
-import java.util.List;
-
+import com.google.common.collect.Lists;
 import org.apache.ctakes.typesystem.type.relation.BinaryTextRelation;
 import org.apache.ctakes.typesystem.type.relation.RelationArgument;
 import org.apache.ctakes.typesystem.type.textsem.EventMention;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.CASException;
-import org.apache.uima.jcas.JCas;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
 import org.apache.uima.fit.util.JCasUtil;
+import org.apache.uima.jcas.JCas;
 
-import com.google.common.collect.Lists;
+import java.util.List;
 
 /**
  * Preserve only those event-event relations whose both arguments have covering system event mentions.

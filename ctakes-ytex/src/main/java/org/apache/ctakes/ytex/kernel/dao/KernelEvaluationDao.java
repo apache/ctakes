@@ -18,10 +18,10 @@
  */
 package org.apache.ctakes.ytex.kernel.dao;
 
-import java.util.List;
-
 import org.apache.ctakes.ytex.kernel.model.KernelEvaluation;
 import org.apache.ctakes.ytex.kernel.model.KernelEvaluationInstance;
+
+import java.util.List;
 
 
 public interface KernelEvaluationDao {

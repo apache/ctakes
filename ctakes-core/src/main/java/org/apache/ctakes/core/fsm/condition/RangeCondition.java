@@ -18,9 +18,8 @@
  */
 package org.apache.ctakes.core.fsm.condition;
 
-import org.apache.ctakes.core.fsm.output.RangeToken;
-
 import net.openai.util.fsm.Condition;
+import org.apache.ctakes.core.fsm.output.RangeToken;
 
 /**
  * Checks whether a token is a RangeToken.

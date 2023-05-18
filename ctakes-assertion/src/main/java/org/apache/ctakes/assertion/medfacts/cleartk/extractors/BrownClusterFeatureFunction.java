@@ -18,6 +18,13 @@
  */
 package org.apache.ctakes.assertion.medfacts.cleartk.extractors;
 
+import com.google.common.collect.Maps;
+import org.apache.ctakes.core.resource.FileLocator;
+import org.apache.uima.resource.ResourceInitializationException;
+import org.cleartk.ml.Feature;
+import org.cleartk.ml.feature.function.FeatureFunction;
+
+import javax.annotation.Nullable;
 import java.io.FileNotFoundException;
 import java.util.Collections;
 import java.util.HashMap;
@@ -25,15 +32,6 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import javax.annotation.Nullable;
-
-import org.apache.ctakes.core.resource.FileLocator;
-import org.apache.uima.resource.ResourceInitializationException;
-import org.cleartk.ml.Feature;
-import org.cleartk.ml.feature.function.FeatureFunction;
-
-import com.google.common.collect.Maps;
 
 public class BrownClusterFeatureFunction implements FeatureFunction {
 

@@ -18,9 +18,6 @@
  */
 package org.apache.ctakes.relationextractor.ae;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.typesystem.type.syntax.BaseToken;
 import org.apache.ctakes.typesystem.type.syntax.NewlineToken;
@@ -40,6 +37,9 @@ import org.cleartk.ml.Feature;
 import org.cleartk.ml.Instance;
 import org.cleartk.ml.chunking.BioChunking;
 import org.cleartk.ml.chunking.Chunking;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @PipeBitInfo(
       name = "Modifier Extractor",

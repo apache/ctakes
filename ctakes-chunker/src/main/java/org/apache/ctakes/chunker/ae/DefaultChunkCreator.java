@@ -18,12 +18,11 @@
  */
 package org.apache.ctakes.chunker.ae;
 
+import org.apache.ctakes.typesystem.type.syntax.Chunk;
 import org.apache.uima.UimaContext;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
 import org.apache.uima.resource.ResourceInitializationException;
-
-import org.apache.ctakes.typesystem.type.syntax.Chunk;
 
 /**
  * This chunker creator simply creates annotations of type edu.mayo.bmi.chunker.type.Chunk and

@@ -18,10 +18,10 @@
  */
 package org.apache.ctakes.jdl.data.loader;
 
+import org.apache.ctakes.jdl.data.base.JdlConnection;
+
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-
-import org.apache.ctakes.jdl.data.base.JdlConnection;
 
 
 /**

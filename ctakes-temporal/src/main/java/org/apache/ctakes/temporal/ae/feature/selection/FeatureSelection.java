@@ -18,18 +18,17 @@
  */
 package org.apache.ctakes.temporal.ae.feature.selection;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-
-import org.cleartk.ml.feature.transform.TrainableExtractor_ImplBase;
-import org.cleartk.ml.feature.transform.TransformableFeature;
-import org.cleartk.ml.Feature;
-import org.cleartk.ml.Instance;
-
 import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
 import com.google.common.collect.Lists;
+import org.cleartk.ml.Feature;
+import org.cleartk.ml.Instance;
+import org.cleartk.ml.feature.transform.TrainableExtractor_ImplBase;
+import org.cleartk.ml.feature.transform.TransformableFeature;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 public abstract class FeatureSelection<OUTCOME_T> extends
     TrainableExtractor_ImplBase<OUTCOME_T> implements Predicate<Feature> {

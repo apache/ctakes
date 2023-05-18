@@ -1,13 +1,14 @@
 package org.apache.ctakes.rest.filter;
-import java.io.IOException;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.web.filter.OncePerRequestFilter;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.springframework.web.filter.OncePerRequestFilter;
+import java.io.IOException;
 
 public class CORSFilter extends OncePerRequestFilter {
     private static final Log log = LogFactory.getLog(CORSFilter.class);

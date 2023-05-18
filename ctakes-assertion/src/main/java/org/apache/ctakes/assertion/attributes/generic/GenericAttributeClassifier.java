@@ -18,29 +18,19 @@
  */
 package org.apache.ctakes.assertion.attributes.generic;
 
-import java.io.IOException;
+import org.apache.ctakes.dependency.parser.util.DependencyUtility;
+import org.apache.ctakes.typesystem.type.syntax.Chunk;
+import org.apache.ctakes.typesystem.type.syntax.ConllDependencyNode;
+import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
+import org.apache.ctakes.typesystem.type.textspan.Sentence;
+import org.apache.uima.fit.util.JCasUtil;
+import org.apache.uima.jcas.JCas;
+import org.apache.uima.jcas.tcas.Annotation;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import org.apache.uima.UIMAException;
-import org.apache.uima.jcas.JCas;
-import org.apache.uima.jcas.tcas.Annotation;
-import org.apache.uima.fit.util.JCasUtil;
-import org.xml.sax.SAXException;
-
-import org.apache.ctakes.dependency.parser.util.DependencyUtility;
-import org.apache.ctakes.typesystem.type.constants.CONST;
-import org.apache.ctakes.typesystem.type.syntax.BaseToken;
-import org.apache.ctakes.typesystem.type.syntax.Chunk;
-import org.apache.ctakes.typesystem.type.syntax.ConllDependencyNode;
-import org.apache.ctakes.typesystem.type.textsem.EntityMention;
-import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
-import org.apache.ctakes.typesystem.type.textsem.SemanticArgument;
-import org.apache.ctakes.typesystem.type.textspan.Sentence;
 
 
 /**

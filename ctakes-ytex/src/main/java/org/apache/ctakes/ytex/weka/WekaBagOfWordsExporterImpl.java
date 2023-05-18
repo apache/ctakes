@@ -18,22 +18,6 @@
  */
 package org.apache.ctakes.ytex.weka;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
-import java.sql.Types;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Properties;
-import java.util.Set;
-import java.util.SortedSet;
-
 import org.apache.ctakes.ytex.kernel.AbstractBagOfWordsExporter;
 import org.apache.ctakes.ytex.kernel.BagOfWordsData;
 import org.apache.ctakes.ytex.kernel.BagOfWordsDecorator;
@@ -41,11 +25,16 @@ import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.RowCallbackHandler;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.TransactionCallback;
-
 import weka.core.Attribute;
 import weka.core.FastVector;
 import weka.core.Instances;
 import weka.core.SparseInstance;
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.sql.*;
+import java.util.*;
 
 public class WekaBagOfWordsExporterImpl extends AbstractBagOfWordsExporter
 		implements WekaBagOfWordsExporter {

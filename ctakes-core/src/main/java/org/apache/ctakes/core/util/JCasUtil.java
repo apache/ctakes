@@ -18,10 +18,10 @@
  */
 package org.apache.ctakes.core.util;
 
-import java.lang.reflect.Field;
-
 import org.apache.uima.jcas.cas.TOP;
 import org.apache.uima.jcas.tcas.Annotation;
+
+import java.lang.reflect.Field;
 
 public class JCasUtil {
 

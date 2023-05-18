@@ -18,24 +18,16 @@
  */
 package org.apache.ctakes.core.ae;
 
-import static org.junit.Assert.assertEquals;
-
-import java.io.File;
-import java.util.Date;
-
+import org.apache.ctakes.typesystem.type.syntax.*;
+import org.apache.ctakes.utils.test.TestUtil;
 import org.apache.log4j.Logger;
 import org.apache.uima.analysis_engine.AnalysisEngine;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.junit.Test;
 
-import org.apache.ctakes.typesystem.type.syntax.BaseToken;
-import org.apache.ctakes.typesystem.type.syntax.ContractionToken;
-import org.apache.ctakes.typesystem.type.syntax.NumToken;
-import org.apache.ctakes.typesystem.type.syntax.PunctuationToken;
-import org.apache.ctakes.typesystem.type.syntax.SymbolToken;
-import org.apache.ctakes.typesystem.type.syntax.WordToken;
-import org.apache.ctakes.utils.test.TestUtil;
+import java.io.File;
+import java.util.Date;
 
 public class TokenizerAnnotatorPTBTests {
 

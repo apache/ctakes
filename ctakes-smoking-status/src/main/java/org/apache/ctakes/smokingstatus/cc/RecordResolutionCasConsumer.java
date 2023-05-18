@@ -18,11 +18,9 @@
  */
 package org.apache.ctakes.smokingstatus.cc;
 
-import java.io.*;
-import java.util.Collection;
-
 import org.apache.ctakes.core.cc.AbstractFileWriter;
 import org.apache.ctakes.core.util.doc.DocIdUtil;
+import org.apache.ctakes.smokingstatus.type.SmokingDocumentClassification;
 import org.apache.log4j.Logger;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -32,7 +30,8 @@ import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
 
-import org.apache.ctakes.smokingstatus.type.SmokingDocumentClassification;
+import java.io.*;
+import java.util.Collection;
 
 // TODO Rename.  Also, extend AbstractTableFileWriter.
 public class RecordResolutionCasConsumer extends AbstractFileWriter<String> {

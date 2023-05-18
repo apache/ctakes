@@ -19,7 +19,6 @@
 package org.apache.ctakes.clinicalpipeline.ae;
 
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
-import org.apache.ctakes.core.util.annotation.IdentifiedAnnotationUtil;
 import org.apache.ctakes.core.util.annotation.OntologyConceptUtil;
 import org.apache.ctakes.core.util.annotation.WordTokenUtil;
 import org.apache.ctakes.typesystem.type.refsem.OntologyConcept;
@@ -41,7 +40,9 @@ import org.apache.uima.jcas.cas.TOP;
 import org.apache.uima.jcas.tcas.Annotation;
 import org.apache.uima.resource.ResourceInitializationException;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.Map;
 
 /**
  * UIMA annotator that prepares the CAS for output - performs

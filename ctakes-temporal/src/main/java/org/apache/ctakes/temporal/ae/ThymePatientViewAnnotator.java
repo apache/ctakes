@@ -1,14 +1,5 @@
 package org.apache.ctakes.temporal.ae;
 
-import java.io.File;
-import java.net.URI;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-
-import com.google.common.collect.Ordering;
-import org.apache.ctakes.temporal.eval.Evaluation_ImplBase;
 import org.apache.ctakes.temporal.utils.PatientViewsUtil;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.CASException;
@@ -16,6 +7,13 @@ import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
 import org.apache.uima.fit.component.ViewCreatorAnnotator;
 import org.apache.uima.jcas.JCas;
 import org.cleartk.util.ViewUriUtil;
+
+import java.io.File;
+import java.net.URI;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 /*
  * ThymePatientToDocumentUriAnnotator

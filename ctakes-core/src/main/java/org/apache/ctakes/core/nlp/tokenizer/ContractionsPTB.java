@@ -18,12 +18,9 @@
  */
 package org.apache.ctakes.core.nlp.tokenizer;
 
-import static org.apache.ctakes.core.nlp.tokenizer.TokenizerHelper.APOSTROPHE;
-import static org.apache.ctakes.core.nlp.tokenizer.TokenizerHelper.HYPHEN_OR_MINUS_SIGN;
-import static org.apache.ctakes.core.nlp.tokenizer.TokenizerHelper.findNextNonAlphaNum;
-import static org.apache.ctakes.core.nlp.tokenizer.TokenizerHelper.startsWithWithoutBeingFollowedByLetter;
-
 import java.util.HashMap;
+
+import static org.apache.ctakes.core.nlp.tokenizer.TokenizerHelper.*;
 
 /**
  * 

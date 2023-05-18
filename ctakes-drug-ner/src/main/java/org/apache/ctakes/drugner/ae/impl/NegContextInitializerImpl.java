@@ -18,11 +18,6 @@
  */
 package org.apache.ctakes.drugner.ae.impl;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-
 import org.apache.ctakes.core.fsm.adapters.TextTokenAdapter;
 import org.apache.ctakes.core.fsm.machine.FSM;
 import org.apache.ctakes.core.fsm.output.NegationIndicator;
@@ -37,6 +32,11 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.JFSIndexRepository;
 import org.apache.uima.jcas.tcas.Annotation;
 import org.apache.uima.resource.ResourceInitializationException;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
 
 

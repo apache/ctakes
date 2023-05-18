@@ -18,16 +18,12 @@
  */
 package org.apache.ctakes.ytex.kernel.dao;
 
+import org.apache.ctakes.ytex.kernel.metric.ConceptInfo;
+import org.apache.ctakes.ytex.kernel.model.*;
+
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
-import org.apache.ctakes.ytex.kernel.metric.ConceptInfo;
-import org.apache.ctakes.ytex.kernel.model.ClassifierEvaluation;
-import org.apache.ctakes.ytex.kernel.model.CrossValidationFold;
-import org.apache.ctakes.ytex.kernel.model.FeatureEvaluation;
-import org.apache.ctakes.ytex.kernel.model.FeatureParentChild;
-import org.apache.ctakes.ytex.kernel.model.FeatureRank;
 
 
 public interface ClassifierEvaluationDao {

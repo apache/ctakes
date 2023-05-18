@@ -18,25 +18,20 @@
  */
 package org.apache.ctakes.temporal.ae.feature;
 
+import com.google.common.collect.Lists;
+import org.apache.ctakes.relationextractor.ae.features.RelationFeaturesExtractor;
+import org.apache.ctakes.typesystem.type.syntax.TreebankNode;
+import org.apache.ctakes.typesystem.type.textsem.*;
+import org.apache.ctakes.typesystem.type.textspan.Sentence;
+import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
+import org.apache.uima.fit.util.JCasUtil;
+import org.apache.uima.jcas.JCas;
+import org.cleartk.ml.Feature;
+
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
-
-import org.apache.ctakes.relationextractor.ae.features.RelationFeaturesExtractor;
-import org.apache.ctakes.typesystem.type.syntax.TreebankNode;
-import org.apache.ctakes.typesystem.type.textsem.DateAnnotation;
-import org.apache.ctakes.typesystem.type.textsem.EventMention;
-import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
-import org.apache.ctakes.typesystem.type.textsem.TimeAnnotation;
-import org.apache.ctakes.typesystem.type.textsem.TimeMention;
-import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
-import org.apache.uima.jcas.JCas;
-import org.cleartk.ml.Feature;
-import org.apache.uima.fit.util.JCasUtil;
-
-import com.google.common.collect.Lists;
 /**
  * extract the nearby nearest time, date information for any event 
  * @author CH151862

@@ -18,10 +18,10 @@
  */
 package org.apache.ctakes.jdl.common;
 
+import org.apache.commons.lang.SystemUtils;
+
 import java.io.File;
 import java.io.IOException;
-
-import org.apache.commons.lang.SystemUtils;
 
 /**
  * Utility to get a file.

@@ -18,13 +18,6 @@
  */
 package org.apache.ctakes.jdl;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.net.URL;
-import java.sql.SQLException;
-
-import javax.xml.bind.JAXBException;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.ctakes.jdl.data.base.JdlConnection;
@@ -38,6 +31,12 @@ import org.apache.ctakes.jdl.schema.xdl.CsvLoadType;
 import org.apache.ctakes.jdl.schema.xdl.JdbcType;
 import org.apache.ctakes.jdl.schema.xdl.LoadType;
 import org.apache.ctakes.jdl.schema.xdl.XmlLoadType;
+
+import javax.xml.bind.JAXBException;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.net.URL;
+import java.sql.SQLException;
 
 /**
  * Java data loader Application.

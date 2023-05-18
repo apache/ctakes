@@ -20,7 +20,7 @@
 
 -->
 <load xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://jdl-prj.googlecode.com/files/xdl.xsd">
+>
 	<csv table="tab_test" skip="1" commit="2">
 		<column name="void" skip="true" />
 		<column name="id" />

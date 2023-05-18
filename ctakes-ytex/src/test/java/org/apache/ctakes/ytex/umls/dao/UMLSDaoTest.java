@@ -18,8 +18,6 @@
  */
 package org.apache.ctakes.ytex.umls.dao;
 
-import java.util.List;
-
 import org.apache.ctakes.core.ae.UmlsEnvironmentConfiguration;
 import org.apache.ctakes.utils.env.EnvironmentVariable;
 import org.apache.log4j.Logger;
@@ -30,6 +28,8 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.access.ContextSingletonBeanFactoryLocator;
+
+import java.util.List;
 
 import static org.junit.Assume.assumeTrue;
 

@@ -18,11 +18,7 @@
  */
 package org.apache.ctakes.temporal.eval;
 
-import java.io.File;
-import java.util.Collection;
-import java.util.List;
-import java.util.logging.Level;
-
+import com.lexicalscope.jewel.cli.CliFactory;
 import org.apache.ctakes.typesystem.type.textsem.EventMention;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
@@ -42,7 +38,10 @@ import org.cleartk.timeml.event.EventAnnotator;
 import org.cleartk.timeml.type.Event;
 import org.cleartk.token.tokenizer.TokenAnnotator;
 
-import com.lexicalscope.jewel.cli.CliFactory;
+import java.io.File;
+import java.util.Collection;
+import java.util.List;
+import java.util.logging.Level;
 
 public class EvaluationOfClearTKEventSpans extends EvaluationOfAnnotationSpans_ImplBase {
 

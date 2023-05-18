@@ -18,10 +18,11 @@
  */
 package org.apache.ctakes.sideeffect.ae;
 
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
-
+import org.apache.ctakes.core.util.FSUtil;
+import org.apache.ctakes.sideeffect.type.PSESentence;
+import org.apache.ctakes.sideeffect.util.SEUtil;
+import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
+import org.apache.ctakes.typesystem.type.textspan.Sentence;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -29,11 +30,9 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.JFSIndexRepository;
 import org.apache.uima.resource.ResourceInitializationException;
 
-import org.apache.ctakes.core.util.FSUtil;
-import org.apache.ctakes.sideeffect.util.SEUtil;
-import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
-import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.ctakes.sideeffect.type.PSESentence;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
 
 /**
  * Identify the sentence(s) that contains PSE (signs/symptoms or

@@ -18,14 +18,13 @@
  */
 package org.apache.ctakes.core.util;
 
+import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.EmptyFSList;
 import org.apache.uima.jcas.cas.FSList;
 import org.apache.uima.jcas.cas.NonEmptyFSList;
 import org.apache.uima.jcas.cas.TOP;
 
 import java.util.List;
-
-import org.apache.uima.jcas.JCas;
 
 /**
  * Factory to build List of built-in CAS types such as FloatList, IntegerList,

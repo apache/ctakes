@@ -18,10 +18,9 @@
  */
 package org.apache.ctakes.utils.kernel;
 
-import java.util.concurrent.ConcurrentHashMap;
-
-//import opennlp.tools.parser.Parse;
 import libsvm.svm_node;
+
+import java.util.concurrent.ConcurrentHashMap;
 
 public class PolyKernel extends Kernel{
 

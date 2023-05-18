@@ -18,47 +18,24 @@
  */
 package org.apache.ctakes.ytex.kernel;
 
-import java.io.IOException;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Properties;
-import java.util.Set;
-import java.util.SortedMap;
-import java.util.TreeMap;
-
-import javax.sql.DataSource;
-
-import org.apache.commons.cli.CommandLine;
-import org.apache.commons.cli.CommandLineParser;
-import org.apache.commons.cli.GnuParser;
-import org.apache.commons.cli.HelpFormatter;
-import org.apache.commons.cli.OptionBuilder;
-import org.apache.commons.cli.Options;
-import org.apache.commons.cli.ParseException;
+import org.apache.commons.cli.*;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.ctakes.ytex.kernel.dao.ClassifierEvaluationDao;
 import org.apache.ctakes.ytex.kernel.dao.ConceptDao;
-import org.apache.ctakes.ytex.kernel.model.ConcRel;
-import org.apache.ctakes.ytex.kernel.model.ConceptGraph;
-import org.apache.ctakes.ytex.kernel.model.CrossValidationFold;
-import org.apache.ctakes.ytex.kernel.model.FeatureEvaluation;
-import org.apache.ctakes.ytex.kernel.model.FeatureParentChild;
-import org.apache.ctakes.ytex.kernel.model.FeatureRank;
+import org.apache.ctakes.ytex.kernel.model.*;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowCallbackHandler;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.transaction.PlatformTransactionManager;
-
 import weka.core.ContingencyTables;
+
+import javax.sql.DataSource;
+import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.*;
+import java.util.Map.Entry;
 
 /**
  * Calculate the mutual information of each concept of a corpus wrt a concept

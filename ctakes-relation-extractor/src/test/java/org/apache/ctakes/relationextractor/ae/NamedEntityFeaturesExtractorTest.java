@@ -18,16 +18,16 @@
  */
 package org.apache.ctakes.relationextractor.ae;
 
-import static org.junit.Assert.assertTrue;
-
-import java.util.List;
-
 import org.apache.ctakes.relationextractor.ae.features.NamedEntityFeaturesExtractor;
 import org.apache.ctakes.typesystem.type.textsem.EntityMention;
 import org.apache.uima.fit.factory.JCasFactory;
 import org.apache.uima.jcas.JCas;
 import org.cleartk.ml.Feature;
 import org.junit.Test;
+
+import java.util.List;
+
+import static org.junit.Assert.assertTrue;
 
 public class NamedEntityFeaturesExtractorTest {
 

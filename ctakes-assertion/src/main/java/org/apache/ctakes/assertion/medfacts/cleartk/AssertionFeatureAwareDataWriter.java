@@ -18,18 +18,8 @@
  */
 package org.apache.ctakes.assertion.medfacts.cleartk;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
+import com.google.common.collect.Lists;
+import de.bwaldvogel.liblinear.FeatureNode;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
 import org.cleartk.ml.Feature;
@@ -38,9 +28,8 @@ import org.cleartk.ml.encoder.features.FeaturesEncoder;
 import org.cleartk.ml.liblinear.LibLinearStringOutcomeDataWriter;
 import org.cleartk.ml.liblinear.encoder.FeatureNodeArrayEncoder;
 
-import com.google.common.collect.Lists;
-
-import de.bwaldvogel.liblinear.FeatureNode;
+import java.io.*;
+import java.util.*;
 
 public class AssertionFeatureAwareDataWriter extends LibLinearStringOutcomeDataWriter {
 

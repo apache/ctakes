@@ -20,14 +20,7 @@ package org.apache.ctakes.temporal.utils;
 
 import org.apache.ctakes.typesystem.type.relation.BinaryTextRelation;
 
-import static org.apache.ctakes.temporal.utils.TimeRelationConstants.AF;
-import static org.apache.ctakes.temporal.utils.TimeRelationConstants.BF;
-import static org.apache.ctakes.temporal.utils.TimeRelationConstants.BO;
-import static org.apache.ctakes.temporal.utils.TimeRelationConstants.CB;
-import static org.apache.ctakes.temporal.utils.TimeRelationConstants.CN;
-import static org.apache.ctakes.temporal.utils.TimeRelationConstants.EO;
-import static org.apache.ctakes.temporal.utils.TimeRelationConstants.NO;
-import static org.apache.ctakes.temporal.utils.TimeRelationConstants.OV;
+import static org.apache.ctakes.temporal.utils.TimeRelationConstants.*;
 
 /**
  * Enumeration of the three temporal relation types used in THYME (before, overlap, contains)

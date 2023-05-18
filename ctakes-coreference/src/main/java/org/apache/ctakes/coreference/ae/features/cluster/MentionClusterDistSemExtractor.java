@@ -1,10 +1,5 @@
 package org.apache.ctakes.coreference.ae.features.cluster;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.ctakes.core.resource.FileLocator;
 import org.apache.ctakes.core.util.ListIterable;
 import org.apache.ctakes.coreference.ae.features.StringMatchingFeatureExtractor;
@@ -23,6 +18,11 @@ import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
 import org.cleartk.ml.Feature;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MentionClusterDistSemExtractor implements
     RelationFeaturesExtractor<CollectionTextRelation, IdentifiedAnnotation> {

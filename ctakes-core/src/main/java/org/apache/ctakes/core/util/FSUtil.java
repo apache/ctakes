@@ -18,24 +18,16 @@
  */
 package org.apache.ctakes.core.util;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
-import org.apache.uima.cas.ConstraintFactory;
-import org.apache.uima.cas.FSIndex;
-import org.apache.uima.cas.FSIntConstraint;
-import org.apache.uima.cas.FSIterator;
-import org.apache.uima.cas.FSMatchConstraint;
-import org.apache.uima.cas.Feature;
-import org.apache.uima.cas.FeaturePath;
-import org.apache.uima.cas.Type;
+import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
+import org.apache.uima.cas.*;
 import org.apache.uima.cas.text.AnnotationIndex;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.JFSIndexRepository;
 import org.apache.uima.jcas.tcas.Annotation;
 
-import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class FSUtil {
 	

@@ -18,7 +18,6 @@
  */
 package org.apache.ctakes.utils.struct;
 
-import java.util.Comparator;
 import java.util.Set;
 import java.util.TreeMap;
 

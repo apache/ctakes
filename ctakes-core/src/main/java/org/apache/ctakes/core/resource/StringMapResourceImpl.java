@@ -18,18 +18,17 @@
  */
 package org.apache.ctakes.core.resource;
 
+import org.apache.log4j.Logger;
+import org.apache.uima.resource.DataResource;
+import org.apache.uima.resource.ResourceInitializationException;
+import org.apache.uima.resource.SharedResourceObject;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
-
-import org.apache.log4j.Logger;
-
-import org.apache.uima.resource.DataResource;
-import org.apache.uima.resource.ResourceInitializationException;
-import org.apache.uima.resource.SharedResourceObject;
 
 /**
  * Implementation for StringIntegerMapResource interface.  

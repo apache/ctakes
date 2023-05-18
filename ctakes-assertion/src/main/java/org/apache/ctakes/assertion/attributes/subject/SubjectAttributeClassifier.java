@@ -18,12 +18,6 @@
  */
 package org.apache.ctakes.assertion.attributes.subject;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-
-import org.apache.ctakes.assertion.eval.AssertionEvaluation;
 import org.apache.ctakes.dependency.parser.util.DependencyPath;
 import org.apache.ctakes.dependency.parser.util.DependencyUtility;
 import org.apache.ctakes.typesystem.type.constants.CONST;
@@ -34,9 +28,14 @@ import org.apache.ctakes.typesystem.type.textsem.Predicate;
 import org.apache.ctakes.typesystem.type.textsem.SemanticArgument;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
 import org.apache.log4j.Logger;
+import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
-import org.apache.uima.fit.util.JCasUtil;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
 
 
 /**

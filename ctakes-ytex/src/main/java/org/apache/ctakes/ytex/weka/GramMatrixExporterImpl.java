@@ -18,25 +18,6 @@
  */
 package org.apache.ctakes.ytex.weka;
 
-import java.io.BufferedWriter;
-import java.io.FileInputStream;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Properties;
-import java.util.Set;
-import java.util.SortedMap;
-import java.util.SortedSet;
-import java.util.TreeMap;
-
-import javax.sql.DataSource;
-
 import org.apache.ctakes.ytex.kernel.BagOfWordsDecorator;
 import org.apache.ctakes.ytex.kernel.BagOfWordsExporter;
 import org.apache.ctakes.ytex.kernel.dao.KernelEvaluationDao;
@@ -46,6 +27,12 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowCallbackHandler;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.TransactionCallback;
+
+import javax.sql.DataSource;
+import java.io.*;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.*;
 
 /**
  * @deprecated don't know if this works ...

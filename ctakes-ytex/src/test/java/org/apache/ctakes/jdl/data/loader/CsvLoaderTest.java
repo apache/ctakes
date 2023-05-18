@@ -18,23 +18,20 @@
  */
 package org.apache.ctakes.jdl.data.loader;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-
-import javax.xml.bind.JAXBException;
-
-
 import org.apache.ctakes.jdl.common.FileUtil;
 import org.apache.ctakes.jdl.data.base.JdlConnection;
-import org.apache.ctakes.jdl.data.loader.CsvLoader;
 import org.apache.ctakes.jdl.data.xml.jaxb.ObjectFactoryUtil;
 import org.apache.ctakes.jdl.schema.xdl.CsvLoadType;
 import org.apache.ctakes.jdl.test.Resources;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import javax.xml.bind.JAXBException;
+import java.io.File;
+import java.io.FileNotFoundException;
+
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
 
 public class CsvLoaderTest {
 	private static final String CX = FileUtil.getFile(Resources.CONN_X).toString();

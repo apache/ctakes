@@ -18,12 +18,12 @@
  */
 package org.apache.ctakes.ytex.dao;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 
 /**
  * Oracle differs from sql server & mysql in handling of empty string. In

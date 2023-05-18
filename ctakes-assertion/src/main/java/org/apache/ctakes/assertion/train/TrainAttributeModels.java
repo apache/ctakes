@@ -18,11 +18,10 @@
  */
 package org.apache.ctakes.assertion.train;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
 import org.apache.ctakes.assertion.eval.AssertionEvaluation;
 import org.apache.ctakes.assertion.util.AssertionConst;
+
+import java.util.ArrayList;
 
 /**
  * For each assertion attribute (polarity, conditional, etc), train a model using the data

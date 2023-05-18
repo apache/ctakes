@@ -18,12 +18,6 @@
  */
 package org.apache.ctakes.assertion.medfacts.cleartk.extractors;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Scanner;
-
 import org.apache.ctakes.assertion.util.SemanticClasses;
 import org.apache.ctakes.core.resource.FileLocator;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
@@ -33,6 +27,12 @@ import org.apache.uima.jcas.JCas;
 import org.cleartk.ml.Feature;
 import org.cleartk.ml.feature.extractor.FeatureExtractor1;
 import org.cleartk.util.CleartkInitializationException;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Scanner;
 
 
 

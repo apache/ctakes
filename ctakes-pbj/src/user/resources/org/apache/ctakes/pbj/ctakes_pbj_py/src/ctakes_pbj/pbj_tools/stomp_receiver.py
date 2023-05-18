@@ -1,9 +1,10 @@
 import time
 from threading import Event
-import stomp
-from ctakes_pbj.type_system.type_system_loader import *
-from ctakes_pbj.pbj_tools.pbj_defaults import STOP_MESSAGE
 
+import stomp
+
+from ctakes_pbj.pbj_tools.pbj_defaults import STOP_MESSAGE
+from ctakes_pbj.type_system.type_system_loader import *
 
 exit_event = Event()
 

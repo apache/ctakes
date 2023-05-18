@@ -18,9 +18,6 @@
  */
 package org.apache.ctakes.temporal.ae.feature.treekernel;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.ctakes.constituency.parser.treekernel.TreeExtractor;
 import org.apache.ctakes.constituency.parser.util.AnnotationTreeUtils;
 import org.apache.ctakes.relationextractor.ae.features.RelationFeaturesExtractor;
@@ -34,6 +31,9 @@ import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.jcas.JCas;
 import org.cleartk.ml.Feature;
 import org.cleartk.ml.TreeFeature;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class TemporalFTExtractor implements RelationFeaturesExtractor<IdentifiedAnnotation,IdentifiedAnnotation> {
 

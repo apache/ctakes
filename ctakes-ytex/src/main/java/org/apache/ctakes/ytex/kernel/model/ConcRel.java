@@ -18,20 +18,12 @@
  */
 package org.apache.ctakes.ytex.kernel.model;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
+import com.google.common.collect.ImmutableSet;
 import org.apache.ctakes.ytex.kernel.metric.LCSPath;
 
-
-import com.google.common.collect.ImmutableSet;
+import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ConcRel implements java.io.Serializable {
 	private static final Logger log = Logger.getLogger(ConcRel.class.getName());

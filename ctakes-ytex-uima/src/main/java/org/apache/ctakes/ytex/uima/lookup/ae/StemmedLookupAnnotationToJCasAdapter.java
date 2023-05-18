@@ -18,14 +18,14 @@
  */
 package org.apache.ctakes.ytex.uima.lookup.ae;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.apache.ctakes.dictionary.lookup.vo.LookupAnnotation;
 import org.apache.ctakes.dictionary.lookup.vo.LookupToken;
 import org.apache.ctakes.typesystem.type.syntax.WordToken;
 import org.apache.ctakes.ytex.tools.SetupAuiFirstWord;
 import org.apache.uima.jcas.tcas.Annotation;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * allow dictionary lookup with stemmed words

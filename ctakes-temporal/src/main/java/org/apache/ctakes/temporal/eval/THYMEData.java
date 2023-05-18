@@ -18,11 +18,11 @@
  */
 package org.apache.ctakes.temporal.eval;
 
+import com.google.common.collect.Sets;
+
 import java.io.File;
 import java.io.FilenameFilter;
 import java.util.*;
-
-import com.google.common.collect.Sets;
 
 /**
  * A class for splitting the THYME data into appropriate sets for evaluation.

@@ -18,12 +18,11 @@
  */
 package org.apache.ctakes.dictionary.lookup.strtable;
 
-import java.util.Collection;
-import java.util.Set;
+import org.apache.ctakes.dictionary.lookup.AbstractBaseMetaDataHit;
 
 import javax.annotation.concurrent.Immutable;
-
-import org.apache.ctakes.dictionary.lookup.AbstractBaseMetaDataHit;
+import java.util.Collection;
+import java.util.Set;
 
 
 /**

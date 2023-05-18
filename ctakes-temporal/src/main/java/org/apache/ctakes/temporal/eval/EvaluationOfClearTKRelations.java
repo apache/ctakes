@@ -18,11 +18,9 @@
  */
 package org.apache.ctakes.temporal.eval;
 
-import java.io.File;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-
+import com.google.common.base.Function;
+import com.lexicalscope.jewel.cli.CliFactory;
+import com.lexicalscope.jewel.cli.Option;
 import org.apache.ctakes.relationextractor.eval.RelationExtractorEvaluation.HashableArguments;
 import org.apache.ctakes.temporal.ae.ClearTKLinkToTHYMELinkAnnotator;
 import org.apache.ctakes.temporal.ae.EventToClearTKEventAnnotator;
@@ -44,19 +42,16 @@ import org.cleartk.opennlp.tools.ParserAnnotator;
 import org.cleartk.opennlp.tools.PosTaggerAnnotator;
 import org.cleartk.opennlp.tools.SentenceAnnotator;
 import org.cleartk.snowball.DefaultSnowballStemmer;
-import org.cleartk.timeml.event.EventAspectAnnotator;
-import org.cleartk.timeml.event.EventClassAnnotator;
-import org.cleartk.timeml.event.EventModalityAnnotator;
-import org.cleartk.timeml.event.EventPolarityAnnotator;
-import org.cleartk.timeml.event.EventTenseAnnotator;
+import org.cleartk.timeml.event.*;
 import org.cleartk.timeml.time.TimeTypeAnnotator;
 import org.cleartk.timeml.tlink.TemporalLinkEventToSameSentenceTimeAnnotator;
 import org.cleartk.timeml.tlink.TemporalLinkEventToSubordinatedEventAnnotator;
 import org.cleartk.token.tokenizer.TokenAnnotator;
 
-import com.google.common.base.Function;
-import com.lexicalscope.jewel.cli.CliFactory;
-import com.lexicalscope.jewel.cli.Option;
+import java.io.File;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 
 public class EvaluationOfClearTKRelations extends
     EvaluationOfTemporalRelations_ImplBase {

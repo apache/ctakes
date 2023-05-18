@@ -18,15 +18,14 @@
  */
 package org.apache.ctakes.constituency.parser.treekernel;
 
-import java.util.ArrayList;
-
-import org.apache.uima.jcas.JCas;
-import org.apache.uima.jcas.cas.FSArray;
-
 import org.apache.ctakes.typesystem.type.syntax.TerminalTreebankNode;
 import org.apache.ctakes.typesystem.type.syntax.TopTreebankNode;
 import org.apache.ctakes.typesystem.type.syntax.TreebankNode;
 import org.apache.ctakes.utils.tree.SimpleTree;
+import org.apache.uima.jcas.JCas;
+import org.apache.uima.jcas.cas.FSArray;
+
+import java.util.ArrayList;
 
 /*
  * This class extracts tree relations between two nodes in a tree (or from 2 separate trees).

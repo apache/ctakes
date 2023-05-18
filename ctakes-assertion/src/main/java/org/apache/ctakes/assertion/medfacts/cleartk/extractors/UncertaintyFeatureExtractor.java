@@ -18,16 +18,15 @@
  */
 package org.apache.ctakes.assertion.medfacts.cleartk.extractors;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.ctakes.typesystem.type.constants.CONST;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
 import org.apache.uima.jcas.JCas;
-import org.apache.uima.jcas.tcas.Annotation;
 import org.cleartk.ml.Feature;
 import org.cleartk.ml.feature.extractor.CleartkExtractorException;
 import org.cleartk.ml.feature.extractor.FeatureExtractor1;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class UncertaintyFeatureExtractor implements FeatureExtractor1<IdentifiedAnnotation> {
 

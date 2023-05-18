@@ -18,11 +18,11 @@
  */
 package org.apache.ctakes.assertion.train;
 
-import java.io.File;
-import java.util.ArrayList;
-
 import org.apache.ctakes.assertion.eval.AssertionEvaluation;
 import org.apache.ctakes.assertion.util.AssertionConst;
+
+import java.io.File;
+import java.util.ArrayList;
 
 public class ReadAndPreprocessForAttributeModels {
 

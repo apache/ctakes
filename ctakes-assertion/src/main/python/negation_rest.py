@@ -16,11 +16,12 @@
 # specific language governing permissions and limitations
 # under the License.
 
+import logging
+import numpy as np
 from fastapi import FastAPI
 from pydantic import BaseModel
-
-from typing import List, Tuple, Dict
-
+from time import time
+from torch.utils.data.dataset import Dataset
 from transformers import (
     AutoConfig,
     AutoModelForSequenceClassification,
@@ -29,13 +30,9 @@ from transformers import (
     Trainer,
     TrainingArguments,
 )
-from transformers.data.processors.utils import InputFeatures, InputExample
-from torch.utils.data.dataset import Dataset
 from transformers.data.processors.glue import glue_convert_examples_to_features
-import numpy as np
-
-import logging
-from time import time
+from transformers.data.processors.utils import InputFeatures, InputExample
+from typing import List
 
 app = FastAPI()
 model_name = "tmills/roberta_sfda_sharpseed"

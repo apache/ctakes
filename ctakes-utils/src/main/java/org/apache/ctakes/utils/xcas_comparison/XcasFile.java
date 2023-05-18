@@ -17,10 +17,11 @@
  * under the License.
  */
 package org.apache.ctakes.utils.xcas_comparison;
+
+import java.io.File;
 import java.util.Hashtable;
 import java.util.LinkedList;
 import java.util.Vector;
-import java.io.File;
 
 /**
  * An <code>XcasFile</code> wraps all <code>XcasAnnotations</code>s

@@ -18,13 +18,6 @@
  */
 package org.apache.ctakes.relationextractor.ae;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
-import java.io.File;
-import java.util.Collection;
-import java.util.Iterator;
-
 import org.apache.ctakes.typesystem.type.constants.CONST;
 import org.apache.ctakes.typesystem.type.relation.BinaryTextRelation;
 import org.apache.ctakes.typesystem.type.relation.DegreeOfTextRelation;
@@ -45,6 +38,13 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.util.XMLInputSource;
 import org.apache.uima.util.XMLParser;
 import org.junit.Test;
+
+import java.io.File;
+import java.util.Collection;
+import java.util.Iterator;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class RelationExtractorAnnotatorsTest {
 

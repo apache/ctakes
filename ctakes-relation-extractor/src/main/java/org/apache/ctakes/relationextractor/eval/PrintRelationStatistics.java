@@ -18,11 +18,8 @@
  */
 package org.apache.ctakes.relationextractor.eval;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
+import com.google.common.collect.HashMultiset;
+import com.google.common.collect.Multiset;
 import org.apache.ctakes.typesystem.type.relation.BinaryTextRelation;
 import org.apache.ctakes.typesystem.type.textsem.EntityMention;
 import org.apache.uima.collection.CollectionReader;
@@ -36,8 +33,10 @@ import org.cleartk.util.cr.XReader;
 import org.kohsuke.args4j.CmdLineParser;
 import org.kohsuke.args4j.Option;
 
-import com.google.common.collect.HashMultiset;
-import com.google.common.collect.Multiset;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class PrintRelationStatistics {
 

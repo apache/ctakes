@@ -18,9 +18,9 @@
  */
 package org.apache.ctakes.assertion.cr;
 
-import java.util.Date;
-
 import org.apache.log4j.Logger;
+
+import java.util.Date;
 
 /**
  * parses a line of data from the negex gold standard

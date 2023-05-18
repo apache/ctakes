@@ -1,9 +1,6 @@
 package org.apache.ctakes.coreference.ae.features.salience;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-
+import com.google.common.collect.Sets;
 import org.apache.ctakes.dependency.parser.util.DependencyUtility;
 import org.apache.ctakes.typesystem.type.constants.CONST;
 import org.apache.ctakes.typesystem.type.syntax.ConllDependencyNode;
@@ -16,9 +13,12 @@ import org.cleartk.ml.Feature;
 import org.cleartk.ml.feature.extractor.CleartkExtractorException;
 import org.cleartk.ml.feature.extractor.FeatureExtractor1;
 
-import com.google.common.collect.Sets;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
-import static org.apache.ctakes.dependency.parser.util.DependencyUtility.*;
+import static org.apache.ctakes.dependency.parser.util.DependencyUtility.getNominalHeadNode;
+import static org.apache.ctakes.dependency.parser.util.DependencyUtility.getPathToTop;
 
 public class SemanticEnvironmentFeatureExtractor implements
     FeatureExtractor1<Markable> {

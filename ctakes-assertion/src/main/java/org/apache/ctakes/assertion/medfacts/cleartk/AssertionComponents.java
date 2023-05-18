@@ -18,8 +18,8 @@
  */
 package org.apache.ctakes.assertion.medfacts.cleartk;
 
-import org.apache.uima.resource.metadata.TypeSystemDescription;
 import org.apache.uima.fit.factory.TypeSystemDescriptionFactory;
+import org.apache.uima.resource.metadata.TypeSystemDescription;
 
 /**
  * <br>

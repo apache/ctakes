@@ -18,12 +18,12 @@
  */
 package org.apache.ctakes.assertion.train;
 
+import org.apache.ctakes.assertion.eval.AssertionEvaluation;
+import org.apache.ctakes.assertion.util.AssertionConst;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
-
-import org.apache.ctakes.assertion.eval.AssertionEvaluation;
-import org.apache.ctakes.assertion.util.AssertionConst;
 
 
 

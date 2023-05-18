@@ -18,19 +18,14 @@
  */
 package org.apache.ctakes.jdl.common;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.hamcrest.CoreMatchers.nullValue;
-import static org.junit.Assert.assertThat;
-
-import java.util.Properties;
-
-
-import org.apache.ctakes.jdl.common.FileUtil;
-import org.apache.ctakes.jdl.common.PropFile;
 import org.apache.ctakes.jdl.test.PropFileMaps;
 import org.apache.ctakes.jdl.test.Resources;
 import org.junit.Test;
+
+import java.util.Properties;
+
+import static org.hamcrest.CoreMatchers.*;
+import static org.junit.Assert.assertThat;
 
 public class PropFileTest {
 	@Test

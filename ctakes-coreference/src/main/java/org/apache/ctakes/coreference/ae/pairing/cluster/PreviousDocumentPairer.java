@@ -19,7 +19,6 @@
 package org.apache.ctakes.coreference.ae.pairing.cluster;
 
 import org.apache.ctakes.coreference.util.ClusterMentionFetcher;
-import org.apache.ctakes.coreference.util.ThymeCasOrderer;
 import org.apache.ctakes.typesystem.type.relation.CollectionTextRelation;
 import org.apache.ctakes.typesystem.type.textsem.Markable;
 import org.apache.uima.fit.util.JCasUtil;

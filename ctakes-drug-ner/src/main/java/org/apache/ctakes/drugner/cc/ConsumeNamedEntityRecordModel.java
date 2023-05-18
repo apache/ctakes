@@ -18,24 +18,17 @@
  */
 package org.apache.ctakes.drugner.cc;
 
-import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import java.util.StringTokenizer;
-
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
+import org.apache.ctakes.core.util.FSUtil;
+import org.apache.ctakes.drugner.type.ChunkAnnotation;
+import org.apache.ctakes.drugner.type.SubSectionAnnotation;
+import org.apache.ctakes.typesystem.type.refsem.Date;
+import org.apache.ctakes.typesystem.type.refsem.*;
+import org.apache.ctakes.typesystem.type.syntax.WordToken;
+import org.apache.ctakes.typesystem.type.textsem.*;
+import org.apache.ctakes.typesystem.type.textspan.Segment;
+import org.apache.ctakes.typesystem.type.util.Pair;
+import org.apache.ctakes.typesystem.type.util.Pairs;
 import org.apache.uima.cas.CAS;
 import org.apache.uima.cas.FSIterator;
 import org.apache.uima.collection.CasConsumer_ImplBase;
@@ -46,33 +39,9 @@ import org.apache.uima.jcas.cas.TOP;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.resource.ResourceProcessException;
 
-import org.apache.ctakes.core.util.FSUtil;
-import org.apache.ctakes.typesystem.type.textspan.Segment;
-import org.apache.ctakes.typesystem.type.refsem.Date;
-import org.apache.ctakes.typesystem.type.refsem.MedicationDosage;
-import org.apache.ctakes.typesystem.type.refsem.MedicationDuration;
-import org.apache.ctakes.typesystem.type.refsem.MedicationForm;
-import org.apache.ctakes.typesystem.type.refsem.MedicationFrequency;
-import org.apache.ctakes.typesystem.type.refsem.MedicationRoute;
-import org.apache.ctakes.typesystem.type.refsem.MedicationStatusChange;
-import org.apache.ctakes.typesystem.type.refsem.MedicationStrength;
-import org.apache.ctakes.typesystem.type.refsem.OntologyConcept;
-import org.apache.ctakes.typesystem.type.syntax.WordToken;
-import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
-import org.apache.ctakes.drugner.type.ChunkAnnotation;
-import org.apache.ctakes.typesystem.type.textsem.MedicationDosageModifier;
-import org.apache.ctakes.typesystem.type.textsem.MedicationDurationModifier;
-import org.apache.ctakes.typesystem.type.textsem.MedicationFormModifier;
-import org.apache.ctakes.typesystem.type.textsem.MedicationFrequencyModifier;
-import org.apache.ctakes.typesystem.type.textsem.MedicationMention;
-import org.apache.ctakes.typesystem.type.textsem.MedicationRouteModifier;
-import org.apache.ctakes.typesystem.type.textsem.MedicationStatusChangeModifier;
-import org.apache.ctakes.typesystem.type.textsem.MedicationStrengthModifier;
-import org.apache.ctakes.typesystem.type.textsem.TimeMention;
-import org.apache.ctakes.typesystem.type.util.Pair;
-import org.apache.ctakes.typesystem.type.util.Pairs;
-//import org.apache.ctakes.drugner.type.DrugMentionAnnotation;
-import org.apache.ctakes.drugner.type.SubSectionAnnotation;
+import java.io.*;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * UIMA annotator that preps the CAS for extraction into DB2.

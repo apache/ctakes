@@ -18,11 +18,6 @@
  */
 package org.apache.ctakes.coreference.util;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Hashtable;
-import java.util.LinkedList;
-
 import org.apache.ctakes.coreference.type.Markable;
 import org.apache.ctakes.typesystem.type.syntax.BaseToken;
 import org.apache.ctakes.typesystem.type.syntax.TerminalTreebankNode;
@@ -30,6 +25,11 @@ import org.apache.ctakes.typesystem.type.syntax.TreebankNode;
 import org.apache.uima.cas.FSIterator;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Hashtable;
+import java.util.LinkedList;
 //import org.apache.ctakes.typesystem.type.NamedEntity;
 
 public class AttributeCalculator {

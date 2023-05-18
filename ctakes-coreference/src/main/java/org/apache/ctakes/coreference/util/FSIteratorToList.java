@@ -18,9 +18,10 @@
  */
 package org.apache.ctakes.coreference.util;
 
-import java.util.LinkedList;
-import org.apache.uima.jcas.tcas.Annotation;
 import org.apache.uima.cas.FSIterator;
+import org.apache.uima.jcas.tcas.Annotation;
+
+import java.util.LinkedList;
 
 
 /**

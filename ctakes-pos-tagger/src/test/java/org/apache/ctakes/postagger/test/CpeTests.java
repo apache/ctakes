@@ -40,10 +40,6 @@ package org.apache.ctakes.postagger.test;
  * under the License.
  */
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.util.List;
-
 import org.apache.uima.UIMAFramework;
 import org.apache.uima.cas.CAS;
 import org.apache.uima.collection.CollectionProcessingEngine;
@@ -51,6 +47,10 @@ import org.apache.uima.collection.EntityProcessStatus;
 import org.apache.uima.collection.StatusCallbackListener;
 import org.apache.uima.collection.metadata.CpeDescription;
 import org.apache.uima.util.XMLInputSource;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.List;
 
 /**
  * Main Class that runs a Collection Processing Engine (CPE). This class reads a CPE Descriptor as a

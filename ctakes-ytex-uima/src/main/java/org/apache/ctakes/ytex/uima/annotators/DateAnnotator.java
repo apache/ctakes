@@ -18,8 +18,8 @@
  */
 package org.apache.ctakes.ytex.uima.annotators;
 
-import java.text.SimpleDateFormat;
-
+import com.mdimension.jchronic.Chronic;
+import com.mdimension.jchronic.utils.Span;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
@@ -34,10 +34,7 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
 import org.apache.uima.resource.ResourceInitializationException;
 
-
-
-import com.mdimension.jchronic.Chronic;
-import com.mdimension.jchronic.utils.Span;
+import java.text.SimpleDateFormat;
 
 /**
  * The cTAKES date doesn't actually parse the date. Parse the date with Chronic,

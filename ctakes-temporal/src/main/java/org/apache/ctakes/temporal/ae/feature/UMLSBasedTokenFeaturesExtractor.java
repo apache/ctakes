@@ -1,10 +1,5 @@
 package org.apache.ctakes.temporal.ae.feature;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-
 import org.apache.ctakes.relationextractor.ae.features.TokenFeaturesExtractor;
 import org.apache.ctakes.typesystem.type.syntax.BaseToken;
 import org.apache.ctakes.typesystem.type.textsem.EventMention;
@@ -14,18 +9,13 @@ import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
 import org.cleartk.ml.Feature;
-import org.cleartk.ml.feature.extractor.CleartkExtractor;
-import org.cleartk.ml.feature.extractor.CleartkExtractor.Bag;
-import org.cleartk.ml.feature.extractor.CleartkExtractor.Covered;
-import org.cleartk.ml.feature.extractor.CleartkExtractor.FirstCovered;
-import org.cleartk.ml.feature.extractor.CleartkExtractor.Following;
-import org.cleartk.ml.feature.extractor.CleartkExtractor.LastCovered;
-import org.cleartk.ml.feature.extractor.CleartkExtractor.Preceding;
-import org.cleartk.ml.feature.extractor.DistanceExtractor;
-import org.cleartk.ml.feature.extractor.CoveredTextExtractor;
-import org.cleartk.ml.feature.extractor.NamingExtractor1;
-import org.cleartk.ml.feature.extractor.FeatureExtractor1;
-import org.cleartk.ml.feature.extractor.CombinedExtractor1;
+import org.cleartk.ml.feature.extractor.*;
+import org.cleartk.ml.feature.extractor.CleartkExtractor.*;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
 
 public class UMLSBasedTokenFeaturesExtractor extends TokenFeaturesExtractor {
 

@@ -18,13 +18,6 @@
  */
 package org.apache.ctakes.ytex;
 
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Properties;
-
-import javax.sql.DataSource;
-
 import org.apache.ctakes.util.JdbcOperationsHelper;
 import org.apache.ctakes.ytex.kernel.SimSvcContextHolder;
 import org.apache.ctakes.ytex.kernel.dao.ConceptDao;
@@ -36,13 +29,19 @@ import org.apache.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.access.ContextSingletonBeanFactoryLocator;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import static org.junit.Assert.*;
+import javax.sql.DataSource;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Properties;
+
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 public class ConceptDaoTest extends JdbcOperationsHelper {
 

@@ -18,9 +18,7 @@
  */
 package org.apache.ctakes.ytex.kernel.metric;
 
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 
 
 public abstract class BaseSimilarityMetric implements SimilarityMetric {

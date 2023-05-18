@@ -18,14 +18,14 @@
  */
 package org.apache.ctakes.ytex.uima.mapper;
 
+import org.apache.commons.beanutils.ConversionException;
+import org.apache.commons.beanutils.Converter;
+import org.apache.ctakes.ytex.uima.annotators.DateAnnotator;
+
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-import org.apache.commons.beanutils.ConversionException;
-import org.apache.commons.beanutils.Converter;
-import org.apache.ctakes.ytex.uima.annotators.DateAnnotator;
 
 /**
  * convert ISO8601 formatted date to Date/Timestamp object

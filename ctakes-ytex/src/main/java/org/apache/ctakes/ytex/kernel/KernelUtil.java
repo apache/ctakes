@@ -18,18 +18,15 @@
  */
 package org.apache.ctakes.ytex.kernel;
 
-import java.io.BufferedWriter;
+import com.google.common.collect.BiMap;
+import org.apache.ctakes.ytex.kernel.model.KernelEvaluation;
+
 import java.io.FileNotFoundException;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.InvalidPropertiesFormatException;
 import java.util.Map;
 import java.util.Properties;
 import java.util.SortedSet;
-
-import org.apache.ctakes.ytex.kernel.model.KernelEvaluation;
-
-import com.google.common.collect.BiMap;
 
 
 public interface KernelUtil {

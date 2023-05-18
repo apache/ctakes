@@ -18,18 +18,13 @@
  */
 package org.apache.ctakes.coreference.util;
 
-import java.io.File;
-import java.io.IOException;
-
 import libsvm.svm;
 import libsvm.svm_model;
 import libsvm.svm_node;
-
-import org.apache.uima.UimaContext;
-import org.apache.uima.resource.ResourceAccessException;
-
-import org.apache.ctakes.core.resource.FileResource;
 import org.apache.ctakes.typesystem.type.syntax.TreebankNode;
+
+import java.io.File;
+import java.io.IOException;
 
 public class AbstractClassifier {
 

@@ -18,21 +18,8 @@
  */
 package org.apache.ctakes.temporal.eval;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
-import java.util.logging.FileHandler;
-import java.util.logging.Formatter;
-import java.util.logging.Level;
-import java.util.logging.LogRecord;
-import java.util.logging.Logger;
-
+import com.google.common.base.Function;
+import com.google.common.collect.Ordering;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.cas.CAS;
@@ -48,8 +35,11 @@ import org.apache.uima.resource.ResourceInitializationException;
 import org.cleartk.eval.AnnotationStatistics;
 import org.cleartk.util.ViewUriUtil;
 
-import com.google.common.base.Function;
-import com.google.common.collect.Ordering;
+import java.io.File;
+import java.io.IOException;
+import java.util.*;
+import java.util.logging.Formatter;
+import java.util.logging.*;
 
 public abstract class EvaluationOfAnnotationSpans_ImplBase extends
 Evaluation_ImplBase<AnnotationStatistics<String>> {

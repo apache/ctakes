@@ -18,15 +18,11 @@
  */
 package org.apache.ctakes.core.fsm.token.adapter;
 
+import org.apache.ctakes.core.fsm.token.*;
+import org.apache.ctakes.core.nlp.tokenizer.Token;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import org.apache.ctakes.core.fsm.token.BaseToken;
-import org.apache.ctakes.core.fsm.token.DecimalToken;
-import org.apache.ctakes.core.fsm.token.IntegerToken;
-import org.apache.ctakes.core.fsm.token.PunctuationToken;
-import org.apache.ctakes.core.fsm.token.WordToken;
-import org.apache.ctakes.core.nlp.tokenizer.Token;
 
 
 public class TokenConverter {

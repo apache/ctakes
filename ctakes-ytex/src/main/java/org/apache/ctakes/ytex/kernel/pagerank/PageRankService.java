@@ -18,9 +18,9 @@
  */
 package org.apache.ctakes.ytex.kernel.pagerank;
 
-import java.util.Map;
-
 import org.apache.ctakes.ytex.kernel.model.ConceptGraph;
+
+import java.util.Map;
 
 
 public interface PageRankService {

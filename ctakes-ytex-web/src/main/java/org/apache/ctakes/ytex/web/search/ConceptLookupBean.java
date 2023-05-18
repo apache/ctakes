@@ -18,20 +18,18 @@
  */
 package org.apache.ctakes.ytex.web.search;
 
+import com.icesoft.faces.component.selectinputtext.SelectInputText;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
+import javax.faces.event.ActionEvent;
+import javax.faces.event.ValueChangeEvent;
+import javax.faces.model.SelectItem;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
-
-import javax.faces.event.ActionEvent;
-import javax.faces.event.ValueChangeEvent;
-import javax.faces.model.SelectItem;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
-import com.icesoft.faces.component.selectinputtext.SelectInputText;
 
 /**
  * JSF Backing Bean for semanticSearch.jspx. Search for documents based on

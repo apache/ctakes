@@ -18,11 +18,11 @@
  */
 package org.apache.ctakes.utils.wiki;
 
-import java.io.IOException;
-import java.util.Scanner;
-
 import org.apache.lucene.index.CorruptIndexException;
 import org.apache.lucene.queryparser.classic.ParseException;
+
+import java.io.IOException;
+import java.util.Scanner;
 
 public class TestCosineSimilarity {
 

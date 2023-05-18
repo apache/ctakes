@@ -1,5 +1,7 @@
-import stomp
 import time
+
+import stomp
+
 from ctakes_pbj.component import cas_annotator
 from ctakes_pbj.pbj_tools.pbj_defaults import *
 

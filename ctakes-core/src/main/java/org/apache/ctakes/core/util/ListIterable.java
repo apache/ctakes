@@ -1,9 +1,9 @@
 package org.apache.ctakes.core.util;
 
-import java.util.Iterator;
-
 import org.apache.uima.jcas.cas.FSList;
 import org.apache.uima.jcas.cas.NonEmptyFSList;
+
+import java.util.Iterator;
 
 public class ListIterable<T> implements Iterable<T> {
 

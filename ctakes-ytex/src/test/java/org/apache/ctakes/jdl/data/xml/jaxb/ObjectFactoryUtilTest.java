@@ -18,15 +18,7 @@
  */
 package org.apache.ctakes.jdl.data.xml.jaxb;
 
-import static org.hamcrest.CoreMatchers.instanceOf;
-import static org.junit.Assert.assertThat;
-
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.UnmarshalException;
-
-
 import org.apache.ctakes.jdl.common.FileUtil;
-import org.apache.ctakes.jdl.data.xml.jaxb.ObjectFactoryUtil;
 import org.apache.ctakes.jdl.schema.xdl.ConnType;
 import org.apache.ctakes.jdl.schema.xdl.JdbcType;
 import org.apache.ctakes.jdl.schema.xdl.LoadType;
@@ -36,6 +28,12 @@ import org.junit.experimental.theories.DataPoint;
 import org.junit.experimental.theories.Theories;
 import org.junit.experimental.theories.Theory;
 import org.junit.runner.RunWith;
+
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.UnmarshalException;
+
+import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.junit.Assert.assertThat;
 
 @RunWith(Theories.class)
 public final class ObjectFactoryUtilTest {

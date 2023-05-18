@@ -18,11 +18,10 @@
  */
 package org.apache.ctakes.drugner.fsm.elements.conditions;
 
-import java.util.Set;
-
+import net.openai.util.fsm.Condition;
 import org.apache.ctakes.core.fsm.token.TextToken;
 
-import net.openai.util.fsm.Condition;
+import java.util.Set;
 
 /**
  * Finds numeric values w/in tokens containing mixed text (integers contained in a string). Will return true if the numeric value separated from the text

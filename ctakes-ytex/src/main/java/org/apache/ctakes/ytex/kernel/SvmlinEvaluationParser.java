@@ -18,24 +18,14 @@
  */
 package org.apache.ctakes.ytex.kernel;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.List;
-import java.util.Map;
-import java.util.NavigableMap;
-import java.util.Properties;
-import java.util.SortedMap;
-import java.util.TreeMap;
-import java.util.regex.Pattern;
-
+import com.google.common.collect.BiMap;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.ctakes.ytex.kernel.model.SVMClassifierEvaluation;
 
-import com.google.common.collect.BiMap;
+import java.io.*;
+import java.util.*;
+import java.util.regex.Pattern;
 
 
 public class SvmlinEvaluationParser extends BaseClassifierEvaluationParser {

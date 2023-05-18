@@ -18,11 +18,11 @@
  */
 package org.apache.ctakes.ytex.weka;
 
-import java.io.BufferedWriter;
-import java.io.IOException;
-
 import org.apache.ctakes.ytex.kernel.BagOfWordsDecorator;
 import org.apache.ctakes.ytex.kernel.BagOfWordsExporter;
+
+import java.io.BufferedWriter;
+import java.io.IOException;
 
 
 /**

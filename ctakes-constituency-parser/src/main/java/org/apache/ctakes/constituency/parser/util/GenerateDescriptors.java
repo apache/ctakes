@@ -10,7 +10,6 @@ import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.fit.factory.AggregateBuilder;
 import org.apache.uima.fit.factory.AnalysisEngineFactory;
 import org.xml.sax.SAXException;
-//import sun.java2d.pipe.SpanShapeRenderer;
 
 import java.io.FileWriter;
 import java.io.IOException;

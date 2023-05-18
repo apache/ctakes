@@ -18,25 +18,15 @@
  */
 package org.apache.ctakes.ytex.semil;
 
+import org.apache.ctakes.ytex.kernel.*;
+import org.apache.ctakes.ytex.svmlight.SVMLightFormatterFactory.SVMLightFormatter;
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
-import java.util.Map;
-import java.util.Properties;
-import java.util.SortedMap;
-import java.util.SortedSet;
-import java.util.TreeMap;
-
-import org.apache.ctakes.ytex.kernel.FileUtil;
-import org.apache.ctakes.ytex.kernel.InstanceData;
-import org.apache.ctakes.ytex.kernel.KernelUtil;
-import org.apache.ctakes.ytex.kernel.SparseData;
-import org.apache.ctakes.ytex.kernel.SparseDataFormatter;
-import org.apache.ctakes.ytex.kernel.SparseDataFormatterFactory;
-import org.apache.ctakes.ytex.svmlight.SVMLightFormatterFactory.SVMLightFormatter;
-import org.apache.ctakes.ytex.weka.WekaFormatterFactory.WekaFormatter;
+import java.util.*;
 
 
 /**

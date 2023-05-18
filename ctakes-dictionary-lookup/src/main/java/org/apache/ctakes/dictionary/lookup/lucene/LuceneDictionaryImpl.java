@@ -19,7 +19,6 @@
 package org.apache.ctakes.dictionary.lookup.lucene;
 
 import org.apache.ctakes.dictionary.lookup.AbstractBaseDictionary;
-import org.apache.ctakes.dictionary.lookup.Dictionary;
 import org.apache.ctakes.dictionary.lookup.DictionaryException;
 import org.apache.ctakes.dictionary.lookup.MetaDataHit;
 import org.apache.log4j.Logger;

@@ -18,9 +18,6 @@
  */
 package org.apache.ctakes.temporal.ae.feature.treekernel;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.ctakes.typesystem.type.syntax.ConllDependencyNode;
 import org.apache.ctakes.utils.tree.SimpleTree;
 import org.apache.uima.fit.util.JCasUtil;
@@ -30,6 +27,9 @@ import org.cleartk.ml.Feature;
 import org.cleartk.ml.TreeFeature;
 import org.cleartk.ml.feature.extractor.CleartkExtractorException;
 import org.cleartk.ml.feature.extractor.FeatureExtractor1;
+
+import java.util.ArrayList;
+import java.util.List;
 /**
  * Given a focused annotation, get the whole sentence-level dependency tree that cover this annotation.
  * @author CH151862

@@ -18,11 +18,6 @@
  */
 package org.apache.ctakes.assertion.pipelines;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
-
 import org.apache.ctakes.assertion.cc.JudgeAttributeInstances;
 import org.apache.ctakes.assertion.eval.XMIReader;
 import org.apache.ctakes.assertion.util.AssertionConst;
@@ -38,6 +33,11 @@ import org.apache.uima.resource.metadata.TypeSystemDescription;
 import org.kohsuke.args4j.CmdLineException;
 import org.kohsuke.args4j.CmdLineParser;
 import org.kohsuke.args4j.Option;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 
 public class RunJudgeAttributeInstances {
 	public static class Options {

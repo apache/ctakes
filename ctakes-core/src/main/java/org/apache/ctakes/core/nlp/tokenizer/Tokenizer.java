@@ -18,11 +18,7 @@
  */
 package org.apache.ctakes.core.nlp.tokenizer;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * A class used to break natural text into tokens. The token markup is external

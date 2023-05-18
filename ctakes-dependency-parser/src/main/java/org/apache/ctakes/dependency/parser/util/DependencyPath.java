@@ -18,9 +18,9 @@
  */
 package org.apache.ctakes.dependency.parser.util;
 
-import java.util.LinkedList;
-
 import org.apache.ctakes.typesystem.type.syntax.ConllDependencyNode;
+
+import java.util.LinkedList;
 
 public class DependencyPath extends LinkedList<ConllDependencyNode>{
 	

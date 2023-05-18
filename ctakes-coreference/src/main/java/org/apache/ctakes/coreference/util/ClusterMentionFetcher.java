@@ -1,7 +1,6 @@
 package org.apache.ctakes.coreference.util;
 
 
-import org.apache.ctakes.core.patient.PatientViewUtil;
 import org.apache.ctakes.typesystem.type.relation.CollectionTextRelation;
 import org.apache.ctakes.typesystem.type.relation.CollectionTextRelationIdentifiedAnnotationRelation;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
@@ -13,7 +12,6 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.FSList;
 import org.apache.uima.jcas.cas.NonEmptyFSList;
 import org.apache.uima.jcas.tcas.Annotation;
-import org.cleartk.util.ViewUriUtil;
 
 import java.util.Collection;
 import java.util.HashMap;

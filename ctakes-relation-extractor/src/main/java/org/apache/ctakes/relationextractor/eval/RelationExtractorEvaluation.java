@@ -18,41 +18,6 @@
  */
 package org.apache.ctakes.relationextractor.eval;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import org.apache.ctakes.relationextractor.ae.CausesBringsAboutRelationExtractorAnnotator;
-import org.apache.ctakes.relationextractor.ae.DegreeOfRelationExtractorAnnotator;
-import org.apache.ctakes.relationextractor.ae.LocationOfRelationExtractorAnnotator;
-import org.apache.ctakes.relationextractor.ae.ManagesTreatsRelationExtractorAnnotator;
-import org.apache.ctakes.relationextractor.ae.ManifestationOfRelationExtractorAnnotator;
-import org.apache.ctakes.relationextractor.ae.RelationExtractorAnnotator;
-import org.apache.ctakes.typesystem.type.relation.BinaryTextRelation;
-import org.apache.ctakes.typesystem.type.relation.CausesBringsAboutTextRelation;
-import org.apache.ctakes.typesystem.type.relation.DegreeOfTextRelation;
-import org.apache.ctakes.typesystem.type.relation.LocationOfTextRelation;
-import org.apache.ctakes.typesystem.type.relation.ManagesTreatsTextRelation;
-import org.apache.ctakes.typesystem.type.relation.ManifestationOfTextRelation;
-import org.apache.ctakes.typesystem.type.relation.RelationArgument;
-import org.apache.ctakes.typesystem.type.textsem.AnatomicalSiteMention;
-import org.apache.ctakes.typesystem.type.textsem.EntityMention;
-import org.apache.ctakes.typesystem.type.textsem.EventMention;
-import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
-import org.apache.ctakes.typesystem.type.textsem.Modifier;
 import com.google.common.base.Function;
 import com.google.common.base.Functions;
 import com.google.common.base.Objects;
@@ -63,6 +28,9 @@ import com.google.common.collect.Sets;
 import com.lexicalscope.jewel.cli.CliFactory;
 import com.lexicalscope.jewel.cli.Option;
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
+import org.apache.ctakes.relationextractor.ae.*;
+import org.apache.ctakes.typesystem.type.relation.*;
+import org.apache.ctakes.typesystem.type.textsem.*;
 import org.apache.uima.UIMAFramework;
 import org.apache.uima.analysis_engine.AnalysisEngine;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
@@ -90,6 +58,9 @@ import org.cleartk.ml.jar.GenericJarClassifierFactory;
 import org.cleartk.ml.jar.JarClassifierBuilder;
 import org.cleartk.ml.liblinear.LibLinearStringOutcomeDataWriter;
 import org.cleartk.util.ViewUriUtil;
+
+import java.io.*;
+import java.util.*;
 
 public class RelationExtractorEvaluation extends RelationEvaluation_ImplBase {
 

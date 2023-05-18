@@ -18,9 +18,6 @@
  */
 package org.apache.ctakes.assertion.medfacts.cleartk;
 
-import java.io.File;
-import java.net.URI;
-
 import org.apache.ctakes.assertion.attributes.features.SubjectFeaturesExtractor;
 import org.apache.ctakes.assertion.attributes.features.selection.Chi2FeatureSelection;
 import org.apache.ctakes.assertion.attributes.features.selection.FeatureSelection;
@@ -33,6 +30,9 @@ import org.apache.uima.fit.factory.AnalysisEngineFactory;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.cleartk.ml.Instance;
 import org.cleartk.ml.jar.GenericJarClassifierFactory;
+
+import java.io.File;
+import java.net.URI;
 
 public class SubjectCleartkAnalysisEngine extends
     AssertionCleartkAnalysisEngine {

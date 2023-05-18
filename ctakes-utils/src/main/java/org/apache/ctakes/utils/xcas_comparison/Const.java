@@ -18,11 +18,11 @@
  */
 package org.apache.ctakes.utils.xcas_comparison;
 
-import java.util.HashSet;
-import java.util.Properties;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Properties;
 
 public abstract class Const {
 	public static String UIMA_TCAS_DOCUMENT = "uima.tcas.Document";

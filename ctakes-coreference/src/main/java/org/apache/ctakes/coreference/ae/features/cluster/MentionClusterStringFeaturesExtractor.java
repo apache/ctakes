@@ -1,18 +1,5 @@
 package org.apache.ctakes.coreference.ae.features.cluster;
 
-import static org.apache.ctakes.coreference.ae.features.StringMatchingFeatureExtractor.contentWords;
-import static org.apache.ctakes.coreference.ae.features.StringMatchingFeatureExtractor.endMatch;
-import static org.apache.ctakes.coreference.ae.features.StringMatchingFeatureExtractor.soonMatch;
-import static org.apache.ctakes.coreference.ae.features.StringMatchingFeatureExtractor.startMatch;
-import static org.apache.ctakes.coreference.ae.features.StringMatchingFeatureExtractor.wordOverlap;
-import static org.apache.ctakes.coreference.ae.features.StringMatchingFeatureExtractor.wordSubstring;
-
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
 import org.apache.ctakes.core.util.ListIterable;
 import org.apache.ctakes.coreference.ae.features.StringMatchingFeatureExtractor;
 import org.apache.ctakes.coreference.util.MarkableCacheRelationExtractor;
@@ -25,6 +12,10 @@ import org.apache.ctakes.utils.struct.CounterMap;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.jcas.JCas;
 import org.cleartk.ml.Feature;
+
+import java.util.*;
+
+import static org.apache.ctakes.coreference.ae.features.StringMatchingFeatureExtractor.*;
 
 public class MentionClusterStringFeaturesExtractor implements
     RelationFeaturesExtractor<CollectionTextRelation, IdentifiedAnnotation>,

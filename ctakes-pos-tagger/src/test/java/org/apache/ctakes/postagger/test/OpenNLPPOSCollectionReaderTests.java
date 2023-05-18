@@ -18,13 +18,8 @@
  */
 package org.apache.ctakes.postagger.test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-
-import java.io.File;
-import java.io.IOException;
-
+import org.apache.ctakes.typesystem.type.syntax.BaseToken;
+import org.apache.ctakes.utils.test.TestUtil;
 import org.apache.uima.analysis_engine.AnalysisEngine;
 import org.apache.uima.collection.CollectionException;
 import org.apache.uima.collection.CollectionReader;
@@ -32,8 +27,10 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.junit.Test;
 
-import org.apache.ctakes.typesystem.type.syntax.BaseToken;
-import org.apache.ctakes.utils.test.TestUtil;
+import java.io.File;
+import java.io.IOException;
+
+import static org.junit.Assert.*;
 
 public class OpenNLPPOSCollectionReaderTests {
 

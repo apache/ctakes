@@ -18,17 +18,16 @@
  */
 package org.apache.ctakes.constituency.parser.util;
 
-import java.util.Collection;
-
+import org.apache.ctakes.typesystem.type.syntax.TerminalTreebankNode;
+import org.apache.ctakes.typesystem.type.syntax.TopTreebankNode;
+import org.apache.ctakes.typesystem.type.syntax.TreebankNode;
 import org.apache.uima.cas.FSIterator;
+import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.FSArray;
 import org.apache.uima.jcas.tcas.Annotation;
 
-import org.apache.ctakes.typesystem.type.syntax.TerminalTreebankNode;
-import org.apache.ctakes.typesystem.type.syntax.TopTreebankNode;
-import org.apache.ctakes.typesystem.type.syntax.TreebankNode;
-import org.apache.uima.fit.util.JCasUtil;
+import java.util.Collection;
 
 
 public class AnnotationTreeUtils {

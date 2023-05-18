@@ -18,15 +18,14 @@
  */
 package org.apache.ctakes.relationextractor.ae.features;
 
+import org.apache.ctakes.typesystem.type.syntax.ConllDependencyNode;
+import org.apache.uima.fit.util.JCasUtil;
+import org.apache.uima.jcas.JCas;
+import org.apache.uima.jcas.tcas.Annotation;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-
-import org.apache.uima.jcas.JCas;
-import org.apache.uima.jcas.tcas.Annotation;
-import org.apache.uima.fit.util.JCasUtil;
-
-import org.apache.ctakes.typesystem.type.syntax.ConllDependencyNode;
 
 public class DependencyParseUtils {
 

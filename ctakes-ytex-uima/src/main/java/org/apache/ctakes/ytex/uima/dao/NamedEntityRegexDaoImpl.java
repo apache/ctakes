@@ -18,10 +18,10 @@
  */
 package org.apache.ctakes.ytex.uima.dao;
 
-import java.util.List;
-
 import org.apache.ctakes.ytex.uima.model.NamedEntityRegex;
 import org.hibernate.SessionFactory;
+
+import java.util.List;
 
 
 public class NamedEntityRegexDaoImpl implements NamedEntityRegexDao {

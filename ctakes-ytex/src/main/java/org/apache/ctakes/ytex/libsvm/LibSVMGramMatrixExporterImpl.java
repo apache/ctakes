@@ -18,28 +18,8 @@
  */
 package org.apache.ctakes.ytex.libsvm;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
-import java.util.SortedMap;
-import java.util.SortedSet;
-import java.util.TreeSet;
-
-import javax.sql.DataSource;
-
-import org.apache.commons.cli.CommandLine;
-import org.apache.commons.cli.CommandLineParser;
-import org.apache.commons.cli.GnuParser;
-import org.apache.commons.cli.HelpFormatter;
-import org.apache.commons.cli.OptionBuilder;
-import org.apache.commons.cli.Options;
-import org.apache.commons.cli.ParseException;
+import com.google.common.collect.BiMap;
+import org.apache.commons.cli.*;
 import org.apache.ctakes.ytex.kernel.FileUtil;
 import org.apache.ctakes.ytex.kernel.InstanceData;
 import org.apache.ctakes.ytex.kernel.KernelContextHolder;
@@ -48,7 +28,11 @@ import org.apache.ctakes.ytex.kernel.dao.KernelEvaluationDao;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.transaction.PlatformTransactionManager;
 
-import com.google.common.collect.BiMap;
+import javax.sql.DataSource;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.*;
 
 
 /**

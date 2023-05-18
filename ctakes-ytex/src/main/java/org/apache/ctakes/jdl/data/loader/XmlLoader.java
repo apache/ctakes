@@ -18,11 +18,6 @@
  */
 package org.apache.ctakes.jdl.data.loader;
 
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.Iterator;
-
-
 import org.apache.commons.jxpath.JXPathContext;
 import org.apache.commons.jxpath.ri.model.NodePointer;
 import org.apache.commons.lang.StringUtils;
@@ -32,6 +27,10 @@ import org.apache.ctakes.jdl.schema.xdl.XmlLoadType;
 import org.apache.ctakes.jdl.schema.xdl.XmlLoadType.Column;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
+
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.Iterator;
 
 /**
  * Loader of XML file.

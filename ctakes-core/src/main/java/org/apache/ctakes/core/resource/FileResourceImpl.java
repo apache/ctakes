@@ -18,15 +18,14 @@
  */
 package org.apache.ctakes.core.resource;
 
-import java.io.File;
-import java.net.URI;
-import java.net.URL;
-
 import org.apache.log4j.Logger;
-
 import org.apache.uima.resource.DataResource;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.resource.SharedResourceObject;
+
+import java.io.File;
+import java.net.URI;
+import java.net.URL;
 
 /**
  * @author Mayo Clinic

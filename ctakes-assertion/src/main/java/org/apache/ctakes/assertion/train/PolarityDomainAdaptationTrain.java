@@ -18,15 +18,13 @@
  */
 package org.apache.ctakes.assertion.train;
 
-import java.util.ArrayList;
-import java.util.Map.Entry;
-
+import com.google.common.collect.BiMap;
+import com.google.common.collect.HashBiMap;
 import org.apache.ctakes.assertion.eval.AssertionEvaluation;
 import org.apache.ctakes.assertion.util.AssertionConst;
 
-import com.google.common.collect.BiMap;
-import com.google.common.collect.HashBiMap;
-import com.google.common.collect.ImmutableBiMap;
+import java.util.ArrayList;
+import java.util.Map.Entry;
 /**
  * For each assertion attribute (polarity, conditional, etc), train a model using the data
  * in the training directories for that attribute, and store the model under the models-dir

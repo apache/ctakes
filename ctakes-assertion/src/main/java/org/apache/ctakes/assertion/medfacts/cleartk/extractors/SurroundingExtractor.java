@@ -18,19 +18,15 @@
  */
 package org.apache.ctakes.assertion.medfacts.cleartk.extractors;
 //
-import java.util.ArrayList;
-//import java.util.Collection;
-import java.util.List;
-import java.util.Map;
 
-import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
-import org.apache.log4j.Logger;
-import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
 import org.cleartk.ml.Feature;
 import org.cleartk.ml.feature.extractor.CleartkExtractorException;
 import org.cleartk.ml.feature.extractor.FeatureExtractor1;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SurroundingExtractor implements FeatureExtractor1
 {

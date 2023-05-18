@@ -1,13 +1,14 @@
-from ctakes_pbj.component import cas_annotator
-from ctakes_pbj.pbj_tools import create_type
-from ctakes_pbj.pbj_tools.token_tools import *
-from ctakes_pbj.pbj_tools.create_relation import create_relation
-from ctakes_pbj.pbj_tools.helper_functions import *
-from ctakes_pbj.pbj_tools.event_creator import create_event
-from ctakes_pbj.type_system import ctakes_types
-import cnlpt.api.temporal_rest as temporal_rest
 import asyncio
 import time
+
+import cnlpt.api.temporal_rest as temporal_rest
+from ctakes_pbj.component import cas_annotator
+from ctakes_pbj.pbj_tools import create_type
+from ctakes_pbj.pbj_tools.create_relation import create_relation
+from ctakes_pbj.pbj_tools.event_creator import create_event
+from ctakes_pbj.pbj_tools.helper_functions import *
+from ctakes_pbj.pbj_tools.token_tools import *
+from ctakes_pbj.type_system import ctakes_types
 
 sem = asyncio.Semaphore(1)
 

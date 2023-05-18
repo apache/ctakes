@@ -1,12 +1,9 @@
 #!/usr/bin/env python
 
 from keras.models import Sequential
-from keras.layers import Dense, Dropout, Activation
 from keras.optimizers import SGD
 from keras.utils import np_utils
 #from sklearn.datasets import load_svmlight_file
-import sklearn as sk
-import sklearn.cross_validation
 import numpy as np
 import et_cleartk_io as ctk_io
 import nn_models

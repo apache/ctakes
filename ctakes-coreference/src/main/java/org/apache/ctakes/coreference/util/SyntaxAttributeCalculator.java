@@ -18,26 +18,25 @@
  */
 package org.apache.ctakes.coreference.util;
 
+import org.apache.ctakes.core.resource.FileLocator;
+import org.apache.ctakes.coreference.type.DemMarkable;
+import org.apache.ctakes.coreference.type.Markable;
+import org.apache.ctakes.coreference.type.NEMarkable;
+import org.apache.ctakes.coreference.type.PronounMarkable;
+import org.apache.ctakes.typesystem.type.syntax.ConllDependencyNode;
+import org.apache.ctakes.typesystem.type.syntax.TopTreebankNode;
+import org.apache.ctakes.typesystem.type.syntax.TreebankNode;
+import org.apache.ctakes.utils.wiki.WikiIndex;
+import org.apache.uima.jcas.JCas;
+import org.apache.uima.jcas.cas.StringArray;
+import org.apache.uima.jcas.tcas.Annotation;
+
 import java.io.FileNotFoundException;
 import java.rmi.UnexpectedException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Scanner;
-
-import org.apache.uima.jcas.JCas;
-import org.apache.uima.jcas.cas.StringArray;
-import org.apache.uima.jcas.tcas.Annotation;
-
-import org.apache.ctakes.core.resource.FileLocator;
-import org.apache.ctakes.typesystem.type.syntax.ConllDependencyNode;
-import org.apache.ctakes.typesystem.type.syntax.TreebankNode;
-import org.apache.ctakes.typesystem.type.syntax.TopTreebankNode;
-import org.apache.ctakes.utils.wiki.WikiIndex;
-import org.apache.ctakes.coreference.type.Markable;
-import org.apache.ctakes.coreference.type.DemMarkable;
-import org.apache.ctakes.coreference.type.NEMarkable;
-import org.apache.ctakes.coreference.type.PronounMarkable;
 
 public class SyntaxAttributeCalculator extends PairAttributeCalculator {
 

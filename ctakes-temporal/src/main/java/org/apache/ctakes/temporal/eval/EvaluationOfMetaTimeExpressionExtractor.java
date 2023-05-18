@@ -18,18 +18,10 @@
  */
 package org.apache.ctakes.temporal.eval;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.logging.Level;
-
-import org.apache.ctakes.temporal.ae.BackwardsTimeAnnotator;
-import org.apache.ctakes.temporal.ae.CRFTimeAnnotator;
-import org.apache.ctakes.temporal.ae.ConstituencyBasedTimeAnnotator;
-import org.apache.ctakes.temporal.ae.MetaTimeAnnotator;
-import org.apache.ctakes.temporal.ae.TimeAnnotator;
+import com.google.common.collect.Maps;
+import com.lexicalscope.jewel.cli.CliFactory;
+import com.lexicalscope.jewel.cli.Option;
+import org.apache.ctakes.temporal.ae.*;
 import org.apache.ctakes.typesystem.type.textsem.TimeMention;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
 import org.apache.uima.analysis_engine.AnalysisEngine;
@@ -46,9 +38,12 @@ import org.cleartk.eval.AnnotationStatistics;
 import org.cleartk.ml.crfsuite.CrfSuiteStringOutcomeDataWriter;
 import org.cleartk.ml.jar.JarClassifierBuilder;
 
-import com.google.common.collect.Maps;
-import com.lexicalscope.jewel.cli.CliFactory;
-import com.lexicalscope.jewel.cli.Option;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.logging.Level;
 
 public class EvaluationOfMetaTimeExpressionExtractor extends EvaluationOfAnnotationSpans_ImplBase {
   public static int nFolds = 5;

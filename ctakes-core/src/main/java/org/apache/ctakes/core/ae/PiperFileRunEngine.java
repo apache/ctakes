@@ -2,7 +2,10 @@ package org.apache.ctakes.core.ae;
 
 import com.lexicalscope.jewel.cli.CliFactory;
 import org.apache.ctakes.core.config.ConfigParameterConstants;
-import org.apache.ctakes.core.pipeline.*;
+import org.apache.ctakes.core.pipeline.CliOptionals;
+import org.apache.ctakes.core.pipeline.PipeBitInfo;
+import org.apache.ctakes.core.pipeline.PipelineBuilder;
+import org.apache.ctakes.core.pipeline.PiperFileReader;
 import org.apache.log4j.Logger;
 import org.apache.uima.UIMAException;
 import org.apache.uima.UimaContext;

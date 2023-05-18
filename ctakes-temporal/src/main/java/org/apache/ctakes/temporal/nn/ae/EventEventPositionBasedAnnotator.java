@@ -1,11 +1,6 @@
 package org.apache.ctakes.temporal.nn.ae;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
+import com.google.common.collect.Lists;
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.temporal.ae.TemporalRelationExtractorAnnotator.IdentifiedAnnotationPair;
 import org.apache.ctakes.temporal.nn.data.ArgContextProvider;
@@ -24,7 +19,7 @@ import org.cleartk.ml.Feature;
 import org.cleartk.ml.Instance;
 import org.cleartk.util.ViewUriUtil;
 
-import com.google.common.collect.Lists;
+import java.util.*;
 
 @PipeBitInfo(
       name = "E-E Position TLinker",

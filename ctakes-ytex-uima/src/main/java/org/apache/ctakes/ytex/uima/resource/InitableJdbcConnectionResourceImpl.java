@@ -44,11 +44,6 @@ package org.apache.ctakes.ytex.uima.resource;
  * limitations under the License. 
  */
 
-import java.lang.reflect.Field;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.util.Properties;
-
 import org.apache.ctakes.core.resource.JdbcConnectionResource;
 import org.apache.ctakes.ytex.uima.ApplicationContextHolder;
 import org.apache.log4j.Logger;
@@ -56,6 +51,11 @@ import org.apache.uima.resource.DataResource;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.resource.SharedResourceObject;
 import org.apache.uima.resource.metadata.ConfigurationParameterSettings;
+
+import java.lang.reflect.Field;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.util.Properties;
 
 /**
  * copied from mayo JdbcConnectionResourceImpl.

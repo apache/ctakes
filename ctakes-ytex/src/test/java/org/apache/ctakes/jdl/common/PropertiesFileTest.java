@@ -18,19 +18,16 @@
  */
 package org.apache.ctakes.jdl.common;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.nullValue;
-import static org.junit.Assert.assertThat;
+import org.apache.ctakes.jdl.test.Resources;
+import org.junit.After;
+import org.junit.Test;
 
 import java.io.IOException;
 import java.util.Properties;
 
-
-import org.apache.ctakes.jdl.common.FileUtil;
-import org.apache.ctakes.jdl.common.PropertiesFile;
-import org.apache.ctakes.jdl.test.Resources;
-import org.junit.After;
-import org.junit.Test;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.nullValue;
+import static org.junit.Assert.assertThat;
 
 public class PropertiesFileTest {
 	private static final PropertiesFile propertiesFile = new PropertiesFile();

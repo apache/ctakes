@@ -1,23 +1,9 @@
 package org.apache.ctakes.coreference.ae.features.cluster;
 
-import static org.apache.ctakes.coreference.ae.features.TokenFeatureExtractor.isGeneric;
-import static org.apache.ctakes.coreference.ae.features.TokenFeatureExtractor.isHistory;
-import static org.apache.ctakes.coreference.ae.features.TokenFeatureExtractor.isNegated;
-import static org.apache.ctakes.coreference.ae.features.TokenFeatureExtractor.isPatient;
-import static org.apache.ctakes.coreference.ae.features.TokenFeatureExtractor.isUncertain;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.ctakes.relationextractor.ae.features.RelationFeaturesExtractor;
 import org.apache.ctakes.typesystem.type.relation.CollectionTextRelation;
 import org.apache.ctakes.typesystem.type.relation.LocationOfTextRelation;
-import org.apache.ctakes.typesystem.type.textsem.DiseaseDisorderMention;
-import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
-import org.apache.ctakes.typesystem.type.textsem.Markable;
-import org.apache.ctakes.typesystem.type.textsem.ProcedureMention;
-import org.apache.ctakes.typesystem.type.textsem.SignSymptomMention;
-import org.apache.ctakes.typesystem.type.textsem.TimeMention;
+import org.apache.ctakes.typesystem.type.textsem.*;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
@@ -25,6 +11,11 @@ import org.apache.uima.jcas.tcas.Annotation;
 import org.cleartk.ml.Feature;
 import org.cleartk.ml.feature.extractor.CleartkExtractorException;
 import org.cleartk.ml.feature.extractor.FeatureExtractor1;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.apache.ctakes.coreference.ae.features.TokenFeatureExtractor.*;
 
 public class MentionClusterAttributeFeaturesExtractor implements
     RelationFeaturesExtractor<CollectionTextRelation, IdentifiedAnnotation>, FeatureExtractor1<Markable> {

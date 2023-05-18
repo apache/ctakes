@@ -18,23 +18,23 @@
  */
 package org.apache.ctakes.ytex.uima.annotators;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.Iterator;
-
 import org.apache.ctakes.typesystem.type.textspan.Segment;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
 import org.apache.uima.UIMAException;
 import org.apache.uima.UIMAFramework;
 import org.apache.uima.analysis_engine.AnalysisEngine;
 import org.apache.uima.cas.text.AnnotationIndex;
+import org.apache.uima.fit.factory.AggregateBuilder;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
 import org.apache.uima.util.XMLInputSource;
 import org.apache.uima.util.XMLParser;
 import org.junit.Assert;
 import org.junit.Test;
-import org.apache.uima.fit.factory.AggregateBuilder;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.Iterator;
 
 /**
  * TODO get rid of hard-coded path to Types.xml - load from classpath

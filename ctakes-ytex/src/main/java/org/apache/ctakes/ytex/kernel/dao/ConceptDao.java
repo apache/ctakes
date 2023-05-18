@@ -18,10 +18,10 @@
  */
 package org.apache.ctakes.ytex.kernel.dao;
 
+import org.apache.ctakes.ytex.kernel.model.ConceptGraph;
+
 import java.io.IOException;
 import java.util.Set;
-
-import org.apache.ctakes.ytex.kernel.model.ConceptGraph;
 
 /**
  * create/retrieve concept graphs. store concept graph on file system as they

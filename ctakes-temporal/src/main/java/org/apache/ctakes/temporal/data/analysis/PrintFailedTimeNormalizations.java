@@ -18,18 +18,12 @@
  */
 package org.apache.ctakes.temporal.data.analysis;
 
+import com.lexicalscope.jewel.cli.CliFactory;
+import com.lexicalscope.jewel.cli.Option;
 import info.bethard.timenorm.DefaultTokenizer$;
 import info.bethard.timenorm.Temporal;
 import info.bethard.timenorm.TemporalExpressionParser;
 import info.bethard.timenorm.TimeSpan;
-
-import java.io.File;
-import java.net.URL;
-import java.util.Iterator;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import org.apache.ctakes.temporal.eval.CommandLine;
 import org.apache.ctakes.temporal.eval.Evaluation_ImplBase.XMIReader;
 import org.apache.ctakes.temporal.eval.THYMEData;
@@ -43,11 +37,14 @@ import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.cleartk.util.ae.UriToDocumentTextAnnotator;
 import org.cleartk.util.cr.UriCollectionReader;
-
 import scala.util.Try;
 
-import com.lexicalscope.jewel.cli.CliFactory;
-import com.lexicalscope.jewel.cli.Option;
+import java.io.File;
+import java.net.URL;
+import java.util.Iterator;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class PrintFailedTimeNormalizations {
   static interface Options {

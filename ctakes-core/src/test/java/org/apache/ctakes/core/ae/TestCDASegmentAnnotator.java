@@ -31,7 +31,6 @@ import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.metadata.TypeSystemDescription;
 import org.cleartk.util.cr.FilesCollectionReader;
-import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 

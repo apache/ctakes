@@ -21,16 +21,12 @@
  */
 package org.apache.ctakes.core.ci;
 
-import static org.junit.Assert.assertArrayEquals;
+import org.apache.ctakes.core.resource.FileLocator;
 
 import java.io.InputStream;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 
-import org.junit.Test;
-
-import org.apache.ctakes.core.ci.HyphenTextModifierImpl;
-import org.apache.ctakes.core.resource.FileLocator;
+import static org.junit.Assert.assertArrayEquals;
 
 /**
  * @author Mayo Clinic

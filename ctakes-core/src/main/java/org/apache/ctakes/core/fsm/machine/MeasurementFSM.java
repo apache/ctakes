@@ -18,26 +18,16 @@
  */
 package org.apache.ctakes.core.fsm.machine;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import org.apache.ctakes.core.fsm.condition.IntegerRangeCondition;
-import org.apache.ctakes.core.fsm.condition.NumberCondition;
-import org.apache.ctakes.core.fsm.condition.PunctuationValueCondition;
-import org.apache.ctakes.core.fsm.condition.RangeCondition;
-import org.apache.ctakes.core.fsm.condition.WordSetCondition;
-import org.apache.ctakes.core.fsm.output.MeasurementToken;
-import org.apache.ctakes.core.fsm.state.NamedState;
-import org.apache.ctakes.core.fsm.token.BaseToken;
-
 import net.openai.util.fsm.AnyCondition;
 import net.openai.util.fsm.Condition;
 import net.openai.util.fsm.Machine;
 import net.openai.util.fsm.State;
+import org.apache.ctakes.core.fsm.condition.*;
+import org.apache.ctakes.core.fsm.output.MeasurementToken;
+import org.apache.ctakes.core.fsm.state.NamedState;
+import org.apache.ctakes.core.fsm.token.BaseToken;
+
+import java.util.*;
 
 /**
  * Uses one or more finite state machines to detect measurements in the given

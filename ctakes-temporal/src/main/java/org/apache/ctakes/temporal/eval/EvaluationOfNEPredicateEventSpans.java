@@ -18,23 +18,22 @@
  */
 package org.apache.ctakes.temporal.eval;
 
-import java.io.File;
-import java.util.Collection;
-import java.util.List;
-import java.util.logging.Level;
-
+import com.lexicalscope.jewel.cli.CliFactory;
 import org.apache.ctakes.temporal.ae.NEPredicateEventAnnotator;
 import org.apache.ctakes.typesystem.type.textsem.EventMention;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
+import org.apache.uima.fit.component.NoOpAnnotator;
+import org.apache.uima.fit.factory.AnalysisEngineFactory;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.cleartk.eval.AnnotationStatistics;
-import org.apache.uima.fit.component.NoOpAnnotator;
-import org.apache.uima.fit.factory.AnalysisEngineFactory;
 
-import com.lexicalscope.jewel.cli.CliFactory;
+import java.io.File;
+import java.util.Collection;
+import java.util.List;
+import java.util.logging.Level;
 
 public class EvaluationOfNEPredicateEventSpans extends
 		EvaluationOfAnnotationSpans_ImplBase {

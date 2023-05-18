@@ -1,12 +1,11 @@
 package org.apache.ctakes.temporal.keras;
 
-import java.io.File;
-
+import com.google.common.annotations.Beta;
 import org.cleartk.ml.encoder.features.FeaturesEncoder;
 import org.cleartk.ml.encoder.outcome.OutcomeEncoder;
 import org.cleartk.ml.util.featurevector.FeatureVector;
 
-import com.google.common.annotations.Beta;
+import java.io.File;
 
 /**
  * <br>

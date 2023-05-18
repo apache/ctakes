@@ -1,8 +1,5 @@
 package org.apache.ctakes.coreference.ae;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.dependency.parser.util.DependencyUtility;
 import org.apache.ctakes.typesystem.type.relation.CollectionTextRelation;
@@ -19,6 +16,9 @@ import org.apache.uima.jcas.cas.EmptyFSList;
 import org.apache.uima.jcas.cas.FSList;
 import org.apache.uima.jcas.cas.NonEmptyFSList;
 import org.apache.uima.resource.ResourceInitializationException;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @PipeBitInfo(
       name = "Person Coreference Annotator",

@@ -20,7 +20,7 @@
 
 -->
 <load xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://jdl-prj.googlecode.com/files/xdl.xsd">
+>
 	<xml table="tab_test">
 		<xroot>/band/album</xroot>
 		<column name="id">

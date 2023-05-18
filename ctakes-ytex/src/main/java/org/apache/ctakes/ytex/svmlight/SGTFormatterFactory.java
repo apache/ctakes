@@ -18,17 +18,13 @@
  */
 package org.apache.ctakes.ytex.svmlight;
 
+import org.apache.ctakes.ytex.kernel.*;
+import org.apache.ctakes.ytex.semil.SemiLFormatterFactory.SemiLDataFormatter;
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.SortedMap;
-
-import org.apache.ctakes.ytex.kernel.FileUtil;
-import org.apache.ctakes.ytex.kernel.KernelUtil;
-import org.apache.ctakes.ytex.kernel.SparseData;
-import org.apache.ctakes.ytex.kernel.SparseDataFormatter;
-import org.apache.ctakes.ytex.kernel.SparseDataFormatterFactory;
-import org.apache.ctakes.ytex.semil.SemiLFormatterFactory.SemiLDataFormatter;
 
 
 /**

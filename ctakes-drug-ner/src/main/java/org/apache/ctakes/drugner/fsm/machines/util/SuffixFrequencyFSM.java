@@ -18,13 +18,10 @@
  */
 package org.apache.ctakes.drugner.fsm.machines.util;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
+import net.openai.util.fsm.AnyCondition;
+import net.openai.util.fsm.Condition;
+import net.openai.util.fsm.Machine;
+import net.openai.util.fsm.State;
 import org.apache.ctakes.core.fsm.condition.IntegerCondition;
 import org.apache.ctakes.core.fsm.condition.PunctuationValueCondition;
 import org.apache.ctakes.core.fsm.condition.TextValueCondition;
@@ -34,10 +31,7 @@ import org.apache.ctakes.core.fsm.token.BaseToken;
 import org.apache.ctakes.drugner.fsm.elements.conditions.ContainsSetTextValueCondition;
 import org.apache.ctakes.drugner.fsm.output.util.SuffixFrequencyToken;
 
-import net.openai.util.fsm.AnyCondition;
-import net.openai.util.fsm.Condition;
-import net.openai.util.fsm.Machine;
-import net.openai.util.fsm.State;
+import java.util.*;
 
 /**
  * Uses one or more finite state machines to detect frequency suffix data in the given

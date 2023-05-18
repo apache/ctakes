@@ -18,41 +18,19 @@
  */
 package org.apache.ctakes.drugner;
 
-import java.util.Iterator;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import org.apache.uima.jcas.JCas;
-
-
 import org.apache.ctakes.core.fsm.output.DateToken;
 import org.apache.ctakes.core.util.FSUtil;
-import org.apache.ctakes.drugner.elements.AssociatedPrimaryCodeElement;
-import org.apache.ctakes.drugner.elements.ConfidenceScoreElement;
-import org.apache.ctakes.drugner.elements.DosageElement;
-import org.apache.ctakes.drugner.elements.DrugChangeStatusElement;
-import org.apache.ctakes.drugner.elements.DurationElement;
-import org.apache.ctakes.drugner.elements.FormElement;
-import org.apache.ctakes.drugner.elements.FrequencyElement;
-import org.apache.ctakes.drugner.elements.FrequencyUnitElement;
-import org.apache.ctakes.drugner.elements.RouteElement;
-import org.apache.ctakes.drugner.elements.StartDateElement;
-import org.apache.ctakes.drugner.elements.StrengthElement;
-import org.apache.ctakes.drugner.elements.StrengthUnitElement;
-import org.apache.ctakes.drugner.elements.TextMentionElement;
+import org.apache.ctakes.drugner.elements.*;
 import org.apache.ctakes.drugner.fsm.output.elements.DrugChangeStatusToken;
 import org.apache.ctakes.drugner.fsm.output.elements.FrequencyUnitToken;
 import org.apache.ctakes.drugner.fsm.output.elements.RouteToken;
+import org.apache.ctakes.drugner.type.*;
 import org.apache.ctakes.typesystem.type.textsem.DateAnnotation;
-import org.apache.ctakes.drugner.type.DosagesAnnotation;
-import org.apache.ctakes.drugner.type.DrugChangeStatusAnnotation;
-import org.apache.ctakes.drugner.type.DurationAnnotation;
-import org.apache.ctakes.drugner.type.FormAnnotation;
-import org.apache.ctakes.drugner.type.FrequencyAnnotation;
-import org.apache.ctakes.drugner.type.FrequencyUnitAnnotation;
-import org.apache.ctakes.drugner.type.RouteAnnotation;
-import org.apache.ctakes.drugner.type.StrengthAnnotation;
-import org.apache.ctakes.drugner.type.StrengthUnitAnnotation;
+import org.apache.uima.jcas.JCas;
+
+import java.util.Iterator;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Contains information from a single document - is not the result of data

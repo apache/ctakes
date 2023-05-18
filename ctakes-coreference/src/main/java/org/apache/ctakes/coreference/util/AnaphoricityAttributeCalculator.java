@@ -18,13 +18,7 @@
  */
 package org.apache.ctakes.coreference.util;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.apache.uima.cas.FSIterator;
-import org.apache.uima.jcas.JCas;
-import org.apache.uima.jcas.tcas.Annotation;
-
+import org.apache.ctakes.coreference.type.Markable;
 import org.apache.ctakes.typesystem.type.constants.CONST;
 import org.apache.ctakes.typesystem.type.syntax.BaseToken;
 import org.apache.ctakes.typesystem.type.syntax.TerminalTreebankNode;
@@ -32,7 +26,12 @@ import org.apache.ctakes.typesystem.type.syntax.TreebankNode;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
 import org.apache.ctakes.typesystem.type.textspan.LookupWindowAnnotation;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.ctakes.coreference.type.Markable;
+import org.apache.uima.cas.FSIterator;
+import org.apache.uima.jcas.JCas;
+import org.apache.uima.jcas.tcas.Annotation;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AnaphoricityAttributeCalculator extends AttributeCalculator {
 

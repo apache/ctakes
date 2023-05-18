@@ -18,17 +18,16 @@
  */
 package org.apache.ctakes.jdl.data.xml;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.MalformedURLException;
+import org.xml.sax.SAXException;
+import org.xml.sax.XMLReader;
+import org.xml.sax.helpers.DefaultHandler;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
-
-import org.xml.sax.SAXException;
-import org.xml.sax.XMLReader;
-import org.xml.sax.helpers.DefaultHandler;
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
 
 /**
  * To parse SAX.

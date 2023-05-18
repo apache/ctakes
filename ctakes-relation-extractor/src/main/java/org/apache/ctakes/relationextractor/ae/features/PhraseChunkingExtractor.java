@@ -18,9 +18,6 @@
  */
 package org.apache.ctakes.relationextractor.ae.features;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.ctakes.typesystem.type.syntax.TerminalTreebankNode;
 import org.apache.ctakes.typesystem.type.syntax.TreebankNode;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
@@ -28,6 +25,9 @@ import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.cleartk.ml.Feature;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class PhraseChunkingExtractor implements RelationFeaturesExtractor<IdentifiedAnnotation,IdentifiedAnnotation> {
 	  

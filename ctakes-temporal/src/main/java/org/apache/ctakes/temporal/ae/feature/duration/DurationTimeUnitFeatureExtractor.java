@@ -18,20 +18,18 @@
  */
 package org.apache.ctakes.temporal.ae.feature.duration;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
 import org.apache.ctakes.relationextractor.ae.features.RelationFeaturesExtractor;
 import org.apache.ctakes.temporal.duration.Utils;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.jcas.JCas;
 import org.cleartk.ml.Feature;
-//import org.threeten.bp.temporal.TemporalUnit;
-import java.time.temporal.TemporalUnit;
-
 import scala.collection.immutable.Set;
+
+import java.time.temporal.TemporalUnit;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Assumes all relations whose argument have no duration data have been deleted.

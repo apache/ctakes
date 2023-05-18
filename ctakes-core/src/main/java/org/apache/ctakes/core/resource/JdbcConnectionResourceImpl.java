@@ -18,18 +18,16 @@
  */
 package org.apache.ctakes.core.resource;
 
-import java.lang.reflect.Field;
-import java.sql.Connection;
-import java.sql.DriverManager;
-
 import org.apache.log4j.Logger;
-
 import org.apache.uima.resource.DataResource;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.resource.SharedResourceObject;
 import org.apache.uima.resource.metadata.ConfigurationParameterSettings;
-
 import sqlWrapper.WrappedConnection;
+
+import java.lang.reflect.Field;
+import java.sql.Connection;
+import java.sql.DriverManager;
 
 /**
  * Implementation of JdbcConnectionResource. Uses the WrappedConnection

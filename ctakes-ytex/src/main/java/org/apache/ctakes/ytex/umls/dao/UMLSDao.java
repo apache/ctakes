@@ -18,12 +18,12 @@
  */
 package org.apache.ctakes.ytex.umls.dao;
 
+import org.apache.ctakes.ytex.umls.model.UmlsAuiFirstWord;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
-
-import org.apache.ctakes.ytex.umls.model.UmlsAuiFirstWord;
 
 
 public interface UMLSDao {

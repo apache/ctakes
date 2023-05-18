@@ -18,20 +18,18 @@
  */
 package org.apache.ctakes.coreference.util;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.List;
-import java.util.Vector;
-
 import org.apache.ctakes.coreference.eval.helpers.Span;
 import org.apache.ctakes.coreference.eval.helpers.SpanAlignment;
 import org.apache.ctakes.coreference.eval.helpers.SpanOffsetComparator;
+import org.apache.ctakes.coreference.type.Markable;
 import org.apache.uima.jcas.tcas.Annotation;
 
-import org.apache.ctakes.coreference.type.Markable;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.util.Hashtable;
+import java.util.List;
+import java.util.Vector;
 
 public class GoldStandardLabeler {
 	private String dir = null;

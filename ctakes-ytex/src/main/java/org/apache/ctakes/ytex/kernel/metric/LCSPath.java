@@ -18,12 +18,11 @@
  */
 package org.apache.ctakes.ytex.kernel.metric;
 
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.util.Iterator;
 import java.util.List;
-
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "LCSPath")
 public class LCSPath implements Serializable {

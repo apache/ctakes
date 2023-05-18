@@ -1,13 +1,5 @@
 package org.apache.ctakes.assertion.medfacts.cleartk.extractors;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Scanner;
-
 import org.apache.ctakes.core.resource.FileLocator;
 import org.apache.ctakes.dependency.parser.util.DependencyPath;
 import org.apache.ctakes.dependency.parser.util.DependencyUtility;
@@ -17,6 +9,13 @@ import org.apache.uima.jcas.JCas;
 import org.cleartk.ml.Feature;
 import org.cleartk.ml.feature.extractor.CleartkExtractorException;
 import org.cleartk.ml.feature.extractor.FeatureExtractor1;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Scanner;
 
 public class DependencyPathRegexpFeatureExtractor implements
     FeatureExtractor1<IdentifiedAnnotation> {

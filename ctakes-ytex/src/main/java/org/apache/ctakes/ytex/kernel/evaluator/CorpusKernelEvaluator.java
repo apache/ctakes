@@ -18,9 +18,9 @@
  */
 package org.apache.ctakes.ytex.kernel.evaluator;
 
-import java.util.Map;
-
 import org.apache.ctakes.ytex.kernel.tree.Node;
+
+import java.util.Map;
 
 
 public interface CorpusKernelEvaluator {

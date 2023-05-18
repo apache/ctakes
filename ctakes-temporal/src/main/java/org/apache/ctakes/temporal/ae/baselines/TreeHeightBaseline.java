@@ -18,10 +18,6 @@
  */
 package org.apache.ctakes.temporal.ae.baselines;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.ctakes.constituency.parser.util.AnnotationTreeUtils;
 import org.apache.ctakes.relationextractor.ae.RelationExtractorAnnotator;
 import org.apache.ctakes.relationextractor.ae.features.RelationFeaturesExtractor;
@@ -38,6 +34,10 @@ import org.apache.uima.resource.ResourceInitializationException;
 import org.cleartk.ml.CleartkAnnotator;
 import org.cleartk.ml.Feature;
 import org.cleartk.ml.jar.GenericJarClassifierFactory;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TreeHeightBaseline extends RelationExtractorAnnotator {
 

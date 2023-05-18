@@ -22,10 +22,10 @@
  */
 package org.apache.ctakes.dictionary.lookup.vo;
 
+import org.apache.ctakes.core.nlp.tokenizer.Token;
+
 import java.util.HashMap;
 import java.util.Map;
-
-import org.apache.ctakes.core.nlp.tokenizer.Token;
 
 
 /**

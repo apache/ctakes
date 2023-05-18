@@ -18,23 +18,13 @@
  */
 package org.apache.ctakes.ytex.kernel.wsd;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.SortedMap;
-import java.util.SortedSet;
-import java.util.TreeMap;
-
+import com.google.common.collect.TreeMultimap;
 import org.apache.ctakes.ytex.kernel.metric.ConceptPairSimilarity;
 import org.apache.ctakes.ytex.kernel.metric.ConceptSimilarityService;
 import org.apache.ctakes.ytex.kernel.metric.ConceptSimilarityService.SimilarityMetricEnum;
 import org.apache.ctakes.ytex.kernel.model.ConcRel;
 
-import com.google.common.collect.SetMultimap;
-import com.google.common.collect.TreeMultimap;
+import java.util.*;
 
 public class WordSenseDisambiguatorImpl implements WordSenseDisambiguator {
 	ConceptSimilarityService conceptSimilarityService;

@@ -18,11 +18,6 @@
  */
 package org.apache.ctakes.assertion.util;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Random;
-
 import org.apache.ctakes.constituency.parser.treekernel.TreeExtractor;
 import org.apache.ctakes.constituency.parser.util.AnnotationTreeUtils;
 import org.apache.ctakes.typesystem.type.syntax.TopTreebankNode;
@@ -31,6 +26,11 @@ import org.apache.ctakes.utils.tree.SimpleTree;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.FSArray;
 import org.apache.uima.jcas.tcas.Annotation;
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Random;
 
 public class AssertionTreeUtils {
 

@@ -1,15 +1,5 @@
 package org.apache.ctakes.coreference.ae.features.cluster;
 
-import static org.apache.ctakes.coreference.ae.features.UMLSFeatureExtractor.alias;
-import static org.apache.ctakes.coreference.ae.features.UMLSFeatureExtractor.getDocId;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
 import org.apache.ctakes.core.util.ListIterable;
 import org.apache.ctakes.coreference.util.MarkableCacheRelationExtractor;
 import org.apache.ctakes.relationextractor.ae.features.RelationFeaturesExtractor;
@@ -27,6 +17,11 @@ import org.apache.uima.jcas.cas.FSArray;
 import org.cleartk.ml.Feature;
 import org.cleartk.ml.feature.extractor.CleartkExtractorException;
 import org.cleartk.ml.feature.extractor.FeatureExtractor1;
+
+import java.util.*;
+
+import static org.apache.ctakes.coreference.ae.features.UMLSFeatureExtractor.alias;
+import static org.apache.ctakes.coreference.ae.features.UMLSFeatureExtractor.getDocId;
 
 public class MentionClusterUMLSFeatureExtractor implements
     RelationFeaturesExtractor<CollectionTextRelation, IdentifiedAnnotation>, FeatureExtractor1<Markable>,

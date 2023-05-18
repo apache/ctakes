@@ -18,10 +18,6 @@
  */
 package org.apache.ctakes.relationextractor.data;
 
-import java.io.File;
-import java.util.Arrays;
-import java.util.List;
-
 import org.apache.ctakes.relationextractor.eval.XMIReader;
 import org.apache.uima.analysis_engine.AnalysisEngine;
 import org.apache.uima.collection.CollectionReader;
@@ -30,6 +26,10 @@ import org.apache.uima.fit.factory.CollectionReaderFactory;
 import org.apache.uima.fit.pipeline.SimplePipeline;
 import org.kohsuke.args4j.CmdLineParser;
 import org.kohsuke.args4j.Option;
+
+import java.io.File;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * 

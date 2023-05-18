@@ -18,17 +18,13 @@
  */
 package org.apache.ctakes.temporal.utils;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import org.cleartk.ml.Feature;
-import org.cleartk.ml.Instance;
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Table;
+import org.cleartk.ml.Feature;
+import org.cleartk.ml.Instance;
+
+import java.util.*;
 
 /**
  * A simple implementation of SMOTE algorithm. 

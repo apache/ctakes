@@ -18,11 +18,6 @@
  */
 package org.apache.ctakes.assertion.medfacts.cleartk.extractors;
 
-import static org.apache.ctakes.assertion.util.AssertionTreeUtils.extractAboveLeftConceptTree;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.ctakes.assertion.util.SemanticClasses;
 import org.apache.ctakes.core.resource.FileLocator;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
@@ -33,6 +28,11 @@ import org.cleartk.ml.TreeFeature;
 import org.cleartk.ml.feature.extractor.CleartkExtractorException;
 import org.cleartk.ml.feature.extractor.FeatureExtractor1;
 import org.cleartk.util.CleartkInitializationException;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.apache.ctakes.assertion.util.AssertionTreeUtils.extractAboveLeftConceptTree;
 
 public class AssertionAboveLeftTreeExtractor implements FeatureExtractor1<IdentifiedAnnotation> {
   protected SemanticClasses sems = null;

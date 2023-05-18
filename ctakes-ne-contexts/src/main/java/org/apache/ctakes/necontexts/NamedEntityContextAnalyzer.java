@@ -18,12 +18,6 @@
  */
 package org.apache.ctakes.necontexts;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-
 import org.apache.ctakes.core.fsm.adapters.TextTokenAdapter;
 import org.apache.ctakes.core.fsm.token.TextToken;
 import org.apache.log4j.Logger;
@@ -31,6 +25,8 @@ import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.jcas.tcas.Annotation;
 import org.apache.uima.resource.ResourceInitializationException;
+
+import java.util.*;
 
 
 /**

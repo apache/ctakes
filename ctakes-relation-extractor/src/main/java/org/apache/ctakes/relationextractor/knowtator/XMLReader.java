@@ -18,12 +18,12 @@
  */
 package org.apache.ctakes.relationextractor.knowtator;
 
+import org.jdom.Document;
+import org.jdom.Element;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
-import org.jdom.Document;
-import org.jdom.Element;
 
 public class XMLReader {
 

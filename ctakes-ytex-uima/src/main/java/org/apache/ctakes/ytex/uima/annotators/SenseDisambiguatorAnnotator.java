@@ -18,15 +18,7 @@
  */
 package org.apache.ctakes.ytex.uima.annotators;
 
-import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
-import java.util.Set;
-
+import com.google.common.base.Strings;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -47,7 +39,8 @@ import org.apache.uima.jcas.cas.FSArray;
 import org.apache.uima.jcas.tcas.Annotation;
 import org.apache.uima.resource.ResourceInitializationException;
 
-import com.google.common.base.Strings;
+import java.lang.reflect.InvocationTargetException;
+import java.util.*;
 
 /**
  * Disambiguate named entities via adapated Lesk algorithm with semantic

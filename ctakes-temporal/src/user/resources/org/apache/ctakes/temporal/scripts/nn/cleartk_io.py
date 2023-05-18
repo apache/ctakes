@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 
 import numpy as np
-import os, os.path
+import os
+import os.path
 import subprocess
 
 

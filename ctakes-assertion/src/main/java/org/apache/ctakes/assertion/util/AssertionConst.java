@@ -21,9 +21,6 @@ package org.apache.ctakes.assertion.util;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-
 public class AssertionConst {
 	
 	/*** CHANGE THESE ***/

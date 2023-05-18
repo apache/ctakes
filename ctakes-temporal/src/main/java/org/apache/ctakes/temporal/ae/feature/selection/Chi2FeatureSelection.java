@@ -18,27 +18,16 @@
  */
 package org.apache.ctakes.temporal.ae.feature.selection;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.net.URI;
-import java.util.LinkedHashSet;
-import java.util.Set;
-
+import com.google.common.base.Function;
+import com.google.common.collect.*;
 import org.cleartk.ml.Feature;
 import org.cleartk.ml.Instance;
 import org.cleartk.ml.feature.transform.TransformableFeature;
 
-import com.google.common.base.Function;
-import com.google.common.collect.HashBasedTable;
-import com.google.common.collect.HashMultiset;
-import com.google.common.collect.Multiset;
-import com.google.common.collect.Ordering;
-import com.google.common.collect.Sets;
-import com.google.common.collect.Table;
+import java.io.*;
+import java.net.URI;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 /**
  * 

@@ -18,13 +18,13 @@
  */
 package org.apache.ctakes.ytex.kernel.evaluator;
 
-import java.io.IOException;
-import java.util.Map;
-
 import org.apache.ctakes.ytex.kernel.tree.InstanceTreeBuilder;
 import org.apache.ctakes.ytex.kernel.tree.Node;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.access.ContextSingletonBeanFactoryLocator;
+
+import java.io.IOException;
+import java.util.Map;
 
 
 public class TreePrinter {

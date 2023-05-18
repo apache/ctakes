@@ -18,24 +18,22 @@
  */
 package org.apache.ctakes.ytex.uima;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.Date;
-
+import com.google.common.base.Strings;
 import org.apache.ctakes.ytex.dao.DBUtil;
 import org.apache.ctakes.ytex.uima.annotators.DBConsumer;
 import org.apache.uima.UIMAFramework;
 import org.apache.uima.analysis_engine.AnalysisEngine;
 import org.apache.uima.collection.CollectionReader;
+import org.apache.uima.fit.factory.AggregateBuilder;
+import org.apache.uima.fit.factory.AnalysisEngineFactory;
+import org.apache.uima.fit.factory.CollectionReaderFactory;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.util.InvalidXMLException;
 import org.apache.uima.util.XMLInputSource;
 import org.apache.uima.util.XMLParser;
-import org.apache.uima.fit.factory.AggregateBuilder;
-import org.apache.uima.fit.factory.AnalysisEngineFactory;
-import org.apache.uima.fit.factory.CollectionReaderFactory;
 
-import com.google.common.base.Strings;
+import java.io.File;
+import java.io.IOException;
 
 public class TestUtils {
 	static final String queryGetDocumentKeys = "select note_id instance_id from %s%s";

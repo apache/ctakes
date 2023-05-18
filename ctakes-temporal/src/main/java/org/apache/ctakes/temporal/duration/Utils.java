@@ -18,21 +18,16 @@
  */
 package org.apache.ctakes.temporal.duration;
 
-import java.io.File;
-import java.io.FilenameFilter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
-import java.time.temporal.TemporalField;
-import java.time.temporal.TemporalUnit;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-
+import com.google.common.base.Charsets;
+import com.google.common.base.Joiner;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Multiset;
+import com.google.common.io.Files;
+import com.google.common.io.LineProcessor;
+import com.googlecode.clearnlp.engine.EngineGetter;
+import com.googlecode.clearnlp.morphology.AbstractMPAnalyzer;
+import com.googlecode.clearnlp.reader.AbstractReader;
+import info.bethard.timenorm.*;
 import org.apache.ctakes.core.cr.XMIReader;
 import org.apache.ctakes.core.resource.FileLocator;
 import org.apache.ctakes.temporal.ae.feature.duration.DurationEventTimeFeatureExtractor;
@@ -46,26 +41,17 @@ import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
 import org.cleartk.ml.Feature;
-
-import com.google.common.base.Charsets;
-import com.google.common.base.Joiner;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Multiset;
-import com.google.common.io.Files;
-import com.google.common.io.LineProcessor;
-import com.googlecode.clearnlp.engine.EngineGetter;
-import com.googlecode.clearnlp.morphology.AbstractMPAnalyzer;
-import com.googlecode.clearnlp.reader.AbstractReader;
-
-import info.bethard.timenorm.Period;
-import info.bethard.timenorm.PeriodSet;
-import info.bethard.timenorm.Temporal;
-import info.bethard.timenorm.TemporalExpressionParser;
-import info.bethard.timenorm.TimeSpan;
-import info.bethard.timenorm.TimeSpanSet;
 import scala.collection.immutable.Set;
 import scala.util.Try;
-import info.bethard.timenorm.DefaultTokenizer$;
+
+import java.io.File;
+import java.io.FilenameFilter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.time.temporal.TemporalField;
+import java.time.temporal.TemporalUnit;
+import java.util.*;
 /**
  * Various useful classes and methods for evaluating event duration data.
  */

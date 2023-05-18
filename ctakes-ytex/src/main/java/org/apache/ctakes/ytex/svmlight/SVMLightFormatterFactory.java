@@ -18,28 +18,15 @@
  */
 package org.apache.ctakes.ytex.svmlight;
 
+import com.google.common.collect.BiMap;
+import com.google.common.collect.HashBiMap;
+import org.apache.ctakes.ytex.kernel.*;
+import org.apache.ctakes.ytex.libsvm.LibSVMFormatterFactory.LibSVMFormatter;
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
-import java.util.Set;
-import java.util.SortedMap;
-import java.util.SortedSet;
-import java.util.TreeMap;
-
-import org.apache.ctakes.ytex.kernel.FileUtil;
-import org.apache.ctakes.ytex.kernel.InstanceData;
-import org.apache.ctakes.ytex.kernel.KernelUtil;
-import org.apache.ctakes.ytex.kernel.SparseData;
-import org.apache.ctakes.ytex.kernel.SparseDataFormatter;
-import org.apache.ctakes.ytex.kernel.SparseDataFormatterFactory;
-import org.apache.ctakes.ytex.libsvm.LibSVMFormatterFactory.LibSVMFormatter;
-
-import com.google.common.collect.BiMap;
-import com.google.common.collect.HashBiMap;
+import java.util.*;
 
 
 /**

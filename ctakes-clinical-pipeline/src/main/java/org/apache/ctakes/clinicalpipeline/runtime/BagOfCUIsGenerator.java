@@ -18,14 +18,14 @@
  */
 package org.apache.ctakes.clinicalpipeline.runtime;
 
-import java.io.IOException;
-import java.util.HashSet;
-
 import org.apache.ctakes.typesystem.type.constants.CONST;
 import org.apache.ctakes.typesystem.type.refsem.UmlsConcept;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
 import org.apache.uima.UIMAException;
 import org.apache.uima.jcas.cas.FSArray;
+
+import java.io.IOException;
+import java.util.HashSet;
 
 public class BagOfCUIsGenerator extends BagOfAnnotationsGenerator<IdentifiedAnnotation, String> {
 

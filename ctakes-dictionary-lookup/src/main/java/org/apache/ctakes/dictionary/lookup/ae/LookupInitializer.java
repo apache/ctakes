@@ -18,10 +18,6 @@
  */
 package org.apache.ctakes.dictionary.lookup.ae;
 
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
 import org.apache.ctakes.dictionary.lookup.DictionaryEngine;
 import org.apache.ctakes.dictionary.lookup.algorithms.LookupAlgorithm;
 import org.apache.ctakes.dictionary.lookup.vo.LookupAnnotation;
@@ -29,6 +25,10 @@ import org.apache.ctakes.dictionary.lookup.vo.LookupToken;
 import org.apache.uima.analysis_engine.annotator.AnnotatorInitializationException;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
+
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 
 /**

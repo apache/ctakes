@@ -18,9 +18,9 @@
  */
 package org.apache.ctakes.ytex.web.search;
 
-import javax.faces.context.FacesContext;
-
 import org.apache.commons.lang.StringEscapeUtils;
+
+import javax.faces.context.FacesContext;
 
 
 /**

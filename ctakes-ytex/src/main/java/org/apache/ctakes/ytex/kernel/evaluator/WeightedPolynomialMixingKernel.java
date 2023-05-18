@@ -18,10 +18,10 @@
  */
 package org.apache.ctakes.ytex.kernel.evaluator;
 
-import java.util.Map;
-
 import org.apache.ctakes.ytex.kernel.tree.Node;
 import org.springframework.beans.factory.InitializingBean;
+
+import java.util.Map;
 
 
 /**

@@ -18,13 +18,13 @@
  */
 package org.apache.ctakes.core.util;
 
+import org.apache.uima.UimaContext;
+import org.apache.uima.analysis_engine.annotator.AnnotatorContextException;
+
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-
-import org.apache.uima.UimaContext;
-import org.apache.uima.analysis_engine.annotator.AnnotatorContextException;
 
 public class ParamUtil {
 

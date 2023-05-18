@@ -18,19 +18,7 @@
  */
 package org.apache.ctakes.ytex.R;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.Properties;
-import java.util.SortedSet;
-
-import org.apache.commons.cli.CommandLine;
-import org.apache.commons.cli.CommandLineParser;
-import org.apache.commons.cli.GnuParser;
-import org.apache.commons.cli.HelpFormatter;
-import org.apache.commons.cli.OptionBuilder;
-import org.apache.commons.cli.Options;
-import org.apache.commons.cli.ParseException;
+import org.apache.commons.cli.*;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.ctakes.ytex.kernel.FileUtil;
@@ -39,6 +27,12 @@ import org.apache.ctakes.ytex.kernel.KernelContextHolder;
 import org.apache.ctakes.ytex.kernel.KernelUtil;
 import org.apache.ctakes.ytex.kernel.dao.KernelEvaluationDao;
 import org.apache.ctakes.ytex.sparsematrix.InstanceDataExporter;
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Properties;
+import java.util.SortedSet;
 
 
 public class RGramMatrixExporterImpl implements RGramMatrixExporter {

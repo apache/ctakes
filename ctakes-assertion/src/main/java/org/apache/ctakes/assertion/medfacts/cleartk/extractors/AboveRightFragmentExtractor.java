@@ -18,18 +18,17 @@
  */
 package org.apache.ctakes.assertion.medfacts.cleartk.extractors;
 
-import static org.apache.ctakes.assertion.util.AssertionTreeUtils.extractAboveRightConceptTree;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.ctakes.constituency.parser.util.TreeUtils;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
 import org.apache.ctakes.utils.tree.SimpleTree;
 import org.apache.uima.jcas.JCas;
-import org.apache.uima.jcas.tcas.Annotation;
 import org.cleartk.ml.Feature;
 import org.cleartk.util.CleartkInitializationException;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.apache.ctakes.assertion.util.AssertionTreeUtils.extractAboveRightConceptTree;
 
 public class AboveRightFragmentExtractor extends TreeFragmentFeatureExtractor {
 

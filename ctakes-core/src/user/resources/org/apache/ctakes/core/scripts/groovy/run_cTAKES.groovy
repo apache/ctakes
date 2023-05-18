@@ -36,9 +36,6 @@
 ** 	You can download groovy from http://groovy.codehaus.org/
 **  Usage: $groovy run_cTAKES.groovy [inputDir]
 **/
-
-import java.io.File;
-
 println("Starting " + this.class.getName());
 
 // print out the classpath entries for debug purposes

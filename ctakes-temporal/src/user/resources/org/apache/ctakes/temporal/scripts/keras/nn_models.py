@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 
-from keras.models import Sequential
-from keras.layers import Dense, Dropout, Activation, Convolution1D, MaxPooling1D, Lambda, Flatten, Merge
-from keras.optimizers import SGD
 from keras import backend as K
+from keras.layers import Dense, Dropout, Activation, Convolution1D, MaxPooling1D, Lambda, Flatten, Merge
+from keras.models import Sequential
 from keras.optimizers import RMSprop
+from keras.optimizers import SGD
+
 
 def get_mlp_model(dimension, num_outputs, layers=(64, 256, 64) ):
     model = Sequential()

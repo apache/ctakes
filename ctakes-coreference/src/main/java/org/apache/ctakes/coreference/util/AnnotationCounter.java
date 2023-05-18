@@ -18,9 +18,9 @@
  */
 package org.apache.ctakes.coreference.util;
 
-import java.util.Collection;
-
 import org.apache.uima.jcas.tcas.Annotation;
+
+import java.util.Collection;
 
 
 public class AnnotationCounter {

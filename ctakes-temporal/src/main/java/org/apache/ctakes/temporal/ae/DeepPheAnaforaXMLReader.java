@@ -18,11 +18,7 @@
  */
 package org.apache.ctakes.temporal.ae;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.util.List;
-
+import com.google.common.collect.Lists;
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.typesystem.type.constants.CONST;
 import org.apache.ctakes.typesystem.type.refsem.Event;
@@ -46,7 +42,10 @@ import org.jdom2.Element;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
 
-import com.google.common.collect.Lists;
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.util.List;
 
 @PipeBitInfo(
       name = "Anafora XML Reader (DeepPhe)",

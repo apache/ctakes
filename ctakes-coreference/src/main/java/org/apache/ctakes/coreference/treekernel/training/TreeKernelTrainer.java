@@ -18,17 +18,15 @@
  */
 package org.apache.ctakes.coreference.treekernel.training;
 
+import opennlp.tools.parser.Parse;
+import org.apache.ctakes.constituency.parser.treekernel.TreeKernel;
+import org.apache.ctakes.coreference.util.ThreadDelegator;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
-
-import org.apache.ctakes.constituency.parser.treekernel.TreeKernel;
-import org.apache.ctakes.coreference.util.ThreadDelegator;
-
-
-import opennlp.tools.parser.Parse;
 
 public class TreeKernelTrainer implements ThreadDelegator {
 

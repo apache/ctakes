@@ -18,8 +18,7 @@
  */
 package org.apache.ctakes.temporal.ae.feature;
 
-import java.util.List;
-
+import com.google.common.collect.Lists;
 import org.apache.ctakes.constituency.parser.util.AnnotationTreeUtils;
 import org.apache.ctakes.relationextractor.ae.features.RelationFeaturesExtractor;
 import org.apache.ctakes.typesystem.type.syntax.TreebankNode;
@@ -28,7 +27,7 @@ import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.jcas.JCas;
 import org.cleartk.ml.Feature;
 
-import com.google.common.collect.Lists;
+import java.util.List;
 
 public class SyntacticParentFeatureExtractor implements RelationFeaturesExtractor<IdentifiedAnnotation,IdentifiedAnnotation> {
 

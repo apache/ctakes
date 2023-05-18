@@ -18,14 +18,13 @@
  */
 package org.apache.ctakes.necontexts.negation;
 
-import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
-import org.apache.uima.jcas.JCas;
-import org.apache.uima.jcas.tcas.Annotation;
-
 import org.apache.ctakes.necontexts.ContextHit;
 import org.apache.ctakes.necontexts.ContextHitConsumer;
 import org.apache.ctakes.necontexts.NamedEntityContextHitConsumer;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
+import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
+import org.apache.uima.jcas.JCas;
+import org.apache.uima.jcas.tcas.Annotation;
 
 /**
  * @author Mayo Clinic

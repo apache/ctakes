@@ -24,22 +24,12 @@
  */
 package org.apache.ctakes.core.ci;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
 import org.apache.ctakes.core.nlp.tokenizer.Token;
 import org.apache.ctakes.core.nlp.tokenizer.Tokenizer;
 import org.apache.ctakes.core.resource.FileLocator;
+
+import java.io.*;
+import java.util.*;
 
 
 /**

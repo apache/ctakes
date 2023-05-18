@@ -18,22 +18,20 @@
  */
 package org.apache.ctakes.jdl.common;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.junit.Assert.assertThat;
-
-import java.io.File;
-import java.io.IOException;
-
-
 import org.apache.commons.lang.SystemUtils;
-import org.apache.ctakes.jdl.common.FileUtil;
 import org.apache.ctakes.jdl.test.Resources;
 import org.junit.Test;
 import org.junit.experimental.theories.DataPoint;
 import org.junit.experimental.theories.Theories;
 import org.junit.experimental.theories.Theory;
 import org.junit.runner.RunWith;
+
+import java.io.File;
+import java.io.IOException;
+
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.junit.Assert.assertThat;
 
 @RunWith(Theories.class)
 public class FileUtilTest {

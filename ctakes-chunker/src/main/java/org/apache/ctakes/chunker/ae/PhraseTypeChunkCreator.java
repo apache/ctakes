@@ -18,24 +18,11 @@
  */
 package org.apache.ctakes.chunker.ae;
 
+import org.apache.ctakes.typesystem.type.syntax.*;
 import org.apache.uima.UimaContext;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
 import org.apache.uima.resource.ResourceInitializationException;
-
-import org.apache.ctakes.typesystem.type.syntax.ADJP;
-import org.apache.ctakes.typesystem.type.syntax.ADVP;
-import org.apache.ctakes.typesystem.type.syntax.CONJP;
-import org.apache.ctakes.typesystem.type.syntax.INTJ;
-import org.apache.ctakes.typesystem.type.syntax.LST;
-import org.apache.ctakes.typesystem.type.syntax.NP;
-import org.apache.ctakes.typesystem.type.syntax.O;
-import org.apache.ctakes.typesystem.type.syntax.PP;
-import org.apache.ctakes.typesystem.type.syntax.PRT;
-import org.apache.ctakes.typesystem.type.syntax.SBAR;
-import org.apache.ctakes.typesystem.type.syntax.UCP;
-import org.apache.ctakes.typesystem.type.syntax.VP;
-import org.apache.ctakes.typesystem.type.syntax.Chunk;
 
 
 /**

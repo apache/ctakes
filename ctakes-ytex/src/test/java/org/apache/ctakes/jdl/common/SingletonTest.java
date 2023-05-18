@@ -18,13 +18,10 @@
  */
 package org.apache.ctakes.jdl.common;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.hamcrest.CoreMatchers.sameInstance;
-import static org.junit.Assert.assertThat;
-
-import org.apache.ctakes.jdl.common.Singleton;
 import org.junit.Test;
+
+import static org.hamcrest.CoreMatchers.*;
+import static org.junit.Assert.assertThat;
 
 public class SingletonTest {
 	private static final Singleton singleton = Singleton.getIstance();

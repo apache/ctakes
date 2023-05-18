@@ -1,15 +1,14 @@
 package org.apache.ctakes.temporal.keras;
 
+import com.google.common.annotations.Beta;
+import com.google.common.io.Files;
+import org.apache.uima.util.Level;
+import org.cleartk.ml.jar.JarStreams;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.jar.JarInputStream;
 import java.util.jar.JarOutputStream;
-
-import org.apache.uima.util.Level;
-import org.cleartk.ml.jar.JarStreams;
-
-import com.google.common.annotations.Beta;
-import com.google.common.io.Files;
 
 /**
  * <br>

@@ -18,20 +18,19 @@
  */
 package org.apache.ctakes.ytex.umls.dao;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.regex.Matcher;
-
-import javax.sql.DataSource;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.ctakes.ytex.umls.model.UmlsAuiFirstWord;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.jdbc.core.JdbcTemplate;
+
+import javax.sql.DataSource;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.regex.Matcher;
 
 
 public class UMLSDaoImpl implements UMLSDao {

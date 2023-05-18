@@ -18,32 +18,9 @@
  */
 package org.apache.ctakes.ytex.uima.mapper;
 
-import java.io.ByteArrayOutputStream;
-import java.sql.Connection;
-import java.sql.DatabaseMetaData;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.Types;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
-import java.util.Set;
-import java.util.TreeSet;
-import java.util.zip.GZIPOutputStream;
-
-import javax.sql.DataSource;
-
+import com.google.common.base.Predicate;
+import com.google.common.base.Strings;
+import com.google.common.collect.*;
 import org.apache.commons.collections.map.CaseInsensitiveMap;
 import org.apache.commons.jxpath.JXPathContext;
 import org.apache.commons.logging.Log;
@@ -86,15 +63,14 @@ import org.springframework.transaction.support.DefaultTransactionDefinition;
 import org.springframework.transaction.support.TransactionCallback;
 import org.springframework.transaction.support.TransactionTemplate;
 
-import com.google.common.base.Predicate;
-import com.google.common.base.Strings;
-import com.google.common.collect.ArrayListMultimap;
-import com.google.common.collect.BiMap;
-import com.google.common.collect.Collections2;
-import com.google.common.collect.HashBiMap;
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.ListMultimap;
-import com.google.common.collect.SetMultimap;
+import javax.sql.DataSource;
+import java.io.ByteArrayOutputStream;
+import java.sql.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.*;
+import java.util.zip.GZIPOutputStream;
 
 /**
  * Map document annotations to the database.

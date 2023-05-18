@@ -18,9 +18,9 @@
  */
 package org.apache.ctakes.ytex.sparsematrix;
 
-import java.io.IOException;
-
 import org.apache.ctakes.ytex.kernel.InstanceData;
+
+import java.io.IOException;
 
 
 public interface InstanceDataExporter {

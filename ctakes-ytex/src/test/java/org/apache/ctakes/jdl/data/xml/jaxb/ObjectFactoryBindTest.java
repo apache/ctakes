@@ -18,22 +18,20 @@
  */
 package org.apache.ctakes.jdl.data.xml.jaxb;
 
-import static org.hamcrest.CoreMatchers.instanceOf;
-import static org.junit.Assert.assertThat;
-
-import javax.xml.bind.JAXBElement;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.UnmarshalException;
-
-
 import org.apache.ctakes.jdl.common.FileUtil;
-import org.apache.ctakes.jdl.data.xml.jaxb.ObjectFactoryBind;
 import org.apache.ctakes.jdl.test.Resources;
 import org.junit.Test;
 import org.junit.experimental.theories.DataPoint;
 import org.junit.experimental.theories.Theories;
 import org.junit.experimental.theories.Theory;
 import org.junit.runner.RunWith;
+
+import javax.xml.bind.JAXBElement;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.UnmarshalException;
+
+import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.junit.Assert.assertThat;
 
 @RunWith(Theories.class)
 public class ObjectFactoryBindTest {

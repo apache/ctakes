@@ -18,14 +18,10 @@
  */
 package org.apache.ctakes.coreference.treekernel.training;
 
-import java.util.ArrayList;
-
-import org.apache.ctakes.constituency.parser.treekernel.TreeKernel;
 import org.apache.ctakes.coreference.util.ThreadDelegator;
 import org.apache.ctakes.utils.kernel.Kernel;
 
-
-import opennlp.tools.parser.Parse;
+import java.util.ArrayList;
 
 public class RowFillerThread extends Thread {
 	private ArrayList<Double> row = null;

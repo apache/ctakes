@@ -1,10 +1,11 @@
-from ctakes_pbj.component import cas_annotator
-from ctakes_pbj.type_system import ctakes_types
 import asyncio
-from cnlpt.api.cnlp_rest import EntityDocument
-import cnlpt.api.negation_rest as negation_rest
 import time
+
+import cnlpt.api.negation_rest as negation_rest
+from cnlpt.api.cnlp_rest import EntityDocument
+from ctakes_pbj.component import cas_annotator
 from ctakes_pbj.pbj_tools.helper_functions import *
+from ctakes_pbj.type_system import ctakes_types
 
 sem = asyncio.Semaphore(1)
 

@@ -21,19 +21,16 @@
  */
 package org.apache.ctakes.smokingstatus.ae;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.StringTokenizer;
-
+import org.apache.ctakes.core.resource.FileResource;
+import org.apache.ctakes.smokingstatus.Const;
+import org.apache.ctakes.smokingstatus.i2b2.type.RecordSentence;
+import org.apache.ctakes.smokingstatus.type.SmokingDocumentClassification;
+import org.apache.ctakes.smokingstatus.type.libsvm.NominalAttributeValue;
+import org.apache.ctakes.smokingstatus.util.ClassifiableEntry;
+import org.apache.ctakes.smokingstatus.util.TruthValue;
+import org.apache.ctakes.typesystem.type.structured.DocumentID;
+import org.apache.ctakes.typesystem.type.textspan.Segment;
+import org.apache.ctakes.typesystem.type.textspan.Sentence;
 import org.apache.log4j.Logger;
 import org.apache.uima.UIMAFramework;
 import org.apache.uima.UimaContext;
@@ -52,18 +49,11 @@ import org.apache.uima.resource.ResourceSpecifier;
 import org.apache.uima.util.CasCreationUtils;
 import org.apache.uima.util.XMLInputSource;
 
-import org.apache.ctakes.smokingstatus.i2b2.type.RecordSentence;
-
-import org.apache.ctakes.smokingstatus.type.SmokingDocumentClassification;
-
-import org.apache.ctakes.core.resource.FileResource;
-import org.apache.ctakes.smokingstatus.Const;
-import org.apache.ctakes.smokingstatus.util.ClassifiableEntry;
-import org.apache.ctakes.smokingstatus.util.TruthValue;
-import org.apache.ctakes.typesystem.type.structured.DocumentID;
-import org.apache.ctakes.typesystem.type.textspan.Segment;
-import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.ctakes.smokingstatus.type.libsvm.NominalAttributeValue;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.*;
 
 /**
  * @author Mayo Clinic Intended as an annotator to generate ClassifiableEntries

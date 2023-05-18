@@ -18,10 +18,10 @@
  */
 package org.apache.ctakes.assertion.train;
 
-import java.util.ArrayList;
-
 import org.apache.ctakes.assertion.pipelines.RunJudgeAttributeInstances;
 import org.apache.ctakes.assertion.util.AssertionConst;
+
+import java.util.ArrayList;
 
 public class ReadPreprocessTrainTestJudge {
 

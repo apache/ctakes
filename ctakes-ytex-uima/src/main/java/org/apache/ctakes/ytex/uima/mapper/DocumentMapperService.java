@@ -18,9 +18,9 @@
  */
 package org.apache.ctakes.ytex.uima.mapper;
 
-import java.util.Set;
-
 import org.apache.uima.jcas.JCas;
+
+import java.util.Set;
 
 public interface DocumentMapperService {
 

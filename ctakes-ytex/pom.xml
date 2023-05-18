@@ -197,6 +197,16 @@
 			<artifactId>ant</artifactId>
 			<version>${ant.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jaxb</groupId>
+			<artifactId>jaxb-runtime</artifactId>
+			<version>2.3.2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.activation</groupId>
+			<artifactId>jakarta.activation</artifactId>
+			<version>1.2.1</version>
+		</dependency>
 		<!--  ytex should depend upon ctakes-clinical-pipeline , not the other way around.  -->
 		<dependency>
 			<groupId>org.apache.ctakes</groupId>
@@ -234,6 +244,18 @@
 					<!-- The package in which the source files will be generated. -->
 					<packageName>org.apache.ctakes.jdl.schema.xdl</packageName>
 				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>org.glassfish.jaxb</groupId>
+						<artifactId>jaxb-xjc</artifactId>
+						<version>2.3.2</version>
+					</dependency>
+					<dependency>
+						<groupId>com.sun.activation</groupId>
+						<artifactId>jakarta.activation</artifactId>
+						<version>1.2.1</version>
+					</dependency>
+				</dependencies>
 			</plugin>
 			<!-- ant scripts need project dependencies in the target/lib directory -->
 			<!--	This ant script need (above) needs to go.

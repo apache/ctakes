@@ -18,13 +18,9 @@
  */
 package org.apache.ctakes.relationextractor.data.analysis;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
+import com.google.common.base.Charsets;
+import com.google.common.io.Files;
+import com.google.common.io.LineProcessor;
 import org.apache.ctakes.core.cr.XMIReader;
 import org.apache.ctakes.typesystem.type.syntax.WordToken;
 import org.apache.uima.collection.CollectionReader;
@@ -33,9 +29,12 @@ import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
 
-import com.google.common.base.Charsets;
-import com.google.common.io.Files;
-import com.google.common.io.LineProcessor;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Various useful classes and methods.

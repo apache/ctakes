@@ -18,11 +18,7 @@
  */
 package org.apache.ctakes.ytex.uima.annotators;
 
-import java.io.IOException;
-import java.util.Properties;
-
-import javax.sql.DataSource;
-
+import com.google.common.base.Strings;
 import org.apache.ctakes.ytex.uima.ApplicationContextHolder;
 import org.apache.ctakes.ytex.uima.TestUtils;
 import org.apache.ctakes.ytex.uima.types.DocKey;
@@ -39,7 +35,9 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import com.google.common.base.Strings;
+import javax.sql.DataSource;
+import java.io.IOException;
+import java.util.Properties;
 
 /**
  * TODO get rid of hard-coded path to Types.xml - load from classpath

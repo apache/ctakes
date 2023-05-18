@@ -18,9 +18,9 @@
  */
 package org.apache.ctakes.jdl.test;
 
-import java.util.Properties;
-
 import org.apache.ctakes.jdl.common.PropFile;
+
+import java.util.Properties;
 
 
 /**

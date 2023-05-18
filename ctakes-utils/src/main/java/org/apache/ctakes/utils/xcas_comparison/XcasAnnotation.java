@@ -17,10 +17,11 @@
  * under the License.
  */
 package org.apache.ctakes.utils.xcas_comparison;
+
 import java.util.Collection;
-import java.util.Vector;
-import java.util.Hashtable;
 import java.util.Collections;
+import java.util.Hashtable;
+import java.util.Vector;
 
 /**
  * An <code>XcasAnnotation</code> object represents an element under the <code>CAS</code>

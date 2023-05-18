@@ -18,26 +18,18 @@
  */
 package org.apache.ctakes.assertion.eval;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import org.apache.uima.cas.Feature;
-import org.apache.uima.jcas.cas.TOP;
-import org.apache.uima.jcas.tcas.Annotation;
-import org.cleartk.eval.util.ConfusionMatrix;
-
 import com.google.common.base.Function;
 import com.google.common.base.Objects;
 import com.google.common.base.Objects.ToStringHelper;
 import com.google.common.collect.HashMultiset;
 import com.google.common.collect.Multiset;
+import org.apache.uima.cas.Feature;
+import org.apache.uima.jcas.cas.TOP;
+import org.apache.uima.jcas.tcas.Annotation;
+import org.cleartk.eval.util.ConfusionMatrix;
+
+import java.io.Serializable;
+import java.util.*;
 
 /**
  * Stores statistics for comparing {@link Annotation}s extracted by a system to gold

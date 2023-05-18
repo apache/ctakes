@@ -18,14 +18,12 @@
  */
 package org.apache.ctakes.assertion.cr;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-
 import org.jdom.Document;
 import org.jdom.Element;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class XMLReader {
 

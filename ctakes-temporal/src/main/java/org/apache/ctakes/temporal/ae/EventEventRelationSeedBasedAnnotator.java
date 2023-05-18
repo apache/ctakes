@@ -18,60 +18,21 @@
  */
 package org.apache.ctakes.temporal.ae;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-
+import com.google.common.collect.Lists;
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.relationextractor.ae.RelationExtractorAnnotator;
-import org.apache.ctakes.relationextractor.ae.RelationExtractorAnnotator.IdentifiedAnnotationPair;
 import org.apache.ctakes.relationextractor.ae.features.PartOfSpeechFeaturesExtractor;
 import org.apache.ctakes.relationextractor.ae.features.RelationFeaturesExtractor;
-import org.apache.ctakes.relationextractor.ae.features.TokenFeaturesExtractor;
-import org.apache.ctakes.temporal.ae.feature.CheckSpecialWordRelationExtractor;
-import org.apache.ctakes.temporal.ae.feature.ConjunctionRelationFeaturesExtractor;
-//import org.apache.ctakes.temporal.ae.feature.DependencyParseUtils;
-import org.apache.ctakes.temporal.ae.feature.DependencyPathFeaturesExtractor;
-import org.apache.ctakes.temporal.ae.feature.CoordinateFeaturesExtractor;
-import org.apache.ctakes.temporal.ae.feature.DependingVerbsFeatureExtractor;
-import org.apache.ctakes.temporal.ae.feature.EmptyFeaturesExtractor;
-import org.apache.ctakes.temporal.ae.feature.MultiTokenFeaturesExtractor;
-import org.apache.ctakes.temporal.ae.feature.NoOtherETPuntInBetweenFeaturesExtractor;
-//import org.apache.ctakes.temporal.ae.feature.EventInBetweenPropertyExtractor;
-//import org.apache.ctakes.temporal.ae.feature.EventOutsidePropertyExtractor;
-import org.apache.ctakes.temporal.ae.feature.SpecialAnnotationRelationExtractor;
-import org.apache.ctakes.temporal.ae.feature.TemporalPETFlatExtractor;
-import org.apache.ctakes.temporal.ae.feature.TokenPropertyFeaturesExtractor;
-import org.apache.ctakes.temporal.ae.feature.DeterminerRelationFeaturesExtractor;
-import org.apache.ctakes.temporal.ae.feature.EventArgumentPropertyExtractor;
-import org.apache.ctakes.temporal.ae.feature.EventTimeRelationFeatureExtractor;
-import org.apache.ctakes.temporal.ae.feature.EventPositionRelationFeaturesExtractor;
-import org.apache.ctakes.temporal.ae.feature.NumberOfEventsInTheSameSentenceExtractor;
-import org.apache.ctakes.temporal.ae.feature.NearbyVerbTenseRelationExtractor;
-import org.apache.ctakes.temporal.ae.feature.NumberOfEventTimeBetweenCandidatesExtractor;
-import org.apache.ctakes.temporal.ae.feature.OverlappedHeadFeaturesExtractor;
-import org.apache.ctakes.temporal.ae.feature.SRLRelationFeaturesExtractor;
-import org.apache.ctakes.temporal.ae.feature.TimeXRelationFeaturesExtractor;
-import org.apache.ctakes.temporal.ae.feature.SectionHeaderRelationExtractor;
-//import org.apache.ctakes.temporal.ae.feature.TemporalAttributeFeatureExtractor;
-import org.apache.ctakes.temporal.ae.feature.UmlsFeatureExtractor;
-import org.apache.ctakes.temporal.ae.feature.UnexpandedTokenFeaturesExtractor;
-//import org.apache.ctakes.temporal.ae.feature.UnexpandedTokenFeaturesExtractor;
-//import org.apache.ctakes.temporal.ae.feature.treekernel.TemporalPETExtractor;
+import org.apache.ctakes.temporal.ae.feature.*;
 import org.apache.ctakes.typesystem.type.relation.BinaryTextRelation;
 import org.apache.ctakes.typesystem.type.relation.RelationArgument;
 import org.apache.ctakes.typesystem.type.relation.TemporalTextRelation;
-import org.apache.ctakes.typesystem.type.syntax.WordToken;
-//import org.apache.ctakes.typesystem.type.syntax.ConllDependencyNode;
 import org.apache.ctakes.typesystem.type.textsem.EventMention;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
+import org.apache.uima.fit.factory.AnalysisEngineFactory;
+import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
 import org.apache.uima.resource.ResourceInitializationException;
@@ -80,11 +41,9 @@ import org.cleartk.ml.DataWriter;
 import org.cleartk.ml.jar.DefaultDataWriterFactory;
 import org.cleartk.ml.jar.DirectoryDataWriterFactory;
 import org.cleartk.ml.jar.GenericJarClassifierFactory;
-import org.cleartk.util.ViewUriUtil;
-import org.apache.uima.fit.factory.AnalysisEngineFactory;
-import org.apache.uima.fit.util.JCasUtil;
 
-import com.google.common.collect.Lists;
+import java.io.File;
+import java.util.*;
 
 @PipeBitInfo(
 		name = "E-E Seed TLinker",

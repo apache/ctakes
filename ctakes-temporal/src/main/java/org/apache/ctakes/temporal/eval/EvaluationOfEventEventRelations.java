@@ -18,15 +18,11 @@
  */
 package org.apache.ctakes.temporal.eval;
 
-import java.io.File;
-import java.net.URI;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
+import com.google.common.base.Function;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import com.lexicalscope.jewel.cli.CliFactory;
 import org.apache.ctakes.relationextractor.eval.RelationExtractorEvaluation.HashableArguments;
 import org.apache.ctakes.temporal.ae.EventEventRelationAnnotator;
 import org.apache.ctakes.temporal.eval.EvaluationOfEventTimeRelations.ParameterSettings;
@@ -49,11 +45,9 @@ import org.cleartk.ml.jar.JarClassifierBuilder;
 import org.cleartk.ml.libsvm.LibSvmStringOutcomeDataWriter;
 import org.cleartk.util.ViewUriUtil;
 
-import com.google.common.base.Function;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.lexicalscope.jewel.cli.CliFactory;
+import java.io.File;
+import java.net.URI;
+import java.util.*;
 
 public class EvaluationOfEventEventRelations extends
 EvaluationOfTemporalRelations_ImplBase {

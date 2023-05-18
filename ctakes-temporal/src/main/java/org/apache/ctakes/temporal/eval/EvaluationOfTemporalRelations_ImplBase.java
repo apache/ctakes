@@ -18,10 +18,9 @@
  */
 package org.apache.ctakes.temporal.eval;
 
-import java.io.File;
-import java.util.Collection;
-import java.util.Set;
-
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import com.lexicalscope.jewel.cli.Option;
 import org.apache.ctakes.temporal.eval.EvaluationOfEventTimeRelations.ParameterSettings;
 import org.apache.ctakes.typesystem.type.relation.BinaryTextRelation;
 import org.apache.ctakes.typesystem.type.relation.RelationArgument;
@@ -32,17 +31,17 @@ import org.apache.ctakes.typesystem.type.textsem.TimeMention;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.CAS;
 import org.apache.uima.cas.CASException;
-import org.apache.uima.jcas.JCas;
-import org.apache.uima.jcas.tcas.Annotation;
-import org.cleartk.ml.tksvmlight.model.CompositeKernel.ComboOperator;
-import org.cleartk.eval.AnnotationStatistics;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
 import org.apache.uima.fit.descriptor.ConfigurationParameter;
 import org.apache.uima.fit.util.JCasUtil;
+import org.apache.uima.jcas.JCas;
+import org.apache.uima.jcas.tcas.Annotation;
+import org.cleartk.eval.AnnotationStatistics;
+import org.cleartk.ml.tksvmlight.model.CompositeKernel.ComboOperator;
 
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import com.lexicalscope.jewel.cli.Option;
+import java.io.File;
+import java.util.Collection;
+import java.util.Set;
 
 public abstract class EvaluationOfTemporalRelations_ImplBase extends
 Evaluation_ImplBase<AnnotationStatistics<String>> {

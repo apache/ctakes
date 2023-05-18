@@ -18,18 +18,11 @@
  */
 package org.apache.ctakes.drugner.fsm.machines.elements;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import org.apache.ctakes.core.fsm.condition.DisjoinCondition;
-import org.apache.ctakes.core.fsm.condition.IntegerRangeCondition;
-import org.apache.ctakes.core.fsm.condition.NumberCondition;
-import org.apache.ctakes.core.fsm.condition.RangeCondition;
-import org.apache.ctakes.core.fsm.condition.WordSetCondition;
+import net.openai.util.fsm.AnyCondition;
+import net.openai.util.fsm.Condition;
+import net.openai.util.fsm.Machine;
+import net.openai.util.fsm.State;
+import org.apache.ctakes.core.fsm.condition.*;
 import org.apache.ctakes.core.fsm.state.NamedState;
 import org.apache.ctakes.core.fsm.state.NonTerminalEndState;
 import org.apache.ctakes.core.fsm.token.BaseToken;
@@ -39,10 +32,7 @@ import org.apache.ctakes.drugner.fsm.elements.conditions.RouteCondition;
 import org.apache.ctakes.drugner.fsm.output.elements.FrequencyToken;
 import org.apache.ctakes.drugner.fsm.states.util.IndentStartState;
 
-import net.openai.util.fsm.AnyCondition;
-import net.openai.util.fsm.Condition;
-import net.openai.util.fsm.Machine;
-import net.openai.util.fsm.State;
+import java.util.*;
 
 /**
  * Uses one or more finite state machines to detect frequency data in the given

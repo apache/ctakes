@@ -19,40 +19,26 @@
 package org.apache.ctakes.core.sentence;
 
 
+import opennlp.tools.dictionary.Dictionary;
+import opennlp.tools.ml.maxent.GISTrainer;
+import opennlp.tools.ml.model.HashSumEventStream;
+import opennlp.tools.ml.model.MaxentModel;
+import opennlp.tools.sentdetect.*;
+import opennlp.tools.sentdetect.lang.Factory;
+import opennlp.tools.util.MarkableFileInputStreamFactory;
+import opennlp.tools.util.ObjectStream;
+import opennlp.tools.util.PlainTextByLineStream;
+import opennlp.tools.util.StringUtil;
+import opennlp.tools.util.model.BaseModel;
+import opennlp.tools.util.model.ModelUtil;
+
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import opennlp.tools.ml.maxent.GISTrainer;
-import opennlp.tools.ml.maxent.GISModel;
-import opennlp.model.EventStream;
-import opennlp.tools.ml.model.MaxentModel;
-import opennlp.tools.dictionary.Dictionary;
-import opennlp.tools.sentdetect.DefaultSDContextGenerator;
-import opennlp.tools.sentdetect.EndOfSentenceScanner;
-import opennlp.tools.sentdetect.SDContextGenerator;
-import opennlp.tools.sentdetect.SDEventStream;
-import opennlp.tools.sentdetect.SentenceDetector;
-import opennlp.tools.sentdetect.SentenceModel;
-import opennlp.tools.sentdetect.SentenceSample;
-import opennlp.tools.sentdetect.SentenceSampleStream;
-import opennlp.tools.sentdetect.lang.Factory;
-import opennlp.tools.ml.model.Event;
-import opennlp.tools.ml.model.HashSumEventStream;
-import opennlp.tools.util.AbstractObjectStream;
-import opennlp.tools.util.MarkableFileInputStreamFactory;
-import opennlp.tools.util.ObjectStream;
-import opennlp.tools.util.PlainTextByLineStream;
-import opennlp.tools.util.Span;
-import opennlp.tools.util.StringUtil;
-import opennlp.tools.util.model.BaseModel;
-import opennlp.tools.util.model.ModelUtil;
 
 /**
  * A sentence detector for splitting up raw text into sentences.

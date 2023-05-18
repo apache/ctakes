@@ -20,11 +20,7 @@ package org.apache.ctakes.dictionary.lookup.filter;
 
 import org.apache.ctakes.dictionary.lookup.MetaDataHit;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 /**
  * Truncates objects in the collection. The collection is first sorted and then

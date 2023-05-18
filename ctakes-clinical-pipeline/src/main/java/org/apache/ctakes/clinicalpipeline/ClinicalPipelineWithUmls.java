@@ -29,7 +29,7 @@ import org.apache.uima.fit.pipeline.SimplePipeline;
 import org.apache.uima.jcas.JCas;
 import org.cleartk.util.cr.FilesCollectionReader;
 
-import java.io.*;
+import java.io.File;
 import java.util.Date;
 
 /**

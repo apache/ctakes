@@ -21,11 +21,7 @@ package org.apache.ctakes.relationextractor.data;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * Randomly split a set of files in a directory into three sets: train, dev, and test.

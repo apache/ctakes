@@ -18,12 +18,7 @@
  */
 package org.apache.ctakes.ytex.kernel;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.SortedMap;
-import java.util.SortedSet;
-import java.util.TreeMap;
-import java.util.TreeSet;
+import java.util.*;
 
 /**
  * Data structure populated by AbstractBagOfWordsExporter that has all the

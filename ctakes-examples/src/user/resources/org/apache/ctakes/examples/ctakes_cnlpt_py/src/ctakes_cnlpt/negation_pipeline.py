@@ -1,9 +1,10 @@
 import warnings
+
 from ctakes_pbj.component.pbj_receiver import start_receiver
 from ctakes_pbj.component.pbj_sender import PBJSender
 from ctakes_pbj.pipeline.pbj_pipeline import PBJPipeline
-from ctakes_cnlpt.ae.negation_delegator import NegationDelegator
 
+from ctakes_cnlpt.ae.negation_delegator import NegationDelegator
 
 warnings.filterwarnings("ignore")
 

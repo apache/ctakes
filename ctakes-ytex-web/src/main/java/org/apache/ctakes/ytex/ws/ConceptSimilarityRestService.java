@@ -18,14 +18,13 @@
  */
 package org.apache.ctakes.ytex.ws;
 
-import java.util.List;
+import org.apache.ctakes.ytex.kernel.metric.ConceptPairSimilarity;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
-
-import org.apache.ctakes.ytex.kernel.metric.ConceptPairSimilarity;
+import java.util.List;
 
 @Path("/rest/")
 @Produces("application/xml")

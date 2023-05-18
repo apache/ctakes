@@ -1,9 +1,9 @@
 package org.apache.ctakes.assertion.stub;
 
+import org.apache.log4j.Logger;
+
 import java.io.File;
 import java.util.Set;
-
-import org.apache.log4j.Logger;
 
 public class BatchRunner {
 

@@ -19,26 +19,19 @@ package org.apache.ctakes.contexttokenizer.ae;
  */
 
 
-import static org.junit.Assert.assertEquals;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
-import org.apache.ctakes.core.fsm.output.FractionToken;
 import org.apache.ctakes.typesystem.type.textsem.FractionAnnotation;
-import org.apache.ctakes.typesystem.type.textspan.Segment;
 import org.apache.ctakes.utils.test.TestUtil;
-import org.apache.uima.UIMAException;
 import org.apache.uima.analysis_engine.AnalysisEngine;
+import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.junit.Test;
-import org.apache.uima.fit.factory.JCasFactory;
-import org.apache.uima.fit.pipeline.SimplePipeline;
-import org.apache.uima.fit.util.JCasUtil;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * 

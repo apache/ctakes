@@ -1,14 +1,18 @@
 #!/usr/bin/env python
 
-from keras.optimizers import SGD
-from keras.utils import np_utils
 #from sklearn.datasets import load_svmlight_file
-import sklearn as sk
 import numpy as np
 import et_cleartk_io as ctk_io
 import nn_models
 import sys
 import os.path
+# from sklearn.datasets import load_svmlight_file
+import numpy as np
+import os.path
+import sys
+
+import et_cleartk_io as ctk_io
+import nn_models
 
 batch_size = 64
 nb_epoch = 10

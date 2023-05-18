@@ -18,10 +18,10 @@
  */
 package org.apache.ctakes.ytex.kernel.model;
 
+import org.apache.ctakes.ytex.dao.DBUtil;
+
 import java.io.Serializable;
 import java.util.Set;
-
-import org.apache.ctakes.ytex.dao.DBUtil;
 
 
 public class CrossValidationFold implements Serializable {

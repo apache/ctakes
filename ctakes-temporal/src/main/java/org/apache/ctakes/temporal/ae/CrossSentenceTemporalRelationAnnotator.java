@@ -1,9 +1,5 @@
 package org.apache.ctakes.temporal.ae;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.List;
-
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.temporal.duration.Utils;
 import org.apache.ctakes.typesystem.type.relation.RelationArgument;
@@ -18,6 +14,10 @@ import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.List;
 
 @PipeBitInfo(
 		name = "E-E Cross- Sentence TLinker",

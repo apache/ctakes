@@ -1,38 +1,10 @@
 package org.apache.ctakes.coreference.ae;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
-import org.apache.ctakes.coreference.ae.features.AttributeFeatureExtractor;
-import org.apache.ctakes.coreference.ae.features.CorefSyntaxFeatureExtractor;
-import org.apache.ctakes.coreference.ae.features.DistSemFeatureExtractor;
-import org.apache.ctakes.coreference.ae.features.SalienceFeatureExtractor;
-import org.apache.ctakes.coreference.ae.features.SectionFeatureExtractor;
-import org.apache.ctakes.coreference.ae.features.StringMatchingFeatureExtractor;
-import org.apache.ctakes.coreference.ae.features.TemporalFeatureExtractor;
-import org.apache.ctakes.coreference.ae.features.TokenFeatureExtractor;
-import org.apache.ctakes.coreference.ae.features.UMLSFeatureExtractor;
+import org.apache.ctakes.coreference.ae.features.*;
 import org.apache.ctakes.dependency.parser.util.DependencyUtility;
 import org.apache.ctakes.relationextractor.ae.RelationExtractorAnnotator;
-import org.apache.ctakes.relationextractor.ae.features.DependencyPathFeaturesExtractor;
-import org.apache.ctakes.relationextractor.ae.features.DependencyTreeFeaturesExtractor;
-import org.apache.ctakes.relationextractor.ae.features.NamedEntityFeaturesExtractor;
-import org.apache.ctakes.relationextractor.ae.features.PartOfSpeechFeaturesExtractor;
-import org.apache.ctakes.relationextractor.ae.features.PhraseChunkingExtractor;
-import org.apache.ctakes.relationextractor.ae.features.RelationFeaturesExtractor;
-import org.apache.ctakes.relationextractor.ae.features.TokenFeaturesExtractor;
+import org.apache.ctakes.relationextractor.ae.features.*;
 import org.apache.ctakes.typesystem.type.relation.BinaryTextRelation;
 import org.apache.ctakes.typesystem.type.relation.CollectionTextRelation;
 import org.apache.ctakes.typesystem.type.relation.CoreferenceRelation;
@@ -52,11 +24,7 @@ import org.apache.uima.fit.descriptor.ConfigurationParameter;
 import org.apache.uima.fit.factory.AnalysisEngineFactory;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
-import org.apache.uima.jcas.cas.EmptyFSList;
-import org.apache.uima.jcas.cas.FSArray;
-import org.apache.uima.jcas.cas.FSList;
-import org.apache.uima.jcas.cas.FloatArray;
-import org.apache.uima.jcas.cas.NonEmptyFSList;
+import org.apache.uima.jcas.cas.*;
 import org.apache.uima.jcas.tcas.Annotation;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.cleartk.ml.CleartkAnnotator;
@@ -66,6 +34,10 @@ import org.cleartk.ml.Feature;
 import org.cleartk.ml.jar.DefaultDataWriterFactory;
 import org.cleartk.ml.jar.DirectoryDataWriterFactory;
 import org.cleartk.ml.jar.GenericJarClassifierFactory;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.*;
 
 @PipeBitInfo(
       name = "Event Coreference Annotator",

@@ -18,9 +18,6 @@
  */
 package org.apache.ctakes.necontexts.negation;
 
-import java.util.List;
-import java.util.Set;
-
 import org.apache.ctakes.core.fsm.machine.NegationFSM;
 import org.apache.ctakes.core.fsm.output.NegationIndicator;
 import org.apache.ctakes.core.fsm.token.TextToken;
@@ -28,6 +25,9 @@ import org.apache.ctakes.necontexts.ContextHit;
 import org.apache.ctakes.necontexts.NamedEntityContextAnalyzer;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.jcas.tcas.Annotation;
+
+import java.util.List;
+import java.util.Set;
 
 
 public class NegationContextAnalyzer extends NamedEntityContextAnalyzer {

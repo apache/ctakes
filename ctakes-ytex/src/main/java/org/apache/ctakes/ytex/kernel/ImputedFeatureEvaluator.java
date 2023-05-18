@@ -18,9 +18,9 @@
  */
 package org.apache.ctakes.ytex.kernel;
 
-import java.io.IOException;
-
 import org.apache.ctakes.ytex.kernel.ImputedFeatureEvaluatorImpl.Parameters;
+
+import java.io.IOException;
 
 
 public interface ImputedFeatureEvaluator {

@@ -18,9 +18,9 @@
  */
 package org.apache.ctakes.ytex.weka;
 
-import java.io.IOException;
-
 import org.apache.ctakes.ytex.kernel.KernelContextHolder;
+
+import java.io.IOException;
 
 
 public class ExportGramMatrix {

@@ -18,13 +18,13 @@
  */
 package org.apache.ctakes.assertion.medfacts.cleartk.extractors;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.uima.jcas.tcas.Annotation;
 import org.cleartk.ml.feature.extractor.FeatureExtractor1;
 import org.cleartk.ml.feature.function.FeatureFunction;
 import org.cleartk.ml.feature.function.FeatureFunctionExtractor;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ExtractorListFeatureFunctionConverter {
 	public static <T extends Annotation> List<FeatureFunctionExtractor<T>> convert( List<? extends FeatureExtractor1<T>> extractors, FeatureFunction ff ) {

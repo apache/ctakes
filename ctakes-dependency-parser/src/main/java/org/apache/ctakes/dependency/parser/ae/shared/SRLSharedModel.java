@@ -1,16 +1,15 @@
 package org.apache.ctakes.dependency.parser.ae.shared;
 
-import java.io.IOException;
-import java.net.URI;
-
+import com.googlecode.clearnlp.component.AbstractComponent;
+import com.googlecode.clearnlp.engine.EngineGetter;
+import com.googlecode.clearnlp.reader.AbstractReader;
 import org.apache.ctakes.core.resource.FileLocator;
 import org.apache.uima.resource.DataResource;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.resource.SharedResourceObject;
 
-import com.googlecode.clearnlp.component.AbstractComponent;
-import com.googlecode.clearnlp.engine.EngineGetter;
-import com.googlecode.clearnlp.reader.AbstractReader;
+import java.io.IOException;
+import java.net.URI;
 
 public abstract class SRLSharedModel implements SharedResourceObject {
 

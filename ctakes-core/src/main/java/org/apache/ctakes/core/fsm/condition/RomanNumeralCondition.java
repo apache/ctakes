@@ -18,9 +18,8 @@
  */
 package org.apache.ctakes.core.fsm.condition;
 
-import org.apache.ctakes.core.fsm.output.RomanNumeralToken;
-
 import net.openai.util.fsm.Condition;
+import org.apache.ctakes.core.fsm.output.RomanNumeralToken;
 
 /**
  * Checks whether a token is a RomanNumeralToken.

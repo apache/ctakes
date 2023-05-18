@@ -1,7 +1,6 @@
 package org.apache.ctakes.coreference.util;
 
 import org.apache.ctakes.core.patient.PatientViewUtil;
-import org.apache.ctakes.coreference.ae.ThymeAnaforaCrossDocCorefXmlReader;
 import org.apache.uima.cas.CAS;
 import org.apache.uima.jcas.JCas;
 

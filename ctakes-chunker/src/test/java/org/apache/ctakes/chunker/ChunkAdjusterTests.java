@@ -18,18 +18,8 @@
  */
 package org.apache.ctakes.chunker;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
-import java.io.File;
-
-import org.apache.uima.analysis_engine.AnalysisEngine;
-import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.junit.Test;
-
-import org.apache.ctakes.typesystem.type.syntax.Chunk;
-import org.apache.ctakes.utils.test.TestUtil;
 
 public class ChunkAdjusterTests {
 

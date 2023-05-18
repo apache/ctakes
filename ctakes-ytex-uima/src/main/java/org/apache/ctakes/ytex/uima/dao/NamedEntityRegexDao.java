@@ -19,9 +19,9 @@
 package org.apache.ctakes.ytex.uima.dao;
 
 
-import java.util.List;
-
 import org.apache.ctakes.ytex.uima.model.NamedEntityRegex;
+
+import java.util.List;
 
 /**
  * Dao to access NamedEntity Regular Expressions used by the NamedEntityRegexAnnotator

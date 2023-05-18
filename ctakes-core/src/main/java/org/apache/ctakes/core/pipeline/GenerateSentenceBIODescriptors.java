@@ -1,13 +1,13 @@
 package org.apache.ctakes.core.pipeline;
 
-import java.io.FileWriter;
-import java.io.IOException;
-
 import org.apache.ctakes.core.ae.SentenceDetectorAnnotatorBIO;
 import org.apache.ctakes.core.ae.SimpleSegmentAnnotator;
 import org.apache.uima.fit.factory.AggregateBuilder;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.xml.sax.SAXException;
+
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class GenerateSentenceBIODescriptors {
 

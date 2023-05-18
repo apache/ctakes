@@ -18,7 +18,7 @@
     under the License.
 
 -->
-<project name="ytex.classpath" default="echoproperties" xmlns:artifact="antlib:org.apache.maven.artifact.ant">
+<project name="ytex.classpath" default="echoproperties">
 	<description>
 	<![CDATA[
 

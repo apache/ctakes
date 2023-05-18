@@ -18,25 +18,20 @@
  */
 package org.apache.ctakes.temporal.eval;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.logging.Level;
-
-import org.apache.ctakes.temporal.ae.BackwardsTimeAnnotator;
-import org.apache.ctakes.temporal.ae.CRFTimeAnnotator;
-import org.apache.ctakes.temporal.ae.ConstituencyBasedTimeAnnotator;
-import org.apache.ctakes.temporal.ae.MetaTimeAnnotator;
-import org.apache.ctakes.temporal.ae.TimeAnnotator;
+import com.google.common.base.Function;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Ordering;
+import com.lexicalscope.jewel.cli.CliFactory;
+import com.lexicalscope.jewel.cli.Option;
+import org.apache.ctakes.temporal.ae.*;
 import org.apache.ctakes.temporal.ae.feature.selection.FeatureSelection;
 import org.apache.ctakes.typesystem.type.textsem.TimeMention;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
+import org.apache.uima.collection.CollectionReader;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
 import org.apache.uima.fit.factory.AnalysisEngineFactory;
-import org.apache.uima.collection.CollectionReader;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
 import org.apache.uima.resource.ResourceInitializationException;
@@ -47,19 +42,15 @@ import org.cleartk.ml.Instance;
 import org.cleartk.ml.crfsuite.CrfSuiteStringOutcomeDataWriter;
 import org.cleartk.ml.feature.transform.InstanceDataWriter;
 import org.cleartk.ml.feature.transform.InstanceStream;
-import org.cleartk.ml.jar.DefaultDataWriterFactory;
-import org.cleartk.ml.jar.DefaultSequenceDataWriterFactory;
-import org.cleartk.ml.jar.DirectoryDataWriterFactory;
-import org.cleartk.ml.jar.GenericJarClassifierFactory;
-import org.cleartk.ml.jar.JarClassifierBuilder;
+import org.cleartk.ml.jar.*;
 import org.cleartk.ml.liblinear.LibLinearStringOutcomeDataWriter;
 
-import com.google.common.base.Function;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Ordering;
-import com.lexicalscope.jewel.cli.CliFactory;
-import com.lexicalscope.jewel.cli.Option;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.logging.Level;
 
 public class EvaluationOfTimeSpans extends EvaluationOfAnnotationSpans_ImplBase {
 

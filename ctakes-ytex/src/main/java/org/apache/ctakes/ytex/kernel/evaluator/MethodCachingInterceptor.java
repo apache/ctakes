@@ -18,15 +18,14 @@
  */
 package org.apache.ctakes.ytex.kernel.evaluator;
 
-import java.io.Serializable;
-
 import net.sf.ehcache.Cache;
 import net.sf.ehcache.CacheManager;
 import net.sf.ehcache.Element;
-
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
 import org.springframework.beans.factory.InitializingBean;
+
+import java.io.Serializable;
 
 /**
  * simple caching interceptor. we require a cacheName and cacheKeyGenerator. we

@@ -18,17 +18,7 @@
  */
 package org.apache.ctakes.coreference.util;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Hashtable;
-//import java.util.Iterator;
-import java.util.Set;
-
-import org.apache.ctakes.typesystem.type.syntax.BaseToken;
-import org.apache.ctakes.typesystem.type.syntax.Chunk;
-import org.apache.ctakes.typesystem.type.syntax.TerminalTreebankNode;
-import org.apache.ctakes.typesystem.type.syntax.TreebankNode;
-import org.apache.ctakes.typesystem.type.syntax.WordToken;
+import org.apache.ctakes.typesystem.type.syntax.*;
 import org.apache.ctakes.typesystem.type.textsem.EntityMention;
 import org.apache.ctakes.typesystem.type.textsem.EventMention;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
@@ -38,6 +28,10 @@ import org.apache.uima.cas.FSIterator;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.FSArray;
 import org.apache.uima.jcas.tcas.Annotation;
+
+import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.Set;
 
 // TODO: This class hardcoded all the criteria,
 // which should be replaced by a parser of

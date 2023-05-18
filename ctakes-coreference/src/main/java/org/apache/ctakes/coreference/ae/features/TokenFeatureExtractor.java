@@ -1,9 +1,5 @@
 package org.apache.ctakes.coreference.ae.features;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
 import org.apache.ctakes.coreference.util.MarkableCacheRelationExtractor;
 import org.apache.ctakes.relationextractor.ae.features.RelationFeaturesExtractor;
 import org.apache.ctakes.typesystem.type.constants.CONST;
@@ -17,6 +13,10 @@ import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
 import org.cleartk.ml.Feature;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class TokenFeatureExtractor implements RelationFeaturesExtractor<IdentifiedAnnotation,IdentifiedAnnotation>, MarkableCacheRelationExtractor {
 

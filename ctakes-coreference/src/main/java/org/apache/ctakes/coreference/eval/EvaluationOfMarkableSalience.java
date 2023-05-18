@@ -1,13 +1,7 @@
 package org.apache.ctakes.coreference.eval;
 
-import java.io.File;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
+import com.google.common.base.Function;
+import com.lexicalscope.jewel.cli.CliFactory;
 import org.apache.ctakes.assertion.medfacts.cleartk.PolarityCleartkAnalysisEngine;
 import org.apache.ctakes.coreference.ae.DeterministicMarkableAnnotator;
 import org.apache.ctakes.coreference.ae.MarkableSalienceAnnotator;
@@ -36,8 +30,8 @@ import org.cleartk.eval.AnnotationStatistics;
 import org.cleartk.ml.jar.JarClassifierBuilder;
 import org.cleartk.ml.liblinear.LibLinearBooleanOutcomeDataWriter;
 
-import com.google.common.base.Function;
-import com.lexicalscope.jewel.cli.CliFactory;
+import java.io.File;
+import java.util.*;
 
 public class EvaluationOfMarkableSalience extends Evaluation_ImplBase<AnnotationStatistics<Boolean>> {
 

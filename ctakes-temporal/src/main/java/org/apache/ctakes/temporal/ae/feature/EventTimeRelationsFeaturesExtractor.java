@@ -18,19 +18,18 @@
  */
 package org.apache.ctakes.temporal.ae.feature;
 
-import java.util.List;
-
+import com.google.common.collect.Lists;
 import org.apache.ctakes.relationextractor.ae.features.RelationFeaturesExtractor;
 import org.apache.ctakes.typesystem.type.relation.BinaryTextRelation;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
 import org.apache.ctakes.typesystem.type.textsem.TimeMention;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
+import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
 import org.cleartk.ml.Feature;
-import org.apache.uima.fit.util.JCasUtil;
 
-import com.google.common.collect.Lists;
+import java.util.List;
 
 public class EventTimeRelationsFeaturesExtractor implements
     RelationFeaturesExtractor<IdentifiedAnnotation,IdentifiedAnnotation> {

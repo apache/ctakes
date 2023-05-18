@@ -18,19 +18,12 @@
  */
 package org.apache.ctakes.ytex.kernel;
 
+import com.google.common.collect.BiMap;
+
 import java.io.BufferedWriter;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Properties;
-import java.util.SortedMap;
-import java.util.SortedSet;
-import java.util.TreeMap;
-
-import com.google.common.collect.BiMap;
+import java.util.*;
 
 public abstract class BaseSparseDataFormatter implements SparseDataFormatter {
 	protected KernelUtil kernelUtil;

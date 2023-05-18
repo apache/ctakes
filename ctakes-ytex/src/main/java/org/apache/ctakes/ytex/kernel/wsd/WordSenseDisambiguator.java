@@ -18,11 +18,11 @@
  */
 package org.apache.ctakes.ytex.kernel.wsd;
 
+import org.apache.ctakes.ytex.kernel.metric.ConceptSimilarityService.SimilarityMetricEnum;
+
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
-import org.apache.ctakes.ytex.kernel.metric.ConceptSimilarityService.SimilarityMetricEnum;
 
 
 public interface WordSenseDisambiguator {

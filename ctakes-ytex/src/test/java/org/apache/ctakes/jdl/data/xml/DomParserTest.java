@@ -18,16 +18,15 @@
  */
 package org.apache.ctakes.jdl.data.xml;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
-
 import org.apache.ctakes.jdl.common.FileUtil;
-import org.apache.ctakes.jdl.data.xml.DomParser;
 import org.apache.ctakes.jdl.test.Resources;
 import org.junit.experimental.theories.DataPoint;
 import org.junit.experimental.theories.Theories;
 import org.junit.experimental.theories.Theory;
 import org.junit.runner.RunWith;
+
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
 
 @RunWith(Theories.class)
 public class DomParserTest {

@@ -18,27 +18,26 @@
  */
 package org.mitre.medfacts.uima;
 
+import org.apache.ctakes.assertion.zoner.types.Heading;
+import org.apache.ctakes.assertion.zoner.types.Zone;
+import org.apache.log4j.Logger;
+import org.apache.uima.UimaContext;
+import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
+import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
+import org.apache.uima.fit.descriptor.ConfigurationParameter;
+import org.apache.uima.fit.descriptor.TypeCapability;
+import org.apache.uima.jcas.JCas;
+import org.apache.uima.resource.ResourceInitializationException;
+import org.mitre.medfacts.zoner.ZonerCli;
+import org.mitre.medfacts.zoner.ZonerCli.HeadingRange;
+import org.mitre.medfacts.zoner.ZonerCli.Range;
+
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Iterator;
 import java.util.List;
-import org.apache.log4j.Logger;
-
-import org.apache.ctakes.assertion.zoner.types.Heading;
-import org.apache.ctakes.assertion.zoner.types.Zone;
-import org.apache.uima.UimaContext;
-import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
-import org.apache.uima.jcas.JCas;
-import org.apache.uima.resource.ResourceInitializationException;
-
-import org.mitre.medfacts.zoner.ZonerCli;
-import org.mitre.medfacts.zoner.ZonerCli.HeadingRange;
-import org.mitre.medfacts.zoner.ZonerCli.Range;
-import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
-import org.apache.uima.fit.descriptor.ConfigurationParameter;
-import org.apache.uima.fit.descriptor.TypeCapability;
 
 @TypeCapability(outputs =
 {

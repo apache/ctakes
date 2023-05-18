@@ -18,20 +18,18 @@
  */
 package org.apache.ctakes.relationextractor.data;
 
-import java.io.File;
-import java.io.FilenameFilter;
-
-import java.io.IOException;
-import java.util.HashMap;
-
-import org.jdom.Document;
-import org.jdom.JDOMException;
-import org.jdom.input.SAXBuilder;
-
 import org.apache.ctakes.core.util.Mapper;
 import org.apache.ctakes.relationextractor.knowtator.RelationInfo;
 import org.apache.ctakes.relationextractor.knowtator.XMLReader;
 import org.apache.ctakes.typesystem.type.constants.CONST;
+import org.jdom.Document;
+import org.jdom.JDOMException;
+import org.jdom.input.SAXBuilder;
+
+import java.io.File;
+import java.io.FilenameFilter;
+import java.io.IOException;
+import java.util.HashMap;
 
 /**
  * Calculate relation frequencies in a data set that consists of XML files exported from Knowtator.

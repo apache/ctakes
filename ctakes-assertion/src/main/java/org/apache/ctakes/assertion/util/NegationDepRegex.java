@@ -18,22 +18,22 @@
  */
 package org.apache.ctakes.assertion.util;
 
+import com.googlecode.clearnlp.dependency.DEPLib;
+import com.googlecode.clearnlp.dependency.DEPLibEn;
+import com.googlecode.clearnlp.dependency.DEPNode;
+import org.apache.ctakes.dependency.parser.util.DependencyRegex;
+import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
+import org.apache.uima.jcas.tcas.Annotation;
+import org.apache.uima.resource.ResourceInitializationException;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.apache.ctakes.dependency.parser.util.DependencyRegex;
-import static org.apache.ctakes.dependency.parser.util.DependencyRegex.*;
-import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
-import org.apache.uima.jcas.tcas.Annotation;
-import org.apache.uima.resource.ResourceInitializationException;
-
-import com.googlecode.clearnlp.dependency.DEPLib;
-import static com.googlecode.clearnlp.dependency.DEPLib.*;
-import com.googlecode.clearnlp.dependency.DEPLibEn;
+import static com.googlecode.clearnlp.dependency.DEPLib.NULL_ID;
 import static com.googlecode.clearnlp.dependency.DEPLibEn.*;
-import com.googlecode.clearnlp.dependency.DEPNode;
+import static org.apache.ctakes.dependency.parser.util.DependencyRegex.*;
 
 
 /**

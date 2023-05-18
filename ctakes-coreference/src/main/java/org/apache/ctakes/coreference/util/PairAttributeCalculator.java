@@ -18,8 +18,6 @@
  */
 package org.apache.ctakes.coreference.util;
 
-import java.util.ArrayList;
-
 import org.apache.ctakes.coreference.type.Markable;
 import org.apache.ctakes.typesystem.type.constants.CONST;
 import org.apache.ctakes.typesystem.type.refsem.UmlsConcept;
@@ -31,6 +29,8 @@ import org.apache.uima.cas.FSIterator;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.FSArray;
 import org.apache.uima.jcas.tcas.Annotation;
+
+import java.util.ArrayList;
 
 public class PairAttributeCalculator extends AttributeCalculator {
 

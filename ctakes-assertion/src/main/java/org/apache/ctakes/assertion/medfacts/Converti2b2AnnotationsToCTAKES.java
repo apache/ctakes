@@ -18,42 +18,29 @@
  */
 package org.apache.ctakes.assertion.medfacts;
 
-import java.io.File;
-
-import org.apache.log4j.Logger;
-import org.xml.sax.SAXException;
-import org.apache.uima.util.CasCreationUtils;
-import org.apache.uima.analysis_engine.AnalysisEngineDescription; 
-import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
-import org.apache.uima.cas.CAS; 
-import org.apache.uima.cas.CASException;
-import org.apache.uima.jcas.JCas;
-import org.apache.uima.util.XMLParser;
-import org.apache.uima.UIMAFramework;
-import org.apache.uima.util.XMLInputSource;
-import org.apache.uima.jcas.cas.FSArray;
-import org.apache.uima.util.InvalidXMLException;
-import org.apache.uima.resource.ResourceInitializationException;
-import org.apache.ctakes.assertion.stub.Annotation;
-import org.apache.ctakes.assertion.stub.AssertionAnnotation;
-import org.apache.ctakes.assertion.stub.ConceptType;
-
-import org.apache.ctakes.assertion.stub.LineAndTokenPosition;
-import java.io.IOException;
-import org.apache.ctakes.assertion.stub.SingleDocumentProcessor;
-import org.apache.ctakes.assertion.stub.StringHandling;
-import org.apache.ctakes.assertion.stub.LineTokenToCharacterOffsetConverter;
-import org.apache.ctakes.assertion.stub.AssertionFileProcessor;
-import java.util.List;
-
+import org.apache.ctakes.assertion.stub.*;
+import org.apache.ctakes.typesystem.type.syntax.WordToken;
 import org.apache.ctakes.typesystem.type.textsem.EntityMention;
 import org.apache.ctakes.typesystem.type.textsem.EventMention;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.ctakes.typesystem.type.syntax.WordToken;
-import java.io.FileOutputStream;
+import org.apache.log4j.Logger;
+import org.apache.uima.UIMAFramework;
+import org.apache.uima.analysis_engine.AnalysisEngineDescription;
+import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
+import org.apache.uima.cas.CAS;
+import org.apache.uima.cas.CASException;
 import org.apache.uima.cas.impl.XmiCasSerializer;
-import org.apache.uima.util.XMLSerializer;
+import org.apache.uima.jcas.JCas;
+import org.apache.uima.jcas.cas.FSArray;
+import org.apache.uima.resource.ResourceInitializationException;
+import org.apache.uima.util.*;
+import org.xml.sax.SAXException;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.List;
 
 
 /*

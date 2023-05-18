@@ -20,7 +20,7 @@
 
 -->
 <load xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://jdl-prj.googlecode.com/files/xdl.xsd">
+>
 	<!-- tiny hack - encapsulator defaults to " and can't be set to null. some 
 		snomed strings have quotes which throws off the csv parser. tilde doesn't 
 		appear anywhere so safe to use this as encapsulator -->

@@ -18,19 +18,14 @@
  */
 package org.apache.ctakes.assertion.util;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 import org.apache.ctakes.dependency.parser.util.DependencyPath;
 import org.apache.ctakes.dependency.parser.util.DependencyUtility;
 import org.apache.ctakes.typesystem.type.syntax.ConllDependencyNode;
-import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.jcas.tcas.Annotation;
-import org.apache.uima.resource.ResourceInitializationException;
-import org.apache.uima.jcas.JCas;
+
+import java.util.ArrayList;
+import java.util.List;
 
 //import edu.mayo.bmi.fsm.output.NegationIndicator;
 //import edu.mayo.bmi.nlp.parser.util.ClearDependencyUtility;

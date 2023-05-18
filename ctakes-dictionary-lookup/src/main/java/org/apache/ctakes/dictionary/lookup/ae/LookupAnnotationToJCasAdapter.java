@@ -18,11 +18,11 @@
  */
 package org.apache.ctakes.dictionary.lookup.ae;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.apache.ctakes.dictionary.lookup.vo.LookupToken;
 import org.apache.uima.jcas.tcas.Annotation;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**

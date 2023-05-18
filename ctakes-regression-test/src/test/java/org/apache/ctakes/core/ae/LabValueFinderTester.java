@@ -1,21 +1,7 @@
 package org.apache.ctakes.core.ae;
 
-import static org.apache.ctakes.core.ae.LabValueFinder.PARAM_ALL_SECTIONS;
-
-import static org.junit.Assert.*;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Hashtable;
-import java.util.List;
-
 import org.apache.ctakes.contexttokenizer.ae.ContextDependentTokenizerAnnotator;
-import org.apache.ctakes.core.ae.LabValueFinder;
-import org.apache.ctakes.core.ae.SentenceDetector;
-import org.apache.ctakes.core.ae.SimpleSegmentAnnotator;
-import org.apache.ctakes.core.ae.TokenizerAnnotatorPTB;
 import org.apache.ctakes.dictionary.lookup2.ae.DefaultJCasTermAnnotator;
-import org.apache.ctakes.dictionary.lookup2.util.UmlsUserApprover;
 import org.apache.ctakes.postagger.POSTagger;
 import org.apache.ctakes.typesystem.type.textsem.LabMention;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
@@ -30,9 +16,15 @@ import org.apache.uima.fit.pipeline.SimplePipeline;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Hashtable;
+import java.util.List;
+
+import static org.apache.ctakes.core.ae.LabValueFinder.PARAM_ALL_SECTIONS;
 
 /**
  * @author SPF , chip-nlp

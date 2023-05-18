@@ -18,34 +18,23 @@
  */
 package org.apache.ctakes.dictionary.assertion;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.StringTokenizer;
-import org.apache.lucene.index.IndexWriter;
-import org.apache.lucene.index.IndexWriterConfig;
-import org.apache.lucene.store.Directory;
-import org.apache.lucene.store.FSDirectory;
-import org.apache.lucene.util.Version;
+import org.apache.ctakes.core.nlp.tokenizer.OffsetComparator;
+import org.apache.ctakes.core.nlp.tokenizer.Token;
+import org.apache.ctakes.core.nlp.tokenizer.TokenizerPTB;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
 import org.apache.lucene.document.StringField;
 import org.apache.lucene.document.TextField;
+import org.apache.lucene.index.IndexWriter;
+import org.apache.lucene.index.IndexWriterConfig;
+import org.apache.lucene.store.Directory;
+import org.apache.lucene.store.FSDirectory;
+import org.apache.lucene.util.Version;
 
-import org.apache.ctakes.core.nlp.tokenizer.OffsetComparator;
-import org.apache.ctakes.core.nlp.tokenizer.Token;
-import org.apache.ctakes.core.nlp.tokenizer.TokenizerPTB;
+import java.io.*;
+import java.util.*;
 
 /**
  * Driver for populating a Lucene Index with assertion cue phrases, so that the

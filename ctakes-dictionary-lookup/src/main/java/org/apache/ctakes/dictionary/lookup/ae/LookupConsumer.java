@@ -18,11 +18,11 @@
  */
 package org.apache.ctakes.dictionary.lookup.ae;
 
-import java.util.Iterator;
-
 import org.apache.ctakes.dictionary.lookup.vo.LookupHit;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.jcas.JCas;
+
+import java.util.Iterator;
 
 /**
  * Defines how to consume the lookup hits produced by the LookupAnnotator.

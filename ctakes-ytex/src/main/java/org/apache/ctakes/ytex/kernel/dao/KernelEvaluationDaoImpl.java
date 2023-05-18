@@ -18,8 +18,6 @@
  */
 package org.apache.ctakes.ytex.kernel.dao;
 
-import java.util.List;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.ctakes.ytex.dao.DBUtil;
@@ -31,6 +29,8 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.TransactionCallback;
 import org.springframework.transaction.support.TransactionTemplate;
+
+import java.util.List;
 
 
 public class KernelEvaluationDaoImpl implements KernelEvaluationDao {

@@ -1,8 +1,5 @@
 package org.apache.ctakes.coreference.ae.features.cluster;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.ctakes.coreference.util.ClusterUtils;
 import org.apache.ctakes.relationextractor.ae.features.RelationFeaturesExtractor;
 import org.apache.ctakes.typesystem.type.relation.CollectionTextRelation;
@@ -13,6 +10,9 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.NonEmptyFSList;
 import org.apache.uima.jcas.tcas.Annotation;
 import org.cleartk.ml.Feature;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MentionClusterStackFeaturesExtractor implements
     RelationFeaturesExtractor<CollectionTextRelation, IdentifiedAnnotation> {

@@ -17,11 +17,12 @@
  * under the License.
  */
 package org.apache.ctakes.utils.xcas_comparison;
-import java.util.LinkedList;
-import java.util.Collections;
-import java.io.Writer;
+
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.io.Writer;
+import java.util.Collections;
+import java.util.LinkedList;
 
 /**
  * An <code>XcasDiff</code> object represents the comparison results of

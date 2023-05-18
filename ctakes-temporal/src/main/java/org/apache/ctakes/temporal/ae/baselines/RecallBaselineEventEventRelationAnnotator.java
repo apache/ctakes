@@ -18,22 +18,22 @@
  */
 package org.apache.ctakes.temporal.ae.baselines;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.ctakes.relationextractor.ae.RelationExtractorAnnotator;
 import org.apache.ctakes.typesystem.type.textsem.EventMention;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
+import org.apache.uima.fit.factory.AnalysisEngineFactory;
+import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.cleartk.ml.CleartkAnnotator;
 import org.cleartk.ml.Feature;
 import org.cleartk.ml.jar.GenericJarClassifierFactory;
-import org.apache.uima.fit.factory.AnalysisEngineFactory;
-import org.apache.uima.fit.util.JCasUtil;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RecallBaselineEventEventRelationAnnotator extends
 		RelationExtractorAnnotator {

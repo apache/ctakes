@@ -1,13 +1,11 @@
 #!/usr/bin/env python
 
-import numpy as np
-
 import sys
 sys.dont_write_bytecode = True
 
 import ConfigParser
 
-import glob, string, collections, operator
+import collections
 
 from fnmatch import fnmatch
 

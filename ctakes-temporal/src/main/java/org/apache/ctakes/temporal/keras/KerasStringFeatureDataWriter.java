@@ -1,9 +1,9 @@
 package org.apache.ctakes.temporal.keras;
 
+import com.google.common.annotations.Beta;
+
 import java.io.File;
 import java.io.FileNotFoundException;
-
-import com.google.common.annotations.Beta;
 
 /**
  * <br>

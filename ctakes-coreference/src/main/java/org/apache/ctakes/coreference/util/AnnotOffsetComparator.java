@@ -18,8 +18,9 @@
  */
 package org.apache.ctakes.coreference.util;
 
-import java.util.Comparator;
 import org.apache.uima.jcas.tcas.Annotation;
+
+import java.util.Comparator;
 
 public class AnnotOffsetComparator implements Comparator<Annotation> {
 	public int compare (Annotation a1, Annotation a2) {

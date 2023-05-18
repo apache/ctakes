@@ -18,20 +18,6 @@
  */
 package org.apache.ctakes.dictionary.lookup.ae;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.lang.reflect.Constructor;
-import java.sql.Connection;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Properties;
-import java.util.Set;
-import java.util.StringTokenizer;
-
 import org.apache.ctakes.core.resource.FileResource;
 import org.apache.ctakes.core.resource.JdbcConnectionResource;
 import org.apache.ctakes.core.resource.LuceneIndexReaderResource;
@@ -52,6 +38,13 @@ import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
+
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.lang.reflect.Constructor;
+import java.sql.Connection;
+import java.util.*;
 
 
 /**

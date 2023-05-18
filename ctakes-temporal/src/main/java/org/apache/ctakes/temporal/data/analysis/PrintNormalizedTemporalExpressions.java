@@ -18,19 +18,17 @@
  */
 package org.apache.ctakes.temporal.data.analysis;
 
+import com.google.common.collect.Lists;
 import org.apache.ctakes.temporal.duration.Utils;
 import org.apache.ctakes.typesystem.type.textsem.TimeMention;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.CASException;
-import org.apache.uima.jcas.JCas;
-//import org.threeten.bp.temporal.TemporalUnit;
-import java.time.temporal.TemporalUnit;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
 import org.apache.uima.fit.util.JCasUtil;
-
+import org.apache.uima.jcas.JCas;
 import scala.collection.immutable.Set;
 
-import com.google.common.collect.Lists;
+import java.time.temporal.TemporalUnit;
 
 /**
  * Print the time units produced by Steven Bethard's TimeEx normalizer

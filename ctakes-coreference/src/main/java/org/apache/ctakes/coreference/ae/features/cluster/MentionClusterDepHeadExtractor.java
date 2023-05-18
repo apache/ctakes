@@ -1,7 +1,5 @@
 package org.apache.ctakes.coreference.ae.features.cluster;
 
-import java.util.*;
-
 import org.apache.ctakes.core.util.ListIterable;
 import org.apache.ctakes.coreference.ae.features.StringMatchingFeatureExtractor;
 import org.apache.ctakes.coreference.util.MarkableCacheRelationExtractor;
@@ -15,6 +13,8 @@ import org.apache.uima.jcas.JCas;
 import org.cleartk.ml.Feature;
 import org.cleartk.ml.feature.extractor.CleartkExtractorException;
 import org.cleartk.ml.feature.extractor.FeatureExtractor1;
+
+import java.util.*;
 
 public class MentionClusterDepHeadExtractor implements
     RelationFeaturesExtractor<CollectionTextRelation, IdentifiedAnnotation>, FeatureExtractor1<Markable>,

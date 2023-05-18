@@ -18,19 +18,15 @@
  */
 package org.apache.ctakes.ytex.tools;
 
+import org.apache.ctakes.ytex.uima.ApplicationContextHolder;
+
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.Properties;
 import java.util.zip.GZIPInputStream;
-
-import org.apache.ctakes.ytex.uima.ApplicationContextHolder;
 
 /**
  * read specified document id's cas, send to stdout

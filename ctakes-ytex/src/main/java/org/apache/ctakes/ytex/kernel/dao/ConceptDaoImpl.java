@@ -18,15 +18,22 @@
  */
 package org.apache.ctakes.ytex.kernel.dao;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import com.google.common.base.Strings;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import org.apache.commons.cli.*;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.apache.ctakes.ytex.kernel.IntrinsicInfoContentEvaluator;
+import org.apache.ctakes.ytex.kernel.KernelContextHolder;
+import org.apache.ctakes.ytex.kernel.model.ConcRel;
+import org.apache.ctakes.ytex.kernel.model.ConceptGraph;
+import org.hibernate.SessionFactory;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowCallbackHandler;
+
+import javax.sql.DataSource;
+import java.io.*;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.sql.ResultSet;
@@ -37,30 +44,6 @@ import java.util.Properties;
 import java.util.Set;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
-
-import javax.sql.DataSource;
-
-import org.apache.commons.cli.CommandLine;
-import org.apache.commons.cli.CommandLineParser;
-import org.apache.commons.cli.GnuParser;
-import org.apache.commons.cli.HelpFormatter;
-import org.apache.commons.cli.OptionBuilder;
-import org.apache.commons.cli.Options;
-import org.apache.commons.cli.ParseException;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.apache.ctakes.ytex.kernel.FileUtil;
-import org.apache.ctakes.ytex.kernel.IntrinsicInfoContentEvaluator;
-import org.apache.ctakes.ytex.kernel.KernelContextHolder;
-import org.apache.ctakes.ytex.kernel.model.ConcRel;
-import org.apache.ctakes.ytex.kernel.model.ConceptGraph;
-import org.hibernate.SessionFactory;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowCallbackHandler;
-
-import com.google.common.base.Strings;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
 
 public class ConceptDaoImpl implements ConceptDao {
 	private static final String CONCEPT_GRAPH_PATH = "org/apache/ctakes/ytex/conceptGraph/";

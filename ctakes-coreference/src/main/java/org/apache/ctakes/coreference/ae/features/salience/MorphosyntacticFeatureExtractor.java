@@ -1,8 +1,5 @@
 package org.apache.ctakes.coreference.ae.features.salience;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.ctakes.dependency.parser.util.DependencyUtility;
 import org.apache.ctakes.typesystem.type.syntax.ConllDependencyNode;
 import org.apache.ctakes.typesystem.type.textsem.Markable;
@@ -10,6 +7,9 @@ import org.apache.uima.jcas.JCas;
 import org.cleartk.ml.Feature;
 import org.cleartk.ml.feature.extractor.CleartkExtractorException;
 import org.cleartk.ml.feature.extractor.FeatureExtractor1;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /*
  * Citations:

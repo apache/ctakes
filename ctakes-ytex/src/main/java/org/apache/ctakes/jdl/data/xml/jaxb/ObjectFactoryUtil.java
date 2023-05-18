@@ -18,12 +18,12 @@
  */
 package org.apache.ctakes.jdl.data.xml.jaxb;
 
-import javax.xml.bind.JAXBElement;
-import javax.xml.bind.JAXBException;
-
 import org.apache.ctakes.jdl.schema.xdl.ConnType;
 import org.apache.ctakes.jdl.schema.xdl.JdbcType;
 import org.apache.ctakes.jdl.schema.xdl.LoadType;
+
+import javax.xml.bind.JAXBElement;
+import javax.xml.bind.JAXBException;
 
 
 /**

@@ -19,9 +19,9 @@
 package org.apache.ctakes.ytex.uima.dao;
 
 
-import java.util.List;
-
 import org.apache.ctakes.ytex.uima.model.SegmentRegex;
+
+import java.util.List;
 
 /**
  * Dao to access Segment Boundary Regular Expressions.

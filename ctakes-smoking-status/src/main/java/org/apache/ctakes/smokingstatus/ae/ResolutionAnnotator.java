@@ -18,16 +18,13 @@
  */
 package org.apache.ctakes.smokingstatus.ae;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-
+import org.apache.ctakes.core.resource.FileResource;
+import org.apache.ctakes.smokingstatus.Const;
+import org.apache.ctakes.smokingstatus.type.NonSmokerNamedEntityAnnotation;
+import org.apache.ctakes.smokingstatus.type.SmokerNamedEntityAnnotation;
+import org.apache.ctakes.smokingstatus.type.libsvm.NominalAttributeValue;
+import org.apache.ctakes.typesystem.type.syntax.WordToken;
+import org.apache.ctakes.typesystem.type.textspan.Sentence;
 import org.apache.log4j.Logger;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.annotator.AnnotatorConfigurationException;
@@ -36,14 +33,11 @@ import org.apache.uima.analysis_engine.annotator.AnnotatorProcessException;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.TOP;
 
-import org.apache.ctakes.smokingstatus.type.NonSmokerNamedEntityAnnotation;
-import org.apache.ctakes.smokingstatus.type.SmokerNamedEntityAnnotation;
-
-import org.apache.ctakes.core.resource.FileResource;
-import org.apache.ctakes.smokingstatus.Const;
-import org.apache.ctakes.typesystem.type.syntax.WordToken;
-import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.ctakes.smokingstatus.type.libsvm.NominalAttributeValue;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.*;
 
 /**
  * Resolves the data produced by the KU classifier, negation detection, and PCS

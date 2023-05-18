@@ -18,32 +18,15 @@
  */
 package org.apache.ctakes.core.nlp.tokenizer;
 
-import static java.lang.Character.isDigit;
-import static java.lang.Character.isLetter;
-import static java.lang.Character.isLetterOrDigit;
-import static java.lang.Character.isUpperCase;
-import static java.lang.Character.isWhitespace;
-import static org.apache.ctakes.core.nlp.tokenizer.TokenizerHelper.APOSTROPHE;
-import static org.apache.ctakes.core.nlp.tokenizer.TokenizerHelper.COMMA;
-import static org.apache.ctakes.core.nlp.tokenizer.TokenizerHelper.CR;
-import static org.apache.ctakes.core.nlp.tokenizer.TokenizerHelper.HYPHEN_OR_MINUS_SIGN;
-import static org.apache.ctakes.core.nlp.tokenizer.TokenizerHelper.NEWLINE;
-import static org.apache.ctakes.core.nlp.tokenizer.TokenizerHelper.PERIOD;
-import static org.apache.ctakes.core.nlp.tokenizer.TokenizerHelper.isPunctuation;
+import org.apache.ctakes.core.ae.TokenizerAnnotator;
+import org.apache.ctakes.typesystem.type.syntax.*;
+import org.apache.uima.jcas.JCas;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.uima.jcas.JCas;
-
-import org.apache.ctakes.core.ae.TokenizerAnnotator;
-import org.apache.ctakes.typesystem.type.syntax.BaseToken;
-import org.apache.ctakes.typesystem.type.syntax.ContractionToken;
-import org.apache.ctakes.typesystem.type.syntax.NewlineToken;
-import org.apache.ctakes.typesystem.type.syntax.NumToken;
-import org.apache.ctakes.typesystem.type.syntax.PunctuationToken;
-import org.apache.ctakes.typesystem.type.syntax.SymbolToken;
-import org.apache.ctakes.typesystem.type.syntax.WordToken;
+import static java.lang.Character.*;
+import static org.apache.ctakes.core.nlp.tokenizer.TokenizerHelper.*;
 
 /**
  * A class used to break natural text into tokens following PTB rules.

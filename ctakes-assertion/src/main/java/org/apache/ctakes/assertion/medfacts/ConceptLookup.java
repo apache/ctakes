@@ -18,17 +18,16 @@
  */
 package org.apache.ctakes.assertion.medfacts;
 
-import java.util.Arrays;
-import java.util.HashSet;
+import org.apache.ctakes.assertion.stub.ConceptType;
+import org.apache.ctakes.typesystem.type.refsem.OntologyConcept;
+import org.apache.ctakes.typesystem.type.refsem.UmlsConcept;
 import org.apache.log4j.Logger;
-
 import org.apache.uima.cas.FeatureStructure;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.FSArray;
-import org.apache.ctakes.assertion.stub.ConceptType;
 
-import org.apache.ctakes.typesystem.type.refsem.OntologyConcept;
-import org.apache.ctakes.typesystem.type.refsem.UmlsConcept;
+import java.util.Arrays;
+import java.util.HashSet;
 
 public class ConceptLookup
 {
