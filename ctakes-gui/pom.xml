@@ -22,11 +22,11 @@
          <groupId>org.hsqldb</groupId>
          <artifactId>hsqldb</artifactId>
       </dependency>
-      <dependency>
-         <groupId>io.github.lukehutch</groupId>
-         <artifactId>fast-classpath-scanner</artifactId>
-         <version>${fast-classpath-scanner.version}</version>
-      </dependency>
+	  <dependency>
+	    <groupId>io.github.classgraph</groupId>
+	    <artifactId>classgraph</artifactId>
+	    <version>${classgraph.version}</version>
+		</dependency>
    </dependencies>
 
 </project>
