@@ -1,6 +1,6 @@
 package org.apache.ctakes.core.ae;
 
-import org.apache.ctakes.contexttokenizer.ae.ContextDependentTokenizerAnnotator;
+import org.apache.ctakes.context.tokenizer.ae.ContextDependentTokenizerAnnotator;
 import org.apache.ctakes.dictionary.lookup2.ae.DefaultJCasTermAnnotator;
 import org.apache.ctakes.postagger.POSTagger;
 import org.apache.ctakes.typesystem.type.textsem.LabMention;

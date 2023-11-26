@@ -22,7 +22,7 @@
 <taeDescription xmlns="http://uima.apache.org/resourceSpecifier">
 <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
 <primitive>true</primitive>
-<annotatorImplementationName>org.apache.ctakes.contexttokenizer.ae.ContextDependentTokenizerAnnotator</annotatorImplementationName>
+<annotatorImplementationName>org.apache.ctakes.context.tokenizer.ae.ContextDependentTokenizerAnnotator</annotatorImplementationName>
 <analysisEngineMetaData>
 <name>ContextDependentTokenizerAnnotator</name>
 <description>Discovers tokens based on context.</description>

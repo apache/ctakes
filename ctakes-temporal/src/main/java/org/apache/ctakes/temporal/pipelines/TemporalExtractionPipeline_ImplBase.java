@@ -21,7 +21,7 @@ package org.apache.ctakes.temporal.pipelines;
 import com.lexicalscope.jewel.cli.Option;
 import org.apache.ctakes.chunker.ae.Chunker;
 import org.apache.ctakes.constituency.parser.ae.ConstituencyParser;
-import org.apache.ctakes.contexttokenizer.ae.ContextDependentTokenizerAnnotator;
+import org.apache.ctakes.context.tokenizer.ae.ContextDependentTokenizerAnnotator;
 import org.apache.ctakes.core.ae.SentenceDetector;
 import org.apache.ctakes.core.ae.SimpleSegmentAnnotator;
 import org.apache.ctakes.core.ae.TokenizerAnnotatorPTB;

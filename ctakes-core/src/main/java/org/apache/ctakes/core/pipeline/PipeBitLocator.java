@@ -34,7 +34,7 @@ public enum PipeBitLocator {
    static private final Object[] EMPTY_OBJECT_ARRAY = new Object[ 0 ];
    static private final String[] CTAKES_PACKAGES
          = { "core",
-             "contexttokenizer",
+             "context.tokenizer",
              "postagger",
              "chunker",
              "dictionary.lookup2",
