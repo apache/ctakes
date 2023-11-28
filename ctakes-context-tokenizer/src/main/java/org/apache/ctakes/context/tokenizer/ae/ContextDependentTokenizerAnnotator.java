@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.apache.ctakes.contexttokenizer.ae;
+package org.apache.ctakes.context.tokenizer.ae;
 
 import org.apache.ctakes.core.ae.TokenizerAnnotator;
 import org.apache.ctakes.core.fsm.adapters.*;

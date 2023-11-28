@@ -22,7 +22,7 @@ import com.google.common.collect.Sets;
 import org.apache.ctakes.chunker.ae.Chunker;
 import org.apache.ctakes.chunker.ae.adjuster.ChunkAdjuster;
 import org.apache.ctakes.constituency.parser.ae.ConstituencyParser;
-import org.apache.ctakes.contexttokenizer.ae.ContextDependentTokenizerAnnotator;
+import org.apache.ctakes.context.tokenizer.ae.ContextDependentTokenizerAnnotator;
 import org.apache.ctakes.core.ae.SentenceDetectorAnnotatorBIO;
 import org.apache.ctakes.core.ae.SimpleSegmentAnnotator;
 import org.apache.ctakes.core.ae.TokenizerAnnotatorPTB;

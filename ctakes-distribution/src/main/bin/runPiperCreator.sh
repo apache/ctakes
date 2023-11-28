@@ -40,8 +40,16 @@ while [ -h "$PRG" ]; do
 done
 PRGDIR=`dirname "$PRG"`
 
+ALL_IMPL=""
+if [ "$1" = "-a" ]; then
+  ALL_IMPL="-Dctakes.gui.all-impls=XX"
+elif [ "$1" = "-h" ]; then
+  echo "Adding -h will also add unofficial components"
+  exit
+fi
+
 # Only set CTAKES_HOME if not already set
 [ -z "$CTAKES_HOME" ] && CTAKES_HOME=`cd "$PRGDIR/.." >/dev/null; pwd`
 
 cd $CTAKES_HOME
-java -cp $CTAKES_HOME/desc/:$CTAKES_HOME/resources/:$CTAKES_HOME/lib/* -Dlog4j.configuration=file:$CTAKES_HOME/config/log4j.xml -Xms512M -Xmx3g org.apache.ctakes.gui.pipeline.PiperCreator
+java -cp $CTAKES_HOME/desc/:$CTAKES_HOME/resources/:$CTAKES_HOME/lib/* $ALL_IMPL -Dlog4j.configuration=file:$CTAKES_HOME/config/log4j.xml -Xms512M -Xmx3g org.apache.ctakes.gui.pipeline.PiperCreator

@@ -1,7 +1,7 @@
 package org.apache.ctakes.examples.pipeline;
 
 
-import org.apache.ctakes.contexttokenizer.ae.ContextDependentTokenizerAnnotator;
+import org.apache.ctakes.context.tokenizer.ae.ContextDependentTokenizerAnnotator;
 import org.apache.ctakes.core.ae.SentenceDetector;
 import org.apache.ctakes.core.ae.SimpleSegmentAnnotator;
 import org.apache.ctakes.core.ae.TokenizerAnnotatorPTB;

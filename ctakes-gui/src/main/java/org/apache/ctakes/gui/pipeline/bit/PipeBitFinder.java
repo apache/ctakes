@@ -1,9 +1,8 @@
 package org.apache.ctakes.gui.pipeline.bit;
 
+import io.github.classgraph.*;
 
-import io.github.lukehutch.fastclasspathscanner.FastClasspathScanner;
-import io.github.lukehutch.fastclasspathscanner.matchprocessor.SubclassMatchProcessor;
-import io.github.lukehutch.fastclasspathscanner.scanner.ScanResult;
+import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.core.util.log.DotLogger;
 import org.apache.log4j.Logger;
 import org.apache.uima.analysis_component.Annotator_ImplBase;
@@ -17,82 +16,89 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 /**
- * Finds Collection Readers, Annotators, Cas Consumers (Writers), and their metadata
+ * Finds Collection Readers, Annotators, Cas Consumers (Writers), and their
+ * metadata
  *
  * @author SPF , chip-nlp
  * @version %I%
  * @since 12/22/2016
  */
 public enum PipeBitFinder {
-   INSTANCE;
+	INSTANCE;
 
-   static public PipeBitFinder getInstance() {
-      return INSTANCE;
-   }
+	static public PipeBitFinder getInstance() {
+		return INSTANCE;
+	}
 
-   private final Logger LOGGER = Logger.getLogger( "PipeBitFinder" );
+	private final Logger LOGGER = Logger.getLogger("PipeBitFinder");
 
-   private final Collection<Class<?>> _pipeBits = new ArrayList<>();
-   private boolean _didScan = false;
+	private final Collection<Class<?>> _pipeBits = new ArrayList<>();
+	private boolean _didScan = false;
+	private boolean _allImplementations = (System.getProperty("ctakes.gui.all-impls") != null);
 
-   synchronized public void reset() {
-      _pipeBits.clear();
-      _didScan = false;
-   }
+	synchronized public void reset() {
+		_pipeBits.clear();
+		_didScan = false;
+	}
 
-   synchronized public Collection<Class<?>> getPipeBits() {
-      scan();
-      return _pipeBits;
-   }
+	synchronized public Collection<Class<?>> getPipeBits() {
+		scan();
+		return _pipeBits;
+	}
 
-   static private boolean isPipeBit( final Class<?> clazz ) {
-      final String className = clazz.getName();
-      return !className.startsWith( "org.apache.uima.tutorial" )
-             && !className.startsWith( "org.apache.uima.examples" )
-             && !Modifier.isAbstract( clazz.getModifiers() )
-             && clazz.getEnclosingClass() == null;
-   }
+	static private boolean isPipeBit(final Class<?> clazz) {
+		final String className = clazz.getName();
+		return !className.startsWith("org.apache.uima.tutorial") && !className.startsWith("org.apache.uima.examples")
+				&& !Modifier.isAbstract(clazz.getModifiers()) && clazz.getEnclosingClass() == null;
+	}
+	
+	
+	synchronized private ClassInfoList findByAnnotation(ScanResult result) {
+		return result.getClassesWithAnnotation(PipeBitInfo.class.getTypeName());
+	}
+	
+	synchronized private ClassInfoList findByType(ScanResult result) {
+		ClassInfoList list = result.getSubclasses(Annotator_ImplBase.class.getTypeName());
+		list.union(
+				result.getSubclasses(JCasAnnotator_ImplBase.class.getTypeName()),
+				result.getSubclasses(CasConsumer_ImplBase.class.getTypeName()),
+				result.getSubclasses(CollectionReader_ImplBase.class.getTypeName()));
+		return list;
+	}
 
-   synchronized public void scan() {
-      if ( _didScan ) {
-         return;
-      }
-      final SubclassMatchProcessor<CollectionReader_ImplBase> readerAdder = r -> {
-         if ( isPipeBit( r ) ) {
-            _pipeBits.add( r );
-         }
-      };
-      final SubclassMatchProcessor<Annotator_ImplBase> annotatorAdder = a -> {
-         if ( isPipeBit( a ) ) {
-            _pipeBits.add( a );
-         }
-      };
-      final SubclassMatchProcessor<CasConsumer_ImplBase> writerAdder = w -> {
-         if ( isPipeBit( w ) ) {
-            _pipeBits.add( w );
-         }
-      };
-      // Don't want super-primitive cleartk or uima classes
-      final FastClasspathScanner scanner = new FastClasspathScanner();
-      LOGGER.info( "Starting Scan for Pipeline Bits" );
-      try ( DotLogger dotter = new DotLogger() ){
-         scanner.matchSubclassesOf( CollectionReader_ImplBase.class, readerAdder )
-               .matchSubclassesOf( Annotator_ImplBase.class, annotatorAdder )
-               .matchSubclassesOf( CasConsumer_ImplBase.class, writerAdder );
-         final ScanResult result = scanner.scan( 1 );
-//      } catch ( ScanInterruptedException | IOException siE ) {
-      } catch ( RuntimeException | IOException siE ) {
-         LOGGER.error( siE.getMessage() );
-      }
-      // Get rid of the abstract classes
-      _pipeBits.remove( CollectionReader_ImplBase.class );
-      _pipeBits.remove( JCasAnnotator_ImplBase.class );
-      _pipeBits.remove( CasConsumer_ImplBase.class );
-      // FastClassPathScanner blacklisting doesn't work, so we need to remove unwanted packages manually
-      _pipeBits.removeIf( c -> c.getPackage().getName().startsWith( "org.cleartk" )
-                               || c.getPackage().getName().startsWith( "org.apache.uima" ) );
-      LOGGER.info( "Scan Finished" );
-      _didScan = true;
+	synchronized public void scan() {
+		  if ( _didScan ) {
+		     return;
+		  }
+		
+		  final ClassGraph scanner = new ClassGraph().enableAllInfo();
+		
+		  try ( DotLogger dotter = new DotLogger(); ScanResult result = scanner.scan()) {
+			String message = (_allImplementations) ? "all possible " : "official";
+			LOGGER.info( "Starting Scan for ("+message+") Pipeline Bits" );
+			ClassInfoList list = null;
+			if(_allImplementations)
+				list = findByType(result);
+			else
+				list = findByAnnotation(result);
+			
+			for(ClassInfo thing : list) {
+				Class<?> clazz = thing.loadClass();
+				if (isPipeBit(clazz)) {
+					_pipeBits.add( clazz );
+				}
+			}
+		
+		  } catch ( RuntimeException | IOException siE ) {
+		     LOGGER.error( siE.getMessage() );
+		  }
+		
+		
+		  // FastClassPathScanner blacklisting doesn't work, so we need to remove unwanted packages manually
+		  _pipeBits.removeIf( c -> c.getPackage().getName().startsWith( "org.cleartk" )
+		                       || c.getPackage().getName().startsWith( "org.apache.uima" ) );
+		  LOGGER.info( "Scan Finished with " +_pipeBits.size()+ " items found." );
+		  _didScan = true;
    }
 
 }

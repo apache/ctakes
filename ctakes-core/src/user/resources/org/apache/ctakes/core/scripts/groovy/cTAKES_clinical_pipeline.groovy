@@ -146,7 +146,7 @@ AnalysisEngineDescription lvgDescriptor = AnalysisEngineFactory.createAnalysisEn
 aggregateBuilder.add(lvgDescriptor);
 
 println(" Adding context dependent tokenizer annotator");
-def cdtAnnotator = AnalysisEngineFactory.createPrimitiveDescription(org.apache.ctakes.contexttokenizer.ae.ContextDependentTokenizerAnnotator.class);
+def cdtAnnotator = AnalysisEngineFactory.createPrimitiveDescription(org.apache.ctakes.context.tokenizer.ae.ContextDependentTokenizerAnnotator.class);
 aggregateBuilder.add(cdtAnnotator);
 
 println(" Adding part of speech (POS) annotator");

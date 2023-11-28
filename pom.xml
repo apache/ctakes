@@ -104,7 +104,7 @@
 		<dom4j.version>1.6.1</dom4j.version>
 		<ehcache.version>2.4.6</ehcache.version>
 		<exec-maven-plugin.version>1.2.1</exec-maven-plugin.version>
-		<fast-classpath-scanner.version>3.1.6</fast-classpath-scanner.version>
+		<classgraph.version>4.8.90</classgraph.version>
 		<glassfish-web.version>2.2</glassfish-web.version>
 		<hibernate.version>4.2.6.Final</hibernate.version>
 		<hsqldb.version>2.3.4</hsqldb.version>
@@ -201,7 +201,7 @@
 		<module>ctakes-ytex</module>
 		<module>ctakes-ytex-uima</module>
 		<module>ctakes-dictionary-lookup-fast</module>
-      <module>ctakes-dockhand</module>
+        <module>ctakes-dockhand</module>
 		<module>ctakes-tiny-rest</module>
 		<module>ctakes-pbj</module>
 		<module>ctakes-user-resources</module>
