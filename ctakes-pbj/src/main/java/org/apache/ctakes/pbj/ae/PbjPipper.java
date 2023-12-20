@@ -26,7 +26,7 @@ public class PbjPipper extends PythonRunner {
    // to add a configuration parameter, type "param" and hit tab.
 
    static public final String PIP_PBJ_PARAM = "PipPbj";
-   static public final String PIP_PBJ_DESC = "pip or do not pip PBJ.  Default is yes.";
+   static public final String PIP_PBJ_DESC = "pip or do not pip PBJ python code.  Default is yes.";
    @ConfigurationParameter(
          name = PIP_PBJ_PARAM,
          description = PIP_PBJ_DESC,

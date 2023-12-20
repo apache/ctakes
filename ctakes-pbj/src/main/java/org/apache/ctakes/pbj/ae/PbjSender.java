@@ -45,8 +45,8 @@ abstract public class PbjSender extends JCasAnnotator_ImplBase {
 
    static private final Logger LOGGER = Logger.getLogger( "PbjSender" );
 
-   static public final String PARAM_SENDER_NAME = "SenderName";
-   static public final String PARAM_SENDER_PASS = "SenderPass";
+   static public final String PARAM_SENDER_NAME = "SendName";
+   static public final String PARAM_SENDER_PASS = "SendPass";
    static public final String PARAM_HOST = "SendHost";
    static public final String PARAM_PORT = "SendPort";
    static public final String PARAM_QUEUE = "SendQueue";
@@ -55,11 +55,11 @@ abstract public class PbjSender extends JCasAnnotator_ImplBase {
 
    static public final String DESC_SENDER_NAME = "Your Artemis Username.";
    static public final String DESC_SENDER_PASS = "Your Artemis Password.";
-   static public final String DESC_HOST = "The Artemis Host to send information.";
-   static public final String DESC_PORT = "The Artemis Port to send information.";
-   static public final String DESC_QUEUE = "The Artemis Queue to send information.";
-   static public final String DESC_SEND_STOP = "Yes to send a stop signal to Pbj Receivers.";
-   static public final String DESC_QUEUE_SIZE = "The size of the Queue.  Default is 5 messages.";
+   static public final String DESC_HOST = "The Artemis Host to which this pipeline sends information.";
+   static public final String DESC_PORT = "The Artemis Port to which this pipeline sends information.";
+   static public final String DESC_QUEUE = "The Artemis Queue to which this pipeline sends information.";
+   static public final String DESC_SEND_STOP = "Yes to send a stop signal to receiving pipelines.";
+   static public final String DESC_QUEUE_SIZE = "The size of the message queue.  Default is 5 messages.";
 
    @ConfigurationParameter(
          name = PARAM_SENDER_NAME,

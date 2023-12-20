@@ -49,7 +49,7 @@ add PythonRunner Command="-m pip install resources/org/apache/ctakes/examples/ct
 // There is a fixed order to queue specification in python pipelines.
 // The incoming (receiver) queue is named first, the outgoing (sender) queue is named second.
 // TODO: Right now cnlpt isn't using --output_dir.  Need to figure out why.
-add PythonRunner Command="-m ctakes_cnlpt.negation_pipeline JavaToPy PyToJava --output_dir $OutputDirectory" LogFile=negation_pipeline.log
+add PythonRunner Command="-m ctakes_cnlpt.negation_pipeline --receive_queue JavaToPy --send_queue PyToJava --output_dir $OutputDirectory" LogFile=negation_pipeline.log
 
 
 //

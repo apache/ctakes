@@ -37,8 +37,8 @@ import static org.apache.ctakes.pbj.util.PbjConstants.*;
 
 final public class PbjReceiver extends JCasCollectionReader_ImplBase {
 
-   static public final String PARAM_RECEIVER_NAME = "ReceiverName";
-   static public final String PARAM_RECEIVER_PASS = "ReceiverPass";
+   static public final String PARAM_RECEIVER_NAME = "ReceiveName";
+   static public final String PARAM_RECEIVER_PASS = "ReceivePass";
    static public final String PARAM_HOST = "ReceiveHost";
    static public final String PARAM_PORT = "ReceivePort";
    static public final String PARAM_QUEUE = "ReceiveQueue";
@@ -46,10 +46,10 @@ final public class PbjReceiver extends JCasCollectionReader_ImplBase {
 
    static public final String DESC_RECEIVER_NAME = "Your Artemis Username.";
    static public final String DESC_RECEIVER_PASS = "Your Artemis Password.";
-   static public final String DESC_HOST = "The Artemis Host from which to receive information.";
-   static public final String DESC_PORT = "The Artemis Port from which to receive information.";
-   static public final String DESC_QUEUE = "The Artemis Queue from which to receive information.";
-   static public final String DESC_ACCEPT_STOP = "Yes to shut down when the sender sends a stop signal.";
+   static public final String DESC_HOST = "The Artemis Host from which this pipeline receives information.";
+   static public final String DESC_PORT = "The Artemis Port from which this pipeline receives information.";
+   static public final String DESC_QUEUE = "The Artemis Queue from which this pipeline receives information.";
+   static public final String DESC_ACCEPT_STOP = "Yes to shut down when this pipeline receives a stop signal.";
 
    static private final Logger LOGGER = Logger.getLogger( "PbjReceiver" );
    static private final String EMPTY_CAS = "BadMessageFormatReceivedCreateEmptyJCas";
