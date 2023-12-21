@@ -62,4 +62,3 @@ load DictionarySubPipe
 
 // Send CAS to Artemis at the specified queue.  Send stop signal when processing has finished.
 add PbjJmsSender SendQueue=JavaToPy SendStop=yes
-//add PbjStompSender SendQueue=JavaToPy SendStop=yes
