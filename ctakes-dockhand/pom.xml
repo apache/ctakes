@@ -38,7 +38,7 @@
          <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-jar-plugin</artifactId>
-            <version>2.4</version>
+            <version>3.3.0</version>
             <configuration>
                <archive>
                   <manifest>
@@ -53,7 +53,7 @@
                  We need the webapp directory to build the rest war.  Copy it into our resources.   -->
          <plugin>
             <artifactId>maven-resources-plugin</artifactId>
-            <version>3.0.2</version>
+            <version>3.3.1</version>
             <executions>
                <execution>
                   <id>copy-resources</id>

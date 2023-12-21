@@ -122,26 +122,32 @@
 		<jwi.version>2.2.3</jwi.version>
 		<mastif.version>1.4</mastif.version>
 		<maven-antrun-plugin.version>3.1.0</maven-antrun-plugin.version>
-		<maven-assembly-plugin.version>3.4.2</maven-assembly-plugin.version>
-		<maven-failsafe-plugin.version>2.20.1</maven-failsafe-plugin.version>
-		<maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
-		<maven-war-plugin.version>3.2.3</maven-war-plugin.version>
 		<maven-license-plugin.version>1.9.0</maven-license-plugin.version>
-		<maven-clean-plugin.version>3.2.0</maven-clean-plugin.version>
-		<maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
-		<maven-deploy-plugin.version>3.0.0</maven-deploy-plugin.version>
-		<maven-gpg-plugin.version>3.0.1</maven-gpg-plugin.version>
-		<maven-install-plugin.version>3.0.1</maven-install-plugin.version>
 		<maven-jar-plugin.version>3.3.0</maven-jar-plugin.version>
-		<maven-javadoc-plugin.version>3.4.1</maven-javadoc-plugin.version>
-		<maven-dependency-plugin.version>3.3.0</maven-dependency-plugin.version>
-		<maven-site-plugin.version>4.0.0-M3</maven-site-plugin.version>
-		<maven-source-plugin.version>3.2.1</maven-source-plugin.version>
 		<apache-rat-plugin.version>0.15</apache-rat-plugin.version>
 		<properties-maven-plugin.version>1.1.0</properties-maven-plugin.version>
-		<maven-resources-plugin.version>3.0.0</maven-resources-plugin.version>
-		<maven-remote-resources-plugin.version>3.0.0</maven-remote-resources-plugin.version>
-
+		<maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
+		<maven-resources-plugin.version>3.3.1</maven-resources-plugin.version>
+		<maven-dependency-plugin.version>3.6.1</maven-dependency-plugin.version>
+		<maven-remote-resources-plugin.version>3.1.0</maven-remote-resources-plugin.version>
+<!--		jaxb2 v2+ was refactored and not backward compatible.  Try later with jdk11 -->
+<!--		<jaxb2-maven-plugin.version>2.5.0</jaxb2-maven-plugin.version>-->
+		<!--		<jaxb2-maven-plugin.version>3.1.0</jaxb2-maven-plugin.version>-->
+		<maven-site-plugin.version>4.0.0-M13</maven-site-plugin.version>
+		<maven-source-plugin.version>3.3.0</maven-source-plugin.version>
+		<maven-clean-plugin.version>3.3.2</maven-clean-plugin.version>
+<!--		maven-compiler-plugin 3.12.0 creates a compile failure in ctakes-regression-test.  -->
+<!--		<maven-compiler-plugin.version>3.12.0</maven-compiler-plugin.version>-->
+		<maven-install-plugin.version>3.1.1</maven-install-plugin.version>
+		<maven-deploy-plugin.version>3.1.1</maven-deploy-plugin.version>
+<!--		jcasgen-maven-plugin versions 3+ requires jdk11  -->
+		<jcasgen-maven-plugin.version>2.11.0</jcasgen-maven-plugin.version>
+		<maven-gpg-plugin.version>3.1.1</maven-gpg-plugin.version>
+		<maven-javadoc-plugin.version>3.6.3</maven-javadoc-plugin.version>
+		<maven-war-plugin.version>3.4.0</maven-war-plugin.version>
+		<maven-surefire-plugin.version>3.2.3</maven-surefire-plugin.version>
+		<maven-failsafe-plugin.version>3.2.3</maven-failsafe-plugin.version>
+		<maven-assembly-plugin.version>3.6.0</maven-assembly-plugin.version>
 		<mysql-connector.version>5.1.26</mysql-connector.version>
 		<scala-library.version>2.11.7</scala-library.version>
 		<scala-tools.version>0.4.0</scala-tools.version>
@@ -907,6 +913,14 @@
 					<version>${maven-install-plugin.version}</version>
 				</plugin>
 				<plugin>
+					<artifactId>maven-remote-resources-plugin</artifactId>
+					<version>${maven-remote-resources-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-antrun-plugin</artifactId>
+					<version>${maven-antrun-plugin.version}</version>
+				</plugin>
+				<plugin>
 					<artifactId>maven-jar-plugin</artifactId>
 					<version>${maven-jar-plugin.version}</version>
 					<configuration>
@@ -1049,7 +1063,8 @@
 									<pluginExecutionFilter>
 										<groupId>org.apache.maven.plugins</groupId>
 										<artifactId>maven-remote-resources-plugin</artifactId>
-										<versionRange>${maven-remote-resources-plugin.version}</versionRange>
+<!--										<versionRange>${maven-remote-resources-plugin.version}</versionRange>-->
+										<version>${maven-remote-resources-plugin.version}</version>
 										<goals>
 											<goal>process</goal>
 										</goals>
@@ -1084,7 +1099,8 @@
 				<plugin>
 					<groupId>org.apache.uima</groupId>
 					<artifactId>jcasgen-maven-plugin</artifactId>
-					<version>${uimaj.version}</version>
+<!--					<version>${uimaj.version}</version>-->
+					<version>${jcasgen-maven-plugin.version}</version>
 					<executions>
 						<execution>
 							<goals><goal>generate</goal></goals>

@@ -168,7 +168,7 @@
 
 			<plugin>
 				<artifactId>maven-resources-plugin</artifactId>
-				<version>3.0.2</version>
+				<version>3.3.1</version>
 				<executions>
 					<execution>
 						<id>copy-user-resources</id>
