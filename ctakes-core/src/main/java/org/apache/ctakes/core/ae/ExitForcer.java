@@ -5,6 +5,7 @@ import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.log4j.Logger;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
+import org.apache.uima.fit.descriptor.ConfigurationParameter;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
 
@@ -23,6 +24,17 @@ import java.awt.*;
 public class ExitForcer extends PausableAE {
 
    static private final Logger LOGGER = Logger.getLogger( "ExitForcer" );
+
+   static public final String FORCE_PARAM = "ForceExit";
+   static public final String FORCE_DESC = "Forcibly exits the system when the value is yes.  Yes by default.";
+   @ConfigurationParameter(
+         name = FORCE_PARAM,
+         description = FORCE_DESC,
+         mandatory = false,
+         defaultValue = "yes"
+   )
+   private String _forceExit;
+
 
    /**
     * {@inheritDoc}
@@ -51,6 +63,10 @@ public class ExitForcer extends PausableAE {
    @Override
    public void collectionProcessComplete() throws AnalysisEngineProcessException {
       super.collectionProcessComplete();
+      final String force = _forceExit.toLowerCase();
+      if ( !force.equals( "yes" ) && !force.equals( "true" ) ) {
+         return;
+      }
       pause();
       final Frame[] frames = Frame.getFrames();
       if ( frames != null && frames.length > 0 ) {
