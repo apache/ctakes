@@ -46,6 +46,9 @@ add pretty.html.HtmlTextWriter SubDirectory=html
 // Text output, write to subdirectory.
 add pretty.plaintext.PrettyTextWriterFit SubDirectory=text
 
+// primitive FHIR output, write to subdirectory
+add org.apache.ctakes.fhir.cc.FhirJsonFileWriter WriteNlpFhir=true SubDirectory=fhir
+
 // Table output, write to subdirectory.  Write bsv (default), csv and html styles.
 add SemanticTableFileWriter SubDirectory=bsv_table
 add SemanticTableFileWriter SubDirectory=csv_table TableType=CSV

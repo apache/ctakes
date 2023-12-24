@@ -394,7 +394,7 @@
 	</fileSets>
 	<files>
 		<file>
-			<source>../README</source>
+			<source>../README.md</source>
 			<outputDirectory/>
 		</file>
 		<file>
