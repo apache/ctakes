@@ -78,7 +78,6 @@
 	</mailingLists>
 
 	<properties>
-		<ctakes.models.version>5.0.0-SNAPSHOT</ctakes.models.version>
 		<!-- dependencies -->
 		<ant.version>1.9.2</ant.version>
 		<antlr.version>2.7.7</antlr.version>
@@ -942,10 +941,10 @@
 						</archive>
 					</configuration>
 				</plugin>
-				<plugin>
-					<artifactId>maven-javadoc-plugin</artifactId>
-					<version>${maven-javadoc-plugin.version}</version>
-				</plugin>
+<!--				<plugin>-->
+<!--					<artifactId>maven-javadoc-plugin</artifactId>-->
+<!--					<version>${maven-javadoc-plugin.version}</version>-->
+<!--				</plugin>-->
 				<plugin>
 					<artifactId>maven-dependency-plugin</artifactId>
 					<version>${maven-dependency-plugin.version}</version>
