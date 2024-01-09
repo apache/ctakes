@@ -46,7 +46,7 @@ set PbjSecondStep=ctakes_pbj.examples.sentence_printer_pipeline
 
 // There is a fixed order to queue specification in python pipelines.
 // The incoming (receiver) queue is named first, the outgoing (sender) queue is named second.
-add PythonRunner Command="-m $PbjSecondStep JavaToPy PyToJava" LogFile=sentence_printer_pipeline.log
+add PythonRunner Command="-m $PbjSecondStep --receive_queue JavaToPy --send_queue PyToJava" LogFile=sentence_printer_pipeline.log
 
 
 //
