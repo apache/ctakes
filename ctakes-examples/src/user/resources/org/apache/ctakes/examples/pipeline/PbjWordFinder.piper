@@ -44,8 +44,8 @@ add CtakesRunner Pipeline="-p PbjThirdStep -o $OutputDirectory -a $ArtemisBroker
 // Declare the python pipeline defining the second step in the total pipeline.
 set PbjSecondStep=ctakes_pbj.examples.word_finder_pipeline
 
-// There is a fixed order to queue specification in python pipelines.
-// The incoming (receiver) queue is named first, the outgoing (sender) queue is named second.
+// The receive and send queue names must be specified.
+// --receive_queue and -rq are equivalent, as are --send_queue and -sq
 add PythonRunner Command="-m $PbjSecondStep --receive_queue JavaToPy --send_queue PyToJava" LogFile=word_finder_pipeline.log
 
 
