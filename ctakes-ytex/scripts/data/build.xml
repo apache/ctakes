@@ -531,7 +531,8 @@ ${sql.delimiter}
 		<copy file="${basedir}/conn.xml.template" tofile="${java.io.tmpdir}/conn.xml" overwrite="yes">
 			<filterset>
 				<filter token="db.driver" value="${db.driver}" />
-				<filter token="db.url" value="${db.url}" />
+                <!-- conn.xml needs to replace with ampersands escaped -->
+				<filter token="db.url" value="${xmldb.url}" />
 				<filter token="db.username" value="${db.username}" />
 				<filter token="db.password" value="${db.password}" />
 			</filterset>
