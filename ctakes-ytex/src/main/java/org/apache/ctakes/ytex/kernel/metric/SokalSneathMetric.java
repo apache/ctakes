@@ -43,7 +43,7 @@ public class SokalSneathMetric extends BaseSimilarityMetric {
 			return 0d;
 		double ic1 = simSvc.getIC(concept1, true);
 		double ic2 = simSvc.getIC(concept2, true);
-		return lcsIC / (2 * (ic1 + ic2) - 3 * lcsIC);
+		return lcsIC / (2*(ic1 + ic2) - (3*lcsIC));
 	}
 
 }

@@ -20,20 +20,53 @@ package org.apache.ctakes.ytex.kernel.metric;
 
 import java.util.Map;
 
+/**
+ * Wu Palmer metric as in https://wn.readthedocs.io/en/latest/api/wn.similarity.html
+ * 
+ * @author vijay
+ * @author painter
+ * 
+ */
 public class WuPalmerMetric extends BaseSimilarityMetric {
 	@Override
 	public double similarity(String concept1, String concept2,
 			Map<String, Double> conceptFilter, SimilarityInfo simInfo) {
 		initLCSes(concept1, concept2, simInfo);
+		
 		if (simInfo.getLcses().size() > 0) {
 			int lcsDepth = 0;
+			
+			// Test for the LCS with the greatest depth
+			// to find the lowest common synonym
 			for (String lcs : simInfo.getLcses()) {
+				
+				//
+				// Note:
+				//   The depth is inflated for all concepts by +1 
+				//   due to creating a fake node to build the concept
+				//   graph at C000000. But Wu-Palmer adds one to the
+				//   distance, so it is OK to leave here
 				int d = simSvc.getDepth(lcs);
+				
+				// Find the max depth of the LCS
 				if (d > lcsDepth)
 					lcsDepth = d;
 			}
-			double lcsDepth2 = (double) (lcsDepth * 2);
-			return lcsDepth2 / (lcsDepth2 + (double) (simInfo.getLcsDist()-1));
+			
+			//
+			// Compute Wu-Palmer Similarity:
+			//
+			// https://wn.readthedocs.io/en/latest/api/wn.similarity.html
+			//
+			// Why does this work? 2*k -> 2 times the LCS depth
+			// i or j will be zero as it is the same concept
+			//
+			// The other will be the shortest distance between the LCS minus 1 hop
+			//
+			double lcsDist = simInfo.getLcsDist().doubleValue();
+			double k = (double) (lcsDepth);
+			double sim = (2.0*k) / (2.0*k + lcsDist - 1.0);
+			return sim;
 		}
 		return 0d;
 	}

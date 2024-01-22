@@ -46,30 +46,39 @@ public class LinMetric extends BaseSimilarityMetric {
 	@Override
 	public double similarity(String concept1, String concept2,
 			Map<String, Double> conceptFilter, SimilarityInfo simInfo) {
-		// don't bother if the concept graph is null
+
+		// Test that there is a valid concept graph
 		if (!validCG)
 			return 0d;
-		// get lcs
-		double lcsIC = initLcsIC(concept1, concept2, conceptFilter, simInfo,
-				this.intrinsicIC);
-		if (lcsIC == 0d) {
-			return 0d;
-		}
-		// get ic of concepts
+		
+		// Compute the IC values for each concept
 		double ic1 = simSvc.getIC(concept1, this.intrinsicIC);
 		double ic2 = simSvc.getIC(concept2, this.intrinsicIC);
+		
+		// Get the LCS with the lowest IC score
+		double lcsIC = initLcsIC(concept1, concept2, conceptFilter, simInfo,
+				this.intrinsicIC);
+		
 		// if the corpus IC is 0 and the concept is not the root, then we don't
 		// have any IC on the concept and can't measure similarity - return 0
 		if (!intrinsicIC && ic1 == 0 && !rootConcept.equals(concept1))
 			return 0d;
+
 		if (!intrinsicIC && ic2 == 0 && !rootConcept.equals(concept2))
 			return 0d;
-		double denom = ic1 + ic2;
-		if (denom == 0)
-			return 0d;
-		return 2 * lcsIC / denom;
+		
+		// Compute the Lin score
+		double sim = (2d * lcsIC) / ( ic1 + ic2 );
+		return sim;	
+		
 	}
 
+	/**
+	 * This constructor allows us to specify if we want the standard Lin
+	 * metric or the Intrinsic Lin by passing a boolean flag
+	 * @param simSvc
+	 * @param intrinsicIC if true, then compute the intrinsic Lin metric
+	 */
 	public LinMetric(ConceptSimilarityService simSvc, boolean intrinsicIC) {
 		super(simSvc);
 		this.intrinsicIC = intrinsicIC;
