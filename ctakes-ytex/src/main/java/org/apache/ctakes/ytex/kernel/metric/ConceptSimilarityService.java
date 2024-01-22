@@ -32,7 +32,9 @@ public interface ConceptSimilarityService {
 		LCH(false, false), INTRINSIC_LCH(true, false), LIN(false, true), INTRINSIC_LIN(
 				true, false), PATH(false, false), INTRINSIC_PATH(true, false), JACCARD(
 				true, false), SOKAL(true, false), RADA(false, false), INTRINSIC_RADA(
-				true, false), WUPALMER(false, false), PAGERANK(false, false);
+				true, false), WUPALMER(false, false), PAGERANK(false, false), 
+				RESNIK(false, false), INTRINSIC_RESNIK(true, false),
+				FAITH(false, false), INTRINSIC_FAITH(true, false);
 		boolean intrinsicIC = false;
 		boolean corpusIC = false;
 
