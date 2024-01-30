@@ -24,7 +24,7 @@
         <entry key="ytex.conceptGraphQuery"><![CDATA[
         select distinct cui1, cui2 
         from @umls.schema@.MRREL 
-        where sab in ('SNOMEDCT')
+        where sab in ('SNOMEDCT_US')
         and rel in ('PAR')
         order by cui1, cui2
         ]]></entry>

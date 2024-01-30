@@ -8,6 +8,10 @@ db.schema=dbo
 # with the values of db.host and db.name respectively
 db.url=jdbc:sqlserver://localhost;databaseName=YTEX;integratedSecurity=true
 
+# The xmldb.url should be a duplicate of db.url with the exception of replacing an & with &amp;
+# This is a stopgap to allow conn.xml.template to not break in the SAX parser
+xmldb.url=jdbc:sqlserver://localhost;databaseName=YTEX;integratedSecurity=true
+
 # assume windows integrated authentication, change if necessary
 db.username=
 db.password=

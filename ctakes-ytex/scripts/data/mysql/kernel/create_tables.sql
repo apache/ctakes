@@ -159,17 +159,20 @@ create table feature_eval (
   index ix_feature_eval(corpus_name, cv_fold_id, type)
 ) engine=myisam comment 'evaluation of a set of features in a corpus';
 
-create table feature_rank (
-  feature_rank_id int auto_increment not null primary key,
-  feature_eval_id int not null comment 'fk feature_eval',
-  feature_name varchar(50) not null comment 'name of feature',
-  evaluation double not null default 0 comment 'measurement of feature worth',
-  rank int not null default 0 comment 'rank among all features',
-  unique index nk_feature_name(feature_eval_id, feature_name),
-  index ix_feature_rank(feature_eval_id, rank),
-  index ix_feature_evaluation(feature_eval_id, evaluation),
-  index fk_feature_eval(feature_eval_id)
-) engine=myisam comment 'evaluation of a feature in a corpus';
+-- update for MySQL 8.0.x
+CREATE TABLE `feature_rank` (
+  `feature_rank_id` int NOT NULL AUTO_INCREMENT,
+  `feature_eval_id` int NOT NULL COMMENT 'fk feature_eval',
+  `feature_name` varchar(50) NOT NULL COMMENT 'name of feature',
+  `evaluation` double NOT NULL DEFAULT '0' COMMENT 'measurement of feature worth',
+  `rank` int NOT NULL DEFAULT '0' COMMENT 'rank among all features',
+  PRIMARY KEY (`feature_rank_id`),
+  UNIQUE KEY `nk_feature_name` (`feature_eval_id`,`feature_name`),
+  INDEX `ix_feature_rank` (`feature_eval_id`,`rank`),
+  INDEX `ix_feature_evaluation` (`feature_eval_id`,`evaluation`),
+  INDEX `fk_feature_eval` (`feature_eval_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='evaluation of a feature in a corpus';
+
 
 CREATE TABLE feature_parchd (
   feature_parchd_id int(11) NOT NULL AUTO_INCREMENT,
@@ -211,18 +214,23 @@ create table hotspot_instance (
     unique index NK_hotspot_instance (corpus_name, experiment, label, instance_id)
 ) engine=myisam comment 'hotspot features for an instance';
 
-create table hotspot_sentence (
-    hotspot_sentence_id int auto_increment not null primary key,
-    hotspot_instance_id int not null comment 'fk hotspot_instance',
-    anno_base_id int not null comment 'fk anno_sentence',
-    evaluation double not null default 0 comment 'max eval from hotspot',
-    rank int not null default 0 comment 'min rank from hotspot',
-    unique index NK_hotspot_sentence (hotspot_instance_id, anno_base_id),
-    index FK_hotspot_instance_id (hotspot_instance_id),
-	index FK_anno_base_id (anno_base_id),
-    INDEX IX_evaluation (hotspot_instance_id, evaluation),
-    INDEX IX_rank (hotspot_instance_id, rank)
-) engine = myisam comment 'sentences that contain hotspots at specified threshold';
+
+-- update for MySQL 8.0.x
+CREATE TABLE `hotspot_sentence` (
+  `hotspot_sentence_id` int NOT NULL AUTO_INCREMENT,
+  `hotspot_instance_id` int NOT NULL COMMENT 'fk hotspot_instance',
+  `anno_base_id` int NOT NULL COMMENT 'fk anno_sentence',
+  `evaluation` double NOT NULL DEFAULT '0' COMMENT 'max eval from hotspot',
+  `rank` int NOT NULL DEFAULT '0' COMMENT 'min rank from hotspot',
+  PRIMARY KEY (`hotspot_sentence_id`),
+  UNIQUE KEY `NK_hotspot_sentence` (`hotspot_instance_id`,`anno_base_id`),
+  INDEX `FK_hotspot_instance_id` (`hotspot_instance_id`),
+  INDEX `FK_anno_base_id` (`anno_base_id`),
+  INDEX `IX_evaluation` (`hotspot_instance_id`,`evaluation`),
+  INDEX `IX_rank` (`hotspot_instance_id`,`rank`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='sentences that contain hotspots at specified threshold';
+
+
 
 create table corpus_doc (
 	corpus_name varchar(50) not null comment 'corpus name',

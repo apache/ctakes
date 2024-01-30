@@ -8,6 +8,7 @@ db.password=
 db.directory=@ytex.hsql.db@
 # jdbc url for database.  schema name must match db.schema
 db.url=jdbc:hsqldb:file://@ytex.hsql.db@;shutdown=true
+xmldb.url=jdbc:hsqldb:file://@ytex.hsql.db@;shutdown=true
 
 # the schema where umls is installed
 # if not specified, will default to schema from ytex

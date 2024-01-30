@@ -6,7 +6,12 @@ db.username=ytex
 db.password=ytex
 
 # jdbc url for database.  schema name must match db.schema
-db.url=jdbc:mysql://localhost:3306/ytex?autoReconnect=true
+db.url=jdbc:mysql://localhost:3306/ytex?autoReconnect=TRUE&serverTimezone=US/Eastern&useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true
+
+# The xmldb.url should be a duplicate of db.url with the exception of replacing an & with &amp;
+# This is a stopgap to allow conn.xml.template to not break in the SAX parser
+xmldb.url=jdbc:mysql://localhost:3306/ytex?autoReconnect=TRUE&amp;serverTimezone=US/Eastern&amp;useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false&amp;allowPublicKeyRetrieval=true
+
 
 # the schema where umls is installed
 # if not specified, will default to schema from ytex
