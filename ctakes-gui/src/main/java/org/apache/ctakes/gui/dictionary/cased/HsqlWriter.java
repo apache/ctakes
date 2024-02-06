@@ -192,7 +192,11 @@ final public class HsqlWriter {
       } else if ( Integer.class.equals( type ) ) {
          statement.setInt( 2, Integer.valueOf( code ) );
       } else {
-         LOGGER.error( "Could not set code for " + type.getName() );
+         if ( type == null ) {
+            LOGGER.error( "Type for code " + code + " is null." );
+         } else {
+            LOGGER.error( "Could not set code for " + type.getName() );
+         }
          statement.setString( 2, code );
       }
    }

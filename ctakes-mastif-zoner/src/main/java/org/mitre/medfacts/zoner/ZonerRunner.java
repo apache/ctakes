@@ -23,13 +23,14 @@ public class ZonerRunner
 
     ZonerRunner runner = new ZonerRunner();
     
-    String inputDirectoryString;
+    String inputDirectoryString = null;
     if (args.length > 0)
     {
       inputDirectoryString = args[0];
     } else
     {
-      inputDirectoryString = "C:/DO_NOT_BACKUP/_for_i2b2_paper/data.release.2011-02-22/eval";
+      logger.error( "ZonerRunner requires an input parameter specifying the input directory." );
+      System.exit( 1 );
     }
 
     runner.setInputDirectoryString(inputDirectoryString);
