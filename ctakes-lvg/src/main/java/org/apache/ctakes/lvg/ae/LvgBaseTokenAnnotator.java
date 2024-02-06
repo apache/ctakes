@@ -56,7 +56,7 @@ import java.util.*;
  */
 @PipeBitInfo(
 		name = "LVG Basetoken Annotator",
-		description = "Adds cononical form of Base Tokens.",
+		description = "Adds canonical form of Base Tokens.",
 		dependencies = { PipeBitInfo.TypeProduct.SECTION, PipeBitInfo.TypeProduct.BASE_TOKEN }
 )
 public class LvgBaseTokenAnnotator extends JCasAnnotator_ImplBase {

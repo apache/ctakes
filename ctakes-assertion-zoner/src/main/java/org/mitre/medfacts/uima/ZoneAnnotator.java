@@ -18,6 +18,12 @@
  */
 package org.mitre.medfacts.uima;
 
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.util.Iterator;
+import java.util.List;
 import org.apache.ctakes.assertion.zoner.types.Heading;
 import org.apache.ctakes.assertion.zoner.types.Zone;
 import org.apache.log4j.Logger;
@@ -30,14 +36,6 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.mitre.medfacts.zoner.ZonerCli;
 import org.mitre.medfacts.zoner.ZonerCli.HeadingRange;
-import org.mitre.medfacts.zoner.ZonerCli.Range;
-
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.util.Iterator;
-import java.util.List;
 
 @TypeCapability(outputs =
 {
@@ -51,48 +49,61 @@ import java.util.List;
 
 public class ZoneAnnotator extends JCasAnnotator_ImplBase {
 	public static final String PARAM_SECTION_REGEX_FILE_URI = "SectionRegex";
+	public static final String PARAM_INCLUDE_GENERICS = "IncludeGenerics";
 	
   @ConfigurationParameter(
       name = PARAM_SECTION_REGEX_FILE_URI,
       description = "xml configuration file with zone regular expression values",
       mandatory = true)
   protected String sectionRegexFileUriString;
+  
+  @ConfigurationParameter(
+	      name = PARAM_INCLUDE_GENERICS,
+	      description = "include generic sections",
+	      mandatory = false)
+  protected Boolean includeGenerics = Boolean.FALSE;
 
   protected final Logger logger = Logger.getLogger(ZoneAnnotator.class.getName());
 	
 	@Override
 	public void initialize (UimaContext aContext) throws ResourceInitializationException {
 		super.initialize(aContext);
+		buildZonerCli();
 	}
 	
+	private void buildZonerCli() throws ResourceInitializationException {
+		//System.out.println("sectionRegexFileUriString: " + sectionRegexFileUriString);
+	    URL sectionRegexFileInClasspathUrl = 
+	        getClass().getClassLoader().getResource(sectionRegexFileUriString);
+	    logger.info("sectionRegexFileInClasspathUrl: " + sectionRegexFileInClasspathUrl);
+	    logger.info("includeGenerics: " + includeGenerics);
+	    URI sectionRegexFileInClasspathUri;
+	    try
+	    {
+	      sectionRegexFileInClasspathUri = sectionRegexFileInClasspathUrl.toURI();
+			_zonerCli = new ZonerCli(sectionRegexFileInClasspathUri);
+			// NB UC custom version of the zoner
+			boolean includeGenericHeadings =  includeGenerics.booleanValue();
+			_zonerCli.includeGenerics(includeGenericHeadings);
+			
+	    } catch (URISyntaxException e1)
+	    {
+	      logger.error( String.format("section regex file not found [%s]", sectionRegexFileUriString), e1);
+	      throw new ResourceInitializationException(e1);
+	    }
+	}
+
 	private int countOfIndexOutOfBounds = 0;
+	private ZonerCli _zonerCli = null;
 
 	@Override
 	public void process(JCas jcas) throws AnalysisEngineProcessException {
-	  
-	System.out.println("sectionRegexFileUriString: " + sectionRegexFileUriString);
-    URL sectionRegexFileInClasspathUrl = 
-        getClass().getClassLoader().getResource(sectionRegexFileUriString);
-    System.out.println("sectionRegexFileInClasspathUrl: " + sectionRegexFileInClasspathUrl);
-    URI sectionRegexFileInClasspathUri;
-    try
-    {
-      sectionRegexFileInClasspathUri = sectionRegexFileInClasspathUrl.toURI();
-    } catch (URISyntaxException e1)
-    {
-      logger.error( String.format("section regex file not found [%s]", sectionRegexFileUriString), e1);
-      throw new AnalysisEngineProcessException(e1);
-    }
-	  ZonerCli zonerCli =
-      new ZonerCli(sectionRegexFileInClasspathUri);
-    
-		zonerCli.setEntireContents(jcas.getDocumentText());
+		_zonerCli.setEntireContents(jcas.getDocumentText());
 		// initialize converter once contents are set
-		zonerCli.initialize();
+		_zonerCli.initialize();
 		try {
-			zonerCli.execute();
+			_zonerCli.execute();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return;
 			//throw new AnalysisEngineProcessException(e);
@@ -104,30 +115,64 @@ public class ZoneAnnotator extends JCasAnnotator_ImplBase {
 			//throw new AnalysisEngineProcessException(e);
 		}
 		// Add the zone annotations
-		List<Range> rangeList = zonerCli.getRangeList();
-		for (Iterator<Range> i = rangeList.iterator(); i.hasNext();  ) {
-			Range r = i.next();
-		    Zone zAnnot = new Zone(jcas);	
-		    zAnnot.setBegin(r.getBegin());
-		    zAnnot.setEnd(r.getEnd());
-		    zAnnot.setLabel(r.getLabel());
-		    zAnnot.addToIndexes();
-		    logger.info(String.format("added new zone annotation [%d-%d] \"%s\"", zAnnot.getBegin(), zAnnot.getEnd(), zAnnot.getCoveredText()));
+		int remembered_begin = -1;
+		List<HeadingRange> rangeList = _zonerCli.getHeadings();
+		for (Iterator<HeadingRange> i = rangeList.iterator(); i.hasNext();  ) {
+			HeadingRange r = i.next();
+			if (validRange(r.getHeadingBegin(),r.getHeadingEnd())) {
+			    if (remembered_begin < 0 || validRange(remembered_begin, r.getHeadingEnd())) {
+			    	Zone zAnnot = new Zone(jcas);
+			    	zAnnot.setBegin((remembered_begin < 0) ? r.getHeadingBegin() : remembered_begin);
+				    zAnnot.setEnd(r.getHeadingEnd());
+				    zAnnot.setLabel(r.getLabel());
+				    zAnnot.addToIndexes();
+				    remembered_begin = -1;
+				    logger.debug(String.format("added new zone annotation [%d-%d] \"%s\"", 
+				    		zAnnot.getBegin(), zAnnot.getEnd(), zAnnot.getCoveredText()));
+			    }
+			    else {
+			    	logger.debug(String.format("unable to patch [%d-%d]", remembered_begin, r.getHeadingEnd()));
+			    	remembered_begin = -1;
+			    }
+			} else {
+				// note that range is inverted (a ZonerCli error) so range End is its sraer
+				remembered_begin = r.getHeadingEnd();
+				logger.debug(String.format("inverted range [%d-%d]", r.getHeadingBegin(), r.getHeadingEnd()));
+			}
+		    
 		}
 		
-		
 		// Add the heading annotations
-		List<HeadingRange> headings = zonerCli.getHeadings();
+		remembered_begin = -1;
+		List<HeadingRange> headings = _zonerCli.getHeadings();
 		for (Iterator<HeadingRange> i = headings.iterator(); i.hasNext();  ) {
 			HeadingRange r = i.next();
-		    Heading hAnnot = new Heading(jcas);	
-		    hAnnot.setBegin(r.getHeadingBegin());
-		    hAnnot.setEnd(r.getHeadingEnd());
-		    hAnnot.setLabel(r.getLabel());
-		    hAnnot.addToIndexes();
-		    logger.info(String.format("added new headingrange annotation [%d-%d] \"%s\"", hAnnot.getBegin(), hAnnot.getEnd(), hAnnot.getCoveredText()));
+			if (validRange(r.getHeadingBegin(), r.getHeadingEnd())) {
+				if (remembered_begin < 0 || validRange(remembered_begin, r.getHeadingEnd())) {
+				    Heading hAnnot = new Heading(jcas);	
+				    hAnnot.setBegin((remembered_begin < 0) ? r.getHeadingBegin() : remembered_begin);
+				    hAnnot.setEnd(r.getHeadingEnd());
+				    hAnnot.setLabel(r.getLabel());
+				    hAnnot.addToIndexes();
+				    remembered_begin = -1;
+				    logger.debug(String.format("added new headingrange annotation [%d-%d] \"%s\"", 
+				    		hAnnot.getBegin(), hAnnot.getEnd(), hAnnot.getCoveredText()));
+				} else {
+			    	logger.debug(String.format("unable to patch [%d-%d]", remembered_begin, r.getHeadingEnd()));
+			    	remembered_begin = -1;
+			    }
+			} else {
+				// note that range is inverted (a ZonerCli error) so range End is its sraer
+				remembered_begin = r.getHeadingEnd();
+				logger.debug(String.format("inverted heading range [%d-%d]", r.getHeadingBegin(), r.getHeadingEnd()));
+			}
 		}
 
 	}
 
+	private boolean validRange(int begin, int end) {
+		if (begin >= 0 && end > begin) 
+			return true;
+		return false;
+	}
 }
