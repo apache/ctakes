@@ -51,8 +51,10 @@ public class WuPalmerMetric extends BaseSimilarityMetric {
 			// Compute Wu-Palmer Similarity:
 			//
 			double lcsDist = simInfo.getLcsDist().doubleValue();
-			double c1Depth = simSvc.getDepth(concept1) + lcsDist;
-			double c2Depth = simSvc.getDepth(concept2) + lcsDist ;
+
+            // Adjust depth by 1 due to fake root node
+			double c1Depth = simSvc.getDepth(concept1) + 1;
+			double c2Depth = simSvc.getDepth(concept2) + 1;
 			double score = ( 2.0 * (lcsDepth) / ( c1Depth + c2Depth ) );
 			return score;
 		}
