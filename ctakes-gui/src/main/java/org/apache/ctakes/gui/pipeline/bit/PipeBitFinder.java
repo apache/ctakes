@@ -6,6 +6,7 @@ import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.core.util.log.DotLogger;
 import org.apache.log4j.Logger;
 import org.apache.uima.analysis_component.Annotator_ImplBase;
+import org.apache.uima.analysis_component.CasAnnotator_ImplBase;
 import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
 import org.apache.uima.collection.CasConsumer_ImplBase;
 import org.apache.uima.collection.CollectionReader_ImplBase;
@@ -14,6 +15,7 @@ import java.io.IOException;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.function.Consumer;
 
 /**
  * Finds Collection Readers, Annotators, Cas Consumers (Writers), and their
@@ -98,6 +100,18 @@ public enum PipeBitFinder {
 		  _pipeBits.removeIf( c -> c.getPackage().getName().startsWith( "org.cleartk" )
 		                       || c.getPackage().getName().startsWith( "org.apache.uima" ) );
 		  LOGGER.info( "Scan Finished with " +_pipeBits.size()+ " items found." );
+		  if(LOGGER.isDebugEnabled()) {
+			  for(Class<?> annot : (Collection<Class<?>>)_pipeBits) {
+				  if(JCasAnnotator_ImplBase.class.isAssignableFrom(annot)) {
+					  PipeBitInfo p = (PipeBitInfo)annot.getAnnotation(PipeBitInfo.class);
+					  if (p != null) {
+						  LOGGER.info(String.format("#(%s)#%s#%s#unused\n",annot.getSuperclass().getSimpleName(), annot.getSimpleName(), p.description()));
+					  } else {
+						  LOGGER.info(String.format("#(%s)#%s#Unofficial Offering#unuseds\n",annot.getSuperclass().getSimpleName(), annot.getSimpleName()));
+					  }
+				  }
+			  }
+		  }
 		  _didScan = true;
    }
 

@@ -33,7 +33,7 @@
       <dependency>
 			<groupId>org.apache.ctakes</groupId>
 			<artifactId>ctakes-dependency-parser-models</artifactId>
-			<version>${project.version}</version>
+			<version>${ctakes-models.version}</version>
 		</dependency>
 <!--   ctakes-dependency-parser-clear  is a large model, not used by default in ctakes.
 			If you need to use it then uncomment the dependency declaration below.   -->

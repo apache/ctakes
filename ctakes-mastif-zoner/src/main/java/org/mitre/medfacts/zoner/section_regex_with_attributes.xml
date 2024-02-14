@@ -1,0 +1,1344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<fragments> 
+<!-- Modifier Components of Section Headings -->
+<fragment>
+    <name>admit</name>
+    <expansion>(?&lt;admit&gt;admit(?:ting)?|admission)</expansion>
+    <temporal>admission</temporal>
+</fragment>
+<fragment>
+    <name>admit2</name>
+    <expansion>(?&lt;admit2&gt;admit(?:ting)?|admission)</expansion>
+    <temporal>admission</temporal>
+</fragment>
+<fragment>
+    <name>future</name>
+    <expansion>(?&lt;future&gt;home|follow[\s+\-]?up)</expansion>
+    <temporal>future</temporal>
+</fragment>
+<fragment>
+    <name>home</name>
+    <expansion>(?&lt;home&gt;home)</expansion>
+    <temporal>future</temporal>
+</fragment>
+<fragment>
+    <name>discharge</name>
+    <expansion>(?&lt;discharge&gt;discharge)</expansion>
+    <temporal>discharge</temporal>
+</fragment>
+<fragment>
+    <name>transfer</name>
+    <expansion>(?&lt;transfer&gt;transfer)</expansion>
+    <temporal>transfer</temporal>
+</fragment>
+<fragment>
+    <name>discharge2</name>
+    <expansion>(?&lt;discharge2&gt;discharge)</expansion>
+    <temporal>discharge</temporal>
+</fragment>
+<fragment>
+    <name>transfer2</name>
+    <expansion>(?&lt;transfer2&gt;transfer)</expansion>
+    <temporal>transfer</temporal>
+</fragment>
+<fragment>
+  <name>be</name>
+  <expansion>(\s+(?:am|is|are|was|were))</expansion>
+</fragment>
+<fragment>
+    <name>leftTimeMods</name>  
+    <expansion>((?:(?:pre-)?<fragment-ref name="admit"/>|current|<fragment-ref name="discharge"/>|<fragment-ref name="future"/>|interim|initial|postpartum|(?:pre|post)op(?:erative)?|<fragment-ref name="transfer"/>)\s+)</expansion>
+    <temporal>encounter</temporal>
+</fragment>
+<fragment>
+    <name>leftDescrMods</name>  
+    <expansion>((?:brief(?:\s+resume\s+of)?|overall|other|additional|pertinent|relevant|(?:list\s+of\s+)?other|plan\s+for|standardized|summary\s+of|doctor(?:\s+\&apos;)?s)\s+)</expansion>
+</fragment>
+<fragment>
+  <name>include</name>
+  <expansion>(\s+(?:include[ds]?))</expansion>
+</fragment>
+<!-- have to make/use second copies of the named matching group fragments here than used in leftTimeMods because both left and right will will
+     ultimately occur in the same expanded section pattern, and you can't have the same named matching group occur twice :-/ -->
+  <fragment>
+    <name>rightTimeMods</name>
+    <expansion>(\s+(?:(?:(?:UP)?ON|AS|AT|\@|OF|FOR|(?:PRIOR\s+TO)|(?:DURING))\s+(?:(?:(?:THE|THAT|THIS)\s+)?(?:TIME|DAY)\s+OF\s+)?(?:<fragment-ref name="admit2"/>|DEATH|<fragment-ref name="discharge2"/>|<fragment-ref name="transfer2"/>|<fragment-ref name="home"/>|HOSPITALIZATION|OUTPATIENT)))</expansion>
+    <temporal>encounter</temporal>
+  </fragment>
+  <fragment>
+    <name>rightDescrMods</name>
+    <expansion>(\s+(?:(?:by\s+(?:problems?|complications?|(?:organ\s+)?systems?|issues?|report))|(?:\s+of\s+note)))</expansion>
+  </fragment>
+  <fragment>
+    <name>rightLocationMods</name>
+    <expansion>(\s+in\s+the\s+emergency\s+department)</expansion>
+    <temporal>encounter</temporal>
+  </fragment>
+<!-- Core Components of Section Headings -->
+<!--HISTORY/SUBJECTIVE-->
+  <fragment>
+    <name>allergies1</name>
+    <expansion>(?:allergies|allergy|adverse\s+drug\s+reactions?)</expansion>
+  </fragment>
+  <fragment>
+    <name>allergies2</name>
+    <expansion>(allergy(\s*\/\s*reaction)?\s+profile)</expansion>
+  </fragment>
+  <fragment>
+    <name>famhistory</name>
+    <expansion>(?:family\s+(?:(?:medical|social)\s+)?history|fhx?|fam\s+hx)</expansion>
+  </fragment>
+  <fragment>
+    <name>sochistory</name>
+    <expansion>(social\s+history|social\s+hx|\bshx?|soc\s*hx|habits)</expansion>
+  </fragment>
+<!--MEDICATIONS-->
+  <fragment>
+    <name>medication1</name>       
+    <expansion>(medications?|medication\s*\(\s*s\s*\)|regimen|treatment\s+cycle)</expansion>
+  </fragment>
+  <fragment>
+    <name>medication2</name>
+    <expansion>(meds?)</expansion>
+  </fragment>
+<!--EXAM/LAB/OBJECTIVE-->
+  <fragment>
+    <name>physicalexam1</name>
+    <expansion>((physical|surgical)(\s+exam(ination)?|\s+findings)?|\bpe|\*pe|on\s+exam(ination)?|examination\s+data)</expansion>
+  </fragment>
+  <fragment>
+    <name>physicalexam2</name>
+    <expansion>((daily|patient)\s+status)</expansion>
+  </fragment>
+  <!-- fragments for subsections -->
+  <fragment>
+    <name>subsectionLeft</name>
+    <expansion>(\d+\.\s+|\*(\*)?|-(-)?|\#(\#)?)</expansion>
+  </fragment>
+  <fragment>
+    <name>system</name>
+    <expansion>(\s+sys(\.|tem)?)</expansion>
+  </fragment>
+  <fragment>
+    <name>conj</name>
+    <expansion>(\s*,\s*|\s*\&amp;\s*|\s*\/\s*|(\s*,)?\s+and\s+)</expansion>
+  </fragment>
+  <fragment>
+    <name>sub</name>
+    <expansion>(\s*\/\s*|\s*--?\s*|\s+)</expansion>
+  </fragment>
+  <fragment>
+    <name>cardio</name>
+    <expansion>(cvs?|cards?|cardiac|heart|cardio(vascular(ly)?)?)</expansion>
+  </fragment>
+  <fragment>
+    <name>rhythm</name>
+    <expansion>((rate\s*(\&amp;|\sand\s))?\s*rhythm\s*((\&amp;|\sand\s)\s*rate)?)</expansion>
+  </fragment>
+  <fragment>
+    <name>pulmonary</name>
+    <expansion>(pulmo?|pulmonary|lungs|chest|respiratory|resps?)</expansion>
+  </fragment>
+  <fragment>
+    <name>heme</name>
+    <expansion>(heme|hematolog(y|ic(ally)?))</expansion>
+  </fragment>
+  <fragment>
+    <name>lymph</name>
+    <expansion>(lymph(atic(s|ally)?)?)</expansion>
+  </fragment>
+  
+<!--ASSESSMENT/DISPOSITION/PLAN/INSTRUCTIONS-->
+<!--IN-PATIENT COURSE-->
+<!--DIAGNOSIS-->
+<!--PROCEDURE/TREATMENT-->
+</fragments>
+<!-- Core Components of Section Headings -->
+<!-- Section Heading Patterns -->
+<sections>
+  <!-- ADDENDUM --> 
+  <section>
+    <regex>((addendum)\s*\:)</regex>
+    <label>addendum</label>
+    <medical>unknown</medical>
+    <temporal>unknown</temporal>
+    <subject>patient</subject>
+  </section>
+  <!-- ADMISSION DATE --> 
+  <section>
+    <regex>(?:(?:(?:admission\s+date)|(date\s+of\s+admission))\s*\:)</regex>
+    <label>admission date</label>
+    <medical>date</medical>
+    <temporal>admission</temporal>
+    <subject>patient</subject>
+  </section>
+  <!-- AGE --> 
+  <section>
+    <regex>age\s*\:</regex>
+    <label>age</label>
+    <medical>non-medical</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <!-- ALLERGY --> 
+  <section>
+    <regex>(?:(?:<fragment-ref name="allergies1"/>|<fragment-ref name="allergies2"/>)\s*\:)</regex>
+    <label>allergy</label>
+    <medical>allergy</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <!-- APPOINTMENTS --> 
+  <section>
+    <regex>(((<fragment-ref name="leftTimeMods"/>)|(<fragment-ref name="leftDescrMods"/>))?(appointments?(?:\(?:\s+s\s+\))?)\s*(?:\(\s+s\s+\))?\s*\:)</regex>
+    <label>appointments</label>
+    <medical>instructions</medical>
+    <temporal>future</temporal>
+    <subject>patient</subject>
+  </section>
+  <!-- ASSESSMENT --> 
+  <section>
+    <regex>((<fragment-ref name="leftTimeMods"/>|<fragment-ref name="leftDescrMods"/>)?(assessment)(<fragment-ref name="rightTimeMods"/>)?\s*\:)</regex>
+    <label>assessment</label>
+    <medical>symptoms/condition</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+   <!-- ASSESSMENT/PLAN --> 
+  <section>
+    <regex>(((<fragment-ref name="leftTimeMods"/>)|<fragment-ref name="rightDescrMods"/>)?((?:assessment\s*(?:and|\&amp;|\/)\s*plan)|(?:a\s*(?:\&amp;|\/)\s*p))(<fragment-ref name="rightTimeMods"/>)?\s*\:)</regex>
+    <label>assessment/plan</label>
+    <medical>problems/diagnoses,procedures</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <!-- ATTENDING MD --> 
+  <section>
+    <regex>(?:attend(?:ing)?(?:\s+physician)?\s*\:)</regex>
+    <label>attending md</label>
+    <medical>physicians</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <section>
+    <regex ignore-case="false">([A-Z]{2,2}\d{3,3}\/\d{4,4}\s+[A-Z]+\s+([A-Z]\.\s+)?[A-Z]+\s+\,(?:\s+(?:jr|iii)\s*\,\s*)?\s+M\.D\.)\s*\:</regex>
+    <label>attending md</label>
+    <medical>physicians</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <!-- CHIEF COMPLAINT --> 
+  <section>
+    <regex find-all="false">((?:(?:chief\s+complaint)|(?:patient\s+states\s+complaint))\s*\:)</regex>
+    <label>chief complaint</label>
+    <medical>symptoms/condition</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <!-- CLINICAL FINDINGS --> 
+  <section>
+    <regex>((clinical\s+findings?)\s*\:)</regex>
+    <label>clinical findings</label>
+    <medical>problems/diagnoses</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <!-- CODE STATUS --> 
+  <section>
+    <regex find-all="false">(?:((code(?:\s+status)?)\s*\:))</regex>
+    <label>code status</label>
+    <medical>other</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <!-- COMMENTS --> 
+  <section>
+    <regex>(((?:additional\s+)comments)\s*\:)</regex>
+    <label>comments</label>
+    <medical>unknown</medical>
+    <temporal>unknown</temporal>
+    <subject>patient</subject>
+  </section>
+  <!-- COMPLICATIONS --> 
+  <section>
+    <regex find-all="false">(?:((complications?)\s*\:))</regex>
+    <label>complications</label>
+    <medical>problems/diagnoses</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <!--CONDITION  --> 
+  <section>
+    <regex>((<fragment-ref name="leftTimeMods"/>)?(condition)(<fragment-ref name="rightTimeMods"/>)?\s*\:)</regex>
+    <label>condition</label>
+    <medical>symptoms/condition</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <!-- CONSULTANTS --> 
+  <section>
+    <regex>((consultants?)\s*\:)</regex>
+    <label>consultants</label>
+    <medical>physicians</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <!-- CONSULTATION SUMMARY --> 
+  <section>
+    <regex>((consults)\s*\:)</regex>
+    <label>consultation summary</label>
+    <medical>problems/diagnoses,procedures</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <!--DATE OF BIRTH  --> 
+  <section>
+    <regex>date\s+of\s+birth\s*\:</regex>
+    <label>date of birth</label>
+    <medical>date</medical>
+    <temporal>n/a</temporal>
+    <subject>patient</subject>
+  </section>
+  <!--DATE OF EXPIRATION  --> 
+  <section>
+    <regex>date\s+of\s+expiration\s*\:</regex>
+    <label>date of expiration</label>
+    <medical>date</medical>
+    <temporal>n/a</temporal>
+    <subject>patient</subject>
+  </section>
+  <!-- DIAGNOSES --> 
+  <section>
+    <regex>(?:principal\s+discharge\s+diagnosis\s*;\s*responsible\s+after\s+study\s+for\s+causing\s+admission\s*\)(\s*\:)?)</regex>
+    <label>diagnoses</label>
+    <medical>problems/diagnoses</medical>
+    <temporal>discharge</temporal>
+    <subject>patient</subject>
+  </section>
+  <section>
+    <regex>((?:other\s+diagnosis\s*;\s*conditions\s*\,\s*infections\s*,\s*complications\s*,\s*affecting\s+treatment\s*\/?\s*stay)(\s*\:)?)</regex>
+    <label>diagnoses</label>
+    <medical>problems/diagnoses</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <section>
+    <regex>(((?:cause\s+of\s+death\s+and\s+)?((?:final|principal|principle|primary|associated|secondary|additional|other)\s+)?(<fragment-ref name="leftTimeMods"/>)?(?:problems\s+and\s+)?diagnos[ei]s(?:\s*\(\s*es\s*\))?)(<fragment-ref name="rightTimeMods"/>)?\s*\:)</regex>
+    <label>diagnoses</label>
+    <medical>problems/diagnoses</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <!-- DIFFERENTIAL DIAGNOSIS --> 
+  <section>
+    <regex>differential\s+diagnos(i|e)s\s*\:</regex>
+    <label>differential diagnosis</label>
+    <medical>problems/diagnoses</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+    <uncertain>yes</uncertain>
+  </section>
+   <!-- DICTATION\/AUTHOR DETAILS --> 
+  <section>
+    <regex>((?:(?:(?:entered|dictated)\s+by\b)|dictator)\s*\:)</regex>
+    <label>dictation/author details</label>
+    <medical>non-medical</medical>
+    <temporal>n/a</temporal>
+    <subject>n/a</subject>
+  </section>
+  <section>
+    <regex ignore-case="false">((?:(?:[A-Z]+\.?)\s+)*[A-Z]+\s*\,\s+M\.D\.\s+DICTATING\s+FOR\s*\:)</regex>
+    <label>dictation/author details</label>
+    <medical>non-medical</medical>
+    <temporal>n/a</temporal>
+    <subject>n/a</subject>
+  </section>
+  <section>
+    <regex ignore-case="false">(This\s+report\s+was\s+created\s+by\s+[A-Z](\s*\:)?)</regex>
+    <label>dictation/author details</label>
+    <medical>non-medical</medical>
+    <temporal>n/a</temporal>
+    <subject>n/a</subject>
+  </section>
+  <!-- DIET --> 
+  <section>
+    <regex>((<fragment-ref name="leftTimeMods"/>)?(diet)\s*\:)</regex>
+    <label>diet</label>
+    <medical>instructions</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <!-- DISCHARGE ACTIVITY --> 
+  <section>
+    <regex>(((?:discharge\s+)?activity)\s*\:)</regex>
+    <label>discharge activity</label>
+    <medical>instructions</medical>
+    <temporal>future</temporal>
+    <subject>patient</subject>
+  </section>
+  <section>
+    <regex>(^((?:discharge\s+)?activity)\s*$)</regex>
+    <label>discharge activity</label>
+    <medical>instructions</medical>
+    <temporal>future</temporal>
+    <subject>patient</subject>
+  </section>
+  <!-- DISCHARGE DATE --> 
+  <section>
+    <regex>((discharge\s+date)|(date\s+of\s+discharge))\s*\:</regex>
+    <label>discharge date</label>
+    <medical>date</medical>
+    <temporal>discharge</temporal>
+    <subject>patient</subject>
+  </section>
+  <!-- DISCHARGE DETAILS --> 
+  <section>
+    <regex>((discharge\s+patient\s+on)\s*\:)</regex>
+    <label>discharge details</label>
+    <medical>symptoms/conditions</medical>
+    <temporal>discharge</temporal>
+    <subject>patient</subject>
+  </section>
+   <!-- DISCHARGE ORDERS --> 
+  <section>
+    <regex>(((?:doctor\'?s\s+)?discharge\s+orders)\s*\:)</regex>
+    <label>discharge orders</label>
+    <medical>instructions</medical>
+    <temporal>future</temporal>
+    <subject>patient</subject>
+  </section>
+  <!-- DISCHARGE NOTIFICATION SUMMARY --> 
+  <section>
+    <regex>(ed\s+discharge\s+notification\s*\/\s*summary(\s*\:)?)</regex>
+    <label>discharge notification summary</label>
+    <medical>non-medical</medical>
+    <temporal>discharge</temporal>
+    <subject>patient</subject>
+  </section>
+  <!-- DISPOSITION --> 
+  <section>
+    <regex>((<fragment-ref name="leftTimeMods"/>)?(disposition)(<fragment-ref name="rightTimeMods"/>)?\s*\:)</regex>
+    <label>disposition</label>
+    <medical>symptoms/conditions</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <!-- EMERGENCY DEPARTMENT COURSE --> 
+  <section>
+    <regex>((<fragment-ref name="leftDescrMods"/>)?((?:ed\s+course)|(?:emergency\s+department\s+course)|(?:in\s+(?:the\s+)?ed|\bed))<fragment-ref name="rightDescrMods"/>?(\s*\:|\*+))</regex>
+    <label>emergency department course</label>
+    <medical>procedures</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <!-- EVALUATION DATE --> 
+  <section>
+    <regex>evaluation\s+date\s*\:</regex>
+    <label>evaluation date</label>
+    <medical>date</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+   <!-- EVENTS --> 
+  <section>
+    <regex>((events)\s*\:)</regex>
+    <label>events</label>
+    <medical>problems/diagnoses</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <!-- FAMILY HISTORY --> 
+  <section>
+    <regex find-all="false">(?:(?:<fragment-ref name="famhistory"/>)\s*\:)</regex>
+    <label>family history</label>
+    <medical>problems/diagnoses</medical>
+    <temporal>past</temporal>
+    <subject>family</subject>
+  </section>
+  <section>
+    <regex ignore-case="false" find-all="false">(?:(?:FAMILY\s+HISTORY\s+[a-z]+)(\s*\:)?)</regex>
+    <label>family history</label>
+    <medical>problems/diagnoses</medical>
+    <temporal>past</temporal>
+    <subject>family</subject>
+  </section>
+  <!-- FOLLOW-UP --> 
+  <section>
+    <regex>((discharged?\s+wound\s+care)\s*\:)</regex>
+    <label>discharge wound care</label>
+    <medical>instructions</medical>
+    <temporal>discharge</temporal>
+    <subject>patient</subject>
+  </section>
+  <section>
+    <regex>(((?:discharged?\s+follow[\s\-]?up(?:\s+care)?)|((?:standardized\s+)?discharge\s+orders\s+\(\s+medications\s+instructions\s+to\s+patient\s+\,\s+follow-up\s+care\s+\))|(disposition\s*\,\s+follow[\s+\-]up\s+and\s+instructions\s+to\s+patient)|(?:follow[\s\-]?up))\s*\:)</regex>
+    <label>follow-up</label>
+    <medical>instructions</medical>
+    <temporal>discharge</temporal>
+    <subject>patient</subject>
+  </section>
+  <section>
+    <regex>((((?:discharged?\s+follow[\s\-]?up(?:\s+care)?))|((?:standardized\s+)?discharge\s+orders\s+\(\s+medications\s+instructions\s+to\s+patient\s+\,\s+follow-up\s+care\s+\))|(disposition\s*\,\s+follow[\s+\-]up\s+and\s+instructions\s+to\s+patient)|(?:follow[\s\-]?up))\s*$)</regex>
+    <label>follow-up</label>
+    <medical>instructions</medical>
+    <temporal>discharge</temporal>
+    <subject>patient</subject>
+  </section>
+  <!-- GENDER --> 
+  <section>
+    <regex>sex\s*\:</regex>
+    <label>gender</label>
+    <medical>non-medical</medical>
+    <temporal>n/a</temporal>
+    <subject>patient</subject>
+  </section>
+  <!-- HEALTH STATUS --> 
+  <section>
+    <regex>^(health\s+status)\s*$</regex>
+    <label>health status</label>
+    <medical>symptoms/conditions</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <!-- HISTORY OF PRESENT ILLNESS/REASON FOR HOSPITALIZATION --> 
+  <section>
+    <regex>((<fragment-ref name="leftDescrMods"/>)?(?:history\s+(?:of\s+(?:the\s+)?)?(?:present|physical)\s+illness|hpi)\s+and\s+(?:(?:history\s+and\s+)?reasons?\s+(?:for\s+)?(?:hospitalization|admission|admit))\s*\:)</regex>
+    <label>history of present illness/reason for hospitalization</label>
+    <medical>problems/diagnoses,symptoms/conditions</medical>
+    <temporal>past,admission</temporal>
+    <subject>patient</subject>
+  </section>
+  <section>
+    <regex find-all="false">((?:(?:history\s+and\s+)?reasons?\s+(?:for\s+)?(?:hospitalization|admission|admit))\s*\:)</regex>
+    <label>history of present illness/reason for hospitalization</label>
+    <medical>problems/diagnoses,symptoms/conditions</medical>
+    <temporal>past,admission</temporal>
+    <subject>patient</subject>
+  </section>
+  <section>
+    <regex>((<fragment-ref name="leftDescrMods"/>)?(((history\s+(of\s+(the\s+)?)?)?(present|physical)\s+illness)|hpi)\s*\:)</regex>
+    <label>history of present illness</label>
+    <medical>problems/diagnoses</medical>
+    <temporal>past</temporal>
+    <subject>patient</subject>
+  </section>
+  <section>
+    <regex>(((?:history\s+(?:of\s+(?:the\s+)?)?(?:present|physical)\s+illness)|hpi)\s*$)</regex>
+    <label>history of present illness</label>
+    <medical>problems/diagnoses</medical>
+    <temporal>past</temporal>
+    <subject>patient</subject>
+  </section>
+  <section>
+    <regex>(^(<fragment-ref name="leftDescrMods"/>)?((?:clinical\s+)?history)\s*\:)</regex>
+    <label>history of present illness</label>
+    <medical>problems/diagnoses</medical>
+    <temporal>past</temporal>
+    <subject>patient</subject>
+  </section>
+  <!-- HOSPITAL COURSE --> 
+  <section>
+    <regex>((<fragment-ref name="leftDescrMods"/>)?((?:hosp(?:ital)?\s+course(?:\s+and\s+treatment)?)|(?:summary\s+of\s+hospitalization))<fragment-ref name="rightDescrMods"/>?(\s*\:|\*+|\-+))</regex>
+    <label>hospital course</label>
+    <medical>procedures</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <section>
+    <regex>((<fragment-ref name="leftDescrMods"/>)?((?:hosp(?:ital)?\s+course(?:\s+and\s+treatment)?)|(?:summary\s+of\s+hospitalization))<fragment-ref name="rightDescrMods"/>?(\s*$))</regex>
+    <label>hospital course</label>
+    <medical>procedures</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <!-- these are redundant as the fragments above are optional
+  <section>
+    <regex>((\*+(hosp(?:ital)?\s+course(?:\s+and\s+treatment)?)|(?:summary\s+of\s+hospitalization))(\s*\:))</regex>
+    <label>hospital course</label>
+  </section>
+  <section>
+    <regex>((\*+(hosp(?:ital)?\s+course(?:\s+and\s+treatment)?)|(?:summary\s+of\s+hospitalization))(\s*$))</regex>
+    <label>hospital course</label>
+  </section>
+  -->
+  <section>
+    <regex>(((hosp(?:ital)?\s+course(\s+and\s+treatment)?)|(summary\s+of\s+hospitalization))<fragment-ref name="rightDescrMods"/>\s+([a-z]+|\()(\s*\:)?)</regex>
+    <label>hospital course</label>
+    <medical>procedures</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <!-- IMPRESSION --> 
+  <section>
+    <regex find-all="false">((impressions?|imp)(<fragment-ref name="rightTimeMods"/>)?\s*\:)</regex>
+    <label>impression</label>
+    <medical>problems/diagnoses</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+ <!-- IMPRESSION\/PLAN --> 
+  <section>
+    <regex>((?:impression\s+and\s+plan)\s*\:)</regex>
+    <label>impression/plan</label>
+    <medical>problems/diagnoses,procedures</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <!-- IMPRESSION\/PLAN --> 
+  <section>
+    <regex>((?:impression\s+and\s+plan)\s*$)</regex>
+    <label>impression/plan</label>
+    <medical>problems/diagnoses,procedures</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+   </section>
+  <!-- INSTRUCTIONS --> 
+  <section>
+    <regex>(((<fragment-ref name="leftTimeMods"/>)|(<fragment-ref name="leftDescrMods"/>))+(instructions?)(<fragment-ref name="rightTimeMods"/>)?\s*\:)</regex>
+    <label>instructions</label>
+    <medical>instructions</medical>
+    <temporal>future</temporal>
+    <subject>patient</subject>
+  </section>
+   <section>
+    <regex>(^(instructions?)(<fragment-ref name="rightTimeMods"/>)?\s*$)</regex>
+    <label>instructions</label>
+    <medical>instructions</medical>
+    <temporal>future</temporal>
+    <subject>patient</subject>
+  </section>
+  <!--LABORATORY/STUDIES  --> 
+  <section>
+    <regex>((?:(<fragment-ref name="leftTimeMods"/>)|(<fragment-ref name="leftDescrMods"/>))?((?:summary\s+of\s+)?(?:(?:diagnostic\s+)?(?:laboratory|labs?|laboratories|diagnostic|radiologic)(?:(?:\s+and\s+)|(?:\/))?\s*(?:radiologic\s+)?(?:studies|data|results|exams?(?:inations?)?|evaluation|values|findings|tests?|x\-rays?)?)|(?:tests\/procedures|(?:studies\/(?:procedures|tests))|(?:proc(?:edures)?\/tests)|tests))(<fragment-ref name="rightTimeMods"/>)?\s*\:)</regex>
+    <label>laboratory</label>
+    <medical>laboratory</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <section>
+    <regex>(((?:new|discrete|(?:today\s+\'s))\s+results(?:\s+only)?)\s*\:)</regex>
+    <label>laboratory</label>
+    <medical>laboratory</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <section>
+    <regex>(((?:new|discrete|(?:today\s+\'s))\s+results(?:\s+only)?)\s*$)</regex>
+    <label>laboratory</label>
+    <medical>laboratory</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <section>
+    <regex>((<fragment-ref name="leftTimeMods"/>)\s*data(<fragment-ref name="rightTimeMods"/>)?\s*\:)</regex>
+    <label>laboratory</label>
+    <medical>laboratory</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <section>
+    <regex>((?:\-+|\*+|\_+)\s*)(data(<fragment-ref name="rightTimeMods"/>)?\s*\:)</regex>
+    <label>laboratory</label>
+    <medical>laboratory</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <!-- MEDICATION --> 
+  <section>
+    <regex>(<fragment-ref name="leftTimeMods"/>)?(<fragment-ref name="medication1"/>)(<fragment-ref name="rightTimeMods"/>)?(<fragment-ref name="be"/>|<fragment-ref name="include"/>)?\s*\:</regex>
+    <label>medication</label>
+    <medical>medications</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <section>
+    <regex>^(<fragment-ref name="leftTimeMods"/>)?(<fragment-ref name="medication1"/>)(<fragment-ref name="rightTimeMods"/>)?(<fragment-ref name="be"/>|<fragment-ref name="include"/>)?\s*$</regex>
+    <label>medication</label>
+    <medical>medications</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <section>
+     <regex>(<fragment-ref name="leftTimeMods"/>)(<fragment-ref name="medication2"/>)(<fragment-ref name="rightTimeMods"/>)?(<fragment-ref name="be"/>|<fragment-ref name="include"/>?\s*\:)</regex>
+    <label>medication</label>
+    <medical>medications</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <section>
+     <regex>^(<fragment-ref name="medication2"/>)(<fragment-ref name="rightTimeMods"/>)?(<fragment-ref name="be"/>|<fragment-ref name="include"/>?\s*\:)</regex>
+    <label>medication</label>
+    <medical>medications</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <section>
+    <regex>((<fragment-ref name="leftTimeMods"/>)?(<fragment-ref name="medication1"/>)\s+on\s+transfer\s+from(\s+[A-Z]+)+(<fragment-ref name="be"/>|<fragment-ref name="include"/>)?\s*\:)</regex>
+    <label>medication</label>
+    <medical>medications</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <section>
+    <regex ignore-case="false" >((MEDICATIONS(<fragment-ref name="rightTimeMods"/>)?)(\s+[a-z]+)(\s*\:)?)</regex>
+    <label>medication</label>
+    <medical>medications</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <!--OB-GYN HISTORY  --> 
+  <section>
+    <regex>(((?:(?:past\s+)?ob\-gyn\s+history))\s*\:)</regex>
+    <label>ob-gyn history</label>
+    <medical>problems/diagnoses</medical>
+    <temporal>past</temporal>
+    <subject>patient</subject>
+  </section>
+  <section>
+    <regex>(((?:past\s+obstetric\s+history))\s*\:)</regex>
+    <label>obstetric history</label>
+    <medical>problems/diagnoses</medical>
+    <temporal>past</temporal>
+    <subject>patient</subject>
+  </section>
+  <section>
+    <regex>^(((?:past\s+gyn(?:ocologic(?:al)?)?\s+history))\s*\:)</regex>
+    <label>gynocologic history</label>
+    <medical>problems/diagnoses</medical>
+    <temporal>past</temporal>
+    <subject>patient</subject>
+  </section>
+  <!-- OBJECTIVE --> 
+  <section>
+    <regex find-all="false">(?:objective\s*\:?\s*$)</regex>
+    <label>objective</label>
+    <medical>symptoms/conditions</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <section>
+    <regex find-all="false">(?:^o\s*\:\s*$)</regex>
+    <label>objective</label>
+    <medical>symptoms/conditions</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <!--OPERATIONS/PROCEDURES  --> 
+  <section>
+    <regex>(((?:((?:principal|principle|primary|special)\s+)?(?:operations?\s+(?:and|or)\s+)?procedures?(\s+(?:and|or)\s+operations?)?(?:\s+performed)?)|(operations\s*\/\s*procedures)|(?:operations?))\s*\:)</regex>
+    <label>operations/procedures</label>
+    <medical>procedures</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <section>
+    <regex>((((?:associated|secondary|additional|other)\s+)(?:operations?\s+(?:and|or)\s+)?procedures?(\s+(?:and|or)\s+operations?)?)\s*\:)</regex>
+    <label>operations/procedures</label>
+    <medical>procedures</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <section>
+    <regex>((procedure\s+note)\s*\:)</regex>
+    <label>procedure description</label>
+    <medical>procedures</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <section>
+    <regex>((postpartum\s+diagnostic\s+procedures)\s*\:)</regex>
+    <label>postpartum diagnostic procedures</label>
+    <medical>procedures</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <section>
+    <regex>((postpartum\s+therapeutic\s+procedures)\s*\:)</regex>
+    <label>postpartum therapeutic procedures</label>
+    <medical>procedures</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <section>
+    <regex>((other\s+postpartum\s+therapies)\s*\:)</regex>
+    <label>other poastpartum treatment</label>
+    <medical>procedures</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <!-- PAST CARDIAC HISTORY --> 
+  <section>
+    <regex>((past\s+cardiac\s+history)\s*\:)</regex>
+    <label>past cardiac history</label>
+    <medical>problems/diagnoses</medical>
+    <temporal>past</temporal>
+    <subject>patient</subject>
+  </section>
+  <!-- PAST MEDICAL HISTORY --> 
+  <section>
+    <regex>(past\s+(medical\s+)?history|medical\s+history|pmhx?|pmedhx)\s*\:</regex>
+    <label>past medical history</label>
+    <medical>problems/diagnoses</medical>
+    <temporal>past</temporal>
+    <subject>patient</subject>
+  </section>
+  <section>
+    <regex>((past\s+(?:medical\s+)?history|medical\s+history|pmhx?|pmedhx)\/(<fragment-ref name="sochistory"/>)\s*\:)</regex>
+    <label>past medical history</label>
+    <medical>problems/diagnoses</medical>
+    <temporal>past</temporal>
+    <subject>patient</subject>
+  </section>
+  <!-- PAST SURGICAL HISTORY --> 
+  <section>
+    <regex>(past\s+surgical\s+history|pshx?)\s*\:</regex>
+    <label>past surgical history</label>
+    <medical>procedures</medical>
+    <temporal>past</temporal>
+    <subject>patient</subject>
+  </section>
+  <!-- PATIENT INFO --> 
+  <section>
+    <regex ignore-case="false">(\*+\s+(FINAL\s+)?DISCHARGE\s+ORDERS\s+\*+)</regex>
+    <label>patient info</label>
+    <medical>non-medical</medical>
+    <temporal>n/a</temporal>
+    <subject>patient</subject>
+  </section>
+  <!-- PHYSICAL EXAMINATION --> 
+  <section>
+    <regex>((<fragment-ref name="leftDescrMods"/>)?(<fragment-ref name="leftTimeMods"/>)?(<fragment-ref name="physicalexam1"/>|<fragment-ref name="physicalexam2"/>)(<fragment-ref name="rightTimeMods"/>)?<fragment-ref name="rightLocationMods"/>?(?:\s*\:|\-[^a-z]))</regex>
+    <label>physical examination</label>
+    <medical>symptoms/conditions</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <section>
+    <regex>((<fragment-ref name="leftDescrMods"/>)?(<fragment-ref name="leftTimeMods"/>)?(<fragment-ref name="physicalexam1"/>|<fragment-ref name="physicalexam2"/>)(<fragment-ref name="rightTimeMods"/>)?(<fragment-ref name="rightLocationMods"/>)?)((\s+vss?)(?:\s*\:|\-[^a-z]))</regex>
+    <label>physical examination</label>
+    <medical>symptoms/conditions</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+ </section>
+  <section>
+    <regex>((?:\-+|\*+|\_+|(<fragment-ref name="leftDescrMods"/>))\s*(?:exam(?:ination)?(?:\s+data)?(<fragment-ref name="rightTimeMods"/>)\s*\:))</regex>
+    <label>physical examination</label>
+    <medical>symptoms/conditions</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <section>
+    <regex>^((<fragment-ref name="leftTimeMods"/>)?(?:exam(?:ination)?)(?:\s*\:|\s+\d+))</regex>
+    <label>physical examination</label>
+    <medical>symptoms/conditions</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <section>
+    <regex>^((<fragment-ref name="leftDescrMods"/>)?(<fragment-ref name="leftTimeMods"/>)?(<fragment-ref name="physicalexam1"/>|<fragment-ref name="physicalexam2"/>)$)</regex>
+    <label>physical examination</label>
+    <medical>symptoms/conditions</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <!-- PLAN  --> 
+  <section>
+    <regex ignore-case="false">(?:^((<fragment-ref name="leftTimeMods"/>)?(\bplans?)(\s*\:[^\d]|\s*\*)))</regex>
+    <label>plan</label>
+    <medical>procedures</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <section>
+    <regex ignore-case="false">(?:^((<fragment-ref name="leftTimeMods"/>)?(\bplans?))(\s*$))</regex>
+    <label>plan</label>
+    <medical>procedures</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <!-- PLAN: DISPOSITION/PLAN  --> 
+  <section>
+    <regex>(((?:disposition\s*(?:and|\&amp;|\/)\s*plan)|(?:disposition\s*(?:\&amp;|\/)plan))(<fragment-ref name="rightTimeMods"/>)?\s*\:)</regex>
+    <label>plan</label>
+    <medical>procedures</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <!-- PLAN: TO DO\/PLAN --> 
+  <section>
+    <regex>(((?:to\s+do\s*\/\s*plans?))\s*\:)</regex>
+    <label>plan</label>
+    <medical>procedures</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <!-- PRELIMINARY REPORT CONTENT --> 
+  <section>
+    <regex>((^pch)\s*\:)</regex>
+    <label>preliminary report content</label>
+  </section>
+  <!-- PREOPERATIVE STATUS --> 
+  <section>
+    <regex>((preoperative\s+(?:cardiac\s+)?status)\s*\:)</regex>
+    <label>preoperative stastus</label>
+    <medical>symptoms/conditions</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <!-- PREVIOUS CARDIOVASCULAR INTERVENTIONS --> 
+  <section>
+    <regex>((previous\s+cardiovascular\s+interventions?)\s*\:)</regex>
+    <label>previous cardiovascular interventions</label>
+    <medical>procedures</medical>
+    <temporal>past</temporal>
+    <subject>patient</subject>
+  </section>
+  <!-- PRIMARY CARE PHYSICIAN --> 
+  <section>
+    <regex find-all="false">(?:pcp\s+name\s*\:)</regex>
+    <label>primary care physician</label>
+    <medical>physicians</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <!-- PROBLEMS --> 
+  <section>
+    <regex>(((?:(?:patient\s+)?problem\s+list)|(?:significant\s+problems)|(?:(?:(?:his|her)\s+)?problems\s+and\s+management\s+are\s+as\s+follows) )<fragment-ref name="rightDescrMods"/>?\s*[\:;\*+])</regex>
+    <label>problems</label>
+    <medical>problems/diagnoses</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <!-- PROCEDURE DATE --> 
+  <section>
+    <regex>(?:(?:(?:procedure\s+date)|(date\s+of\s+procedure))\s*\:)</regex>
+    <label>procedure date</label>
+    <medical>date</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <!-- RADIOLOGY --> 
+  <section>
+    <regex find-all="false">(?:(?:radiology(?:\s+(?:studies|data|results))?)\s*\:)</regex>
+    <label>radiology</label>
+    <medical>radiology</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <!-- REASON FOR CONSULTATION  --> 
+  <section>
+    <regex find-all="false">(?:reason\s+(?:for\s+)?consultation\s*\:)</regex>
+    <label>reason for consultation</label>
+    <medical>problems/diagnoses,symptoms/conditions</medical>
+    <temporal>admission</temporal>
+    <subject>patient</subject>
+  </section>
+  <!-- REPORT STATUS --> 
+  <section>
+    <regex>((report\s+status)\s*\:)</regex>
+    <label>report status</label>
+    <subject>patient</subject>
+  </section>
+  <!--REVIEW OF SYSTEMS  --> 
+  <section>
+    <regex find-all="false">(?:(review\s+(?:of\s+)?systems|ros)\s*\:)</regex>
+    <label>review of systems</label>
+    <medical>symptoms/conditions</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <section>
+    <regex ignore-case="false" find-all="false">(?:(REVIEW\s+OF\s+SYSTEMS)(\s+[a-z]+)(\s*\:)?)</regex>
+    <label>review of systems</label>
+    <medical>symptoms/conditions</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <!-- SERVICE SPRECIALTY --> 
+  <section>
+    <regex find-all="false">(?:service\s*\:)</regex>
+    <label>service specialty</label>
+    <medical>physicians</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <!-- SOCIAL HISTORY --> 
+  <section>
+    <regex>(?:^(<fragment-ref name="sochistory"/>)\s*\:)</regex>
+    <label>social history</label>
+    <medical>behavior/social</medical>
+    <temporal>past</temporal>
+    <subject>patient</subject>
+  </section>
+  <section>
+    <regex ignore-case="false" find-all="false">(?:((SOCIAL\s+HISTORY|HABITS))(\s+[a-z]+)(\s*\:)?)</regex>
+    <label>social history</label>
+    <medical>behavior/social</medical>
+    <temporal>past</temporal>
+    <subject>patient</subject>
+  </section>
+  <!-- SUBJECTIVE --> 
+  <section>
+    <regex find-all="false">(?:subjective\s*\:?\s*$)</regex>
+    <label>subjective</label>
+    <medical>symptoms/conditions</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <section>
+    <regex find-all="false">(?:^s\s*\:\s*$)</regex>
+    <label>subjective</label>
+    <medical>symptoms/conditions</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <!-- TRANSCRIPTION DETAILS --> 
+  <section>
+    <regex>(((?:escription\s+document)|batch)\s*\:)</regex>
+    <label>transcription details</label>
+    <medical>non-medical</medical>
+    <temporal>n/a</temporal>
+    <subject>n/a</subject>
+  </section>
+  <!-- TREATMENT --> 
+  <section>
+    <regex>(((?:treatment\s+rendered))(\s*\:)?)</regex>
+    <label>treatment</label>
+    <medical>procedures</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <section>
+    <regex>((((?:other\s+treatments?\s*\/\s*procedures\s+\(\s+not\s+in\s+o\.r\.\s+\)))|(other\s+treatments?\s+and\s+procedures))(\s*\:)?)</regex>
+    <label>other treatments/procedures</label>
+    <medical>procedures</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+  <!-- UNIT NUMBER --> 
+  <section>
+    <regex find-all="false">(?:unit\s+number\s*\:)</regex>
+    <label>unit number</label>
+    <medical>non-medical</medical>
+    <temporal>encounter</temporal>
+    <subject>patient</subject>
+  </section>
+    <!-- WORK RETURN --> 
+  <section>
+    <regex>((return\s+to\s+work)\s*\:)</regex>
+    <label>work return</label>
+    <medical>instructions</medical>
+    <temporal>future</temporal>
+    <subject>patient</subject>
+  </section>
+</sections>
+<subsections>
+  <subsection>
+    <regex>((<fragment-ref name="subsectionLeft"/>)?General(ly)?\s*\:)</regex>
+    <subsection_of>physical examination,review of systems</subsection_of>
+    <label>General</label>
+  </subsection>
+  <subsection>
+    <regex>((<fragment-ref name="subsectionLeft"/>)?Head\s*\:)</regex>
+    <subsection_of>physical examination,review of systems</subsection_of>
+    <label>HEENT</label>
+  </subsection>
+  <subsection>
+    <regex>((<fragment-ref name="subsectionLeft"/>)?Eyes\s*\:)</regex>
+    <subsection_of>physical examination,review of systems</subsection_of>
+    <label>HEENT</label>
+  </subsection>
+  <subsection>
+    <regex>((<fragment-ref name="subsectionLeft"/>)?Ears\s*\:)</regex>
+    <subsection_of>physical examination,review of systems</subsection_of>
+    <label>HEENT</label>
+  </subsection>
+  <subsection>
+    <regex>((<fragment-ref name="subsectionLeft"/>)?Nose(<fragment-ref name="conj"/>Sinuses)?\s*\:)</regex>
+    <subsection_of>physical examination,review of systems</subsection_of>
+    <label>HEENT</label>
+  </subsection>
+  <subsection>
+    <regex>((<fragment-ref name="subsectionLeft"/>)?Throat\s*\:)</regex>
+    <subsection_of>physical examination,review of systems</subsection_of>
+    <label>HEENT</label>
+  </subsection>
+  <subsection>
+    <regex>((<fragment-ref name="subsectionLeft"/>)?\b(HE)?ENT\s*\:)</regex>
+    <subsection_of>physical examination,review of systems</subsection_of>
+    <label>HEENT</label>
+  </subsection>
+  <subsection>
+    <regex>((<fragment-ref name="subsectionLeft"/>)?Neck\s*\:)</regex>
+    <subsection_of>physical examination,review of systems</subsection_of>
+    <label>Neck</label>
+  </subsection>
+  <subsection>
+    <regex>((<fragment-ref name="subsectionLeft"/>)?Throat<fragment-ref name="conj"/>Mouth<fragment-ref name="conj"/>Neck\s*\:)</regex>
+    <subsection_of>physical examination,review of systems</subsection_of>
+    <label>Neck</label> <!-- or do we prefer HEENT here? -->
+  </subsection>
+  <subsection>
+    <regex>((<fragment-ref name="subsectionLeft"/>)?Neuro(logical(ly|<fragment-ref name="system"/>)?)?\s*\:)</regex>
+    <subsection_of>physical examination,review of systems,hospital course</subsection_of>
+    <label>Neurological</label>
+  </subsection>
+  <subsection>
+    <regex>((<fragment-ref name="subsectionLeft"/>)?Nervous(<fragment-ref name="system"/>)?\s*\:)</regex>
+    <subsection_of>physical examination,review of systems</subsection_of>
+    <label>Neurological</label>
+  </subsection>
+  <subsection>
+    <regex>((<fragment-ref name="subsectionLeft"/>)Psych(iatr(ic|y))?\s*\:)</regex>
+    <subsection_of>physical examination,review of systems</subsection_of>
+    <label>Psychiatric</label>
+  </subsection>
+  <subsection>
+    <regex>((<fragment-ref name="subsectionLeft"/>)?Abd(\.|omen)?\s*\:)</regex>
+    <subsection_of>physical examination,review of systems</subsection_of>
+    <label>Abdomen</label>
+  </subsection>
+  <subsection>
+    <regex>((<fragment-ref name="subsectionLeft"/>)?Breasts\s*\:)</regex>
+    <subsection_of>physical examination,review of systems</subsection_of>
+    <label>Breasts</label>
+  </subsection>
+    <!-- CARDIOVASCULAR -->
+  <subsection> <!-- cardiovascular with or without "system" -->
+    <regex>((<fragment-ref name="subsectionLeft"/>)?<fragment-ref name="cardio"/>(<fragment-ref name="system"/>)?\s*\:)</regex>
+    <subsection_of>physical examination,review of systems,hospital course</subsection_of>
+    <label>Cardiovascular</label>
+  </subsection>
+  <subsection> <!-- cardiovascular rate & rhythm -->
+    <regex>((<fragment-ref name="subsectionLeft"/>)?<fragment-ref name="cardio"/><fragment-ref name="sub"/><fragment-ref name="rhythm"/>\s*\:)</regex>
+    <subsection_of>physical examination,review of systems,hospital course</subsection_of>
+    <label>Cardiovascular</label>
+  </subsection>
+  <subsection> <!-- cardiovascular rhythm CV-R -->
+    <regex>((<fragment-ref name="subsectionLeft"/>)?CV\-R\s*\:)</regex>
+    <subsection_of>physical examination,review of systems,hospital course</subsection_of>
+    <label>Cardiovascular</label>
+  </subsection>
+  <subsection> <!-- rate & rhythm alone --> 
+    <regex>((<fragment-ref name="subsectionLeft"/>)?<fragment-ref name="rhythm"/>\s*\:)</regex>
+    <subsection_of>physical examination,review of systems,hospital course</subsection_of>
+    <label>Cardiovascular</label>
+  </subsection>
+  <subsection> <!-- pump with or without cardio modifier -->
+    <regex>((<fragment-ref name="subsectionLeft"/>)?(<fragment-ref name="cardio"/><fragment-ref name="sub"/>)?pump\s*\:)</regex>
+    <subsection_of>physical examination,review of systems,hospital course</subsection_of>
+    <label>Cardiovascular</label>
+  </subsection>
+  <subsection> <!-- COR (Cardiac Output Recorder) with or without cardio modifier -->
+    <regex>((<fragment-ref name="subsectionLeft"/>)?(<fragment-ref name="cardio"/><fragment-ref name="sub"/>)?COR\s*\:)</regex>
+    <subsection_of>physical examination,review of systems,hospital course</subsection_of>
+    <label>Cardiovascular</label>
+  </subsection>
+  <subsection> <!-- cardiovascular pump CV-P -->
+    <regex>((<fragment-ref name="subsectionLeft"/>)?CV\-P\s*\:)</regex>
+    <subsection_of>physical examination,review of systems,hospital course</subsection_of>
+    <label>Cardiovascular</label>
+  </subsection>
+  <subsection> <!-- coronary -->
+    <regex>((<fragment-ref name="subsectionLeft"/>)?Coronary\s*\:)</regex>
+    <subsection_of>physical examination,review of systems</subsection_of>
+    <label>Cardiovascular</label>
+  </subsection>
+  <subsection> <!-- ischemia with or without cardio modifier -->
+    <regex>((<fragment-ref name="subsectionLeft"/>)?(<fragment-ref name="cardio"/><fragment-ref name="sub"/>)?ischemia\s*\:)</regex>
+    <subsection_of>physical examination,review of systems,hospital course</subsection_of>
+    <label>Ischemia</label>
+  </subsection>
+  <subsection> <!-- cardiovascular ischemia -->
+    <regex>((<fragment-ref name="subsectionLeft"/>)?CV\-I\s*\:)</regex>
+    <subsection_of>physical examination,review of systems,hospital course</subsection_of>
+    <label>Ischemia</label>
+  </subsection>
+  <subsection>
+    <regex>((<fragment-ref name="subsectionLeft"/>)?(GI|Gastro(intestinal)?)(<fragment-ref name="system"/>)?\s*\:)</regex>
+    <subsection_of>physical examination,review of systems,hospital course</subsection_of>
+    <label>Gastrointestinal</label>
+  </subsection>
+  <subsection>
+    <regex>((<fragment-ref name="subsectionLeft"/>)?(GU|(genito)?urinary)(<fragment-ref name="system"/>)?\s*\:)</regex>
+    <subsection_of>physical examination,review of systems,hospital course</subsection_of>
+    <label>Genitourinary</label>
+  </subsection>
+  <subsection>
+    <regex>((<fragment-ref name="subsectionLeft"/>)?Genital(s|(<fragment-ref name="system"/>))?\s*\:)</regex>
+    <subsection_of>physical examination,review of systems,hospital course</subsection_of>
+    <label>Genitourinary</label>
+  </subsection>
+  <subsection>
+    <regex>((<fragment-ref name="subsectionLeft"/>)?\bRenal(<fragment-ref name="system"/>)?\s*\:)</regex>
+    <subsection_of>physical examination,review of systems,hospital course</subsection_of>
+    <label>Genitourinary</label>
+  </subsection>
+  <subsection>
+    <regex>((<fragment-ref name="subsectionLeft"/>)?(\bVasc(ular(ly|<fragment-ref name="system"/>)?)?)\s*\:)</regex>
+    <subsection_of>physical examination,review of systems,hospital course</subsection_of>
+    <label>Vascular</label>
+  </subsection>
+  <subsection>
+    <regex>((<fragment-ref name="subsectionLeft"/>)?(Musculo)?skeletal(<fragment-ref name="system"/>)?\s*\:)</regex>
+    <subsection_of>physical examination,review of systems,hospital course</subsection_of>
+    <label>Musculoskeletal</label>
+  </subsection>
+  <subsection>
+    <regex>((<fragment-ref name="subsectionLeft"/>)?(ID|Infectious\s+Disease)\s*\:)</regex>
+    <subsection_of>physical examination,review of systems,hospital course</subsection_of>
+    <label>Infectious Disease</label>
+  </subsection>
+  <subsection>
+    <regex>((<fragment-ref name="subsectionLeft"/>)?Endo(crine<fragment-ref name="system"/>?|crinology)?\s*\:)</regex>
+    <subsection_of>physical examination,review of systems,hospital course</subsection_of>
+    <label>Endocrine</label>
+  </subsection>
+  <!-- Endocrine sub-subsections -->
+   <subsection>
+    <regex>((<fragment-ref name="subsectionLeft"/>)?Hyperthyroid\s*\:)</regex>
+    <subsection_of>physical examination,review of systems,hospital course</subsection_of>
+    <label>Endocrine</label>
+  </subsection>
+   <subsection>
+    <regex>((<fragment-ref name="subsectionLeft"/>)?Hypothyroid\s*\:)</regex>
+    <subsection_of>physical examination,review of systems,hospital course</subsection_of>
+    <label>Endocrine</label>
+  </subsection>
+   <subsection>
+    <regex>((<fragment-ref name="subsectionLeft"/>)?Diabetes\s*\:)</regex>
+    <subsection_of>physical examination,review of systems,hospital course</subsection_of>
+    <label>Endocrine</label>
+  </subsection>
+   <subsection>
+    <regex>((<fragment-ref name="subsectionLeft"/>)?Adrenal\s*\:)</regex>
+    <subsection_of>physical examination,review of systems,hospital course</subsection_of>
+    <label>Endocrine</label>
+  </subsection>
+  <subsection>
+    <regex>((<fragment-ref name="subsectionLeft"/>)?Oncology\s*\:)</regex>
+    <subsection_of>physical examination,review of systems,hospital course</subsection_of>
+    <label>Oncology</label>
+  </subsection>
+  <subsection>
+    <regex>((<fragment-ref name="subsectionLeft"/>)?Vital(s|\s+Signs)\s*\:)</regex>
+    <subsection_of>physical examination,review of systems,hospital course</subsection_of>
+    <label>Vitals</label>
+  </subsection>
+  <subsection>
+    <regex ignore-case="false">((<fragment-ref name="subsectionLeft"/>)?VS\s*\:)</regex>
+    <subsection_of>physical examination,review of systems,hospital course</subsection_of>
+    <label>Vitals</label>
+  </subsection>
+  <subsection>
+    <regex>((<fragment-ref name="subsectionLeft"/>)?(Ext(\.|remities)?)\s*\:)</regex>
+    <subsection_of>physical examination,review of systems,hospital course</subsection_of>
+    <label>Extremities</label>
+  </subsection>
+  <!-- include in pulmonary? 
+  <subsection> 
+    <regex>((<fragment-ref name="subsectionLeft"/>)?Respiratory\s*\:)</regex>
+    <subsection_of>physical examination</subsection_of>
+    <label>Respiratory</label>
+  </subsection> -->
+  <subsection>
+    <regex>((<fragment-ref name="subsectionLeft"/>)?<fragment-ref name="pulmonary"/><fragment-ref name="system"/>?\s*\:)</regex>
+    <subsection_of>physical examination,review of systems,hospital course</subsection_of>
+    <label>Lungs</label>
+  </subsection>
+  <subsection> <!-- heme or lymph -->
+    <regex>((<fragment-ref name="subsectionLeft"/>)?(<fragment-ref name="heme"/>|<fragment-ref name="lymph"/>)(<fragment-ref name="system"/>)?\s*\:)</regex>
+    <subsection_of>physical examination,review of systems,hospital course</subsection_of>
+    <label>Hematologic</label>
+  </subsection>
+  <subsection> <!-- heme and lymph -->
+    <regex>((<fragment-ref name="subsectionLeft"/>)?<fragment-ref name="heme"/><fragment-ref name="conj"/><fragment-ref name="lymph"/>(<fragment-ref name="system"/>s?)?\s*\:)</regex>
+    <subsection_of>physical examination,review of systems,hospital course</subsection_of>
+    <label>Hematologic</label>
+  </subsection>
+  <subsection> <!-- allergic or immmunologic (allergy/gies is reserved as main section head) -->
+    <regex>((<fragment-ref name="subsectionLeft"/>)?(All(ergic)?|Immun(olog(y|ic(ally)?))?)(<fragment-ref name="system"/>)?\s*\:)</regex>
+    <subsection_of>physical examination,review of systems,hospital course</subsection_of>
+    <label>Immunologic</label>
+  </subsection>
+  <subsection> <!-- allergic and immmunologic -->
+    <regex>((<fragment-ref name="subsectionLeft"/>)?All(ergic)?<fragment-ref name="conj"/>Immun(olog(y|ic(ally)?))?(<fragment-ref name="system"/>s?)?\s*\:)</regex>
+    <subsection_of>physical examination,review of systems,hospital course</subsection_of>
+    <label>Immunologic</label>
+  </subsection>
+  <subsection>
+    <regex>((<fragment-ref name="subsectionLeft"/>)?Constitutional(ly)?(<fragment-ref name="system"/>)?\s*\:)</regex>
+    <subsection_of>physical examination,review of systems,hospital course</subsection_of>
+    <label>Constitutional</label>
+  </subsection>
+  <subsection>
+    <regex>((<fragment-ref name="subsectionLeft"/>)?Integumentar(il)?y(<fragment-ref name="system"/>)?\s*\:)</regex>
+    <subsection_of>physical examination,review of systems,hospital course</subsection_of>
+    <label>Integumentary</label>
+  </subsection>
+  <subsection>
+    <regex>((<fragment-ref name="subsectionLeft"/>)?Derma(tolog(ic(ally)?|y))?(<fragment-ref name="system"/>)?\s*\:)</regex>
+    <subsection_of>physical examination,review of systems,hospital course</subsection_of>
+    <label>Integumentary</label>
+  </subsection>
+  <subsection> <!-- tubes, lines, and drains -->
+    <regex>((<fragment-ref name="subsectionLeft"/>)?tubes<fragment-ref name="conj"/>lines<fragment-ref name="conj"/>drains\s*\:)</regex>
+    <subsection_of>physical examination,review of systems,hospital course</subsection_of>
+    <label>Access</label>
+  </subsection>
+  <subsection> <!-- tubes/access or just access with optional dialysis modifier-->
+    <regex>((<fragment-ref name="subsectionLeft"/>)?(tubes<fragment-ref name="conj"/>)?(dialysis\s+)?access\s*\:)</regex>
+    <subsection_of>physical examination,review of systems,hospital course</subsection_of>
+    <label>Access</label>
+  </subsection>
+  <subsection> <!-- (fluids, electrolytes and) mal/nutrition -->
+    <regex>((<fragment-ref name="subsectionLeft"/>)?(fluids<fragment-ref name="conj"/>electrolytes<fragment-ref name="conj"/>)?(mal)?nutrition\s*\:)</regex>
+    <subsection_of>physical examination,review of systems,hospital course</subsection_of>
+    <label>Nutrition</label>
+  </subsection>
+  <subsection>
+    <regex>((<fragment-ref name="subsectionLeft"/>)?FEN\s*\:)</regex>
+    <subsection_of>physical examination,review of systems,hospital course</subsection_of>
+    <label>Nutrition</label>
+  </subsection>
+  <!-- subsections found in Hospital course only  -->
+  <subsection>
+    <regex>((<fragment-ref name="subsectionLeft"/>)?CC\s*\:)</regex>
+    <subsection_of>hospital course</subsection_of> <!-- outside of hospital course, this could be carbon copy -->
+    <label>chief complaint</label>
+  </subsection>  
+  <subsection>
+    <regex>((<fragment-ref name="subsectionLeft"/>)?code(\s+status)?\s*\:)</regex>
+    <subsection_of>hospital course</subsection_of>
+    <label>code status</label>
+  </subsection>
+  <subsection>
+    <regex>((<fragment-ref name="subsectionLeft"/>)?Disp(o(sition)?)?\s*\:)</regex>
+    <subsection_of>hospital course</subsection_of> 
+    <label>disposition</label>
+  </subsection>
+  <subsection>
+    <regex>((<fragment-ref name="subsectionLeft"/>)?(Proph(y(laxis)?)?|ppx)\s*\:)</regex>
+    <subsection_of>hospital course</subsection_of> 
+    <label>prophylaxis</label>
+  </subsection>
+</subsections>  
+<templates>
+    <template>
+        <regex>((.*?):\s*(((.*?)\[\s*x?\s\])+?|(\[\s*x?\s*\](.*?))+?)$)</regex>
+        <label>slot label and checkboxes</label>
+    </template>
+    <!--
+  <template>
+    <regex>((.*)\s*\[\s*\])</regex>
+    <label>false</label>
+  </template>
+  <template>
+    <regex>((.*)\s*\[\s*x\s*])</regex>
+    <label>true</label>
+  </template>  
+  -->
+</templates>
+</root>
+

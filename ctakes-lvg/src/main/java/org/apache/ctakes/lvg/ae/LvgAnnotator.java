@@ -62,7 +62,7 @@ import java.util.*;
  */
 @PipeBitInfo(
 		name = "LVG Annotator",
-		description = "Adds cononical form of words.",
+		description = "Adds canonical form of words.",
 		dependencies = { PipeBitInfo.TypeProduct.SECTION, PipeBitInfo.TypeProduct.BASE_TOKEN }
 )
 public class LvgAnnotator extends JCasAnnotator_ImplBase {
