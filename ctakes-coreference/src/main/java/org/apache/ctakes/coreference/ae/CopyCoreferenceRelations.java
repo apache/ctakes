@@ -26,7 +26,7 @@ import java.util.*;
  */
 @PipeBitInfo(
         name = "Coreference Copier",
-        description = "Sets Modality based upon context.",
+        description = "Copy relations from Gold viewCas to current",
         role = PipeBitInfo.Role.SPECIAL,
         dependencies = { PipeBitInfo.TypeProduct.MARKABLE, PipeBitInfo.TypeProduct.COREFERENCE_RELATION, PipeBitInfo.TypeProduct.DEPENDENCY_NODE }
 )

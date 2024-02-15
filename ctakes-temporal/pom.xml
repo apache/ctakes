@@ -34,7 +34,7 @@
 		<dependency>
 			<groupId>org.apache.ctakes</groupId>
 			<artifactId>ctakes-temporal-models</artifactId>
-			<version>${project.version}</version>
+			<version>${ctakes-models.version}</version>
 		</dependency>
         <!--  Relation extractor uses clinical-pipeline.  No need to redeclare all those dependencies.  -->
 		<dependency>

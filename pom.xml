@@ -30,7 +30,7 @@
 	<url>http://ctakes.apache.org</url>
 	<inceptionYear>2012</inceptionYear>
 	<scm>
-		<!-- In child modules, Maven will append ${artifactId} to the following 
+		<!-- In child modules, Maven will append ${artifactId} to the following
 			URLs -->
 		<connection>scm:git:https://github.com/apache/ctakes</connection>
 		<developerConnection>scm:git:https://github.com/apache/ctakes</developerConnection>
@@ -98,6 +98,7 @@
 		<commons-logging.version>1.1.1</commons-logging.version>
 		<commons-pool.version>1.5.4</commons-pool.version>
 		<ctakesresources.version>4.0.0</ctakesresources.version>
+		<ctakes-models.version>5.0.0</ctakes-models.version>
 		<cxf.version>2.7.8</cxf.version>
 		<diffutils.version>1.3.0</diffutils.version>
 		<dom4j.version>1.6.1</dom4j.version>
@@ -119,7 +120,6 @@
 		<jsr107cache.version>1.0</jsr107cache.version>
 		<junit.version>4.11</junit.version>
 		<jwi.version>2.2.3</jwi.version>
-		<mastif.version>1.4</mastif.version>
 		<maven-antrun-plugin.version>3.1.0</maven-antrun-plugin.version>
 		<maven-license-plugin.version>1.9.0</maven-license-plugin.version>
 		<maven-jar-plugin.version>3.3.0</maven-jar-plugin.version>
@@ -195,6 +195,7 @@
 		<module>ctakes-smoking-status</module>
 		<module>ctakes-dependency-parser</module>
 		<module>ctakes-relation-extractor</module>
+		<module>ctakes-mastif-zoner</module>
 		<module>ctakes-assertion</module>
 		<module>ctakes-assertion-zoner</module>
 		<module>ctakes-temporal</module>
@@ -281,12 +282,6 @@
 				<groupId>org.codehaus.jackson</groupId>
 				<artifactId>jackson-mapper-asl</artifactId>
 				<version>${jackson.version}</version>
-			</dependency>
-			<!-- Mastif: Assertion Classificaiton System -->
-			<dependency>
-				<groupId>net.sf.mastif</groupId>
-				<artifactId>mastif-zoner</artifactId>
-				<version>${mastif.version}</version>
 			</dependency>
 			<!-- Scala -->
 			<dependency>
@@ -525,7 +520,7 @@
 			<dependency>
 				<groupId>org.apache.ctakes</groupId>
 				<artifactId>ctakes-core-model</artifactId>
-				<version>${project.version}</version>
+				<version>${ctakes-models.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.ctakes</groupId>
@@ -550,7 +545,7 @@
 			<dependency>
 				<groupId>org.apache.ctakes</groupId>
 				<artifactId>ctakes-pos-tagger-model</artifactId>
-				<version>${project.version}</version>
+				<version>${ctakes-models.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.ctakes</groupId>
@@ -560,7 +555,7 @@
 			<dependency>
 				<groupId>org.apache.ctakes</groupId>
 				<artifactId>ctakes-chunker-model</artifactId>
-				<version>${project.version}</version>
+				<version>${ctakes-models.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.ctakes</groupId>
@@ -569,38 +564,33 @@
 			</dependency>
 			<dependency>
 				<groupId>org.apache.ctakes</groupId>
-				<artifactId>
-					ctakes-context-tokenizer
-				</artifactId>
+				<artifactId>ctakes-context-tokenizer</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.ctakes</groupId>
-				<artifactId>
-					ctakes-clinical-pipeline
-				</artifactId>
+				<artifactId>ctakes-clinical-pipeline</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.ctakes</groupId>
-				<artifactId>
-					ctakes-ne-contexts
-				</artifactId>
+				<artifactId>ctakes-ne-contexts</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.ctakes</groupId>
-				<artifactId>
-					ctakes-assertion
-				</artifactId>
+				<artifactId>ctakes-mastif-zoner</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.ctakes</groupId>
-				<artifactId>
-					ctakes-assertion-model
-				</artifactId>
+				<artifactId>ctakes-assertion</artifactId>
 				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.ctakes</groupId>
+				<artifactId>ctakes-assertion-model</artifactId>
+				<version>${ctakes-models.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.ctakes</groupId>
@@ -609,121 +599,87 @@
 			</dependency>
 			<dependency>
 				<groupId>org.apache.ctakes</groupId>
-				<artifactId>
-					ctakes-constituency-parser
-				</artifactId>
+				<artifactId>ctakes-constituency-parser</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.ctakes</groupId>
-				<artifactId>
-					ctakes-constituency-parser-model
-				</artifactId>
+				<artifactId>ctakes-constituency-parser-model</artifactId>
+				<version>${ctakes-models.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.ctakes</groupId>
+				<artifactId>ctakes-coreference</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.ctakes</groupId>
-				<artifactId>
-					ctakes-coreference
-				</artifactId>
+				<artifactId>ctakes-coreference-model</artifactId>
+				<version>${ctakes-models.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.ctakes</groupId>
+				<artifactId>ctakes-drug-ner</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.ctakes</groupId>
-				<artifactId>
-					ctakes-coreference-model
-				</artifactId>
+				<artifactId>ctakes-side-effect</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.ctakes</groupId>
-				<artifactId>
-					ctakes-drug-ner
-				</artifactId>
+				<artifactId>ctakes-side-effect-model</artifactId>
+				<version>${ctakes-models.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.ctakes</groupId>
+				<artifactId>ctakes-smoking-status</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.ctakes</groupId>
-				<artifactId>
-					ctakes-side-effect
-				</artifactId>
+				<artifactId>ctakes-smoking-status-model</artifactId>
+				<version>${ctakes-models.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.ctakes</groupId>
+				<artifactId>ctakes-dependency-parser</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.ctakes</groupId>
-				<artifactId>
-					ctakes-side-effect-model
-				</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.ctakes</groupId>
-				<artifactId>
-					ctakes-smoking-status
-				</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.ctakes</groupId>
-				<artifactId>
-					ctakes-smoking-status-model
-				</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.ctakes</groupId>
-				<artifactId>
-					ctakes-dependency-parser
-				</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.ctakes</groupId>
-				<artifactId>
-					ctakes-dependency-parser-model
-            </artifactId>
-            <version>${project.version}</version>
+				<artifactId>ctakes-dependency-parser-model</artifactId>
+            <version>${ctakes-models.version}</version>
          </dependency>
          <dependency>
             <groupId>org.apache.ctakes</groupId>
-            <artifactId>
-               ctakes-dependency-parser-model-clear
-            </artifactId>
-            <version>${project.version}</version>
+            <artifactId>ctakes-dependency-parser-model-clear</artifactId>
+            <version>${ctakes-models.version}</version>
          </dependency>
 			<dependency>
 				<groupId>org.apache.ctakes</groupId>
-				<artifactId>
-					ctakes-relation-extractor
-				</artifactId>
+				<artifactId>ctakes-relation-extractor</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.ctakes</groupId>
-				<artifactId>
-					ctakes-relation-extractor-model
-				</artifactId>
+				<artifactId>ctakes-relation-extractor-model</artifactId>
+				<version>${ctakes-models.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.ctakes</groupId>
+				<artifactId>ctakes-temporal</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.ctakes</groupId>
-				<artifactId>
-					ctakes-temporal
-				</artifactId>
-				<version>${project.version}</version>
+				<artifactId>ctakes-temporal-model</artifactId>
+				<version>${ctakes-models.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.ctakes</groupId>
-				<artifactId>
-					ctakes-temporal-model
-				</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.ctakes</groupId>
-				<artifactId>
-					ctakes-ytex
-				</artifactId>
+				<artifactId>ctakes-ytex</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
@@ -733,9 +689,7 @@
 			</dependency>
 			<dependency>
 				<groupId>org.apache.ctakes</groupId>
-				<artifactId>
-					ctakes-distribution
-                </artifactId>
+				<artifactId>ctakes-distribution</artifactId>
                 <version>${project.version}</version>
             </dependency>
          <dependency>
@@ -841,8 +795,8 @@
 					<configuration>
 						<header>ctakes-distribution/src/main/config/license_header.txt</header>
 						<excludes>
-							<!-- We're disabling .txt files for now because some Annotators may 
-								not be able to handle standard comments in text files. This may break name 
+							<!-- We're disabling .txt files for now because some Annotators may
+								not be able to handle standard comments in text files. This may break name
 								values pairs such as stopWords.txt -->
 							<exclude>**.txt</exclude>
 						</excludes>
@@ -881,7 +835,7 @@
 						</properties>
 						<strictCheck>true</strictCheck>
 					</configuration>
-				</plugin>						
+				</plugin>
 				<plugin>
 					<artifactId>maven-assembly-plugin</artifactId>
 					<version>${maven-assembly-plugin.version}</version>
@@ -948,7 +902,7 @@
 				<plugin>
 					<artifactId>maven-dependency-plugin</artifactId>
 					<version>${maven-dependency-plugin.version}</version>
-				</plugin>				
+				</plugin>
 				<plugin>
 					<artifactId>maven-site-plugin</artifactId>
 					<version>${maven-site-plugin.version}</version>
@@ -957,7 +911,7 @@
 					<artifactId>maven-source-plugin</artifactId>
 					<version>${maven-source-plugin.version}</version>
 				</plugin>
-				<!-- Maven expects tests to start or end with "Test", not "Tests", so 
+				<!-- Maven expects tests to start or end with "Test", not "Tests", so
 					explicitly include files ending in "Tests" -->
 				<plugin>
 					<artifactId>maven-surefire-plugin</artifactId>
@@ -972,18 +926,18 @@
 						<argLine>-Xmx3g</argLine>
 						<forkedProcessTimeoutInSeconds>900</forkedProcessTimeoutInSeconds>
 						<additionalClasspathElements>
-						    <additionalClasspathElement>ctakes-assertion-model/src/main/resources</additionalClasspathElement>						    
+						    <additionalClasspathElement>ctakes-assertion-model/src/main/resources</additionalClasspathElement>
 						    <additionalClasspathElement>ctakes-chunker-model/src/main/resources</additionalClasspathElement>
                      <additionalClasspathElement>ctakes-constituency-parser-model/src/main/resources</additionalClasspathElement>
                      <additionalClasspathElement>ctakes-core-model/src/main/resources</additionalClasspathElement>
 						    <additionalClasspathElement>ctakes-coreference-model/src/main/resources</additionalClasspathElement>
                      <additionalClasspathElement>ctakes-dependency-parser-model/src/main/resources</additionalClasspathElement>
                      <additionalClasspathElement>ctakes-dependency-parser-model-clear/src/main/resources</additionalClasspathElement>
-						    <additionalClasspathElement>ctakes-pos-tagger-model/src/main/resources</additionalClasspathElement>						    
+						    <additionalClasspathElement>ctakes-pos-tagger-model/src/main/resources</additionalClasspathElement>
 						    <additionalClasspathElement>ctakes-relation-extractor-model/src/main/resources</additionalClasspathElement>
 						    <additionalClasspathElement>ctakes-side-effect-model/src/main/resources</additionalClasspathElement>
 						    <additionalClasspathElement>ctakes-smoking-status-model/src/main/resources</additionalClasspathElement>
-						    <additionalClasspathElement>ctakes-temporal-model/src/main/resources</additionalClasspathElement>						    						    						    						    						    						    						    
+						    <additionalClasspathElement>ctakes-temporal-model/src/main/resources</additionalClasspathElement>
 						</additionalClasspathElements>
 					</configuration>
 				</plugin>
@@ -993,7 +947,7 @@
 					<groupId>org.apache.rat</groupId>
 					<artifactId>apache-rat-plugin</artifactId>
 					<version>${apache-rat-plugin.version}</version>
-					<configuration>	
+					<configuration>
 							<excludes>
 								<!-- generated directories -->
 								<exclude>**/target/**/*</exclude>
@@ -1022,10 +976,10 @@
 								<!-- Exclude test data files -->
 								<exclude>**/data/test/**</exclude>
 								<exclude>**/data/**</exclude>
-								<exclude>**/output/**</exclude>	
-								<exclude>**/sample_note.txt</exclude>																							
+								<exclude>**/output/**</exclude>
+								<exclude>**/sample_note.txt</exclude>
 							</excludes>
-						<numUnapprovedLicenses>0</numUnapprovedLicenses>								
+						<numUnapprovedLicenses>0</numUnapprovedLicenses>
 					</configuration>
 				</plugin>
 				<plugin>
@@ -1036,9 +990,9 @@
 						<lifecycleMappingMetadata>
 							<pluginExecutions>
 								<pluginExecution>
-								<!-- 
+								<!--
 								This is needed to execute/unpack resources in m2e eclipse ide
-								Currently used in the ctakes-dictionary-lookup project  
+								Currently used in the ctakes-dictionary-lookup project
 								-->
 									<pluginExecutionFilter>
 										<groupId>org.apache.maven.plugins</groupId>
@@ -1058,7 +1012,7 @@
 								<!--
 								Ignore the Maven remote resources plugin in Eclipse. We don't use it from Eclipse,
 								and it causes a warning if m2e is not configured to ignore it as below.
-								-->								
+								-->
 									<pluginExecutionFilter>
 										<groupId>org.apache.maven.plugins</groupId>
 										<artifactId>maven-remote-resources-plugin</artifactId>
@@ -1071,7 +1025,7 @@
 									<action>
 										<ignore />
 									</action>
-								</pluginExecution>																
+								</pluginExecution>
 							</pluginExecutions>
 						</lifecycleMappingMetadata>
 					</configuration>

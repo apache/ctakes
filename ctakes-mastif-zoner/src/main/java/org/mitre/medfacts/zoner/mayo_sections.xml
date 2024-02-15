@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : mayo_sections.xml.xml
+    Created on : June 15, 2012, 5:34 PM
+    Author     : ROBYN
+    Description:
+        creates a translation for the MITRE Zoner from Mayo section headers
+        to MITRE sections
+-->
+
+<root>
+<sections>
+  <!-- ADDENDUM --> 
+  <section>
+    <regex>((addendum)\s*\:)</regex>
+    <label>addendum</label>
+  </section>
+  <!-- Revision History -->
+  <section>
+    <regex>(\[start section id=\"20100\"\])</regex>
+    <label>transcription details</label>
+  </section>
+  <!-- Referral Source -->
+  <section>
+    <regex>(\[start section id=\"20101\"\])</regex>
+    <label>attending physician</label>
+  </section>
+  <!-- Chief Complaint / Reason for Visit -->
+  <section>
+    <regex>(\[start section id=\"20102\"\])</regex>
+    <label>chief complaint</label>
+  </section>
+  <!-- History of Present Illness -->
+  <section>
+    <regex>(\[start section id=\"20103\"\])</regex>
+    <label>history of present illness</label>
+  </section>
+  <!-- Current Medications -->
+  <section>
+    <regex>(\[start section id=\"20104\"\])</regex>
+    <label>medication</label>
+  </section>
+  <!-- Allergies -->
+  <section>
+    <regex>(\[start section id=\"20105\"\])</regex>
+    <label>allergy</label>
+  </section>
+  <!-- System Reviews -->
+  <section>
+    <regex>(\[start section id=\"20106\"\])</regex>
+    <label>review of systems</label>
+  </section>
+  <!-- Past Medical / Surgical History -->
+  <section>
+    <regex>(\[start section id=\"20107\"\])</regex>
+    <label>past medical history</label>
+  </section>
+  <!-- Social History -->
+  <section>
+    <regex>(\[start section id=\"20108\"\])</regex>
+    <label>social history</label>
+  </section>
+  <!-- Family History  -->
+  <section>
+    <regex>(\[start section id=\"20109\"\])</regex>
+    <label>family history</label>
+  </section>
+  <!-- Vital Signs -->
+  <section>
+    <regex>(\[start section id=\"20110\"\])</regex>
+    <label>physical examination</label>
+  </section>
+  <!-- Physical Examination -->
+  <section>
+    <regex>(\[start section id=\"20111\"\])</regex>
+    <label>physical examination</label>
+  </section>
+  <!-- Impression / Report / Plan -->
+  <section>
+    <regex>(\[start section id=\"20112\"\])</regex>
+    <label>impression/plan</label>
+  </section>
+  <!-- Diagnosis -->
+  <section>
+    <regex>(\[start section id=\"20113\"\])</regex>
+    <label>diagnoses</label>
+  </section>
+  <!-- Administrative -->
+  <section>
+    <regex>(\[start section id=\"20114\"\])</regex>
+    <label>transcription details</label>
+  </section>
+  <!-- Special Instructions -->
+  <section>
+    <regex>(\[start section id=\"20115\"\])</regex>
+    <label>instructions</label>
+  </section>
+  <!-- Advance Directives -->
+  <section>
+    <regex>(\[start section id=\"20116\"\])</regex>
+    <label>instructions</label>
+  </section>
+  <!-- Service Contributors   -->
+  <section>
+    <regex>(\[start section id=\"20117\"\])</regex>
+    <label>service specialty</label>
+  </section>
+  <!-- Immunizations -->
+  <section>
+    <regex>(\[start section id=\"20118\"\])</regex>
+    <label>other treatments/procedures</label>
+  </section>
+  <!-- Admission Findings / Test Results  -->
+  <section>
+    <regex>(\[start section id=\"20119\"\])</regex>
+    <label>clinical findings</label>
+  </section>
+  <!-- Problem Oriented Hosp. Course (I/O/P) -->
+  <section>
+    <regex>(\[start section id=\"20120\"\])</regex>
+    <label>hospital course</label>
+  </section>
+  <!-- Final Physical Examination -->
+  <section>
+    <regex>(\[start section id=\"20121\"\])</regex>
+    <label>physical examination</label>
+  </section>
+  <!-- Adverse Reactions  -->
+  <section>
+    <regex>(\[start section id=\"20122\"\])</regex>
+    <label>complications</label>
+  </section>
+  <!-- Diet / Nutrition -->
+  <section>
+    <regex>(\[start section id=\"20123\"\])</regex>
+    <label>diet</label>
+  </section>
+  <!-- Discharge Condition  -->
+  <section>
+    <regex>(\[start section id=\"20124\"\])</regex>
+    <label>condition</label>
+  </section>
+  <!-- Condition at Discharge -->
+  <section>
+    <regex>(\[start section id=\"20125\"\])</regex>
+    <label>condition</label>
+  </section>
+  <!-- Ongoing Care Orders   -->
+  <section>
+    <regex>(\[start section id=\"20126\"\])</regex>
+    <label>follow-up</label>
+  </section>
+  <!-- Admission Physical Exam -->
+  <section>
+    <regex>(\[start section id=\"20127\"\])</regex>
+    <label>physical examination</label>
+  </section>
+  <!-- Ongoing Care -->
+  <section>
+    <regex>(\[start section id=\"20128\"\])</regex>
+    <label>follow-up</label>
+  </section>
+  <!-- Follow Up Agreements -->
+  <section>
+    <regex>(\[start section id=\"20129\"\])</regex>
+    <label>follow-up</label>
+  </section>
+  <!-- PFH and CVI Dates -->
+  <section>
+    <regex>(\[start section id=\"20130\"\])</regex>
+    <label>transcription details</label>
+  </section>
+  <!-- there is no 20131 -->
+  <!-- Findings/Procedures/Surgeries -->
+  <section>
+    <regex>(\[start section id=\"20132\"\])</regex>
+    <label>operations/procedures</label>
+  </section>
+  <!-- Admission Medications  -->
+  <section>
+    <regex>(\[start section id=\"20133\"\])</regex>
+    <label>medication</label>
+  </section>
+  <!-- Discharge Activity -->
+  <section>
+    <regex>(\[start section id=\"20134\"\])</regex>
+    <label>discharge activity</label>
+  </section>
+  <!-- Anticipated Problems and Suggested Interventions -->
+  <section>
+    <regex>(\[start section id=\"20135\"\])</regex>
+    <label>instructions</label>
+  </section>
+  <!-- Post op services related to Surgical Procedure -->
+  <section>
+    <regex>(\[start section id=\"20136\"\])</regex>
+    <label>follow-up</label>
+  </section>
+  <!-- EMTALA Statement -->
+  <section>
+    <regex>(\[start section id=\"20137\"\])</regex>
+    <label>instructions</label>
+  </section>
+  <!-- Patient Education -->
+  <section>
+    <regex>(\[start section id=\"20138\"\])</regex>
+    <label>instructions</label>
+  </section>
+  <!-- Principle Diagnosis -->
+  <section>
+    <regex>(\[start section id=\"20139\"\])</regex>
+    <label>diagnoses</label>
+  </section>
+  <!-- Secondary Diagnoses -->
+  <section>
+    <regex>(\[start section id=\"20140\"\])</regex>
+    <label>diagnoses</label>
+  </section>
+  <!-- Final Pathology Diagnosis -->
+  <section>
+    <regex>(\[start section id=\"20141\"\])</regex>
+    <label>diagnoses</label>
+  </section>
+  <!-- Supervisor Present -->
+  <section>
+    <regex>(\[start section id=\"20142\"\])</regex>
+    <label>attending physician</label>
+  </section>
+  <!-- Pre-Procedure Information -->
+  <section>
+    <regex>(\[start section id=\"20143\"\])</regex>
+    <label>procedure description</label>
+  </section>
+  <!-- Precedure Information -->
+  <section>
+    <regex>(\[start section id=\"20144\"\])</regex>
+    <label>procedure description</label>
+  </section>
+  <!-- Subjective -->
+  <section>
+    <regex>(\[start section id=\"20145\"\])</regex>
+    <label>subjective</label>
+  </section>
+  <!-- Labs -->
+  <section>
+    <regex>(\[start section id=\"20146\"\])</regex>
+    <label>laboratory</label>
+  </section>
+  <!-- Wound -->
+  <section>
+    <regex>(\[start section id=\"20147\"\])</regex>
+    <label>diagnoses</label>
+  </section>
+  <!-- Informed Consent  -->
+  <section>
+    <regex>(\[start section id=\"20148\"\])</regex>
+    <label>instructions</label>
+  </section>
+  <!-- Post-Procedure Film -->
+  <section>
+    <regex>(\[start section id=\"20149\"\])</regex>
+    <label>radiology</label>
+  </section>
+  <!-- Patient Disposition -->
+  <section>
+    <regex>(\[start section id=\"20150\"\])</regex>
+    <label>disposition</label>
+  </section>
+  <!-- Specimins Removed -->
+  <section>
+    <regex>(\[start section id=\"20151\"\])</regex>
+    <label>laboratory</label>
+  </section>
+  <!-- Findings   -->
+  <section>
+    <regex>(\[start section id=\"20152\"\])</regex>
+    <label>clinical findings</label>
+  </section>
+  <!-- Primary Surgeon(s) -->
+  <section>
+    <regex>(\[start section id=\"20153\"\])</regex>
+    <label>attending physician</label>
+  </section>
+  <!-- Assistants -->
+  <section>
+    <regex>(\[start section id=\"20154\"\])</regex>
+    <label>attending physician</label>
+  </section>
+  <!-- Complications -->
+  <section>
+    <regex>(\[start section id=\"20155\"\])</regex>
+    <label>complications</label>
+  </section>
+  <!-- Drains -->
+  <section>
+    <regex>(\[start section id=\"20156\"\])</regex>
+    <label>other treatments/procedures</label>
+  </section>
+  <!-- Anesthesia  -->
+  <section>
+    <regex>(\[start section id=\"20157\"\])</regex>
+    <label>other treatments/procedures</label>
+  </section>
+  <!-- Fluids -->
+  <section>
+    <regex>(\[start section id=\"20158\"\])</regex>
+    <label>other treatments/procedures</label>
+  </section>
+  <!-- Estimated Blood Loss -->
+  <section>
+    <regex>(\[start section id=\"20159\"\])</regex>
+    <label>clinical findings</label>
+  </section>
+  <!-- Prescriptions -->
+  <section>
+    <regex>(\[start section id=\"20160\"\])</regex>
+    <label>medication</label>
+  </section>
+  <!-- Follow-Up Letter -->
+  <section>
+    <regex>(\[start section id=\"20161\"\])</regex>
+    <label>follow-up</label>
+  </section>
+  <!-- May Return to Work -->
+  <section>
+    <regex>(\[start section id=\"20162\"\])</regex>
+    <label>work return</label>
+  </section>
+  <!-- Instructions to Include   -->
+  <section>
+    <regex>(\[start section id=\"20163\"\])</regex>
+    <label>instructions</label>
+  </section>
+  <!-- Procedure Performed and Description -->
+  <section>
+    <regex>(\[start section id=\"20164\"\])</regex>
+    <label>procedure description</label>
+  </section>
+  <!-- Post-Procedure Diagnosis -->
+  <section>
+    <regex>(\[start section id=\"20165\"\])</regex>
+    <label>diagnoses</label>
+  </section>
+  <!-- Reason for Transfer -->
+  <section>
+    <regex>(\[start section id=\"20166\"\])</regex>
+    <label>reason for hospitalization</label>
+  </section>
+  <!-- Condition at Transfer   -->
+  <section>
+    <regex>(\[start section id=\"20167\"\])</regex>
+    <label>condition</label>
+  </section>
+  <!-- Summary of Care -->
+  <section>
+    <regex>(\[start section id=\"20168\"\])</regex>
+    <label>other treatments/procedures</label>
+  </section>
+  <!-- Physician Attestation -->
+  <section>
+    <regex>(\[start section id=\"20169\"\])</regex>
+    <label>attending physician</label>
+  </section>
+  <!-- Brief Hospital Course -->
+  <section>
+    <regex>(\[start section id=\"20170\"\])</regex>
+    <label>hospital course</label>
+  </section>
+  <!-- there is no 20171 -->
+  <!-- Condition at Discharge -->
+  <section>
+    <regex>(\[start section id=\"20172\"\])</regex>
+    <label>condition</label>
+  </section>
+  <!-- Discharge Disposition   -->
+  <section>
+    <regex>(\[start section id=\"20173\"\])</regex>
+    <label>disposition</label>
+  </section>
+  <!-- Contact Information -->
+  <section>
+    <regex>(\[start section id=\"20174\"\])</regex>
+    <label>transcription details</label>
+  </section>
+  <!-- Service Contributor / SUM2 -->
+  <section>
+    <regex>(\[start section id=\"20175\"\])</regex>
+    <label>attending physician</label>
+  </section>
+  <!-- Instructions for Continuing care -->
+  <section>
+    <regex>(\[start section id=\"20176\"\])</regex>
+    <label>instructions</label>
+  </section>
+  <!-- There is no 20177 -->
+  <!-- Consults -->
+  <section>
+    <regex>(\[start section id=\"20178\"\])</regex>
+    <label>consultants</label>
+  </section>
+  <!-- Radiological Review -->
+  <section>
+    <regex>(\[start section id=\"20179\"\])</regex>
+    <label>radiology</label>
+  </section>
+</sections>
+</root>

@@ -66,7 +66,7 @@ static private final Logger LOGGER = Logger.getLogger( "ProgressDone" );
       LOGGER.info( "Processing Time Elapsed:      " + getSpan( endMillis - _initMillis ) );
       LOGGER.info( "Total Run Time Elapsed:       " + getSpan( endMillis - instantMillis ) );
       LOGGER.info( "Documents Processed:          " + _docCount );
-      final long millisPerNote = (endMillis - _initMillis) / _docCount;
+      final long millisPerNote = _docCount == 0 ? 0 : (endMillis - _initMillis) / _docCount;
       LOGGER.info( String.format( "Average Seconds per Document: %.2f", (millisPerNote / 1000f) ) );
    }
 

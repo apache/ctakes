@@ -65,7 +65,7 @@
 		<dependency>
 			<groupId>org.apache.ctakes</groupId>
 			<artifactId>ctakes-dependency-parser-models</artifactId>
-			<version>${project.version}</version>
+			<version>${ctakes-models.version}</version>
 			<scope>test</scope>
 		</dependency>
 <!--		<dependency>-->
