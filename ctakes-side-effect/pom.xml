@@ -33,7 +33,7 @@
 		<dependency>
 			<groupId>org.apache.ctakes</groupId>
 			<artifactId>ctakes-side-effect-models</artifactId>
-			<version>${project.version}</version>
+			<version>${ctakes-models.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.ctakes</groupId>
