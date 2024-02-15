@@ -856,6 +856,24 @@ public class ConceptSimilarityServiceImpl implements ConceptSimilarityService {
 					new JaccardMetric(this));
 			this.similarityMetricMap.put(SimilarityMetricEnum.WUPALMER,
 					new WuPalmerMetric(this));
+			this.similarityMetricMap.put(SimilarityMetricEnum.INTRINSIC_RESNIK,
+					new ResnikMetric(this, true));
+			this.similarityMetricMap.put(SimilarityMetricEnum.RESNIK,
+					new ResnikMetric(this, false));
+			this.similarityMetricMap.put(SimilarityMetricEnum.INTRINSIC_FAITH,
+					new FaithMetric(this, true));
+			this.similarityMetricMap.put(SimilarityMetricEnum.FAITH,
+					new FaithMetric(this, false));
+			this.similarityMetricMap.put(SimilarityMetricEnum.DICE,
+					new DiceMetric(this, true));
+			this.similarityMetricMap.put(SimilarityMetricEnum.SIMPSON,
+					new SimpsonMetric(this, true));
+			this.similarityMetricMap.put(SimilarityMetricEnum.BRAUN_BLANQUET,
+					new BraunBlanquetMetric(this, true));
+			this.similarityMetricMap.put(SimilarityMetricEnum.OCHIAI,
+					new OchiaiMetric(this, true));
+
+			
 		} else {
 			this.similarityMetricMap.put(SimilarityMetricEnum.PAGERANK,
 					new PageRankMetric(this, this.getPageRankService()));
