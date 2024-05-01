@@ -11,7 +11,7 @@
    <url>http://ctakes.apache.org</url>
    <inceptionYear>2012</inceptionYear>
 	<properties>
-		<ctakes.version>5.0.0-SNAPSHOT</ctakes.version>
+		<version>5.1.0</version>
 		<springframework.version>4.3.12.RELEASE</springframework.version>
 		<jackson.version>2.9.7</jackson.version>
       <maven.compiler.plugin.version>3.10.1</maven.compiler.plugin.version>

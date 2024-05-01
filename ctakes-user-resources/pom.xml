@@ -36,7 +36,7 @@
 	<parent>
 		<groupId>org.apache.ctakes</groupId>
 		<artifactId>ctakes</artifactId>
-		<version>5.0.0-SNAPSHOT</version>
+		<version>5.1.0-SNAPSHOT</version>
 	</parent>
 	<packaging>jar</packaging>
 
@@ -100,6 +100,10 @@
 		<dependency>
 			<groupId>org.apache.ctakes</groupId>
 			<artifactId>ctakes-assertion-zoner</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.ctakes</groupId>
+			<artifactId>ctakes-mastif-zoner</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.ctakes</groupId>
@@ -184,6 +188,10 @@
 								</resource>
 								<resource>
 									<directory>${project.basedir}/../ctakes-assertion-zoner/src/user/resources</directory>
+									<filtering>true</filtering>
+								</resource>
+								<resource>
+									<directory>${project.basedir}/../ctakes-mastif-zoner/src/user/resources</directory>
 									<filtering>true</filtering>
 								</resource>
 								<resource>

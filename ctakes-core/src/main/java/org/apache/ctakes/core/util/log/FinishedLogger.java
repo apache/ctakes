@@ -13,7 +13,7 @@ import org.apache.uima.resource.ResourceInitializationException;
 import java.io.File;
 import java.io.IOException;
 import java.lang.management.ManagementFactory;
-import java.util.Date;
+import java.util.*;
 import java.util.jar.Attributes;
 import java.util.jar.JarFile;
 import java.util.jar.Manifest;
@@ -30,9 +30,10 @@ import java.util.jar.Manifest;
 )
 final public class FinishedLogger extends JCasAnnotator_ImplBase {
 
-//   static private final Logger LOGGER = Logger.getLogger( "FinishedLogger" );
-static private final Logger LOGGER = Logger.getLogger( "ProgressDone" );
+   static private final Logger LOGGER = Logger.getLogger( "ProgressDone" );
 
+   static private final String BUILD_VERSION = "Implementation-Version";
+   static private final String BUILD_DATE = "Implementation-Build-Date";
    private long _initMillis;
    private long _docCount = 0;
 
@@ -58,7 +59,9 @@ static private final Logger LOGGER = Logger.getLogger( "ProgressDone" );
       super.collectionProcessComplete();
       final long endMillis = System.currentTimeMillis();
       final long instantMillis = ManagementFactory.getRuntimeMXBean().getStartTime();
-
+      final Map<String,String> buildInfo = getBuildInfo( BUILD_VERSION, BUILD_DATE );
+      LOGGER.info( "Build Version:                " + buildInfo.getOrDefault( BUILD_VERSION, "" ) );
+      LOGGER.info( "Build Date:                   " + buildInfo.getOrDefault( BUILD_DATE, "" ) );
       LOGGER.info( "Run Start Time:               " + getTime( instantMillis ) );
       LOGGER.info( "Processing Start Time:        " + getTime( _initMillis ) );
       LOGGER.info( "Processing End Time:          " + getTime( endMillis ) );
@@ -104,41 +107,42 @@ static private final Logger LOGGER = Logger.getLogger( "ProgressDone" );
     * Example:
     * Build Version: 4.0.1-SNAPSHOT
     * Build Date: 2022-10-26 15:59
-    *
-    * @return build information or an empty if none is found.
+    * @param attributeNames -
+    * @return build information or an empty map if none is found.
     */
-   static public String getBuildInfo() {
+   static public Map<String,String> getBuildInfo( final String... attributeNames ) {
       final File libDir = FileLocator.getFileQuiet( "lib" );
       if ( libDir == null || !libDir.isDirectory() ) {
-         return "";
+         return Collections.emptyMap();
       }
       final File[] files = libDir.listFiles();
       if ( files == null ) {
-         return "";
+         return Collections.emptyMap();
       }
+      final Map<String,String> attributeMap = new HashMap<>( attributeNames.length );
       for ( File jar : files ) {
          final String name = jar.getName();
          if ( name.contains( "ctakes-core" )
-              && !name.contains( "ctakes-core-models" )
-              && !name.contains( "coreference" )
-              && !name.contains( "ctakes-core-res" ) ) {
+               && !name.contains( "ctakes-core-models" )
+               && !name.contains( "coreference" )
+               && !name.contains( "ctakes-core-res" ) ) {
             try ( JarFile jf = new JarFile( jar ) ) {
                final Manifest manifest = jf.getManifest();
                final Attributes attributes = manifest.getMainAttributes();
-               return getAttribute( attributes, "Build Version", "Implementation-Version" )
-                      + getAttribute( attributes, "Build Date", "Implementation-Build-Date" );
+               for ( String attributeName : attributeNames ) {
+                  attributeMap.put( attributeName, getAttribute( attributes, attributeName ) );
+               }
             } catch ( IOException ioE ) {
-               return "";
+               return attributeMap;
             }
          }
       }
-      return "";
+      return attributeMap;
    }
 
-   static private String getAttribute( final Attributes attributes, final String name, final String attributeName ) {
+   static private String getAttribute( final Attributes attributes,  final String attributeName ) {
       final String value = attributes.getValue( attributeName );
-      return value == null ? "" : name + ": " + value + "\n";
+      return value == null ? "" : value;
    }
-
 
 }

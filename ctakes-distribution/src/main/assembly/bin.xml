@@ -36,6 +36,7 @@
 			<includes>
 				<include>org.apache.ctakes:ctakes-assertion</include>
 				<include>org.apache.ctakes:ctakes-assertion-zoner</include>
+				<include>org.apache.ctakes:ctakes-mastif-zoner</include>
 				<include>org.apache.ctakes:ctakes-chunker</include>
 				<include>org.apache.ctakes:ctakes-clinical-pipeline</include>
 				<include>org.apache.ctakes:ctakes-constituency-parser</include>
@@ -135,6 +136,12 @@
 		</fileSet>
 		<fileSet>
 			<directory>../ctakes-assertion-zoner/src/user/resources</directory>
+			<outputDirectory>resources</outputDirectory>
+			<fileMode>644</fileMode>
+			<directoryMode>755</directoryMode>
+		</fileSet>
+		<fileSet>
+			<directory>../ctakes-mastif-zoner/src/user/resources</directory>
 			<outputDirectory>resources</outputDirectory>
 			<fileMode>644</fileMode>
 			<directoryMode>755</directoryMode>

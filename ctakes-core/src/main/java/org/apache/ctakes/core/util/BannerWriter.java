@@ -1,6 +1,5 @@
 package org.apache.ctakes.core.util;
 
-import org.apache.ctakes.core.util.log.FinishedLogger;
 import org.apache.log4j.Logger;
 
 /**
@@ -33,7 +32,6 @@ final public class BannerWriter {
       EOL_LOGGER.info( "           _/            _/      _/    _/  _/  _/    _/              _/" );
       EOL_LOGGER.info( "            _/_/_/      _/      _/    _/  _/    _/  _/_/_/_/  _/_/_/" );
       EOL_LOGGER.info( "\n" );
-      EOL_LOGGER.info( FinishedLogger.getBuildInfo() );
    }
 
    static public void writeInitialize() {
