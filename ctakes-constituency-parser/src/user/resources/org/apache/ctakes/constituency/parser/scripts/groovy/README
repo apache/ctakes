@@ -1,5 +1,5 @@
 parser.groovy is set up for ctakes version 4.0.0
-To migrate to version 5.0.0:
+To migrate to version 5.1.0:
 1.  References to directories ending with ..."-res" must be changed to end with ..."-models"
 2.  The SVN repository location ..."ctakes/trunk"... must be changed to ..."ctakes/ctakes-models/trunk"...
 3.  The location of the sentence detector model ..."core/sentdetect/sd-med-model.zip" must be changed to ..."core/models/sentdetect/sd-med-model.zip"

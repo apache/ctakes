@@ -10,7 +10,7 @@
     </head>
     <body>
         <img src="http://ctakes.apache.org/images/ctakes_logo.jpg"/>
-        <br>Version: 5.0.0</br>
+        <br>Version: 5.1.0</br>
 		</br>
         <h3>cTAKES REST SERVICE TESTING</h3>		
         <textarea id="analysisText" name="analysisText" rows="6" cols="75" onFocus="this.value=''">Enter your text for analysis</textarea><br>
