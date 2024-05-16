@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>org.apache.ctakes</groupId>
 		<artifactId>ctakes</artifactId>
-		<version>5.1.0-SNAPSHOT</version>
+		<version>5.1.0</version>
 	</parent>
 	<artifactId>ctakes-ytex-web</artifactId>
 	<packaging>war</packaging>
@@ -16,12 +16,19 @@
 	<inceptionYear>2012</inceptionYear>
 	<properties>
 		<version>5.1.0</version>
+		<ctakes.version>5.1.0</ctakes.version>
 		<jetty.useTestScope>false</jetty.useTestScope>
 	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.ctakes</groupId>
 			<artifactId>ctakes-ytex</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.xml.ws</groupId>
+			<artifactId>jaxws-ri</artifactId>
+			<version>2.3.3</version>
+			<type>pom</type>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -100,6 +107,12 @@
 			<groupId>javax.servlet.jsp</groupId>
 			<artifactId>jsp-api</artifactId>
 			<version>${servlet-jsp-api.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId> org.glassfish</groupId>
+					<artifactId>javax.el</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -110,6 +123,12 @@
 			<groupId>commons-el</groupId>
 			<artifactId>commons-el</artifactId>
 			<version>${commons-el.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish</groupId>
+			<artifactId>javax.el</artifactId>
+<!--			<version>3.0.1-b12</version>-->
+			<version>3.0.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.glassfish.web</groupId>
@@ -124,12 +143,18 @@
 		<dependency>
 			<groupId>org.eclipse.jetty</groupId>
 			<artifactId>jetty-runner</artifactId>
-			<version>${jetty.version}</version>
+			<version>${jetty-runner.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.eclipse.jetty</groupId>
 			<artifactId>jetty-jsp</artifactId>
-			<version>${jetty.version}</version>
+			<version>${jetty-jsp.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId> org.glassfish</groupId>
+					<artifactId>javax.el</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 	</dependencies>
 	<build>
@@ -158,6 +183,9 @@
 									<filtering>true</filtering>
 								</resource>
 							</resources>
+							<nonFilteredFileExtensions>
+								<nonFilteredFileExtension>psd</nonFilteredFileExtension>
+							</nonFilteredFileExtensions>
 						</configuration>
 					</execution>
 				</executions>
@@ -167,29 +195,31 @@
 			<plugin>
 				<groupId>org.eclipse.jetty</groupId>
 				<artifactId>jetty-maven-plugin</artifactId>
-				<version>${jetty.version}</version>
+				<version>${jetty-maven.version}</version>
 				<executions>
 					<execution>
 						<id>start-jetty</id>
 						<!-- <phase>pre-integration-test</phase> -->
 						<configuration>
-							<scanIntervalSeconds>5</scanIntervalSeconds>
+<!--							<scanIntervalSeconds>5</scanIntervalSeconds>-->
 							<stopPort>9966</stopPort>
 							<stopKey>foo</stopKey>
 							<useProvidedScope>true</useProvidedScope>
 							<useTestScope>${jetty.useTestScope}</useTestScope>
-							<connectors>
-								<connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
-									<port>9080</port>
-									<maxIdleTime>60000</maxIdleTime>
-								</connector>
-							</connectors>
-							<daemon>true</daemon>
+<!--							<connectors>-->
+<!--								<connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">-->
+<!--									<port>9080</port>-->
+<!--									<maxIdleTime>60000</maxIdleTime>-->
+<!--								</connector>-->
+<!--							</connectors>-->
+<!--							<daemon>true</daemon>-->
 							<jvmArgs>-XX:MaxPermSize=128m -Xmx512m
 								-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8000</jvmArgs>
 						</configuration>
 						<goals>
-							<goal>run-forked</goal>
+<!--					It seems that the newer version(s) of the jetty-maven-plugin no longer support run-forked -->
+<!--							<goal>run-forked</goal>-->
+							<goal>run</goal>
 						</goals>
 					</execution>
 					<execution>

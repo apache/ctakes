@@ -27,7 +27,7 @@
    <parent>
       <artifactId>ctakes</artifactId>
       <groupId>org.apache.ctakes</groupId>
-      <version>5.1.0-SNAPSHOT</version>
+      <version>5.1.0</version>
    </parent>
    <description>Tiny Rest Service to run a ctakes pipeline.</description>
 
