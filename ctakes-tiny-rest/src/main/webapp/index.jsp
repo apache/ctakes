@@ -10,7 +10,7 @@
    </head>
    <body>
       <img src="http://ctakes.apache.org/images/ctakes_logo.jpg" alt="Apache cTAKES" class="center"/>
-      <h3>Apache cTAKES 5.1.0 Tiny REST Service Tester</h3>
+      <h3>Apache cTAKES 6.0.0-SNAPSHOT Tiny REST Service Tester</h3>
       <div class="center">
       <textarea id="documentText" name="documentText" rows="20" cols="80" placeholder="Enter your text for analysis."></textarea>
       <br>

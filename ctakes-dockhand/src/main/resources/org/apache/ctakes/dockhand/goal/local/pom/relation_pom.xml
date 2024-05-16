@@ -4,14 +4,14 @@
    <groupId>org.apache.ctakes</groupId>
    <artifactId>dockhand-local</artifactId>
    <name>Relation Dockhand</name>
-   <version>5.1.0</version>
+   <version>6.0.0-SNAPSHOT</version>
    <description>Discovers Relation Information using Apache cTAKES</description>
    <packaging>jar</packaging>
    <url>http://ctakes.apache.org</url>
    <inceptionYear>2012</inceptionYear>
 
    <properties>
-      <version>5.1.0</version>
+      <ctakes.version>6.0.0-SNAPSHOT</ctakes.version>
    </properties>
 
    <dependencies>

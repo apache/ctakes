@@ -23,7 +23,7 @@ final public class LocalInstallBuilder implements Runnable {
    static private final String BINARY_DIR = "/org/apache/ctakes/dockhand/binary/";
    static private final String SOURCE_URLDIR = "/org/apache/ctakes/dockhand/goal/local/";
 
-   static private final String INSTALL_DIRNAME = "apache-ctakes-5.1.0";
+   static private final String INSTALL_DIRNAME = "apache-ctakes-6.0.0-SNAPSHOT";
 
    private final DhWizardController _wizardController;
 

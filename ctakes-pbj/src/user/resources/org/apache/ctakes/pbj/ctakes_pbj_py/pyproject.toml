@@ -21,7 +21,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ctakes-pbj"
-version = "5.1.0"
+version = "6.0.0-SNAPSHOT"
 authors = [
     { name="Apache cTAKES", email="dev@ctakes.apache.org" },
 ]

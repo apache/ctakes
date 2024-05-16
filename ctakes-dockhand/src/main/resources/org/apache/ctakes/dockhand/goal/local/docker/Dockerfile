@@ -14,7 +14,7 @@ WORKDIR /ctakes_src
 
 RUN mvn package
 
-WORKDIR /ctakes_src/apache-ctakes-5.1.0
+WORKDIR /ctakes_src/apache-ctakes-6.0.0-SNAPSHOT
 
 #  TODO -- create RunPipeline scripts
 

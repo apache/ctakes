@@ -78,7 +78,7 @@ final public class HtmlTextWriter extends AbstractJCasFileWriter {
    static private final Logger LOGGER = Logger.getLogger( "HtmlTextWriter" );
 
    static private final String PREFERRED_TERM_UNKNOWN = "Unknown Preferred Term";
-   static private final String CTAKES_VERSION = "5.1.0";
+   static private final String CTAKES_VERSION = "6.0.0-SNAPSHOT";
 
    static private final String FILE_EXTENSION = ".pretty.html";
    static private final String CSS_FILENAME = "ctakes.pretty.css";
