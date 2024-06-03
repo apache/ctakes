@@ -1,4 +1,4 @@
-// This file contains commands and parameters to run the ctakes-examples "Hello World" pipeline
+// Commands and parameters to run the ctakes-examples "Hello World" pipeline.
 
 // Load a simple token processing pipeline from another pipeline file
 load DefaultTokenizerPipeline.piper

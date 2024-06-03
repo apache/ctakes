@@ -1,5 +1,4 @@
-// This file contains commands and parameters to run the ctakes-examples "Hello World" pipeline
-// with UMLS Concept Unique Identifiers (CUI) output
+// Commands and parameters to run the "Hello World" pipeline with UMLS Concept Unique Identifiers (CUI) output.
 
 // Load a simple token processing pipeline from another pipeline file
 load org/apache/ctakes/core/pipeline/DefaultTokenizerPipeline.piper

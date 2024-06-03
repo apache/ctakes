@@ -1,4 +1,5 @@
-//  Commands and parameters to create a default dictionary lookup sub-pipeline.  This is not a full pipeline.
+//  Commands and parameters to create a dictionary lookup sub-pipeline.
+// This is not a full pipeline.
 
 // path to the xml file containing information for dictionary lookup configuration.
 cli LookupXml=l

@@ -1,8 +1,8 @@
-// Clinical Pipeline with sectionization, paragraph and list detection and degree-of and location-of relations
-// with events, times, event-event and event-time relations plus event-document creation time relations
+// Thread safe Clinical Pipeline with sections, paragraphs, lists, degree-of, location-of, events, times, temporal and event-doc creation time relations.
 
-// Clinical Pipeline with sectionization, paragraph and list detection with degree-of and location-of relations
+
+// Clinical Pipeline with section, paragraph and list detection with degree-of and location-of relations.
 load TsSectionedRelationPipeline
 
-// degree-of, relation-of
+// Thread safe events, times, event-event, event-time and event-doc creation time relations.
 load TsTemporalSubPipe

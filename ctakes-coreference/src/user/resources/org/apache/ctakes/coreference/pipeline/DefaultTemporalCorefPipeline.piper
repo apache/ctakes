@@ -1,5 +1,4 @@
-// Default Clinical Pipeline with events, times, event-event and event-time relations plus event-document creation time relations
-// and coreferences
+// Pipeline with events, times, temporal relations, document creation time relations and coreferences.
 
 // Default Temporal pipeline
 load DefaultTemporalPipeline

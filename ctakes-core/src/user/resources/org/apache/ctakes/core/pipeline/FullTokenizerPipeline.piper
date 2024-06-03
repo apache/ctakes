@@ -1,4 +1,4 @@
-// Commands and parameters to create a token processing pipeline with sections, paragraphs and lists
+// Commands and parameters for a small tokenization pipeline with sections, paragraphs and lists.
 
 // Annotate sections by known regex
 add BsvRegexSectionizer

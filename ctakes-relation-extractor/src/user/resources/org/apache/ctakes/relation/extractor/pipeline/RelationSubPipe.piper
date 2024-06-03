@@ -1,4 +1,5 @@
-// Commands and parameters to create a default relation extraction sub-pipeline.  This is not a full pipeline.
+// Commands and parameters to create a default relation extraction sub-pipeline.
+// This is not a full pipeline.
 
 // Modifiers. Use addLogged to log start and finish of processing.  There aren't default models, so set specifically
 add ModifierExtractorAnnotator classifierJarPath=/org/apache/ctakes/relation/extractor/models/modifier_extractor/model.jar

@@ -1,5 +1,4 @@
-// This file contains commands and parameters to run the ctakes-examples "Hello World" pipeline
-// with Entity Property output
+// Commands and parameters to run the "Hello World" pipeline with Entity Property output.
 
 readFiles org/apache/ctakes/examples/notes
 

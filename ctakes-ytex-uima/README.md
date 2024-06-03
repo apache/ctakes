@@ -1,6 +1,3 @@
-############
-Introduction
-############
 Contains uima/ctakes-related ytex components:
 * DBCollectionReader - UIMA collection reader to retrieve documents from a database
 * DBConsumer - store annotations in a database

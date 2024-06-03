@@ -1,4 +1,5 @@
-// Commands and parameters to create a default entity attributes processing sub-pipeline.  This is not a full pipeline.
+// Partial pipeline to add assertion (e.g. negation, uncertainty) attributes based upon context.
+//  This is not a full pipeline.
 
 // Add the context annotator for simple annotation properties
 // The default call sets it to detect negation

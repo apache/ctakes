@@ -1,4 +1,5 @@
-// Commands and parameters to create a default chunker processing sub-pipeline.  This is not a full pipeline.
+// Commands and parameters to create a thread-safe default chunker processing sub-pipeline.
+// This is not a full pipeline.
 
 add concurrent.ThreadSafeChunker
 addDescription adjuster.ChunkAdjuster NP,NP 1

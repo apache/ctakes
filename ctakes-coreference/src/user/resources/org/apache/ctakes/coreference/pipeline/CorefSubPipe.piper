@@ -1,4 +1,5 @@
-// Commands and parameters to create a default coreference processing sub-pipeline.  This is not a full pipeline.
+// Commands and parameters to create a default coreference processing sub-pipeline.
+// This is not a full pipeline.
 
 // A Dependency Parser is necessary, but is usually added for assertion so don't add one here
 

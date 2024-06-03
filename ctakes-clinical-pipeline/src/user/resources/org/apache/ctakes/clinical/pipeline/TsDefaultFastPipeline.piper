@@ -1,4 +1,4 @@
-// Commands and parameters to create a default plaintext document processing pipeline with UMLS lookup
+// Commands and parameters to create a thread-safe plaintext document processing pipeline with UMLS lookup.
 
 // set the thread count
 threads 3

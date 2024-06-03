@@ -1,3 +1,5 @@
+// Pipeline with an XMI reader component to feed ctakes XMI files as input instead of plain text files.
+
 // Read XMI File using -i from the command line to specify input file
 reader XmiTreeReader
 

@@ -1,3 +1,5 @@
+// Demo pipeline for case-sensitive dictionary lookup.
+
 // Load a simple token processing pipeline from another pipeline file
 load DefaultTokenizerPipeline
 

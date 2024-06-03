@@ -1,3 +1,5 @@
+// Demo pipeline with a custom writer.
+
 // Annotate sections by known regex
 //add BsvRegexSectionizer
 add SimpleSegmentAnnotator

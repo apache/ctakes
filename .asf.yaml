@@ -17,17 +17,10 @@
 
 github:
   description: "Apache cTAKES is a Natural Language Processing (NLP) platform for clinical text."
-  homepage: https://ctakes.apache.org
   labels:
-    - ctakes
-    - nlp
-    - cnlp
     - clinical
-    - text
-    - natural
-    - language
-    - processing
-    - apache
+    - nlp
+    - bioinformatics
   features:
     wiki: true
     issues: true

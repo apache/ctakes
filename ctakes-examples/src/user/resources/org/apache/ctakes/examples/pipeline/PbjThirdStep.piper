@@ -1,6 +1,5 @@
-#
-#  This piper file just listens to a queue and saves cas information to output files.
-#
+//  This piper file just listens to a queue and saves cas information to output files.
+
 
 // Get cas from Artemis.
 reader PbjReceiver ReceiveQueue=PyToJava

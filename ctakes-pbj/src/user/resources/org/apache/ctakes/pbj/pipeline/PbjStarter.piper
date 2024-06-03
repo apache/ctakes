@@ -1,16 +1,15 @@
-#
-#  This is a piper file that will perform initial steps required for running a ctakes-pbj pipeline.
-#
-# Add "load PbjStarter" to the beginning of your piper file.
-# 
-#  This piper will start the Apache Artemis broker pointed to by the -a parameter on the command line.
-#  It will pause for 5 seconds to allow artemis to fully launch.
-#
-#  This piper will then pip the python package requirements for ctakes-pbj
-#  in an environment pointed to by the -v parameter on the command line.
-#
-#  To skip the step of runnning a pip of ctakes-pbj, set --pipPbj to "no"
-#
+//  This is a piper file that will perform initial steps required for running a ctakes-pbj pipeline.
+//
+// Add "load PbjStarter" to the beginning of your piper file.
+//
+//  This piper will start the Apache Artemis broker pointed to by the -a parameter on the command line.
+//  It will pause for 5 seconds to allow artemis to fully launch.
+//
+//  This piper will then pip the python package requirements for ctakes-pbj
+//  in an environment pointed to by the -v parameter on the command line.
+//
+//  To skip the step of runnning a pip of ctakes-pbj, set --pipPbj to "no"
+//
 
 // Set the command line parameter -a to accept the directory of the Artemis broker.
 cli ArtemisBroker=a

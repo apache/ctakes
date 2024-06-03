@@ -1,4 +1,5 @@
-// Commands and parameters to create a default temporal processing sub-pipeline.  This is not a full pipeline.
+// Commands and parameters to create a thread safe temporal processing sub-pipeline.
+// This is not a full pipeline.
 
 // 'Generic' Events.  Use addDescription and let the EventAnnotator set itself up with defaults.
 addDescription concurrent.ThreadSafeEventAnnotator

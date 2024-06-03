@@ -1,7 +1,3 @@
-* Project Apache cTAKES Web Rest
-* module: ctakes-web-rest
-
-
 The ctakes-web-rest module builds a standalone product, Apache cTaKES Web REST.  
 
 ctakes-web-rest is not compiled or built when the main Apache cTAKES code is built with maven.   
@@ -19,36 +15,22 @@ This configuration exists because:
 - building ctakes-web-rest with the main ctakes maven project adds to the build time.
 - building ctakes-web-rest with the main ctakes maven project adds to the disk footprint of the build.  i.e. it has its own huge target/ directory.
 - including ctakes-web-rest in the main Apache cTAKES binary distributable essentially puts two copies of cTAKES in the distributable.
-- building ctakes-web-rest with the main ctakes maven project will NOT put any changed code or resources in the war.
-- ^ Unless you mvn install.  Making ctakes-web-rest a separate build reinforces the separation.
+- building ctakes-web-rest with the main ctakes maven project will NOT put any changed code or resources in the war. 
+Unless you mvn install.  Making ctakes-web-rest a separate build reinforces the separation.
 
+This module performs natural language processing of input payload using REST API endpoint and extracts out clicnical information in JSON format.
 
-
-This module performs natural language processing of input payload using REST API
-endpoint and extracts out clicnical information in JSON format.
-
-Installation:
-
-[comment]: <> (1&#41; Build all the cTAKES modules as this module contains a number of references )
-
-[comment]: <> (to other cTAKES modules.)  
+<details>
+<summary>Installation</summary>
 
 1) Build this ctakes-web-rest module.
-
-2) Modify 'src\main\resources\org\apache\ctakes\dictionary\lookup\fast\customDictionary.xml'
+2) Modify ```src\main\resources\org\apache\ctakes\dictionary\lookup\fast\customDictionary.xml```
 to refer to the respective database where dictionary is loaded or use UMLS database.
-
-3) Build ctakes-web-rest module and deploy ctakes-web-rest.war available 
-under 'target' folder in Apache Tomcat.
-
+3) Build ctakes-web-rest module and deploy ```ctakes-web-rest.war``` available under ```target/``` folder in Apache Tomcat.
 4) Access the following URL to perform text analysis using cTAKES web application:
-
-    http://<host-name>:<port>/ctakes-web-rest/index.jsp
-
+    ```http://<host-name>:<port>/ctakes-web-rest/index.jsp```
 5) Access the following REST API endpoint to perform text analysis using default pipeline:
-
-    http://<host-name>:<port>/ctakes-web-rest/service/analyze?pipeline=Default
-
+    ```http://<host-name>:<port>/ctakes-web-rest/service/analyze?pipeline=Default```
 6) Access the following REST API endpoint to perform text analysis using full pipeline:
-
-    http://<host-name>:<port>/ctakes-web-rest/service/analyze?pipeline=Full
+    ```http://<host-name>:<port>/ctakes-web-rest/service/analyze?pipeline=Full```
+</details>

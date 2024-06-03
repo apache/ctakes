@@ -1,4 +1,4 @@
-// Commands and parameters to create a default token processing pipeline
+// Commands and parameters for a small tokenization pipeline.
 
 add SimpleSegmentAnnotator
 add SentenceDetector

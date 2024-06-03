@@ -1,6 +1,6 @@
-// Thread Safe Clinical Pipeline with sectionization, paragraph and list detection and coreference resolution
+// Thread-safe Pipeline with section, paragraph and list detection and coreference resolution.
 
-// Default Clinical Pipeline with sectionization, paragraph and list detection
+// Pipeline with section, paragraph and list detection
 load TsSectionedFastPipeline
 
 // Coreference resolution

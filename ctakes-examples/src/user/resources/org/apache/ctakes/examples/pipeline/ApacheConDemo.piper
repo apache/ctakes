@@ -1,4 +1,6 @@
-// Run using -p ApacheConDemo -i org/apache/ctakes/examples/notes/apache_con -o {your output directory}
+// Demo pipeline for case-sensitive dictionary lookup with custom reader.
+
+// Run using -p ApacheConDemo -i org/apache/ctakes/examples/notes/apache_con -o (your output directory)
 
 // Use our simple extension of AbstractFileTreeReader.
 reader ApacheConDemoReader

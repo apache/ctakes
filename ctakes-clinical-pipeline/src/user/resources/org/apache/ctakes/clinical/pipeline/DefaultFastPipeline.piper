@@ -1,4 +1,4 @@
-// Commands and parameters to create a default plaintext document processing pipeline with UMLS lookup
+// Commands and parameters to create a plaintext document processing pipeline with UMLS entity lookup.
 
 // Write nice big banners when ctakes starts and finishes.
 set WriteBanner=yes

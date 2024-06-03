@@ -40,7 +40,6 @@ final public class HelloWorldBuilderRunner {
          PipelineBuilder builder = new PipelineBuilder();
          builder
                // Add a simple pre-defined existing pipeline for Tokenization.
-               // Equivalent of ClinicalPipelineFactory.getTokenProcessingPipeline()
                .add( SimpleSegmentAnnotator.class )
                .add( SentenceDetector.class )
                .add( TokenizerAnnotatorPTB.class )

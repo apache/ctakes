@@ -1,6 +1,5 @@
-// Thread Safe Clinical Pipeline with sectionization, paragraph and list detection and degree-of and location-of relations
-// with events, times, event-event and event-time relations plus event-document creation time relations
-// with coreference resolution
+// Thread-safe Pipeline with section, paragraph and list detection, degree-of and location-of relations ...
+// events, times, temporal relations, document creation time relations and coreference resolution.
 
 // Sectioned Relation and Temporal pipeline
 load TsSectionedRelationTemporalPipeline

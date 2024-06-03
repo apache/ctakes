@@ -1,7 +1,7 @@
-// Default Clinical Pipeline with events, times, event-event and event-time relations plus event-document creation time relations
+// Clinical Pipeline with events, times, event-event and event-time relations plus event-document creation time relations.
 
-// Default Clinical Pipeline
+// Clinical Pipeline.
 load DefaultFastPipeline
 
-// event, time, event-event, event-time, dtr
+// events, times, event-event, event-time and event-doc creation time relations.
 load TemporalSubPipe

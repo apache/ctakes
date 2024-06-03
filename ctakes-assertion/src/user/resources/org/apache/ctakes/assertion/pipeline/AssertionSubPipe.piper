@@ -1,4 +1,5 @@
-// Commands and parameters to create a default entity attributes processing sub-pipeline.  This is not a full pipeline.
+// Commands and parameters to create a default entity attributes processing sub-pipeline.
+// This is not a full pipeline.
 
 // Add the Dependency parser for use by assertion
 addDescription ClearNLPDependencyParserAE

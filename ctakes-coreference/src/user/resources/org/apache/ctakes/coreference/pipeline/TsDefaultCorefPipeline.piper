@@ -1,6 +1,6 @@
-// Thread Safe Default Clinical Pipeline with  coreference resolution
+// Thread-safe Pipeline with  coreference resolution.
 
-// Default Clinical Pipeline
+// Pipeline
 load TsDefaultFastPipeline
 
 // Coreference resolution

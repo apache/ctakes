@@ -6,6 +6,7 @@ import org.apache.uima.fit.descriptor.ConfigurationParameter;
 
 import javax.annotation.concurrent.Immutable;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
@@ -28,7 +29,7 @@ final public class DefaultParameterHolder implements ParameterHolder {
    public DefaultParameterHolder( final Class<?> pipeBitClass ) {
       _typeMap = ParameterMapper.createParameterTypeMap( pipeBitClass );
       _parameters = new ArrayList<>( _typeMap.keySet() );
-      _parameters.sort( ( p1, p2 ) -> p1.name().compareToIgnoreCase( p2.name() ) );
+      _parameters.sort( new ParamComparator() );
    }
 
    /**
@@ -86,5 +87,16 @@ final public class DefaultParameterHolder implements ParameterHolder {
    public String[] getParameterValue( final int index ) {
       return _parameters.get( index ).defaultValue();
    }
+
+   static private final class ParamComparator implements Comparator<ConfigurationParameter>  {
+      @Override
+      public int compare( final ConfigurationParameter param1, final ConfigurationParameter param2 ) {
+         if ( param1.mandatory() == param2.mandatory() ) {
+            return String.CASE_INSENSITIVE_ORDER.compare( param1.name(), param2.name() );
+         }
+         return param1.mandatory() ? -1 : 1;
+      }
+   }
+
 
 }

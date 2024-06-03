@@ -1,8 +1,9 @@
+// Demo pipeline with a simple custom reader, custom annotation engine and custom writer.
 
 // Run using command line parameters
 // -p ApacheConDemoBasic
 // -i org/apache/ctakes/examples/notes/apache_con/Patient123
-// -o {your output directory}
+// -o (your output directory)
 
 // Use our simple extension of AbstractFileTreeReader.
 reader ApacheConDemoReader

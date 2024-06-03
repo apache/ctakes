@@ -1,3 +1,5 @@
+// Demo pipeline with coreference resolution and a custom writer.
+
 // use the standard tokenizer pipeline:
 load DefaultTokenizerPipeline
 

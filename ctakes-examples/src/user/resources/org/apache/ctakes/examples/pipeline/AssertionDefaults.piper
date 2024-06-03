@@ -1,4 +1,6 @@
-# Parameters for AssertionAnalysisEngine and ConceptConverterAnalysisEngine
+// Piper file that sets parameters for a pipeline but does not add components.
+
+// Parameters for AssertionAnalysisEngine and ConceptConverterAnalysisEngine
 set assertionModelResource=file:org/apache/ctakes/assertion/models/i2b2.model
 set scopeModelResource=file:org/apache/ctakes/assertion/models/scope.model
 set cueModelResource=file:org/apache/ctakes/assertion/models/cue.model

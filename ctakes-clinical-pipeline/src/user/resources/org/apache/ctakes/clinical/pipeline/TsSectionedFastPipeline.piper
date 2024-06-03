@@ -1,4 +1,4 @@
-// Thread Safe Clinical Pipeline with sectionization, paragraph and list detection
+// Commands and parameters to create a thread-safe plaintext document processing pipeline with Sections, paragraphs and lists.
 
 // set the thread count
 threads 3

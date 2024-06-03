@@ -1,6 +1,6 @@
-// Default Clinical Pipeline with  coreference resolution
+// Pipeline with  coreference resolution.
 
-// Default Clinical Pipeline
+// Pipeline
 load DefaultFastPipeline
 
 // Coreference resolution

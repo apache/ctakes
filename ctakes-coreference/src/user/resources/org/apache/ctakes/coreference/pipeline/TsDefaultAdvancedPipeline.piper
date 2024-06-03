@@ -1,6 +1,5 @@
-// Thread Safe Default Clinical Pipeline with degree-of and location-of relations
-// with events, times, event-event and event-time relations plus event-document creation time relations
-// with coreference resolution
+// Thread-safe Pipeline with degree-of and location-of relations, events, times, temporal relations, document creation time relations and coreferences.
+
 
 // Default Relation and Temporal pipeline
 load TsDefaultRelationTemporalPipeline

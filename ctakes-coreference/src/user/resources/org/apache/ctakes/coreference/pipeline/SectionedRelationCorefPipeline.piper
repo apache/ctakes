@@ -1,7 +1,6 @@
-// Clinical Pipeline with sectionization, paragraph and list detection and degree-of and location-of relations
-// with coreference resolution
+// Pipeline with section, paragraph and list detection, degree-of and location-of relations and coreferences.
 
-// Clinical Pipeline with sectionization, paragraph and list detection with degree-of and location-of relations
+// Pipeline with section, paragraph and list detection with degree-of and location-of relations
 load SectionedRelationPipeline
 
 // Coreference resolution
