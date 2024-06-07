@@ -16,8 +16,8 @@
 		<jackson.version>2.9.7</jackson.version>
       <maven.compiler.plugin.version>3.10.1</maven.compiler.plugin.version>
       <maven.war.plugin.version>3.2.3</maven.war.plugin.version>
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
+<!--		<maven.compiler.source>1.8</maven.compiler.source>-->
+<!--		<maven.compiler.target>1.8</maven.compiler.target>-->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jettyVersion>9.2.6.v20141205</jettyVersion>
       <spring.version>4.3.12.RELEASE</spring.version>
@@ -245,8 +245,9 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>${maven.compiler.plugin.version}</version>
 				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
+                    <source>11</source>
+                    <target>11</target>
+                    <release>11</release>
 					<compilerArgument>-Xlint</compilerArgument>
 				</configuration>
 			</plugin>
