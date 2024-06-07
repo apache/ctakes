@@ -24,7 +24,7 @@
       <uimafit.version>2.4.0</uimafit.version>
       <uimaj.version>2.10.2</uimaj.version>
       <servlet.version>2.5</servlet.version>
-      <mysql.connect.version>6.0.6</mysql.connect.version>
+      <mysql.connect.version>8.0.28</mysql.connect.version>
 	</properties>
 	<dependencies>
 <!--      TODO   Any Exclusions?  See the pom files in dockhand goal/rest/pom/ -->
