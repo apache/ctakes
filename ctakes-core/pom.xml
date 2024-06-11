@@ -108,10 +108,14 @@
          <groupId>org.cleartk</groupId>
          <artifactId>cleartk-ml</artifactId>
       </dependency>
+		<dependency>
+			<groupId>org.apache.uima</groupId>
+			<artifactId>uimafit-core</artifactId>
+		</dependency>
         <dependency>
             <groupId>org.apache.uima</groupId>
             <artifactId>uimafit-cpe</artifactId>
-        </dependency>
+		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>

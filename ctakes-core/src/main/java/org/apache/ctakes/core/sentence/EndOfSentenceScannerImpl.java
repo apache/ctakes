@@ -20,8 +20,7 @@ package org.apache.ctakes.core.sentence;
 
 import opennlp.tools.sentdetect.EndOfSentenceScanner;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * End of Sentence scanner with more candidate end-of-sentence
@@ -32,19 +31,33 @@ public class EndOfSentenceScannerImpl implements EndOfSentenceScanner {
 
     private static final char[] eosCandidates =  {'.', '!', ')', ']', '>', '\"', ':', ';'}; // CTAKES-227
 
+	static private final Set<Character> EOS_CHARS = new HashSet<>(Arrays.asList(
+			'.', '!', ')', ']', '>', '\"', ':', ';'
+	) );
+
 	public EndOfSentenceScannerImpl() {
         super();
 	}
 
 	public char[] getEndOfSentenceCharacters() {
 		return eosCandidates;
-		
 	}
-	/**
-	 * @see opennlp.tools.sentdetect.EndOfSentenceScanner#getPositions(java.lang.String)
-	 */
+
+//	/**
+//	 * @see opennlp.tools.sentdetect.EndOfSentenceScanner#getPositions(java.lang.String)
+//	 */
 	public List<Integer> getPositions(String s) {
         return getPositions(s.toCharArray());
+	}
+
+//	@Override
+	public Set<Character> getEOSCharacters() {
+		return EOS_CHARS;
+	}
+
+//	@Override
+	public List<Integer> getPositions(CharSequence charSequence) {
+		return getPositions( charSequence.toString().toCharArray() );
 	}
 
 	/**

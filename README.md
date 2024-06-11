@@ -65,6 +65,8 @@ default dictionary for Named Entity Recognition (NER) using cTAKES Fast Dictiona
 
 ### New Developers
 
+__Notice:__ cTAKES 6.0.0-SNAPSHOT requires jdk 17 to build and run.
+
 All source code for cTAKES versions 5+ is available from the [cTAKES GitHub repository](https://github.com/apache/ctakes).
 1. Clone this repository
 ```

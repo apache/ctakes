@@ -38,14 +38,14 @@
 			<groupId>org.apache.ctakes</groupId>
 			<artifactId>ctakes-temporal</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.apache.uima</groupId>
-			<artifactId>uimafit-core</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.uima</groupId>
-			<artifactId>uimafit-cpe</artifactId>
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>org.apache.uima</groupId>-->
+<!--			<artifactId>uimafit-core</artifactId>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>org.apache.uima</groupId>-->
+<!--			<artifactId>uimafit-cpe</artifactId>-->
+<!--		</dependency>-->
 		<dependency>
 			<groupId>org.apache.ctakes</groupId>
 			<artifactId>ctakes-assertion</artifactId>

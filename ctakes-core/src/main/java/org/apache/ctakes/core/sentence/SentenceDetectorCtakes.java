@@ -142,7 +142,7 @@ public class SentenceDetectorCtakes {
 	   * @return   A integer array containing the positions of the end index of
 	   *          every sentence
 	   *
-	   * @see SentenceDetectorME#sentPosDetect(String)  
+//	   * @see SentenceDetectorME#sentPosDetect(String)
 	   */
 	  public int[] sentPosDetect(String s) { // return int[] to be line OpenNLP 1.4
 	    double sentProb = 1;
@@ -244,8 +244,10 @@ public class SentenceDetectorCtakes {
 
 	    manifestInfoEntries.put(BaseModel.TRAINING_EVENTHASH_PROPERTY, 
 	        hses.calculateHashSum().toString(16));
-	    
-	    return new SentenceModel(languageCode, sentModel, useTokenEnd, abbreviations, manifestInfoEntries);
+//	    return new SentenceModel(languageCode, sentModel, useTokenEnd, abbreviations, manifestInfoEntries);
+		  // Refactored 6/11/2024 for OpenNLP 2.3.3   SPF
+		  final SentenceDetectorFactory sdFactory = new SentenceDetectorFactory("en", true, new Dictionary(), null);
+		  return new SentenceModel( languageCode, sentModel, manifestInfoEntries, sdFactory );
 	  }
 
 	  private static void usage() {

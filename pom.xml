@@ -144,8 +144,9 @@
 <!--		<maven-compiler-plugin.version>3.12.0</maven-compiler-plugin.version>-->
 		<maven-install-plugin.version>3.1.1</maven-install-plugin.version>
 		<maven-deploy-plugin.version>3.1.1</maven-deploy-plugin.version>
-<!--		jcasgen-maven-plugin versions 3+ requires jdk11  -->
 		<jcasgen-maven-plugin.version>2.11.0</jcasgen-maven-plugin.version>
+<!--		jcasgen-maven-plugin versions 3+ requires jdk11  -->
+<!--		<jcasgen-maven-plugin.version>3.4.0</jcasgen-maven-plugin.version>-->
 		<maven-gpg-plugin.version>3.0.1</maven-gpg-plugin.version>
 		<maven-javadoc-plugin.version>3.6.3</maven-javadoc-plugin.version>
 		<maven-war-plugin.version>3.4.0</maven-war-plugin.version>
@@ -163,14 +164,21 @@
 		<spring.version>4.3.12.RELEASE</spring.version>
 		<uimafit.version>2.4.0</uimafit.version>
 		<uimaj.version>2.10.2</uimaj.version>
+		<!-- uimafit 3.5.0 requires jdk17  -->
+<!--		<uimafit.version>3.5.0</uimafit.version>-->
+<!--		<uimaj.version>3.5.0</uimaj.version>-->
 		<timenorm.version>0.9.5</timenorm.version>
 		<weka.version>3.6.10</weka.version>
 		<xmlunit.version>1.4</xmlunit.version>
+		<hapi.fhir.version>6.6.0</hapi.fhir.version>
+		<opennlp.version>1.7.2</opennlp.version>
+<!--		<opennlp.version>2.3.3</opennlp.version>-->
 		<!-- project specific conventions -->
 <!--		<maven.compiler.source>1.8</maven.compiler.source>-->
 <!--		<maven.compiler.target>1.8</maven.compiler.target>-->
 <!--		Prep for maven build with jdk >= 9  :  use maven.compiler.release.  -->
 <!--		<maven.compiler.release>8</maven.compiler.release>-->
+		<gson.version>2.8.9</gson.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
 	</properties>
@@ -344,13 +352,15 @@
 			<dependency>
 				<groupId>org.apache.opennlp</groupId>
 				<artifactId>opennlp-tools</artifactId>
-				<version>1.7.2</version>
+<!--				<version>1.7.2</version>-->
+				<version>${opennlp.version}</version>
 			</dependency>
 			<!--  dependency is uima 2.3 -->
 			<dependency>
 				<groupId>org.apache.opennlp</groupId>
 				<artifactId>opennlp-uima</artifactId>
-				<version>1.7.2</version>
+<!--				<version>1.7.2</version>-->
+				<version>${opennlp.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.opennlp</groupId>
@@ -864,9 +874,9 @@
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>${maven-compiler-plugin.version}</version>
 					<configuration>
-						<source>11</source>
-						<target>11</target>
-						<release>11</release>
+						<source>17</source>
+						<target>17</target>
+						<release>17</release>
 						<compilerArgument>-Xlint</compilerArgument>
 					</configuration>
 				</plugin>

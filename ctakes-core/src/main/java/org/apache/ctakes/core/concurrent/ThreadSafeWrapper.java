@@ -6,7 +6,6 @@ import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.analysis_engine.ResultSpecification;
 import org.apache.uima.cas.AbstractCas;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
-import org.apache.uima.fit.internal.ExtendedLogger;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceConfigurationException;
 import org.apache.uima.resource.ResourceInitializationException;
@@ -64,14 +63,14 @@ public interface ThreadSafeWrapper<AE extends JCasAnnotator_ImplBase> extends An
       }
    }
 
-   /**
-    * from uimafit JCasAnnotator_ImplBase
-    *
-    * @return -
-    */
-   default ExtendedLogger getLogger() {
-      return getDelegate().getLogger();
-   }
+//   /**
+//    * from uimafit JCasAnnotator_ImplBase
+//    *
+//    * @return -
+//    */
+//   default ExtendedLogger getLogger() {
+//      return getDelegate().getLogger();
+//   }
 
    /**
     * {@inheritDoc}
