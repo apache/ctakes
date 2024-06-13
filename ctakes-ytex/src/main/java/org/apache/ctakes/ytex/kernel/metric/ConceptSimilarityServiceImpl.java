@@ -50,6 +50,14 @@ import java.util.*;
  * 
  */
 public class ConceptSimilarityServiceImpl implements ConceptSimilarityService {
+
+    // The original implementation included code to cache LCS's to save 
+    // computation time. However, this resulted in distance metrics that
+    // were inconsistent when calling subsequent CUI pairs. To ensure 
+    // replicable results across calls to the similarity service, the 
+    // caching mechanism should be disabled for now.
+    private static boolean ENABLE_LCS_CACHING = false;
+
 	private static final Log log = LogFactory
 			.getLog(ConceptSimilarityServiceImpl.class);
 
@@ -630,7 +638,9 @@ public class ConceptSimilarityServiceImpl implements ConceptSimilarityService {
 						.getConceptID() : cr1.getConceptID());
 		String cacheKey = cacheKeyBuilder.toString();
 		Element e = this.lcsCache != null ? this.lcsCache.get(cacheKey) : null;
-		if (e != null) {
+		
+		// If the LCS cache is disabled, we will fall through
+		if (e != null && ENABLE_LCS_CACHING == true) {
 			// hit the cache - unpack the lcs
 			if (e.getObjectValue() != null) {
 				Object[] val = (Object[]) e.getObjectValue();
