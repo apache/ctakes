@@ -343,12 +343,12 @@ final public class SimpleMedDatesFinder extends JCasAnnotator_ImplBase {
       final Collection<Pair<Integer>> removalSpans = new ArrayList<>();
       for ( int i = 0; i < spans.size() - 1; i++ ) {
          final Pair<Integer> iSpan = spans.get( i );
-         if ( !calendarMap.keySet().contains( iSpan ) ) {
+         if ( !calendarMap.containsKey( iSpan ) ) {
             continue;
          }
          for ( int j = i + 1; j < spans.size(); j++ ) {
             final Pair<Integer> jSpan = spans.get( j );
-            if ( !calendarMap.keySet().contains( jSpan ) ) {
+            if ( !calendarMap.containsKey( jSpan ) ) {
                continue;
             }
             if ( (iSpan.getValue1() <= jSpan.getValue1() && jSpan.getValue2() < iSpan.getValue2())
@@ -361,7 +361,7 @@ final public class SimpleMedDatesFinder extends JCasAnnotator_ImplBase {
          }
       }
       spans.removeAll( removalSpans );
-      calendarMap.keySet().removeAll( removalSpans );
+      removalSpans.forEach( calendarMap.keySet()::remove );
    }
 
    /**

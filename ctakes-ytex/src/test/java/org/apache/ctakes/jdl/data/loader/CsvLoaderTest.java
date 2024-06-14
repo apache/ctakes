@@ -29,22 +29,23 @@ import org.junit.Test;
 import javax.xml.bind.JAXBException;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Objects;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 public class CsvLoaderTest {
-	private static final String CX = FileUtil.getFile(Resources.CONN_X).toString();
-	private static final String D1C = FileUtil.getFile(Resources.DATA1C).toString();
-	private static final String D2C = FileUtil.getFile(Resources.DATA2C).toString();
-	private static final String L1C = FileUtil.getFile(Resources.LOAD1C).toString();
-	private static final String L2C = FileUtil.getFile(Resources.LOAD2C).toString();
+	private static final String CX = Objects.requireNonNull( FileUtil.getFile( Resources.CONN_X ) ).getPath();
+	private static final String D1C = Objects.requireNonNull( FileUtil.getFile( Resources.DATA1C ) ).getPath();
+	private static final String D2C = Objects.requireNonNull( FileUtil.getFile( Resources.DATA2C ) ).getPath();
+	private static final String L1C = Objects.requireNonNull( FileUtil.getFile( Resources.LOAD1C ) ).getPath();
+	private static final String L2C = Objects.requireNonNull( FileUtil.getFile( Resources.LOAD2C ) ).getPath();
 	private static final String SQL = "insert into tab_test (id,name,thekey,thevalue,code,descr) values (?,?,?,?,?,?)";
 
 	@BeforeClass
 	public static void initClass() throws JAXBException, FileNotFoundException {
 		JdlConnection jdlConnection = new JdlConnection(ObjectFactoryUtil.getJdbcTypeBySrcXml(CX));
-		jdlConnection.getClass();
+//		jdlConnection.getClass();
 	}
 
 	@Test

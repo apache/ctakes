@@ -31,7 +31,7 @@ public class IRMetrics {
 	};
 
 	public static String formatDouble(double d) {
-		return doubleFormat.get().format(new Object[] { new Double(d) });
+		return doubleFormat.get().format(new Object[] { d });
 	}
 
 	int tp;

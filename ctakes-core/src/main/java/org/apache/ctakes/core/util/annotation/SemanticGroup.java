@@ -82,6 +82,16 @@ public enum SemanticGroup {
             .orElse( UNKNOWN );
    }
 
+   static public SemanticGroup getGroupFromOld( final String name ) {
+      return switch ( name ) {
+         case "Disease_Disorder" -> DISORDER;
+         case "Medications/Drugs" -> DRUG;
+         case "Sign_symptom" -> FINDING;
+         case "Anatomical_site" -> ANATOMY;
+         default -> getGroup( name );
+      };
+   }
+
    static public Collection<SemanticGroup> getGroups( final IdentifiedAnnotation annotation ) {
       final Collection<SemanticGroup> groups
             = SemanticTui.getTuis( annotation )

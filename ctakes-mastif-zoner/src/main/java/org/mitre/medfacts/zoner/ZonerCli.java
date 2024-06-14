@@ -375,10 +375,10 @@ public class ZonerCli {
 					Node fragExpansionNode = fragmentMap.get(fragName).cloneNode(true);
 					// attrs.merge(fragmentAttrsMap.get(fragName));
 					// add to the fragment levels map (passed in)
-					Integer l = new Integer(levels);
+					Integer l = levels;
 					List<String> levelList = fragmentLevelsMap.get(l);
 					if (levelList == null) {
-						levelList = new ArrayList<String>();
+						levelList = new ArrayList<>();
 						fragmentLevelsMap.put(l, levelList);
 					}
 					levelList.add(fragName);
@@ -1281,7 +1281,7 @@ public class ZonerCli {
 		  public Range(Range r) {
 			  begin = r.begin;
 			  end = r.end;
-			  label = new String(r.label);
+			  label = r.label;
 			  ignore = r.ignore;
 			  truncated = r.truncated;
 			  attrs = r.attrs.copy();

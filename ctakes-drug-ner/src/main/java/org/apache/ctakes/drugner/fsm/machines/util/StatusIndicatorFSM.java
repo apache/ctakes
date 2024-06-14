@@ -343,7 +343,7 @@ public class StatusIndicatorFSM
                 State currentState = m.getCurrentState();
                 if (currentState.getStartStateFlag())
                 {
-                    tokenStartMap.put(m, new Integer(i));
+                    tokenStartMap.put(m, i);
                 }
                 if (currentState.getEndStateFlag())
                 {
@@ -357,7 +357,7 @@ public class StatusIndicatorFSM
                     }
                     else
                     {
-                        tokenStartIndex = ((Integer) o).intValue();
+                        tokenStartIndex = ((Integer) o);
                         // skip ahead over single token we don't want
                         tokenStartIndex++;
                     }

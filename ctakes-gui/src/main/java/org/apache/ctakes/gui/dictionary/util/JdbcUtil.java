@@ -21,7 +21,7 @@ final public class JdbcUtil {
 
    static public void registerDriver() {
       try {
-         Driver driver = (Driver)Class.forName( JDBC_DRIVER ).newInstance();
+         Driver driver = (Driver)Class.forName( JDBC_DRIVER ).getDeclaredConstructor().newInstance();
          DriverManager.registerDriver( driver );
       } catch ( Exception e ) {
          // TODO At least four different exceptions are thrown here, and should be caught and handled individually
@@ -48,10 +48,10 @@ final public class JdbcUtil {
    }
 
    //   static public String createRowInsertSql( final String tableName, final int valueCount ) {
-   static public String createRowInsertSql( final String tableName, final Enum... fields ) {
+   static public String createRowInsertSql( final String tableName, final Enum<?>... fields ) {
       final String[] fieldNames = new String[ fields.length ];
       int i = 0;
-      for ( Enum field : fields ) {
+      for ( Enum<?> field : fields ) {
          fieldNames[ i ] = field.name();
          i++;
       }
@@ -73,9 +73,10 @@ final public class JdbcUtil {
       sb.setLength( sb.length() - 1 );
       sb.append( ") " );
       sb.append( " values (" );
-      for ( int i = 0; i < fieldNames.length - 1; i++ ) {
-         sb.append( "?," );
-      }
+//      for ( int i = 0; i < fieldNames.length - 1; i++ ) {
+//         sb.append( "?," );
+//      }
+      sb.append( "?,".repeat( Math.max( 0, fieldNames.length - 1 ) ) );
       sb.append( "?)" );
       return sb.toString();
    }

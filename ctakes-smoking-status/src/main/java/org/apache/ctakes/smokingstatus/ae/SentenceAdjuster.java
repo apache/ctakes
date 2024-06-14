@@ -179,7 +179,7 @@ public class SentenceAdjuster extends JCasAnnotator_ImplBase {
 		// find the first Sentence in the specified range
 		for (int i = 0; i < sentences.size(); i++) {
 			prevSent = currSent;
-			currSent = (Sentence) sentences.get(new Integer(i));
+			currSent = (Sentence) sentences.get(i);
 
 			if (currSent == null)
 				iv_logger.error("Wow! some sentence is null");
@@ -223,7 +223,7 @@ public class SentenceAdjuster extends JCasAnnotator_ImplBase {
 			Sentence sa = (Sentence) sentItr.next();
 			int snum = sa.getSentenceNumber();
 
-			sentences.put((new Integer(snum)), sa);
+			sentences.put(snum, sa);
 		}
 
 		return sentences;

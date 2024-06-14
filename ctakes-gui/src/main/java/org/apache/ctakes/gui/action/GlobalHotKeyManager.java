@@ -63,7 +63,7 @@ final public class GlobalHotKeyManager extends EventQueue implements HotKeyManag
                // I'm not sure about the parameters
                action.actionPerformed(
                      new ActionEvent( event.getSource(), event.getID(),
-                           actionKey, ((InputEvent)event).getModifiers() ) );
+                           actionKey, ((InputEvent)event).getModifiersEx() ) );
                return; // consume event
             }
          }

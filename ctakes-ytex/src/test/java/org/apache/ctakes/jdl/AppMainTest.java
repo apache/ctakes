@@ -34,6 +34,7 @@ import javax.xml.bind.JAXBException;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Objects;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
@@ -43,14 +44,14 @@ import static org.junit.Assume.assumeThat;
 public class AppMainTest {
 	private static JdbcType jdbc;
 	private static JdlConnection jdlConnection;
-	private static String CX = FileUtil.getFile(Resources.CONN_X).toString();
-	private static String D1C = FileUtil.getFile(Resources.DATA1C).toString();
-	private static String D1X = FileUtil.getFile(Resources.DATA1X).toString();
-	private static String L1C = FileUtil.getFile(Resources.LOAD1C).toString();
-	private static String L1X = FileUtil.getFile(Resources.LOAD1X).toString();
-	private static String C = "-" + AppMain.OPT_XDL_CONN;
-	private static String D = "-" + AppMain.OPT_XDL_DATA;
-	private static String L = "-" + AppMain.OPT_XDL_LOAD;
+	final private static String CX = Objects.requireNonNull( FileUtil.getFile( Resources.CONN_X ) ).getPath();
+	final private static String D1C = Objects.requireNonNull( FileUtil.getFile( Resources.DATA1C ) ).getPath();
+	final private static String D1X = Objects.requireNonNull( FileUtil.getFile( Resources.DATA1X ) ).getPath();
+	final private static String L1C = Objects.requireNonNull( FileUtil.getFile( Resources.LOAD1C ) ).getPath();
+	final private static String L1X = Objects.requireNonNull( FileUtil.getFile( Resources.LOAD1X ) ).getPath();
+	final private static String C = "-" + AppMain.OPT_XDL_CONN;
+	final private static String D = "-" + AppMain.OPT_XDL_DATA;
+	final private static String L = "-" + AppMain.OPT_XDL_LOAD;
 
 	@BeforeClass
 	public static void initClass() throws JAXBException, InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException, IOException {
@@ -75,7 +76,7 @@ public class AppMainTest {
 	}
 
 	@Test
-	public void main() throws JAXBException, InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
+	public void appMain() throws JAXBException, InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
 		assumeThat(jdbc.getDriver(), not(Resources.ENV_DRIVER));
 		assumeThat(jdbc.getUrl(), not(Resources.ENV_URL));
 		assumeThat(PropFileMaps.DEMO, is(true));

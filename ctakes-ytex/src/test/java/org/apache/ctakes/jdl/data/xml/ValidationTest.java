@@ -31,6 +31,7 @@ import org.junit.runner.RunWith;
 
 import javax.xml.validation.Schema;
 import java.net.URL;
+import java.util.Objects;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
@@ -59,13 +60,13 @@ public class ValidationTest {
 
 	@Test
 	public void setSchema() {
-		validation.setSchema(SchemaUtil.urlToSchema(XSD));
+		validation.setSchema( Objects.requireNonNull( SchemaUtil.urlToSchema( XSD ) ) );
 		assertThat(validation.getError(), nullValue());
 	}
 
 	@Theory
 	public void setDocument(String xml) {
-		xml = FileUtil.getFile(xml).toString();
+		xml = Objects.requireNonNull( FileUtil.getFile( xml ) ).getPath();
 		validation.setDocument(DomUtil.srcToDocument(xml));
 		assertThat(validation.succeed(), is(true));
 		validation.setDocument(xml);
@@ -79,7 +80,7 @@ public class ValidationTest {
 
 	@Theory
 	public void succeed(String xml) {
-		xml = FileUtil.getFile(xml).toString();
+		xml = Objects.requireNonNull( FileUtil.getFile( xml ) ).getPath();
 		validation.setDocument(DomUtil.srcToDocument(xml));
 		assertThat(validation.succeed(), is(true));
 		validation.setDocument(xml);

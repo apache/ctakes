@@ -466,7 +466,7 @@ public class IntrinsicInfoContentEvaluatorImpl implements
 		subsumers.add(concept.getConceptID());
 		// add this to the cache - copy the key so that this can be gc'ed as
 		// needed
-		subsumerMap.put(new String(concept.getConceptID()), subsumers);
+		subsumerMap.put(concept.getConceptID(), subsumers);
 		return subsumers;
 	}
 

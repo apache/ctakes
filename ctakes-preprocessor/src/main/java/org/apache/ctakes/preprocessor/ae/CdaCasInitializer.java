@@ -68,13 +68,12 @@ public class CdaCasInitializer extends JCasAnnotator_ImplBase
 	protected static final String DEFAULT_DTD_FILE = "org/apache/ctakes/preprocessor/cda/NotesIIST_RTF.DTD";	
 	
     // LOG4J logger based on class name
-    private Logger logger = Logger.getLogger(getClass().getName());
+    private final Logger logger = Logger.getLogger(getClass().getName());
 
     private Boolean includeSectionMarkers;
     private TextModifier tm;
-    private UimaContext uimaContext;
-    
-    public static final String PARAM_DTD_FILE = "DtdFile";
+
+   public static final String PARAM_DTD_FILE = "DtdFile";
   	@ConfigurationParameter(name = PARAM_DTD_FILE, 
   	    description = "Path to File that contains the DTD file", 
   	    defaultValue=DEFAULT_DTD_FILE,
@@ -91,8 +90,7 @@ public class CdaCasInitializer extends JCasAnnotator_ImplBase
 	public void initialize(UimaContext aCtx) throws ResourceInitializationException {
 		
 		super.initialize(aCtx);
-		uimaContext = aCtx;
-		initialize();
+      initialize();
 
 	}
     
@@ -101,7 +99,7 @@ public class CdaCasInitializer extends JCasAnnotator_ImplBase
     {
     	// TODO Consider using a parameter for includeSectionMarkers
         //includeSectionMarkers = (Boolean) getConfigParameterValue("IncludeSectionMarkers");
-    	includeSectionMarkers = new Boolean(false);
+    	includeSectionMarkers = false;
 
     	// TODO Consider using a parameter for hyphWindow/HyphenDetectionWindow
         //int hyphWindow = ((Integer) getConfigParameterValue("HyphenDetectionWindow")).intValue();
@@ -127,25 +125,22 @@ public class CdaCasInitializer extends JCasAnnotator_ImplBase
      * Apply text modifier to the text 
      * TODO - move this to <code>TextModifier</code> and take a <code>Logger</code>
      * 		See <code>HyphenTextModifierImpl</code>
-     * @param sb
-     * @return
+     * @param sb -
      */
     private void applyTextModifier(String text, StringBuffer sb) throws Exception {
         TextModification[] textModArr = tm.modify(text);
-        for (int i = 0; i < textModArr.length; i++) {
+       for ( TextModification textMod : textModArr ) {
 
-        	TextModification textMod = textModArr[i];
-            
-            if ((textMod.getOrigStartOffset() != textMod.getNewStartOffset())
-                    || (textMod.getOrigEndOffset() != textMod.getNewEndOffset())) {
-                logger.warn("UNSUPPORTED: TextModification with offset changes.");
-            }
-            else {
-            	sb.replace(textMod.getOrigStartOffset(), 
-        				textMod.getOrigEndOffset(), 
-        				textMod.getNewText());
-            }
-        }  
+          if ( (textMod.getOrigStartOffset() != textMod.getNewStartOffset())
+                || (textMod.getOrigEndOffset() != textMod.getNewEndOffset()) ) {
+             logger.warn( "UNSUPPORTED: TextModification with offset changes." );
+          }
+          else {
+             sb.replace( textMod.getOrigStartOffset(),
+                   textMod.getOrigEndOffset(),
+                   textMod.getNewText() );
+          }
+       }
     }
     
     
@@ -164,7 +159,7 @@ public class CdaCasInitializer extends JCasAnnotator_ImplBase
         	//TODO: A bit over engineered? Is this config really parsed very time???
             PreProcessor pp = new ClinicalNotePreProcessor(
             		FileLocator.getAsStream(dtdfilepath),
-                    includeSectionMarkers.booleanValue());
+                  includeSectionMarkers );
             dmd = pp.process(originalText);
 
             String text = dmd.getText();
@@ -178,25 +173,22 @@ public class CdaCasInitializer extends JCasAnnotator_ImplBase
             plaintextView.setDocumentText(sb.toString());
             
             // Add section (segment) annotations
-            Iterator<String> segmentItr = (Iterator<String>)dmd.getSegmentIdentifiers().iterator();
-            while (segmentItr.hasNext()) 
-            {
-                String segmentID = (String) segmentItr.next();
-                SegmentMetaData smd = dmd.getSegment(segmentID);
+           for ( String segmentID : dmd.getSegmentIdentifiers() ) {
+              SegmentMetaData smd = dmd.getSegment( segmentID );
 
-                Segment sa = new Segment(plaintextView);
-                sa.setBegin(smd.span.start);
-                sa.setEnd(smd.span.end);
-                sa.setId(smd.id);
+              Segment sa = new Segment( plaintextView );
+              sa.setBegin( smd.span.start );
+              sa.setEnd( smd.span.end );
+              sa.setId( smd.id );
 
-                sa.addToIndexes();
-            }
+              sa.addToIndexes();
+           }
             
             // Store meta data about the document
             Pairs propAnnot = new Pairs(plaintextView); 
-            Map metaDataMap = dmd.getMetaData();
+            Map<String,String> metaDataMap = dmd.getMetaData();
             
-            String docID = (String)metaDataMap.get(ClinicalNotePreProcessor.MD_KEY_DOC_ID);
+            String docID = metaDataMap.get(ClinicalNotePreProcessor.MD_KEY_DOC_ID);
         	if (docID!=null) {
             	DocumentID newDocId = new DocumentID(plaintextView);
             	newDocId.setDocumentID(docID);
@@ -205,20 +197,18 @@ public class CdaCasInitializer extends JCasAnnotator_ImplBase
         	}
             
             FSArray fsArr = new FSArray(plaintextView, metaDataMap.size());
-            Iterator keyItr = metaDataMap.keySet().iterator();
+            Iterator<String> keyItr = metaDataMap.keySet().iterator();
             int pos = 0;
             while (keyItr.hasNext()) {
 
-                String key = (String) keyItr.next();
-                Object value = metaDataMap.get(key);
+                String key = keyItr.next();
+                String value = metaDataMap.get(key);
 
-                if (value instanceof String) {
+                if ( value != null ) {
                     Pair prop = new Pair(plaintextView);               
                     prop.setAttribute(key);
-                    prop.setValue((String) value);
+                    prop.setValue( value );
                     fsArr.set(pos++, prop);
-                }
-                else if (value instanceof HashSet) {
                 }
 
             }

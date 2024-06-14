@@ -33,9 +33,9 @@ final public class RareWordDbWriter {
       CUI( 1, Long.class ), RINDEX( 2, Integer.class ), TCOUNT( 3, Integer.class ),
       TEXT( 4, String.class ), RWORD( 5, String.class );
       final private int __index;
-      final private Class __classType;
+      final private Class<?> __classType;
 
-      CuiTermsField( final int index, final Class classType ) {
+      CuiTermsField( final int index, final Class<?> classType ) {
          __index = index;
          __classType = classType;
       }
@@ -186,11 +186,11 @@ final public class RareWordDbWriter {
       if ( String.class.equals( type ) ) {
          statement.setString( 2, code );
       } else if ( Double.class.equals( type ) ) {
-         statement.setDouble( 2, Double.valueOf( code ) );
+         statement.setDouble( 2, Double.parseDouble( code ) );
       } else if ( Long.class.equals( type ) ) {
-         statement.setLong( 2, Long.valueOf( code ) );
+         statement.setLong( 2, Long.parseLong( code ) );
       } else if ( Integer.class.equals( type ) ) {
-         statement.setInt( 2, Integer.valueOf( code ) );
+         statement.setInt( 2, Integer.parseInt( code ) );
       } else {
          LOGGER.error( "Could not set code for " + type.getName() );
          statement.setString( 2, code );

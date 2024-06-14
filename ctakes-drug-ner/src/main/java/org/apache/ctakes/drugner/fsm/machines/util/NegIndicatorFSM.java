@@ -485,7 +485,7 @@ public class NegIndicatorFSM implements FSM
                 State currentState = fsm.getCurrentState();
                 if (currentState.getStartStateFlag())
                 {
-                    tokenStartMap.put(fsm, new Integer(i));
+                    tokenStartMap.put(fsm, i);
                 }
                 if (currentState.getEndStateFlag())
                 {

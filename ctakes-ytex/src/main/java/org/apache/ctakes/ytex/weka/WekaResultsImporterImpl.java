@@ -89,9 +89,9 @@ public class WekaResultsImporterImpl implements WekaResultsImporter {
 	/**
 	 * Parse results, pass them off to WekaResultInstanceImporter
 	 * 
-	 * @see org.apache.ctakes.ytex.weka.WekaResultsImporter#importResults(org.apache.ctakes.ytex.weka.
-	 *      WekaResultInstanceImporter, java.lang.String,
-	 *      java.io.BufferedReader)
+//	 * @see org.apache.ctakes.ytex.weka.WekaResultsImporter#importResults(org.apache.ctakes.ytex.weka.
+//	 *      WekaResultInstanceImporter, java.lang.String,
+//	 *      java.io.BufferedReader)
 	 */
 	public void importResults(
 			WekaResultInstanceImporter resultInstanceImporter, String task,
@@ -123,7 +123,7 @@ public class WekaResultsImporterImpl implements WekaResultsImporter {
 							arrPredictionStr.length);
 					for (String predStr : arrPredictionStr) {
 						if (predStr.length() > 0)
-							listPredictions.add(new Double(predStr));
+							listPredictions.add(Double.parseDouble(predStr));
 					}
 					List<String> instanceKey = Arrays.asList(matcher.group(5)
 							.split(","));

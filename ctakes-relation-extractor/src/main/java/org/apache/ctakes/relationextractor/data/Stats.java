@@ -18,10 +18,9 @@
  */
 package org.apache.ctakes.relationextractor.data;
 
-import org.apache.ctakes.core.util.Mapper;
+import org.apache.ctakes.core.util.annotation.SemanticGroup;
 import org.apache.ctakes.relationextractor.knowtator.RelationInfo;
 import org.apache.ctakes.relationextractor.knowtator.XMLReader;
-import org.apache.ctakes.typesystem.type.constants.CONST;
 import org.jdom.Document;
 import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
@@ -30,6 +29,7 @@ import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Objects;
 
 /**
  * Calculate relation frequencies in a data set that consists of XML files exported from Knowtator.
@@ -57,24 +57,25 @@ public class Stats {
 			}
 		};
 
-		for(String file : dir.list(filter)) {
+		for(String file : Objects.requireNonNull( dir.list( filter ) ) ) {
 
 			SAXBuilder builder = new SAXBuilder();
 			Document document = builder.build(new File(inputDir, file));
 
-			for(String enitytType : XMLReader.getEntityTypes(document).values()) {
+			for(String entityType : XMLReader.getEntityTypes(document).values()) {
 
-				if(Mapper.getEntityTypeId(enitytType) == CONST.NE_TYPE_ID_UNKNOWN) {
+//				if(Mapper.getEntityTypeId(enitytType) == CONST.NE_TYPE_ID_UNKNOWN) {
+				if ( SemanticGroup.getGroupFromOld( entityType ) == SemanticGroup.UNKNOWN ) {
 					continue;
 				}
 				
 				totalEntityCount++;
 
-				if(entityCounts.containsKey(enitytType)) {
-					entityCounts.put(enitytType, entityCounts.get(enitytType) + 1);
+				if(entityCounts.containsKey(entityType)) {
+					entityCounts.put(entityType, entityCounts.get(entityType) + 1);
 				} 
 				else {
-					entityCounts.put(enitytType, 1);
+					entityCounts.put(entityType, 1);
 				}
 			}
 		}
@@ -98,7 +99,7 @@ public class Stats {
 			}
 		};
 
-		for(String file : dir.list(filter)) {
+		for(String file : Objects.requireNonNull( dir.list( filter ) ) ) {
 			
 			SAXBuilder builder = new SAXBuilder();
 			Document document = builder.build(new File(inputDir, file));

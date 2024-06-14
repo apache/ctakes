@@ -519,4 +519,18 @@ public class JointRelationTokenBasedAnnotator extends CleartkAnnotator<String> {
 
 		return pairs;
 	}
+
+	// Object.finalize() was deprecated in jdk 9.  Given the manner of this code, this is a -reasonable- replacement.
+	public void collectionProcessComplete() throws AnalysisEngineProcessException {
+		super.collectionProcessComplete();
+		if ( classifier instanceof AutoCloseable ) {
+			try {
+				((AutoCloseable)classifier).close();
+			} catch ( Exception e ) {
+				throw new AnalysisEngineProcessException( e );
+			}
+		}
+	}
+
+
 }

@@ -112,7 +112,7 @@ public class PersonTitleFSM {
 
 				State currentState = fsm.getCurrentState();
 				if (currentState.getStartStateFlag()) {
-					tokenStartMap.put(fsm, new Integer(i));
+					tokenStartMap.put(fsm, i);
 				}
 				if (currentState.getEndStateFlag()) {
 					Object o = tokenStartMap.get(fsm);

@@ -251,18 +251,22 @@ public class ContextAnnotator extends org.apache.uima.fit.component.JCasAnnotato
 
 	void parseScopeOrder(String[] scopeStrings) throws AnnotatorConfigurationException {
 		scopes.clear();
-		for (int i = 0; i < scopeStrings.length; i++) {
-			if (scopeStrings[i].equals("LEFT")) {
-				scopes.add(new Integer(LEFT_SCOPE));
-			} else if (scopeStrings[i].equals("MIDDLE")) {
-				scopes.add(new Integer(MIDDLE_SCOPE));
-			} else if (scopeStrings[i].equals("RIGHT")) {
-				scopes.add(new Integer(RIGHT_SCOPE));
-			} else if (scopeStrings[i].equals("ALL")) {
-				scopes.add(new Integer(ALL_SCOPE));
-			} else {
-				Exception e = new Exception("Invalid scope value: " + scopeStrings[i]);
-				throw new AnnotatorConfigurationException(e);
+		for ( String scopeString : scopeStrings ) {
+			if ( scopeString.equals( "LEFT" ) ) {
+				scopes.add( LEFT_SCOPE );
+			}
+			else if ( scopeString.equals( "MIDDLE" ) ) {
+				scopes.add( MIDDLE_SCOPE );
+			}
+			else if ( scopeString.equals( "RIGHT" ) ) {
+				scopes.add( RIGHT_SCOPE );
+			}
+			else if ( scopeString.equals( "ALL" ) ) {
+				scopes.add( ALL_SCOPE );
+			}
+			else {
+				Exception e = new Exception( "Invalid scope value: " + scopeString );
+				throw new AnnotatorConfigurationException( e );
 			}
 		}
 		iv_logger.info("SCOPE ORDER: " + scopes);

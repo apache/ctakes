@@ -86,7 +86,7 @@ final public class DocTimeApproximator extends JCasAnnotator_ImplBase {
                                                    .filter( c -> c.compareTo( now ) < 0 )
                                                    .distinct()
                                                    .sorted()
-                                                   .collect( Collectors.toList() );
+                                                   .toList();
       if ( calendarList.isEmpty() ) {
          return NULL_CALENDAR;
       }

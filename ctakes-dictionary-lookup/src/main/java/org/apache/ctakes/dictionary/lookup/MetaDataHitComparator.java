@@ -34,9 +34,9 @@ public class MetaDataHitComparator implements Comparator<MetaDataHit>, MetaDataH
 
     /**
      * Constructor
-     * @param metaFieldName
-     * @param type
-     * @param sortAscending
+     * @param metaFieldName -
+     * @param type -
+     * @param sortAscending -
      */
     public MetaDataHitComparator(String metaFieldName, int type, boolean sortAscending)
     {
@@ -57,13 +57,13 @@ public class MetaDataHitComparator implements Comparator<MetaDataHit>, MetaDataH
         switch (iv_type)
         {
         case INTEGER_TYPE:
-            Integer int1 = new Integer(mdv1);
-            Integer int2 = new Integer(mdv2);
+            Integer int1 = Integer.parseInt(mdv1);
+            Integer int2 = Integer.parseInt(mdv2);
             comparison = int1.compareTo(int2);
             break;
         case FLOAT_TYPE:
-            Float float1 = new Float(mdv1);
-            Float float2 = new Float(mdv2);
+            Float float1 = Float.parseFloat(mdv1);
+            Float float2 = Float.parseFloat(mdv2);
             comparison = float1.compareTo(float2);
             break;
         default:

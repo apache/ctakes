@@ -176,6 +176,7 @@ public class EventEventRelationGoldContainerAnnotator extends RelationExtractorA
 
 		//find all container events:
 		HashSet<EventMention> containers = new HashSet<>();
+		assert goldView != null;
 		for(TemporalTextRelation relation : JCasUtil.select(goldView, TemporalTextRelation.class)){
 			Annotation arg1 = relation.getArg1().getArgument();
 			Annotation arg2 = relation.getArg2().getArgument();
@@ -241,9 +242,7 @@ public class EventEventRelationGoldContainerAnnotator extends RelationExtractorA
 	}
 
 	private static boolean withinSentence(Annotation arg, Annotation sentence) {
-		if(arg.getBegin()>=sentence.getBegin()&&arg.getEnd()<=sentence.getEnd())
-			return true;
-		return false;
+		return arg.getBegin() >= sentence.getBegin() && arg.getEnd() <= sentence.getEnd();
 	}
 
 	@Override
@@ -271,11 +270,11 @@ public class EventEventRelationGoldContainerAnnotator extends RelationExtractorA
 			IdentifiedAnnotation arg2) {
 		BinaryTextRelation relation = relationLookup.get(Arrays.asList(arg1, arg2));
 		String category = null;
-		if (relation != null && relation instanceof TemporalTextRelation) {
+		if ( relation instanceof TemporalTextRelation ) {
 			category = relation.getCategory();
 		} else {
 			relation = relationLookup.get(Arrays.asList(arg2, arg1));
-			if (relation != null && relation instanceof TemporalTextRelation) {
+			if ( relation instanceof TemporalTextRelation ) {
 				if(relation.getCategory().equals("OVERLAP")){
 					category = relation.getCategory();
 					//				}else if (relation.getCategory().equals("BEFORE")){

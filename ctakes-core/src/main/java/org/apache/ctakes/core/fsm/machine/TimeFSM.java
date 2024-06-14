@@ -137,7 +137,7 @@ public class TimeFSM {
 
 				State currentState = fsm.getCurrentState();
 				if (currentState.getStartStateFlag()) {
-					tokenStartMap.put(fsm, new Integer(i));
+					tokenStartMap.put(fsm, i);
 				}
 				if (currentState.getEndStateFlag()) {
 					Object o = tokenStartMap.get(fsm);
@@ -147,7 +147,7 @@ public class TimeFSM {
 						// token zero.
 						tokenStartIndex = 0;
 					} else {
-						tokenStartIndex = ((Integer) o).intValue();
+						tokenStartIndex = ((Integer) o);
 						// skip ahead over single token we don't want
 						tokenStartIndex++;
 					}

@@ -48,11 +48,11 @@ public class SetValuePostLookupFilterImpl
     {
         if (iv_metaFieldType == MetaDataHitConst.INTEGER_TYPE)
         {
-            iv_value = new Integer(value);
+            iv_value = Integer.parseInt(value);
         }
         else if (iv_metaFieldType == MetaDataHitConst.FLOAT_TYPE)
         {
-            iv_value = new Float(value);
+            iv_value = Float.parseFloat(value);
         }
         else 
         {
@@ -81,14 +81,14 @@ public class SetValuePostLookupFilterImpl
     /**
      * Helper method
      * 
-     * @param mdVal
-     * @return
+     * @param mdVal -
+     * @return -
      */
     private boolean isContained(String mdVal)
     {
         if (iv_metaFieldType == MetaDataHitConst.INTEGER_TYPE)
         {
-            Integer mdValInteger = new Integer(mdVal);
+            Integer mdValInteger = Integer.parseInt(mdVal);
             Integer refValInteger = (Integer) iv_value;
 
             int comparison = refValInteger.compareTo(mdValInteger);
@@ -96,7 +96,7 @@ public class SetValuePostLookupFilterImpl
         }
         else if (iv_metaFieldType == MetaDataHitConst.FLOAT_TYPE)
         {
-            Float mdValFloat = new Float(mdVal);
+            Float mdValFloat = Float.parseFloat(mdVal);
             Float refValFloat = (Float) iv_value;
 
             int comparison = refValFloat.compareTo(mdValFloat);
@@ -117,8 +117,8 @@ public class SetValuePostLookupFilterImpl
      * Checks the comparison value against the specified operation. Based on
      * this information, being filtered or not can be determined.
      * 
-     * @param comparisonVal
-     * @return
+     * @param comparisonVal -
+     * @return -
      */
     private boolean applyOp(int comparisonVal)
     {

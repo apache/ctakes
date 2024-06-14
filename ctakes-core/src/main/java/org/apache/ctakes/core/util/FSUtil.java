@@ -62,7 +62,8 @@ public class FSUtil {
 	/**
 	 * For correct behavior, requires types to be listed in TypePriorities so that the subiterator works as expected
 	 */
-	public static FSIterator getAnnotationsIteratorInSpan(JCas jcas, int type, int beginSpan, int endSpan)
+	// TODO uimafit
+	public static FSIterator<?> getAnnotationsIteratorInSpan(JCas jcas, int type, int beginSpan, int endSpan)
 	{
 	    Annotation ann = new Annotation(jcas, beginSpan, endSpan);
 	    ann.addToIndexes();

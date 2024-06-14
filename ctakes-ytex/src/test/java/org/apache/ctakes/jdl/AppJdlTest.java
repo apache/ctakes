@@ -32,6 +32,7 @@ import javax.xml.bind.JAXBException;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Objects;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
@@ -40,11 +41,11 @@ import static org.junit.Assume.assumeThat;
 public class AppJdlTest {
 	private static JdbcType jdbc;
 	private static JdlConnection jdlConnection;
-	private static String CX = FileUtil.getFile(Resources.CONN_X).toString();
-	private static String D2C = FileUtil.getFile(Resources.DATA2C).toString();
-	private static String D2X = FileUtil.getFile(Resources.DATA2X).toString();
-	private static String L2C = FileUtil.getFile(Resources.LOAD2C).toString();
-	private static String L2X = FileUtil.getFile(Resources.LOAD2X).toString();
+	final private static String CX = Objects.requireNonNull( FileUtil.getFile( Resources.CONN_X ) ).getPath();
+	final private static String D2C = Objects.requireNonNull( FileUtil.getFile( Resources.DATA2C ) ).getPath();
+	final private static String D2X = Objects.requireNonNull( FileUtil.getFile( Resources.DATA2X ) ).getPath();
+	final private static String L2C = Objects.requireNonNull( FileUtil.getFile( Resources.LOAD2C ) ).getPath();
+	final private static String L2X = Objects.requireNonNull( FileUtil.getFile( Resources.LOAD2X ) ).getPath();
 
 	@BeforeClass
 	public static void initClass() throws JAXBException, InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException, IOException {

@@ -35,10 +35,10 @@ public class FieldConstraintImpl implements FieldConstraint
     public static final int GT_OP = 3;
     public static final int GTEQ_OP = 4;
 
-    private String iv_fieldName;
-    private Object iv_fieldValue;
-    private int iv_op;
-    private Class<?> iv_fieldValueClass;
+    private final String iv_fieldName;
+    private final Object iv_fieldValue;
+    private final int iv_op;
+    private final Class<?> iv_fieldValueClass;
 
     public FieldConstraintImpl(String fieldName, int op, String fieldValue,
             Class<?> fieldValueClass)
@@ -55,8 +55,8 @@ public class FieldConstraintImpl implements FieldConstraint
         {
             Object curfieldValueObj = convertFieldValue(fieldValue);
 
-            Comparable c1 = (Comparable) iv_fieldValue;
-            Comparable c2 = (Comparable) curfieldValueObj;
+            Comparable<Object> c1 = (Comparable<Object>) iv_fieldValue;
+            Comparable<Object> c2 = (Comparable<Object>) curfieldValueObj;
 
             int comparison = c2.compareTo(c1);
 
@@ -82,21 +82,19 @@ public class FieldConstraintImpl implements FieldConstraint
 
     private Object convertFieldValue(String str)
     {
-        if (iv_fieldValueClass.equals(Integer.class))
-        {
-            return new Integer(str);
-        }
-        else if (iv_fieldValueClass.equals(Float.class))
-        {
-            return new Float(str);
-        }
-        else if (iv_fieldValueClass.equals(Double.class))
-        {
-            return new Double(str);
-        }
-        else
-        {
+        try {
+            if ( iv_fieldValueClass.equals( Integer.class ) ) {
+                return Integer.parseInt( str );
+            }
+            else if ( iv_fieldValueClass.equals( Float.class ) ) {
+                return Float.parseFloat( str );
+            }
+            else if ( iv_fieldValueClass.equals( Double.class ) ) {
+                return Double.parseDouble( str );
+            }
+        } catch ( NumberFormatException nfE ) {
             return str;
         }
+        return str;
     }
 }

@@ -214,7 +214,7 @@ public class ClassifiableEntries extends JCasAnnotator_ImplBase {
 		while (line != null) {
 			StringTokenizer st = new StringTokenizer(line, delimiter);
 			if (st.countTokens() == 4) {
-				Integer recordID = new Integer(st.nextToken().trim());
+				Integer recordID = Integer.parseInt(st.nextToken().trim());
 				String truthVal = st.nextToken().trim();
 				String sentence = st.nextToken().trim();
 				// String section = st.nextToken().trim();

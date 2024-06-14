@@ -21,6 +21,7 @@ package org.apache.ctakes.jdl.data.base;
 import org.apache.commons.lang.StringUtils;
 import org.apache.ctakes.jdl.schema.xdl.JdbcType;
 
+import java.lang.reflect.InvocationTargetException;
 import java.sql.Connection;
 import java.sql.Driver;
 import java.sql.DriverManager;
@@ -72,7 +73,11 @@ public class JdlConnection {
 	 */
 	private void openConnection() throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
 		// Class.forName(driver);
-		DriverManager.registerDriver((Driver) Class.forName(driver).newInstance());
+		try {
+			DriverManager.registerDriver( (Driver)Class.forName( driver ).getDeclaredConstructor().newInstance() );
+		} catch ( NoSuchMethodException | InvocationTargetException multE ) {
+			throw new SQLException( multE );
+		}
 		connection = DriverManager.getConnection(url, user, password);
 	}
 

@@ -140,7 +140,7 @@ public class PcsClassifierAnnotator_libsvm extends JCasAnnotator_ImplBase {
 				}
 			}
 
-			feature.add(new Double(val));
+			feature.add(val);
 		}
 
 		// date information
@@ -166,7 +166,7 @@ public class PcsClassifierAnnotator_libsvm extends JCasAnnotator_ImplBase {
 			}
 		}
 
-		feature.add(new Double(dateInfo));
+		feature.add(dateInfo);
 
 		// set the libSVM feature vector
 		svm_node[] x = new svm_node[feature.size()];

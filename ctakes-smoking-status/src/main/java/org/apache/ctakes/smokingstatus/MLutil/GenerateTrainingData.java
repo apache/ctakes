@@ -141,7 +141,7 @@ public class GenerateTrainingData {
 						}
 					}
 
-					feature.add(new Integer(val));
+					feature.add(val);
 				}
 
 				// date feature - naive feature
@@ -162,11 +162,11 @@ public class GenerateTrainingData {
 							break;
 						}
 					}
-					feature.add(new Integer(hasYear));
+					feature.add(hasYear);
 				}
 
 				// add class label
-				feature.add(new String(cls));
+				feature.add(cls);
 
 				// add feature to the feature set
 				features.add(feature);

@@ -76,7 +76,7 @@ public class StatusContextAnalyzer extends NamedEntityContextAnalyzer implements
 				}
 				ContextHit ctxHit = new ContextHit(finalSi.getStartOffset(), finalSi.getEndOffset());
 
-				ctxHit.addMetaData(CTX_HIT_KEY_STATUS_TYPE, new Integer(finalSi.getStatus()));
+				ctxHit.addMetaData(CTX_HIT_KEY_STATUS_TYPE, finalSi.getStatus());
 
 				return ctxHit;
 			} else {

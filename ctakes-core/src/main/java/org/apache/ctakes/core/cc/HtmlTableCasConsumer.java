@@ -91,7 +91,7 @@ public class HtmlTableCasConsumer extends CasConsumer_ImplBase
                     String methName = st.nextToken().trim();
                     Class<?> c = Class.forName(classname);
                     Method meth = c.getMethod(methName, (Class[]) null);
-                    iv_getterMethMap.put(new Integer(iv_nestedAnnTypeArr[i]),
+                    iv_getterMethMap.put( iv_nestedAnnTypeArr[i],
                             meth);
                 }
             }
@@ -232,7 +232,7 @@ public class HtmlTableCasConsumer extends CasConsumer_ImplBase
     private String getDisplayValue(int annType, Annotation ann)
             throws IllegalAccessException, InvocationTargetException
     {
-        Integer key = new Integer(annType);
+        Integer key = annType;
         if (iv_getterMethMap.containsKey(key))
         {
            Method meth = iv_getterMethMap.get( key );
@@ -335,8 +335,8 @@ public class HtmlTableCasConsumer extends CasConsumer_ImplBase
         @Override
         public int compare( Annotation a1, Annotation a2 )
         {
-            Integer len1 = new Integer(a1.getCoveredText().length());
-            Integer len2 = new Integer(a2.getCoveredText().length());
+            Integer len1 = a1.getCoveredText().length();
+            Integer len2 = a2.getCoveredText().length();
 
             if (len1.equals(len2))
             {

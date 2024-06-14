@@ -140,7 +140,7 @@ public void initialize() throws ResourceInitializationException {
 		{
 			String word = words.next();
          int freq = wordFreqs.get( word )[ 0 ];
-         sortedFreqs.add( new Object[] { word, new Integer( freq ) } );
+         sortedFreqs.add( new Object[] { word, freq } );
       }
 		
 		PrintStream out = new PrintStream(new FileOutputStream(wordFreqFile));
@@ -149,7 +149,7 @@ public void initialize() throws ResourceInitializationException {
 		{
          Object[] tokenFreq = freqs.next();
          String word = (String)tokenFreq[ 0 ];
-         int freq = ((Integer)tokenFreq[1]).intValue();
+         int freq = ((Integer)tokenFreq[1]);
 			out.println(word+"|"+freq);
 		}
 		out.flush();

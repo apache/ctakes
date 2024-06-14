@@ -241,7 +241,7 @@ public class CreateLuceneIndexFromDelimitedFile {
 			StringTokenizer st = new StringTokenizer(line, "|");
 			if (st.countTokens() == 2) {
 				String hyphWord = st.nextToken();
-				Integer freq = new Integer(st.nextToken());
+				Integer freq = Integer.parseInt(st.nextToken());
 				hyphMap.put(hyphWord.toLowerCase(), freq);
 			} else {
 				System.out.println("Invalid hyphen file line: " + line);

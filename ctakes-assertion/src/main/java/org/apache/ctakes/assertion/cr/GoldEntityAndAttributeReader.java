@@ -19,7 +19,6 @@
 package org.apache.ctakes.assertion.cr;
 
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
-import org.apache.ctakes.core.util.Mapper;
 import org.apache.ctakes.core.util.annotation.SemanticGroup;
 import org.apache.ctakes.core.util.doc.DocIdUtil;
 import org.apache.ctakes.typesystem.type.constants.CONST;
@@ -137,7 +136,8 @@ public class GoldEntityAndAttributeReader extends JCasAnnotator_ImplBase {
     	  // put entity and attributes into the CAS
     	  // choose either entity or event
     	  IdentifiedAnnotation eMention;
-    	  int type = Mapper.getEntityTypeId(entityTypes.get(mentionId));
+//    	  int type = Mapper.getEntityTypeId(entityTypes.get(mentionId));
+			int type = SemanticGroup.getGroupFromOld( entityTypes.get(mentionId) ).getCode();
     	  if (type==CONST.NE_TYPE_ID_ANATOMICAL_SITE) {
     		  eMention = new EntityMention(initView, first.start, last.end);  
     	  } else if (type==CONST.NE_TYPE_ID_DISORDER
@@ -308,7 +308,6 @@ public class GoldEntityAndAttributeReader extends JCasAnnotator_ImplBase {
 	 * Convert Argument_CU and Related_to_CU to Argument and Related_to.
 	 * This will not be necessary in the future when the data will be 
 	 * post-processed to remove _CU suffixes. 
-	 * 
 	 * Currently mipacq data does not have the suffixes and sharp data does.
 	 */
 	private static String normalizeRoleName(String role) {

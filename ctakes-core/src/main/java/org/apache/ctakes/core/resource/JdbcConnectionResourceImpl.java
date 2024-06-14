@@ -87,7 +87,7 @@ public class JdbcConnectionResourceImpl implements JdbcConnectionResource,
 
 		String password = (String) cps.getParameterValue(PARAM_PASSWORD);
 
-		Boolean keepAlive = new Boolean((String) cps.getParameterValue(PARAM_KEEP_ALIVE));
+		Boolean keepAlive = Boolean.parseBoolean((String) cps.getParameterValue(PARAM_KEEP_ALIVE));
         
         String isolationStr = (String) cps.getParameterValue(PARAM_ISOLATION);
         

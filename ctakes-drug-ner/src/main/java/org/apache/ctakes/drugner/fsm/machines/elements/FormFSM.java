@@ -159,7 +159,7 @@ public class FormFSM {
 		Map overrideTokenMap = new HashMap();
 		while (overrideTokenItr.hasNext()) {
 			BaseToken t = (BaseToken) overrideTokenItr.next();
-			Integer key = new Integer(t.getStartOffset());
+			Integer key = t.getStartOffset();
 			overrideTokenMap.put(key, t);
 		}
 
@@ -168,7 +168,7 @@ public class FormFSM {
 		for (int i = 0; i < tokens.size(); i++) {
 			BaseToken token = (BaseToken) tokens.get(i);
 
-			Integer key = new Integer(token.getStartOffset());
+			Integer key = token.getStartOffset();
 
 			if (overrideOn) {
 				if (token.getStartOffset() >= overrideEndOffset) {

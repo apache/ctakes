@@ -24,7 +24,6 @@ import org.apache.ctakes.typesystem.type.constants.CONST;
 import org.apache.ctakes.typesystem.type.syntax.BaseToken;
 import org.apache.ctakes.typesystem.type.syntax.ConllDependencyNode;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
-import org.apache.ctakes.typesystem.type.textsem.Predicate;
 import org.apache.ctakes.typesystem.type.textsem.SemanticArgument;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
 import org.apache.log4j.Logger;
@@ -32,10 +31,7 @@ import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 
 /**
@@ -60,7 +56,7 @@ public class SubjectAttributeClassifier {
 	public static final String OTHER_DEPTOK = "other_depsrl";
 	public static final String OTHER_OR = "other_or";
     public static ArrayList<String> FeatureIndex = new ArrayList<String>();
-    private static Logger logger = Logger.getLogger(SubjectAttributeClassifier.class); 
+    private static final Logger logger = Logger.getLogger(SubjectAttributeClassifier.class);
 
     static{
             FeatureIndex.add(DONOR_TOKEN);
@@ -138,14 +134,14 @@ public class SubjectAttributeClassifier {
 		}
 
 		// get any SRL predicates
-		List<Predicate> preds = JCasUtil.selectCovered(jCas, Predicate.class, sEntity);
+//		List<Predicate> preds = JCasUtil.selectCovered(jCas, Predicate.class, sEntity);
 
 		
 		// search dependency paths for stuff
 		List<ConllDependencyNode> depnodes = JCasUtil.selectCovered(jCas, ConllDependencyNode.class, mention);
 		if (!depnodes.isEmpty()) {
 			ConllDependencyNode depnode = DependencyUtility.getNominalHeadNode(depnodes);
-			for (ConllDependencyNode dn : DependencyUtility.getPathToTop(jCas, depnode)) {
+			for (ConllDependencyNode dn : Objects.requireNonNull( DependencyUtility.getPathToTop( jCas, depnode ) ) ) {
 				if ( isDonorTerm(dn) ) {
 					vfeat.put(DONOR_DEPPATH, true);
 				}
@@ -169,6 +165,7 @@ public class SubjectAttributeClassifier {
 				// check if there are one-removed dependencies on the dependency path
 				DependencyPath path = DependencyUtility.getPath(jCas, DependencyUtility.getNominalHeadNode(jCas,tok), 
 						DependencyUtility.getNominalHeadNode(jCas,mention));
+				assert path != null;
 				int commonInd = path.indexOf(path.getCommonNode());
 				if (commonInd==1 || commonInd==path.size()-2) {
 					vfeat.put(DONOR_DEPTOK, true);
@@ -196,6 +193,7 @@ public class SubjectAttributeClassifier {
 				// check if there are one-removed dependencies on the dependency path
 				DependencyPath path = DependencyUtility.getPath(jCas, DependencyUtility.getNominalHeadNode(jCas,tok), 
 						DependencyUtility.getNominalHeadNode(jCas,mention));
+				assert path != null;
 				int commonInd = path.indexOf(path.getCommonNode());
 				if (commonInd==1 || commonInd==path.size()-2) {
 					vfeat.put(OTHER_DEPTOK, true);
@@ -213,12 +211,12 @@ public class SubjectAttributeClassifier {
 			return CONST.ATTR_SUBJECT_PATIENT;
 		}
 
-		Boolean donor_summary = new Boolean(vfeat.get(DONOR_TOKEN) || vfeat.get(DONOR_DEPPATH) || 
-				vfeat.get(DONOR_DEPTOK) || vfeat.get(DONOR_SRLARG));
-		Boolean family_summary = new Boolean(                         vfeat.get(FAMILY_DEPPATH) || 
-				vfeat.get(FAMILY_DEPTOK) || vfeat.get(FAMILY_SRLARG));
-		Boolean other_summary = new Boolean(                          vfeat.get(OTHER_DEPPATH) || 
-				vfeat.get(OTHER_DEPTOK) || vfeat.get(OTHER_SRLARG));
+		Boolean donor_summary = vfeat.get(DONOR_TOKEN) || vfeat.get(DONOR_DEPPATH) ||
+				vfeat.get(DONOR_DEPTOK) || vfeat.get(DONOR_SRLARG);
+		Boolean family_summary = vfeat.get(FAMILY_DEPPATH) ||
+				vfeat.get(FAMILY_DEPTOK) || vfeat.get(FAMILY_SRLARG);
+		Boolean other_summary = vfeat.get(OTHER_DEPPATH) ||
+				vfeat.get(OTHER_DEPTOK) || vfeat.get(OTHER_SRLARG);
 		vfeat.put(DONOR_OR, donor_summary);
 		vfeat.put(FAMILY_OR, family_summary);
 		vfeat.put(OTHER_OR, other_summary);

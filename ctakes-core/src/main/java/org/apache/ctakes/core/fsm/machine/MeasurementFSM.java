@@ -234,7 +234,7 @@ public class MeasurementFSM {
 		Map<Integer, BaseToken> overrideTokenMap = new HashMap<Integer, BaseToken>();
 		while (overrideTokenItr.hasNext()) {
 			BaseToken t = overrideTokenItr.next();
-			Integer key = new Integer(t.getStartOffset());
+			Integer key = t.getStartOffset();
 			overrideTokenMap.put(key, t);
 		}
 
@@ -243,7 +243,7 @@ public class MeasurementFSM {
 		for (int i = 0; i < tokens.size(); i++) {
 			BaseToken token = tokens.get(i);
 
-			Integer key = new Integer(token.getStartOffset());
+			Integer key = token.getStartOffset();
 
 			if (overrideOn) {
 				if (token.getStartOffset() >= overrideEndOffset) {
@@ -271,7 +271,7 @@ public class MeasurementFSM {
 
 				State currentState = fsm.getCurrentState();
 				if (currentState.getStartStateFlag()) {
-					tokenStartMap.put(fsm, new Integer(i));
+					tokenStartMap.put(fsm, i);
 				}
 				if (currentState.getEndStateFlag()) {
 					Object o = tokenStartMap.get(fsm);
@@ -281,7 +281,7 @@ public class MeasurementFSM {
 						// token zero.
 						tokenStartIndex = 0;
 					} else {
-						tokenStartIndex = ((Integer) o).intValue();
+						tokenStartIndex = ((Integer) o);
 						// skip ahead over single token we don't want
 						tokenStartIndex++;
 					}

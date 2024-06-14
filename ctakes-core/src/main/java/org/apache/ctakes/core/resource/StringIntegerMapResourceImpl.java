@@ -69,7 +69,7 @@ public class StringIntegerMapResourceImpl
                     String key = st.nextToken();
                     try
                     {
-                        Integer value = new Integer(st.nextToken());
+                        Integer value = Integer.parseInt( st.nextToken() );
                         iv_map.put(key, value);
                     }
                     catch (NumberFormatException nfe)

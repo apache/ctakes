@@ -114,47 +114,47 @@ public class PatientLevelSmokingStatus {
 						Vector<Integer> smokingStatusElements = new Vector<Integer>(4);
 						if (currentSmoker == true){
 							//smokingStatusElements
-							smokingStatusElements.insertElementAt(new Integer(1), 0);
-							smokingStatusElements.insertElementAt(new Integer(0), 1);
-							smokingStatusElements.insertElementAt(new Integer(0), 2);
-							smokingStatusElements.insertElementAt(new Integer(0), 3);
+							smokingStatusElements.insertElementAt(1, 0);
+							smokingStatusElements.insertElementAt(0, 1);
+							smokingStatusElements.insertElementAt(0, 2);
+							smokingStatusElements.insertElementAt(0, 3);
 							System.out.println("incrementing current");
 						}
 						else if (nonSmoker == true){
-							smokingStatusElements.insertElementAt(new Integer(0), 0);
-							smokingStatusElements.insertElementAt(new Integer(1), 1);
-							smokingStatusElements.insertElementAt(new Integer(0), 2);
-							smokingStatusElements.insertElementAt(new Integer(0), 3);
+							smokingStatusElements.insertElementAt(0, 0);
+							smokingStatusElements.insertElementAt(1, 1);
+							smokingStatusElements.insertElementAt(0, 2);
+							smokingStatusElements.insertElementAt(0, 3);
 							System.out.println("incrementing non");
 						}
 						else if (pastSmoker == true){
-							//smokingStatusElements[0] = new Integer(0);
+							//smokingStatusElements[0] = 0;
 							
-							smokingStatusElements.insertElementAt(new Integer(0), 0);
-							smokingStatusElements.insertElementAt(new Integer(0), 1);
-							smokingStatusElements.insertElementAt(new Integer(1), 2);
-							smokingStatusElements.insertElementAt(new Integer(0), 3);
+							smokingStatusElements.insertElementAt(0, 0);
+							smokingStatusElements.insertElementAt(0, 1);
+							smokingStatusElements.insertElementAt(1, 2);
+							smokingStatusElements.insertElementAt(0, 3);
 							System.out.println("incrementing past");
 							
 							//System.out.println("past smoker");
 						}
 						else if (smoker == true){
-							//smokingStatusElements[0] = new Integer(0);
+							//smokingStatusElements[0] = 0;
 							
-							smokingStatusElements.insertElementAt(new Integer(0), 0);
-							smokingStatusElements.insertElementAt(new Integer(0), 1);
-							smokingStatusElements.insertElementAt(new Integer(0), 2);
-							smokingStatusElements.insertElementAt(new Integer(1), 3);
+							smokingStatusElements.insertElementAt(0, 0);
+							smokingStatusElements.insertElementAt(0, 1);
+							smokingStatusElements.insertElementAt(0, 2);
+							smokingStatusElements.insertElementAt(1, 3);
 							System.out.println("incrementing past");
 							
 							//System.out.println("past smoker");
 						}
 						//account for the UNKNOWN category
 						else {
-							smokingStatusElements.insertElementAt(new Integer(0), 0);
-							smokingStatusElements.insertElementAt(new Integer(0), 1);
-							smokingStatusElements.insertElementAt(new Integer(0), 2);
-							smokingStatusElements.insertElementAt(new Integer(0), 3);
+							smokingStatusElements.insertElementAt(0, 0);
+							smokingStatusElements.insertElementAt(0, 1);
+							smokingStatusElements.insertElementAt(0, 2);
+							smokingStatusElements.insertElementAt(0, 3);
 						}
 					
 						//clinicNumber = parts1[0] + "_" + clinicNumber;
@@ -169,28 +169,28 @@ public class PatientLevelSmokingStatus {
 						if (currentSmoker == true){
 							int currentValue = ((Integer) smokingStatusElements.elementAt(0)).intValue();
 							currentValue = currentValue + 1;
-							smokingStatusElements.setElementAt(new Integer(currentValue), 0);
+							smokingStatusElements.setElementAt(currentValue, 0);
 							System.out.println("incrementing current: " + currentValue);
 							patientsStatuses.put(clinicNumber, smokingStatusElements);
 						}
 						else if (nonSmoker == true){
 							int currentValue = ((Integer) smokingStatusElements.elementAt(1)).intValue();
 							currentValue = currentValue + 1;
-							smokingStatusElements.setElementAt(new Integer(currentValue), 1);
+							smokingStatusElements.setElementAt(currentValue, 1);
 							System.out.println("incrementing non: " + currentValue);
 							patientsStatuses.put(clinicNumber, smokingStatusElements);
 						}
 						else if (pastSmoker == true){
 							int currentValue = ((Integer) smokingStatusElements.elementAt(2)).intValue();
 							currentValue = currentValue + 1;
-							smokingStatusElements.setElementAt(new Integer(currentValue), 2);
+							smokingStatusElements.setElementAt(currentValue, 2);
 							System.out.println("incrementing past: " + currentValue);
 							patientsStatuses.put(clinicNumber, smokingStatusElements);
 						}
 						else if (smoker == true){
 							int currentValue = ((Integer) smokingStatusElements.elementAt(3)).intValue();
 							currentValue = currentValue + 1;
-							smokingStatusElements.setElementAt(new Integer(currentValue), 3);
+							smokingStatusElements.setElementAt(currentValue, 3);
 							System.out.println("incrementing smoker: " + currentValue);
 							patientsStatuses.put(clinicNumber, smokingStatusElements);
 						}

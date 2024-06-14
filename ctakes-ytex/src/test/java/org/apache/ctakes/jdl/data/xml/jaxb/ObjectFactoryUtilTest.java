@@ -32,12 +32,14 @@ import org.junit.runner.RunWith;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.UnmarshalException;
 
+import java.util.Objects;
+
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.junit.Assert.assertThat;
 
 @RunWith(Theories.class)
 public final class ObjectFactoryUtilTest {
-	private static final String CX = FileUtil.getFile(Resources.CONN_X).toString();
+	private static final String CX = Objects.requireNonNull( FileUtil.getFile( Resources.CONN_X ) ).getPath();
 	@DataPoint
 	public static String L1C = Resources.LOAD1C;
 	@DataPoint
@@ -69,7 +71,7 @@ public final class ObjectFactoryUtilTest {
 
 	@Theory
 	public void getBindTypeBySrcXml(String xml) throws JAXBException {
-		xml = FileUtil.getFile(xml).toString();
+		xml = Objects.requireNonNull( FileUtil.getFile( xml ) ).getPath();
 		Object obj = ObjectFactoryUtil.getLoadTypeBySrcXml(xml);
 		assertThat(obj, instanceOf(LoadType.class));
 	}

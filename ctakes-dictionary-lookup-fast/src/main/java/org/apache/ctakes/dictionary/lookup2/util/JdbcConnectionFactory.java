@@ -4,6 +4,7 @@ import org.apache.ctakes.core.resource.FileLocator;
 import org.apache.log4j.Logger;
 
 import java.io.FileNotFoundException;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.sql.*;
 import java.util.*;
@@ -66,7 +67,7 @@ public enum JdbcConnectionFactory {
       try {
          // DO NOT use try with resources here.
          // Try with resources uses a closable and closes it when exiting the try block
-         final Driver driver = (Driver)Class.forName( jdbcDriver ).newInstance();
+         final Driver driver = (Driver)Class.forName( jdbcDriver ).getDeclaredConstructor().newInstance();
          DriverManager.registerDriver( driver );
       } catch ( SQLException sqlE ) {
          LOGGER.error( "Could not register Driver " + jdbcDriver, sqlE );
@@ -74,6 +75,8 @@ public enum JdbcConnectionFactory {
       } catch ( ClassNotFoundException | InstantiationException | IllegalAccessException multE ) {
          LOGGER.error( "Could not create Driver " + jdbcDriver, multE );
          throw new SQLException( multE );
+      } catch ( InvocationTargetException | NoSuchMethodException e ) {
+         throw new RuntimeException( e );
       }
       LOGGER.info( "Connecting to " + jdbcUrl + ":" );
       final Timer timer = new Timer();

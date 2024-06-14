@@ -29,6 +29,7 @@ import org.junit.Test;
 
 import javax.xml.bind.JAXBException;
 import java.sql.SQLException;
+import java.util.Objects;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
@@ -38,7 +39,7 @@ import static org.junit.Assume.assumeThat;
 public class JdlConnectionTest {
 	private static JdbcType jdbc;
 	private static JdlConnection jdlConnection;
-	private static final String CX = FileUtil.getFile(Resources.CONN_X).toString();
+	private static final String CX = Objects.requireNonNull( FileUtil.getFile( Resources.CONN_X ) ).getPath();
 
 	@BeforeClass
 	public static void initClass() throws JAXBException, InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {

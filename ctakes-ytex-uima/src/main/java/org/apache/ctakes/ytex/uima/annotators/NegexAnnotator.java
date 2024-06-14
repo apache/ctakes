@@ -490,7 +490,8 @@ public class NegexAnnotator extends JCasAnnotator_ImplBase {
 
 		@Override
 		public int compareTo(NegexToken o) {
-			return new Integer(this.start).compareTo(o.start);
+//			return new Integer(this.start).compareTo(o.start);
+			return Integer.compare( this.start, o.start );
 		}
 
 		public int getStart() {
@@ -663,9 +664,9 @@ public class NegexAnnotator extends JCasAnnotator_ImplBase {
 		int count = 0;
 		HashMap<Integer,Integer> deDupe = new HashMap<Integer,Integer>(this.ruleCount);
 		for (Entry<String, ArrayList<NegexRule>> ent : this.wordCloud.entrySet()) {
-			if (bText.indexOf(ent.getKey()) >= 0) {
+			if ( bText.contains( ent.getKey() ) ) {
 				for (NegexRule rule : ent.getValue()) {
-					Integer iH = new Integer(rule.hashCode());
+					Integer iH = rule.hashCode();
 					if (deDupe.containsKey(iH)) {
 						// do not execute the same rule twice
 						// this is because in the wordCloud, same rules may occur in different bins
@@ -674,7 +675,7 @@ public class NegexAnnotator extends JCasAnnotator_ImplBase {
 					deDupe.put(iH, iH);
 					Matcher m = rule.getPattern().matcher(buf);
 					count++;
-					while (m.find() == true) {
+					while ( m.find() ) {
 						if (log.isDebugEnabled()) {
 							log.debug("Regex buf before: " + buf.toString());
 							log.debug("rule: \'" + rule.getRule() + "\' match at :" + m.start() + "," + m.end() );

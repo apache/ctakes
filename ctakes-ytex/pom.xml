@@ -241,7 +241,10 @@
 				<configuration>
 					<!-- The schema directory or xsd files.
 					For future jaxb versions this should be <sources><source>dir</source... -->
-					<schemaDirectory>${project.basedir}/../ctakes-ytex/src/main/resources/org/apache/ctakes/jdl</schemaDirectory>
+<!--					<schemaDirectory>${project.basedir}/../ctakes-ytex/src/main/resources/org/apache/ctakes/jdl</schemaDirectory>-->
+					<sources>
+						<source>${project.basedir}/../ctakes-ytex/src/main/resources/org/apache/ctakes/jdl</source>
+					</sources>
 					<!-- The package in which the source files will be generated. -->
 					<packageName>org.apache.ctakes.jdl.schema.xdl</packageName>
 				</configuration>

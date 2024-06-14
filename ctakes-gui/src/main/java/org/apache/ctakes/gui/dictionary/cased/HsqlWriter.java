@@ -186,11 +186,11 @@ final public class HsqlWriter {
       if ( String.class.equals( type ) ) {
          statement.setString( 2, code );
       } else if ( Double.class.equals( type ) ) {
-         statement.setDouble( 2, Double.valueOf( code ) );
+         statement.setDouble( 2, Double.parseDouble( code ) );
       } else if ( Long.class.equals( type ) ) {
-         statement.setLong( 2, Long.valueOf( code ) );
+         statement.setLong( 2, Long.parseLong( code ) );
       } else if ( Integer.class.equals( type ) ) {
-         statement.setInt( 2, Integer.valueOf( code ) );
+         statement.setInt( 2, Integer.parseInt( code ) );
       } else {
          if ( type == null ) {
             LOGGER.error( "Type for code " + code + " is null." );

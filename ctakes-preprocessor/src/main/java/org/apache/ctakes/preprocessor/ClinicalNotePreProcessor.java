@@ -23,6 +23,9 @@ import org.xml.sax.*;
 import org.xml.sax.helpers.DefaultHandler;
 import org.xml.sax.helpers.XMLReaderFactory;
 
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.io.StringReader;
@@ -125,18 +128,18 @@ public class ClinicalNotePreProcessor extends DefaultHandler
     private StringBuffer iv_examComponentText = null;
 
 
-    private List<String> iv_headerList = new ArrayList<>();
+    private final List<String> iv_headerList = new ArrayList<>();
 
-    private XMLReader iv_xmlParser;
+    private final XMLReader iv_xmlParser;
 
     private StringBuffer iv_sectionText = new StringBuffer();
-    private StringBuffer iv_text = new StringBuffer();
+    private final StringBuffer iv_text = new StringBuffer();
 
-    private boolean iv_includeSectionMarkers;
+    private final boolean iv_includeSectionMarkers;
 
     private String iv_previousElement = null;
 
-    private StringBuffer iv_contiguousTextBuffer = new StringBuffer();
+    private final StringBuffer iv_contiguousTextBuffer = new StringBuffer();
 
     /**
      * Constructor
@@ -147,15 +150,19 @@ public class ClinicalNotePreProcessor extends DefaultHandler
      * @param includeSectionMarkers
      *            Flag that determines whether the section markers are included
      *            as part of the section.
-     * @throws SAXException
+     * @throws SAXException -
      */
     public ClinicalNotePreProcessor(InputStream dtdFile, boolean includeSectionMarkers)
-            throws SAXException, FileNotFoundException
-    {
+          throws SAXException, FileNotFoundException, ParserConfigurationException {
         iv_includeSectionMarkers = includeSectionMarkers;
 
-        iv_xmlParser = XMLReaderFactory
-                .createXMLReader("org.apache.xerces.parsers.SAXParser");
+//        iv_xmlParser = XMLReaderFactory
+//                .createXMLReader("org.apache.xerces.parsers.SAXParser");
+        SAXParserFactory parserFactory = SAXParserFactory.newInstance();
+        parserFactory.setNamespaceAware(true);
+        SAXParser parser = parserFactory.newSAXParser();
+        iv_xmlParser = parser.getXMLReader();
+
         iv_xmlParser.setContentHandler(this);
 
         EntityResolver eResolver = new DTDloader(dtdFile);

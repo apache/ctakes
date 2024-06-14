@@ -60,12 +60,12 @@ public class SentenceDetectorCtakes {
 	   */
 	  public static final String NO_SPLIT ="n";
 	  
-	  private static final Double ONE = new Double(1);
+	  private static final Double ONE = 1.0;
 
 	  /**
 	   * The maximum entropy model to use to evaluate contexts.
 	   */
-	  private MaxentModel model;
+	  private final MaxentModel model;
 
 	  /**
 	   * The feature context generator.
@@ -80,7 +80,7 @@ public class SentenceDetectorCtakes {
 	  /**
 	   * The list of probabilities associated with each decision.
 	   */
-	  private List<Double> sentProbs = new ArrayList<Double>();
+	  private final List<Double> sentProbs = new ArrayList<Double>();
 
 	  protected boolean useTokenEnd;
 
@@ -172,7 +172,7 @@ public class SentenceDetectorCtakes {
 	          else {
 	            positions.add(getFirstNonWS(s,cint));
 	          }
-	          sentProbs.add(new Double(probs[model.getIndex(bestOutcome)]));
+	          sentProbs.add( probs[ model.getIndex( bestOutcome ) ] );
 	        }
 	        index = cint + 1;
 	      }

@@ -172,13 +172,13 @@ public class StrengthFSM {
 		Map overrideBeginTokenMap2 = new HashMap();
 		while (overrideTokenItr1.hasNext()) {
 			BaseToken t = (BaseToken) overrideTokenItr1.next();
-			Integer key = new Integer(t.getStartOffset());
+			Integer key = t.getStartOffset();
 			overrideTokenMap1.put(key, t);
 		}
 
 		while (overrideTokenItr2.hasNext()) {
 			BaseToken t = (BaseToken) overrideTokenItr2.next();
-			Integer key = new Integer(t.getStartOffset());
+			Integer key = t.getStartOffset();
 			overrideTokenMap2.put(key, t);
 		}
 
@@ -193,7 +193,7 @@ public class StrengthFSM {
 		for (int i = 0; i < tokens.size(); i++) {
 			BaseToken token = (BaseToken) tokens.get(i);
 
-			Integer key = new Integer(token.getStartOffset());
+			Integer key = token.getStartOffset();
 			if (overrideOn1 && overrideOn2){
 				if (overrideEndOffset1 >= overrideEndOffset2)
 					overrideOn1 = false;
@@ -202,7 +202,7 @@ public class StrengthFSM {
 			}
 			if (overrideOn1) {
 				if (token.getStartOffset() >= overrideEndOffset1) {
-					overrideBeginTokenMap1.put(new Integer(anchorKey1), new Integer(tokenOffset1));
+					overrideBeginTokenMap1.put( anchorKey1, tokenOffset1);
 					overrideOn1 = false;
 					overrideEndOffset1 = -1;
 				} else {
@@ -212,7 +212,7 @@ public class StrengthFSM {
 				}
 			} else if (overrideOn2) {
 				if (token.getStartOffset() >= overrideEndOffset2) {
-					overrideBeginTokenMap2.put(new Integer(anchorKey2), new Integer(tokenOffset2));
+					overrideBeginTokenMap2.put(anchorKey2, tokenOffset2);
 					overrideOn2 = false;
 					overrideEndOffset2 = -1;
 				} else {
@@ -249,7 +249,7 @@ public class StrengthFSM {
 
 				State currentState = fsm.getCurrentState();
 				if (currentState.getStartStateFlag()) {
-					tokenStartMap.put(fsm, new Integer(i));
+					tokenStartMap.put(fsm, i);
 					tokenOffset1 = 0;
 					tokenOffset2 = 0;
 				}
@@ -262,23 +262,23 @@ public class StrengthFSM {
 						// token zero.
 						tokenStartIndex = 0;
 					} else {
-						Integer tokenMap1 = new Integer(0);
-						Integer tokenMap2 = new Integer(0);
+						Integer tokenMap1 = 0;
+						Integer tokenMap2 = 0;
 					
-						BaseToken lookUpOffset = (BaseToken) tokens.get(((Integer) o).intValue());
+						BaseToken lookUpOffset = (BaseToken) tokens.get(((Integer) o));
 							
-						if (overrideBeginTokenMap1.get(new Integer(lookUpOffset.getStartOffset())) != null){
-							Integer offSet = (Integer) (overrideBeginTokenMap1.get(new Integer(lookUpOffset.getStartOffset())));
-							tokenMap1 = new Integer(offSet.intValue()  + tokenMap1.intValue());
+						if (overrideBeginTokenMap1.get(lookUpOffset.getStartOffset()) != null){
+							Integer offSet = (Integer) (overrideBeginTokenMap1.get(lookUpOffset.getStartOffset()));
+							tokenMap1 = offSet + tokenMap1;
 						}
-						if (overrideBeginTokenMap2.get(new Integer(lookUpOffset.getStartOffset())) != null){
-							Integer offSet = (Integer) (overrideBeginTokenMap2.get(new Integer(lookUpOffset.getStartOffset())));
-							tokenMap2 = new Integer(offSet.intValue() + tokenMap2.intValue());
+						if (overrideBeginTokenMap2.get(lookUpOffset.getStartOffset()) != null){
+							Integer offSet = (Integer) (overrideBeginTokenMap2.get(lookUpOffset.getStartOffset()));
+							tokenMap2 =offSet+ tokenMap2;
 							}
 						
 
-						globalOffset = tokenMap1.intValue() + tokenMap2.intValue();
-						tokenStartIndex = ((Integer) o).intValue() + globalOffset;
+						globalOffset = tokenMap1 + tokenMap2;
+						tokenStartIndex = ((Integer) o) + globalOffset;
 						// skip ahead over single token we don't want
 						tokenStartIndex++;
 					}
@@ -338,7 +338,7 @@ public class StrengthFSM {
 		Map overrideBeginTokenMap = new HashMap();
 		while (overrideTokenItr.hasNext()) {
 			BaseToken t = (BaseToken) overrideTokenItr.next();
-			Integer key = new Integer(t.getStartOffset());
+			Integer key = t.getStartOffset();
 			overrideTokenMap.put(key, t);
 		}
 
@@ -350,12 +350,12 @@ public class StrengthFSM {
 		for (int i = 0; i < tokens.size(); i++) {
 			BaseToken token = (BaseToken) tokens.get(i);
 
-			Integer key = new Integer(token.getStartOffset());
+			Integer key = token.getStartOffset();
 
 			if (overrideOn) {
 				if (token.getStartOffset() >= overrideEndOffset) {
 					if (tokenOffset > 0)
-						overrideBeginTokenMap.put(new Integer(anchorKey), new Integer(tokenOffset));
+						overrideBeginTokenMap.put(anchorKey, tokenOffset);
 					overrideOn = false;
 					overrideEndOffset = -1;
 				} else {
@@ -367,7 +367,7 @@ public class StrengthFSM {
 				if (overrideTokenMap.containsKey(key)) {
 					// override one or more tokens until the override
 					// token is complete
-					anchorKey = key.intValue();
+					anchorKey = key;
 					token = (BaseToken) overrideTokenMap.get(key);
 					overrideOn = true;
 					overrideEndOffset = token.getEndOffset();
@@ -383,7 +383,7 @@ public class StrengthFSM {
 
 				State currentState = fsm.getCurrentState();
 				if (currentState.getStartStateFlag()) {
-					tokenStartMap.put(fsm, new Integer(i));
+					tokenStartMap.put(fsm, i);
 					tokenOffset = 0;
 				}
 				if (currentState.getEndStateFlag()) {
@@ -394,17 +394,17 @@ public class StrengthFSM {
 						// token zero.
 						tokenStartIndex = 0;
 					} else {
-						Integer tokenMap = new Integer(0);
+						Integer tokenMap = 0;
 											
-						BaseToken lookUpOffset = (BaseToken) tokens.get(((Integer) o).intValue());
+						BaseToken lookUpOffset = (BaseToken) tokens.get(((Integer) o));
 							
-						if (overrideBeginTokenMap.get(new Integer(lookUpOffset.getStartOffset())) != null){
-							Integer offSet = (Integer) (overrideBeginTokenMap.get(new Integer(lookUpOffset.getStartOffset())));
-							tokenMap = new Integer(offSet.intValue()  + tokenMap.intValue());
+						if (overrideBeginTokenMap.get(lookUpOffset.getStartOffset()) != null){
+							Integer offSet = (Integer) (overrideBeginTokenMap.get(lookUpOffset.getStartOffset()));
+							tokenMap =offSet  + tokenMap;
 						}
 						
 						
-						tokenStartIndex = ((Integer) o).intValue() + tokenMap.intValue();
+						tokenStartIndex = ((Integer) o) + tokenMap;
 						// skip ahead over single token we don't want
 						tokenStartIndex++;
 					}
@@ -467,7 +467,7 @@ public class StrengthFSM {
 		for (int i = 0; i < tokens.size(); i++) {
 			BaseToken token = (BaseToken) tokens.get(i);
 
-			Integer key = new Integer(token.getStartOffset());
+			Integer key = token.getStartOffset();
 
 
 			Iterator machineItr = iv_machineSet.iterator();
@@ -478,7 +478,7 @@ public class StrengthFSM {
 
 				State currentState = fsm.getCurrentState();
 				if (currentState.getStartStateFlag()) {
-					tokenStartMap.put(fsm, new Integer(i));
+					tokenStartMap.put(fsm, i);
 					tokenOffset = 0;
 				}
 				if (currentState.getEndStateFlag()) {
@@ -489,7 +489,7 @@ public class StrengthFSM {
 						// token zero.
 						tokenStartIndex = 0;
 					} else {
-						Integer tokenMap = new Integer(0);
+						Integer tokenMap = 0;
 											
 						BaseToken lookUpOffset = (BaseToken) tokens.get(((Integer) o).intValue());
 							

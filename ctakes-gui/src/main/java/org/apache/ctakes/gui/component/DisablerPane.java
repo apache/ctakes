@@ -211,7 +211,7 @@ public final class DisablerPane extends JPanel implements MouseListener,
       }
       if ( inMenuBar || _dragging ) {
          final Point componentPoint = SwingUtilities.convertPoint( this, point, component );
-         component.dispatchEvent( new MouseEvent( component, eventID, event.getWhen(), event.getModifiers(),
+         component.dispatchEvent( new MouseEvent( component, eventID, event.getWhen(), event.getModifiersEx(),
                componentPoint.x, componentPoint.y, event.getClickCount(), event.isPopupTrigger() ) );
       }
    }

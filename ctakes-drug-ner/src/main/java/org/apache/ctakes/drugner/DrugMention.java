@@ -280,19 +280,16 @@ public class DrugMention implements DrugModel {
 									if ((stringRange.length() > 0)
 											&& (stringRange.indexOf('-') > 0)) {
 										hyphPosition = stringRange.indexOf('-');
-										Double firstValue = new Double(
-												parseDoubleValue(stringRange
-														.subSequence(0, hyphPosition)));
-										Double secondValue = new Double(
-												parseDoubleValue(stringRange
-														.substring(hyphPosition + 2)));
-										if (firstValue.doubleValue() >= secondValue
-												.doubleValue() && findMaxValue == true) {
-											setStrengthElement(firstValue.toString(),
+										double firstValue = parseDoubleValue(stringRange
+														.subSequence(0, hyphPosition));
+										double secondValue = parseDoubleValue(stringRange
+														.substring(hyphPosition + 2));
+										if ( firstValue >= (double)secondValue && findMaxValue ) {
+											setStrengthElement( Double.toString( firstValue ),
 													focusToken.getBegin(), focusToken
 															.getEnd());
 										} else {
-											setStrengthElement(firstValue.toString(),
+											setStrengthElement( Double.toString( firstValue ),
 													focusToken.getBegin(), focusToken
 															.getEnd());
 										}
@@ -304,18 +301,15 @@ public class DrugMention implements DrugModel {
 								int hyphPosition = 0;
 
 								hyphPosition = localStrength.indexOf('-');
-								Double firstValue = new Double(
-										parseDoubleValue(localStrength.subSequence(0,
-												hyphPosition)));
-								Double secondValue = new Double(
-										parseDoubleValue(localStrength
-												.substring(hyphPosition + 2)));
-								if (firstValue.doubleValue() >= secondValue
-										.doubleValue() && findMaxValue == true) {
-									setStrengthElement(firstValue.toString(),
+								double firstValue = parseDoubleValue(localStrength.subSequence(0,
+												hyphPosition));
+								double secondValue = parseDoubleValue(localStrength
+												.substring(hyphPosition + 2));
+								if ( firstValue >= secondValue && findMaxValue ) {
+									setStrengthElement( Double.toString( firstValue ),
 											focusToken.getBegin(), focusToken.getEnd());
 								} else {
-									setStrengthElement(firstValue.toString(),
+									setStrengthElement( Double.toString( firstValue ),
 											focusToken.getBegin(), focusToken.getEnd());
 								}
 
@@ -787,8 +781,9 @@ public class DrugMention implements DrugModel {
 				String returnFirstValue = convertFromTextToNum(firstTerm);
 				String returnLastValue = convertFromTextToNum(lastTerm);
 				try {
-				if (new Double(returnFirstValue).intValue() 
-						< new Double(returnLastValue).intValue() && findMaxValue){
+					final double rFirst = Double.parseDouble(returnFirstValue);
+					final double rLast = Double.parseDouble(returnLastValue);
+				if (Math.round( rFirst ) < Math.round( rLast ) && findMaxValue){
 					return returnLastValue;
 				} 
 				else
@@ -806,49 +801,48 @@ public class DrugMention implements DrugModel {
 	private String findFrequencyUnitElement(JCas jcas, int beginOffset,
 			int endOffset) {
 
-		Iterator firItr = FSUtil.getAnnotationsIteratorInSpan(jcas,
+		Iterator<?> firItr = FSUtil.getAnnotationsIteratorInSpan(jcas,
 				FrequencyUnitAnnotation.type, beginOffset, endOffset + 1);
 
 		while (firItr.hasNext()) {
 
 			FrequencyUnitAnnotation da = (FrequencyUnitAnnotation) firItr
 					.next();
-			if (da.getBegin() == beginOffset && da.getPeriod() > holdLargestPeriod) {
-				holdLargestPeriod = da.getPeriod();
+			final float daPeriod = da.getPeriod();
+			if (da.getBegin() == beginOffset && daPeriod > holdLargestPeriod) {
+				holdLargestPeriod = daPeriod;
 				int posHyph = da.getCoveredText().lastIndexOf('-');
 				String lastTerm = da.getCoveredText();
-				int szString = lastTerm.toString().length();
+				int szString = lastTerm.length();
 				if (posHyph > 0) {
 					lastTerm = lastTerm.substring(posHyph + 1, szString);
 				}
 
-				if (da.getPeriod() == FrequencyUnitToken.QUANTITY_ONE) {
+				if (daPeriod == FrequencyUnitToken.QUANTITY_ONE) {
 
 					return FrequencyUnitElement.DAILY;
-				} else if (da.getPeriod() == FrequencyUnitToken.QUANTITY_TWO) {
+				} else if (daPeriod == FrequencyUnitToken.QUANTITY_TWO) {
 
 					if (frequency != null
 							&& (frequency.getBeginOffset() != beginOffset && frequency
 									.getEndOffset() != endOffset)) {
-						if ((dosage == null
-								|| (dosage != null
-										&& convertFromTextToNum(
-												dosage.getDosage()).compareTo(
-												"1") == 0 && (dosage
-										.getBeginOffset() != beginOffset && dosage
-										.getEndOffset() != endOffset))) 
-										&& (changeStatus != null  && (changeStatus.getDrugChangeStatus().compareTo(DrugChangeStatusToken.OTHER) != 0)
-										&&  (changeStatus.getDrugChangeStatus().compareTo(DrugChangeStatusToken.DECREASE) != 0)
-										&& (changeStatus.getDrugChangeStatus().compareTo(DrugChangeStatusToken.DECREASEFROM) != 0)
-										&& (changeStatus.getDrugChangeStatus().compareTo(DrugChangeStatusToken.INCREASE) != 0)
-										&& (changeStatus.getDrugChangeStatus().compareTo(DrugChangeStatusToken.INCREASEFROM) != 0))) {
+						if ( (dosage == null || convertFromTextToNum(
+								dosage.getDosage() ).compareTo(
+								"1" ) == 0 && dosage
+								.getBeginOffset() != beginOffset && dosage
+								.getEndOffset() != endOffset) && changeStatus != null &&
+								changeStatus.getDrugChangeStatus().compareTo( DrugChangeStatusToken.OTHER ) != 0 &&
+								changeStatus.getDrugChangeStatus().compareTo( DrugChangeStatusToken.DECREASE ) != 0 &&
+								changeStatus.getDrugChangeStatus().compareTo( DrugChangeStatusToken.DECREASEFROM ) != 0 &&
+								changeStatus.getDrugChangeStatus().compareTo( DrugChangeStatusToken.INCREASE ) != 0 &&
+								changeStatus.getDrugChangeStatus().compareTo( DrugChangeStatusToken.INCREASEFROM ) != 0 ) {
 							setFrequencyElement(
 									frequency.getFrequencyMention(), frequency
 											.getBeginOffset(), frequency
 											.getEndOffset());
 						} else {
-							double updateFreq = new Double(frequency
-									.getFrequencyMention()).doubleValue() * 2.0;
+							double updateFreq = Double.parseDouble(frequency
+									.getFrequencyMention()) * 2.0;
 							setFrequencyElement(String.valueOf(updateFreq), beginOffset,
 									endOffset);
 						}
@@ -857,29 +851,27 @@ public class DrugMention implements DrugModel {
 						setFrequencyElement("2.0", beginOffset, endOffset);
 					}
 					return FrequencyUnitElement.DAILY;
-				} else if (da.getPeriod() == FrequencyUnitToken.QUANTITY_THREE) {
+				} else if (daPeriod == FrequencyUnitToken.QUANTITY_THREE) {
 					if (frequency != null
 							&& (frequency.getBeginOffset() != beginOffset && frequency
 									.getEndOffset() != endOffset)) {
-						if ((dosage == null
-								|| (dosage != null
-										&& convertFromTextToNum(
-												dosage.getDosage()).compareTo(
-												"1") == 0 && (dosage
-										.getBeginOffset() != beginOffset && dosage
-										.getEndOffset() != endOffset))) 
-										&& (changeStatus != null  && (changeStatus.getDrugChangeStatus().compareTo(DrugChangeStatusToken.OTHER) != 0)
-										&&  (changeStatus.getDrugChangeStatus().compareTo(DrugChangeStatusToken.DECREASE) != 0)
-										&& (changeStatus.getDrugChangeStatus().compareTo(DrugChangeStatusToken.DECREASEFROM) != 0)
-										&& (changeStatus.getDrugChangeStatus().compareTo(DrugChangeStatusToken.INCREASE) != 0)
-										&& (changeStatus.getDrugChangeStatus().compareTo(DrugChangeStatusToken.INCREASEFROM) != 0))){
+						if ( (dosage == null || convertFromTextToNum(
+								dosage.getDosage() ).compareTo(
+								"1" ) == 0 && dosage
+								.getBeginOffset() != beginOffset && dosage
+								.getEndOffset() != endOffset) && changeStatus != null &&
+								changeStatus.getDrugChangeStatus().compareTo( DrugChangeStatusToken.OTHER ) != 0 &&
+								changeStatus.getDrugChangeStatus().compareTo( DrugChangeStatusToken.DECREASE ) != 0 &&
+								changeStatus.getDrugChangeStatus().compareTo( DrugChangeStatusToken.DECREASEFROM ) != 0 &&
+								changeStatus.getDrugChangeStatus().compareTo( DrugChangeStatusToken.INCREASE ) != 0 &&
+								changeStatus.getDrugChangeStatus().compareTo( DrugChangeStatusToken.INCREASEFROM ) != 0 ){
 							setFrequencyElement(
 									frequency.getFrequencyMention(), frequency
 											.getBeginOffset(), frequency
 											.getEndOffset());
 						} else {
-							double updateFreq = new Double(frequency
-									.getFrequencyMention()).doubleValue() * 3.0;
+							double updateFreq = Double.parseDouble(frequency
+									.getFrequencyMention()) * 3.0;
 							setFrequencyElement(String.valueOf(updateFreq), beginOffset,
 									endOffset);
 						}
@@ -887,7 +879,7 @@ public class DrugMention implements DrugModel {
 						setFrequencyElement("3.0", beginOffset, endOffset);
 					}
 					return FrequencyUnitElement.DAILY;
-				} else if (da.getPeriod() == FrequencyUnitToken.QUANTITY_FOUR) {
+				} else if (daPeriod == FrequencyUnitToken.QUANTITY_FOUR) {
 
 					if (frequency != null
 							&& (frequency.getBeginOffset() != beginOffset && frequency
@@ -909,8 +901,8 @@ public class DrugMention implements DrugModel {
 											.getBeginOffset(), frequency
 											.getEndOffset());
 						} else {
-							double updateFreq = new Double(frequency
-									.getFrequencyMention()).doubleValue() * 4.0;
+							double updateFreq = Double.parseDouble(frequency
+									.getFrequencyMention()) * 4.0;
 							setFrequencyElement(String.valueOf(updateFreq), beginOffset,
 									endOffset);
 						}
@@ -918,7 +910,7 @@ public class DrugMention implements DrugModel {
 						setFrequencyElement("4.0", beginOffset, endOffset);
 					}
 					return FrequencyUnitElement.DAILY;
-				} else if (da.getPeriod() == FrequencyUnitToken.QUANTITY_FIVE) {
+				} else if (daPeriod == FrequencyUnitToken.QUANTITY_FIVE) {
 					if (frequency != null
 							&& (frequency.getBeginOffset() != beginOffset && frequency
 									.getEndOffset() != endOffset)) {
@@ -939,8 +931,8 @@ public class DrugMention implements DrugModel {
 											.getBeginOffset(), frequency
 											.getEndOffset());
 						} else {
-							double updateFreq = new Double(frequency
-									.getFrequencyMention()).doubleValue() * 5.0;
+							double updateFreq = Double.parseDouble(frequency
+									.getFrequencyMention()) * 5.0;
 							setFrequencyElement(String.valueOf(updateFreq), beginOffset,
 									endOffset);
 						}
@@ -948,7 +940,7 @@ public class DrugMention implements DrugModel {
 						setFrequencyElement("5.0", beginOffset, endOffset);
 					}
 					return FrequencyUnitElement.DAILY;
-				} else if (da.getPeriod() == FrequencyUnitToken.QUANTITY_SIX) {
+				} else if (daPeriod == FrequencyUnitToken.QUANTITY_SIX) {
 					if (frequency != null
 							&& (frequency.getBeginOffset() != beginOffset && frequency
 									.getEndOffset() != endOffset)) {
@@ -969,8 +961,8 @@ public class DrugMention implements DrugModel {
 											.getBeginOffset(), frequency
 											.getEndOffset());
 						} else {
-							double updateFreq = new Double(frequency
-									.getFrequencyMention()).doubleValue() * 6.0;
+							double updateFreq = Double.parseDouble(frequency
+									.getFrequencyMention()) * 6.0;
 							setFrequencyElement(String.valueOf(updateFreq), beginOffset,
 									endOffset);
 						}
@@ -979,29 +971,27 @@ public class DrugMention implements DrugModel {
 
 					}
 					return FrequencyUnitElement.DAILY;
-				} else if (da.getPeriod() == FrequencyUnitToken.QUANTITY_SEVEN) {
+				} else if (daPeriod == FrequencyUnitToken.QUANTITY_SEVEN) {
 					if (frequency != null
 							&& (frequency.getBeginOffset() != beginOffset && frequency
 									.getEndOffset() != endOffset)) {
-						if ((dosage == null
-								|| (dosage != null
-										&& convertFromTextToNum(
-												dosage.getDosage()).compareTo(
-												"1") == 0 && (dosage
-										.getBeginOffset() != beginOffset && dosage
-										.getEndOffset() != endOffset))) 
-										&& (changeStatus != null  && (changeStatus.getDrugChangeStatus().compareTo(DrugChangeStatusToken.OTHER) != 0)
-										&&  (changeStatus.getDrugChangeStatus().compareTo(DrugChangeStatusToken.DECREASE) != 0)
-										&& (changeStatus.getDrugChangeStatus().compareTo(DrugChangeStatusToken.DECREASEFROM) != 0)
-										&& (changeStatus.getDrugChangeStatus().compareTo(DrugChangeStatusToken.INCREASE) != 0)
-										&& (changeStatus.getDrugChangeStatus().compareTo(DrugChangeStatusToken.INCREASEFROM) != 0))){
+						if ( (dosage == null || convertFromTextToNum(
+								dosage.getDosage() ).compareTo(
+								"1" ) == 0 && dosage
+								.getBeginOffset() != beginOffset && dosage
+								.getEndOffset() != endOffset) && changeStatus != null &&
+								changeStatus.getDrugChangeStatus().compareTo( DrugChangeStatusToken.OTHER ) != 0 &&
+								changeStatus.getDrugChangeStatus().compareTo( DrugChangeStatusToken.DECREASE ) != 0 &&
+								changeStatus.getDrugChangeStatus().compareTo( DrugChangeStatusToken.DECREASEFROM ) != 0 &&
+								changeStatus.getDrugChangeStatus().compareTo( DrugChangeStatusToken.INCREASE ) != 0 &&
+								changeStatus.getDrugChangeStatus().compareTo( DrugChangeStatusToken.INCREASEFROM ) != 0 ){
 							setFrequencyElement(
 									frequency.getFrequencyMention(), frequency
 											.getBeginOffset(), frequency
 											.getEndOffset());
 						} else {
-							double updateFreq = new Double(frequency
-									.getFrequencyMention()).doubleValue() * 7.0;
+							double updateFreq = Double.parseDouble(frequency
+									.getFrequencyMention()) * 7.0;
 							setFrequencyElement(String.valueOf(updateFreq), beginOffset,
 									endOffset);
 						}
@@ -1009,29 +999,27 @@ public class DrugMention implements DrugModel {
 						setFrequencyElement("7.0", beginOffset, endOffset);
 					}
 					return FrequencyUnitElement.DAILY;
-				} else if (da.getPeriod() == FrequencyUnitToken.QUANTITY_EIGHT) {
+				} else if (daPeriod == FrequencyUnitToken.QUANTITY_EIGHT) {
 					if (frequency != null
 							&& (frequency.getBeginOffset() != beginOffset && frequency
 									.getEndOffset() != endOffset)) {
-						if ((dosage == null
-								|| (dosage != null
-										&& convertFromTextToNum(
-												dosage.getDosage()).compareTo(
-												"1") == 0 && (dosage
-										.getBeginOffset() != beginOffset && dosage
-										.getEndOffset() != endOffset))) 
-										&& (changeStatus != null  && (changeStatus.getDrugChangeStatus().compareTo(DrugChangeStatusToken.OTHER) != 0)
-										&&  (changeStatus.getDrugChangeStatus().compareTo(DrugChangeStatusToken.DECREASE) != 0)
-										&& (changeStatus.getDrugChangeStatus().compareTo(DrugChangeStatusToken.DECREASEFROM) != 0)
-										&& (changeStatus.getDrugChangeStatus().compareTo(DrugChangeStatusToken.INCREASE) != 0)
-										&& (changeStatus.getDrugChangeStatus().compareTo(DrugChangeStatusToken.INCREASEFROM) != 0))) {
+						if ( (dosage == null || convertFromTextToNum(
+								dosage.getDosage() ).compareTo(
+								"1" ) == 0 && dosage
+								.getBeginOffset() != beginOffset && dosage
+								.getEndOffset() != endOffset) && changeStatus != null &&
+								changeStatus.getDrugChangeStatus().compareTo( DrugChangeStatusToken.OTHER ) != 0 &&
+								changeStatus.getDrugChangeStatus().compareTo( DrugChangeStatusToken.DECREASE ) != 0 &&
+								changeStatus.getDrugChangeStatus().compareTo( DrugChangeStatusToken.DECREASEFROM ) != 0 &&
+								changeStatus.getDrugChangeStatus().compareTo( DrugChangeStatusToken.INCREASE ) != 0 &&
+								changeStatus.getDrugChangeStatus().compareTo( DrugChangeStatusToken.INCREASEFROM ) != 0 ) {
 							setFrequencyElement(
 									frequency.getFrequencyMention(), frequency
 											.getBeginOffset(), frequency
 											.getEndOffset());
 						} else {
-							double updateFreq = new Double(frequency
-									.getFrequencyMention()).doubleValue() * 8.0;
+							double updateFreq = Double.parseDouble(frequency
+									.getFrequencyMention()) * 8.0;
 							setFrequencyElement(String.valueOf(updateFreq), beginOffset,
 									endOffset);
 						}
@@ -1040,17 +1028,14 @@ public class DrugMention implements DrugModel {
 					}
 
 					return FrequencyUnitElement.DAILY;
-				} else if (da.getPeriod() == new Float(
-						FrequencyUnitToken.QUANTITY_EVERY_OTHER_DAY)
-						.floatValue()) {
+					// TODO double == float direct comparison is bad.
+				} else if ( daPeriod == FrequencyUnitToken.QUANTITY_EVERY_OTHER_DAY ) {
 					return FrequencyUnitElement.EVERYOTHERDAY;
-				} else if (da.getPeriod() == new Float(
-						FrequencyUnitToken.QUANTITY_WEEKLY).floatValue()) {
+				} else if (daPeriod == FrequencyUnitToken.QUANTITY_WEEKLY  ) {
 					return FrequencyUnitElement.WEEKLY;
-				} else if (da.getPeriod() == new Float(
-						FrequencyUnitToken.QUANTITY_MONTHLY).floatValue()) {
+				} else if (daPeriod == FrequencyUnitToken.QUANTITY_MONTHLY) {
 					return FrequencyUnitElement.MONTHLY;
-				} else if (da.getPeriod() == FrequencyUnitToken.QUANTITY_PRN) {
+				} else if (daPeriod == FrequencyUnitToken.QUANTITY_PRN) {
 					return FrequencyUnitElement.ASNEEDED;
 				}
 				return lastTerm;
@@ -1062,7 +1047,7 @@ public class DrugMention implements DrugModel {
 
 	private String findDurationElement(JCas jcas, int beginOffset, int endOffset) {
 
-		Iterator firItr = FSUtil.getAnnotationsIteratorInSpan(jcas,
+		Iterator<?> firItr = FSUtil.getAnnotationsIteratorInSpan(jcas,
 				DurationAnnotation.type, beginOffset, endOffset + 1);
 		while (firItr.hasNext()) {
 			DurationAnnotation da = (DurationAnnotation) firItr.next();
@@ -1074,36 +1059,36 @@ public class DrugMention implements DrugModel {
 
 	private String findRouteElement(JCas jcas, int beginOffset, int endOffset) {
 
-		Iterator firItr = FSUtil.getAnnotationsIteratorInSpan(jcas,
+		Iterator<?> firItr = FSUtil.getAnnotationsIteratorInSpan(jcas,
 				RouteAnnotation.type, beginOffset, endOffset + 1);
 		while (firItr.hasNext()) {
 			RouteAnnotation ra = (RouteAnnotation) firItr.next();
 			if (ra.getBegin() == beginOffset) {
-				if (new Integer(ra.getIntakeMethod()).intValue() == RouteToken.GASTRIC)
+				if ( Integer.parseInt(ra.getIntakeMethod()) == RouteToken.GASTRIC)
 					return RouteElement.GASTRIC;
-				else if (new Integer(ra.getIntakeMethod()).intValue() == RouteToken.ORAL)
+				else if (Integer.parseInt(ra.getIntakeMethod()) == RouteToken.ORAL)
 					return RouteElement.ORAL;
-				else if (new Integer(ra.getIntakeMethod()).intValue() == RouteToken.INTRAARTERIAL)
+				else if (Integer.parseInt(ra.getIntakeMethod()) == RouteToken.INTRAARTERIAL)
 					return RouteElement.INTRAARTERIAL;
-				else if (new Integer(ra.getIntakeMethod()).intValue() == RouteToken.INTRACARDIAC)
+				else if (Integer.parseInt(ra.getIntakeMethod()) == RouteToken.INTRACARDIAC)
 					return RouteElement.INTRACARDIAC;
-				else if (new Integer(ra.getIntakeMethod()).intValue() == RouteToken.INTRAMUSCULAR)
+				else if (Integer.parseInt(ra.getIntakeMethod()) == RouteToken.INTRAMUSCULAR)
 					return RouteElement.INTRAMUSCULAR;
-				else if (new Integer(ra.getIntakeMethod()).intValue() == RouteToken.INTRAPERITONEAL)
+				else if (Integer.parseInt(ra.getIntakeMethod()) == RouteToken.INTRAPERITONEAL)
 					return RouteElement.INTRAPERITONEAL;
-				else if (new Integer(ra.getIntakeMethod()).intValue() == RouteToken.INTRATHECAL)
+				else if (Integer.parseInt(ra.getIntakeMethod()) == RouteToken.INTRATHECAL)
 					return RouteElement.INTRATHECAL;
-				else if (new Integer(ra.getIntakeMethod()).intValue() == RouteToken.INTRAVENOUS)
+				else if (Integer.parseInt(ra.getIntakeMethod()) == RouteToken.INTRAVENOUS)
 					return RouteElement.INTRAVENOUS;
-				else if (new Integer(ra.getIntakeMethod()).intValue() == RouteToken.RECTAL)
+				else if (Integer.parseInt(ra.getIntakeMethod()) == RouteToken.RECTAL)
 					return RouteElement.RECTAL;
-				else if (new Integer(ra.getIntakeMethod()).intValue() == RouteToken.SUBCUTANEOUS)
+				else if (Integer.parseInt(ra.getIntakeMethod()) == RouteToken.SUBCUTANEOUS)
 					return RouteElement.SUBCUTANEOUS;
-				else if (new Integer(ra.getIntakeMethod()).intValue() == RouteToken.TOPICAL)
+				else if (Integer.parseInt(ra.getIntakeMethod()) == RouteToken.TOPICAL)
 					return RouteElement.TOPICAL;
-				else if (new Integer(ra.getIntakeMethod()).intValue() == RouteToken.TRANSDERMAL)
+				else if (Integer.parseInt(ra.getIntakeMethod()) == RouteToken.TRANSDERMAL)
 					return RouteElement.TRANSDERMAL;
-				else if (new Integer(ra.getIntakeMethod()).intValue() == RouteToken.TRANSMUCOSAL)
+				else if (Integer.parseInt(ra.getIntakeMethod()) == RouteToken.TRANSMUCOSAL)
 					return RouteElement.TRANSMUCOSAL;
 
 				return ra.getCoveredText();
@@ -1115,7 +1100,7 @@ public class DrugMention implements DrugModel {
 	private String findDrugChangeStatusElement(JCas jcas, int beginOffset,
 			int endOffset) {
 
-		Iterator firItr = FSUtil.getAnnotationsIteratorInSpan(jcas,
+		Iterator<?> firItr = FSUtil.getAnnotationsIteratorInSpan(jcas,
 				DrugChangeStatusAnnotation.type, beginOffset, endOffset + 1);
 		while (firItr.hasNext()) {
 			DrugChangeStatusAnnotation dcsa = (DrugChangeStatusAnnotation) firItr
@@ -1203,10 +1188,9 @@ public class DrugMention implements DrugModel {
 				 * if (numString.compareTo(".") == 0) { subText =
 				 * text.substring(pos + 1, textSize); pos++; }
 				 */
-				Integer posNum = Integer.decode(numString);
-				int checkInt = posNum.intValue();
+				int posNum = Integer.decode(numString);
 
-				if ((checkInt >= 0) && (checkInt <= 9)) {
+				if ((posNum >= 0) && (posNum <= 9)) {
 					containsNums = true;
 					subText = text.substring(pos + 1, textSize);
 					pos++;
@@ -1226,7 +1210,7 @@ public class DrugMention implements DrugModel {
 
 			}
 		}
-		return new Integer(strengthNumText).intValue();
+		return Integer.parseInt(strengthNumText);
 
 	}
 
@@ -1274,7 +1258,7 @@ public class DrugMention implements DrugModel {
 
 			}
 		}
-		return new Double(strengthNumText).doubleValue();
+		return Double.parseDouble(strengthNumText);
 
 	}
 
@@ -1472,8 +1456,8 @@ public int getStrengthUnitEnd() {
 	/**
 	 * Scan a string for the first occurrence of some regex Pattern.
 	 * 
-	 * @param lookForAlpha
-	 *            the pattern to look for
+//	 * @param lookForAlpha
+//	 *            the pattern to look for
 	 * @param lookIn
 	 *            the String to scan.
 	 * @return offset relative to start of lookIn where it first found the

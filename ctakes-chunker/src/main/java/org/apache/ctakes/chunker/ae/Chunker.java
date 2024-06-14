@@ -36,6 +36,7 @@ import org.apache.uima.resource.ResourceInitializationException;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import java.util.List;
 
@@ -57,7 +58,7 @@ import java.util.List;
 public class Chunker extends JCasAnnotator_ImplBase {
 
 	// LOG4J logger based on class name
-	private Logger logger = Logger.getLogger(getClass().getName());
+	private final Logger logger = Logger.getLogger(getClass().getName());
 
 
 	/**
@@ -114,13 +115,14 @@ public class Chunker extends JCasAnnotator_ImplBase {
 		}
 		
     try {
-      chunkerCreator = (ChunkCreator) Class.forName(chunkerCreatorClassName).newInstance();
-    } catch (InstantiationException | IllegalAccessException
-        | ClassNotFoundException e) {
+      chunkerCreator = (ChunkCreator) Class.forName(chunkerCreatorClassName).getDeclaredConstructor().newInstance();
+    } catch ( InstantiationException | IllegalAccessException | ClassNotFoundException | NoSuchMethodException e) {
       logger.error("Error creating chunkerCreator from classname: " + chunkerCreatorClassName);
       throw new ResourceInitializationException(e);
-    }
-    chunkerCreator.initialize(uimaContext);
+    } catch ( InvocationTargetException e ) {
+		 throw new RuntimeException( e );
+	 }
+		chunkerCreator.initialize(uimaContext);
 	}
 
 	@Override

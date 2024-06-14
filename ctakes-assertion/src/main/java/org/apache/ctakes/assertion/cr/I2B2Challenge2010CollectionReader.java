@@ -77,7 +77,7 @@ public class I2B2Challenge2010CollectionReader extends CollectionReader_ImplBase
 			throw new ResourceInitializationException(new RuntimeException("Unable to get list of files within " + docDir.getAbsolutePath()));
 		}
 //		conDir = new String(inputDir + File.separator + "concept");
-		astDir = new String(inputDir + File.separator + "ast");
+		astDir = inputDir + File.separator + "ast";
 	}
 	
 	@Override

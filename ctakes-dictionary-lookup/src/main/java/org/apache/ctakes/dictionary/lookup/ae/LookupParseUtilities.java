@@ -96,7 +96,7 @@ public class LookupParseUtilities
 			Element rootDictEl) throws AnnotatorContextException, Exception
 	{
 		String extResrcKey = rootDictEl.getAttributeValue("externalResourceKey");
-		Boolean keepCase = new Boolean(rootDictEl.getAttributeValue("caseSensitive"));
+		Boolean keepCase = Boolean.parseBoolean(rootDictEl.getAttributeValue("caseSensitive"));
 		Object extResrc = annotCtx.getResourceObject(extResrcKey);
 		if (extResrc == null)
 		{

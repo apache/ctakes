@@ -619,7 +619,7 @@ public class ConsumeNamedEntityRecordModel extends CasConsumer_ImplBase {
 			}
 		}
 		if (strengthNumText != "")
-			return new Integer(strengthNumText).intValue();
+			return Integer.parseInt(strengthNumText);
 		else
 			return 0;
 
@@ -637,11 +637,10 @@ public class ConsumeNamedEntityRecordModel extends CasConsumer_ImplBase {
 	private String pathToDrugInclusions;
 	private Set<String> iv_medicalSections = new HashSet();
 	private String drugHeaders = "clinicNumber,drug_mention_text,rxnorm_cui,local_date,note_date,dosage,strength,frequency,frequency_unit,duration,route,form,status,change_status,certainty,section|subsection|status,documentId_revision\n";
-	private Boolean iv_useCurrentMedsSectionOnly = new Boolean("true");
+	private Boolean iv_useCurrentMedsSectionOnly = true;
 	public static final String PARAM_OUTPUTDIR = "OutputDirectory";
 
-	private String fileForIO = new String(
-			"R:\\Dept\\projects\\Text\\DrugProfile\\data\\psychiatry\\goldStandard\\work.csv");
+	private String fileForIO = "R:\\Dept\\projects\\Text\\DrugProfile\\data\\psychiatry\\goldStandard\\work.csv";
 
 
 }

@@ -63,7 +63,7 @@ public class HyphenTextModifierImpl implements TextModifier {
 					shouldbehyphen += " " + unh[i];
 				}
 				shouldbehyphen = shouldbehyphen.trim().toLowerCase();
-				iv_shouldbeHyphenMap.put(shouldbehyphen, new Integer(1));
+				iv_shouldbeHyphenMap.put(shouldbehyphen, 1);
 			}
 		} catch (FileNotFoundException e) {
 			System.err.println("Cannot find the hyphenation file:" + hyphenfilename);
@@ -100,7 +100,7 @@ public class HyphenTextModifierImpl implements TextModifier {
 					shouldbehyphen += " " + unh[i];
 				}
 				shouldbehyphen = shouldbehyphen.trim().toLowerCase();
-				iv_shouldbeHyphenMap.put(shouldbehyphen, new Integer(1));
+				iv_shouldbeHyphenMap.put(shouldbehyphen, 1);
 			}
 		} catch (FileNotFoundException e) {
 			System.err.println("Cannot find the hyphenation file:" + hyphenfilename);

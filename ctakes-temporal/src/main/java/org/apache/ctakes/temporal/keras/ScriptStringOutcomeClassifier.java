@@ -13,6 +13,7 @@ import org.cleartk.ml.util.featurevector.FeatureVector;
 
 import java.io.*;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * <br>
@@ -24,7 +25,8 @@ import java.util.List;
  * 
  */
 @Beta
-public abstract class ScriptStringOutcomeClassifier extends Classifier_ImplBase<FeatureVector, String, Integer> {
+public abstract class ScriptStringOutcomeClassifier extends Classifier_ImplBase<FeatureVector, String, Integer>
+      implements AutoCloseable {
   File modelDir = null;
   Process classifierProcess = null;
   PrintStream toClassifier = null;
@@ -41,7 +43,7 @@ public abstract class ScriptStringOutcomeClassifier extends Classifier_ImplBase<
     this.modelDir = modelDir;
     
     File classifyScript = null;
-    for(File file : scriptDir.listFiles()){
+    for(File file : Objects.requireNonNull( scriptDir.listFiles() ) ){
       if(file.getName().startsWith("classify.sh")){
         if(classifyScript != null){
           throw new RuntimeException("There are multiple files named classify.*");
@@ -107,11 +109,24 @@ public abstract class ScriptStringOutcomeClassifier extends Classifier_ImplBase<
     return line;
   }
 
+//  @Override
+//  protected void finalize() throws Throwable {
+//    super.finalize();
+//
+//    this.toClassifier.print('\n');
+//    classifierProcess.waitFor();
+//  }
+
+
+  /**
+   * Object.finalize() was deprecated in jdk 9.  This should do the same thing, but close() must be called.
+   * {@inheritDoc}
+   * @throws Exception if the classifier process could not properly end.
+   */
   @Override
-  protected void finalize() throws Throwable {
-    super.finalize();
-    
+  public void close() throws Exception {
     this.toClassifier.print('\n');
     classifierProcess.waitFor();
   }
+
 }

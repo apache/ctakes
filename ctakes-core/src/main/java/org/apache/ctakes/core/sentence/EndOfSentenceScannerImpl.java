@@ -76,7 +76,7 @@ public class EndOfSentenceScannerImpl implements EndOfSentenceScanner {
 		for (int i=0; i<cb.length; i++) { // for each character in buffer
 			for (int j=0; j<eosCandidates.length; j++) { // for each eosCandidate
 				if (cb[i]==eosCandidates[j]) { 
-					positions.add(new Integer(i)); // TODO - don't always create new, use a pool
+					positions.add( i ); // TODO - don't always create new, use a pool
 					break; // can't match others if it matched eosCandidates[j]
 				}
 			}

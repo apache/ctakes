@@ -60,7 +60,7 @@ public class LibSVMParser extends BaseClassifierEvaluationParser {
 			while ((line = r.readLine()) != null) {
 				Matcher m = totalSVPattern.matcher(line);
 				if (m.find()) {
-					return new Integer(m.group(1));
+					return Integer.parseInt(m.group(1));
 				}
 			}
 		} finally {

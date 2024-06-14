@@ -33,7 +33,7 @@ public class Mapper {
 
 	/**
 	 * Map entity type to its integer id.
-    * @deprecated use org.apache.ctakes.core.util.annotation.SemanticGroup.  SemanticGroup.getGroup( name ).getCode();
+    * @deprecated use org.apache.ctakes.core.util.annotation.SemanticGroup.  SemanticGroup.getGroupFromOld( name ).getCode();
 	 */
    @Deprecated
    public static int getEntityTypeId( String entityType ) {

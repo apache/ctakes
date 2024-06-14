@@ -30,6 +30,8 @@ import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.UnmarshalException;
 
+import java.util.Objects;
+
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.junit.Assert.assertThat;
 
@@ -48,7 +50,7 @@ public class ObjectFactoryBindTest {
 
 	@Theory
 	public void unmarshalSrcXml(String xml) throws JAXBException {
-		xml = FileUtil.getFile(xml).toString();
+		xml = Objects.requireNonNull( FileUtil.getFile( xml ) ).getPath();
 		Object obj = new ObjectFactoryBind().unmarshalSrcXml(xml);
 		assertThat(obj, instanceOf(JAXBElement.class));
 	}

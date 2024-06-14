@@ -112,10 +112,12 @@
 		<icefaces.version>2.0.2</icefaces.version>
 		<jackson.version>1.5.0</jackson.version>
 		<javassist.version>3.15.0-GA</javassist.version>
-		<jaxb.version>2.2.5</jaxb.version>
-		<jaxb2-maven-plugin.version>1.6</jaxb2-maven-plugin.version>
+		<jaxb.version>2.3.1</jaxb.version>
+<!--		<jaxb2-maven-plugin.version>1.6</jaxb2-maven-plugin.version>-->
+		<!--		jaxb2 v2+ was refactored and not backward compatible.  Try later with jdk11 -->
+		<!--		<jaxb2-maven-plugin.version>2.5.0</jaxb2-maven-plugin.version>-->
+		<jaxb2-maven-plugin.version>3.1.0</jaxb2-maven-plugin.version>
 		<jchronic.version>0.2.8</jchronic.version>
-<!--		<jetty.version>9.1.0.M0</jetty.version>-->
 		<jetty.version>12.0.8</jetty.version>
 		<jetty-runner.version>11.0.20</jetty-runner.version>
 		<jetty-maven.version>11.0.20</jetty-maven.version>
@@ -134,9 +136,6 @@
 		<maven-resources-plugin.version>3.3.1</maven-resources-plugin.version>
 		<maven-dependency-plugin.version>3.6.1</maven-dependency-plugin.version>
 		<maven-remote-resources-plugin.version>3.1.0</maven-remote-resources-plugin.version>
-<!--		jaxb2 v2+ was refactored and not backward compatible.  Try later with jdk11 -->
-<!--		<jaxb2-maven-plugin.version>2.5.0</jaxb2-maven-plugin.version>-->
-		<!--		<jaxb2-maven-plugin.version>3.1.0</jaxb2-maven-plugin.version>-->
 		<maven-site-plugin.version>4.0.0-M13</maven-site-plugin.version>
 		<maven-source-plugin.version>3.3.0</maven-source-plugin.version>
 		<maven-clean-plugin.version>3.3.2</maven-clean-plugin.version>

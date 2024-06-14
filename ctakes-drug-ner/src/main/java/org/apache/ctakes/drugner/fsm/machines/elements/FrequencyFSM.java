@@ -306,7 +306,7 @@ public class FrequencyFSM {
 		Map overrideTokenMap = new HashMap();
 		while (overrideTokenItr.hasNext()) {
 			BaseToken t = (BaseToken) overrideTokenItr.next();
-			Integer key = new Integer(t.getStartOffset());
+			Integer key = t.getStartOffset();
 			overrideTokenMap.put(key, t);
 		}
 
@@ -315,7 +315,7 @@ public class FrequencyFSM {
 		for (int i = 0; i < tokens.size(); i++) {
 			BaseToken token = (BaseToken) tokens.get(i);
 
-			Integer key = new Integer(token.getStartOffset());
+			Integer key = token.getStartOffset();
 
 			if (overrideOn) {
 				if (token.getStartOffset() >= overrideEndOffset) {
@@ -343,7 +343,7 @@ public class FrequencyFSM {
 
 				State currentState = fsm.getCurrentState();
 				if (currentState.getStartStateFlag()) {
-					tokenStartMap.put(fsm, new Integer(i));
+					tokenStartMap.put(fsm, i);
 				}
 				if (currentState.getEndStateFlag()) {
 					Object o = tokenStartMap.get(fsm);
@@ -353,7 +353,7 @@ public class FrequencyFSM {
 						// token zero.
 						tokenStartIndex = 0;
 					} else {
-						tokenStartIndex = ((Integer) o).intValue();
+						tokenStartIndex = ((Integer) o);
 						// skip ahead over single token we don't want
 						tokenStartIndex++;
 					}
@@ -405,7 +405,7 @@ public class FrequencyFSM {
 
 		// maps a fsm to a token start index
 		// key = fsm , value = token start index
-		Map tokenStartMap = new HashMap();
+		Map<Machine,Integer> tokenStartMap = new HashMap<>();
 
 		for (int i = 0; i < tokens.size(); i++) {
 			BaseToken token = (BaseToken) tokens.get(i);
@@ -418,7 +418,7 @@ public class FrequencyFSM {
 
 				State currentState = fsm.getCurrentState();
 				if (currentState.getStartStateFlag()) {
-					tokenStartMap.put(fsm, new Integer(i));
+					tokenStartMap.put(fsm, i);
 				}
 				if (currentState.getEndStateFlag()) {
 					Object o = tokenStartMap.get(fsm);
@@ -428,7 +428,7 @@ public class FrequencyFSM {
 						// token zero.
 						tokenStartIndex = 0;
 					} else {
-						tokenStartIndex = ((Integer) o).intValue();
+						tokenStartIndex = ((Integer) o);
 						// skip ahead over single token we don't want
 						tokenStartIndex++;
 					}
@@ -493,13 +493,13 @@ public class FrequencyFSM {
 		Map overrideBeginTokenMap2 = new HashMap();
 		while (overrideTokenItr1.hasNext()) {
 			BaseToken t = (BaseToken) overrideTokenItr1.next();
-			Integer key = new Integer(t.getStartOffset());
+			Integer key = t.getStartOffset();
 			overrideTokenMap1.put(key, t);
 		}
 
 		while (overrideTokenItr2.hasNext()) {
 			BaseToken t = (BaseToken) overrideTokenItr2.next();
-			Integer key = new Integer(t.getStartOffset());
+			Integer key = t.getStartOffset();
 			overrideTokenMap2.put(key, t);
 		}
 
@@ -515,7 +515,7 @@ public class FrequencyFSM {
 		for (int i = 0; i < tokens.size(); i++) {
 			BaseToken token = (BaseToken) tokens.get(i);
 
-			Integer key = new Integer(token.getStartOffset());
+			Integer key = token.getStartOffset();
 			if (overrideOn1 && overrideOn2) {
 				if (overrideEndOffset1 >= overrideEndOffset2)
 					overrideOn1 = false;
@@ -525,7 +525,7 @@ public class FrequencyFSM {
 			if (overrideOn1) {
 				if (token.getStartOffset() >= overrideEndOffset1) {
 					if (tokenOffset1 > 0)
-						overrideBeginTokenMap1.put(new Integer(anchorKey1), new Integer(tokenOffset1));
+						overrideBeginTokenMap1.put(anchorKey1, tokenOffset1);
 					overrideOn1 = false;
 					overrideEndOffset1 = -1;
 				} else {
@@ -536,7 +536,7 @@ public class FrequencyFSM {
 			} else if (overrideOn2) {
 				if (token.getStartOffset() >= overrideEndOffset2) {
 					if (tokenOffset2 > 0)
-						overrideBeginTokenMap2.put(new Integer(anchorKey2), new Integer(tokenOffset2));
+						overrideBeginTokenMap2.put(anchorKey2, tokenOffset2);
 					overrideOn2 = false;
 					overrideEndOffset2 = -1;
 				} else {
@@ -548,7 +548,7 @@ public class FrequencyFSM {
 				if (overrideTokenMap1.containsKey(key)) {
 					// override one or more tokens until the override
 					// token is complete
-					anchorKey1 = key.intValue();
+					anchorKey1 = key;
 					token = (BaseToken) overrideTokenMap1.get(key);
 					overrideOn1 = true;
 					overrideEndOffset1 = token.getEndOffset();
@@ -572,7 +572,7 @@ public class FrequencyFSM {
 				fsm.input(token);
 				State currentState = fsm.getCurrentState();
 				if (currentState.getStartStateFlag()) {
-					tokenStartMap.put(fsm, new Integer(i));
+					tokenStartMap.put(fsm, i);
 					tokenOffset1 = 0;
 					tokenOffset2 = 0;
 				}
@@ -585,23 +585,23 @@ public class FrequencyFSM {
 						// token zero.
 						tokenStartIndex = 0;
 					} else {
-						Integer tokenMap1 = new Integer(0);
-						Integer tokenMap2 = new Integer(0);
+						Integer tokenMap1 = 0;
+						Integer tokenMap2 = 0;
 					
-						BaseToken lookUpOffset = (BaseToken) tokens.get(((Integer) o).intValue());
+						BaseToken lookUpOffset = (BaseToken) tokens.get(((Integer) o));
 							
-						if (overrideBeginTokenMap1.get(new Integer(lookUpOffset.getStartOffset())) != null){
-							Integer offSet = (Integer) (overrideBeginTokenMap1.get(new Integer(lookUpOffset.getStartOffset())));
-							tokenMap1 = new Integer(offSet.intValue()  + tokenMap1.intValue());
+						if (overrideBeginTokenMap1.get(lookUpOffset.getStartOffset()) != null){
+							Integer offSet = (Integer) (overrideBeginTokenMap1.get(lookUpOffset.getStartOffset()));
+							tokenMap1 = offSet + tokenMap1;
 						}
-						if (overrideBeginTokenMap2.get(new Integer(lookUpOffset.getStartOffset())) != null){
-							Integer offSet = (Integer) (overrideBeginTokenMap2.get(new Integer(lookUpOffset.getStartOffset())));
-							tokenMap2 = new Integer(offSet.intValue() + tokenMap2.intValue());
+						if (overrideBeginTokenMap2.get(lookUpOffset.getStartOffset()) != null){
+							Integer offSet = (Integer) (overrideBeginTokenMap2.get(lookUpOffset.getStartOffset()));
+							tokenMap2 = offSet + tokenMap2;
 							}
 						
 
-						globalOffset = tokenMap1.intValue() + tokenMap2.intValue();
-						tokenStartIndex = ((Integer) o).intValue() + globalOffset;
+						globalOffset = tokenMap1 + tokenMap2;
+						tokenStartIndex = ((Integer) o) + globalOffset;
 						// skip ahead over single token we don't want
 						tokenStartIndex++;
 					}
