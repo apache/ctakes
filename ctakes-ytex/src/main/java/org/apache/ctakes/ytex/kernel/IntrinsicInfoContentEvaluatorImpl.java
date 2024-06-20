@@ -460,8 +460,16 @@ public class IntrinsicInfoContentEvaluatorImpl implements
 				}
 			}
 		}
-		if (calcDepth)
-			depthArray[concept.getNodeIndex()] = (short) (parentMaxDepth + 1);
+		
+		// Compute the current depth of the concept node
+		if (calcDepth) {
+			// Dummy concept has no length
+			if ( concept.getConceptID().contentEquals("C0000000") ) { 
+				depthArray[concept.getNodeIndex()] = (short) (0);
+			} else {
+				depthArray[concept.getNodeIndex()] = (short) (parentMaxDepth + 1);
+			}
+		}
 		// add the concept itself to the set of subsumers
 		subsumers.add(concept.getConceptID());
 		// add this to the cache - copy the key so that this can be gc'ed as
