@@ -3,6 +3,10 @@
 # another format that works is e.g.: jdbc:oracle:thin:ytex/ytex@localhost:1521:orcl
 db.url=jdbc:oracle:thin:@localhost:1521:orcl
 
+# The xmldb.url should be a duplicate of db.url with the exception of replacing an & with &amp;
+# This is a stopgap to allow conn.xml.template to not break in the SAX parser
+xmldb.url=jdbc:oracle:thin:@localhost:1521:orcl
+
 # oracle username and password
 # user needs connect, resource, and create view privileges
 db.username=ytex_test
