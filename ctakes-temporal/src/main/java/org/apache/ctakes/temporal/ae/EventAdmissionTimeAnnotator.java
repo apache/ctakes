@@ -183,7 +183,7 @@ public class EventAdmissionTimeAnnotator extends CleartkAnnotator<String> {
 				}
 			}
 
-			Map<EventMention, Collection<EventMention>> coveringMap =
+			Map<EventMention, List<EventMention>> coveringMap =
 					JCasUtil.indexCovering(jCas, EventMention.class, EventMention.class);
 			for (EventMention eventMention : JCasUtil.select(jCas, EventMention.class)) {
 				if (eventMention.getClass().equals(EventMention.class) && !isDischarge(eventMention) && !isAdmission(eventMention) && !inCourseSection(eventMention,courses)) {//for every gold event, not discharge, not admission, not in course section

@@ -115,15 +115,15 @@ final public class HtmlTextWriter extends AbstractJCasFileWriter {
          writer.write( startArticle() );
 
          final Collection<Segment> sections = JCasUtil.select( jCas, Segment.class );
-         final Map<Segment, Collection<org.apache.ctakes.typesystem.type.textspan.List>> lists
+         final Map<Segment, List<org.apache.ctakes.typesystem.type.textspan.List>> lists
                = JCasUtil.indexCovered( jCas, Segment.class, org.apache.ctakes.typesystem.type.textspan.List.class );
-         final Map<org.apache.ctakes.typesystem.type.textspan.List, Collection<ListEntry>> listEntries
+         final Map<org.apache.ctakes.typesystem.type.textspan.List, List<ListEntry>> listEntries
                = JCasUtil.indexCovered( jCas, org.apache.ctakes.typesystem.type.textspan.List.class, ListEntry.class );
-         final Map<Segment, Collection<Sentence>> sectionSentences
+         final Map<Segment, List<Sentence>> sectionSentences
                = JCasUtil.indexCovered( jCas, Segment.class, Sentence.class );
-         final Map<Sentence, Collection<IdentifiedAnnotation>> sentenceAnnotations
+         final Map<Sentence, List<IdentifiedAnnotation>> sentenceAnnotations
                = JCasUtil.indexCovered( jCas, Sentence.class, IdentifiedAnnotation.class );
-         final Map<Sentence, Collection<BaseToken>> sentenceTokens
+         final Map<Sentence, List<BaseToken>> sentenceTokens
                = JCasUtil.indexCovered( jCas, Sentence.class, BaseToken.class );
          final Collection<BinaryTextRelation> relations = JCasUtil.select( jCas, BinaryTextRelation.class );
          // TODO at each paragraph end index add a newline unless it is the end of a section
@@ -151,7 +151,7 @@ final public class HtmlTextWriter extends AbstractJCasFileWriter {
       LOGGER.info( "Finished Writing" );
    }
 
-   static private void cullAnnotations( final Collection<Collection<IdentifiedAnnotation>> sentenceAnnotations ) {
+   static private void cullAnnotations( final Collection<List<IdentifiedAnnotation>> sentenceAnnotations ) {
       final java.util.function.Predicate<IdentifiedAnnotation> keep = a -> EventMention.class.isInstance( a )
             || TimeMention.class.isInstance( a ) || EntityMention.class.isInstance( a );
       final Collection<IdentifiedAnnotation> keepers = new HashSet<>();
@@ -197,8 +197,8 @@ final public class HtmlTextWriter extends AbstractJCasFileWriter {
       if ( corefRelations == null || corefRelations.isEmpty() ) {
          return Collections.emptyMap();
       }
-      final Map<Markable, Collection<ConllDependencyNode>> markableNodes = JCasUtil.indexCovered( jCas, Markable.class, ConllDependencyNode.class );
-      final Map<ConllDependencyNode, Collection<IdentifiedAnnotation>> nodeAnnotations
+      final Map<Markable, List<ConllDependencyNode>> markableNodes = JCasUtil.indexCovered( jCas, Markable.class, ConllDependencyNode.class );
+      final Map<ConllDependencyNode, List<IdentifiedAnnotation>> nodeAnnotations
             = JCasUtil.indexCovering( jCas, ConllDependencyNode.class, IdentifiedAnnotation.class );
       cullAnnotations( nodeAnnotations.values() );
       final Map<Markable, TextSpan> spanMap = new HashMap<>();
@@ -465,10 +465,10 @@ final public class HtmlTextWriter extends AbstractJCasFileWriter {
     * @param writer              writer to which pretty html for the section should be written
     * @throws IOException if the writer has issues
     */
-   static private void writeSections( final Map<Segment, Collection<Sentence>> sectionSentences,
+   static private void writeSections( final Map<Segment, List<Sentence>> sectionSentences,
                                       final Collection<Paragraph> paragraphs,
-                                      final Map<Sentence, Collection<IdentifiedAnnotation>> sentenceAnnotations,
-                                      final Map<Sentence, Collection<BaseToken>> sentenceTokens,
+                                      final Map<Sentence, List<IdentifiedAnnotation>> sentenceAnnotations,
+                                      final Map<Sentence, List<BaseToken>> sentenceTokens,
                                       final Collection<BinaryTextRelation> relations,
                                       final Map<TextSpan, Collection<Integer>> corefSpans,
                                       final BufferedWriter writer ) throws IOException {
@@ -505,11 +505,11 @@ final public class HtmlTextWriter extends AbstractJCasFileWriter {
     */
    static private void writeSections( final Collection<Segment> sectionSet,
                                       final Collection<Paragraph> paragraphs,
-                                      final Map<Segment, Collection<org.apache.ctakes.typesystem.type.textspan.List>> lists,
-                                      final Map<org.apache.ctakes.typesystem.type.textspan.List, Collection<ListEntry>> listEntries,
-                                      final Map<Segment, Collection<Sentence>> sectionSentences,
-                                      final Map<Sentence, Collection<IdentifiedAnnotation>> sentenceAnnotations,
-                                      final Map<Sentence, Collection<BaseToken>> sentenceTokens,
+                                      final Map<Segment, List<org.apache.ctakes.typesystem.type.textspan.List>> lists,
+                                      final Map<org.apache.ctakes.typesystem.type.textspan.List, List<ListEntry>> listEntries,
+                                      final Map<Segment, List<Sentence>> sectionSentences,
+                                      final Map<Sentence, List<IdentifiedAnnotation>> sentenceAnnotations,
+                                      final Map<Sentence, List<BaseToken>> sentenceTokens,
                                       final Collection<BinaryTextRelation> relations,
                                       final Map<TextSpan, Collection<Integer>> corefSpans,
                                       final BufferedWriter writer ) throws IOException {
@@ -521,7 +521,7 @@ final public class HtmlTextWriter extends AbstractJCasFileWriter {
       final List<Segment> sections = new ArrayList<>( sectionSet );
       sections.sort( Comparator.comparingInt( Segment::getBegin ) );
       final Map<Integer, Integer> enclosers = new HashMap<>();
-      for ( Map.Entry<org.apache.ctakes.typesystem.type.textspan.List, Collection<ListEntry>> entry : listEntries.entrySet() ) {
+      for ( Map.Entry<org.apache.ctakes.typesystem.type.textspan.List, List<ListEntry>> entry : listEntries.entrySet() ) {
          final int listEnd = entry.getKey().getEnd();
          entry.getValue().forEach( e -> enclosers.put( e.getBegin(), listEnd ) );
       }

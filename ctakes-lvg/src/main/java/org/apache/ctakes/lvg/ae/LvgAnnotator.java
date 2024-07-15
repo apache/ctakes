@@ -448,7 +448,7 @@ public class LvgAnnotator extends JCasAnnotator_ImplBase {
 	/**
 	 * Helper method that loads a Norm cache file.
 	 * 
-	 * @param location
+	 * @param cpLocation -
 	 */
 	private void loadCmdCacheFile(String cpLocation)
 			throws FileNotFoundException, IOException {
@@ -487,7 +487,7 @@ public class LvgAnnotator extends JCasAnnotator_ImplBase {
 	/**
 	 * Helper method that loads a Lemma cache file.
 	 * 
-	 * @param location
+	 * @param cpLocation  -
 	 */
 	private void loadLemmaCacheFile(String cpLocation)
 			throws FileNotFoundException, IOException {
@@ -648,8 +648,11 @@ public class LvgAnnotator extends JCasAnnotator_ImplBase {
         LvgAnnotator.PARAM_POST_LEMMAS,
         false,
         LvgAnnotator.PARAM_LVGCMDAPI_RESRC_KEY,
-        ExternalResourceFactory.createExternalResourceDescription(
-            LvgCmdApiResourceImpl.class, url));
+//        ExternalResourceFactory.createExternalResourceDescription(
+//            LvgCmdApiResourceImpl.class, url));
+			 ExternalResourceFactory.createSharedResourceDescription(
+					 url,
+					 LvgCmdApiResourceImpl.class ) );
 	}
 	
 	/**

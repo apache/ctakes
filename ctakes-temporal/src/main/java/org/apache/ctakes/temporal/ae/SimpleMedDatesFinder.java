@@ -4,7 +4,7 @@ import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.core.resource.FileLocator;
 import org.apache.ctakes.core.util.Pair;
 import org.apache.ctakes.core.util.annotation.OntologyConceptUtil;
-import org.apache.ctakes.temporal.utils.CalendarUtil;
+import org.apache.ctakes.core.util.CalendarUtil;
 import org.apache.ctakes.typesystem.type.refsem.Date;
 import org.apache.ctakes.typesystem.type.syntax.Chunk;
 import org.apache.ctakes.typesystem.type.textsem.*;
@@ -125,9 +125,9 @@ final public class SimpleMedDatesFinder extends JCasAnnotator_ImplBase {
          windowAnnotationMap.putAll( JCasUtil.indexCovered( jCas, _lookupClass, Annotation.class ) );
       } else {
          if ( _lookupClass.equals( Segment.class ) ) {
-            final Map<Segment, Collection<Annotation>> sectionAnnotationMap
+            final Map<Segment, List<Annotation>> sectionAnnotationMap
                   = JCasUtil.indexCovered( jCas, Segment.class, Annotation.class );
-            for ( Map.Entry<Segment, Collection<Annotation>> sectionAnnotations : sectionAnnotationMap.entrySet() ) {
+            for ( Map.Entry<Segment, List<Annotation>> sectionAnnotations : sectionAnnotationMap.entrySet() ) {
                final Segment section = sectionAnnotations.getKey();
                if ( _sectionList.contains( section.getPreferredText() )
                     || _sectionList.contains( section.getId() ) ) {
@@ -135,9 +135,9 @@ final public class SimpleMedDatesFinder extends JCasAnnotator_ImplBase {
                }
             }
          } else {
-            final Map<Segment, Collection<Annotation>> sectionWindowMap
+            final Map<Segment, List<Annotation>> sectionWindowMap
                   = JCasUtil.indexCovered( jCas, Segment.class, _lookupClass );
-            for ( Map.Entry<Segment, Collection<Annotation>> sectionWindows : sectionWindowMap.entrySet() ) {
+            for ( Map.Entry<Segment, List<Annotation>> sectionWindows : sectionWindowMap.entrySet() ) {
                final Segment section = sectionWindows.getKey();
                if ( _sectionList.contains( section.getPreferredText() )
                     || _sectionList.contains( section.getId() ) ) {
@@ -191,13 +191,15 @@ final public class SimpleMedDatesFinder extends JCasAnnotator_ImplBase {
             medMap.put( span, (EventMention)annotation );
          } else if ( (annotation instanceof DateAnnotation || annotation instanceof TimeMention)
                      && !spans.contains( span ) ) {
-            final Calendar calendar = CalendarUtil.createTimexCalendar( annotation );
+//            final Calendar calendar = CalendarUtil.createTimexCalendar( annotation );
+            final Calendar calendar = CalendarUtil.getCalendar( annotation );
             if ( !NULL_CALENDAR.equals( calendar ) ) {
                spans.add( span );
                calendarMap.put( span, calendar );
             }
          } else if ( annotation instanceof Chunk ) {
-            final Calendar calendar = CalendarUtil.getTextCalendar( annotation.getCoveredText() );
+//            final Calendar calendar = CalendarUtil.getTextCalendar( annotation.getCoveredText() );
+            final Calendar calendar = CalendarUtil.getCalendar( annotation.getCoveredText() );
             if ( !NULL_CALENDAR.equals( calendar ) ) {
                spans.add( span );
                calendarMap.put( span, calendar );

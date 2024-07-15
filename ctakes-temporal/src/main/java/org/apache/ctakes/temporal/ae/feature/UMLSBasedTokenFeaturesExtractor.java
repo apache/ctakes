@@ -73,7 +73,7 @@ public class UMLSBasedTokenFeaturesExtractor extends TokenFeaturesExtractor {
 	@Override
 	public List<Feature> extract(JCas jCas, IdentifiedAnnotation mention1, IdentifiedAnnotation mention2)
 			throws AnalysisEngineProcessException {
-		Map<EventMention, Collection<EventMention>> coveringMap =
+		Map<EventMention, List<EventMention>> coveringMap =
 				JCasUtil.indexCovering(jCas, EventMention.class, EventMention.class);
 
 		List<Feature> features = new ArrayList<>();

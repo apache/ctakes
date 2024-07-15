@@ -81,7 +81,8 @@ enum LvgSingleton {
              url = lvgFile.toURI().toURL();
          }
 
-         _lvgCmdApi = ExternalResourceFactory.createExternalResourceDescription( LvgCmdApiResourceImpl.class, url );
+//         _lvgCmdApi = ExternalResourceFactory.createExternalResourceDescription( LvgCmdApiResourceImpl.class, url );
+         _lvgCmdApi = ExternalResourceFactory.createSharedResourceDescription( url, LvgCmdApiResourceImpl.class );
          return _lvgCmdApi;
       }
    }

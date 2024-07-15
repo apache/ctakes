@@ -27,7 +27,7 @@ public class ApacheConAnnotationWriter extends AbstractJCasFileWriter {
                           String fileName ) throws IOException {
       File file = new File( outputDir, fileName + "_Annotations.txt" );
       try ( Writer writer = new BufferedWriter( new FileWriter( file ) ) ) {
-         Map<Sentence, Collection<IdentifiedAnnotation>> sentenceAnnotations
+         Map<Sentence, List<IdentifiedAnnotation>> sentenceAnnotations
                = JCasUtil.indexCovered( jCas, Sentence.class, IdentifiedAnnotation.class );
          List<Sentence> sentences = new ArrayList<>( sentenceAnnotations.keySet() );
          sentences.sort( Comparator.comparingInt( Sentence::getBegin ) );

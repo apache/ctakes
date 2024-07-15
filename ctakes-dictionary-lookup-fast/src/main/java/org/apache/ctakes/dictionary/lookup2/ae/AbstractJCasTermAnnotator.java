@@ -152,7 +152,7 @@ abstract public class AbstractJCasTermAnnotator extends JCasAnnotator_ImplBase
 //      if ( lookupWindows == null ) {  // I don't trust AnnotationIndex.size(), so don't check
 //         return;
 //      }
-      final Map<Annotation, Collection<BaseToken>> windowTokens = org.apache.uima.fit.util.JCasUtil.indexCovered( jcas, _lookupClass, BaseToken.class );
+      final Map<Annotation, List<BaseToken>> windowTokens = org.apache.uima.fit.util.JCasUtil.indexCovered( jcas, _lookupClass, BaseToken.class );
       final Map<RareWordDictionary, CollectionMap<TextSpan, Long, ? extends Collection<Long>>> dictionaryTermsMap
             = new HashMap<>( getDictionaries().size() );
       for ( RareWordDictionary dictionary : getDictionaries() ) {
@@ -165,7 +165,7 @@ abstract public class AbstractJCasTermAnnotator extends JCasAnnotator_ImplBase
 //               processWindow( jcas, (Annotation)window, dictionaryTermsMap );
 //            }
 //         }
-         for ( Map.Entry<Annotation, Collection<BaseToken>> entry : windowTokens.entrySet() ) {
+         for ( Map.Entry<Annotation, List<BaseToken>> entry : windowTokens.entrySet() ) {
 //            if ( isWindowOk( entry.getKey() ) ) {
             processWindow( jcas, entry.getValue(), dictionaryTermsMap );
 //            }

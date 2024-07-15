@@ -90,12 +90,16 @@ public class ClearNLPDependencyParserAE extends JCasAnnotator_ImplBase {
    static private final Logger LOGGER = Logger.getLogger( ClearNLPDependencyParserAE.class.getSimpleName() );
 
    // single class-based model:
-   protected static ExternalResourceDescription defaultParserResource = ExternalResourceFactory.createExternalResourceDescription(
-         DependencySharedModel.class,
-         DependencySharedModel.DEFAULT_MODEL_FILE_NAME );
-   protected static ExternalResourceDescription defaultLemmatizerResource = ExternalResourceFactory.createExternalResourceDescription(
-         LemmatizerSharedModel.class,
-         LemmatizerSharedModel.ENG_LEMMATIZER_DATA_FILE );
+//   protected static ExternalResourceDescription defaultParserResource = ExternalResourceFactory.createExternalResourceDescription(
+//         DependencySharedModel.class,
+//         DependencySharedModel.DEFAULT_MODEL_FILE_NAME );
+//   protected static ExternalResourceDescription defaultLemmatizerResource = ExternalResourceFactory.createExternalResourceDescription(
+//         LemmatizerSharedModel.class,
+//         LemmatizerSharedModel.ENG_LEMMATIZER_DATA_FILE );
+   protected static ExternalResourceDescription defaultParserResource = ExternalResourceFactory.createSharedResourceDescription(
+         DependencySharedModel.DEFAULT_MODEL_FILE_NAME, DependencySharedModel.class );
+   protected static ExternalResourceDescription defaultLemmatizerResource = ExternalResourceFactory.createSharedResourceDescription(
+         LemmatizerSharedModel.ENG_LEMMATIZER_DATA_FILE, LemmatizerSharedModel.class  );
 
    // Configuration Parameters
    @Deprecated

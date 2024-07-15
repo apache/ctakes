@@ -81,10 +81,10 @@ public class CueWordTest2
     
     logger.info("=====");
 
-    Map<IdentifiedAnnotation, Collection<Sentence>> entityToSentenceMap =
+    Map<IdentifiedAnnotation, List<Sentence>> entityToSentenceMap =
         JCasUtil.indexCovering(jcas, IdentifiedAnnotation.class, Sentence.class);
 
-    Map<Sentence, Collection<AssertionCuePhraseAnnotation>>
+    Map<Sentence, List<AssertionCuePhraseAnnotation>>
       sentenceToCoveredCuePhraseMap =
         JCasUtil.indexCovered(jcas, Sentence.class, AssertionCuePhraseAnnotation.class);
     

@@ -5,7 +5,6 @@ import org.apache.log4j.Logger;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.analysis_engine.ResultSpecification;
-import org.apache.uima.fit.internal.ExtendedLogger;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
 
@@ -44,15 +43,15 @@ public class PatientMentionClusterCoreferencer extends AbstractPatientConsumer {
       return _delegate.getEngineName();
    }
 
-   /**
-    * {@inheritDoc}
-    *
-    * @return The logger for the delegate
-    */
-   @Override
-   public ExtendedLogger getLogger() {
-      return _delegate.getLogger();
-   }
+//   /**
+//    * {@inheritDoc}
+//    *
+//    * @return The logger for the delegate
+//    */
+//   @Override
+//   public org.apache.uima.util.Logger getLogger() {
+//      return _delegate.getLogger();
+//   }
 
    /**
     * Call destroy on super and the delegate

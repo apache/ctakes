@@ -462,7 +462,7 @@ public class RelationExtractorEvaluation extends RelationEvaluation_ImplBase {
 		public void process(JCas jCas) throws AnalysisEngineProcessException {
 			JCas relationView = jCas;
 
-			Map<EventMention, Collection<EventMention>> coveredMap =
+			Map<EventMention, List<EventMention>> coveredMap =
 					JCasUtil.indexCovered(relationView, EventMention.class, EventMention.class);
 //			Map<EventMention, Collection<EventMention>> coveringMap =
 //					JCasUtil.indexCovering(relationView, EventMention.class, EventMention.class);

@@ -101,16 +101,22 @@ public class ClearNLPSemanticRoleLabelerAE extends JCasAnnotator_ImplBase {
    @ExternalResource(key = SRL_ROLE_MODEL_KEY, mandatory=false)
    private SRLSharedRoleModel roleModel=null;
 
-   protected static ExternalResourceDescription defaultParserResource = ExternalResourceFactory.createExternalResourceDescription(
-       SRLSharedParserModel.class, 
-       SRLSharedParserModel.DEFAULT_SRL_MODEL_FILE_NAME);
-   protected static ExternalResourceDescription defaultPredictionResource = ExternalResourceFactory.createExternalResourceDescription(
-       SRLSharedPredictionModel.class, 
-       SRLSharedPredictionModel.DEFAULT_PRED_MODEL_FILE_NAME);
-   protected static ExternalResourceDescription defaultRoleResource = ExternalResourceFactory.createExternalResourceDescription(
-       SRLSharedRoleModel.class, 
-       SRLSharedRoleModel.DEFAULT_ROLE_MODEL_FILE_NAME);
-   
+//   protected static ExternalResourceDescription defaultParserResource = ExternalResourceFactory.createExternalResourceDescription(
+//       SRLSharedParserModel.class,
+//       SRLSharedParserModel.DEFAULT_SRL_MODEL_FILE_NAME);
+//   protected static ExternalResourceDescription defaultPredictionResource = ExternalResourceFactory.createExternalResourceDescription(
+//       SRLSharedPredictionModel.class,
+//       SRLSharedPredictionModel.DEFAULT_PRED_MODEL_FILE_NAME);
+//   protected static ExternalResourceDescription defaultRoleResource = ExternalResourceFactory.createExternalResourceDescription(
+//       SRLSharedRoleModel.class,
+//       SRLSharedRoleModel.DEFAULT_ROLE_MODEL_FILE_NAME);
+protected static ExternalResourceDescription defaultParserResource = ExternalResourceFactory.createSharedResourceDescription(
+      SRLSharedParserModel.DEFAULT_SRL_MODEL_FILE_NAME, SRLSharedParserModel.class );
+   protected static ExternalResourceDescription defaultPredictionResource = ExternalResourceFactory.createSharedResourceDescription(
+         SRLSharedPredictionModel.DEFAULT_PRED_MODEL_FILE_NAME, SRLSharedPredictionModel.class );
+   protected static ExternalResourceDescription defaultRoleResource = ExternalResourceFactory.createSharedResourceDescription(
+         SRLSharedRoleModel.DEFAULT_ROLE_MODEL_FILE_NAME, SRLSharedRoleModel.class );
+
    protected AbstractComponent parser;
    protected AbstractComponent identifier;
    protected AbstractComponent classifier;

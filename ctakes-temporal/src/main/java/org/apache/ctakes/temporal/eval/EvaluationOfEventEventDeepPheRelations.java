@@ -558,7 +558,7 @@ EvaluationOfTemporalRelations_ImplBase{
 
 			Set<List<EventMention>> relationLookup = new HashSet<>();
 			
-			Map<EventMention, Collection<EventMention>> coveringMap =
+			Map<EventMention, List<EventMention>> coveringMap =
 					  JCasUtil.indexCovering(relationView, EventMention.class, EventMention.class);
 			for(TemporalTextRelation relation : Lists.newArrayList(JCasUtil.select(relationView, TemporalTextRelation.class))){
 				Annotation arg1 = relation.getArg1().getArgument();

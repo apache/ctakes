@@ -57,7 +57,7 @@ public class EventPositionRelationFeaturesExtractor implements RelationFeaturesE
 		int sentSize = sentList.size();
 		
 		//get covering segment:
-		Map<EventMention, Collection<Segment>> coveringMap =
+		Map<EventMention, List<Segment>> coveringMap =
 				JCasUtil.indexCovering(jCas, EventMention.class, Segment.class);
 		
 		Collection<EventMention> allevents = JCasUtil.select(jCas, EventMention.class);

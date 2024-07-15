@@ -49,11 +49,11 @@ import org.apache.uima.resource.ResourceInitializationException;
 import org.cleartk.ml.CleartkAnnotator;
 import org.cleartk.ml.Feature;
 import org.cleartk.ml.Instance;
-import org.cleartk.ml.TreeFeature;
 import org.cleartk.ml.feature.extractor.CleartkExtractor;
 import org.cleartk.ml.feature.extractor.CoveredTextExtractor;
 import org.cleartk.ml.feature.extractor.FeatureExtractor1;
 import org.cleartk.ml.feature.function.FeatureFunctionExtractor;
+import org.cleartk.ml.tksvmlight.TreeFeature;
 
 import java.io.File;
 import java.net.URI;
@@ -303,7 +303,7 @@ public abstract class WindowedAssertionCleartkAnalysisEngine extends
 
       // generate a list of training instances for each sentence in the document
       // Use an indexed map.  This is faster than calling select and then selectCovering within a loop.
-      final Map<Sentence, Collection<Annotation>> sentenceAnnotationMap
+      final Map<Sentence, List<Annotation>> sentenceAnnotationMap
             = JCasUtil.indexCovered( annotationView, Sentence.class, Annotation.class );
       // Faster than calling JCasUtil methods for each which has to iterate through the full cas each time.
       final List<IdentifiedAnnotation> entities = new ArrayList<>();

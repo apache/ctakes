@@ -49,7 +49,7 @@ public class TimeXRelationFeaturesExtractor implements RelationFeaturesExtractor
 		if(arg1 instanceof EventMention) events.add((EventMention)arg1);
 		if(arg2 instanceof EventMention) events.add((EventMention)arg2);
 
-		Map<EventMention, Collection<Sentence>> coveringMap =
+		Map<EventMention, List<Sentence>> coveringMap =
 				JCasUtil.indexCovering(jCas, EventMention.class, Sentence.class);
 
 		for(EventMention event : events){

@@ -73,6 +73,7 @@
 		<dependency>
 			<groupId>org.cleartk</groupId>
 			<artifactId>cleartk-util</artifactId>
+			<version>${cleartk.version}</version>
 		</dependency>
         <!--  TODO Get rid of guava  -->
 		<dependency>
@@ -107,7 +108,8 @@
       <dependency>
          <groupId>org.cleartk</groupId>
          <artifactId>cleartk-ml</artifactId>
-      </dependency>
+		  <version>${cleartk.version}</version>
+	  </dependency>
 		<dependency>
 			<groupId>org.apache.uima</groupId>
 			<artifactId>uimafit-core</artifactId>
@@ -132,6 +134,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
+				<version>${maven-dependency-plugin.version}</version>
 				<executions>
 					<execution>
 						<id>unpack-models</id>

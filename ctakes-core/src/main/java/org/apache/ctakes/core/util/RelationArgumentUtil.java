@@ -208,7 +208,7 @@ final public class RelationArgumentUtil {
       if ( candidates.isEmpty() ) {
          return Collections.emptyMap();
       }
-      final Map<IdentifiedAnnotation, Collection<Sentence>> coveringSentences
+      final Map<IdentifiedAnnotation, List<Sentence>> coveringSentences
             = JCasUtil.indexCovering( jcas, IdentifiedAnnotation.class, Sentence.class );
       final Map<IdentifiedAnnotation, Collection<IdentifiedAnnotation>> candidateMap = new HashMap<>( candidates.size() );
       int nextJ = mainAnnotations.size() - 1;

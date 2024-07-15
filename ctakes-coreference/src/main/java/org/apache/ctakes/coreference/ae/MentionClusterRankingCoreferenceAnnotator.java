@@ -104,7 +104,7 @@ public class MentionClusterRankingCoreferenceAnnotator extends CleartkAnnotator<
   private List<FeatureExtractor1<Markable>> mentionExtractors = this.getMentionExtractors();
   
   private Set<String> markableStrings = null;
-  private Map<ConllDependencyNode,Collection<IdentifiedAnnotation>> nodeEntMap = null;
+  private Map<ConllDependencyNode,List<IdentifiedAnnotation>> nodeEntMap = null;
   private Map<String,Set<Markable>> headWordMarkables = null;
   private Map<HashableArguments,Double> pairScores = null;
   
@@ -349,7 +349,7 @@ public class MentionClusterRankingCoreferenceAnnotator extends CleartkAnnotator<
     } else {
       relationLookup = new HashMap<>();
     }
-    final Map<Segment, Collection<Markable>> segmentMarkables = JCasUtil.indexCovered( jCas, Segment.class, Markable.class );
+    final Map<Segment, List<Markable>> segmentMarkables = JCasUtil.indexCovered( jCas, Segment.class, Markable.class );
 
 //    for(Segment segment : JCasUtil.select(jCas, Segment.class)){
 //      for(Markable mention : JCasUtil.selectCovered(jCas, Markable.class, segment)){

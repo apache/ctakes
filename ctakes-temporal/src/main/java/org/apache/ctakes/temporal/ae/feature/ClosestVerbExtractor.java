@@ -47,7 +47,7 @@ public class ClosestVerbExtractor implements FeatureExtractor1 {
 	  List<Feature> features = new ArrayList<>();
 	  
 	  //1 get covering sentence:
-	  Map<EventMention, Collection<Sentence>> coveringMap =
+	  Map<EventMention, List<Sentence>> coveringMap =
 			  JCasUtil.indexCovering(view, EventMention.class, Sentence.class);
 	  EventMention targetTokenAnnotation = (EventMention)annotation;
 	  Collection<Sentence> sentList = coveringMap.get(targetTokenAnnotation);

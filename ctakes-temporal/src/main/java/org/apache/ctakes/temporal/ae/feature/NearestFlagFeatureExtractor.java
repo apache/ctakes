@@ -56,10 +56,10 @@ RelationFeaturesExtractor<IdentifiedAnnotation,IdentifiedAnnotation> {
 		}
 		
 		//1 get covering sentence:
-		Map<EventMention, Collection<Sentence>> eventCoveringMap =
+		Map<EventMention, List<Sentence>> eventCoveringMap =
 				JCasUtil.indexCovering(jCas, EventMention.class, Sentence.class);
 		Collection<Sentence> eventSentList = eventCoveringMap.get(event);
-		Map<TimeMention, Collection<Sentence>> timeCoveringMap =
+		Map<TimeMention, List<Sentence>> timeCoveringMap =
 				JCasUtil.indexCovering(jCas, TimeMention.class, Sentence.class);
 		Collection<Sentence> timeSentList = timeCoveringMap.get(time);
 

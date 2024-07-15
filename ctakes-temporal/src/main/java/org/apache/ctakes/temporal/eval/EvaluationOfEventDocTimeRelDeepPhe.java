@@ -499,7 +499,7 @@ Evaluation_ImplBase<Map<String, AnnotationStatistics<String>>>{
 			}
 
 			//build an eventMention-eventMention covered map
-			Map<EventMention, Collection<EventMention>> coveredMap =
+			Map<EventMention, List<EventMention>> coveredMap =
 					JCasUtil.indexCovered(jCas, EventMention.class, EventMention.class);
 
 			// copy covered event's DocTimeRel to the gold event

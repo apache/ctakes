@@ -49,7 +49,7 @@ public class TimeXPropertyRelationFeaturesExtractor implements RelationFeaturesE
 		if(arg1 instanceof TimeMention) times.add((TimeMention)arg1);
 		if(arg2 instanceof TimeMention) times.add((TimeMention)arg2);
 
-		Map<TimeMention, Collection<Sentence>> coveringMap =
+		Map<TimeMention, List<Sentence>> coveringMap =
 				JCasUtil.indexCovering(jCas, TimeMention.class, Sentence.class);
 
 		for(TimeMention time : times){

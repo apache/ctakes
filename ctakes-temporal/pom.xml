@@ -44,22 +44,27 @@
     <dependency>
       <groupId>org.cleartk</groupId>
       <artifactId>cleartk-timeml</artifactId>
+		<version>${cleartk.version}</version>
     </dependency>
 		<dependency>
 			<groupId>org.cleartk</groupId>
 			<artifactId>cleartk-ml-svmlight</artifactId>
+			<version>${cleartk.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.cleartk</groupId>
 			<artifactId>cleartk-ml-tksvmlight</artifactId>
+			<version>${cleartk.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.cleartk</groupId>
 			<artifactId>cleartk-type-system</artifactId>
+			<version>${cleartk.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.cleartk</groupId>
 			<artifactId>cleartk-ml-crfsuite</artifactId>
+			<version>${cleartk.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>info.bethard</groupId>
@@ -74,10 +79,12 @@
 		<dependency>
 			<groupId>org.cleartk</groupId>
 			<artifactId>cleartk-ml-mallet</artifactId>
+			<version>${cleartk.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.scala-lang</groupId>
 			<artifactId>scala-library</artifactId>
+			<version>${scala-library.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.rubiconproject.oss</groupId>
@@ -125,6 +132,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
+				<version>${maven-dependency-plugin.version}</version>
 				<executions>
 					<execution>
 						<id>unpack-models</id>

@@ -39,7 +39,7 @@ public class MarkableUtilities {
   public static Map<Markable,List<IdentifiedAnnotation>> indexCoveringUmlsAnnotations(JCas jCas){
     Map<Markable,List<IdentifiedAnnotation>> map = new HashMap<>();
 
-    Map<ConllDependencyNode, Collection<IdentifiedAnnotation>> dep2event = JCasUtil.indexCovering(jCas, ConllDependencyNode.class, IdentifiedAnnotation.class);
+    Map<ConllDependencyNode, List<IdentifiedAnnotation>> dep2event = JCasUtil.indexCovering(jCas, ConllDependencyNode.class, IdentifiedAnnotation.class);
 
     for(CollectionTextRelation cluster : JCasUtil.select(jCas, CollectionTextRelation.class)){
       List<Markable> memberList = new ArrayList<>(JCasUtil.select(cluster.getMembers(), Markable.class));

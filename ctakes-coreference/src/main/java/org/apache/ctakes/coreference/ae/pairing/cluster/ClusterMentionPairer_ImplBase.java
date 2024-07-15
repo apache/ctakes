@@ -20,7 +20,7 @@ import static org.apache.ctakes.coreference.util.ClusterMentionFetcher.Collectio
 
 public abstract class ClusterMentionPairer_ImplBase implements AnnotationPairer<Markable, CollectionTextRelationIdentifiedAnnotationPair>, MarkableCacheRelationExtractor {
   public abstract List<CollectionTextRelationIdentifiedAnnotationPair> getPairs(JCas jcas, Markable m);
-  private Map<ConllDependencyNode,Collection<IdentifiedAnnotation>> nodeEntMap = null;
+  private Map<ConllDependencyNode,List<IdentifiedAnnotation>> nodeEntMap = null;
   private Map<Markable,ConllDependencyNode> cache = null;
 
   @Override

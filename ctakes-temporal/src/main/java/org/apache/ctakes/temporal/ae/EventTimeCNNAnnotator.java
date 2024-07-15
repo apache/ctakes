@@ -39,7 +39,7 @@ public class EventTimeCNNAnnotator extends CleartkAnnotator<String> {
 	@Override
 	public void process(JCas jCas) throws AnalysisEngineProcessException {
 		
-		Map<EventMention, Collection<EventMention>> coveringMap =
+		Map<EventMention, List<EventMention>> coveringMap =
 				JCasUtil.indexCovering(jCas, EventMention.class, EventMention.class);
 		
 		//get all gold relation lookup
@@ -145,7 +145,7 @@ public class EventTimeCNNAnnotator extends CleartkAnnotator<String> {
 			Annotation right,
 			String rightType,
 			int contextSize,
-			Map<EventMention, Collection<EventMention>> coveringMap) {
+			Map<EventMention, List<EventMention>> coveringMap) {
 
 		boolean leftIsExpanded = false;
 		Annotation longerLeft = left;
@@ -215,7 +215,7 @@ public class EventTimeCNNAnnotator extends CleartkAnnotator<String> {
 		return String.join(" ", tokens).replaceAll("[\r\n]", " ");
 	}
 
-	private static Annotation getLongerEvent(Map<EventMention, Collection<EventMention>> coveringMap,
+	private static Annotation getLongerEvent(Map<EventMention, List<EventMention>> coveringMap,
 			Annotation event) {
 		int maxSpan = getSpan(event);
 		Annotation longerEvent = event;
@@ -313,7 +313,7 @@ public class EventTimeCNNAnnotator extends CleartkAnnotator<String> {
 	}
 
 	private List<IdentifiedAnnotationPair> getCandidateRelationArgumentPairs(JCas jCas, Sentence sentence) {
-		Map<EventMention, Collection<EventMention>> coveringMap =
+		Map<EventMention, List<EventMention>> coveringMap =
 				JCasUtil.indexCovering(jCas, EventMention.class, EventMention.class);
 
 		List<IdentifiedAnnotationPair> pairs = Lists.newArrayList();

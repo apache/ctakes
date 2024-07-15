@@ -24,9 +24,9 @@ import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
 import org.apache.ctakes.utils.tree.SimpleTree;
 import org.apache.uima.jcas.JCas;
 import org.cleartk.ml.Feature;
-import org.cleartk.ml.TreeFeature;
 import org.cleartk.ml.feature.extractor.CleartkExtractorException;
 import org.cleartk.ml.feature.extractor.FeatureExtractor1;
+import org.cleartk.ml.tksvmlight.TreeFeature;
 import org.cleartk.util.CleartkInitializationException;
 
 import java.util.ArrayList;

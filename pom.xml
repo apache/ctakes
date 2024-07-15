@@ -30,15 +30,14 @@
 	<url>http://ctakes.apache.org</url>
 	<inceptionYear>2012</inceptionYear>
 	<scm>
-		<!-- In child modules, Maven will append ${artifactId} to the following
-			URLs -->
+		<!-- In child modules, Maven will append ${artifactId} to the following URLs -->
 		<connection>scm:git:https://github.com/apache/ctakes</connection>
 		<developerConnection>scm:git:https://github.com/apache/ctakes</developerConnection>
 		<url>https://github.com/apache/ctakes/tree/main</url>
 	</scm>
 	<issueManagement>
-		<system>jira</system>
-		<url>https://issues.apache.org/jira/browse/ctakes</url>
+		<system>GitHub</system>
+		<url>https://github.com/apache/ctakes/issues</url>
 	</issueManagement>
 <!--	<ciManagement>-->
 <!--		<system>jenkins</system>-->
@@ -85,7 +84,8 @@
 		<aspectj.version>1.7.3</aspectj.version>
 		<backport-util.version>3.1</backport-util.version>
 		<cglib.version>2.2.2</cglib.version>
-		<cleartk.version>2.0.0</cleartk.version>
+<!--		<cleartk.version>2.0.0</cleartk.version>-->
+		<cleartk.version>3.0.0</cleartk.version>
 		<commons-beanutils.version>1.8.3</commons-beanutils.version>
 		<commons-cli.version>1.2</commons-cli.version>
 		<commons-collections.version>3.2.1</commons-collections.version>
@@ -132,7 +132,7 @@
 		<maven-jar-plugin.version>3.3.0</maven-jar-plugin.version>
 		<apache-rat-plugin.version>0.15</apache-rat-plugin.version>
 		<properties-maven-plugin.version>1.1.0</properties-maven-plugin.version>
-		<maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
+<!--		<maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>-->
 		<maven-resources-plugin.version>3.3.1</maven-resources-plugin.version>
 		<maven-dependency-plugin.version>3.6.1</maven-dependency-plugin.version>
 		<maven-remote-resources-plugin.version>3.1.0</maven-remote-resources-plugin.version>
@@ -140,12 +140,11 @@
 		<maven-source-plugin.version>3.3.0</maven-source-plugin.version>
 		<maven-clean-plugin.version>3.3.2</maven-clean-plugin.version>
 <!--		maven-compiler-plugin 3.12.0 creates a compile failure in ctakes-regression-test.  -->
-<!--		<maven-compiler-plugin.version>3.12.0</maven-compiler-plugin.version>-->
+		<maven-compiler-plugin.version>3.13.0</maven-compiler-plugin.version>
 		<maven-install-plugin.version>3.1.1</maven-install-plugin.version>
 		<maven-deploy-plugin.version>3.1.1</maven-deploy-plugin.version>
-		<jcasgen-maven-plugin.version>2.11.0</jcasgen-maven-plugin.version>
-<!--		jcasgen-maven-plugin versions 3+ requires jdk11  -->
-<!--		<jcasgen-maven-plugin.version>3.4.0</jcasgen-maven-plugin.version>-->
+<!--		<jcasgen-maven-plugin.version>2.11.0</jcasgen-maven-plugin.version>-->
+		<jcasgen-maven-plugin.version>3.4.0</jcasgen-maven-plugin.version>
 		<maven-gpg-plugin.version>3.0.1</maven-gpg-plugin.version>
 		<maven-javadoc-plugin.version>3.6.3</maven-javadoc-plugin.version>
 		<maven-war-plugin.version>3.4.0</maven-war-plugin.version>
@@ -161,11 +160,10 @@
 		<slf4j.version>2.0.5</slf4j.version>
 		<solr.version>3.5.0</solr.version>
 		<spring.version>4.3.12.RELEASE</spring.version>
-		<uimafit.version>2.4.0</uimafit.version>
-		<uimaj.version>2.10.2</uimaj.version>
-		<!-- uimafit 3.5.0 requires jdk17  -->
-<!--		<uimafit.version>3.5.0</uimafit.version>-->
-<!--		<uimaj.version>3.5.0</uimaj.version>-->
+<!--		<uimafit.version>2.4.0</uimafit.version>-->
+<!--		<uimaj.version>2.10.2</uimaj.version>-->
+		<uimafit.version>3.5.0</uimafit.version>
+		<uimaj.version>3.5.0</uimaj.version>
 		<timenorm.version>0.9.5</timenorm.version>
 		<weka.version>3.6.10</weka.version>
 		<xmlunit.version>1.4</xmlunit.version>

@@ -51,7 +51,7 @@ RelationFeaturesExtractor<IdentifiedAnnotation,IdentifiedAnnotation> {
 			event = (EventMention) arg2;
 		}		
 		//1 get covering ConllDependencyNode:
-		Map<IdentifiedAnnotation, Collection<ConllDependencyNode>> dependencyCoveringMap =
+		Map<IdentifiedAnnotation, List<ConllDependencyNode>> dependencyCoveringMap =
 				JCasUtil.indexCovering(jCas, IdentifiedAnnotation.class, ConllDependencyNode.class);
 		Collection<ConllDependencyNode> eventDNodeList = dependencyCoveringMap.get(event);
 		Collection<ConllDependencyNode> timeDNodeList = dependencyCoveringMap.get(time);

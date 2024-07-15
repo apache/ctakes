@@ -19,6 +19,7 @@ import org.apache.ctakes.core.resource.FileLocator;
 import org.apache.ctakes.core.util.doc.DocIdUtil;
 import org.apache.ctakes.coreference.ae.*;
 import org.apache.ctakes.coreference.factory.CoreferenceAnnotatorFactory;
+import org.apache.ctakes.coreference.type.CollectionRelation;
 import org.apache.ctakes.dependency.parser.util.DependencyUtility;
 import org.apache.ctakes.relationextractor.eval.RelationExtractorEvaluation.HashableArguments;
 import org.apache.ctakes.temporal.ae.BackwardsTimeAnnotator;
@@ -741,7 +742,7 @@ public class EvaluationOfEventCoreference extends EvaluationOfTemporalRelations_
           logger.error("Could not find aligned document CAS for this gold CAS.");
           throw new AnalysisEngineProcessException();
         }
-        Map<ConllDependencyNode, Collection<Markable>> depIndex = JCasUtil.indexCovering(docCas, ConllDependencyNode.class, Markable.class);
+        Map<ConllDependencyNode, List<Markable>> depIndex = JCasUtil.indexCovering(docCas, ConllDependencyNode.class, Markable.class);
 
         for (Markable goldMarkable : JCasUtil.select(goldCas, Markable.class)) {
           ConllDependencyNode headNode = DependencyUtility.getNominalHeadNode(docCas, goldMarkable);
@@ -769,7 +770,8 @@ public class EvaluationOfEventCoreference extends EvaluationOfTemporalRelations_
         }
         // create system chains from all the mapped markables
         for (CollectionTextRelation chain : JCasUtil.select(goldCas, CollectionTextRelation.class)) {
-          ArrayList<Markable> mappedElements = new ArrayList<>();
+//          ArrayList<Markable> mappedElements = new ArrayList<>();
+          List<Annotation> mappedElements = new ArrayList<>();
           for (Markable goldElement : JCasUtil.select(chain.getMembers(), Markable.class)) {
             // since we have cross-doc chains, the different markables in a chain may not be in the same gold cas as the
             // chain (which will share a cas with the _earliest_ mention).
@@ -781,11 +783,13 @@ public class EvaluationOfEventCoreference extends EvaluationOfTemporalRelations_
           } else {
             System.out.println("Mapped a gold chain to system using system markables:");
             System.out.print("     ");
-            for(Markable m : mappedElements){
+//            for(Markable m : mappedElements){
+            for(Annotation m : mappedElements){
               System.out.print(" -> " + m.getCoveredText());
             }
             System.out.println();
-            CollectionTextRelation sysChain = new CollectionTextRelation(docCas);
+//            CollectionTextRelation sysChain = new CollectionTextRelation(docCas);
+            CollectionRelation sysChain = new CollectionRelation(docCas);
             sysChain.setMembers(FSCollectionFactory.createFSList(docCas, mappedElements));
             sysChain.addToIndexes();
           }

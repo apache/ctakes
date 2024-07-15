@@ -97,7 +97,7 @@ public class EventPositionFeatureExtractor implements FeatureExtractor1 {
 		}
 
 		//get covering segment:
-		Map<EventMention, Collection<Segment>> coveringMap =
+		Map<EventMention, List<Segment>> coveringMap =
 				JCasUtil.indexCovering(view, EventMention.class, Segment.class);
 		EventMention targetTokenAnnotation = (EventMention)annotation;
 		Collection<Segment> segList = coveringMap.get(targetTokenAnnotation);

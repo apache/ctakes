@@ -47,7 +47,7 @@ RelationFeaturesExtractor<IdentifiedAnnotation,IdentifiedAnnotation> {
 		ArrayList<Feature> feats = new ArrayList<>();
 
 		//get the sentence that covers the first argument, suppose arg1 and arg2 are within the same sentence
-		Map<IdentifiedAnnotation, Collection<Sentence>> coveringMap =
+		Map<IdentifiedAnnotation, List<Sentence>> coveringMap =
 				JCasUtil.indexCovering(jCas, IdentifiedAnnotation.class, Sentence.class);
 		Collection<Sentence> sentList = coveringMap.get(arg1);
 		if (sentList == null && sentList.isEmpty()) return feats;

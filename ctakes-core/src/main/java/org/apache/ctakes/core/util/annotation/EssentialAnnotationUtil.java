@@ -256,9 +256,9 @@ final public class EssentialAnnotationUtil {
       if ( corefs == null || corefs.isEmpty() ) {
          return Collections.emptyMap();
       }
-      final Map<Markable, Collection<ConllDependencyNode>> markableNodes
+      final Map<Markable, List<ConllDependencyNode>> markableNodes
             = JCasUtil.indexCovered( jCas, Markable.class, ConllDependencyNode.class );
-      final Map<ConllDependencyNode, Collection<IdentifiedAnnotation>> nodeAnnotations
+      final Map<ConllDependencyNode, List<IdentifiedAnnotation>> nodeAnnotations
             = JCasUtil.indexCovering( jCas, ConllDependencyNode.class, IdentifiedAnnotation.class );
       final Map<Markable, IdentifiedAnnotation> annotationMap = new HashMap<>();
       for ( CollectionTextRelation coref : corefs ) {
@@ -323,9 +323,9 @@ final public class EssentialAnnotationUtil {
       if ( corefs == null || corefs.isEmpty() ) {
          return Collections.emptyMap();
       }
-      final Map<Markable, Collection<ConllDependencyNode>> markableNodes
+      final Map<Markable, List<ConllDependencyNode>> markableNodes
             = JCasUtil.indexCovered( jCas, Markable.class, ConllDependencyNode.class );
-      final Map<ConllDependencyNode, Collection<IdentifiedAnnotation>> nodeAnnotations
+      final Map<ConllDependencyNode, List<IdentifiedAnnotation>> nodeAnnotations
             = JCasUtil.indexCovering( jCas, ConllDependencyNode.class, IdentifiedAnnotation.class );
       final Map<Markable, Collection<IdentifiedAnnotation>> annotationMap = new HashMap<>();
       for ( CollectionTextRelation coref : corefs ) {

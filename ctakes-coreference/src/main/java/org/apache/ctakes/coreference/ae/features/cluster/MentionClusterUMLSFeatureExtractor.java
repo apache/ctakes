@@ -28,7 +28,7 @@ public class MentionClusterUMLSFeatureExtractor implements
         MarkableCacheRelationExtractor{
 
   String docId = null;
-  Map<ConllDependencyNode,Collection<IdentifiedAnnotation>> coveringMap = null;
+  Map<ConllDependencyNode,List<IdentifiedAnnotation>> coveringMap = null;
   Map<Markable, ConllDependencyNode> cache = null;
 
   @Override

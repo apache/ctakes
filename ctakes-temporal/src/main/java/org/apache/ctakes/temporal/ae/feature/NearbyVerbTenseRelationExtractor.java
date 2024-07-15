@@ -51,7 +51,7 @@ public class NearbyVerbTenseRelationExtractor implements RelationFeaturesExtract
 		}
 
 		//1 get covering sentence:
-		Map<EventMention, Collection<Sentence>> coveringMap =
+		Map<EventMention, List<Sentence>> coveringMap =
 				JCasUtil.indexCovering(jcas, EventMention.class, Sentence.class);
 		
 		Sentence knowSentence = null;

@@ -42,6 +42,7 @@ import org.apache.uima.resource.ResourceInitializationException;
 
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -150,9 +151,9 @@ public class ExtractionPrepAnnotator extends JCasAnnotator_ImplBase {
     * Assigns OID and segmentID values to NamedEntities
     */
    private void assignNamedEntityFeats( JCas jcas ) {
-      final Map<Segment,Collection<IdentifiedAnnotation>> sectionAnnotationsMap
+      final Map<Segment, List<IdentifiedAnnotation>> sectionAnnotationsMap
             = JCasUtil.indexCovered( jcas, Segment.class, IdentifiedAnnotation.class );
-      for ( Map.Entry<Segment,Collection<IdentifiedAnnotation>> sectionAnnotations
+      for ( Map.Entry<Segment,List<IdentifiedAnnotation>> sectionAnnotations
             : sectionAnnotationsMap.entrySet() ) {
          final String segmentId = sectionAnnotations.getKey().getId();
          for ( IdentifiedAnnotation annotation : sectionAnnotations.getValue() ) {

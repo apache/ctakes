@@ -39,7 +39,7 @@ public class ContextWordWindowExtractor implements FeatureExtractor1<IdentifiedA
 	private HashMap<String,Double> termVals = null;
 	private static final Pattern linePatt = Pattern.compile("^([^ ]+) : (.+)$");
 	private static double[] weights = new double[50];
-	private Map<IdentifiedAnnotation, Collection<Sentence>> cachedIndex = new HashMap<>();
+	private Map<IdentifiedAnnotation, List<Sentence>> cachedIndex = new HashMap<>();
 	private String cachedDocId = "__NONE__";
 
 	static{

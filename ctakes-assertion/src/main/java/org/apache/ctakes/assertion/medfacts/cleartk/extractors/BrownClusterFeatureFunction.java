@@ -24,7 +24,6 @@ import org.apache.uima.resource.ResourceInitializationException;
 import org.cleartk.ml.Feature;
 import org.cleartk.ml.feature.function.FeatureFunction;
 
-import javax.annotation.Nullable;
 import java.io.FileNotFoundException;
 import java.util.Collections;
 import java.util.HashMap;
@@ -57,7 +56,7 @@ public class BrownClusterFeatureFunction implements FeatureFunction {
   }
   
   @Override
-  public List<Feature> apply(@Nullable Feature input) {
+  public List<Feature> apply(Feature input) {
     String featureName = Feature.createName(DEFAULT_NAME, input.getName());
     Object featureValue = input.getValue();
     if(featureValue instanceof String){

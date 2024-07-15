@@ -182,7 +182,7 @@ public class EventDischargeTimeAnnotator extends CleartkAnnotator<String> {
 			}
 		}
 
-		Map<EventMention, Collection<EventMention>> coveringMap =
+		Map<EventMention, List<EventMention>> coveringMap =
 				  JCasUtil.indexCovering(jCas, EventMention.class, EventMention.class);
 		for(Segment course: courses){
 			for (EventMention eventMention : JCasUtil.selectCovered(jCas, EventMention.class, course)) {

@@ -326,7 +326,7 @@ final public class CasedAnnotationFinder extends JCasAnnotator_ImplBase {
       LOGGER.info( "Finding Named Entities ..." );
 
       // Get all BaseTokens, grouped by Sentence.
-      final Map<Sentence, Collection<BaseToken>> sentenceBaseTokens
+      final Map<Sentence, List<BaseToken>> sentenceBaseTokens
             = JCasUtil.indexCovered( jCas, Sentence.class, BaseToken.class );
 
       // Discover Terms in text, grouped by text span.

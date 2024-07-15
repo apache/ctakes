@@ -66,7 +66,7 @@ public class EventCoreferenceAnnotator extends RelationExtractorAnnotator {
   @ConfigurationParameter(name = PARAM_SCORE_ALL, mandatory = false, description = "Whether to score all pairs (as in a feature detector")
   private boolean scoreAll = DEFAULT_SCORE_ALL;
   
-  private Map<ConllDependencyNode,Collection<IdentifiedAnnotation>> nodeEntMap = null;
+  private Map<ConllDependencyNode,List<IdentifiedAnnotation>> nodeEntMap = null;
   private Map<Markable,Set<String>> markableEnts = null;
   private List<Markable> markablesByConfidence = null;
   private Map<Annotation,NonEmptyFSList> chains = null;

@@ -12,10 +12,7 @@ import org.apache.uima.util.Settings;
 import java.io.InputStream;
 import java.net.URI;
 import java.net.URL;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 
 /**
@@ -266,6 +263,11 @@ final public class MutableUimaContext implements UimaContext {
    @Override
    public String getDataPath() {
       return _delegate.getDataPath();
+   }
+
+   @Override
+   public List<String> getDataPathElements() {
+      return _delegate.getDataPathElements();
    }
 
    /**

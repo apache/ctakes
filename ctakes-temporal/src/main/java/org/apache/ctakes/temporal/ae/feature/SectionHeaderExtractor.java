@@ -49,7 +49,7 @@ public class SectionHeaderExtractor implements FeatureExtractor1 {
 		List<Feature> features = new ArrayList<>();
 
 		//1 get covering sentence:
-		Map<EventMention, Collection<Segment>> coveringMap =
+		Map<EventMention, List<Segment>> coveringMap =
 				JCasUtil.indexCovering(view, EventMention.class, Segment.class);
 		EventMention targetTokenAnnotation = (EventMention)annotation;
 		Collection<Segment> segList = coveringMap.get(targetTokenAnnotation);

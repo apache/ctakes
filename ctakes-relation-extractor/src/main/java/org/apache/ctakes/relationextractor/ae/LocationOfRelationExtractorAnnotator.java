@@ -86,7 +86,7 @@ public class LocationOfRelationExtractorAnnotator extends RelationExtractorAnnot
 		List<IdentifiedAnnotationPair> pairs = new ArrayList<>();
 		
 		if(RelationExtractorEvaluation.expandEvent){//if expand
-			Map<EventMention, Collection<EventMention>> coveredMap =
+			Map<EventMention, List<EventMention>> coveredMap =
 					JCasUtil.indexCovered(identifiedAnnotationView, EventMention.class, EventMention.class);
 //			Map<EventMention, Collection<EventMention>> coveringMap =
 //					JCasUtil.indexCovering(identifiedAnnotationView, EventMention.class, EventMention.class);

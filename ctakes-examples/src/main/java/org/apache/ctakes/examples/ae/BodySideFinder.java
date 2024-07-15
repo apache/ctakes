@@ -21,10 +21,7 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 
@@ -99,10 +96,10 @@ final public class BodySideFinder extends JCasAnnotator_ImplBase {
    public void process( final JCas jCas ) throws AnalysisEngineProcessException {
       LOGGER.info( "Finding Body Side and Laterality ..." );
 
-      final Map<Sentence, Collection<AnatomicalSiteMention>> sentenceSiteMap
+      final Map<Sentence, List<AnatomicalSiteMention>> sentenceSiteMap
             = JCasUtil.indexCovered( jCas, Sentence.class, AnatomicalSiteMention.class );
 
-      final Map<Sentence, Collection<WordToken>> sentenceWordMap
+      final Map<Sentence, List<WordToken>> sentenceWordMap
             = JCasUtil.indexCovered( jCas, Sentence.class, WordToken.class );
 
       sentenceSiteMap.entrySet()

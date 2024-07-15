@@ -38,6 +38,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
 public class MaxentParserWrapper implements ParserWrapper {
@@ -83,8 +84,8 @@ public class MaxentParserWrapper implements ParserWrapper {
 		Parse parse = null;
 //      final Collection<Sentence> allSentences = org.apache.uima.fit.util.JCasUtil.select( jcas, Sentence.class );
 //      for ( Sentence sentence : allSentences ) {
-      final Map<Sentence, Collection<BaseToken>> sentenceTokenMap = JCasUtil.indexCovered( jcas, Sentence.class, BaseToken.class );
-      for ( Map.Entry<Sentence, Collection<BaseToken>> sentenceTokens : sentenceTokenMap.entrySet() ) {
+      final Map<Sentence, List<BaseToken>> sentenceTokenMap = JCasUtil.indexCovered( jcas, Sentence.class, BaseToken.class );
+      for ( Map.Entry<Sentence, List<BaseToken>> sentenceTokens : sentenceTokenMap.entrySet() ) {
          final Sentence sentence = sentenceTokens.getKey();
          final String text = sentence.getCoveredText();
          if ( text.isEmpty() || isBorderOnly( text ) ) {

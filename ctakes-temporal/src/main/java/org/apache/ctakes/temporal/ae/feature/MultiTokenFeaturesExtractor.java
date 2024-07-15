@@ -88,7 +88,7 @@ public class MultiTokenFeaturesExtractor implements RelationFeaturesExtractor<Id
 			new Bag(new Covered()));
 
 	private String cachedDocID = null;
-	private Map<EventMention, Collection<EventMention>> coveringMap;
+	private Map<EventMention, List<EventMention>> coveringMap;
 
 	/**
 	 * Number of words between the mentions

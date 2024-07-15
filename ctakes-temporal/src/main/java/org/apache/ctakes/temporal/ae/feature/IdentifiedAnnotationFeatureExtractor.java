@@ -110,7 +110,7 @@ public class IdentifiedAnnotationFeatureExtractor implements FeatureExtractor1 {
   @Override
   public List<Feature> extract(JCas view, Annotation annotation) throws CleartkExtractorException {
 
-	  Map<BaseToken, Collection<IdentifiedAnnotation>> coveringMap =
+	  Map<BaseToken, List<IdentifiedAnnotation>> coveringMap =
 			  JCasUtil.indexCovering(view, BaseToken.class, IdentifiedAnnotation.class);
 
 	  BaseToken targetTokenAnnotation = (BaseToken)annotation;

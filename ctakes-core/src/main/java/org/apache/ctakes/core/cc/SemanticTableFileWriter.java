@@ -59,7 +59,7 @@ public class SemanticTableFileWriter extends AbstractTableFileWriter {
    protected List<List<String>> createDataRows( final JCas jCas ) {
       final Collection<AnnotationInfo> infos = new ArrayList<>();
 
-      final Map<EventMention, Collection<Segment>> eventSectionMap
+      final Map<EventMention, List<Segment>> eventSectionMap
             = JCasUtil.indexCovering( jCas, EventMention.class, Segment.class );
       for ( EventMention annotation : eventSectionMap.keySet() ) {
          final Collection<SemanticTui> tuis = SemanticTui.getTuis( annotation );
@@ -67,7 +67,7 @@ public class SemanticTableFileWriter extends AbstractTableFileWriter {
             infos.add( new AnnotationInfo( tui, eventSectionMap.get( annotation ), annotation ) );
          }
       }
-      final Map<AnatomicalSiteMention, Collection<Segment>> siteSectionMap
+      final Map<AnatomicalSiteMention, List<Segment>> siteSectionMap
             = JCasUtil.indexCovering( jCas, AnatomicalSiteMention.class, Segment.class );
       for ( AnatomicalSiteMention annotation : siteSectionMap.keySet() ) {
          final Collection<SemanticTui> tuis = SemanticTui.getTuis( annotation );

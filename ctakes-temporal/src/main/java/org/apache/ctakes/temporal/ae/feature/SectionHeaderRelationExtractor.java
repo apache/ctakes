@@ -55,7 +55,7 @@ public class SectionHeaderRelationExtractor implements RelationFeaturesExtractor
 		}
 
 		//get covering segment set:
-		Map<EventMention, Collection<Segment>> coveringMap =
+		Map<EventMention, List<Segment>> coveringMap =
 				JCasUtil.indexCovering(jcas, EventMention.class, Segment.class);
 		List<Segment> segListA = Lists.newArrayList();
 		List<Segment> segListB = Lists.newArrayList();

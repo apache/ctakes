@@ -134,35 +134,53 @@ public class UmlsDictionaryLookupAnnotator extends DictionaryLookupAnnotator {
              UmlsEnvironmentConfiguration.VENDOR,
              "NLM-6515182895",
              "LookupDescriptor",
-             ExternalResourceFactory.createExternalResourceDescription(
-                   FileResourceImpl.class,
-                   lookupFile.toURI().toURL() ),
+//             ExternalResourceFactory.createExternalResourceDescription(
+//                   FileResourceImpl.class,
+//                   lookupFile.toURI().toURL() ),
+            ExternalResourceFactory.createSharedResourceDescription(
+                  lookupFile.toURI().toURL(),
+                  FileResourceImpl.class ),
              "DbConnection",
-             ExternalResourceFactory.createExternalResourceDescription(
-                   JdbcConnectionResourceImpl.class,
-                   "",
-                   JdbcConnectionResourceImpl.PARAM_DRIVER_CLASS,
-                   "org.hsqldb.jdbcDriver",
-                   JdbcConnectionResourceImpl.PARAM_URL,
-                   // Should be the following but it's WAY too slow
-                   "jdbc:hsqldb:res:/org/apache/ctakes/dictionary/lookup/umls2011ab/umls" ),
+//             ExternalResourceFactory.createExternalResourceDescription(
+//                   JdbcConnectionResourceImpl.class,
+//                   "",
+//                   JdbcConnectionResourceImpl.PARAM_DRIVER_CLASS,
+//                   "org.hsqldb.jdbcDriver",
+//                   JdbcConnectionResourceImpl.PARAM_URL,
+//                   // Should be the following but it's WAY too slow
+//                   "jdbc:hsqldb:res:/org/apache/ctakes/dictionary/lookup/umls2011ab/umls" ),
              //"jdbc:hsqldb:file:target/unpacked/org/apache/ctakes/dictionary/lookup/umls2011ab/umls"),
+            ExternalResourceFactory.createSharedResourceDescription(
+                  "jdbc:hsqldb:res:/org/apache/ctakes/dictionary/lookup/umls2011ab/umls",
+                  JdbcConnectionResourceImpl.class,
+                  JdbcConnectionResourceImpl.PARAM_DRIVER_CLASS,
+                  "org.hsqldb.jdbcDriver" ),
              "RxnormIndexReader",
-             ExternalResourceFactory.createExternalResourceDescription(
-                   JdbcConnectionResourceImpl.class,
-                   "",
-                   JdbcConnectionResourceImpl.PARAM_DRIVER_CLASS,
-                   "org.hsqldb.jdbcDriver",
-                   JdbcConnectionResourceImpl.PARAM_URL,
-                   "jdbc:hsqldb:res:/org/apache/ctakes/dictionary/lookup/rxnorm-hsqldb/umls" ),
+//             ExternalResourceFactory.createExternalResourceDescription(
+//                   JdbcConnectionResourceImpl.class,
+//                   "",
+//                   JdbcConnectionResourceImpl.PARAM_DRIVER_CLASS,
+//                   "org.hsqldb.jdbcDriver",
+//                   JdbcConnectionResourceImpl.PARAM_URL,
+//                   "jdbc:hsqldb:res:/org/apache/ctakes/dictionary/lookup/rxnorm-hsqldb/umls" ),
+            ExternalResourceFactory.createSharedResourceDescription(
+                  "jdbc:hsqldb:res:/org/apache/ctakes/dictionary/lookup/rxnorm-hsqldb/umls",
+                  JdbcConnectionResourceImpl.class,
+                  JdbcConnectionResourceImpl.PARAM_DRIVER_CLASS,
+                  "org.hsqldb.jdbcDriver" ),
              "OrangeBookIndexReader",
-             ExternalResourceFactory.createExternalResourceDescription(
-                   JdbcConnectionResourceImpl.class,
-                   "",
-                   JdbcConnectionResourceImpl.PARAM_DRIVER_CLASS,
-                   "org.hsqldb.jdbcDriver",
-                   JdbcConnectionResourceImpl.PARAM_URL,
-                   "jdbc:hsqldb:res:/org/apache/ctakes/dictionary/lookup/orange_book_hsqldb/umls" )
+//             ExternalResourceFactory.createExternalResourceDescription(
+//                   JdbcConnectionResourceImpl.class,
+//                   "",
+//                   JdbcConnectionResourceImpl.PARAM_DRIVER_CLASS,
+//                   "org.hsqldb.jdbcDriver",
+//                   JdbcConnectionResourceImpl.PARAM_URL,
+//                   "jdbc:hsqldb:res:/org/apache/ctakes/dictionary/lookup/orange_book_hsqldb/umls" )
+            ExternalResourceFactory.createSharedResourceDescription(
+                  "jdbc:hsqldb:res:/org/apache/ctakes/dictionary/lookup/orange_book_hsqldb/umls",
+                  JdbcConnectionResourceImpl.class,
+                  JdbcConnectionResourceImpl.PARAM_DRIVER_CLASS,
+                  "org.hsqldb.jdbcDriver" )
        );
 
    }

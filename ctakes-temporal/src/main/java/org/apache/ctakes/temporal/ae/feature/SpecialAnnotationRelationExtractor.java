@@ -50,7 +50,7 @@ public class SpecialAnnotationRelationExtractor implements RelationFeaturesExtra
 		}
 
 		//1 get covering sentence:
-		Map<EventMention, Collection<Sentence>> coveringMap =
+		Map<EventMention, List<Sentence>> coveringMap =
 				JCasUtil.indexCovering(jcas, EventMention.class, Sentence.class);
 
 		Sentence sentenceA = getCoveringSentence(eventA, coveringMap);
@@ -137,7 +137,7 @@ public class SpecialAnnotationRelationExtractor implements RelationFeaturesExtra
 	}
 
 	private static Sentence getCoveringSentence(EventMention event,
-			Map<EventMention, Collection<Sentence>> coveringMap) {
+			Map<EventMention, List<Sentence>> coveringMap) {
 		List<Sentence> sentList = new ArrayList<>();
 		if(event != null){
 			sentList.addAll(coveringMap.get(event));			

@@ -60,7 +60,7 @@ public class CopyCoreferenceRelations extends org.apache.uima.fit.component.JCas
     public static void copyRelations(JCas jcas, JCas goldView, boolean dropout){
 
         HashMap<Markable,Markable> gold2sys = new HashMap<>();
-        Map<ConllDependencyNode,Collection<Markable>> depIndex = JCasUtil.indexCovering(jcas, ConllDependencyNode.class, Markable.class);
+        Map<ConllDependencyNode,List<Markable>> depIndex = JCasUtil.indexCovering(jcas, ConllDependencyNode.class, Markable.class);
 
         for(CollectionTextRelation goldChain : JCasUtil.select(goldView, CollectionTextRelation.class)){
             FSList head = goldChain.getMembers();
@@ -148,7 +148,7 @@ public class CopyCoreferenceRelations extends org.apache.uima.fit.component.JCas
          * Check if any of those markables has the same head
          * if so add it to the map and return true
      */
-    public static boolean mapGoldMarkable(JCas jcas, Markable goldMarkable, Map<Markable,Markable> gold2sys, Map<ConllDependencyNode, Collection<Markable>> depIndex){
+    public static boolean mapGoldMarkable(JCas jcas, Markable goldMarkable, Map<Markable,Markable> gold2sys, Map<ConllDependencyNode, List<Markable>> depIndex){
         if(!(goldMarkable.getBegin() < 0 || goldMarkable.getEnd() >= jcas.getDocumentText().length())){
             ConllDependencyNode headNode = DependencyUtility.getNominalHeadNode(jcas, goldMarkable);
 

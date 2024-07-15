@@ -14,6 +14,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -34,9 +35,9 @@ public class CuiLookupLister extends AbstractJCasFileWriter {
                           final String documentId,
                           final String fileName ) throws IOException {
       try ( Writer writer = new BufferedWriter( new FileWriter( outputDir + "/" + documentId + "_cui.txt" ) ) ) {
-         final Map<Sentence, Collection<IdentifiedAnnotation>> sentenceCodes
+         final Map<Sentence, List<IdentifiedAnnotation>> sentenceCodes
                = JCasUtil.indexCovered( jCas, Sentence.class, IdentifiedAnnotation.class );
-         for ( Map.Entry<Sentence, Collection<IdentifiedAnnotation>> entry : sentenceCodes.entrySet() ) {
+         for ( Map.Entry<Sentence, List<IdentifiedAnnotation>> entry : sentenceCodes.entrySet() ) {
             final int sentenceBegin = entry.getKey()
                                            .getBegin();
             final int sentenceEnd = entry.getKey()

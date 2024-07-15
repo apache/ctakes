@@ -127,7 +127,7 @@ public class EvaluationOfMarkableSalience extends Evaluation_ImplBase<Annotation
         throw new AnalysisEngineProcessException(e);
       }
       
-      Map<ConllDependencyNode,Collection<Markable>> depIndex = JCasUtil.indexCovering(jcas, ConllDependencyNode.class, Markable.class);
+      Map<ConllDependencyNode,List<Markable>> depIndex = JCasUtil.indexCovering(jcas, ConllDependencyNode.class, Markable.class);
       
       // iterate over every gold coreference chain
       for(CollectionTextRelation goldChain : JCasUtil.select(goldView, CollectionTextRelation.class)){
@@ -180,7 +180,7 @@ public class EvaluationOfMarkableSalience extends Evaluation_ImplBase<Annotation
       }
       // create a set of markables that map to gold
       Set<Markable> sys = new HashSet<>();
-      Map<ConllDependencyNode,Collection<Markable>> depIndex = JCasUtil.indexCovering(jcas, ConllDependencyNode.class, Markable.class);
+      Map<ConllDependencyNode,List<Markable>> depIndex = JCasUtil.indexCovering(jcas, ConllDependencyNode.class, Markable.class);
       
       // iterate over every gold coreference chain
       for(CollectionTextRelation goldChain : JCasUtil.select(goldView, CollectionTextRelation.class)){

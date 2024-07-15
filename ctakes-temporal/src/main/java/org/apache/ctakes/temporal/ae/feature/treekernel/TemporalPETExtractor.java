@@ -31,7 +31,7 @@ import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.cleartk.ml.Feature;
-import org.cleartk.ml.TreeFeature;
+import org.cleartk.ml.tksvmlight.TreeFeature;
 
 import java.util.ArrayList;
 import java.util.List;

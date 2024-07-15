@@ -21,7 +21,7 @@ import java.util.*;
 public class UMLSFeatureExtractor implements RelationFeaturesExtractor<IdentifiedAnnotation,IdentifiedAnnotation> {
 
   String docId = null;
-  Map<ConllDependencyNode,Collection<IdentifiedAnnotation>> coveringMap = null;
+  Map<ConllDependencyNode,List<IdentifiedAnnotation>> coveringMap = null;
   
 	@Override
 	public List<Feature> extract(JCas jCas, IdentifiedAnnotation arg1,

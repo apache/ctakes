@@ -380,8 +380,8 @@ EvaluationOfTemporalRelations_ImplBase{
 			jCas = jcasIter.next();
 			JCas goldView = jCas.getView(GOLD_VIEW_NAME);
 			JCas systemView = jCas.getView(CAS.NAME_DEFAULT_SOFA);
-			Map<Annotation, Collection<Sentence>> sentCoveringMap = JCasUtil.indexCovering(systemView, Annotation.class, Sentence.class);
-			Map<Annotation, Collection<Sentence>> goldSentCoveringMap = JCasUtil.indexCovering(goldView, Annotation.class, Sentence.class);
+			Map<Annotation, List<Sentence>> sentCoveringMap = JCasUtil.indexCovering(systemView, Annotation.class, Sentence.class);
+			Map<Annotation, List<Sentence>> goldSentCoveringMap = JCasUtil.indexCovering(goldView, Annotation.class, Sentence.class);
 
 			
 			Collection<BinaryTextRelation> goldRelations = JCasUtil.select(
@@ -478,7 +478,7 @@ EvaluationOfTemporalRelations_ImplBase{
 	}
 
 	private static boolean checkArgumentsInTheSameSent(BinaryTextRelation systemRelation,
-			Map<Annotation, Collection<Sentence>> sentCoveringMap) {
+			Map<Annotation, List<Sentence>> sentCoveringMap) {
 		Annotation arg1 = systemRelation.getArg1().getArgument();
 		Annotation arg2 = systemRelation.getArg2().getArgument();
 		Collection<Sentence> sent1List = sentCoveringMap.get(arg1);

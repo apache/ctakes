@@ -143,7 +143,7 @@ public class NeuralEventTimeSelfRelationAnnotator extends TemporalRelationExtrac
 	public List<IdentifiedAnnotationPair> getCandidateRelationArgumentPairs(
 			JCas jCas,
 			Annotation sentence) {
-		Map<EventMention, Collection<EventMention>> coveringMap =
+		Map<EventMention, List<EventMention>> coveringMap =
 				JCasUtil.indexCovering(jCas, EventMention.class, EventMention.class);
 
 		List<IdentifiedAnnotationPair> pairs = Lists.newArrayList();

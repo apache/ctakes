@@ -18,10 +18,7 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
 import org.hl7.fhir.dstu3.model.*;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -54,7 +51,7 @@ final public class FhirDocComposer {
       final FhirResourceCreator<IdentifiedAnnotation, Basic> iaCreator = new IdentifiedAnnotationCreator();
       final FhirResourceCreator<Annotation, Basic> aCreator = new AnnotationCreator();
       // essential types
-      final Map<Segment, Collection<IdentifiedAnnotation>> sectionAnnotationMap
+      final Map<Segment, List<IdentifiedAnnotation>> sectionAnnotationMap
             = JCasUtil.indexCovered( jCas, Segment.class, IdentifiedAnnotation.class );
       final Collection<Basic> sections = new ArrayList<>( sectionAnnotationMap.size() );
       final Map<IdentifiedAnnotation, Collection<Integer>> markableCorefs = EssentialAnnotationUtil.createMarkableCorefs(
@@ -63,7 +60,7 @@ final public class FhirDocComposer {
             markableCorefs );
       // Create map of annotations to Fhir Basics.
       final Map<IdentifiedAnnotation, Basic> annotationBasics = new HashMap<>();
-      for ( Map.Entry<Segment, Collection<IdentifiedAnnotation>> sectionAnnotations : sectionAnnotationMap.entrySet() ) {
+      for ( Map.Entry<Segment, List<IdentifiedAnnotation>> sectionAnnotations : sectionAnnotationMap.entrySet() ) {
          final Segment segment = sectionAnnotations.getKey();
          final String segmentId = segment.getId();
          final Basic section = sectionCreator.createResource( jCas, sectionAnnotations.getKey(), practitioner,
