@@ -28,6 +28,7 @@ import org.apache.uima.resource.metadata.impl.ConfigurationParameterDeclarations
 import org.apache.uima.resource.metadata.impl.ConfigurationParameterSettings_impl;
 import org.apache.uima.resource.metadata.impl.PropertyXmlInfo;
 import org.apache.uima.resource.metadata.impl.XmlizationInfo;
+import org.apache.uima.util.CasCreationUtils;
 import org.apache.uima.util.InvalidXMLException;
 import org.apache.uima.util.Progress;
 import org.apache.uima.util.ProgressImpl;
@@ -40,6 +41,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 
 /**
@@ -178,6 +180,17 @@ abstract public class AbstractFileTreeReader extends JCasCollectionReader_ImplBa
 
    public AbstractFileTreeReader() {
       setMetaData( createMetaData() );
+      // Workaround https://github.com/apache/uima-uimaj/issues/234
+      // https://github.com/ClearTK/cleartk/issues/470
+      try {
+         LOGGER.info( "Creating empty CAS to make certain that the typesystem is initialized ..." );
+         CasCreationUtils.createCas();
+      } catch ( ResourceInitializationException riE ) {
+         LOGGER.error( "Could not create base CAS for initialization.\n" + riE.getMessage() );
+         LOGGER.error( Arrays.stream( riE.getStackTrace() )
+                             .map( StackTraceElement::toString )
+                             .collect( Collectors.joining("\n" ) ) );
+      }
    }
 
    /**

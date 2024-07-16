@@ -79,14 +79,17 @@
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
+			<version>${guava.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.opennlp</groupId>
 			<artifactId>opennlp-tools</artifactId>
+			<version>${opennlp.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.opennlp</groupId>
 			<artifactId>opennlp-maxent</artifactId>
+			<version>${opennlp.maxent.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>edu.mit.findstruct</groupId>
@@ -113,10 +116,12 @@
 		<dependency>
 			<groupId>org.apache.uima</groupId>
 			<artifactId>uimafit-core</artifactId>
+			<version>${uimafit.version}</version>
 		</dependency>
         <dependency>
             <groupId>org.apache.uima</groupId>
             <artifactId>uimafit-cpe</artifactId>
+			<version>${uimafit.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>

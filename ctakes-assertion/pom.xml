@@ -49,6 +49,11 @@
 		</dependency>
 		<dependency>
 			<groupId>org.cleartk</groupId>
+			<artifactId>cleartk-type-system</artifactId>
+			<version>${cleartk.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.cleartk</groupId>
 			<artifactId>cleartk-ml-opennlp-maxent</artifactId>
 			<version>${cleartk.version}</version>
 		</dependency>

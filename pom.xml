@@ -105,12 +105,12 @@
 		<ehcache.version>2.4.6</ehcache.version>
 		<exec-maven-plugin.version>1.2.1</exec-maven-plugin.version>
 		<classgraph.version>4.8.90</classgraph.version>
-<!--		<glassfish-web.version>2.2</glassfish-web.version>-->
 		<glassfish-web.version>2.2.1-b05</glassfish-web.version>
 		<hibernate.version>4.2.6.Final</hibernate.version>
 		<hsqldb.version>2.3.4</hsqldb.version>
 		<icefaces.version>2.0.2</icefaces.version>
 		<jackson.version>1.5.0</jackson.version>
+<!--		<jackson.version>2.9.7</jackson.version>-->
 		<javassist.version>3.15.0-GA</javassist.version>
 		<jaxb.version>2.3.1</jaxb.version>
 <!--		<jaxb2-maven-plugin.version>1.6</jaxb2-maven-plugin.version>-->
@@ -127,12 +127,13 @@
 		<jsr107cache.version>1.0</jsr107cache.version>
 		<junit.version>4.11</junit.version>
 		<jwi.version>2.2.3</jwi.version>
+<!--		TODO  try guava 32.0.1    https://devhub.checkmarx.com/cve-details/CVE-2023-2976/ -->
+		<guava.version>10.0</guava.version>
 		<maven-antrun-plugin.version>3.1.0</maven-antrun-plugin.version>
 		<maven-license-plugin.version>1.9.0</maven-license-plugin.version>
 		<maven-jar-plugin.version>3.3.0</maven-jar-plugin.version>
 		<apache-rat-plugin.version>0.15</apache-rat-plugin.version>
 		<properties-maven-plugin.version>1.1.0</properties-maven-plugin.version>
-<!--		<maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>-->
 		<maven-resources-plugin.version>3.3.1</maven-resources-plugin.version>
 		<maven-dependency-plugin.version>3.6.1</maven-dependency-plugin.version>
 		<maven-remote-resources-plugin.version>3.1.0</maven-remote-resources-plugin.version>
@@ -143,38 +144,30 @@
 		<maven-compiler-plugin.version>3.13.0</maven-compiler-plugin.version>
 		<maven-install-plugin.version>3.1.1</maven-install-plugin.version>
 		<maven-deploy-plugin.version>3.1.1</maven-deploy-plugin.version>
-<!--		<jcasgen-maven-plugin.version>2.11.0</jcasgen-maven-plugin.version>-->
-		<jcasgen-maven-plugin.version>3.4.0</jcasgen-maven-plugin.version>
+		<jcasgen-maven-plugin.version>3.5.0</jcasgen-maven-plugin.version>
 		<maven-gpg-plugin.version>3.0.1</maven-gpg-plugin.version>
 		<maven-javadoc-plugin.version>3.6.3</maven-javadoc-plugin.version>
 		<maven-war-plugin.version>3.4.0</maven-war-plugin.version>
 		<maven-surefire-plugin.version>3.2.3</maven-surefire-plugin.version>
 		<maven-failsafe-plugin.version>3.2.3</maven-failsafe-plugin.version>
 		<maven-assembly-plugin.version>3.6.0</maven-assembly-plugin.version>
-		<mysql-connector.version>5.1.26</mysql-connector.version>
+		<mysql-connector.version>6.0.6</mysql-connector.version>
 		<scala-library.version>2.11.7</scala-library.version>
 		<scala-tools.version>0.4.0</scala-tools.version>
 		<servlet-jsp-api.version>2.2</servlet-jsp-api.version>
-<!--		<servlet-jsp-api.version>2.3.3</servlet-jsp-api.version>-->
 		<servlet-jstl.version>1.2</servlet-jstl.version>
 		<slf4j.version>2.0.5</slf4j.version>
 		<solr.version>3.5.0</solr.version>
 		<spring.version>4.3.12.RELEASE</spring.version>
-<!--		<uimafit.version>2.4.0</uimafit.version>-->
-<!--		<uimaj.version>2.10.2</uimaj.version>-->
 		<uimafit.version>3.5.0</uimafit.version>
 		<uimaj.version>3.5.0</uimaj.version>
 		<timenorm.version>0.9.5</timenorm.version>
 		<weka.version>3.6.10</weka.version>
 		<xmlunit.version>1.4</xmlunit.version>
 		<hapi.fhir.version>6.6.0</hapi.fhir.version>
-		<opennlp.version>1.7.2</opennlp.version>
-<!--		<opennlp.version>2.3.3</opennlp.version>-->
-		<!-- project specific conventions -->
-<!--		<maven.compiler.source>1.8</maven.compiler.source>-->
-<!--		<maven.compiler.target>1.8</maven.compiler.target>-->
-<!--		Prep for maven build with jdk >= 9  :  use maven.compiler.release.  -->
-<!--		<maven.compiler.release>8</maven.compiler.release>-->
+		<opennlp.version>2.3.3</opennlp.version>
+		<!--  opennlp-maxent depends upon opennlp 1.5.3   The project looks like it hasn't changed in a while.  -->
+		<opennlp.maxent.version>3.0.3</opennlp.maxent.version>
 		<gson.version>2.8.9</gson.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
@@ -231,11 +224,6 @@
 				<version>${junit.version}</version>
 				<scope>test</scope>
 			</dependency>
-<!--			<dependency>-->
-<!--				<groupId>log4j</groupId>-->
-<!--				<artifactId>log4j</artifactId>-->
-<!--				<version>1.2.17</version>-->
-<!--			</dependency>-->
 			<dependency>
 				<groupId>org.apache.logging.log4j</groupId>
 				<artifactId>log4j-1.2-api</artifactId>
@@ -362,7 +350,7 @@
 			<dependency>
 				<groupId>org.apache.opennlp</groupId>
 				<artifactId>opennlp-maxent</artifactId>
-				<version>3.0.3</version>
+				<version>${opennlp.maxent.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>tw.edu.ntu.csie</groupId>
@@ -421,7 +409,7 @@
 			<dependency>
 				<groupId>com.google.guava</groupId>
 				<artifactId>guava</artifactId>
-				<version>10.0</version>
+				<version>${guava.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.carrotsearch</groupId>
@@ -1076,7 +1064,6 @@
 				<plugin>
 					<groupId>org.apache.uima</groupId>
 					<artifactId>jcasgen-maven-plugin</artifactId>
-<!--					<version>${uimaj.version}</version>-->
 					<version>${jcasgen-maven-plugin.version}</version>
 					<executions>
 						<execution>
@@ -1086,6 +1073,7 @@
 									<typeSystemInclude>src/main/resources/org/apache/ctakes/**/types/*.xml</typeSystemInclude>
 								</typeSystemIncludes>
 								<limitToProject>true</limitToProject>
+<!--								<limitToProject>false</limitToProject>-->
 							</configuration>
 						</execution>
 					</executions>
