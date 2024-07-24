@@ -19,8 +19,9 @@
 package org.apache.ctakes.assertion.eval;
 
 import com.google.common.base.Function;
+import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
-import com.google.common.base.Objects.ToStringHelper;
+import com.google.common.base.MoreObjects.ToStringHelper;
 import com.google.common.collect.HashMultiset;
 import com.google.common.collect.Multiset;
 import org.apache.uima.cas.Feature;
@@ -480,7 +481,7 @@ public class AnnotationStatisticsCompact<OUTCOME_TYPE extends Comparable<? super
 
     @Override
     public String toString() {
-      ToStringHelper helper = Objects.toStringHelper(this);
+      ToStringHelper helper = MoreObjects.toStringHelper(this);
       helper.add("begin", this.begin);
       helper.add("end", this.end);
       return helper.toString();

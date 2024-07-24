@@ -20,10 +20,6 @@ package org.apache.ctakes.temporal.data.analysis;
 
 import com.lexicalscope.jewel.cli.CliFactory;
 import com.lexicalscope.jewel.cli.Option;
-import info.bethard.timenorm.DefaultTokenizer$;
-import info.bethard.timenorm.Temporal;
-import info.bethard.timenorm.TemporalExpressionParser;
-import info.bethard.timenorm.TimeSpan;
 import org.apache.ctakes.temporal.eval.CommandLine;
 import org.apache.ctakes.temporal.eval.Evaluation_ImplBase.XMIReader;
 import org.apache.ctakes.temporal.eval.THYMEData;
@@ -37,6 +33,10 @@ import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.cleartk.util.ae.UriToDocumentTextAnnotator;
 import org.cleartk.util.cr.UriCollectionReader;
+import org.clulab.timenorm.scfg.DefaultTokenizer$;
+import org.clulab.timenorm.scfg.Temporal;
+import org.clulab.timenorm.scfg.TemporalExpressionParser;
+import org.clulab.timenorm.scfg.TimeSpan;
 import scala.util.Try;
 
 import java.io.File;

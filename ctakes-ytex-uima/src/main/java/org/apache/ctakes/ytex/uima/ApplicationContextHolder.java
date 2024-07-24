@@ -20,9 +20,9 @@ package org.apache.ctakes.ytex.uima;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.beans.factory.access.BeanFactoryLocator;
+import org.apache.ctakes.ytex.kernel.evaluator.TreePrinter;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.access.ContextSingletonBeanFactoryLocator;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -39,7 +39,7 @@ public class ApplicationContextHolder {
 	private static final Log log = LogFactory
 			.getLog(ApplicationContextHolder.class);
 	private static Properties ytexProperties;
-	private static BeanFactoryLocator beanFactory;
+//	private static BeanFactoryLocator beanFactory;
 	private static ApplicationContext ytexApplicationContext;
 
 	static {
@@ -59,8 +59,8 @@ public class ApplicationContextHolder {
 					beanRefContext);
 			if (log.isInfoEnabled())
 				log.info("beanRefContext=" + beanRefContext);
-			beanFactory = ContextSingletonBeanFactoryLocator
-					.getInstance(beanRefContext);
+//			beanFactory = ContextSingletonBeanFactoryLocator
+//					.getInstance(beanRefContext);
 		} catch (Exception e) {
 			log.error("initalizer", e);
 		} finally {
@@ -74,12 +74,30 @@ public class ApplicationContextHolder {
 	}
 
 	public static ApplicationContext getApplicationContext() {
-		return (ApplicationContext)beanFactory.useBeanFactory(
-				"ytexApplicationContext").getFactory();
+//		return (ApplicationContext)beanFactory.useBeanFactory(
+//				"ytexApplicationContext").getFactory();
+
+		String beanRefContext = "classpath*:org/apache/ctakes/ytex/uima/beanRefContext.xml";
+		return (ApplicationContext)TreePrinter.SpringContextUtil.INSTANCE
+				.getApplicationContext( beanRefContext )
+				.getBean( "ytexApplicationContext" );
+
 	}
 
 	public static Properties getYtexProperties() {
 		return ytexProperties;
+	}
+
+
+	public enum SpringContextUtil {
+		INSTANCE;
+		private ApplicationContext _context;
+		public ApplicationContext getApplicationContext( final String contextPath ) {
+			if ( _context == null ) {
+				_context = new ClassPathXmlApplicationContext( contextPath );
+			}
+			return _context;
+		}
 	}
 
 }

@@ -30,6 +30,7 @@ import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.CASRuntimeException;
 import org.apache.uima.jcas.JCas;
+import org.apache.uima.util.CasCreationUtils;
 import org.apache.uima.util.JCasPool;
 
 import java.io.IOException;
@@ -57,6 +58,9 @@ public enum RestPipelineRunner {
 
    RestPipelineRunner() {
       try {
+         // Workaround https://github.com/apache/uima-uimaj/issues/234
+         // https://github.com/ClearTK/cleartk/issues/470
+         CasCreationUtils.createCas();
          final PiperFileReader reader = new PiperFileReader( REST_PIPER_FILE_PATH );
          final PipelineBuilder builder = reader.getBuilder();
 

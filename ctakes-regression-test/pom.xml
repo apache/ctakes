@@ -1,27 +1,28 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>org.apache.ctakes</groupId>
-    <artifactId>ctakes</artifactId>
-    <version>6.0.0-SNAPSHOT</version>
-  </parent>
-  <artifactId>ctakes-regression-test</artifactId>
-  <name>Apache cTAKES Regression-test</name>
-  <description>Apache cTAKES Regression-test</description>
-  
-	<dependencies>
-		<dependency>
-			<groupId>org.apache.uima</groupId>
-			<artifactId>uimaj-cpe</artifactId>
-		</dependency>
-		<!--  Allow for use of example notes, example dictionaries, example models ...  -->
-		<dependency>
-			<groupId>org.apache.ctakes</groupId>
-			<artifactId>ctakes-examples</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>xmlunit</groupId>
-			<artifactId>xmlunit</artifactId>
-		</dependency>
-	</dependencies>  
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.apache.ctakes</groupId>
+        <artifactId>ctakes</artifactId>
+        <version>6.0.0-SNAPSHOT</version>
+    </parent>
+    <artifactId>ctakes-regression-test</artifactId>
+    <name>Apache cTAKES Regression-test</name>
+    <description>Apache cTAKES Regression-test</description>
+
+    <dependencies>
+        <!--  Allow for use of example notes, example dictionaries, example models ...  -->
+        <dependency>
+            <groupId>org.apache.ctakes</groupId>
+            <artifactId>ctakes-examples</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.uima</groupId>
+            <artifactId>uimaj-cpe</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>xmlunit</groupId>
+            <artifactId>xmlunit</artifactId>
+        </dependency>
+    </dependencies>
 </project>

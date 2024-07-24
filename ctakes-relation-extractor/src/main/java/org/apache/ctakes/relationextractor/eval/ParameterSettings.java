@@ -18,8 +18,9 @@
  */
 package org.apache.ctakes.relationextractor.eval;
 
+import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
-import com.google.common.base.Objects.ToStringHelper;
+import com.google.common.base.MoreObjects.ToStringHelper;
 import org.cleartk.eval.AnnotationStatistics;
 import org.cleartk.ml.DataWriter;
 
@@ -56,7 +57,7 @@ public class ParameterSettings {
 
   @Override
   public String toString() {
-    ToStringHelper helper = Objects.toStringHelper(this);
+    ToStringHelper helper = MoreObjects.toStringHelper(this);
     helper.add("dataWriterClass", this.dataWriterClass.getName());
     helper.add("configurationParameters", Arrays.asList(this.configurationParameters));
     helper.add("trainingArguments", Arrays.asList(this.trainingArguments));

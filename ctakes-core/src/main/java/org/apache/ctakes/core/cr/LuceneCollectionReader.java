@@ -66,7 +66,7 @@ public class LuceneCollectionReader extends CasCollectionReader_ImplBase {
     
     Directory dir;
     try {
-      dir = FSDirectory.open(new File(indexDir));
+      dir = FSDirectory.open(new File(indexDir).toPath());
       ireader = DirectoryReader.open(dir);
     } catch (IOException e) {
       e.printStackTrace();

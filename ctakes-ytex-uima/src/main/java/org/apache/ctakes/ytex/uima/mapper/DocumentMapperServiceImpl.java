@@ -21,7 +21,7 @@ package org.apache.ctakes.ytex.uima.mapper;
 import com.google.common.base.Predicate;
 import com.google.common.base.Strings;
 import com.google.common.collect.*;
-import org.apache.commons.collections.map.CaseInsensitiveMap;
+import org.apache.commons.collections4.map.CaseInsensitiveMap;
 import org.apache.commons.jxpath.JXPathContext;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

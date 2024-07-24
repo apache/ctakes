@@ -34,7 +34,7 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
 import org.apache.uima.resource.ResourceAccessException;
 import org.apache.uima.resource.ResourceInitializationException;
-import org.jdom.JDOMException;
+import org.jdom2.JDOMException;
 
 import java.io.File;
 import java.io.IOException;

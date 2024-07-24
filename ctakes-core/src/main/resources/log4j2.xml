@@ -22,7 +22,8 @@
 <Configuration>
     <Appenders>
         <Console name="consoleAppender" target="SYSTEM_OUT">
-            <PatternLayout pattern="%d{dd MMM yyyy HH:mm:ss} %5p %c{1} - %m%n"/>
+<!--            <PatternLayout pattern="%d{dd MMM yyyy HH:mm:ss} %5p %c{1} - %m%n"/>-->
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
         </Console>
         <Console name="noEolAppender" target="SYSTEM_OUT">
             <PatternLayout pattern="%m"/>

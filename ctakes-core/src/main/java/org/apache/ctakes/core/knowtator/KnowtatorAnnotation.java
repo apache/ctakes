@@ -18,8 +18,9 @@
  */
 package org.apache.ctakes.core.knowtator;
 
+import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
-import com.google.common.base.Objects.ToStringHelper;
+import com.google.common.base.MoreObjects.ToStringHelper;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -123,7 +124,7 @@ public class KnowtatorAnnotation {
 
   @Override
   public String toString() {
-    ToStringHelper builder = Objects.toStringHelper(this);
+    ToStringHelper builder = MoreObjects.toStringHelper(this);
     builder.add("id", this.id);
     builder.add("spans", this.spans);
     builder.add("spannedText", this.spannedText);
@@ -172,7 +173,7 @@ public class KnowtatorAnnotation {
 
     @Override
     public String toString() {
-      ToStringHelper builder = Objects.toStringHelper(this);
+      ToStringHelper builder = MoreObjects.toStringHelper(this);
       builder.add("begin", this.begin);
       builder.add("end", this.end);
       return builder.toString();

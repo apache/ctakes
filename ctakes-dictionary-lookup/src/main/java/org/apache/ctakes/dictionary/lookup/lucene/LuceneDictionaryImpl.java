@@ -83,7 +83,8 @@ public class LuceneDictionaryImpl extends AbstractBaseDictionary {
             q = new TermQuery( new Term( iv_lookupFieldName, text ) );
             topDoc = iv_searcher.search( q, iv_maxHits );
          } else {  // needed the KeyworkAnalyzer for situations where the hypen was included in the f-word
-            final QueryParser query = new QueryParser( Version.LUCENE_40, iv_lookupFieldName, new KeywordAnalyzer() );
+//            final QueryParser query = new QueryParser( Version.LUCENE_40, iv_lookupFieldName, new KeywordAnalyzer() );
+            final QueryParser query = new QueryParser( iv_lookupFieldName, new KeywordAnalyzer() );
             try {
                //CTAKES-63 - I believe all of the chars in the str token should be escaped to avoid issues such as a token ending with ']'
                //topDoc = iv_searcher.search(query.parse(text.replace('-', ' ')), iv_maxHits);

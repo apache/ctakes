@@ -19,79 +19,81 @@
     under the License.
 
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<artifactId>ctakes-dictionary-lookup-fast</artifactId>
-	<name>Apache cTAKES Fast Dictionary Lookup</name>
-	<parent>
-		<groupId>org.apache.ctakes</groupId>
-		<artifactId>ctakes</artifactId>
-		<version>6.0.0-SNAPSHOT</version>
-	</parent>
-	<dependencies>
-		<dependency>
-			<groupId>org.hsqldb</groupId>
-			<artifactId>hsqldb</artifactId>
-		</dependency>	
-		<dependency>
-			<groupId>org.apache.ctakes</groupId>
-			<artifactId>ctakes-core</artifactId>
-		</dependency>
-      <dependency>
-         <!--  TODO  :  update per release  -->
-         <groupId>net.sourceforge.ctakesresources</groupId>
-         <artifactId>ctakes-resources-sno_rx</artifactId>
-      </dependency>
-	</dependencies>
-   <build>
-      <plugins>
-         <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-dependency-plugin</artifactId>
-            <executions>
-               <execution>
-                  <id>unpack-dependencies-ide</id>
-                  <phase>process-resources</phase>
-                  <goals>
-                     <goal>unpack-dependencies</goal>
-                  </goals>
-                  <configuration>
-                     <!-- copy the hsql database to ${project.basedir}/resources to work with IDE -->
-                     <includeArtifactIds>ctakes-resources-sno_rx</includeArtifactIds>
-                     <excludes>**/META-INF/**</excludes>
-                     <outputDirectory>${project.basedir}/../resources</outputDirectory>
-                  </configuration>
-               </execution>
-               <!--  Unpacking should not be performed when building a package  -->
-               <!--<execution>-->
-                  <!--<id>unpack-dependencies-bin</id>-->
-                  <!--<phase>package</phase>-->
-                  <!--<goals>-->
-                     <!--<goal>unpack-dependencies</goal>-->
-                  <!--</goals>-->
-                  <!--<configuration>-->
-                     <!-- copy the hsql database to target/classes/ for the bin package -->
-                     <!--<outputDirectory>${project.build.directory}/classes</outputDirectory>-->
-                  <!--</configuration>-->
-               <!--</execution>-->
-            </executions>
-         </plugin>
-         <plugin>
-            <artifactId>maven-jar-plugin</artifactId>
-            <configuration>
-               <includes>
-                  <!-- Dictionary lookup Resources that are unpacked
-                     automatically by maven
-                     are not jar'd and included in the bin distro
-                     by default please download them from SF if needed.
-                   -->
-                  <include>**/*.piper</include>
-                  <include>**/*.class</include>
-                  <include>**/types/*.xml</include>
-                  <include>**/META-INF/**</include>
-               </includes>
-            </configuration>
-         </plugin>
-      </plugins>
-   </build>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>ctakes-dictionary-lookup-fast</artifactId>
+    <name>Apache cTAKES Fast Dictionary Lookup</name>
+    <parent>
+        <groupId>org.apache.ctakes</groupId>
+        <artifactId>ctakes</artifactId>
+        <version>6.0.0-SNAPSHOT</version>
+    </parent>
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.ctakes</groupId>
+            <artifactId>ctakes-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+        </dependency>
+        <dependency>
+            <!--  TODO  :  update per release  -->
+            <groupId>net.sourceforge.ctakesresources</groupId>
+            <artifactId>ctakes-resources-sno_rx</artifactId>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>unpack-dependencies-ide</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>unpack-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <!-- copy the hsql database to ${project.basedir}/resources to work with IDE -->
+                            <includeArtifactIds>ctakes-resources-sno_rx</includeArtifactIds>
+                            <excludes>**/META-INF/**</excludes>
+                            <outputDirectory>${project.basedir}/../resources</outputDirectory>
+                        </configuration>
+                    </execution>
+                    <!--  Unpacking should not be performed when building a package  -->
+                    <!--<execution>-->
+                    <!--<id>unpack-dependencies-bin</id>-->
+                    <!--<phase>package</phase>-->
+                    <!--<goals>-->
+                    <!--<goal>unpack-dependencies</goal>-->
+                    <!--</goals>-->
+                    <!--<configuration>-->
+                    <!-- copy the hsql database to target/classes/ for the bin package -->
+                    <!--<outputDirectory>${project.build.directory}/classes</outputDirectory>-->
+                    <!--</configuration>-->
+                    <!--</execution>-->
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <includes>
+                        <!-- Dictionary lookup Resources that are unpacked
+                           automatically by maven
+                           are not jar'd and included in the bin distro
+                           by default please download them from SF if needed.
+                         -->
+                        <include>**/*.piper</include>
+                        <include>**/*.class</include>
+                        <include>**/types/*.xml</include>
+                        <include>**/META-INF/**</include>
+                    </includes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

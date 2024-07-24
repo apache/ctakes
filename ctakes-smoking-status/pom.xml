@@ -19,55 +19,56 @@
     under the License.
 
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<artifactId>ctakes-smoking-status</artifactId>
-	<name>Apache cTAKES Smoking Status</name>
-	<parent>
-		<groupId>org.apache.ctakes</groupId>
-		<artifactId>ctakes</artifactId>
-		<version>6.0.0-SNAPSHOT</version>
-	</parent>
-	
-	<dependencies>
-		<dependency>
-			<groupId>org.apache.ctakes</groupId>
-			<artifactId>ctakes-smoking-status-models</artifactId>
-			<version>${ctakes-models.version}</version>
-		</dependency>
- 		<dependency>
-			<groupId>org.apache.ctakes</groupId>
-			<artifactId>ctakes-dictionary-lookup</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.ctakes</groupId>
-			<artifactId>ctakes-drug-ner</artifactId>
-		</dependency>
-	</dependencies>	
-	<build>
-		<plugins>
-				<plugin>
-				  <groupId>org.apache.uima</groupId>
-				  <artifactId>jcasgen-maven-plugin</artifactId>
-				</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-dependency-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>unpack-models</id>
-						<phase>process-resources</phase>
-						<goals>
-							<goal>unpack-dependencies</goal>
-						</goals>
-						<configuration>
-							<includeArtifactIds>ctakes-smoking-status-models</includeArtifactIds>
-							<excludes>**/META-INF/**</excludes>
-							<outputDirectory>${project.basedir}/../resources</outputDirectory>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
- 	</build>		
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>ctakes-smoking-status</artifactId>
+    <name>Apache cTAKES Smoking Status</name>
+    <parent>
+        <groupId>org.apache.ctakes</groupId>
+        <artifactId>ctakes</artifactId>
+        <version>6.0.0-SNAPSHOT</version>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.ctakes</groupId>
+            <artifactId>ctakes-smoking-status-models</artifactId>
+            <version>${ctakes-models.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.ctakes</groupId>
+            <artifactId>ctakes-dictionary-lookup</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.ctakes</groupId>
+            <artifactId>ctakes-drug-ner</artifactId>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.uima</groupId>
+                <artifactId>jcasgen-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>unpack-models</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>unpack-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <includeArtifactIds>ctakes-smoking-status-models</includeArtifactIds>
+                            <excludes>**/META-INF/**</excludes>
+                            <outputDirectory>${project.basedir}/../resources</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>

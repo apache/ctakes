@@ -1,4 +1,4 @@
-FROM openjdk:8-alpine
+FROM openjdk:17-alpine
 
 ## This Dockerfile checks out and builds all of ctakes.  Is there a reason for this?
 ## If you just checked in some fresh code and can't wait for a jenkins build then ok.
@@ -13,8 +13,8 @@ RUN apk update && \
 
 
 ## Download apache-tomcat and extract:
-RUN wget http://mirror.cc.columbia.edu/pub/software/apache/tomcat/tomcat-9/v9.0.14/bin/apache-tomcat-9.0.14.zip && \
-    unzip apache-tomcat-9.0.14.zip
+RUN wget http://mirror.cc.columbia.edu/pub/software/apache/tomcat/tomcat-10/v10.1.26/bin/apache-tomcat-10.1.26.zip && \
+    unzip apache-tomcat-10.1.26.zip
 
 ## Check out version of ctakes with best working web-rest module
 RUN git clone https://github.com/apache/ctakes.git
@@ -36,9 +36,9 @@ WORKDIR /ctakes
 RUN mvn package -P no-zips-build,web-rest-build -DskipTests
 
 WORKDIR /
-RUN mv /ctakes/ctakes-web-rest/target/ctakes-web-rest.war /apache-tomcat-9.0.14/webapps/
+RUN mv /ctakes/ctakes-web-rest/target/ctakes-web-rest.war /apache-tomcat-10.1.26/webapps/
 
-ENV TOMCAT_HOME=/apache-tomcat-9.0.14
+ENV TOMCAT_HOME=/apache-tomcat-10.1.26
 ENV CTAKES_HOME=/ctakes
 
 EXPOSE 8080

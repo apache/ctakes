@@ -3,8 +3,8 @@ FROM openjdk:8-alpine
 RUN apk update && apk add ca-certificates openssl wget unzip maven
 
 ## Download apache-tomcat and extract:
-RUN wget https://archive.apache.org/dist/tomcat/tomcat-9/v9.0.14/bin/apache-tomcat-9.0.14.zip \
-&& unzip apache-tomcat-9.0.14.zip && rm apache-tomcat-9.0.14.zip
+RUN wget https://archive.apache.org/dist/tomcat/tomcat-10/v10.1.26/bin/apache-tomcat-10.1.26.zip \
+&& unzip apache-tomcat-10.1.26.zip && rm apache-tomcat-10.1.26.zip
 
 
 RUN mkdir -p /ctakes_src
@@ -26,8 +26,8 @@ COPY DockhandPipeline.piper /ctakes_src/src/main/resources/
 RUN mvn package
 
 # Move the war file and copy the dictionary.
-RUN mv /ctakes_src/ctakes_tiny_rest.war /apache-tomcat-9.0.14/webapps/
-RUN cp -fr /ctakes_src/resources /apache-tomcat-9.0.14/
+RUN mv /ctakes_src/ctakes_tiny_rest.war /apache-tomcat-10.1.26/webapps/
+RUN cp -fr /ctakes_src/resources /apache-tomcat-10.1.26/
 
 # A little cleanup.
 RUN rm -fr /ctakes_src
@@ -35,7 +35,7 @@ RUN rm -fr /ctakes_src
 # Expose port 8080 for html access.
 EXPOSE 8080
 
-ENV TOMCAT_HOME=/apache-tomcat-9.0.14
+ENV TOMCAT_HOME=/apache-tomcat-10.1.26
 WORKDIR $TOMCAT_HOME
 RUN chmod u+x bin/*.sh
 

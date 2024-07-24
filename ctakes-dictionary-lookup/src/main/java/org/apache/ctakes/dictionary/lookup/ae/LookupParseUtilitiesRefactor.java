@@ -37,10 +37,10 @@ import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.annotator.AnnotatorContextException;
 import org.apache.uima.analysis_engine.annotator.AnnotatorInitializationException;
 import org.apache.uima.resource.ResourceAccessException;
-import org.jdom.Document;
-import org.jdom.Element;
-import org.jdom.JDOMException;
-import org.jdom.input.SAXBuilder;
+import org.jdom2.Document;
+import org.jdom2.Element;
+import org.jdom2.JDOMException;
+import org.jdom2.input.SAXBuilder;
 
 import java.io.File;
 import java.io.FileReader;

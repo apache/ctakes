@@ -27,7 +27,6 @@ import com.google.common.io.LineProcessor;
 import com.googlecode.clearnlp.engine.EngineGetter;
 import com.googlecode.clearnlp.morphology.AbstractMPAnalyzer;
 import com.googlecode.clearnlp.reader.AbstractReader;
-import info.bethard.timenorm.*;
 import org.apache.ctakes.core.cr.XMIReader;
 import org.apache.ctakes.core.resource.FileLocator;
 import org.apache.ctakes.temporal.ae.feature.duration.DurationEventTimeFeatureExtractor;
@@ -41,6 +40,7 @@ import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
 import org.cleartk.ml.Feature;
+import org.clulab.timenorm.scfg.*;
 import scala.collection.immutable.Set;
 import scala.util.Try;
 
@@ -105,11 +105,11 @@ public class Utils {
 
       if (temporal instanceof Period) {
         units = ((Period) temporal).unitAmounts().keySet();
-      } else if (temporal instanceof PeriodSet) {
+      } else if (temporal instanceof PeriodSet ) {
         units = ((PeriodSet) temporal).period().unitAmounts().keySet();
       } else if (temporal instanceof TimeSpan) {
         units = ((TimeSpan) temporal).period().unitAmounts().keySet();
-      } else if (temporal instanceof TimeSpanSet) {
+      } else if (temporal instanceof TimeSpanSet ) {
         Set<TemporalField> fields = ((TimeSpanSet) temporal).fields().keySet();
         units = null; // fill units by calling .getBaseUnit() on each field
       }

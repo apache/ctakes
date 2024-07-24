@@ -19,142 +19,157 @@
     under the License.
 
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<artifactId>ctakes-core</artifactId>
-	<name>Apache cTAKES Core</name>
-	<parent>
-		<groupId>org.apache.ctakes</groupId>
-		<artifactId>ctakes</artifactId>
-		<version>6.0.0-SNAPSHOT</version>
-	</parent>
-	<dependencies>
-	     <dependency>
-			<groupId>org.apache.ctakes</groupId>
-			<artifactId>ctakes-core-models</artifactId>
-			  <version>${ctakes-models.version}</version>
-		  </dependency>
-		<dependency>
-			<groupId>org.apache.ctakes</groupId>
-			<artifactId>ctakes-utils</artifactId>
-		</dependency>
-<!--		<dependency>-->
-<!--			<groupId>log4j</groupId>-->
-<!--			<artifactId>log4j</artifactId>-->
-<!--		</dependency>-->
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-1.2-api</artifactId>
-			<version>2.23.1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-core</artifactId>
-			<version>2.23.1</version>
-		</dependency>
-		<dependency>
-			<groupId>xerces</groupId>
-			<artifactId>xercesImpl</artifactId>
-		</dependency>
-		<dependency>
-			<!-- needed for uimafit, but excluded in parent pom -->
-			<groupId>commons-io</groupId>
-			<artifactId>commons-io</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>jdom</groupId>
-			<artifactId>jdom</artifactId>
-		</dependency>
-      <!--  Todo - get rid of jdom v1  -->
-		<dependency>
-			<groupId>org.jdom</groupId>
-			<artifactId>jdom2</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.cleartk</groupId>
-			<artifactId>cleartk-util</artifactId>
-			<version>${cleartk.version}</version>
-		</dependency>
-        <!--  TODO Get rid of guava  -->
-		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
-			<version>${guava.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.opennlp</groupId>
-			<artifactId>opennlp-tools</artifactId>
-			<version>${opennlp.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.opennlp</groupId>
-			<artifactId>opennlp-maxent</artifactId>
-			<version>${opennlp.maxent.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>edu.mit.findstruct</groupId>
-			<artifactId>findstructapi</artifactId>
-		</dependency>
-      <!--  Todo : is anything actually using this sqlwrapper?  -->
-		<dependency>
-			<groupId>com.googlecode.armbrust-file-utils</groupId>
-			<artifactId>sqlwrapper</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>net.sourceforge.openai</groupId>
-			<artifactId>openaifsm</artifactId>
-		</dependency>
-      <dependency>
-         <groupId>com.lexicalscope.jewelcli</groupId>
-         <artifactId>jewelcli</artifactId>
-      </dependency>
-      <dependency>
-         <groupId>org.cleartk</groupId>
-         <artifactId>cleartk-ml</artifactId>
-		  <version>${cleartk.version}</version>
-	  </dependency>
-		<dependency>
-			<groupId>org.apache.uima</groupId>
-			<artifactId>uimafit-core</artifactId>
-			<version>${uimafit.version}</version>
-		</dependency>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>ctakes-core</artifactId>
+    <name>Apache cTAKES Core</name>
+    <parent>
+        <groupId>org.apache.ctakes</groupId>
+        <artifactId>ctakes</artifactId>
+        <version>6.0.0-SNAPSHOT</version>
+    </parent>
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.ctakes</groupId>
+            <artifactId>ctakes-core-models</artifactId>
+            <version>${ctakes-models.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.ctakes</groupId>
+            <artifactId>ctakes-utils</artifactId>
+        </dependency>
+
+
+
+<!--        <dependency>-->
+<!--            <groupId>log4j</groupId>-->
+<!--            <artifactId>log4j</artifactId>-->
+<!--        </dependency>-->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-1.2-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.apache.logging.log4j</groupId>-->
+<!--            <artifactId>log4j-slf4j-impl</artifactId>-->
+<!--        </dependency>-->
+        <!--  OLD did NOT have log4j-slf4j2-impl  -->
+<!--        <dependency>-->
+<!--            <groupId>org.apache.logging.log4j</groupId>-->
+<!--            <artifactId>log4j-slf4j2-impl</artifactId>-->
+<!--        </dependency>-->
+
+
+        <!--  5.1.0 had 12  -->
+<!--        <dependency>-->
+<!--            <groupId>org.slf4j</groupId>-->
+<!--            <artifactId>slf4j-log4j12</artifactId>-->
+<!--        </dependency>-->
+
+
+        <!--  OLD had slf4j-api  -->
+<!--        <dependency>-->
+<!--            <groupId>org.slf4j</groupId>-->
+<!--            <artifactId>slf4j-api</artifactId>-->
+<!--        </dependency>-->
+<!--        &lt;!&ndash;  OLD had slf4j-simple  &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.slf4j</groupId>-->
+<!--            <artifactId>slf4j-simple</artifactId>-->
+<!--        </dependency>-->
+
+
+        <!--  OLD did NOT have log4j-over-slf4j  -->
+<!--        <dependency>-->
+<!--            <groupId>org.slf4j</groupId>-->
+<!--            <artifactId>log4j-over-slf4j</artifactId>-->
+<!--        </dependency>-->
+
+
+
+        <dependency>
+            <groupId>xerces</groupId>
+            <artifactId>xercesImpl</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jdom</groupId>
+            <artifactId>jdom2</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.cleartk</groupId>
+            <artifactId>cleartk-util</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.cleartk</groupId>
+            <artifactId>cleartk-ml</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.opennlp</groupId>
+            <artifactId>opennlp-tools</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.opennlp</groupId>
+            <artifactId>opennlp-maxent</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>edu.mit.findstruct</groupId>
+            <artifactId>findstructapi</artifactId>
+        </dependency>
+        <!--  Todo : is anything actually using this sqlwrapper?  -->
+        <dependency>
+            <groupId>com.googlecode.armbrust-file-utils</groupId>
+            <artifactId>sqlwrapper</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>net.sourceforge.openai</groupId>
+            <artifactId>openaifsm</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.lexicalscope.jewelcli</groupId>
+            <artifactId>jewelcli</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.uima</groupId>
+            <artifactId>uimafit-core</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.apache.uima</groupId>
             <artifactId>uimafit-cpe</artifactId>
-			<version>${uimafit.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>${slf4j.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-simple</artifactId>
-			<version>${slf4j.version}</version>
-		</dependency>
-	</dependencies>
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-dependency-plugin</artifactId>
-				<version>${maven-dependency-plugin.version}</version>
-				<executions>
-					<execution>
-						<id>unpack-models</id>
-						<phase>process-resources</phase>
-						<goals>
-							<goal>unpack-dependencies</goal>
-						</goals>
-						<configuration>
-							<includeArtifactIds>ctakes-core-models</includeArtifactIds>
-							<excludes>**/META-INF/**</excludes>
-							<outputDirectory>${project.basedir}/../resources</outputDirectory>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>unpack-models</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>unpack-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <includeArtifactIds>ctakes-core-models</includeArtifactIds>
+                            <excludes>**/META-INF/**</excludes>
+                            <outputDirectory>${project.basedir}/../resources</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>

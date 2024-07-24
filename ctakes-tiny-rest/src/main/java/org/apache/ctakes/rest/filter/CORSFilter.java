@@ -4,19 +4,15 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class CORSFilter extends OncePerRequestFilter {
    private static final Log log = LogFactory.getLog( CORSFilter.class );
 
    @Override
-   protected void doFilterInternal( final HttpServletRequest request,
-                                    final HttpServletResponse response,
-                                    final FilterChain filterChain ) throws ServletException, IOException {
+   protected void doFilterInternal( jakarta.servlet.http.HttpServletRequest request,
+                                    jakarta.servlet.http.HttpServletResponse response,
+                                    jakarta.servlet.FilterChain filterChain ) throws jakarta.servlet.ServletException, IOException {
       log.debug( "Invoking CORS filter" );
       response.addHeader( "Access-Control-Allow-Origin", "*" );
       if ( request.getHeader( "Access-Control-Request-Method" ) != null && "OPTIONS".equals( request.getMethod() ) ) {

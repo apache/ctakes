@@ -19,74 +19,78 @@
     under the License.
 
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<artifactId>ctakes-dictionary-lookup</artifactId>
-	<name>Apache cTAKES Dictionary Lookup (deprecated)</name>
-	<parent>
-		<groupId>org.apache.ctakes</groupId>
-		<artifactId>ctakes</artifactId>
-		<version>6.0.0-SNAPSHOT</version>
-	</parent>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>ctakes-dictionary-lookup</artifactId>
+    <name>Apache cTAKES Dictionary Lookup (deprecated)</name>
+    <parent>
+        <groupId>org.apache.ctakes</groupId>
+        <artifactId>ctakes</artifactId>
+        <version>6.0.0-SNAPSHOT</version>
+    </parent>
 
-	<dependencies>
-		<!-- cTAKES Resources -->
-		<dependency>
-			<groupId>net.sourceforge.ctakesresources</groupId>
-			<artifactId>ctakes-resources-umls2011ab</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>net.sourceforge.ctakesresources</groupId>
-			<artifactId>ctakes-resources-rxnorm-hsqldb-2011ab</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>net.sourceforge.ctakesresources</groupId>
-			<artifactId>ctakes-resources-orangebook-hsqldb</artifactId>
-		</dependency>
-		<dependency>
-        	<groupId>org.hsqldb</groupId>
-			<artifactId>hsqldb</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.ctakes</groupId>
-			<artifactId>ctakes-core</artifactId>
-		</dependency>
-	</dependencies>
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-dependency-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>unpack-dependencies</id>
-						<phase>process-resources</phase>
-						<goals>
-							<goal>unpack-dependencies</goal>
-						</goals>
-						<configuration>
-							<includeArtifactIds>ctakes-resources-umls2011ab,ctakes-resources-rxnorm-hsqldb-2011ab,ctakes-resources-orangebook-hsqldb</includeArtifactIds>
-							<excludes>**/META-INF/**</excludes>
-							<outputDirectory>${project.basedir}/../resources</outputDirectory>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-				<plugin>
-					<artifactId>maven-jar-plugin</artifactId>
-					<configuration>
-			          <includes>
-			          <!-- Dictionary lookup Resources that are unpacked
-			          automatically by maven
-			          	are not jar'd and included in the bin distro
-			          	by default please download them from SF if needed. 
-			           -->
-			            <include>**/*.class</include>
-			            <include>**/types/*.xml</include>			            
-			            <include>**/META-INF/**</include>
-			          </includes>
-	        		</configuration>
-				</plugin>	    	
-		</plugins>
-	</build>  
+    <dependencies>
+        <!-- cTAKES Resources -->
+        <dependency>
+            <groupId>org.apache.ctakes</groupId>
+            <artifactId>ctakes-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>net.sourceforge.ctakesresources</groupId>
+            <artifactId>ctakes-resources-umls2011ab</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>net.sourceforge.ctakesresources</groupId>
+            <artifactId>ctakes-resources-rxnorm-hsqldb-2011ab</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>net.sourceforge.ctakesresources</groupId>
+            <artifactId>ctakes-resources-orangebook-hsqldb</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>unpack-dependencies</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>unpack-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <includeArtifactIds>
+                                ctakes-resources-umls2011ab,ctakes-resources-rxnorm-hsqldb-2011ab,ctakes-resources-orangebook-hsqldb
+                            </includeArtifactIds>
+                            <excludes>**/META-INF/**</excludes>
+                            <outputDirectory>${project.basedir}/../resources</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <includes>
+                        <!-- Dictionary lookup Resources that are unpacked
+                        automatically by maven
+                            are not jar'd and included in the bin distro
+                            by default please download them from SF if needed.
+                         -->
+                        <include>**/*.class</include>
+                        <include>**/types/*.xml</include>
+                        <include>**/META-INF/**</include>
+                    </includes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

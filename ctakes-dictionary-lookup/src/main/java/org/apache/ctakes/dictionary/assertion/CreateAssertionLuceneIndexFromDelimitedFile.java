@@ -78,21 +78,23 @@ public class CreateAssertionLuceneIndexFromDelimitedFile {
 	/**
 	 * Constructor
 	 * 
-	 * @param Tokenizer -
+	 * @param tokenizer -
 	 *            Used to tokenize the dictionary entries
 	 */
 	public CreateAssertionLuceneIndexFromDelimitedFile(TokenizerPTB tokenizer)
 			throws Exception {
-		Analyzer analyzer = new StandardAnalyzer(Version.LUCENE_40);
+//		Analyzer analyzer = new StandardAnalyzer(Version.LUCENE_40);
+		Analyzer analyzer = new StandardAnalyzer();
 		String defaultLoc = new File(directoryOfDelimitedFiles)
 				.getAbsolutePath();
 		boolean error = false;
 		long numEntries = 0;
 		try {
 			Directory directory = FSDirectory.open(new File(
-					new File(defaultLoc).getParent() + "/assertion_cue_phrase_index"));
+					new File(defaultLoc).getParent() + "/assertion_cue_phrase_index").toPath());
 
-			IndexWriterConfig indexWriterConfig = new IndexWriterConfig(Version.LUCENE_40, analyzer);
+//			IndexWriterConfig indexWriterConfig = new IndexWriterConfig(Version.LUCENE_40, analyzer);
+			IndexWriterConfig indexWriterConfig = new IndexWriterConfig(analyzer);
 			iwriter = new IndexWriter(directory, indexWriterConfig);
 //      iwriter = new IndexWriter(directory, analyzer, true,
 //          IndexWriter.MaxFieldLength.LIMITED);

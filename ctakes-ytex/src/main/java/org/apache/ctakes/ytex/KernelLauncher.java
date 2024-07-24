@@ -22,7 +22,7 @@ import org.apache.commons.cli.*;
 import org.apache.ctakes.ytex.kernel.tree.InstanceTreeBuilder;
 import org.apache.ctakes.ytex.kernel.tree.TreeMappingInfo;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.access.ContextSingletonBeanFactoryLocator;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
 
@@ -145,9 +145,14 @@ public class KernelLauncher {
 					String contextName = line.getOptionValue("appctx",
 							"kernelApplicationContext");
 					String beans = line.getOptionValue("beans");
-					ApplicationContext appCtx = (ApplicationContext) ContextSingletonBeanFactoryLocator
-							.getInstance(beanRefContext)
-							.useBeanFactory(contextName).getFactory();
+//					ApplicationContext appCtx = (ApplicationContext) ContextSingletonBeanFactoryLocator
+//							.getInstance(beanRefContext)
+//							.useBeanFactory(contextName).getFactory();
+
+					ApplicationContext appCtx
+							= (ApplicationContext)SpringContextUtil.INSTANCE.getApplicationContext( beanRefContext )
+																 .getBean( contextName );
+
 					ApplicationContext appCtxSource = appCtx;
 					if (beans != null) {
 						appCtxSource = new FileSystemXmlApplicationContext(
@@ -217,4 +222,18 @@ public class KernelLauncher {
 				appCtxSource.getBean("treeMappingInfo", TreeMappingInfo.class),
 				storeInstanceMap);
 	}
+
+
+
+	public enum SpringContextUtil {
+		INSTANCE;
+		private ApplicationContext _context;
+		public ApplicationContext getApplicationContext( final String contextPath ) {
+			if ( _context == null ) {
+				_context = new ClassPathXmlApplicationContext( contextPath );
+			}
+			return _context;
+		}
+	}
+
 }

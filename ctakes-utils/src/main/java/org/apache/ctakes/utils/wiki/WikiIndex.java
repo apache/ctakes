@@ -28,10 +28,9 @@ import org.apache.lucene.queryparser.classic.QueryParser;
 import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.ScoreDoc;
-import org.apache.lucene.search.similarities.DefaultSimilarity;
+import org.apache.lucene.search.similarities.ClassicSimilarity;
 import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.util.BytesRef;
-import org.apache.lucene.util.Version;
 
 import java.io.File;
 import java.io.IOException;
@@ -60,7 +59,7 @@ public class WikiIndex {
 	private IndexSearcher indexSearcher;
 	private Analyzer standardAnalyzer;
 	private QueryParser queryParser;
-	private DefaultSimilarity similarity;
+	private ClassicSimilarity similarity;
 	private int numDocs;
   	
   private boolean useCache = true;
@@ -70,7 +69,7 @@ public class WikiIndex {
   	this.maxHits = maxHits;
   	this.indexPath = indexPath;
   	this.searchField = searchField;
-  	this.similarity = approximate ? new ApproximateSimilarity() : new DefaultSimilarity();
+  	this.similarity = approximate ? new ApproximateSimilarity() : new ClassicSimilarity();
   }
   
   public WikiIndex(int maxHits, String indexPath, String searchField){
@@ -85,11 +84,13 @@ public class WikiIndex {
   
   public void initialize() throws CorruptIndexException, IOException {
 
-  	indexReader = DirectoryReader.open(FSDirectory.open(new File(indexPath)));
+  	indexReader = DirectoryReader.open(FSDirectory.open(new File(indexPath).toPath()));
   	numDocs = indexReader.numDocs();
   	indexSearcher = new IndexSearcher(indexReader);
-  	standardAnalyzer = new StandardAnalyzer(Version.LUCENE_40);
-  	queryParser = new QueryParser(Version.LUCENE_40, searchField, standardAnalyzer);
+//  	standardAnalyzer = new StandardAnalyzer(Version.LUCENE_40);
+//  	queryParser = new QueryParser(Version.LUCENE_40, searchField, standardAnalyzer);
+	  standardAnalyzer = new StandardAnalyzer();
+	  queryParser = new QueryParser(searchField, standardAnalyzer);
   	lastQuery = new Cache();
   }
   
@@ -104,7 +105,8 @@ public class WikiIndex {
   	String escaped = QueryParser.escape(queryText);
   	Query query = queryParser.parse(escaped);
   	
-  	ScoreDoc[] scoreDocs = indexSearcher.search(query, null, maxHits).scoreDocs;
+//  	ScoreDoc[] scoreDocs = indexSearcher.search(query, null, maxHits).scoreDocs;
+	  ScoreDoc[] scoreDocs = indexSearcher.search(query, maxHits).scoreDocs;
   	for(ScoreDoc scoreDoc : scoreDocs) {
   		ScoreDoc redirectScoreDoc = handlePossibleRedirect(scoreDoc);
   		Document doc = indexSearcher.doc(redirectScoreDoc.doc);
@@ -265,15 +267,17 @@ public class WikiIndex {
   		return scoreDoc; 
   	}
   	
-  	QueryParser redirectQueryParser = new QueryParser(Version.LUCENE_40, "title", standardAnalyzer);
+//  	QueryParser redirectQueryParser = new QueryParser(Version.LUCENE_40, "title", standardAnalyzer);
+	  QueryParser redirectQueryParser = new QueryParser( "title", standardAnalyzer);
 
   	String redirectTitleNoUnderscores = redirectTitle.replaceAll("_", " ");
   	String redirectTitleQuoted = '"' + redirectTitleNoUnderscores + '"';
   	String redirectTitleEscaped = QueryParser.escape(redirectTitleQuoted);
   	Query redirectQuery  = redirectQueryParser.parse(redirectTitleEscaped);
 
-  	ScoreDoc[] redirectScoreDocs = indexSearcher.search(redirectQuery, null, 1).scoreDocs; 
-  	if(redirectScoreDocs.length < 1) {
+//  	ScoreDoc[] redirectScoreDocs = indexSearcher.search(redirectQuery, null, 1).scoreDocs;
+	  ScoreDoc[] redirectScoreDocs = indexSearcher.search(redirectQuery, 1).scoreDocs;
+	  if(redirectScoreDocs.length < 1) {
   		System.out.println("failed redirect: " + redirectTitle + " -> " + redirectTitle);
   		return scoreDoc; // redirect query did not return any results
   	}
@@ -301,7 +305,8 @@ public class WikiIndex {
   		
 //  		String[] terms = termFreqVector.getTerms();
 //  		int[] freqs = termFreqVector.getTermFrequencies();
-  		TermsEnum termsEnum = terms.iterator(null);
+//  		TermsEnum termsEnum = terms.iterator(null);
+		TermsEnum termsEnum = terms.iterator();
 
   		while(termsEnum.next() != null){
   			BytesRef term = termsEnum.term();

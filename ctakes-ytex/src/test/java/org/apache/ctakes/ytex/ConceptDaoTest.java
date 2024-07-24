@@ -31,7 +31,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.access.ContextSingletonBeanFactoryLocator;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.sql.DataSource;
@@ -53,9 +53,15 @@ public class ConceptDaoTest extends JdbcOperationsHelper {
 
 	@Before
 	public void setUp() throws Exception {
-		appCtx = (ApplicationContext) ContextSingletonBeanFactoryLocator
-				.getInstance("classpath*:org/apache/ctakes/ytex/kernelBeanRefContext.xml")
-				.useBeanFactory("kernelApplicationContext").getFactory();
+//		appCtx = (ApplicationContext) ContextSingletonBeanFactoryLocator
+//				.getInstance("classpath*:org/apache/ctakes/ytex/kernelBeanRefContext.xml")
+//				.useBeanFactory("kernelApplicationContext").getFactory();
+
+		ApplicationContext appCtx
+				= (ApplicationContext)SpringContextUtil.INSTANCE
+				.getApplicationContext( "classpath*:org/apache/ctakes/ytex/kernelBeanRefContext.xml" )
+				.getBean( "kernelApplicationContext" );
+
 		conceptDao = appCtx.getBean(ConceptDao.class);
 
 		JdbcTemplate jdbcTemplate = new JdbcTemplate();
@@ -113,4 +119,20 @@ public class ConceptDaoTest extends JdbcOperationsHelper {
 			appCtx = null;
 		}
 	}
+
+
+
+
+
+	public enum SpringContextUtil {
+		INSTANCE;
+		private ApplicationContext _context;
+		public ApplicationContext getApplicationContext( final String contextPath ) {
+			if ( _context == null ) {
+				_context = new ClassPathXmlApplicationContext( contextPath );
+			}
+			return _context;
+		}
+	}
+
 }

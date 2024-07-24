@@ -21,51 +21,78 @@
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-   <modelVersion>4.0.0</modelVersion>
-   <artifactId>ctakes-tiny-rest</artifactId>
-   <name>Apache cTAKES Tiny Rest Service</name>
-   <parent>
-      <artifactId>ctakes</artifactId>
-      <groupId>org.apache.ctakes</groupId>
-      <version>6.0.0-SNAPSHOT</version>
-   </parent>
-   <description>Tiny Rest Service to run a ctakes pipeline.</description>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>ctakes-tiny-rest</artifactId>
+    <name>Apache cTAKES Tiny Rest Service</name>
+    <parent>
+        <artifactId>ctakes</artifactId>
+        <groupId>org.apache.ctakes</groupId>
+        <version>6.0.0-SNAPSHOT</version>
+    </parent>
+    <description>Tiny Rest Service to run a ctakes pipeline.</description>
 
-   <properties>
-      <springframework.version>4.3.12.RELEASE</springframework.version>
-   </properties>
+    <properties>
+        <spring-mvc.version>6.1.11</spring-mvc.version>
+        <jakarta-api.version>6.0.0</jakarta-api.version>
+        <jakarta-jsp-api.version>3.1.0</jakarta-jsp-api.version>
+        <jakarta-el-api.version>5.0.0</jakarta-el-api.version>
+        <jakarta-websocket-api.version>2.1.0</jakarta-websocket-api.version>
+        <jakarta-security.version>3.0.0</jakarta-security.version>
+    </properties>
 
-   <dependencies>
+    <dependencies>
 
-      <dependency>
-         <groupId>javax.servlet</groupId>
-         <artifactId>servlet-api</artifactId>
-         <version>2.5</version>
-         <scope>provided</scope>
-      </dependency>
-      <dependency>
-         <groupId>org.springframework</groupId>
-         <artifactId>spring-webmvc</artifactId>
-         <version>${springframework.version}</version>
-      </dependency>
-      <dependency>
-         <groupId>javax.annotation</groupId>
-         <artifactId>javax.annotation-api</artifactId>
-         <version>1.3.2</version>
-      </dependency>
-      <dependency>
-         <groupId>com.google.code.gson</groupId>
-         <artifactId>gson</artifactId>
-         <version>${gson.version}</version>
-      </dependency>
-      <dependency>
-         <groupId>org.apache.ctakes</groupId>
-         <artifactId>ctakes-fhir</artifactId>
-      </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring-mvc.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>${jakarta-api.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.servlet.jsp</groupId>
+            <artifactId>jakarta.servlet.jsp-api</artifactId>
+            <version>${jakarta-jsp-api.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.el</groupId>
+            <artifactId>jakarta.el-api</artifactId>
+            <version>${jakarta-el-api.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.websocket</groupId>
+            <artifactId>jakarta.websocket-api</artifactId>
+            <version>${jakarta-websocket-api.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.security.enterprise</groupId>
+            <artifactId>jakarta.security.enterprise-api</artifactId>
+            <version>${jakarta-security.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.annotation</groupId>
+            <artifactId>javax.annotation-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.ctakes</groupId>
+            <artifactId>ctakes-fhir</artifactId>
+        </dependency>
 
-   </dependencies>
+    </dependencies>
 
-   <build>
-   </build>
+    <build>
+    </build>
 
 </project>

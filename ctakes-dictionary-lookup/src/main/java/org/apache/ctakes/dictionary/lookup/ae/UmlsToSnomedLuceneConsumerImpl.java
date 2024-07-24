@@ -92,7 +92,7 @@ public class UmlsToSnomedLuceneConsumerImpl extends UmlsToSnomedConsumerImpl {
          // For the sample dictionary, we use the following lucene index.
          //indexPath = "lookup/snomed-like_codes_sample";
 
-         indexReader = DirectoryReader.open( FSDirectory.open( indexDir ) );
+         indexReader = DirectoryReader.open( FSDirectory.open( indexDir.toPath() ) );
 
          IndexSearcher indexSearcher = new IndexSearcher( indexReader );
          String lookupFieldName = props.getProperty( CUI_MAPPING_PRP_KEY );
@@ -115,7 +115,7 @@ public class UmlsToSnomedLuceneConsumerImpl extends UmlsToSnomedConsumerImpl {
     *
     * @param umlsCode a UMLS CUI
     * @return Set of Snomed codes that map to the given UMLS code (CUI).
-    * @see getSnomedCodes in <code>UmlsToSnomedConsumerImpl</code> for example of using a database
+//    * @see getSnomedCodes in <code>UmlsToSnomedConsumerImpl</code> for example of using a database
     */
    @Override
   protected Set<String> getSnomedCodes( final String umlsCode ) throws DictionaryException {

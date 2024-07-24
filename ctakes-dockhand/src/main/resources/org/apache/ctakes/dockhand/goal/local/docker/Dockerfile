@@ -1,4 +1,4 @@
-FROM openjdk:8-alpine
+FROM openjdk:17-alpine
 
 RUN apk update && apk add ca-certificates openssl wget unzip maven
 

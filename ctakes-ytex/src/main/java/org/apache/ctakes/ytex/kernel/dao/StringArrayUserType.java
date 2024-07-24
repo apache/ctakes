@@ -22,6 +22,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.HibernateException;
 import org.hibernate.engine.spi.SessionImplementor;
+import org.hibernate.engine.spi.SharedSessionContractImplementor;
 import org.hibernate.usertype.UserType;
 
 import java.io.Serializable;
@@ -102,10 +103,11 @@ public class StringArrayUserType implements UserType {
 	public int hashCode(Object x) throws HibernateException {
 		return x.hashCode();
 	}
-	
+
 	@Override
 	public Object nullSafeGet(ResultSet rs, String[] names,
-			SessionImplementor si, Object owner) throws HibernateException,
+//			SessionImplementor si, Object owner) throws HibernateException,
+									  SharedSessionContractImplementor si, Object owner) throws HibernateException,
 			SQLException {
 		String s = rs.getString(names[0]);
 		return stringToSortedSet(s);
@@ -113,7 +115,8 @@ public class StringArrayUserType implements UserType {
 
 	@Override
 	public void nullSafeSet(PreparedStatement st, Object value, int index,
-			SessionImplementor arg3) throws HibernateException, SQLException {
+//			SessionImplementor arg3) throws HibernateException, SQLException {
+									SharedSessionContractImplementor arg3) throws HibernateException, SQLException {
 		st.setString(index, stringArrayToString((String[]) value));
 	}
 

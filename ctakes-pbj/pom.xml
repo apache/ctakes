@@ -19,8 +19,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>ctakes-pbj</artifactId>
-  <name>Apache cTAKES Python Bridge to Java</name>
-   <description>Simplifies the integration of Python applications in cTAKES pipelines.</description>
+    <name>Apache cTAKES Python Bridge to Java</name>
+    <description>Simplifies the integration of Python applications in cTAKES pipelines.</description>
     <parent>
         <groupId>org.apache.ctakes</groupId>
         <artifactId>ctakes</artifactId>
@@ -31,17 +31,14 @@
             <groupId>org.apache.ctakes</groupId>
             <artifactId>ctakes-core</artifactId>
         </dependency>
-     <dependency>
-        <groupId>org.apache.activemq</groupId>
-        <artifactId>activemq-all</artifactId>
-        <version>5.15.10</version>
-        <scope>compile</scope>
-     </dependency>
-     <dependency>
-        <groupId>org.apache.activemq</groupId>
-        <artifactId>artemis-jms-client-all</artifactId>
-        <version>2.19.0</version>
-     </dependency>
+        <dependency>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>activemq-all</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>artemis-jms-client-all</artifactId>
+        </dependency>
     </dependencies>
     <build>
     </build>

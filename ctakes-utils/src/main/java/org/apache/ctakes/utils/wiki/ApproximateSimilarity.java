@@ -18,10 +18,10 @@
  */
 package org.apache.ctakes.utils.wiki;
 
-import org.apache.lucene.search.similarities.DefaultSimilarity;
+import org.apache.lucene.search.similarities.ClassicSimilarity;
 
 
-public class ApproximateSimilarity extends DefaultSimilarity {
+public class ApproximateSimilarity extends ClassicSimilarity {
 
 	/**
 	 * 
@@ -34,7 +34,6 @@ public class ApproximateSimilarity extends DefaultSimilarity {
 		return (float)ApproximateMath.alog(numDocs / (docFreq+1.0))+1; 
 	}
 	
-	@Override
 	/* according to lucene javadocs, DefaultSimilarity.tf is simply a square root -- we can approximate with an
 	 * array of pre-calculated square roots to save time
 	 */

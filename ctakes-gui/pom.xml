@@ -2,31 +2,30 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-   <modelVersion>4.0.0</modelVersion>
-   <parent>
-      <groupId>org.apache.ctakes</groupId>
-      <artifactId>ctakes</artifactId>
-      <version>6.0.0-SNAPSHOT</version>
-   </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.apache.ctakes</groupId>
+        <artifactId>ctakes</artifactId>
+        <version>6.0.0-SNAPSHOT</version>
+    </parent>
 
-   <artifactId>ctakes-gui</artifactId>
-   <name>Apache cTAKES GUI</name>
-   <description>module with gui components and simple run tools</description>
+    <artifactId>ctakes-gui</artifactId>
+    <name>Apache cTAKES GUI</name>
+    <description>module with gui components and simple run tools</description>
 
-   <dependencies>
-      <dependency>
-           <groupId>org.apache.ctakes</groupId>
-           <artifactId>ctakes-core</artifactId>
-       </dependency>
-      <dependency>
-         <groupId>org.hsqldb</groupId>
-         <artifactId>hsqldb</artifactId>
-      </dependency>
-	  <dependency>
-	    <groupId>io.github.classgraph</groupId>
-	    <artifactId>classgraph</artifactId>
-	    <version>${classgraph.version}</version>
-		</dependency>
-   </dependencies>
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.ctakes</groupId>
+            <artifactId>ctakes-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.classgraph</groupId>
+            <artifactId>classgraph</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>

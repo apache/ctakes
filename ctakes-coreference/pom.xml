@@ -19,67 +19,59 @@
     under the License.
 
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<artifactId>ctakes-coreference</artifactId>
-	<name>Apache cTAKES CoReference Resolver</name>
-	<parent>
-		<groupId>org.apache.ctakes</groupId>
-		<artifactId>ctakes</artifactId>
-		<version>6.0.0-SNAPSHOT</version>
-	</parent>
-	<dependencies>
-	     <dependency>
-			<groupId>org.apache.ctakes</groupId>
-			<artifactId>ctakes-coreference-models</artifactId>
-			  <version>${ctakes-models.version}</version>
-		  </dependency>
-		<dependency>
-			<groupId>org.apache.ctakes</groupId>
-			<artifactId>ctakes-temporal</artifactId>
-		</dependency>
-<!--		<dependency>-->
-<!--			<groupId>org.apache.uima</groupId>-->
-<!--			<artifactId>uimafit-core</artifactId>-->
-<!--		</dependency>-->
-<!--		<dependency>-->
-<!--			<groupId>org.apache.uima</groupId>-->
-<!--			<artifactId>uimafit-cpe</artifactId>-->
-<!--		</dependency>-->
-		<dependency>
-			<groupId>org.apache.ctakes</groupId>
-			<artifactId>ctakes-assertion</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.cleartk</groupId>
-			<artifactId>cleartk-ml-liblinear</artifactId>
-		</dependency>
-	</dependencies>
-	<build>
-		<plugins>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>ctakes-coreference</artifactId>
+    <name>Apache cTAKES CoReference Resolver</name>
+    <parent>
+        <groupId>org.apache.ctakes</groupId>
+        <artifactId>ctakes</artifactId>
+        <version>6.0.0-SNAPSHOT</version>
+    </parent>
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.ctakes</groupId>
+            <artifactId>ctakes-coreference-models</artifactId>
+            <version>${ctakes-models.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.ctakes</groupId>
+            <artifactId>ctakes-temporal</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.ctakes</groupId>
+            <artifactId>ctakes-assertion</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.cleartk</groupId>
+            <artifactId>cleartk-ml-liblinear</artifactId>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
             <plugin>
                 <groupId>org.apache.uima</groupId>
                 <artifactId>jcasgen-maven-plugin</artifactId>
             </plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-dependency-plugin</artifactId>
-				<version>${maven-dependency-plugin.version}</version>
-				<executions>
-					<execution>
-						<id>unpack-models</id>
-						<phase>process-resources</phase>
-						<goals>
-							<goal>unpack-dependencies</goal>
-						</goals>
-						<configuration>
-							<includeArtifactIds>ctakes-coreference-models</includeArtifactIds>
-							<excludes>**/META-INF/**</excludes>
-							<outputDirectory>${project.basedir}/../resources</outputDirectory>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>unpack-models</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>unpack-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <includeArtifactIds>ctakes-coreference-models</includeArtifactIds>
+                            <excludes>**/META-INF/**</excludes>
+                            <outputDirectory>${project.basedir}/../resources</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
     </build>
 </project>

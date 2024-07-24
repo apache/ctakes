@@ -19,19 +19,37 @@
 package org.apache.ctakes.ytex.kernel;
 
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.access.ContextSingletonBeanFactoryLocator;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class KernelContextHolder {
 	static ApplicationContext kernelApplicationContext = null;
 	static {
 		String beanRefContext = "classpath*:org/apache/ctakes/ytex/kernelBeanRefContext.xml";
-		kernelApplicationContext = (ApplicationContext) ContextSingletonBeanFactoryLocator
-				.getInstance(beanRefContext).useBeanFactory(
-						"kernelApplicationContext").getFactory();
+//		kernelApplicationContext = (ApplicationContext) ContextSingletonBeanFactoryLocator
+//				.getInstance(beanRefContext).useBeanFactory(
+//						"kernelApplicationContext").getFactory();
+
+		kernelApplicationContext
+				= (ApplicationContext)SpringContextUtil.INSTANCE
+				.getApplicationContext( beanRefContext )
+				.getBean( "kernelApplicationContext" );
+
 	}
 
 	public static ApplicationContext getApplicationContext() {
 		return kernelApplicationContext;
+	}
+
+
+	public enum SpringContextUtil {
+		INSTANCE;
+		private ApplicationContext _context;
+		public ApplicationContext getApplicationContext( final String contextPath ) {
+			if ( _context == null ) {
+				_context = new ClassPathXmlApplicationContext( contextPath );
+			}
+			return _context;
+		}
 	}
 
 }

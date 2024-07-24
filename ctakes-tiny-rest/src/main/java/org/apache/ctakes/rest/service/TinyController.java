@@ -65,21 +65,15 @@ public class TinyController {
          throws AnalysisEngineProcessException {
 //      LOGGER.info( "Processing " + text );
       final String format = responseFormat.orElse( "default" ).toLowerCase();
-      switch ( format ) {
-         case "fhir":
-            return RestPipelineRunner.getInstance().process( new FhirJsonFormatter(), text );
-         case "pretty":
-            return RestPipelineRunner.getInstance().process( new PrettyPrintFormatter(), text );
-         case "property":
-            return RestPipelineRunner.getInstance().process( new PropertyListFormatter(), text );
-         case "umls":
-            return RestPipelineRunner.getInstance().process( new UmlsJsonFormatter(), text );
-         case "cui":
-            return RestPipelineRunner.getInstance().process( new CuiListFormatter(), text );
-         case "xmi":
-            return RestPipelineRunner.getInstance().process( new XmiFormatter(), text );
-      }
-      return RestPipelineRunner.getInstance().process( new FhirJsonFormatter(), text );
+      return switch ( format ) {
+         case "fhir" -> RestPipelineRunner.getInstance().process( new FhirJsonFormatter(), text );
+         case "pretty" -> RestPipelineRunner.getInstance().process( new PrettyPrintFormatter(), text );
+         case "property" -> RestPipelineRunner.getInstance().process( new PropertyListFormatter(), text );
+         case "umls" -> RestPipelineRunner.getInstance().process( new UmlsJsonFormatter(), text );
+         case "cui" -> RestPipelineRunner.getInstance().process( new CuiListFormatter(), text );
+         case "xmi" -> RestPipelineRunner.getInstance().process( new XmiFormatter(), text );
+         default -> RestPipelineRunner.getInstance().process( new FhirJsonFormatter(), text );
+      };
    }
 
 

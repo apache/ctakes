@@ -18,6 +18,7 @@
  */
 package org.apache.ctakes.rest.service;
 
+import jakarta.servlet.ServletException;
 import org.apache.ctakes.core.pipeline.PipelineBuilder;
 import org.apache.ctakes.core.pipeline.PiperFileReader;
 import org.apache.ctakes.rest.util.JCasFormatter;
@@ -30,7 +31,6 @@ import org.apache.uima.util.JCasPool;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
-import javax.servlet.ServletException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

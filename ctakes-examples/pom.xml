@@ -58,7 +58,6 @@
      <dependency>
      	<groupId>org.apache.uima</groupId>
      	<artifactId>uimafit-cpe</artifactId>
-         <version>${uimafit.version}</version>
      </dependency>
   </dependencies>
     <profiles>
@@ -109,7 +108,7 @@
                 <plugin>
                    <groupId>org.codehaus.mojo</groupId>
                    <artifactId>exec-maven-plugin</artifactId>
-                   <executions>
+                    <executions>
                       <execution>
                          <goals>
                             <goal>exec</goal>
@@ -151,7 +150,7 @@
                 <plugin>
                    <groupId>org.codehaus.mojo</groupId>
                    <artifactId>exec-maven-plugin</artifactId>
-                   <configuration>
+                    <configuration>
                       <mainClass>org.apache.uima.tools.cpm.CpmFrame</mainClass>
                       <arguments>
                          <argument />
@@ -182,7 +181,7 @@
                 <plugin>
                    <groupId>org.codehaus.mojo</groupId>
                    <artifactId>exec-maven-plugin</artifactId>
-                   <configuration>
+                    <configuration>
                       <mainClass>org.apache.uima.tools.cvd.CVD</mainClass>
                       <!-- Have to specify at least one parameter otherwise, CVD thinks
                          it's an invalid param because MVN passes null when joining to the mvn thread -->

@@ -21,7 +21,7 @@ package org.apache.ctakes.ytex.kernel.evaluator;
 import org.apache.ctakes.ytex.kernel.tree.InstanceTreeBuilder;
 import org.apache.ctakes.ytex.kernel.tree.Node;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.access.ContextSingletonBeanFactoryLocator;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.io.IOException;
 import java.util.Map;
@@ -32,9 +32,15 @@ public class TreePrinter {
 	public static void main(String args[]) throws IOException, ClassNotFoundException {
 		String beanRefContext = "classpath*:org/apache/ctakes/ytex/kernelBeanRefContext.xml";
 		String contextName = "kernelApplicationContext";
-		ApplicationContext appCtx = (ApplicationContext) ContextSingletonBeanFactoryLocator
-				.getInstance(beanRefContext)
-				.useBeanFactory(contextName).getFactory();
+//		ApplicationContext appCtx = (ApplicationContext) ContextSingletonBeanFactoryLocator
+//				.getInstance(beanRefContext)
+//				.useBeanFactory(contextName).getFactory();
+
+		ApplicationContext appCtx
+				= (ApplicationContext)SpringContextUtil.INSTANCE
+				.getApplicationContext( beanRefContext )
+				.getBean( contextName );
+
 		ApplicationContext appCtxSource = appCtx;
 		InstanceTreeBuilder builder = appCtxSource.getBean(
 				"instanceTreeBuilder", InstanceTreeBuilder.class);
@@ -52,4 +58,17 @@ public class TreePrinter {
 			printTree(child, depth+1);
 		}
 	}
+
+
+	public enum SpringContextUtil {
+		INSTANCE;
+		private ApplicationContext _context;
+		public ApplicationContext getApplicationContext( final String contextPath ) {
+			if ( _context == null ) {
+				_context = new ClassPathXmlApplicationContext( contextPath );
+			}
+			return _context;
+		}
+	}
+
 }

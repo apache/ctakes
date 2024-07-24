@@ -21,10 +21,7 @@ package org.apache.ctakes.core.resource;
 import org.apache.log4j.Logger;
 import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.IndexReader;
-import org.apache.lucene.store.Directory;
-import org.apache.lucene.store.FSDirectory;
-import org.apache.lucene.store.IOContext;
-import org.apache.lucene.store.RAMDirectory;
+import org.apache.lucene.store.*;
 import org.apache.uima.resource.DataResource;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.resource.SharedResourceObject;
@@ -65,14 +62,15 @@ public class LuceneIndexReaderResourceImpl
             if (useMemoryIndex.booleanValue()) {
 
                 iv_logger.info("Loading Lucene Index into memory: " + indexDir);
-                FSDirectory fsd = FSDirectory.open(indexDir);
-                Directory d = new RAMDirectory(fsd, IOContext.DEFAULT);
+//                FSDirectory fsd = FSDirectory.open(indexDir.toPath());
+//                Directory d = new RAMDirectory(fsd, IOContext.DEFAULT);
 //                iv_indexReader = IndexReader.open(d);
+               Directory d = new MMapDirectory( indexDir.toPath() );
                iv_indexReader = DirectoryReader.open( d );
             }
             else {
                 iv_logger.info("Loading Lucene Index: " + indexDir);
-                FSDirectory fsd = FSDirectory.open(indexDir);
+                FSDirectory fsd = FSDirectory.open(indexDir.toPath());
 //                iv_indexReader = IndexReader.open(fsd);
                iv_indexReader = DirectoryReader.open( fsd );
             }

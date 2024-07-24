@@ -102,14 +102,12 @@
 		<!-- <dependency> <groupId>org.apache.ctakes</groupId> <artifactId>ctakes-core-res</artifactId> 
 			<scope>test</scope> </dependency> -->
 		<dependency>
-			<groupId>commons-collections</groupId>
-			<artifactId>commons-collections</artifactId>
-         	<version>${commons-collections.version}</version>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-collections4</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>cglib</groupId>
 			<artifactId>cglib</artifactId>
-			<version>${cglib.version}</version>
 		</dependency>
       <dependency>
          <groupId>org.apache.uima</groupId>
@@ -171,6 +169,7 @@
 			</plugin>
 			<!-- run ant scripts to setup test properties and database -->
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-antrun-plugin</artifactId>
 				<executions>
 					<execution>
@@ -185,7 +184,8 @@
 								<property name="db.type" value="hsql" />
 								<ant antfile="build-setup.xml" dir="${project.basedir}/../ctakes-ytex/scripts" target="test.setup">
 									<property name="config.local" value="${project.build.testOutputDirectory}" />
-									<property name="db.type" value="${db.type}" />
+<!--									<property name="db.type" value="${db.type}" />-->
+									<property name="db.type" value="hsql" />
 									<property name="ytex.test" value="true" />
 									<property name="ctakes.home" value="${project.basedir}/.." />
 								</ant>
@@ -242,6 +242,7 @@
 				</executions>
 			</plugin>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-clean-plugin</artifactId>
 				<configuration>
 					<failOnError>false</failOnError>
