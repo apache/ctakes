@@ -74,7 +74,7 @@ public class TimeXRelationFeaturesExtractor implements RelationFeaturesExtractor
 			for (Map.Entry<Integer, IdentifiedAnnotation> entry : timeDistMap.entrySet()) {
 				Feature feature = new Feature(this.name, entry.getValue().getCoveredText());
 				features.add(feature);
-				//			  logger.info("add time feature: "+ entry.getValue().getCoveredText() + entry.getValue().getTimeClass());
+				//			  LOGGER.info("add time feature: "+ entry.getValue().getCoveredText() + entry.getValue().getTimeClass());
 				Feature indicator = new Feature("TimeXNearby", this.name);
 				features.add(indicator);
 				Feature type = new Feature("TimeXType", entry.getValue().getClass());

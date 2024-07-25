@@ -3,7 +3,8 @@ package org.apache.ctakes.core.util.log;
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.core.pipeline.ProgressManager;
 import org.apache.ctakes.core.resource.FileLocator;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
@@ -30,7 +31,7 @@ import java.util.jar.Manifest;
 )
 final public class FinishedLogger extends JCasAnnotator_ImplBase {
 
-   static private final Logger LOGGER = Logger.getLogger( "ProgressDone" );
+   static private final Logger LOGGER = LogManager.getLogger( "ProgressDone" );
 
    static private final String BUILD_VERSION = "Implementation-Version";
    static private final String BUILD_DATE = "Implementation-Build-Date";

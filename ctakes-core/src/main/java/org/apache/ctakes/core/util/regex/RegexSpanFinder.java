@@ -2,7 +2,8 @@ package org.apache.ctakes.core.util.regex;
 
 
 import org.apache.ctakes.core.util.Pair;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import java.io.Closeable;
 import java.util.ArrayList;
@@ -36,7 +37,7 @@ import java.util.regex.PatternSyntaxException;
  */
 final public class RegexSpanFinder implements Closeable {
 
-   static private final Logger LOGGER = Logger.getLogger( "RegexSpanFinder" );
+   static private final Logger LOGGER = LogManager.getLogger( "RegexSpanFinder" );
 
    static private final int DEFAULT_TIMEOUT_MILLIS = 1000;
    static private final int MIN_TIMEOUT_MILLIS = 100;

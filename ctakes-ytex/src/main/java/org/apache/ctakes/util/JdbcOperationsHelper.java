@@ -1,6 +1,7 @@
 package org.apache.ctakes.util;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcOperations;
 
@@ -11,7 +12,7 @@ import org.springframework.jdbc.core.JdbcOperations;
  */
 public abstract class JdbcOperationsHelper {
 
-	static private final Logger LOGGER = Logger.getLogger(JdbcOperationsHelper.class);
+	static private final Logger LOGGER = LogManager.getLogger(JdbcOperationsHelper.class);
 
 	/**
 	 * Helper function to drop a 'table' from a DB, using SQL syntax

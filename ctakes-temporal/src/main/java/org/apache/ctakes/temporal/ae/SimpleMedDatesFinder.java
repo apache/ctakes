@@ -9,7 +9,8 @@ import org.apache.ctakes.typesystem.type.refsem.Date;
 import org.apache.ctakes.typesystem.type.syntax.Chunk;
 import org.apache.ctakes.typesystem.type.textsem.*;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -42,7 +43,7 @@ import static org.apache.ctakes.temporal.utils.CalendarUtil.NULL_CALENDAR;
 )
 final public class SimpleMedDatesFinder extends JCasAnnotator_ImplBase {
 
-   static private final Logger LOGGER = Logger.getLogger( "SimpleMedDatesFinder" );
+   static private final Logger LOGGER = LogManager.getLogger( "SimpleMedDatesFinder" );
 
    /**
     * specifies the type of window to use for lookup

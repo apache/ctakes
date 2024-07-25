@@ -25,7 +25,8 @@ import org.apache.ctakes.typesystem.type.relation.DegreeOfTextRelation;
 import org.apache.ctakes.typesystem.type.relation.LocationOfTextRelation;
 import org.apache.ctakes.typesystem.type.relation.RelationArgument;
 import org.apache.ctakes.typesystem.type.textsem.*;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -46,7 +47,7 @@ import java.util.Map;
 public class TemplateFillerAnnotator extends JCasAnnotator_ImplBase{
 
     // LOG4J logger based on class name
-    static private final Logger LOGGER = Logger.getLogger( "TemplateFillerAnnotator" );
+    static private final Logger LOGGER = LogManager.getLogger( "TemplateFillerAnnotator" );
 
 
 	/**
@@ -214,7 +215,7 @@ public class TemplateFillerAnnotator extends JCasAnnotator_ImplBase{
 	    for (FeatureStructure binaryTextRelationFS: locationOfTextRelations) {
 	    	
 	    	i++;
-	    	//logger.info("binaryTextRelationFS = " + binaryTextRelationFS);
+	    	//LOGGER.info("binaryTextRelationFS = " + binaryTextRelationFS);
 	    	BinaryTextRelation binaryTextRelation = (BinaryTextRelation) binaryTextRelationFS;
 	    	LocationOfTextRelation locationOfTextRelation = null;
 	    	if (binaryTextRelation instanceof LocationOfTextRelation) {
@@ -282,7 +283,7 @@ public class TemplateFillerAnnotator extends JCasAnnotator_ImplBase{
 	    for (FeatureStructure binaryTextRelationFS: degreeOfTextRelations) {
 	    	
 	    	i++;
-	    	//logger.info("binaryTextRelationFS = " + binaryTextRelationFS);
+	    	//LOGGER.info("binaryTextRelationFS = " + binaryTextRelationFS);
 	    	BinaryTextRelation binaryTextRelation = (BinaryTextRelation) binaryTextRelationFS;
 	    	DegreeOfTextRelation degreeOfTextRelation = null;
 	    	if (binaryTextRelation instanceof DegreeOfTextRelation) {

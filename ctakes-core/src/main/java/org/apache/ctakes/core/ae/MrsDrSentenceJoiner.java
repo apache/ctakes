@@ -2,7 +2,8 @@ package org.apache.ctakes.core.ae;
 
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
 import org.apache.uima.fit.util.JCasUtil;
@@ -29,7 +30,7 @@ import java.util.stream.Collectors;
 )
 final public class MrsDrSentenceJoiner extends JCasAnnotator_ImplBase {
 
-   static private final Logger LOGGER = Logger.getLogger( "MrsDrSentenceJoiner" );
+   static private final Logger LOGGER = LogManager.getLogger( "MrsDrSentenceJoiner" );
 
    /**
     * Joins Sentences with person titles Mr. Mrs. Dr. that have been split by SentenceDetectorBIO.

@@ -31,7 +31,8 @@ import org.apache.ctakes.typesystem.type.structured.DocumentID;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
 import org.apache.ctakes.typesystem.type.util.Pair;
 import org.apache.ctakes.typesystem.type.util.Pairs;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
@@ -68,7 +69,7 @@ public class CdaCasInitializer extends JCasAnnotator_ImplBase
 	protected static final String DEFAULT_DTD_FILE = "org/apache/ctakes/preprocessor/cda/NotesIIST_RTF.DTD";	
 	
     // LOG4J logger based on class name
-    private final Logger logger = Logger.getLogger(getClass().getName());
+    static private final Logger LOGGER = LogManager.getLogger( "CdaCasInitializer" );
 
     private Boolean includeSectionMarkers;
     private TextModifier tm;
@@ -106,13 +107,13 @@ public class CdaCasInitializer extends JCasAnnotator_ImplBase
         int hyphWindow = 3;
 
         try {
-        	logger.info("Hyphen dictionary: " + hyphenfilepath);
+        	LOGGER.info("Hyphen dictionary: " + hyphenfilepath);
 
             tm = new HyphenTextModifierImpl(
             		hyphenfilepath,
                     hyphWindow);
 
-        	logger.info("DTD: " + dtdfilepath);
+        	LOGGER.info("DTD: " + dtdfilepath);
         }
         catch (Exception e) {
             throw new ResourceInitializationException(e);
@@ -133,7 +134,7 @@ public class CdaCasInitializer extends JCasAnnotator_ImplBase
 
           if ( (textMod.getOrigStartOffset() != textMod.getNewStartOffset())
                 || (textMod.getOrigEndOffset() != textMod.getNewEndOffset()) ) {
-             logger.warn( "UNSUPPORTED: TextModification with offset changes." );
+             LOGGER.warn( "UNSUPPORTED: TextModification with offset changes." );
           }
           else {
              sb.replace( textMod.getOrigStartOffset(),
@@ -146,7 +147,7 @@ public class CdaCasInitializer extends JCasAnnotator_ImplBase
     
 	public void process(JCas jcas) throws AnalysisEngineProcessException {
 
-    	logger.info(" process(JCas)");
+    	LOGGER.info(" process(JCas)");
 		
 		String originalText = null;
 	    DocumentMetaData dmd;

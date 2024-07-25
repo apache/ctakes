@@ -3,7 +3,8 @@ package org.apache.ctakes.core.ae;
 import org.apache.ctakes.typesystem.type.constants.CONST;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
 import org.apache.uima.fit.util.JCasUtil;
@@ -19,7 +20,7 @@ import java.util.Collection;
  */
 final public class SubjectSectionFixer extends JCasAnnotator_ImplBase {
 
-   static private final Logger LOGGER = Logger.getLogger( "SubjectSectionFixer" );
+   static private final Logger LOGGER = LogManager.getLogger( "SubjectSectionFixer" );
 
    static private final Collection<String> FAMILY_HISTORY = Arrays.asList(
 //         "FamilyAndSocialHistory_Section", "FamilyEnviroment_Section", "FamilyMedicalHistory_Section" );

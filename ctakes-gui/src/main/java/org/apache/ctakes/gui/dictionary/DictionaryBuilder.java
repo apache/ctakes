@@ -12,7 +12,8 @@ import org.apache.ctakes.gui.dictionary.umls.UmlsTermUtil;
 import org.apache.ctakes.gui.dictionary.util.HsqlUtil;
 import org.apache.ctakes.gui.dictionary.util.JdbcUtil;
 import org.apache.ctakes.gui.dictionary.util.RareWordDbWriter;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import java.io.File;
 import java.sql.Connection;
@@ -26,7 +27,7 @@ import java.util.stream.Collectors;
  */
 final class DictionaryBuilder {
 
-   static private final Logger LOGGER = Logger.getLogger( "DictionaryBuilder" );
+   static private final Logger LOGGER = LogManager.getLogger( "DictionaryBuilder" );
 
    static private final String DEFAULT_DATA_DIR = "org/apache/ctakes/gui/dictionary/data/tiny";
    static public final String CTAKES_APP_DB_PATH = "resources/org/apache/ctakes/dictionary/lookup/fast";

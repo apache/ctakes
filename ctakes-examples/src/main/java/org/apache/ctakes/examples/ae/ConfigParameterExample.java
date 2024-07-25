@@ -20,7 +20,8 @@ package org.apache.ctakes.examples.ae;
 
 import org.apache.ctakes.typesystem.type.syntax.BaseToken;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
@@ -37,7 +38,7 @@ public class ConfigParameterExample extends JCasAnnotator_ImplBase {
 
 	public static final String PARAM_SAVE_ANN = "PARAM_SAVE_ANN";
 	public static final String PARAM_PRINT_ANN = "PARAM_PRINT_ANN";
-	private Logger LOG = Logger.getLogger(getClass().getName());
+	static private final Logger LOGGER = LogManager.getLogger( "ConfigParameterExample" );
 
 	@ConfigurationParameter(name = PARAM_SAVE_ANN, mandatory = false,
 									description = "Example of Options/Parameters Save Annotation?")
@@ -61,7 +62,7 @@ public class ConfigParameterExample extends JCasAnnotator_ImplBase {
 				ann.addToIndexes();
 
 				if (printAnnotation) {
-					LOG.info("Token:" + token.getCoveredText() + " POS:"
+					LOGGER.info("Token:" + token.getCoveredText() + " POS:"
 							+ token.getPartOfSpeech());
 				}
 			}

@@ -5,7 +5,8 @@ import org.apache.ctakes.core.resource.FileLocator;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
 import org.apache.ctakes.utils.struct.CounterMap;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -58,7 +59,7 @@ import java.util.*;
 )
 public class SentenceDetectorAnnotatorBIO extends CleartkAnnotator<String>{
 
-  private Logger logger = Logger.getLogger(SentenceDetectorAnnotatorBIO.class);
+  static private final Logger LOGGER = LogManager.getLogger( "SentenceDetectorAnnotatorBIO" );
   private static final int WINDOW_SIZE = 3;
   
   public static enum FEAT_CONFIG {GILLICK, CHAR, SHAPE, LINE_POS, CHAR_SHAPE, CHAR_POS, CHAR_SHAPE_POS }
@@ -78,7 +79,7 @@ public class SentenceDetectorAnnotatorBIO extends CleartkAnnotator<String>{
   @Override
   public void initialize(UimaContext context)
       throws ResourceInitializationException {
-    logger.info( "Initializing ..." );
+    LOGGER.info( "Initializing ..." );
     super.initialize(context);
     try{
       Scanner scanner = new Scanner(FileLocator.getAsStream(tokenCountFile));
@@ -96,13 +97,13 @@ public class SentenceDetectorAnnotatorBIO extends CleartkAnnotator<String>{
   
   @Override
   public void process(JCas jcas) throws AnalysisEngineProcessException {
-    logger.info( "Processing ..." );
+    LOGGER.info( "Processing ..." );
     String uri=null;
     try{
       uri = ViewUriUtil.getURI(jcas).toString();
-      logger.info(String.format("Processing file with uri %s", uri));
+      LOGGER.info(String.format("Processing file with uri %s", uri));
     }catch(CASRuntimeException e){
-      logger.debug("No uri found, probably not a big deal unless this is an evaluation.");
+      LOGGER.debug("No uri found, probably not a big deal unless this is an evaluation.");
     }
     
     if(featConfig == FEAT_CONFIG.LINE_POS || featConfig == FEAT_CONFIG.CHAR_POS || featConfig == FEAT_CONFIG.CHAR_SHAPE_POS){

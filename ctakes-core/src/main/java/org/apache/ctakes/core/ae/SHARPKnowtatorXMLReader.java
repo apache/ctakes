@@ -33,7 +33,8 @@ import org.apache.ctakes.typesystem.type.refsem.*;
 import org.apache.ctakes.typesystem.type.relation.*;
 import org.apache.ctakes.typesystem.type.structured.DocumentID;
 import org.apache.ctakes.typesystem.type.textsem.*;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.analysis_engine.AnalysisEngine;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.CASRuntimeException;
@@ -64,7 +65,7 @@ import java.util.*;
                    PipeBitInfo.TypeProduct.DEGREE_RELATION, PipeBitInfo.TypeProduct.TEMPORAL_RELATION }
 )
 public class SHARPKnowtatorXMLReader extends JCasAnnotator_ImplBase {
-  static Logger LOGGER = Logger.getLogger(SHARPKnowtatorXMLReader.class);
+  static Logger LOGGER = LogManager.getLogger(SHARPKnowtatorXMLReader.class);
   
   public static final String PARAM_TEXT_DIRECTORY = "TextDirectory";
   @ConfigurationParameter(

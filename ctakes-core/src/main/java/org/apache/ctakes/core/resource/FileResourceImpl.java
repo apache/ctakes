@@ -18,7 +18,8 @@
  */
 package org.apache.ctakes.core.resource;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.resource.DataResource;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.resource.SharedResourceObject;
@@ -33,7 +34,7 @@ import java.net.URL;
 public class FileResourceImpl implements FileResource, SharedResourceObject
 {
     private File iv_file;
-    private Logger iv_logger = Logger.getLogger(getClass().getName());
+    static private final Logger LOGGER = LogManager.getLogger( "FileResourceImpl" );
     
     public void load(DataResource dr) throws ResourceInitializationException
     {
@@ -47,7 +48,7 @@ public class FileResourceImpl implements FileResource, SharedResourceObject
     	}
     	else
     	{
-    		iv_logger.info("URI for data resource is null - using path from URL");
+    		LOGGER.info("URI for data resource is null - using path from URL");
     		URL url = dr.getUrl();
     		if(url != null)
     		{

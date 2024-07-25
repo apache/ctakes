@@ -27,7 +27,8 @@ import org.apache.ctakes.dictionary.lookup.vo.LookupAnnotation;
 import org.apache.ctakes.dictionary.lookup.vo.LookupToken;
 import org.apache.ctakes.typesystem.type.syntax.*;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.annotator.AnnotatorInitializationException;
 import org.apache.uima.cas.text.AnnotationIndex;
@@ -45,7 +46,7 @@ public class DirectLookupInitializerImpl implements LookupInitializer {
    private final String CANONICAL_VARIANT_ATTR = "canonicalATTR";
 
    // LOG4J logger based on class name
-   final private Logger iv_logger = Logger.getLogger( getClass().getName() );
+   final private Logger LOGGER = LogManager.getLogger( getClass().getName() );
 
    public DirectLookupInitializerImpl( final UimaContext uimaContext, final Properties props ) {
       // TODO property validation could be done here
@@ -73,7 +74,7 @@ public class DirectLookupInitializerImpl implements LookupInitializer {
       final AnnotationIndex<Annotation> annotationIndex = indexes.getAnnotationIndex( BaseToken.type );
       for ( Annotation annotation : annotationIndex ) {
          if ( !(annotation instanceof BaseToken) ) {
-            iv_logger.warn( getClass().getName() + " getLookupTokenIterator(..) Annotation is not a BaseToken" );
+            LOGGER.warn( getClass().getName() + " getLookupTokenIterator(..) Annotation is not a BaseToken" );
             continue;
          }
          final boolean isNonLookup = annotation instanceof NewlineToken

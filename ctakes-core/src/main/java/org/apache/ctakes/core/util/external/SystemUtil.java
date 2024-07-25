@@ -1,7 +1,8 @@
 package org.apache.ctakes.core.util.external;
 
 import org.apache.ctakes.core.resource.FileLocator;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 
 import java.io.*;
@@ -25,7 +26,7 @@ import java.util.zip.ZipInputStream;
 final public class SystemUtil {
 
 
-   static private final Logger LOGGER = Logger.getLogger( "SystemUtil" );
+   static private final Logger LOGGER = LogManager.getLogger( "SystemUtil" );
 
 
    private SystemUtil() {

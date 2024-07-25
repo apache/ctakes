@@ -18,8 +18,6 @@
  */
 package org.apache.ctakes.ytex.kernel.dao;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.ctakes.ytex.dao.DBUtil;
 import org.apache.ctakes.ytex.kernel.InfoContentEvaluator;
 import org.apache.ctakes.ytex.kernel.IntrinsicInfoContentEvaluator;
@@ -32,8 +30,6 @@ import java.util.*;
 
 
 public class ClassifierEvaluationDaoImpl implements ClassifierEvaluationDao {
-	private static final Log log = LogFactory
-			.getLog(ClassifierEvaluationDaoImpl.class);
 	private SessionFactory sessionFactory;
 
 	public SessionFactory getSessionFactory() {

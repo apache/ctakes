@@ -22,7 +22,8 @@ import org.apache.ctakes.core.ae.DocumentIdPrinterAnalysisEngine;
 import org.apache.ctakes.core.cc.FileTreeXmiWriter;
 import org.apache.ctakes.core.config.ConfigParameterConstants;
 import org.apache.ctakes.core.cr.TextReader;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UIMAException;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.collection.CollectionReader;
@@ -42,7 +43,7 @@ import java.util.List;
 
 public class RunZoner
 {
-  private static Logger logger = Logger.getLogger(RunZoner.class.getName());
+  private static Logger LOGGER = LogManager.getLogger(RunZoner.class.getName());
   
   File inputDirectory;
   List<File> inputFiles;
@@ -155,9 +156,9 @@ public class RunZoner
       
       builder.add(xWriter);
 
-    logger.info("BEFORE RUNNING PIPELINE...");
+    LOGGER.info("BEFORE RUNNING PIPELINE...");
     SimplePipeline.runPipeline(reader,  builder.createAggregateDescription());
-    logger.info("AFTER RUNNING PIPELINE...COMPLETED");
+    LOGGER.info("AFTER RUNNING PIPELINE...COMPLETED");
   }
 
   public File getInputDirectory()

@@ -5,7 +5,8 @@ import org.apache.ctakes.core.util.doc.NoteSpecs;
 import org.apache.ctakes.core.util.doc.SourceMetadataUtil;
 import org.apache.ctakes.fhir.element.FhirElementFactory;
 import org.apache.ctakes.typesystem.type.structured.SourceData;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.jcas.JCas;
 import org.hl7.fhir.dstu3.model.*;
 
@@ -22,7 +23,7 @@ import java.util.stream.Collectors;
  */
 final public class FhirNoteSpecs {
 
-   static private final Logger LOGGER = Logger.getLogger( "FhirNoteSpecs" );
+   static private final Logger LOGGER = LogManager.getLogger( "FhirNoteSpecs" );
 
    // ClinicalNote is not yet a fhir resource, but it may be in the future and is the best fit.
    // http://wiki.hl7.org/index.php?title=ClinicalNote_FHIR_Resource_Proposal

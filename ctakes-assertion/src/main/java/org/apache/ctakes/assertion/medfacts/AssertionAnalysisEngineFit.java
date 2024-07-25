@@ -7,7 +7,8 @@ import org.apache.ctakes.assertion.stub.*;
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.core.resource.FileLocator;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
@@ -40,7 +41,7 @@ import static org.apache.ctakes.typesystem.type.constants.CONST.ATTR_SUBJECT_PAT
 )
 public class AssertionAnalysisEngineFit extends JCasAnnotator_ImplBase {
 
-   static private final Logger LOGGER = Logger.getLogger( "AssertionAnalysisEngineFit" );
+   static private final Logger LOGGER = LogManager.getLogger( "AssertionAnalysisEngineFit" );
 
    static public final String ASSERTION_MODEL_PARAM = "assertionModelResource";
    static public final String SCOPE_MODEL_PARAM = "scopeModelResource";

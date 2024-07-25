@@ -19,8 +19,6 @@
 package org.apache.ctakes.ytex.R;
 
 import org.apache.commons.cli.*;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.ctakes.ytex.kernel.FileUtil;
 import org.apache.ctakes.ytex.kernel.InstanceData;
 import org.apache.ctakes.ytex.kernel.KernelContextHolder;
@@ -36,7 +34,6 @@ import java.util.SortedSet;
 
 
 public class RGramMatrixExporterImpl implements RGramMatrixExporter {
-	private static final Log log = LogFactory.getLog(RGramMatrixExporter.class);
 
 	@SuppressWarnings("static-access")
 	public static void main(String args[]) throws IOException {

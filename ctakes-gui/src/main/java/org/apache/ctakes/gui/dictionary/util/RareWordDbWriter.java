@@ -3,7 +3,8 @@ package org.apache.ctakes.gui.dictionary.util;
 import org.apache.ctakes.core.util.annotation.SemanticTui;
 import org.apache.ctakes.gui.dictionary.umls.Concept;
 import org.apache.ctakes.gui.dictionary.umls.VocabularyStore;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -23,7 +24,7 @@ import java.util.stream.Collectors;
  */
 final public class RareWordDbWriter {
 
-   static private final Logger LOGGER = Logger.getLogger( "RareWordDbWriter" );
+   static private final Logger LOGGER = LogManager.getLogger( "RareWordDbWriter" );
 
 
    private RareWordDbWriter() {

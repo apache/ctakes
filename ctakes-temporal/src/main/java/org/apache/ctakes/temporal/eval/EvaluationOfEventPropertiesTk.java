@@ -47,7 +47,8 @@
 //import java.util.logging.Formatter;
 //import java.util.logging.Level;
 //import java.util.logging.LogRecord;
-//import java.util.logging.Logger;
+//import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 //
 ////import org.apache.ctakes.temporal.ae.ContextualModalityAnnotator;
 //import org.apache.ctakes.temporal.ae.DocTimeRelWithTreeAnnotator;

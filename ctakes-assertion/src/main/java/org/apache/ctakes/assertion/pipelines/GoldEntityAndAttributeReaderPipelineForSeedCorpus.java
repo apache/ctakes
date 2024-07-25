@@ -28,7 +28,8 @@ import org.apache.ctakes.core.ae.SHARPKnowtatorXMLReader;
 import org.apache.ctakes.core.cc.FileTreeXmiWriter;
 import org.apache.ctakes.core.config.ConfigParameterConstants;
 import org.apache.ctakes.core.cr.FileTreeReader;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UIMAException;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.collection.CollectionReaderDescription;
@@ -56,12 +57,12 @@ import java.util.HashMap;
  */
 public class GoldEntityAndAttributeReaderPipelineForSeedCorpus {
 	
-	static final Logger logger = Logger.getLogger(GoldEntityAndAttributeReaderPipelineForSeedCorpus.class.getName());
+	static final Logger LOGGER = LogManager.getLogger(GoldEntityAndAttributeReaderPipelineForSeedCorpus.class.getName());
 
 	public static void main(String[] args) throws UIMAException, IOException {
 		
-		logger.warn("This should be run with one command-line argument that is the parent UMLS_CEM directory.");
-		logger.warn("Also, make sure each ss1_batch* directory has both a Knowtator/text directory and a Knowtator_XML directory (not the underscore in the xml directory, not a space)");
+		LOGGER.warn("This should be run with one command-line argument that is the parent UMLS_CEM directory.");
+		LOGGER.warn("Also, make sure each ss1_batch* directory has both a Knowtator/text directory and a Knowtator_XML directory (not the underscore in the xml directory, not a space)");
 		
 		if (args.length != 1)
 		{
@@ -82,11 +83,11 @@ public class GoldEntityAndAttributeReaderPipelineForSeedCorpus {
 	
 	public static void readSharpSeedUmlsCem(File parentDirectory, File trainDirectory, File testDirectory, File devDirectory)
 			throws ResourceInitializationException, UIMAException, IOException {
-//		logger.info("parent directory: " + parentDirectoryString);
+//		LOGGER.info("parent directory: " + parentDirectoryString);
 //		File parentDirectory = new File(parentDirectoryString);
 		if (!parentDirectory.exists())
 		{
-			logger.fatal(String.format("parent directory %s does not exist! exiting!", parentDirectory.getAbsolutePath()));
+			LOGGER.fatal(String.format("parent directory %s does not exist! exiting!", parentDirectory.getAbsolutePath()));
 			return;
 		}
 		
@@ -102,11 +103,11 @@ public class GoldEntityAndAttributeReaderPipelineForSeedCorpus {
 		for (File currentBatchDirectory : batchDirectories)
 		{
 			
-			logger.info("current batch directory: " + currentBatchDirectory.getName());
+			LOGGER.info("current batch directory: " + currentBatchDirectory.getName());
 			
 			if (!currentBatchDirectory.exists())
 			{
-				logger.fatal(String.format("current batch directory does not exist! exiting! [\"%s\"]", currentBatchDirectory.toString()));
+				LOGGER.fatal(String.format("current batch directory does not exist! exiting! [\"%s\"]", currentBatchDirectory.toString()));
 				continue;
 			}
 			
@@ -125,7 +126,7 @@ public class GoldEntityAndAttributeReaderPipelineForSeedCorpus {
 					!textDirectory.isDirectory() ||
 					!xmlDirectory.isDirectory())
 			{
-				logger.error("one of the directories does not exist! skipping...");
+				LOGGER.error("one of the directories does not exist! skipping...");
 				continue;
 			}
 			
@@ -213,7 +214,7 @@ public class GoldEntityAndAttributeReaderPipelineForSeedCorpus {
 			SimplePipeline.runPipeline(collectionReader, aggregate.createAggregateDescription());
 		}
 
-		logger.info("Finished!");
+		LOGGER.info("Finished!");
 	}
 	
 	public static void readSharpStratifiedUmls(File releaseDirectory, File trainDirectory, File testDirectory, File devDirectory) throws UIMAException, IOException{
@@ -355,7 +356,7 @@ public class GoldEntityAndAttributeReaderPipelineForSeedCorpus {
 		}
 
 		SimplePipeline.runPipeline(collectionReader, aggregate.createAggregateDescription());
-		logger.info("Finished!");
+		LOGGER.info("Finished!");
 	}
 
 	public static void readNegexTestSet(File inputFile, File preprocessedDirectory)
@@ -392,7 +393,7 @@ public class GoldEntityAndAttributeReaderPipelineForSeedCorpus {
 		}
 
 		SimplePipeline.runPipeline(collectionReader, aggregate.createAggregateDescription());
-		logger.info("Finished!");
+		LOGGER.info("Finished!");
 	}
 
 	public static void readMiPACQ(File inputDirectory, File preprocessedDirectory, File testDirectory, File devDirectory)
@@ -448,7 +449,7 @@ public class GoldEntityAndAttributeReaderPipelineForSeedCorpus {
 			SimplePipeline.runPipeline(collectionReader, aggregate.createAggregateDescription());
 		}
 			
-		logger.info("Finished!");
+		LOGGER.info("Finished!");
 	}
 
 }

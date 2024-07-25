@@ -34,7 +34,8 @@ import org.apache.ctakes.typesystem.type.textsem.EntityMention;
 import org.apache.ctakes.typesystem.type.textsem.EventMention;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -64,7 +65,7 @@ import java.util.*;
  */
 public abstract class WindowedAssertionCleartkAnalysisEngine extends
                                                              CleartkAnnotator<String> {
-   Logger logger = Logger.getLogger( WindowedAssertionCleartkAnalysisEngine.class );
+   Logger LOGGER = LogManager.getLogger( WindowedAssertionCleartkAnalysisEngine.class );
 
    public static final String PARAM_GOLD_VIEW_NAME = "GoldViewName";
 
@@ -284,7 +285,7 @@ public abstract class WindowedAssertionCleartkAnalysisEngine extends
       }
 
       if ( documentId != null ) {
-         logger.debug( "processing next doc: " + documentId );
+         LOGGER.debug( "processing next doc: " + documentId );
          // set the domain to be FeatureFunction'ed into all extractors
          if ( !fileToDomain.isEmpty() && ffDomainAdaptor != null ) {
             domainId = fileToDomain.get( documentId );
@@ -294,7 +295,7 @@ public abstract class WindowedAssertionCleartkAnalysisEngine extends
             domainFeature = fileToDomain.get( documentId );
          }
       } else {
-         logger.debug( "processing next doc (doc id is null)" );
+         LOGGER.debug( "processing next doc (doc id is null)" );
       }
 
       this.lastLabel = "<BEGIN>";
@@ -363,7 +364,7 @@ public abstract class WindowedAssertionCleartkAnalysisEngine extends
 
          for ( IdentifiedAnnotation identifiedAnnotation : entities ) {
             if ( identifiedAnnotation.getPolarity() == -1 ) {
-               logger.debug( String.format( " - identified annotation: [%d-%d] polarity %d (%s)",
+               LOGGER.debug( String.format( " - identified annotation: [%d-%d] polarity %d (%s)",
                      identifiedAnnotation.getBegin(),
                      identifiedAnnotation.getEnd(),
                      identifiedAnnotation.getPolarity(),

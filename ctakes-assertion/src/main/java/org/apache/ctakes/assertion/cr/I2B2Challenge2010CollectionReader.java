@@ -22,7 +22,8 @@ import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.typesystem.type.constants.CONST;
 import org.apache.ctakes.typesystem.type.structured.DocumentID;
 import org.apache.ctakes.typesystem.type.textsem.EventMention;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.cas.CAS;
 import org.apache.uima.cas.CASException;
 import org.apache.uima.collection.CollectionException;
@@ -61,7 +62,7 @@ public class I2B2Challenge2010CollectionReader extends CollectionReader_ImplBase
 	private String mEncoding = null;
 //	Pattern conPatt = Pattern.compile("c=\"(.*)\" (\\d+):(\\d+) (\\d+):(\\d+)\\|\\|t=\"(.*)\"");
 	Pattern astPatt = Pattern.compile("c=\"(.*)\" (\\d+):(\\d+) (\\d+):(\\d+)\\|\\|t=\"(.*)\"\\|\\|a=\"(.*)\"");
-	Logger logger = Logger.getLogger(this.getClass());
+	Logger LOGGER = LogManager.getLogger(this.getClass());
 	HashMap<String,String> conLocs = new HashMap<String, String>();
 	
 	
@@ -98,7 +99,7 @@ public class I2B2Challenge2010CollectionReader extends CollectionReader_ImplBase
 		
 		File file = docs[index];
 		String fn = file.getName();
-		logger.info("Reading file: " + fn);
+		LOGGER.info("Reading file: " + fn);
 		fn = fn.substring(0, fn.lastIndexOf('.'));
 		DocumentID docId = new DocumentID(jcas);
 		docId.setDocumentID(fn);
@@ -183,7 +184,7 @@ public class I2B2Challenge2010CollectionReader extends CollectionReader_ImplBase
 		}
 		
 		index++;
-		logger.info("Done reading file: " + fn);
+		LOGGER.info("Done reading file: " + fn);
 	}
 
 	@Override

@@ -4,7 +4,8 @@ package org.apache.ctakes.dictionary.cased.dictionary;
 import org.apache.ctakes.dictionary.cased.lookup.CandidateTerm;
 import org.apache.ctakes.dictionary.cased.lookup.LookupToken;
 import org.apache.ctakes.dictionary.cased.util.jdbc.JdbcUtil;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 
 import java.sql.PreparedStatement;
@@ -28,7 +29,7 @@ final public class JdbcDictionary implements CasedDictionary {
 
    static public final String DICTIONARY_TYPE = "JDBC";
 
-   static private final Logger LOGGER = Logger.getLogger( "JdbcDictionary" );
+   static private final Logger LOGGER = LogManager.getLogger( "JdbcDictionary" );
 
    static private final String snomed_rxnorm_2020aa_url
          = "jdbc:hsqldb:file:resources/org/apache/ctakes/dictionary/lookup/cased/sno_rx_2020aa/sno_rx_2020aa";

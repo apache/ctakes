@@ -1,6 +1,7 @@
 package org.apache.ctakes.gui.dictionary.umls;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -18,7 +19,7 @@ public enum VocabularyStore {
       return INSTANCE;
    }
 
-   private final Logger LOGGER = Logger.getLogger( "Vocabulary" );
+   private final Logger LOGGER = LogManager.getLogger( "Vocabulary" );
 
    private final Map<String, Class<?>> _vocabularyClasses = new HashMap<>();
 

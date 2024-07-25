@@ -18,8 +18,8 @@
  */
 package org.apache.ctakes.ytex.kernel.dao;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.hibernate.HibernateException;
 
 import java.io.Serializable;
@@ -30,7 +30,7 @@ import java.sql.Types;
 import java.util.*;
 
 public class SortedSetUserType {
-	private static final Log log = LogFactory.getLog(SortedSetUserType.class);
+	private static final Logger LOGGER = LogManager.getLogger("SortedSetUserType");
 
 	public int[] sqlTypes() {
 		return new int[] { Types.CHAR };

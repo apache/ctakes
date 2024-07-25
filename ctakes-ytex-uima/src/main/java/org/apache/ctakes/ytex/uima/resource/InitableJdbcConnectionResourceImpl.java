@@ -46,7 +46,8 @@ package org.apache.ctakes.ytex.uima.resource;
 
 import org.apache.ctakes.core.resource.JdbcConnectionResource;
 import org.apache.ctakes.ytex.uima.ApplicationContextHolder;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.resource.DataResource;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.resource.SharedResourceObject;
@@ -71,7 +72,7 @@ import java.util.Properties;
 public class InitableJdbcConnectionResourceImpl implements JdbcConnectionResource,
 		SharedResourceObject
 {
-    private Logger iv_logger = Logger.getLogger(getClass().getName());
+    private Logger LOGGER = LogManager.getLogger(getClass().getName());
 
     /**
 	 * JDBC driver ClassName.
@@ -140,7 +141,7 @@ public class InitableJdbcConnectionResourceImpl implements JdbcConnectionResourc
 		{            
 //			if (keepAlive.booleanValue())
 //			{
-//                iv_logger.info("Instantiating wrapped connection.");
+//                LOGGER.info("Instantiating wrapped connection.");
 //				iv_conn = new WrappedConnection(username,
 //						password,
 //						driverClassName,
@@ -155,7 +156,7 @@ public class InitableJdbcConnectionResourceImpl implements JdbcConnectionResourc
 						password);
 //			}
 //
-			iv_logger.info("Connection established to: " + urlStr);
+			LOGGER.info("Connection established to: " + urlStr);
             
             if (isolationStr != null)
             {
@@ -163,7 +164,7 @@ public class InitableJdbcConnectionResourceImpl implements JdbcConnectionResourc
                 Class<?> connClass = Class.forName("java.sql.Connection");
                 Field f = connClass.getField(isolationStr);
                 int level = f.getInt(null);
-                iv_logger.info("Connection transaction isolation level set: " +
+                LOGGER.info("Connection transaction isolation level set: " +
                         isolationStr + "(" + level +")");
                 iv_conn.setTransactionIsolation(level);
             }            

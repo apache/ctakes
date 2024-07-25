@@ -1,7 +1,8 @@
 package org.apache.ctakes.gui.component;
 
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,7 +14,7 @@ import java.awt.*;
  */
 public class CellRendererLabel extends JLabel {
 
-   static private final Logger LOGGER = Logger.getLogger( "CellRendererLabel" );
+   static private final Logger LOGGER = LogManager.getLogger( "CellRendererLabel" );
 
    public CellRendererLabel() {
       super();

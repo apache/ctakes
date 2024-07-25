@@ -10,7 +10,8 @@ import org.apache.ctakes.typesystem.type.relation.CoreferenceRelation;
 import org.apache.ctakes.typesystem.type.relation.RelationArgument;
 import org.apache.ctakes.typesystem.type.syntax.ConllDependencyNode;
 import org.apache.ctakes.typesystem.type.textsem.Markable;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.CASException;
 import org.apache.uima.fit.descriptor.ConfigurationParameter;
@@ -31,7 +32,7 @@ import java.util.*;
         dependencies = { PipeBitInfo.TypeProduct.MARKABLE, PipeBitInfo.TypeProduct.COREFERENCE_RELATION, PipeBitInfo.TypeProduct.DEPENDENCY_NODE }
 )
 public class CopyCoreferenceRelations extends org.apache.uima.fit.component.JCasAnnotator_ImplBase {
-    private static Logger logger = Logger.getLogger(EvaluationOfEventCoreference.class);
+    private static final Logger LOGGER = LogManager.getLogger( "CopyCoreferenceRelations" );
     private static final double DROPOUT_RATE = 0.1;
 
     // TODO - make document aware for mention-cluster coreference? Not as easy as relation remover because this should work for
@@ -72,7 +73,7 @@ public class CopyCoreferenceRelations extends org.apache.uima.fit.component.JCas
                 NonEmptyFSList element = (NonEmptyFSList) head;
                 Markable goldMarkable = (Markable) element.getHead();
                 if(goldMarkable == null){
-                    logger.error(String.format("Found an unexpected null gold markable"));
+                    LOGGER.error(String.format("Found an unexpected null gold markable"));
                 }
                 boolean mapped = mapGoldMarkable(jcas, goldMarkable, gold2sys, depIndex);
 
@@ -82,7 +83,7 @@ public class CopyCoreferenceRelations extends org.apache.uima.fit.component.JCas
                     if(!(goldMarkable.getBegin() < 0 || goldMarkable.getEnd() >= jcas.getDocumentText().length())){
                         text = goldMarkable.getCoveredText();
                     }
-                    logger.warn(String.format("There is a gold markable %s [%d, %d] which could not map to a system markable.",
+                    LOGGER.warn(String.format("There is a gold markable %s [%d, %d] which could not map to a system markable.",
                             text, goldMarkable.getBegin(), goldMarkable.getEnd()));
                     removeChain = true;
                     break;
@@ -162,7 +163,7 @@ public class CopyCoreferenceRelations extends org.apache.uima.fit.component.JCas
         }else{
             // Have seen some instances where anafora writes a span that is not possible, log them
             // so they can be found and fixed:
-            logger.warn(String.format("There is a markable with span [%d, %d] in a document with length %d\n",
+            LOGGER.warn(String.format("There is a markable with span [%d, %d] in a document with length %d\n",
                     goldMarkable.getBegin(), goldMarkable.getEnd(), jcas.getDocumentText().length()));
             return false;
         }

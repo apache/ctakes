@@ -1,7 +1,8 @@
 package org.apache.ctakes.gui.util;
 
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import java.awt.*;
 
@@ -12,7 +13,7 @@ import java.awt.*;
  */
 final public class ColorFactory {
 
-   static private final Logger LOGGER = Logger.getLogger( "ColorFactory" );
+   static private final Logger LOGGER = LogManager.getLogger( "ColorFactory" );
 
    private ColorFactory() {
    }

@@ -22,12 +22,12 @@ import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import org.apache.commons.cli.*;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.ctakes.ytex.kernel.IntrinsicInfoContentEvaluator;
 import org.apache.ctakes.ytex.kernel.KernelContextHolder;
 import org.apache.ctakes.ytex.kernel.model.ConcRel;
 import org.apache.ctakes.ytex.kernel.model.ConceptGraph;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowCallbackHandler;
@@ -70,7 +70,7 @@ public class ConceptDaoImpl implements ConceptDao {
 			"C1274012", "C1274013", "C1276325", "C1274014", "C1274015",
 			"C1274021", "C1443286", "C1274012", "C2733115" };
 	private static Set<String> defaultForbiddenConcepts;
-	private static final Log log = LogFactory.getLog(ConceptDaoImpl.class);
+	private static final Logger LOGGER = LogManager.getLogger("ConceptDaoImpl");
 
 	static {
 		defaultForbiddenConcepts = new HashSet<String>();
@@ -194,11 +194,12 @@ public class ConceptDaoImpl implements ConceptDao {
 	/**
 	 * add the relationship to the concept map
 	 * 
-	 * @param conceptMap
-	 * @param conceptIndexMap
-	 * @param conceptList
+	 * @param cg
 	 * @param roots
-	 * @param conceptPair
+	 * @param childCUI
+	 * @param parentCUI
+	 * @param checkCycle
+	 * @param forbiddenConcepts
 	 */
 	private void addRelation(ConceptGraph cg, Set<String> roots,
 			String childCUI, String parentCUI, boolean checkCycle,
@@ -206,8 +207,8 @@ public class ConceptDaoImpl implements ConceptDao {
 		if (forbiddenConcepts.contains(childCUI)
 				|| forbiddenConcepts.contains(parentCUI)) {
 			// ignore relationships to useless concepts
-			if (log.isDebugEnabled())
-				log.debug("skipping relation because of forbidden concept: par="
+			if ( LOGGER.isDebugEnabled())
+				LOGGER.debug("skipping relation because of forbidden concept: par="
 						+ parentCUI + " child=" + childCUI);
 			return;
 		}
@@ -237,7 +238,7 @@ public class ConceptDaoImpl implements ConceptDao {
 			boolean bCycle = !parNull && crChild != null && checkCycle
 					&& checkCycle(crPar, crChild);
 			if (bCycle) {
-				log.warn("skipping relation that induces cycle: par="
+				LOGGER.warn("skipping relation that induces cycle: par="
 						+ parentCUI + ", child=" + childCUI);
 			} else {
 				if (crChild == null) {
@@ -266,8 +267,8 @@ public class ConceptDaoImpl implements ConceptDao {
 			throws IOException {
 		ConceptGraph conceptGraph = this.readConceptGraph(name);
 		if (conceptGraph != null) {
-			if (log.isWarnEnabled())
-				log.warn("createConceptGraph(): concept graph already exists, will not create a new one.  Delete existing concept graph if you want to recreate it.");
+			if ( LOGGER.isWarnEnabled())
+				LOGGER.warn("createConceptGraph(): concept graph already exists, will not create a new one.  Delete existing concept graph if you want to recreate it.");
 		} else {
 			String outputDir = dir;
 			if (Strings.isNullOrEmpty(outputDir)) {
@@ -277,8 +278,8 @@ public class ConceptDaoImpl implements ConceptDao {
 				throw new IllegalArgumentException(
 						"could not determine default concept graph directory; please set property org.apache.ctakes.ytex.conceptGraphDir");
 			}
-			if (log.isInfoEnabled())
-				log.info("createConceptGraph(): file not found, creating concept graph from database.");
+			if ( LOGGER.isInfoEnabled())
+				LOGGER.info("createConceptGraph(): file not found, creating concept graph from database.");
 			final ConceptGraph cg = new ConceptGraph();
 			final Set<String> roots = new HashSet<String>();
 			this.jdbcTemplate.query(query, new RowCallbackHandler() {
@@ -292,7 +293,7 @@ public class ConceptDaoImpl implements ConceptDao {
 							forbiddenConcepts);
 					nRowsProcessed++;
 					if (nRowsProcessed % 10000 == 0) {
-						log.info("processed " + nRowsProcessed + " edges");
+						LOGGER.info("processed " + nRowsProcessed + " edges");
 					}
 				}
 			});
@@ -300,8 +301,8 @@ public class ConceptDaoImpl implements ConceptDao {
 			// if there is only one potential root, use it
 			// else use a synthetic root and add all the roots as its children
 			String rootId = null;
-			if (log.isDebugEnabled())
-				log.debug("roots: " + roots);
+			if ( LOGGER.isDebugEnabled())
+				LOGGER.debug("roots: " + roots);
 			if (roots.size() == 1) {
 				rootId = roots.iterator().next();
 			} else {
@@ -319,7 +320,7 @@ public class ConceptDaoImpl implements ConceptDao {
 			// can't get the maximum depth unless we're sure there are no
 			// cycles
 			if (checkCycle) {
-				log.info("computing intrinsic info for concept graph: " + name);
+				LOGGER.info("computing intrinsic info for concept graph: " + name);
 				this.intrinsicInfoContentEvaluator
 						.evaluateIntrinsicInfoContent(name, outputDir, cg);
 			}
@@ -338,8 +339,8 @@ public class ConceptDaoImpl implements ConceptDao {
 		ConceptGraph cg = this.readConceptGraph(name);
 		if (cg != null) {
 			this.initializeConceptGraph(cg);
-			if (log.isInfoEnabled()) {
-				log.info(String.format("concept graph %s, vertices: %s", name,
+			if ( LOGGER.isInfoEnabled()) {
+				LOGGER.info(String.format("concept graph %s, vertices: %s", name,
 						cg.getConceptList().size()));
 			}
 		}
@@ -474,16 +475,16 @@ public class ConceptDaoImpl implements ConceptDao {
 							"could not determine default concept graph directory; please set property org.apache.ctakes.ytex.conceptGraphDir");
 				}
 				File f = new File(cdir + "/" + name + ".gz");
-				log.info("could not load conceptGraph from classpath, attempt to load from: "
+				LOGGER.info("could not load conceptGraph from classpath, attempt to load from: "
 						+ f.getAbsolutePath());
 				if (f.exists()) {
 					resIs = new FileInputStream(f);
 				} else {
-					log.info(f.getAbsolutePath()
+					LOGGER.info(f.getAbsolutePath()
 							+ " not found, cannot load concept graph");
 				}
 			} else {
-				log.info("loading concept graph from "
+				LOGGER.info("loading concept graph from "
 						+ this.getClass().getClassLoader()
 								.getResource(CONCEPT_GRAPH_PATH + name + ".gz"));
 			}
@@ -492,7 +493,7 @@ public class ConceptDaoImpl implements ConceptDao {
 						new GZIPInputStream(resIs)));
 				return (ConceptGraph) is.readObject();
 			} else {
-				log.info("could not load conceptGraph: " + name);
+				LOGGER.info("could not load conceptGraph: " + name);
 				return null;
 			}
 		} catch (IOException ioe) {
@@ -572,7 +573,7 @@ public class ConceptDaoImpl implements ConceptDao {
 		ObjectOutputStream os = null;
 		String outputDir = dir;
 		File cgFile = new File(outputDir + "/" + name + ".gz");
-		log.info("writing concept graph: " + cgFile.getAbsolutePath());
+		LOGGER.info("writing concept graph: " + cgFile.getAbsolutePath());
 		if (!cgFile.getParentFile().exists())
 			cgFile.getParentFile().mkdirs();
 		try {

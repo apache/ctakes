@@ -24,7 +24,8 @@ import org.apache.ctakes.assertion.stub.SingleDocumentProcessor;
 import org.apache.ctakes.typesystem.type.syntax.BaseToken;
 import org.apache.ctakes.typesystem.type.syntax.NewlineToken;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.cas.FSIterator;
 import org.apache.uima.cas.text.AnnotationIndex;
 import org.apache.uima.jcas.JCas;
@@ -36,7 +37,7 @@ import java.util.List;
 public class SingleDocumentProcessorCtakes extends SingleDocumentProcessor
 {
 	
-  Logger logger = Logger.getLogger(SingleDocumentProcessorCtakes.class.getName());
+  Logger LOGGER = LogManager.getLogger(SingleDocumentProcessorCtakes.class.getName());
   
   protected JCas jcas;
 

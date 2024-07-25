@@ -30,7 +30,8 @@ import org.apache.ctakes.typesystem.type.syntax.WordToken;
 import org.apache.ctakes.typesystem.type.textsem.*;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -71,7 +72,7 @@ import java.util.stream.Collectors;
 )
 public class DocTimeRelAnnotator extends CleartkAnnotator<String> {
 
-   static private final Logger LOGGER = Logger.getLogger( "DocTimeRelAnnotator" );
+   static private final Logger LOGGER = LogManager.getLogger( "DocTimeRelAnnotator" );
 
 	public static AnalysisEngineDescription createDataWriterDescription(
 			Class<? extends DataWriter<String>> dataWriterClass,

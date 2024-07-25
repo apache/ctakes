@@ -18,8 +18,8 @@
  */
 package org.apache.ctakes.ytex.kernel.tree;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.sql.DataSource;
@@ -27,7 +27,7 @@ import java.io.*;
 import java.util.*;
 
 public class InstanceTreeBuilderImpl implements InstanceTreeBuilder {
-	static final Log log = LogFactory.getLog(InstanceTreeBuilderImpl.class);	
+	static final Logger LOGGER = LogManager.getLogger("InstanceTreeBuilderImpl");
 	JdbcTemplate jdbcTemplate;
 	private DataSource dataSource;
 
@@ -106,7 +106,8 @@ public class InstanceTreeBuilderImpl implements InstanceTreeBuilder {
 
 	/**
 	 * run 'preparation' statements.  These may e.g. create temporary tables in the database.
-	 * @param prepareStatementList
+	 * @param prepareScript
+	 * @param prepareScriptDelimiter
 	 */
 	protected void prepare(String prepareScript, String prepareScriptDelimiter) {
 		if(prepareScript != null && prepareScript.length() > 0) {
@@ -179,8 +180,8 @@ public class InstanceTreeBuilderImpl implements InstanceTreeBuilder {
 				// get the node from the tree that correponds to this node
 				Node parent = nodeKeyMap.get(new NodeKey(parentTmp));
 				if (parent == null) {
-					if (log.isWarnEnabled()) {
-						log.warn("couldn't find node for key: " + parentTmp);
+					if ( LOGGER.isWarnEnabled()) {
+						LOGGER.warn("couldn't find node for key: " + parentTmp);
 					}
 				} else {
 					// found the parent - add the subtree

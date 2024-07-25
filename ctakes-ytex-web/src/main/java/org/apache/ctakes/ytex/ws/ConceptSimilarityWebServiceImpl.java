@@ -18,19 +18,19 @@
  */
 package org.apache.ctakes.ytex.ws;
 
+import jakarta.jws.WebService;
 import org.apache.ctakes.ytex.kernel.metric.ConceptPair;
 import org.apache.ctakes.ytex.kernel.metric.ConceptPairSimilarity;
 import org.apache.ctakes.ytex.kernel.metric.ConceptSimilarityService;
 import org.apache.ctakes.ytex.kernel.metric.ConceptSimilarityService.SimilarityMetricEnum;
 import org.apache.ctakes.ytex.web.search.SemanticSimRegistryBean;
 
-import javax.jws.WebService;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-@WebService(endpointInterface = "org.apache.ctakes.ytex.ws.ConceptSimilarityWebService")
+@WebService (endpointInterface = "org.apache.ctakes.ytex.ws.ConceptSimilarityWebService")
 public class ConceptSimilarityWebServiceImpl implements
 		ConceptSimilarityWebService, ConceptSimilarityRestService {
 	public SemanticSimRegistryBean getSemanticSimRegistryBean() {

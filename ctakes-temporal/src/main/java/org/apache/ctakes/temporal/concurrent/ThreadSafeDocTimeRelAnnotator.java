@@ -3,7 +3,8 @@ package org.apache.ctakes.temporal.concurrent;
 import org.apache.ctakes.core.concurrent.ThreadSafeWrapper;
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.temporal.ae.DocTimeRelAnnotator;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -34,7 +35,7 @@ import java.io.File;
 )
 final public class ThreadSafeDocTimeRelAnnotator extends DocTimeRelAnnotator {
 
-   static private final Logger LOGGER = Logger.getLogger( "ThreadSafeDocTimeRelAnnotator" );
+   static private final Logger LOGGER = LogManager.getLogger( "ThreadSafeDocTimeRelAnnotator" );
 
    /**
     * {@inheritDoc}

@@ -8,7 +8,8 @@ import org.apache.ctakes.core.ae.TokenizerAnnotatorPTB;
 import org.apache.ctakes.core.pipeline.PipelineBuilder;
 import org.apache.ctakes.examples.ae.ConfigParameterExample;
 import org.apache.ctakes.postagger.POSTagger;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UIMAException;
 
 import java.io.IOException;
@@ -25,7 +26,7 @@ import java.io.IOException;
  */
 final public class HelloWorldBuilderRunner {
 
-   static private final Logger LOGGER = Logger.getLogger( "HelloWorldBuilderRunner" );
+   static private final Logger LOGGER = LogManager.getLogger( "HelloWorldBuilderRunner" );
 
    static private final String DOC_TEXT = "Hello World!";
 

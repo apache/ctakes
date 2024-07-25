@@ -18,7 +18,8 @@
  */
 package org.apache.ctakes.preprocessor;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.xml.sax.*;
 import org.xml.sax.helpers.DefaultHandler;
 import org.xml.sax.helpers.XMLReaderFactory;
@@ -44,7 +45,7 @@ public class ClinicalNotePreProcessor extends DefaultHandler
         implements PreProcessor
 {
     // LOG4J logger based on class name
-    private final Logger iv_logger = Logger.getLogger( getClass().getName() );
+    static private final Logger LOGGER = LogManager.getLogger( "ClinicalNotePreProcessor" );
 
     // Jan 1, 1AM, 0001
     // private final long DEFAULT_DATE_MILLIS = -62135571600l;
@@ -217,7 +218,7 @@ public class ClinicalNotePreProcessor extends DefaultHandler
                 }
                 catch (Exception e)
                 {
-                  iv_logger.warn(MD_KEY_REV_DATE+" invalid:"+revDate);
+                    LOGGER.warn(MD_KEY_REV_DATE+" invalid:"+revDate);
                 }
             }
         }
@@ -407,7 +408,7 @@ public class ClinicalNotePreProcessor extends DefaultHandler
                   }
                   catch (Exception e)
                   {
-                    iv_logger.warn(MD_KEY_DISCHARGE_DATE+" invalid:"+dischargeDate);
+                      LOGGER.warn(MD_KEY_DISCHARGE_DATE+" invalid:"+dischargeDate);
                   }
                 }
             }
@@ -467,7 +468,7 @@ public class ClinicalNotePreProcessor extends DefaultHandler
                         }
                         catch (Exception e)
                         {
-                          iv_logger.warn(MD_KEY_TRANSCRIPTION_DATE+" invalid:"+transcriptionDate);                          
+                            LOGGER.warn(MD_KEY_TRANSCRIPTION_DATE+" invalid:"+transcriptionDate);                          
                         }
                     }
                 }
@@ -515,7 +516,7 @@ public class ClinicalNotePreProcessor extends DefaultHandler
                   }
                   catch (Exception e)
                   {
-                    iv_logger.warn(MD_KEY_PT_BIRTH_DATE+" invalid:"+birthDttm);
+                    LOGGER.warn(MD_KEY_PT_BIRTH_DATE+" invalid:"+birthDttm);
                   }
               }
               else if (iv_insideKnownBy)
@@ -549,7 +550,7 @@ public class ClinicalNotePreProcessor extends DefaultHandler
                         }
                         catch (Exception e)
                         {
-                          iv_logger.warn(MD_KEY_SIGNATURE_DATE+" invalid:"+signatureDate);
+                          LOGGER.warn(MD_KEY_SIGNATURE_DATE+" invalid:"+signatureDate);
                         }
                     }
                 }
@@ -674,7 +675,7 @@ public class ClinicalNotePreProcessor extends DefaultHandler
                 }
                 catch (Exception e)
                 {
-                  iv_logger.warn(MD_KEY_PT_BIRTH_DATE+" invalid:"+birthDttm);
+                  LOGGER.warn(MD_KEY_PT_BIRTH_DATE+" invalid:"+birthDttm);
                 }
             }
         }
@@ -867,11 +868,11 @@ public class ClinicalNotePreProcessor extends DefaultHandler
         replaceNonAsciiChars(iv_text, ' ');
         iv_docMetaData.setText(iv_text.toString());
 
-        if (iv_logger.isDebugEnabled())
+        if (LOGGER.isDebugEnabled())
         {
             String docID = iv_docMetaData.getMetaData().get(
                     MD_KEY_DOC_ID);
-            iv_logger.debug("Finished processing document id=" + docID);
+            LOGGER.debug("Finished processing document id=" + docID);
         }
     }
 

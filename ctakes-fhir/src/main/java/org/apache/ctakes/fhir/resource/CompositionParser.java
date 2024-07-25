@@ -1,6 +1,7 @@
 package org.apache.ctakes.fhir.resource;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.jcas.JCas;
 import org.hl7.fhir.dstu3.model.Basic;
 import org.hl7.fhir.dstu3.model.Narrative;
@@ -14,7 +15,7 @@ import org.hl7.fhir.utilities.xhtml.XhtmlNode;
  */
 public class CompositionParser {
 
-   static private final Logger LOGGER = Logger.getLogger( "CompositionParser" );
+   static private final Logger LOGGER = LogManager.getLogger( "CompositionParser" );
 
    public void parseResource( final JCas jCas, final Basic resource ) {
 

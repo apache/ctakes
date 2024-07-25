@@ -27,7 +27,8 @@ import org.apache.ctakes.dictionary.lookup2.textspan.DefaultTextSpan;
 import org.apache.ctakes.dictionary.lookup2.textspan.MultiTextSpan;
 import org.apache.ctakes.dictionary.lookup2.textspan.TextSpan;
 import org.apache.ctakes.dictionary.lookup2.util.FastLookupToken;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.fit.descriptor.ConfigurationParameter;
@@ -54,7 +55,7 @@ import java.util.List;
 final public class OverlapJCasTermAnnotator extends AbstractJCasTermAnnotator {
 
    // LOG4J logger based on interface name
-   final private Logger _logger = Logger.getLogger( "OverlapJCasTermAnnotator" );
+   final private Logger _LOGGER = LogManager.getLogger( "OverlapJCasTermAnnotator" );
 
    /**
     * specifies the number of consecutive non-comma tokens that can be skipped
@@ -82,8 +83,8 @@ final public class OverlapJCasTermAnnotator extends AbstractJCasTermAnnotator {
    @Override
    public void initialize( final UimaContext uimaContext ) throws ResourceInitializationException {
       super.initialize( uimaContext );
-      _logger.info( "Maximum consecutive tokens that can be skipped: " + _consecutiveSkipMax );
-      _logger.info( "Maximum tokens that can be skipped: " + _totalSkipMax );
+      _LOGGER.info( "Maximum consecutive tokens that can be skipped: " + _consecutiveSkipMax );
+      _LOGGER.info( "Maximum tokens that can be skipped: " + _totalSkipMax );
    }
 
 

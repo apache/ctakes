@@ -6,7 +6,8 @@ import org.apache.ctakes.core.util.doc.DocIdUtil;
 import org.apache.ctakes.core.util.doc.SourceMetadataUtil;
 import org.apache.ctakes.typesystem.type.structured.DocumentIdPrefix;
 import org.apache.ctakes.typesystem.type.structured.Metadata;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UIMAException;
 import org.apache.uima.cas.CASException;
 import org.apache.uima.cas.CASRuntimeException;
@@ -33,7 +34,7 @@ public enum PatientNoteStore {
    }
 
 
-   static private final Logger LOGGER = Logger.getLogger( "PatientNoteStore" );
+   static private final Logger LOGGER = LogManager.getLogger( "PatientNoteStore" );
 
    static private final String GENERIC_PATIENT = "Generic";
 

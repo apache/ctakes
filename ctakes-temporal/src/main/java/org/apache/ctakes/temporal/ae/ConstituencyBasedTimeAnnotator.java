@@ -28,7 +28,8 @@ import org.apache.ctakes.typesystem.type.syntax.TopTreebankNode;
 import org.apache.ctakes.typesystem.type.syntax.TreebankNode;
 import org.apache.ctakes.typesystem.type.textsem.TimeMention;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -68,7 +69,7 @@ public class ConstituencyBasedTimeAnnotator extends TemporalEntityAnnotator_Impl
 
   private static final String NON_MENTION = "NON_TIME_MENTION";
   private static final String MENTION = "TIME_MENTION";
-  private static Logger logger = Logger.getLogger(ConstituencyBasedTimeAnnotator.class);
+  private static Logger LOGGER = LogManager.getLogger(ConstituencyBasedTimeAnnotator.class);
   private static final int	SPAN_LIMIT = 12;
 
   public static final String PARAM_TIMEX_VIEW = "TimexView";
@@ -303,7 +304,7 @@ public class ConstituencyBasedTimeAnnotator extends TemporalEntityAnnotator_Impl
       }
     }
     if(!this.isTraining() && MENTION.equals(category)){
-      logger.info(String.format("\nFound mention (%s) with score %f\n\tParent (%s) : %f\n\tBest child (%s) : %f\n", node.getCoveredText(), score, node.getParent().getCoveredText(), parentScore, highestScoringChild == null ? "(none)" : highestScoringChild.getCoveredText(), highestScore));
+      LOGGER.info(String.format("\nFound mention (%s) with score %f\n\tParent (%s) : %f\n\tBest child (%s) : %f\n", node.getCoveredText(), score, node.getParent().getCoveredText(), parentScore, highestScoringChild == null ? "(none)" : highestScoringChild.getCoveredText(), highestScore));
     }
     return score;
   }

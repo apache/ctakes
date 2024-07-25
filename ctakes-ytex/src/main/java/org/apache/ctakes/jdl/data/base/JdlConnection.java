@@ -18,7 +18,6 @@
  */
 package org.apache.ctakes.jdl.data.base;
 
-import org.apache.commons.lang.StringUtils;
 import org.apache.ctakes.jdl.schema.xdl.JdbcType;
 
 import java.lang.reflect.InvocationTargetException;
@@ -44,10 +43,17 @@ public class JdlConnection {
 	 *            the jdbc
 	 */
 	public JdlConnection(final JdbcType jdbc) {
-		driver = StringUtils.defaultIfEmpty(jdbc.getDriver(), driver);
-		url = StringUtils.defaultIfEmpty(jdbc.getUrl(), url);
-		user = StringUtils.defaultIfEmpty(jdbc.getUsername(), user);
-		password = StringUtils.defaultIfEmpty(jdbc.getPassword(), password);
+		driver = defaultIfEmpty(jdbc.getDriver(), driver);
+		url = defaultIfEmpty(jdbc.getUrl(), url);
+		user = defaultIfEmpty(jdbc.getUsername(), user);
+		password = defaultIfEmpty(jdbc.getPassword(), password);
+	}
+
+	static private String defaultIfEmpty( final String attempted, final String defaulted ) {
+		if ( attempted != null && !attempted.isEmpty() ) {
+			return attempted;
+		}
+		return defaulted;
 	}
 
 	/**

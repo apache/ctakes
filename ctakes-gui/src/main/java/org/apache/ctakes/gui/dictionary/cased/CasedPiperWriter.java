@@ -3,7 +3,8 @@ package org.apache.ctakes.gui.dictionary.cased;
 
 import org.apache.ctakes.gui.dictionary.umls.VocabularyStore;
 import org.apache.ctakes.gui.dictionary.util.HsqlUtil;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ import java.util.List;
  */
 final public class CasedPiperWriter {
 
-   static private final Logger LOGGER = Logger.getLogger( "CasedPiperWriter" );
+   static private final Logger LOGGER = LogManager.getLogger( "CasedPiperWriter" );
 
 
    private CasedPiperWriter() {

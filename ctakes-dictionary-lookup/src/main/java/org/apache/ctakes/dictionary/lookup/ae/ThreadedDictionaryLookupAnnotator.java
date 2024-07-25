@@ -25,7 +25,8 @@ import org.apache.ctakes.dictionary.lookup.vo.LookupAnnotation;
 import org.apache.ctakes.dictionary.lookup.vo.LookupHit;
 import org.apache.ctakes.dictionary.lookup.vo.LookupToken;
 import org.apache.ctakes.dictionary.lookup.vo.LookupTokenComparator;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -47,7 +48,7 @@ import java.util.concurrent.*;
 public class ThreadedDictionaryLookupAnnotator extends JCasAnnotator_ImplBase {
 
    // LOG4J logger based on class name
-   final private Logger _logger = Logger.getLogger(getClass().getName());
+   static private final  Logger LOGGER = LogManager.getLogger( "ThreadedDictionaryLookupAnnotator" );
 
    // We need to start using types wrt generics
    private Set<LookupSpec> _lookupSpecSet = new HashSet<>();
@@ -88,7 +89,7 @@ public class ThreadedDictionaryLookupAnnotator extends JCasAnnotator_ImplBase {
       try {
          final FileResource fResrc = (FileResource) uimaContext.getResourceObject("LookupDescriptor");
          final File descFile = fResrc.getFile();
-         _logger.info( "Parsing descriptor: " + descFile.getAbsolutePath() );
+         LOGGER.info( "Parsing descriptor: " + descFile.getAbsolutePath() );
          _lookupSpecSet = LookupParseUtilities.parseDescriptor( descFile, uimaContext );
       } catch ( ResourceAccessException raE ) {
          // thrown by uimaContext.getResourceObject
@@ -110,7 +111,7 @@ public class ThreadedDictionaryLookupAnnotator extends JCasAnnotator_ImplBase {
     */
    @Override
   public void process( final JCas jcas ) throws AnalysisEngineProcessException {
-      _logger.info( "process(JCas)" );
+      LOGGER.info( "process(JCas)" );
       _duplicateDataMap.clear();
       int specCount = 0;
       for ( Object value : _lookupSpecSet ) {
@@ -151,7 +152,7 @@ public class ThreadedDictionaryLookupAnnotator extends JCasAnnotator_ImplBase {
       try {
          fixedThreadService.shutdown();
       } catch ( SecurityException sE ) {
-         _logger.debug( "Can ignore: " + sE.getMessage() );
+         LOGGER.debug( "Can ignore: " + sE.getMessage() );
       }
    }
 

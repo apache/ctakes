@@ -20,7 +20,8 @@ package org.apache.ctakes.temporal.eval;
 
 import org.apache.ctakes.typesystem.type.syntax.TreebankNode;
 import org.apache.ctakes.typesystem.type.textsem.TimeMention;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
 import org.apache.uima.fit.descriptor.ConfigurationParameter;
@@ -35,7 +36,7 @@ import java.util.List;
 public class RemoveTreeAlignedMentions extends JCasAnnotator_ImplBase {
 
   public static final String PARAM_GOLDVIEW_NAME = "GOLD_VIEW_NAME";
-  public static Logger logger = Logger.getLogger(RemoveTreeAlignedMentions.class);
+  public static Logger LOGGER = LogManager.getLogger(RemoveTreeAlignedMentions.class);
   
   @ConfigurationParameter(
       name = PARAM_GOLDVIEW_NAME,
@@ -46,7 +47,7 @@ public class RemoveTreeAlignedMentions extends JCasAnnotator_ImplBase {
   @Override
   public void process(JCas jCas) throws AnalysisEngineProcessException {
     Collection<TimeMention> times = JCasUtil.select(jCas, TimeMention.class);
-    logger.info("File contains: " + times.size() + " timex mentions from first pass.");
+    LOGGER.info("File contains: " + times.size() + " timex mentions from first pass.");
     
     List<Annotation> removeList = new ArrayList<Annotation>();
     for(TimeMention time : times){
@@ -69,7 +70,7 @@ public class RemoveTreeAlignedMentions extends JCasAnnotator_ImplBase {
       mention.removeFromIndexes();
     }
     for(TimeMention time : JCasUtil.select(jCas, TimeMention.class)){
-      logger.info("Preserved time mention: " + time.getCoveredText());
+      LOGGER.info("Preserved time mention: " + time.getCoveredText());
     }
   }
 }

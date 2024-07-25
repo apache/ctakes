@@ -23,7 +23,8 @@ import org.apache.ctakes.typesystem.type.syntax.BaseToken;
 import org.apache.ctakes.typesystem.type.syntax.NewlineToken;
 import org.apache.ctakes.typesystem.type.textsem.Modifier;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -48,7 +49,7 @@ import java.util.List;
       products = { PipeBitInfo.TypeProduct.IDENTIFIED_ANNOTATION, PipeBitInfo.TypeProduct.CHUNK }
 )
 public class ModifierExtractorAnnotator extends CleartkAnnotator<String> {
-  static private final Logger LOGGER = Logger.getLogger( "ModifierExtractorAnnotator" );
+  static private final Logger LOGGER = LogManager.getLogger( "ModifierExtractorAnnotator" );
 
   public static AnalysisEngineDescription getDescription(Object... additionalConfiguration)
       throws ResourceInitializationException {

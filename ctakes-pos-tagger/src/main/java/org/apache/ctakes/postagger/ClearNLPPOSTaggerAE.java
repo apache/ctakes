@@ -27,7 +27,8 @@ import com.googlecode.clearnlp.reader.AbstractReader;
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.typesystem.type.syntax.BaseToken;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
@@ -66,7 +67,7 @@ import java.util.List;
 public class ClearNLPPOSTaggerAE extends JCasAnnotator_ImplBase {
 
 	final String language = AbstractReader.LANG_EN;
-	public Logger logger = Logger.getLogger(getClass().getName());
+	public Logger LOGGER = LogManager.getLogger(getClass().getName());
 	
 	// Default model values
 	public static final String DEFAULT_MODEL_FILE_NAME = "org/apache/ctakes/postagger/models/clearnlp/mayo-en-pos-1.3.0.jar";

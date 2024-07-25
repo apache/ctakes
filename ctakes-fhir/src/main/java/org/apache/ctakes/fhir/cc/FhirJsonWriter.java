@@ -4,7 +4,8 @@ import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.parser.IParser;
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.fhir.resource.PractitionerCtakes;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
@@ -35,7 +36,7 @@ final public class FhirJsonWriter extends JCasAnnotator_ImplBase {
    )
    private boolean _writeNlpFhir;
 
-   static private final Logger LOGGER = Logger.getLogger( "FhirJsonWriter" );
+   static private final Logger LOGGER = LogManager.getLogger( "FhirJsonWriter" );
 
    /**
     * {@inheritDoc}

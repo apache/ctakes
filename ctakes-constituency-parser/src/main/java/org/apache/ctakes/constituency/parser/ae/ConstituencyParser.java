@@ -23,7 +23,8 @@ import org.apache.ctakes.constituency.parser.ParserWrapper;
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.core.resource.FileLocator;
 import org.apache.ctakes.core.util.log.DotLogger;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -61,7 +62,7 @@ public class ConstituencyParser extends JCasAnnotator_ImplBase {
 	
 	
 	private ParserWrapper parser = null;
-	static private final Logger LOGGER = Logger.getLogger( "ConstituencyParser" );
+	static private final Logger LOGGER = LogManager.getLogger( "ConstituencyParser" );
 
 	@Override
 	public void initialize( final UimaContext aContext ) throws ResourceInitializationException {

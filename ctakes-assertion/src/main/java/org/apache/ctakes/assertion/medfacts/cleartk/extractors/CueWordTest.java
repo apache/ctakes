@@ -24,7 +24,8 @@ import org.apache.ctakes.typesystem.type.textsem.EntityMention;
 import org.apache.ctakes.typesystem.type.textsem.EventMention;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UIMAException;
 import org.apache.uima.fit.factory.AggregateBuilder;
 import org.apache.uima.fit.factory.JCasFactory;
@@ -46,7 +47,7 @@ import java.util.Map;
 
 public class CueWordTest
 {
-  Logger logger = Logger.getLogger(CueWordTest.class.getName());
+  Logger LOGGER = LogManager.getLogger(CueWordTest.class.getName());
 
   /**
    * @param args
@@ -62,7 +63,7 @@ public class CueWordTest
   @SuppressWarnings("unchecked")
   public void execute() throws UIMAException, IOException
   {
-    logger.info("starting");
+    LOGGER.info("starting");
 
     AggregateBuilder builder = new AggregateBuilder();
     
@@ -71,15 +72,15 @@ public class CueWordTest
     
     JCas jcas = JCasFactory.createJCas(filename, typeSystemDescription);
     
-    logger.info("=====");
+    LOGGER.info("=====");
 
     Collection<BaseToken> tokens = JCasUtil.select(jcas,  BaseToken.class);
     for (BaseToken currentToken : tokens)
     {
-      logger.info(String.format("token \"%s\" [%s]", currentToken.getCoveredText(), currentToken.getClass().getName()));
+      LOGGER.info(String.format("token \"%s\" [%s]", currentToken.getCoveredText(), currentToken.getClass().getName()));
     }
     
-    logger.info("=====");
+    LOGGER.info("=====");
 
     Map<IdentifiedAnnotation, List<Sentence>> entityToSentenceMap =
         JCasUtil.indexCovering(jcas, IdentifiedAnnotation.class, Sentence.class);
@@ -121,18 +122,18 @@ public class CueWordTest
       if (!(current instanceof EntityMention) && !(current instanceof EventMention)) continue;
       
       // otherwise current is an entity or event mention...
-      logger.info(String.format("identified annotation (event or entity) [%d-%d] \"%s\" [%s]", current.getBegin(), current.getEnd(), current.getCoveredText(), current.getClass().getName()));
+      LOGGER.info(String.format("identified annotation (event or entity) [%d-%d] \"%s\" [%s]", current.getBegin(), current.getEnd(), current.getCoveredText(), current.getClass().getName()));
       
       Collection<Sentence> coveringSentences = entityToSentenceMap.get(current);
       if (coveringSentences == null || coveringSentences.isEmpty())
       {
-        logger.info("no covering sentences found!!! continuing with next entity/event...");
+        LOGGER.info("no covering sentences found!!! continuing with next entity/event...");
         continue;
       }
-      logger.info(String.format("covering sentence count: %d", coveringSentences.size()));
+      LOGGER.info(String.format("covering sentence count: %d", coveringSentences.size()));
       Sentence firstCoveringSentence = coveringSentences.iterator().next();
       
-      logger.info(String.format(
+      LOGGER.info(String.format(
           "first covering sentence: [%d-%d] \"%s\" (%s)", 
           firstCoveringSentence.getBegin(), firstCoveringSentence.getEnd(),
           firstCoveringSentence.getCoveredText(),
@@ -145,13 +146,13 @@ public class CueWordTest
       if (cuePhraseFeatures != null && !cuePhraseFeatures.isEmpty())
       {
         String featureDebugString = (cuePhraseFeatures == null) ? "(no cue phrase features)" : cuePhraseFeatures.toString();
-        logger.info("### cue phrase features: " + featureDebugString);
+        LOGGER.info("### cue phrase features: " + featureDebugString);
       }
     }
     
-    logger.info("=====");
+    LOGGER.info("=====");
      
-    logger.info("finished");
+    LOGGER.info("finished");
   }
 
 }

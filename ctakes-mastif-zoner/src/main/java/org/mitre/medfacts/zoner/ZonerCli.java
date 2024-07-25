@@ -35,7 +35,8 @@ import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -142,7 +143,7 @@ public class ZonerCli {
 	private boolean doSubsections;
 	private boolean convertOffsets;
 	private boolean includeGenerics = false;
-	private static Logger logger = Logger.getLogger("ZonerCli");;
+	private static final  Logger LOGGER = LogManager.getLogger("ZonerCli");;
 
 
 	public ZonerCli() {
@@ -208,7 +209,7 @@ public class ZonerCli {
 								subjectExpression.evaluate(fragmentElement),
 								uncertainExpression.evaluate(fragmentElement),
 								negatedExpression.evaluate(fragmentElement)));
-				logger.debug(String.format("found fragment: {0} -> {1}",
+				 LOGGER.debug(String.format("found fragment: {0} -> {1}",
 						new Object[]{nameString, nodeToString(expansionNode)}));
 			}
 
@@ -241,11 +242,11 @@ public class ZonerCli {
 
 		} catch (URISyntaxException ex) {
 			String message = "problem (URISyntaxException) reading regex from xml file";
-			logger.error(message, ex);
+			 LOGGER.error(message, ex);
 			throw new RuntimeException(message, ex);
 		} catch (XPathExpressionException ex) {
 			String message = "problem (XPathExpressionException) reading regex from xml file";
-			logger.error(message, ex);
+			 LOGGER.error(message, ex);
 			throw new RuntimeException(message, ex);
 		}
 	}
@@ -258,7 +259,7 @@ public class ZonerCli {
 			throws XPathExpressionException {
 		for (int i = 0; i < theNodeList.getLength(); i++) {
 			Element theElement = (Element) theNodeList.item(i);
-			// logger.finest("found the element");
+			//  LOGGER.finest("found the element");
 
 			Node regexNode =
 					(Node) regexExpression.evaluate(theElement, XPathConstants.NODE);
@@ -283,7 +284,7 @@ public class ZonerCli {
 			}
 			boolean regexFindAll = regexFindAllString.equalsIgnoreCase("true");
 			String labelString = labelExpression.evaluate(theElement);
-			logger.debug(String.format(" - section -- label: \"%s\"; regex: \"%s\"; ignore case: \"%s\"; match all: \"%s\"",
+			 LOGGER.debug(String.format(" - section -- label: \"%s\"; regex: \"%s\"; ignore case: \"%s\"; match all: \"%s\"",
 					labelString, regexString, regexIgnoreCaseString, regexFindAllString));
 			attrs.maybeSetMedical(medicalExpression.evaluate(theElement));
 			attrs.maybeSetSubject(subjectExpression.evaluate(theElement));
@@ -334,16 +335,16 @@ public class ZonerCli {
 		try {
 			registry = DOMImplementationRegistry.newInstance();
 		} catch (ClassNotFoundException ex) {
-			logger.debug("problem before attempting to parse xml (registry problem)", ex);
+			 LOGGER.debug("problem before attempting to parse xml (registry problem)", ex);
 			throw new RuntimeException("problem before attempting to parse xml (registry problem)", ex);
 		} catch (InstantiationException ex) {
-			logger.error("problem before attempting to parse xml (registry problem)", ex);
+			 LOGGER.error("problem before attempting to parse xml (registry problem)", ex);
 			throw new RuntimeException("problem before attempting to parse xml (registry problem)", ex);
 		} catch (IllegalAccessException ex) {
-			logger.error("problem before attempting to parse xml (registry problem)", ex);
+			 LOGGER.error("problem before attempting to parse xml (registry problem)", ex);
 			throw new RuntimeException("problem before attempting to parse xml (registry problem)", ex);
 		} catch (ClassCastException ex) {
-			logger.error("problem before attempting to parse xml (registry problem)", ex);
+			 LOGGER.error("problem before attempting to parse xml (registry problem)", ex);
 			throw new RuntimeException("problem before attempting to parse xml (registry problem)", ex);
 		}
 		DOMImplementationLS impl = (DOMImplementationLS) registry.getDOMImplementation("LS");
@@ -362,8 +363,8 @@ public class ZonerCli {
 		int levels = 0;
 		Element parentRegexElement = (Element) regexNode;
 		// Document ownerDocument = parentRegexElement.getOwnerDocument();
-		//logger.log(Level.DEBUG, "expandFragments on textContent: {0}", parentRegexElement.getTextContent());
-		logger.debug(MessageFormat.format("expandFragments on Node: {0}", nodeToString(regexNode)));
+		// LOGGER.log(Level.DEBUG, "expandFragments on textContent: {0}", parentRegexElement.getTextContent());
+		 LOGGER.debug(MessageFormat.format("expandFragments on Node: {0}", nodeToString(regexNode)));
 
 		try {
 			NodeList fragmentList =
@@ -384,16 +385,16 @@ public class ZonerCli {
 					levelList.add(fragName);
 					// replace the fragmentRef with its expansion
 					Node parentNode = fragmentRefElement.getParentNode();
-					/* logger.finest(String.format("In Node %s replace\n\t%s\nwith\n\t%s", nodeToString(parentNode),
+					/*  LOGGER.finest(String.format("In Node %s replace\n\t%s\nwith\n\t%s", nodeToString(parentNode),
                             nodeToString((Node)fragmentRefElement), nodeToString(fragExpansionNode))); */
 					parentNode.replaceChild(fragExpansionNode, fragmentRefElement);
-					logger.debug(MessageFormat.format("Level {0} fragment {1} expansion: {2}",
+					 LOGGER.debug(MessageFormat.format("Level {0} fragment {1} expansion: {2}",
 							new Object[]{levels, i, nodeToString((Node) parentRegexElement)}));
 				}
 				// now that we've handled all the fragments, increment levels and get a 
 				// new fragment list from fragments that were in the replacement nodes
 				levels++;
-				logger.debug(MessageFormat.format("checking for any level {0} embedded fragments in {1}",
+				 LOGGER.debug(MessageFormat.format("checking for any level {0} embedded fragments in {1}",
 						new Object[]{levels, nodeToString((Node) parentRegexElement)}));
 				// deepen the xpath search expression
 				StringBuffer nestedFragmentBuf = new StringBuffer("./");
@@ -409,11 +410,11 @@ public class ZonerCli {
 				fragmentList =
 						(NodeList) nestedFragmentExpression.evaluate(parentRegexElement,
 								XPathConstants.NODESET);
-				logger.debug("found  embedded fragments" + fragmentList.getLength());
+				 LOGGER.debug("found  embedded fragments" + fragmentList.getLength());
 			}
 		} catch (XPathExpressionException ex) {
 			String message = "problem (XPathExpressionException) expanding regex fragment";
-			logger.error(message, ex);
+			 LOGGER.error(message, ex);
 			throw new RuntimeException(message, ex);
 		}
 
@@ -423,7 +424,7 @@ public class ZonerCli {
 			return null;
 		}
 
-		logger.debug("\texpanded to " + parentRegexElement.getTextContent());
+		 LOGGER.debug("\texpanded to " + parentRegexElement.getTextContent());
 		return parentRegexElement.getTextContent();
 	}
 
@@ -438,25 +439,25 @@ public class ZonerCli {
 			transformer.transform(new DOMSource(node), new StreamResult(buffer));
 			str = buffer.toString();
 		} catch (TransformerConfigurationException ex) {
-			logger.error(ex);
+			 LOGGER.error(ex);
 		} catch (TransformerException ex) {
-			logger.error(ex);
+			 LOGGER.error(ex);
 		}
 		return str;
 	}
 
 	public static void main(String[] args) throws IOException, URISyntaxException {
 		if (args.length != 1 && args.length != 2) {
-			logger.warn("Usage:  " + ZonerCli.class.getName() + " <input file name> [<pattern file name>]");
-			logger.warn("args passed were: (" + args.length + ")");
+			 LOGGER.warn("Usage:  " + ZonerCli.class.getName() + " <input file name> [<pattern file name>]");
+			 LOGGER.warn("args passed were: (" + args.length + ")");
 			for (int i = 0; i < args.length; i++) {
-				logger.warn(args[i]);
+				 LOGGER.warn(args[i]);
 			}
 			return;
 		}
 
-		logger.debug("debug logging");
-		logger.warn("warn logging");
+		 LOGGER.debug("debug logging");
+		 LOGGER.warn("warn logging");
 		System.out.println("runnning stdout...");
 		String inputFile = args[0];
 		String patternFile = null;
@@ -495,18 +496,18 @@ public class ZonerCli {
 
 		//        passZero(inputFilename, outputFile);
 		//        passOneB(outputFile, outputFile2);
-		logger.debug("ZonerCli.execute()");
+		 LOGGER.debug("ZonerCli.execute()");
 		// System.out.println("running the newest version");
 		clearRangeLists();
 		clearHeadings();
 		findHeadings();
 		if (doSubsections) {
-			logger.debug("~~~~~~~~~~~~ Subsections ~~~~~~~~~~~~~");
+			 LOGGER.debug("~~~~~~~~~~~~ Subsections ~~~~~~~~~~~~~");
 			clearSubsections();
 			findSubsections();
 		}
 		if (doTemplates) {
-			logger.debug("~~~~~~~~~~~~~ Templates ~~~~~~~~~~~~~~~");
+			 LOGGER.debug("~~~~~~~~~~~~~ Templates ~~~~~~~~~~~~~~~");
 			clearTemplates();
 			findTemplates();
 		}
@@ -514,7 +515,7 @@ public class ZonerCli {
 		// PA not used pruneRanges(); // only for full range list right now
 		maybeInsertGenerics();
 		trimFinalHeadingStarts(); // deal with removing space around headings;]
-		if (logger.isInfoEnabled()) {
+		if ( LOGGER.isInfoEnabled()) {
 			pruneAndLogGenerics(); // PA prebuild xml statements for potential headings and stuff in log;
 		}
 	}
@@ -568,7 +569,7 @@ public class ZonerCli {
 							"\t</section>\n\n", 
 							labelFromText.toUpperCase(), labelFromText.toLowerCase(), genRange 
 						);
-						logger.info(message);
+						 LOGGER.info(message);
 					} else {
 						String message = MessageFormat.format(
 								"\n\t<!-- {2}::{0} {3} -->\n" +	
@@ -579,7 +580,7 @@ public class ZonerCli {
 								"\t</section>\n\n", 
 								labelFromText.toUpperCase(), labelFromText.toLowerCase(), labelComp[0], genRange
 						);
-						logger.info(message);
+						 LOGGER.info(message);
 					}
 					break;
 				}
@@ -623,7 +624,7 @@ public class ZonerCli {
 	 }
 
 	 public void readFile(String inputFilename) throws IOException, FileNotFoundException {
-		 logger.debug(String.format("input: %s", inputFilename));
+		  LOGGER.debug(String.format("input: %s", inputFilename));
 		 File inputFile = new File(inputFilename);
 		 FileReader inputFileReader = new FileReader(inputFile);
 		 BufferedReader inputBufferedReader = new BufferedReader(inputFileReader);
@@ -661,7 +662,7 @@ public class ZonerCli {
 		 return returnValue;
 	 }
 
-	 @SuppressWarnings("LoggerStringConcat")
+	 @SuppressWarnings(" LOGGERStringConcat")
 	 public void findHeadings() {
 		 matchRegexes(sectionRegexDefinitionList, FULL_RANGE_LIST);
 		 Collections.sort(getFullRangeList());
@@ -755,14 +756,14 @@ public class ZonerCli {
 		 Matcher currentMatcher = currentDefinition.regex.matcher(docString);
 		 boolean findAll = currentDefinition.isFindAll();
 		 boolean findFirstOnly = !findAll;
-		 logger.debug(String.format(" trying %s ...", currentDefinition.getLabel()));
+		  LOGGER.debug(String.format(" trying %s ...", currentDefinition.getLabel()));
 		 while (currentMatcher.find()) {
 			 int start = currentMatcher.start();
 			 int end = currentMatcher.end();
-			 if (logger.isDebugEnabled()) {
-				 logger.debug(String.format(" ** " + currentDefinition.getLabel() + " match found: %d-%d", start, end));
+			 if ( LOGGER.isDebugEnabled()) {
+				  LOGGER.debug(String.format(" ** " + currentDefinition.getLabel() + " match found: %d-%d", start, end));
 				 if (currentDefinition.getLabel().equals(GENERIC_TYPE)) {
-					 logger.debug(String.format("generic matched: %s", docString.substring(start, end)));
+					  LOGGER.debug(String.format("generic matched: %s", docString.substring(start, end)));
 				 }
 			 }
 			 Range currentRange = new Range();
@@ -783,13 +784,13 @@ public class ZonerCli {
 			 for (Integer level : keyList) {
 				 List<String> fragList = currentDefinition.getFragmentsMap().get(level);
 				 for (String fragName : fragList) {
-					 logger.debug(String.format("checking for match with fragment named %s", fragName));
+					  LOGGER.debug(String.format("checking for match with fragment named %s", fragName));
 					 // PA don't waste time on these two
 					 if (fragName.equals(EOH_FRAG) || fragName.equals(PROLOG_FRAG))
 						 continue;
 					 try {
 						 if (currentMatcher.group(fragName) != null) {
-							 logger.debug(String.format(">>> found match for fragment %s with attrs %s", 
+							  LOGGER.debug(String.format(">>> found match for fragment %s with attrs %s", 
 									 fragName, fragmentAttrsMap.get(fragName).toString()));
 							 attrs.merge(fragmentAttrsMap.get(fragName));
 						 }
@@ -839,11 +840,11 @@ public class ZonerCli {
 	 private void adjustRangeEnds(List<Range> theRangeList, 
 			 boolean checkOverlaps, int sectionEndOffset) {
 		 //    For each heading found, compute range end as token before next range begins
-		 if (logger.isDebugEnabled()) {
+		 if ( LOGGER.isDebugEnabled()) {
 			 for (Range currentRange : theRangeList) {
-				 logger.debug(String.format(" - %s", currentRange));
+				  LOGGER.debug(String.format(" - %s", currentRange));
 			 }
-			 logger.debug("===");
+			  LOGGER.debug("===");
 		 }
 
 		 fullRangeListAdjusted = new ArrayList<Range>();
@@ -868,7 +869,7 @@ public class ZonerCli {
 
 				 // check for overlapping headings
 				 if (checkOverlaps && nextRangeBegin < end) {
-					 logger.debug("*** overlap found: \"" + currentHeading.getHeadingText() + "\" "
+					  LOGGER.debug("*** overlap found: \"" + currentHeading.getHeadingText() + "\" "
 							 + currentRange + " *** \""
 							 + entireContents.substring(nextRangeBegin, nextRange.getEnd()) + "\" " + nextRange);
 					 // Since there is an overlap, mark to ignore the Range corresponding to the
@@ -880,12 +881,12 @@ public class ZonerCli {
 					 int nextRangeEnd = nextRange.getEnd();
 					 int nextRangeLen = nextRangeEnd - nextRangeBegin;
 					 if (curRangeLen < nextRangeLen) {
-						 logger.debug("\ttruncating current: " + currentRange);
+						  LOGGER.debug("\ttruncating current: " + currentRange);
 						 currentRange.setTruncated(true);
 						 currentRange.setEnd(nextRangeBegin - 1);
 					 } else {
 						 while (++j < rangeListSize && nextRangeBegin < end) {
-							 logger.debug("\tignoring next: " + nextRange);
+							  LOGGER.debug("\tignoring next: " + nextRange);
 							 nextRange.setIgnore(true);
 							 nextRange = theRangeList.get(j);
 							 nextRangeBegin = nextRange.getBegin();
@@ -918,19 +919,19 @@ public class ZonerCli {
 				 int realSectionEnd = oneBeforeNextRange;
 
 				 if (convertOffsets) {
-					 logger.debug("ZonerCli: calling converter on 'begin': " + begin);
+					  LOGGER.debug("ZonerCli: calling converter on 'begin': " + begin);
 					 LineAndTokenPosition beginLineAndTokenPosition = converter.convert(begin);
-					 logger.debug("ZonerCli: calling converter on 'realSectionEnd': " + realSectionEnd);
+					  LOGGER.debug("ZonerCli: calling converter on 'realSectionEnd': " + realSectionEnd);
 					 LineAndTokenPosition endLineAndTokenPosition = converter.convert(realSectionEnd);
 
-					 logger.debug(String.format(" - %s: %s (%d-%d) (section end: %d) %s to %s ",
+					  LOGGER.debug(String.format(" - %s: %s (%d-%d) (section end: %d) %s to %s ",
 							 currentRange, getEntireContents().substring(begin, end),
 							 begin, end, realSectionEnd,
 							 beginLineAndTokenPosition.toString(), endLineAndTokenPosition.toString()));
 					 currentRange.setBeginLineAndToken(beginLineAndTokenPosition);
 					 currentRange.setEndLineAndToken(endLineAndTokenPosition);
 				 } else {
-					 logger.debug(String.format(" - %s: %s (%d-%d) (section end: %d) ",
+					  LOGGER.debug(String.format(" - %s: %s (%d-%d) (section end: %d) ",
 							 currentRange, getEntireContents().substring(begin, end),
 							 begin, end, realSectionEnd));
 				 }
@@ -955,7 +956,7 @@ public class ZonerCli {
 		 currentHeading.setUncertain(currentRange.getUncertain());
 		 currentHeading.setNegated(currentRange.getNegated());
 		 currentHeading.setHeadingText(entireContents.substring(begin, end));
-		 logger.debug(String.format("headingFromRange: - %s: %s (%d-%d) ",
+		  LOGGER.debug(String.format("headingFromRange: - %s: %s (%d-%d) ",
 				 currentRange.getLabel(), getEntireContents().substring(begin, end), begin, end));
 		return currentHeading;
 	}
@@ -1081,31 +1082,31 @@ public class ZonerCli {
 	  }
 
 	  public void logRangesAndHeadings() {
-		  logger.trace("================== RangeList ======================");
+		   LOGGER.trace("================== RangeList ======================");
 		  for (Iterator<Range> i = getRangeList().iterator(); i.hasNext();) {
-			  // logger.finest(i.next().toString());
+			  //  LOGGER.finest(i.next().toString());
 			  Range t = (Range) i.next();
-			  logger.trace(t.toString());
-			  logger.trace(getEntireContents().substring(t.getBegin(), t.getEnd()));
-			  logger.trace("char at " + t.getEnd() + ": " + getEntireContents().charAt(t.getEnd()));
+			   LOGGER.trace(t.toString());
+			   LOGGER.trace(getEntireContents().substring(t.getBegin(), t.getEnd()));
+			   LOGGER.trace("char at " + t.getEnd() + ": " + getEntireContents().charAt(t.getEnd()));
 		  }
-		  logger.trace("================== FullRangeList ======================");
+		   LOGGER.trace("================== FullRangeList ======================");
 		  for (Iterator<Range> i = getFullRangeList().iterator(); i.hasNext();) {
-			  logger.trace(i.next().toString());
+			   LOGGER.trace(i.next().toString());
 		  }
-		  logger.trace("================== TemplatesList ======================");
+		   LOGGER.trace("================== TemplatesList ======================");
 		  for (Iterator<Range> i = getTemplates().iterator(); i.hasNext();) {
 			  Range t = (Range) i.next();
-			  logger.trace(t.toString());
-			  logger.trace(getEntireContents().substring(t.getBegin(), t.getEnd()));
+			   LOGGER.trace(t.toString());
+			   LOGGER.trace(getEntireContents().substring(t.getBegin(), t.getEnd()));
 		  }
-		  logger.trace("================== SubsectionsList ======================");
+		   LOGGER.trace("================== SubsectionsList ======================");
 		  for (Iterator<Range> i = getSubsections().iterator(); i.hasNext();) {
-			  logger.trace(i.next().toString());
+			   LOGGER.trace(i.next().toString());
 		  }
-		  logger.trace("================== Headings ======================");
+		   LOGGER.trace("================== Headings ======================");
 		  for (Iterator<HeadingRange> i = getHeadings().iterator(); i.hasNext();) {
-			  logger.trace(i.next().toString());
+			   LOGGER.trace(i.next().toString());
 		  }
 	  }
 
@@ -1188,7 +1189,7 @@ public class ZonerCli {
 		   * over those already set for this object
 		   */
 		  public void merge(AttributesHolder newAttrs) {
-			  logger.trace(String.format("Merging %s into %s", newAttrs.toString(), this.toString()));
+			   LOGGER.trace(String.format("Merging %s into %s", newAttrs.toString(), this.toString()));
 			  this.medical = ((newAttrs.medical==null || newAttrs.medical.isEmpty())?this.medical:newAttrs.medical);
 			  this.temporal = ((newAttrs.temporal==null || newAttrs.temporal.isEmpty())?this.temporal:newAttrs.temporal);
 			  this.subject = ((newAttrs.subject==null || newAttrs.subject.isEmpty())?this.subject:newAttrs.subject);
@@ -1695,7 +1696,7 @@ public class ZonerCli {
 			  //      String tokenArray[] = pattern.split(currentLine);
 
 
-			  //logger.finest(String.format("before split: %s; %nafter split: %s", currentLine, printOutLineOfTokens(tokenArray)));
+			  // LOGGER.finest(String.format("before split: %s; %nafter split: %s", currentLine, printOutLineOfTokens(tokenArray)));
 			  //      for (String currentToken : tokenArray)
 			  //      {
 			  //        System.out.format("    CURRENT token (pre): %s%n", currentToken);

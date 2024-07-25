@@ -18,11 +18,11 @@
  */
 package org.apache.ctakes.ytex.kernel.evaluator;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.ctakes.ytex.kernel.metric.ConceptPairSimilarity;
 import org.apache.ctakes.ytex.kernel.metric.ConceptSimilarityService;
 import org.apache.ctakes.ytex.kernel.metric.ConceptSimilarityService.SimilarityMetricEnum;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.InitializingBean;
 
 import java.util.ArrayList;
@@ -32,7 +32,7 @@ import java.util.Map;
 
 
 public class SemanticSimKernel extends CacheKernel implements InitializingBean {
-	private static final Log log = LogFactory.getLog(LinKernel.class);
+	private static final Logger LOGGER = LogManager.getLogger( "SemanticSimKernel");
 	private Map<String, Double> conceptFilter = null;
 	private ConceptSimilarityService conceptSimilarityService;
 	private double cutoff = 0;
@@ -94,7 +94,7 @@ public class SemanticSimKernel extends CacheKernel implements InitializingBean {
 			cutoff = conceptSimilarityService.loadConceptFilter(label,
 					rankCutoff, conceptFilter);
 			if (conceptFilter.isEmpty()) {
-				log.warn("no concepts that matched the threshold for supervised semantic similarity. label="
+				LOGGER.warn("no concepts that matched the threshold for supervised semantic similarity. label="
 						+ label + ", rankCutoff=" + rankCutoff);
 			}
 		}

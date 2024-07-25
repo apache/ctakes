@@ -1,7 +1,8 @@
 package org.apache.ctakes.core.util;
 
 import org.apache.ctakes.core.ae.StartFinishLogger;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.analysis_component.AnalysisComponent;
 import org.apache.uima.analysis_engine.AnalysisEngine;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
@@ -31,7 +32,7 @@ public enum PropertyAeFactory {
       return INSTANCE;
    }
 
-   static private final Logger LOGGER = Logger.getLogger( "PropertyAeFactory" );
+   static private final Logger LOGGER = LogManager.getLogger( "PropertyAeFactory" );
 
 
    // Use a single hashmap so that multiple properties files can be used
@@ -42,7 +43,7 @@ public enum PropertyAeFactory {
       try {
          _typeSystemDescription = TypeSystemDescriptionFactory.createTypeSystemDescription();
       } catch ( ResourceInitializationException riE ) {
-         Logger.getLogger( "PropertyAeFactory" )
+         LogManager.getLogger( "PropertyAeFactory" )
                .error( "Could not initialize cTAKES Type System\n" + riE.getMessage() );
          System.exit( -1 );
       }

@@ -23,7 +23,8 @@ import org.apache.ctakes.relationextractor.ae.features.*;
 import org.apache.ctakes.typesystem.type.relation.BinaryTextRelation;
 import org.apache.ctakes.typesystem.type.relation.RelationArgument;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.UimaContextAdmin;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -68,7 +69,7 @@ private List<RelationFeaturesExtractor<IdentifiedAnnotation,IdentifiedAnnotation
 		try {
 			featureExtractors = getFeatureExtractors();
 		} catch ( ResourceInitializationException riE ) {
-			Logger.getLogger( "RelationExtractorAnnotator" ).error( riE.getMessage() );
+			LogManager.getLogger( "RelationExtractorAnnotator" ).error( riE.getMessage() );
 		}
 	}
 

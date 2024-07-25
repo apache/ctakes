@@ -4,7 +4,8 @@ import org.apache.ctakes.core.util.annotation.OntologyConceptUtil;
 import org.apache.ctakes.typesystem.type.refsem.OntologyConcept;
 import org.apache.ctakes.typesystem.type.refsem.UmlsConcept;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UIMAException;
 import org.apache.uima.fit.factory.JCasFactory;
 import org.apache.uima.jcas.JCas;
@@ -25,7 +26,7 @@ import static org.junit.Assert.assertTrue;
  */
 public class OntologyConceptUtilTester {
 
-   static private final Logger LOGGER = Logger.getLogger( "IdentifiedAnnotationUtilTester" );
+   static private final Logger LOGGER = LogManager.getLogger( "IdentifiedAnnotationUtilTester" );
 
    static private final String TUI_1 = "T001";
    static private final String TUI_2 = "T002";

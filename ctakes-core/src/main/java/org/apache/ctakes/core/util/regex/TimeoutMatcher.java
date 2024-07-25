@@ -1,6 +1,7 @@
 package org.apache.ctakes.core.util.regex;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import java.io.Closeable;
 import java.util.concurrent.*;
@@ -36,7 +37,7 @@ import java.util.regex.PatternSyntaxException;
  */
 public class TimeoutMatcher implements Closeable {
 
-   static private final Logger LOGGER = Logger.getLogger( "TimeoutMatcher" );
+   static private final Logger LOGGER = LogManager.getLogger( "TimeoutMatcher" );
 
    static private final int DEFAULT_TIMEOUT_MILLIS = 1000;
    static private final int MIN_TIMEOUT_MILLIS = 100;

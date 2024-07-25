@@ -28,7 +28,8 @@ import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.typesystem.type.syntax.*;
 import org.apache.ctakes.typesystem.type.textsem.*;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -52,7 +53,7 @@ import java.util.*;
 )
 public class ContextDependentTokenizerAnnotator extends JCasAnnotator_ImplBase {
 	// LOG4J logger based on class name
-	private Logger iv_logger = Logger.getLogger(getClass().getName());
+	private Logger LOGGER = LogManager.getLogger(getClass().getName());
 
 	private DateFSM iv_dateFSM;
 	private TimeFSM iv_timeFSM;
@@ -73,7 +74,7 @@ public class ContextDependentTokenizerAnnotator extends JCasAnnotator_ImplBase {
 		iv_rangeFSM = new RangeFSM();
 		iv_measurementFSM = new MeasurementFSM();
 		iv_personTitleFSM = new PersonTitleFSM();
-		iv_logger.info("Finite state machines loaded.");
+		LOGGER.info("Finite state machines loaded.");
 	}
 
 	@Override
@@ -81,7 +82,7 @@ public class ContextDependentTokenizerAnnotator extends JCasAnnotator_ImplBase {
 
 		try {
 			
-		  iv_logger.info("process(JCas)");
+		  LOGGER.info("process(JCas)");
 
 			Collection<Sentence> sents = JCasUtil.select(jcas, Sentence.class);
 			

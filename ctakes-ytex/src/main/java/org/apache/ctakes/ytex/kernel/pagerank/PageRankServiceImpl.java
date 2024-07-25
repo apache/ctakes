@@ -19,18 +19,18 @@
 package org.apache.ctakes.ytex.kernel.pagerank;
 
 import org.apache.commons.cli.*;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.ctakes.ytex.kernel.KernelContextHolder;
 import org.apache.ctakes.ytex.kernel.dao.ConceptDao;
 import org.apache.ctakes.ytex.kernel.model.ConcRel;
 import org.apache.ctakes.ytex.kernel.model.ConceptGraph;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.*;
 
 
 public class PageRankServiceImpl implements PageRankService {
-	private static final Log log = LogFactory.getLog(PageRankServiceImpl.class);
+	private static final Logger LOGGER = LogManager.getLogger( "PageRankServiceImpl" );
 
 	private double[] rankInternal(Map<Integer, Double> dampingVector,
 			ConceptGraph cg, int iter, double threshold, double dampingFactor) {
@@ -41,20 +41,20 @@ public class PageRankServiceImpl implements PageRankService {
 		for (int i = 0; i < iter; i++) {
 			double[] scoresOld = scoresCurrent;
 			long timeBegin = 0;
-			if (log.isDebugEnabled()) {
+			if ( LOGGER.isDebugEnabled()) {
 				timeBegin = System.currentTimeMillis();
 			}
 			scoresCurrent = pagerankIter(scoresOld, dampingVector, cg,
 					dampingFactor, N);
-			if (log.isDebugEnabled()) {
-				log.debug("iter " + i + " "
+			if ( LOGGER.isDebugEnabled()) {
+				LOGGER.debug("iter " + i + " "
 						+ Long.toString(System.currentTimeMillis() - timeBegin));
 			}
 			if ((diff = difference(scoresOld, scoresCurrent)) <= threshold)
 				break;
 		}
-		if (log.isDebugEnabled() && diff > threshold) {
-			log.debug("did not converge, diff = " + diff + ", dampingVector = "
+		if ( LOGGER.isDebugEnabled() && diff > threshold) {
+			LOGGER.debug("did not converge, diff = " + diff + ", dampingVector = "
 					+ dampingVector);
 		}
 		return scoresCurrent;
@@ -228,7 +228,7 @@ public class PageRankServiceImpl implements PageRankService {
 		for (int i = 0; i < iter; i++) {
 			double scoresOld[] = scoresCurrent;
 			long timeBegin = 0;
-			if (log.isDebugEnabled()) {
+			if ( LOGGER.isDebugEnabled()) {
 				timeBegin = System.currentTimeMillis();
 			}
 			// if (activeNodes == null) {
@@ -238,15 +238,15 @@ public class PageRankServiceImpl implements PageRankService {
 			// scoresCurrent = pagerankIter(scoresCurrent, dampingVectorAdj,
 			// cg, dampingFactor, N, activeNodes);
 			// }
-			if (log.isDebugEnabled()) {
-				log.debug("iter " + i + " time(ms) "
+			if ( LOGGER.isDebugEnabled()) {
+				LOGGER.debug("iter " + i + " time(ms) "
 						+ Long.toString(System.currentTimeMillis() - timeBegin));
 			}
 			if ((diff = difference(scoresCurrent, scoresOld)) <= threshold)
 				break;
 		}
-		if (log.isDebugEnabled() && diff > threshold) {
-			log.debug("did not converge, diff = " + diff + ", dampingVector = "
+		if ( LOGGER.isDebugEnabled() && diff > threshold) {
+			LOGGER.debug("did not converge, diff = " + diff + ", dampingVector = "
 					+ dampingVector);
 		}
 		return scoresCurrent;

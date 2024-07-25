@@ -107,8 +107,6 @@
         <commons-jxpath.version>1.3</commons-jxpath.version>
         <commons-io.version>2.7</commons-io.version>
         <commons-lang.version>2.6</commons-lang.version>
-        <commons-logging-api.version>1.1</commons-logging-api.version>
-        <commons-logging.version>1.1.1</commons-logging.version>
         <commons-pool.version>1.5.4</commons-pool.version>
         <ctakesresources.version>4.0.0</ctakesresources.version>
         <ctakes-models.version>5.0.0</ctakes-models.version>
@@ -124,8 +122,6 @@
         <guava.version>33.2.1-jre</guava.version>
         <hapi.fhir.version>6.6.0</hapi.fhir.version>
         <hibernate.version>5.4.24.Final</hibernate.version>
-<!--        <hppc.version>0.10.0</hppc.version>-->
-        <hppc.version>0.4.1</hppc.version>
         <hsqldb.version>2.7.3</hsqldb.version>
         <httpclient.version>5.3.1</httpclient.version>
         <icefaces.version>2.0.2</icefaces.version>
@@ -140,6 +136,7 @@
         <jaxb-xjc.version>4.0.5</jaxb-xjc.version>
         <jaxb2-maven-plugin.version>3.1.0</jaxb2-maven-plugin.version>
         <jaxws-ri.version>4.0.2</jaxws-ri.version>
+        <jaxws-api.version>2.3.1</jaxws-api.version>
         <jcasgen-maven-plugin.version>3.5.0</jcasgen-maven-plugin.version>
         <jchronic.version>0.2.8</jchronic.version>
         <jdom.version>2.0.6.1</jdom.version>
@@ -154,14 +151,7 @@
         <junit.version>4.13.1</junit.version>
         <jwi.version>2.2.3</jwi.version>
         <libsvm.version>3.31</libsvm.version>
-
-
-
         <log4j.version>2.23.1</log4j.version>
-
-
-
-
         <lucene-analyzers.version>8.11.3</lucene-analyzers.version>
         <lucene-core.version>9.11.1</lucene-core.version>
         <lucene-queries.version>9.11.1</lucene-queries.version>
@@ -388,13 +378,6 @@
                 <version>${jwi.version}</version>
             </dependency>
 
-
-<!--            <dependency>-->
-<!--                <groupId>log4j</groupId>-->
-<!--                <artifactId>log4j</artifactId>-->
-<!--                <version>1.2.17</version>-->
-<!--            </dependency>-->
-
             <dependency>
                 <groupId>org.apache.logging.log4j</groupId>
                 <artifactId>log4j-1.2-api</artifactId>
@@ -402,44 +385,45 @@
             </dependency>
             <dependency>
                 <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-api</artifactId>
+                <version>${log4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
                 <artifactId>log4j-core</artifactId>
                 <version>${log4j.version}</version>
             </dependency>
-            <dependency>
-                <groupId>org.apache.logging.log4j</groupId>
-                <artifactId>log4j-slf4j-impl</artifactId>
-                <version>${log4j.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.logging.log4j</groupId>
-                <artifactId>log4j-slf4j2-impl</artifactId>
-                <version>${log4j.version}</version>
-            </dependency>
 
-
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>log4j-over-slf4j</artifactId>
-                <version>${slf4j.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-api</artifactId>
-                <version>${slf4j.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-simple</artifactId>
-                <version>${slf4j.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-log4j12</artifactId>
-                <version>${slf4j.version}</version>
-            </dependency>
-
-
-
+<!--            <dependency>-->
+<!--                <groupId>org.apache.logging.log4j</groupId>-->
+<!--                <artifactId>log4j-slf4j-impl</artifactId>-->
+<!--                <version>${log4j.version}</version>-->
+<!--            </dependency>-->
+<!--            <dependency>-->
+<!--                <groupId>org.apache.logging.log4j</groupId>-->
+<!--                <artifactId>log4j-slf4j2-impl</artifactId>-->
+<!--                <version>${log4j.version}</version>-->
+<!--            </dependency>-->
+<!--            <dependency>-->
+<!--                <groupId>org.slf4j</groupId>-->
+<!--                <artifactId>log4j-over-slf4j</artifactId>-->
+<!--                <version>${slf4j.version}</version>-->
+<!--            </dependency>-->
+<!--            <dependency>-->
+<!--                <groupId>org.slf4j</groupId>-->
+<!--                <artifactId>slf4j-api</artifactId>-->
+<!--                <version>${slf4j.version}</version>-->
+<!--            </dependency>-->
+<!--            <dependency>-->
+<!--                <groupId>org.slf4j</groupId>-->
+<!--                <artifactId>slf4j-simple</artifactId>-->
+<!--                <version>${slf4j.version}</version>-->
+<!--            </dependency>-->
+<!--            <dependency>-->
+<!--                <groupId>org.slf4j</groupId>-->
+<!--                <artifactId>slf4j-log4j12</artifactId>-->
+<!--                <version>${slf4j.version}</version>-->
+<!--            </dependency>-->
 
             <!-- There is an xml=apis 2.0 in maven central, but it is pom only, therefore broken.  -->
             <dependency>
@@ -826,19 +810,9 @@
                 <version>${commons-dbcp.version}</version>
             </dependency>
             <dependency>
-                <groupId>commons-lang</groupId>
-                <artifactId>commons-lang</artifactId>
-                <version>${commons-lang.version}</version>
-            </dependency>
-            <dependency>
                 <groupId>commons-cli</groupId>
                 <artifactId>commons-cli</artifactId>
                 <version>${commons-cli.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>commons-logging</groupId>
-                <artifactId>commons-logging</artifactId>
-                <version>${commons-logging.version}</version>
             </dependency>
             <dependency>
                 <groupId>commons-jxpath</groupId>
@@ -849,11 +823,6 @@
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
                 <version>${guava.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.carrotsearch</groupId>
-                <artifactId>hppc</artifactId>
-                <version>${hppc.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.solr</groupId>

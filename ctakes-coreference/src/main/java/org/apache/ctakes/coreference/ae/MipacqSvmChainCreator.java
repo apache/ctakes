@@ -27,7 +27,8 @@ import org.apache.ctakes.typesystem.type.relation.CollectionTextRelation;
 import org.apache.ctakes.typesystem.type.relation.CoreferenceRelation;
 import org.apache.ctakes.typesystem.type.relation.RelationArgument;
 import org.apache.ctakes.typesystem.type.syntax.TreebankNode;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.FSIterator;
@@ -66,7 +67,7 @@ public class MipacqSvmChainCreator extends JCasAnnotator_ImplBase {
   File modelFile = null;
   
 	// LOG4J logger based on class name
-	private Logger logger = Logger.getLogger(getClass().getName());
+	private Logger LOGGER = LogManager.getLogger(getClass().getName());
 
 	// svm models
 //	private AbstractClassifier mod_pron, mod_dem, mod_coref;
@@ -103,7 +104,7 @@ public class MipacqSvmChainCreator extends JCasAnnotator_ImplBase {
 			    else if (i < 0)
 			      stopwords.add(l.trim());
 			  }
-			  logger.info("Stop words list loaded: " + stopwordFile.getAbsolutePath());
+			  LOGGER.info("Stop words list loaded: " + stopwordFile.getAbsolutePath());
 			  vecCreator = new SvmVectorCreator(stopwords);
 			}
       treeFrags = new ArrayList<>();
@@ -114,11 +115,11 @@ public class MipacqSvmChainCreator extends JCasAnnotator_ImplBase {
 			    treeFrags.add(line.split(" ")[1]);
 			  }
 			  vecCreator.setFrags(treeFrags);
-			  logger.info("Tree fragment features loaded: " + treefragFile.getAbsolutePath());
+			  LOGGER.info("Tree fragment features loaded: " + treefragFile.getAbsolutePath());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			logger.error("Error loading stop words list");
+			LOGGER.error("Error loading stop words list");
 		}
 	}
 
@@ -129,7 +130,7 @@ public class MipacqSvmChainCreator extends JCasAnnotator_ImplBase {
 				jcas.getJFSIndexRepository().getAnnotationIndex(Markable.type).iterator());
 		Map<Markable, NonEmptyFSList> collectionRas = new HashMap<>();
       String docName = DocIdUtil.getDocumentID( jcas );
-		logger.info("Classifying coreference in document: " + docName);
+		LOGGER.info("Classifying coreference in document: " + docName);
 //		ArrayList<CollectionTextRelation> chains = new ArrayList<CollectionTextRelation>();
 		int chainId = 0;
 		
@@ -218,7 +219,7 @@ public class MipacqSvmChainCreator extends JCasAnnotator_ImplBase {
 				anteNode.setTail(node);				
 			}
 		}
-		logger.info("Done classifying document: " + docName);
+		LOGGER.info("Done classifying document: " + docName);
 
 //		// Extract equivalence classes and save them into CAS
 //		int[] ec = new int[ppt.getSize()]; // class number for each Markable

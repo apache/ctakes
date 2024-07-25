@@ -2,7 +2,8 @@ package org.apache.ctakes.core.ae;
 
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.core.util.MutableUimaContext;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
@@ -20,7 +21,7 @@ import org.apache.uima.resource.ResourceInitializationException;
       role = PipeBitInfo.Role.SPECIAL
 )
 public class PythonPipper extends PythonRunner {
-   static private final Logger LOGGER = Logger.getLogger( "PythonPipper" );
+   static private final Logger LOGGER = LogManager.getLogger( "PythonPipper" );
 
    static public final String PIP_PACKAGE_PARAM = "PipPackage";
    static public final String PIP_PACKAGE_DESC = "Path of the python package to pip.";

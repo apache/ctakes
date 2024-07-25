@@ -26,7 +26,8 @@ import java.util.Iterator;
 import java.util.List;
 import org.apache.ctakes.assertion.zoner.types.Heading;
 import org.apache.ctakes.assertion.zoner.types.Zone;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
@@ -63,7 +64,7 @@ public class ZoneAnnotator extends JCasAnnotator_ImplBase {
 	      mandatory = false)
   protected Boolean includeGenerics = Boolean.FALSE;
 
-  protected final Logger logger = Logger.getLogger(ZoneAnnotator.class.getName());
+  static private final Logger LOGGER = LogManager.getLogger( "ZoneAnnotator" );
 	
 	@Override
 	public void initialize (UimaContext aContext) throws ResourceInitializationException {
@@ -75,8 +76,8 @@ public class ZoneAnnotator extends JCasAnnotator_ImplBase {
 		//System.out.println("sectionRegexFileUriString: " + sectionRegexFileUriString);
 	    URL sectionRegexFileInClasspathUrl = 
 	        getClass().getClassLoader().getResource(sectionRegexFileUriString);
-	    logger.info("sectionRegexFileInClasspathUrl: " + sectionRegexFileInClasspathUrl);
-	    logger.info("includeGenerics: " + includeGenerics);
+	    LOGGER.info("sectionRegexFileInClasspathUrl: " + sectionRegexFileInClasspathUrl);
+	    LOGGER.info("includeGenerics: " + includeGenerics);
 	    URI sectionRegexFileInClasspathUri;
 	    try
 	    {
@@ -88,7 +89,7 @@ public class ZoneAnnotator extends JCasAnnotator_ImplBase {
 			
 	    } catch (URISyntaxException e1)
 	    {
-	      logger.error( String.format("section regex file not found [%s]", sectionRegexFileUriString), e1);
+	      LOGGER.error( String.format("section regex file not found [%s]", sectionRegexFileUriString), e1);
 	      throw new ResourceInitializationException(e1);
 	    }
 	}
@@ -127,17 +128,17 @@ public class ZoneAnnotator extends JCasAnnotator_ImplBase {
 				    zAnnot.setLabel(r.getLabel());
 				    zAnnot.addToIndexes();
 				    remembered_begin = -1;
-				    logger.debug(String.format("added new zone annotation [%d-%d] \"%s\"", 
+					 LOGGER.debug(String.format("added new zone annotation [%d-%d] \"%s\"",
 				    		zAnnot.getBegin(), zAnnot.getEnd(), zAnnot.getCoveredText()));
 			    }
 			    else {
-			    	logger.debug(String.format("unable to patch [%d-%d]", remembered_begin, r.getHeadingEnd()));
+					 LOGGER.debug(String.format("unable to patch [%d-%d]", remembered_begin, r.getHeadingEnd()));
 			    	remembered_begin = -1;
 			    }
 			} else {
 				// note that range is inverted (a ZonerCli error) so range End is its sraer
 				remembered_begin = r.getHeadingEnd();
-				logger.debug(String.format("inverted range [%d-%d]", r.getHeadingBegin(), r.getHeadingEnd()));
+				LOGGER.debug(String.format("inverted range [%d-%d]", r.getHeadingBegin(), r.getHeadingEnd()));
 			}
 		    
 		}
@@ -155,16 +156,16 @@ public class ZoneAnnotator extends JCasAnnotator_ImplBase {
 				    hAnnot.setLabel(r.getLabel());
 				    hAnnot.addToIndexes();
 				    remembered_begin = -1;
-				    logger.debug(String.format("added new headingrange annotation [%d-%d] \"%s\"", 
+					LOGGER.debug(String.format("added new headingrange annotation [%d-%d] \"%s\"",
 				    		hAnnot.getBegin(), hAnnot.getEnd(), hAnnot.getCoveredText()));
 				} else {
-			    	logger.debug(String.format("unable to patch [%d-%d]", remembered_begin, r.getHeadingEnd()));
+					LOGGER.debug(String.format("unable to patch [%d-%d]", remembered_begin, r.getHeadingEnd()));
 			    	remembered_begin = -1;
 			    }
 			} else {
 				// note that range is inverted (a ZonerCli error) so range End is its sraer
 				remembered_begin = r.getHeadingEnd();
-				logger.debug(String.format("inverted heading range [%d-%d]", r.getHeadingBegin(), r.getHeadingEnd()));
+				LOGGER.debug(String.format("inverted heading range [%d-%d]", r.getHeadingBegin(), r.getHeadingEnd()));
 			}
 		}
 

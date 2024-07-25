@@ -6,7 +6,8 @@ import org.apache.ctakes.coreference.ae.features.salience.GrammaticalRoleFeature
 import org.apache.ctakes.coreference.ae.features.salience.MorphosyntacticFeatureExtractor;
 import org.apache.ctakes.coreference.ae.features.salience.SemanticEnvironmentFeatureExtractor;
 import org.apache.ctakes.typesystem.type.textsem.Markable;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -38,7 +39,7 @@ import java.util.Map;
 )
 public class MarkableSalienceAnnotator extends CleartkAnnotator<Boolean> {
 
-  static private final Logger LOGGER = Logger.getLogger( "MarkableSalienceAnnotator" );
+  static private final Logger LOGGER = LogManager.getLogger( "MarkableSalienceAnnotator" );
 
   List<FeatureExtractor1<Markable>> extractors = new ArrayList<>();
   

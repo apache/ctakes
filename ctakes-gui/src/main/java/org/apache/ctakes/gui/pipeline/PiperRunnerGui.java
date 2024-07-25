@@ -4,7 +4,8 @@ package org.apache.ctakes.gui.pipeline;
 import com.lexicalscope.jewel.cli.CliFactory;
 import org.apache.ctakes.core.pipeline.CliOptionals;
 import org.apache.ctakes.gui.component.DisablerPane;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,7 +17,7 @@ import java.awt.*;
  */
 final public class PiperRunnerGui {
 
-   static private final Logger LOGGER = Logger.getLogger( "PiperRunnerGui" );
+   static private final Logger LOGGER = LogManager.getLogger( "PiperRunnerGui" );
 
    static private JFrame createFrame() {
       final JFrame frame = new JFrame( "cTAKES Piper File Submitter" );

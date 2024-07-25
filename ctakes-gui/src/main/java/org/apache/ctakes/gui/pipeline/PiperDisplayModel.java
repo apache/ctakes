@@ -1,6 +1,7 @@
 package org.apache.ctakes.gui.pipeline;
 
-import java.util.logging.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * @author SPF , chip-nlp
@@ -9,5 +10,5 @@ import java.util.logging.Logger;
  */
 public class PiperDisplayModel {
 
-   static private final Logger LOGGER = Logger.getLogger( "PiperDisplayModel" );
+   static private final Logger LOGGER = LogManager.getLogger( "PiperDisplayModel" );
 }

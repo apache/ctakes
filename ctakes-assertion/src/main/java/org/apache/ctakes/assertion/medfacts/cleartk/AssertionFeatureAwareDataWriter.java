@@ -20,8 +20,6 @@ package org.apache.ctakes.assertion.medfacts.cleartk;
 
 import com.google.common.collect.Lists;
 import de.bwaldvogel.liblinear.FeatureNode;
-import org.apache.commons.lang.StringEscapeUtils;
-import org.apache.commons.lang.StringUtils;
 import org.cleartk.ml.Feature;
 import org.cleartk.ml.encoder.CleartkEncoderException;
 import org.cleartk.ml.encoder.features.FeaturesEncoder;
@@ -85,7 +83,8 @@ public class AssertionFeatureAwareDataWriter extends LibLinearStringOutcomeDataW
         List<Feature> feat = Lists.newArrayList(new Feature(featName, 1.0));
         try {
           FeatureNode encodedNode = encoder.encodeAll(feat)[1]; // index 0 is the bias feature
-          out.println(String.format("%s : %d", StringEscapeUtils.escapeJava(featName), encodedNode.getIndex()));
+//          out.println(String.format("%s : %d", StringEscapeUtils.escapeJava(featName), encodedNode.getIndex()));
+          out.println(String.format("%s : %d", featName.replaceAll( "\\s+", " " ), encodedNode.getIndex()));
           for(String featGroup : FEATURE_GROUPS){
             if(featName.contains(featGroup)){
               groupIndexMap.get(featGroup).add(encodedNode.getIndex());
@@ -104,7 +103,8 @@ public class AssertionFeatureAwareDataWriter extends LibLinearStringOutcomeDataW
         out.print(featGroup);
         out.print(" : ");
         Collections.sort(groupIndexMap.get(featGroup));
-        out.println(StringUtils.join(groupIndices, ','));
+//        out.println(StringUtils.join(groupIndices, ','));
+        groupIndices.stream().map( String::valueOf ).forEach( out::println );
       }
       out.close();
     }

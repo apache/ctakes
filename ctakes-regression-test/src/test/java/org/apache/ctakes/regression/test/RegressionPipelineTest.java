@@ -21,7 +21,8 @@ package org.apache.ctakes.regression.test;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.ctakes.core.ae.UmlsEnvironmentConfiguration;
 import org.apache.ctakes.utils.env.EnvironmentVariable;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UIMAFramework;
 import org.apache.uima.cas.CAS;
 import org.apache.uima.collection.CollectionProcessingEngine;
@@ -68,7 +69,7 @@ import java.util.List;
  */
 public class RegressionPipelineTest {
 
-	static Logger logger = Logger.getLogger(RegressionPipelineTest.class.getName());
+	static Logger LOGGER = LogManager.getLogger(RegressionPipelineTest.class.getName());
 
 	// MAX timeout for the CPE
 	private static final int MAX_TIMEOUT_MS = 60 * 60 * 1000; // 60 mins
@@ -96,14 +97,14 @@ public class RegressionPipelineTest {
 				File generated = new File(String.format("testdata/generatedoutput/%s", FilenameUtils.removeExtension(file.getName())));
 				File expected = new File(String.format("testdata/expectedoutput/%s", FilenameUtils.removeExtension(file.getName())));
 
-				logger.info("Creating directory: " + generated);
+				LOGGER.info("Creating directory: " + generated);
 
 				Assert.assertTrue(
 						"Unable to create " + generated.getAbsolutePath(),
 						generated.exists() || generated.mkdirs());
 
 				// Run all of the CPE's in the Dir
-				logger.info("Parsing CPE Descriptor:" + file.getName());
+				LOGGER.info("Parsing CPE Descriptor:" + file.getName());
 				CpeDescription cpeDesc = UIMAFramework.getXMLParser()
 						.parseCpeDescription(new XMLInputSource(file));
 				CollectionProcessingEngine mCPE = UIMAFramework
@@ -129,7 +130,7 @@ public class RegressionPipelineTest {
 		File[] listOfFiles = expected_.listFiles();
 		for (File file : listOfFiles) {
 			if (file.isFile()) {
-				logger.info("Verifying Test Output: " + file.getAbsolutePath());
+				LOGGER.info("Verifying Test Output: " + file.getAbsolutePath());
 				DocumentBuilderFactory dbf = DocumentBuilderFactory
 						.newInstance();
 				dbf.setNamespaceAware(true);
@@ -178,7 +179,7 @@ public class RegressionPipelineTest {
 		 * @see org.apache.uima.collection.processing.StatusCallbackListener#initializationComplete()
 		 */
 		public void initializationComplete() {
-			logger.info("CPM Initialization Complete");
+			LOGGER.info("CPM Initialization Complete");
 		}
 
 		/**
@@ -188,7 +189,7 @@ public class RegressionPipelineTest {
 		 *
 		 */
 		public void batchProcessComplete() {
-			logger.info("Completed " + entityCount + " documents");
+			LOGGER.info("Completed " + entityCount + " documents");
 
 		}
 
@@ -199,7 +200,7 @@ public class RegressionPipelineTest {
 		 */
 		public void collectionProcessComplete() {
 
-			logger.info("Completed " + entityCount + " documents");
+			LOGGER.info("Completed " + entityCount + " documents");
 			num_cpe--;
 			// Only compare after the batch has been completed.
 			try {
@@ -216,7 +217,7 @@ public class RegressionPipelineTest {
 		 * @see org.apache.uima.collection.processing.StatusCallbackListener#paused()
 		 */
 		public void paused() {
-			logger.info("Paused");
+			LOGGER.info("Paused");
 		}
 
 		/**
@@ -225,7 +226,7 @@ public class RegressionPipelineTest {
 		 * @see org.apache.uima.collection.processing.StatusCallbackListener#resumed()
 		 */
 		public void resumed() {
-			logger.info("Resumed");
+			LOGGER.info("Resumed");
 		}
 
 		/**
@@ -234,7 +235,7 @@ public class RegressionPipelineTest {
 		 * @see org.apache.uima.collection.processing.StatusCallbackListener#aborted()
 		 */
 		public void aborted() {
-			logger.info("Aborted");
+			LOGGER.info("Aborted");
 		}
 
 		/**

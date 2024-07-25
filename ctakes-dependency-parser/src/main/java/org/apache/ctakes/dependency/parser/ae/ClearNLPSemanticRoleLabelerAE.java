@@ -33,7 +33,8 @@ import org.apache.ctakes.typesystem.type.textsem.Predicate;
 import org.apache.ctakes.typesystem.type.textsem.SemanticArgument;
 import org.apache.ctakes.typesystem.type.textsem.SemanticRoleRelation;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -87,7 +88,7 @@ import java.util.Map;
 )
 public class ClearNLPSemanticRoleLabelerAE extends JCasAnnotator_ImplBase {
    final String language = AbstractReader.LANG_EN;
-   public Logger logger = Logger.getLogger( getClass().getName() );
+   public Logger LOGGER = LogManager.getLogger( getClass().getName() );
 
    public static final String SRL_PRED_MODEL_KEY = "SrlPredModel";
    @ExternalResource(key = SRL_PRED_MODEL_KEY, mandatory=false)
@@ -124,7 +125,7 @@ protected static ExternalResourceDescription defaultParserResource = ExternalRes
 
    @Override
    public void initialize( UimaContext context ) throws ResourceInitializationException {
-      logger.info("Initializing ...");
+      LOGGER.info("Initializing ...");
       super.initialize( context );
 
       try {
@@ -150,7 +151,7 @@ protected static ExternalResourceDescription defaultParserResource = ExternalRes
 
    @Override
    public void process( JCas jCas ) throws AnalysisEngineProcessException {
-      logger.info("Processing ...");
+      LOGGER.info("Processing ...");
       for ( Sentence sentence : JCasUtil.select( jCas, Sentence.class ) ) {
          List<BaseToken> printableTokens = new ArrayList<>();
          for ( BaseToken token : JCasUtil.selectCovered( jCas, BaseToken.class, sentence ) ) {
@@ -202,7 +203,7 @@ protected static ExternalResourceDescription defaultParserResource = ExternalRes
                if ( headIdIndex != null ) {
                   headIDs[ i ] = headIdIndex;
                } else {
-                  logger.error( "No dependency node for index " + head + ".  Map size is " + depNodeToID.size()
+                  LOGGER.error( "No dependency node for index " + head + ".  Map size is " + depNodeToID.size()
                                 + "\nSetting head ID to 0" );
                   headIDs[ i ] = 0;
                }

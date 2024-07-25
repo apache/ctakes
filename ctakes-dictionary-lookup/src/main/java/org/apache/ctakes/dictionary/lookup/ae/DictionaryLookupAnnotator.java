@@ -26,7 +26,8 @@ import org.apache.ctakes.dictionary.lookup.vo.LookupAnnotation;
 import org.apache.ctakes.dictionary.lookup.vo.LookupHit;
 import org.apache.ctakes.dictionary.lookup.vo.LookupToken;
 import org.apache.ctakes.dictionary.lookup.vo.LookupTokenComparator;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -56,7 +57,7 @@ import java.util.*;
 public class DictionaryLookupAnnotator extends JCasAnnotator_ImplBase
 {
 	// LOG4J logger based on class name
-	private Logger iv_logger = Logger.getLogger(getClass().getName());
+	private Logger LOGGER = LogManager.getLogger(getClass().getName());
 
 	private UimaContext iv_context;
 
@@ -75,7 +76,7 @@ public class DictionaryLookupAnnotator extends JCasAnnotator_ImplBase
 
 		iv_context = aContext;
 		configInit();
-		iv_logger.info( "\nThe ctakes-dictionary-lookup module has been deprecated.\n"
+		LOGGER.info( "\nThe ctakes-dictionary-lookup module has been deprecated.\n"
 							 + "Please consider using ctakes-dictionary-lookup-fast.\n"
 							 + "ctakes-dictionary-lookup-fast is better than or equal in accuracy but ~1000x faster." );
 	}
@@ -89,7 +90,7 @@ public class DictionaryLookupAnnotator extends JCasAnnotator_ImplBase
 		FileResource fResrc = (FileResource) iv_context.getResourceObject("LookupDescriptor");
 		File descFile = fResrc.getFile();
 
-			iv_logger.info("Parsing descriptor: " + descFile.getAbsolutePath());
+			LOGGER.info("Parsing descriptor: " + descFile.getAbsolutePath());
 			iv_lookupSpecSet = LookupParseUtilities.parseDescriptor(descFile, iv_context);
 		}
 		catch (Exception e) {
@@ -105,7 +106,7 @@ public class DictionaryLookupAnnotator extends JCasAnnotator_ImplBase
   public void process(JCas jcas)
 			throws AnalysisEngineProcessException {
 		
-		iv_logger.info("process(JCas)");
+		LOGGER.info("process(JCas)");
 		iv_dupMap.clear();
 		
 		try {

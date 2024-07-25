@@ -222,7 +222,7 @@ Evaluation_ImplBase<AnnotationStatistics<String>> {
 								}
 							}
 							if(bestSystem != null){
-								this.logger.info(String.format("Allowed overlapping annotation: Gold(%s) => System(%s)\n", gold.getCoveredText(), bestSystem.getCoveredText()));
+								this.LOGGER.info(String.format("Allowed overlapping annotation: Gold(%s) => System(%s)\n", gold.getCoveredText(), bestSystem.getCoveredText()));
 								partialGold.add(gold);
 								partialSystem.add(bestSystem);
 							}
@@ -231,7 +231,7 @@ Evaluation_ImplBase<AnnotationStatistics<String>> {
 							goldOnly.removeAll(partialGold);
 							systemOnly.removeAll(partialSystem);
 							assert partialGold.size() == partialSystem.size();
-							this.logger.info(String.format("Found %d overlapping spans and removed from gold/system errors\n", partialGold.size()));
+							this.LOGGER.info(String.format("Found %d overlapping spans and removed from gold/system errors\n", partialGold.size()));
 						}
 					}
 				}

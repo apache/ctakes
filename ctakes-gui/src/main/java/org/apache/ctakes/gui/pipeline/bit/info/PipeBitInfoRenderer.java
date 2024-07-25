@@ -4,7 +4,8 @@ import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.core.pipeline.PipeBitInfoUtil;
 import org.apache.ctakes.gui.component.CellRendererLabel;
 import org.apache.ctakes.gui.component.CellRendererPanel;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,7 +21,7 @@ import static org.apache.ctakes.core.pipeline.PipeBitInfo.TypeProduct;
  */
 final public class PipeBitInfoRenderer implements ListCellRenderer<Object> {
 
-   static private final Logger LOGGER = Logger.getLogger( "PipeBitInfoRenderer" );
+   static private final Logger LOGGER = LogManager.getLogger( "PipeBitInfoRenderer" );
 
    static private final Color READER_COLOR = Color.GREEN.darker().darker();
    static private final Color ANNOTATOR_COLOR = Color.CYAN.darker().darker();

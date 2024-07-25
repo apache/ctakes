@@ -34,7 +34,7 @@ final public class BaseInstaller implements Callable<File> {
       _piperCommands = String.join( "\n", piperCommands );
       _copyFileSpecs = new ArrayList<>( extraFiles );
       _copyFileSpecs.add( new CopyFileSpec( sourceDirUrl + "pom/" + goalPomFile, "pom.xml" ) );
-      _copyFileSpecs.add( new CopyFileSpec( "/log4j.xml" ) );
+      _copyFileSpecs.add( new CopyFileSpec( "/log4j2.xml" ) );
       _copyFileSpecs.add( new CopyFileSpec( "/LICENSE" ) );
       _copyFileSpecs.add( new CopyFileSpec( "/NOTICE" ) );
    }

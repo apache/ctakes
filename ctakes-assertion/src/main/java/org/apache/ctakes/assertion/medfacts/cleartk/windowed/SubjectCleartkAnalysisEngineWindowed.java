@@ -22,7 +22,7 @@ import org.apache.ctakes.assertion.attributes.features.SubjectFeaturesExtractor;
 import org.apache.ctakes.assertion.attributes.features.selection.Chi2FeatureSelection;
 import org.apache.ctakes.assertion.attributes.features.selection.FeatureSelection;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
-import org.apache.log4j.Level;
+import org.apache.logging.log4j.Level;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -70,14 +70,14 @@ public class SubjectCleartkAnalysisEngineWindowed extends
             return;
          }
          instance.setOutcome( subj );
-         logger.log( Level.DEBUG, String.format( "[%s] expected: ''; actual: ''; features: %s",
+         LOGGER.log( Level.DEBUG, String.format( "[%s] expected: ''; actual: ''; features: %s",
                this.getClass().getSimpleName(),
                instance.toString()
          ) );
       } else {
          String label = this.classifier.classify( instance.getFeatures() );
          entityOrEventMention.setSubject( label );
-         logger.log( Level.DEBUG,
+         LOGGER.log( Level.DEBUG,
                "SUBJECT is being set on an IdentifiedAnnotation: " + label + " " + entityOrEventMention.getSubject() );
       }
    }

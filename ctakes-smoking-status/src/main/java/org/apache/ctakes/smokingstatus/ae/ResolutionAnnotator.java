@@ -25,7 +25,8 @@ import org.apache.ctakes.smokingstatus.type.SmokerNamedEntityAnnotation;
 import org.apache.ctakes.smokingstatus.type.libsvm.NominalAttributeValue;
 import org.apache.ctakes.typesystem.type.syntax.WordToken;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.annotator.AnnotatorConfigurationException;
 import org.apache.uima.analysis_engine.annotator.AnnotatorInitializationException;
@@ -53,7 +54,7 @@ public class ResolutionAnnotator
 {
     Set<String> conWords; //contradiction words for negation -- if this word appears in sentence do not negate
 	// LOG4J logger based on class name
-	public Logger iv_logger = Logger.getLogger(getClass().getName());
+	public Logger LOGGER = LogManager.getLogger(getClass().getName());
 
 	public void initialize(UimaContext aContext)
 	throws AnnotatorConfigurationException, AnnotatorInitializationException
@@ -160,12 +161,12 @@ public class ResolutionAnnotator
         }
 
         //---check sentence-level classification 
-		if (iv_logger.isInfoEnabled())
+		if (LOGGER.isInfoEnabled())
 		 if(finalClassification!=Const.CLASS_UNKNOWN) {
         	Iterator senIter = jcas.getJFSIndexRepository().getAnnotationIndex(Sentence.type).iterator();		
         	while(senIter.hasNext()) {
         		Sentence sen = (Sentence) senIter.next();
-        		iv_logger.info("|"+sen.getCoveredText() + "|" + finalClassification + "|" + negCnt);
+        		LOGGER.info("|"+sen.getCoveredText() + "|" + finalClassification + "|" + negCnt);
         	}
         }
         //---
@@ -206,7 +207,7 @@ public class ResolutionAnnotator
 //			if (certainty == TypeSystemConst.NE_CERTAINTY_NEGATED)
 			if (certainty == -1)
 				negCnt++; 
-			iv_logger.info("***SmokerNameEntity***" + neAnn.getCoveredText() + " " + negCnt);
+			LOGGER.info("***SmokerNameEntity***" + neAnn.getCoveredText() + " " + negCnt);
 		}
 
 		return negCnt;
@@ -222,7 +223,7 @@ public class ResolutionAnnotator
 		{
 			NonSmokerNamedEntityAnnotation neAnn = (NonSmokerNamedEntityAnnotation) neItr.next();
 			nonSmokerCnt++;
-			iv_logger.info("***NonSmokerNameEntity***" + neAnn.getCoveredText() + " " + nonSmokerCnt + " " + neAnn.getPolarity());
+			LOGGER.info("***NonSmokerNameEntity***" + neAnn.getCoveredText() + " " + nonSmokerCnt + " " + neAnn.getPolarity());
 		}
 
 		return nonSmokerCnt;

@@ -1,7 +1,7 @@
 package org.apache.ctakes.core.util;
 
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
@@ -29,7 +29,7 @@ final public class FinishedLogger extends JCasAnnotator_ImplBase {
     */
    @Override
    public void initialize( final UimaContext context ) throws ResourceInitializationException {
-      Logger.getLogger( "FinishedLogger" ).warn( "Deprecated use FinishedLogger in (sub) package log." );
+      LogManager.getLogger( "FinishedLogger" ).warn( "Deprecated use FinishedLogger in (sub) package log." );
       _delegate.initialize( context );
    }
 

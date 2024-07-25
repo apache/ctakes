@@ -36,7 +36,7 @@ public class SectionHeaderExtractor implements FeatureExtractor1 {
 
 	private String name;
 
-	//  private Logger logger = Logger.getLogger(this.getClass().getName());
+	//  private Logger LOGGER = LogManager.getLogger(this.getClass().getName());
 
 	public SectionHeaderExtractor() {
 		super();
@@ -64,7 +64,7 @@ public class SectionHeaderExtractor implements FeatureExtractor1 {
 				}else{
 					continue;
 				}
-				//			  logger.info("found segment id: "+ segname);
+				//			  LOGGER.info("found segment id: "+ segname);
 			}
 
 		}

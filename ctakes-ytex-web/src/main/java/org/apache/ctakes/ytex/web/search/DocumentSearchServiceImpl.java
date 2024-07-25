@@ -18,12 +18,12 @@
  */
 package org.apache.ctakes.ytex.web.search;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import javax.sql.DataSource;
 import java.sql.ResultSet;
@@ -48,8 +48,7 @@ public class DocumentSearchServiceImpl implements DocumentSearchService,
 			return result;
 		}
 	}
-	private static final Log log = LogFactory
-			.getLog(DocumentSearchServiceImpl.class);
+	private static final Logger LOGGER = LogManager.getLogger("DocumentSearchServiceImpl");
 	private DataSource dataSource;	
 	private JdbcTemplate jdbcTemplate;
 	private String query;
@@ -101,8 +100,8 @@ public class DocumentSearchServiceImpl implements DocumentSearchService,
 		if (negationStatus != null) {
 			mapArgs.put("certainty", negationStatus ? 0 : -1);
 		}
-		if (log.isDebugEnabled()) {
-			log.debug("executing query, query=" + query
+		if ( LOGGER.isDebugEnabled()) {
+			LOGGER.debug("executing query, query=" + query
 					+ ", args=" + mapArgs);
 		}
 		return this.jdbcTemplate.query(query,

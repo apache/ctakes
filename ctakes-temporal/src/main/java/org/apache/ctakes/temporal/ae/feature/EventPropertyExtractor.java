@@ -33,14 +33,15 @@ import org.cleartk.ml.feature.extractor.FeatureExtractor1;
 
 import java.util.*;
 
-//import java.util.logging.Logger;
+//import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 public class EventPropertyExtractor implements FeatureExtractor1<Annotation> {
 
 	//	private String name;
 	private static Integer polarity;
 
-	//  private Logger logger = Logger.getLogger(this.getClass().getName());
+	//  private Logger LOGGER = LogManager.getLogger(this.getClass().getName());
 
 	public EventPropertyExtractor() {
 		super();
@@ -111,7 +112,7 @@ public class EventPropertyExtractor implements FeatureExtractor1<Annotation> {
 		//			if ( "GENERIC".equals(contextModal) ){
 		//				Feature contexmod = new Feature(this.name, contextModal);
 		//				features.add(contexmod);
-		//				//		  logger.info("found a event: "+ contextModal);
+		//				//		  LOGGER.info("found a event: "+ contextModal);
 		//			}
 		//		}
 

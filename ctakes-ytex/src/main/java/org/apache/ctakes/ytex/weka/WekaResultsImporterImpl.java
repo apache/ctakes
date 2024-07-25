@@ -18,8 +18,6 @@
  */
 package org.apache.ctakes.ytex.weka;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.ctakes.ytex.kernel.model.ClassifierEvaluation;
 import org.apache.ctakes.ytex.kernel.model.ClassifierInstanceEvaluation;
 import org.hibernate.SessionFactory;
@@ -50,8 +48,6 @@ public class WekaResultsImporterImpl implements WekaResultsImporter {
 	private static final Pattern patResult = Pattern
 			.compile("\\s+(\\d+)\\s+(\\d+)\\:.*\\s+(\\d+)\\:.*\\s+\\+{0,1}\\s+(.*)\\s+\\((.*)\\)");
 	private SessionFactory sessionFactory;
-	private static final Log log = LogFactory
-			.getLog(DocumentResultInstanceImporter.class);
 
 	public SessionFactory getSessionFactory() {
 		return sessionFactory;

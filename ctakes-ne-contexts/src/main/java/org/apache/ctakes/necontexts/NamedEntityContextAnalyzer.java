@@ -20,7 +20,8 @@ package org.apache.ctakes.necontexts;
 
 import org.apache.ctakes.core.fsm.adapters.TextTokenAdapter;
 import org.apache.ctakes.core.fsm.token.TextToken;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.jcas.tcas.Annotation;
@@ -36,7 +37,7 @@ import java.util.*;
  */
 public abstract class NamedEntityContextAnalyzer implements ContextAnalyzer {
 
-	private static final Logger logger = Logger.getLogger(NamedEntityContextAnalyzer.class);
+	private static final Logger LOGGER = LogManager.getLogger(NamedEntityContextAnalyzer.class);
 
 	private Set<String> _boundaryWordSet;
 
@@ -45,7 +46,7 @@ public abstract class NamedEntityContextAnalyzer implements ContextAnalyzer {
 	}
 
 	private void initBoundaryData() {
-		logger.info("initBoundaryData() called for ContextInitializer");
+		LOGGER.info("initBoundaryData() called for ContextInitializer");
 		_boundaryWordSet = new HashSet<String>();
 		_boundaryWordSet.add("but");
 		_boundaryWordSet.add("however");

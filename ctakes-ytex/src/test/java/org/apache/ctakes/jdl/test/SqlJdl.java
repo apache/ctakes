@@ -18,7 +18,6 @@
  */
 package org.apache.ctakes.jdl.test;
 
-import org.apache.commons.lang.StringUtils;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -79,7 +78,8 @@ public class SqlJdl {
 		List<String[]> list = select(connection);
 		if (print) {
 			for (String[] c : list) {
-				System.out.println(c[0] + "\t" + StringUtils.rightPad(c[1], 31) + c[2] + "\t" + StringUtils.rightPad(c[3], 23) + c[4] + "\t" + c[5]);
+//				System.out.println(c[0] + "\t" + StringUtils.rightPad(c[1], 31) + c[2] + "\t" + StringUtils.rightPad(c[3], 23) + c[4] + "\t" + c[5]);
+				System.out.println(c[0] + "\t" + String.format("%1$-" + 31 + "s", c[1]) + c[2] + "\t" + String.format("%1$-" + 23 + "s", c[3]) + c[4] + "\t" + c[5]);
 			}
 		}
 		return list;

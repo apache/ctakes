@@ -3,7 +3,8 @@ package org.apache.ctakes.gui.pipeline.bit.available;
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.core.pipeline.PipeBitInfoUtil;
 import org.apache.ctakes.gui.pipeline.bit.info.PipeBitInfoComparator;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import javax.swing.*;
 import java.util.*;
@@ -15,7 +16,7 @@ import java.util.*;
  */
 final public class AvailablesListModel extends AbstractListModel<PipeBitInfo> {
 
-   static private final Logger LOGGER = Logger.getLogger( "AvailablesListModel" );
+   static private final Logger LOGGER = LogManager.getLogger( "AvailablesListModel" );
 
 
    private final List<PipeBitInfo> _pipeBitInfos = new ArrayList<>();

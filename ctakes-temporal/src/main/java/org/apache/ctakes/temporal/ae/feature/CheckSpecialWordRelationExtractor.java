@@ -208,7 +208,7 @@ public class CheckSpecialWordRelationExtractor implements RelationFeaturesExtrac
 //			}
 		}
 
-		//logger.info("found nearby verb's pos tag: "+ verbTP);
+		//LOGGER.info("found nearby verb's pos tag: "+ verbTP);
 		return feats;
 	}
 

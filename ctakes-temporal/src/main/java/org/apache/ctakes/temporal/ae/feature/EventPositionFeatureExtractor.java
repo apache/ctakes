@@ -46,7 +46,7 @@ public class EventPositionFeatureExtractor implements FeatureExtractor1 {
 
 	private String name;
 
-	//  private Logger logger = Logger.getLogger(this.getClass().getName());
+	//  private Logger LOGGER = LogManager.getLogger(this.getClass().getName());
 
 	public EventPositionFeatureExtractor() {
 		super();

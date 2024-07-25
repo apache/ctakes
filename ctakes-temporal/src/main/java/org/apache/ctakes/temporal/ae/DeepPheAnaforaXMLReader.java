@@ -24,7 +24,8 @@ import org.apache.ctakes.typesystem.type.constants.CONST;
 import org.apache.ctakes.typesystem.type.refsem.Event;
 import org.apache.ctakes.typesystem.type.refsem.EventProperties;
 import org.apache.ctakes.typesystem.type.textsem.EventMention;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.analysis_engine.AnalysisEngine;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -54,7 +55,7 @@ import java.util.List;
       products = { PipeBitInfo.TypeProduct.IDENTIFIED_ANNOTATION }
 )
 public class DeepPheAnaforaXMLReader extends JCasAnnotator_ImplBase {
-  private static Logger LOGGER = Logger.getLogger(DeepPheAnaforaXMLReader.class);
+  private static Logger LOGGER = LogManager.getLogger(DeepPheAnaforaXMLReader.class);
 
   public static final String PARAM_ANAFORA_DIRECTORY = "anaforaDirectory";
 

@@ -20,7 +20,8 @@ package org.apache.ctakes.rest.service;
  */
 
 import org.apache.ctakes.rest.service.response.*;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.springframework.web.bind.annotation.*;
@@ -36,7 +37,7 @@ import java.util.Optional;
 @RestController
 public class TinyController {
 
-   static private final Logger LOGGER = Logger.getLogger( "TinyController" );
+   static private final Logger LOGGER = LogManager.getLogger( "TinyController" );
 
    static private volatile boolean _initialized = false;
 

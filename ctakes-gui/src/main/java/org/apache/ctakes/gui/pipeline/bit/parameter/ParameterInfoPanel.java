@@ -1,6 +1,7 @@
 package org.apache.ctakes.gui.pipeline.bit.parameter;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.fit.descriptor.ConfigurationParameter;
 
 import javax.swing.*;
@@ -20,7 +21,7 @@ import java.util.stream.Collectors;
  */
 public class ParameterInfoPanel extends JPanel {
 
-   static private final Logger LOGGER = Logger.getLogger( "ParameterInfoPanel" );
+   static private final Logger LOGGER = LogManager.getLogger( "ParameterInfoPanel" );
 
 
    private JLabel _name;

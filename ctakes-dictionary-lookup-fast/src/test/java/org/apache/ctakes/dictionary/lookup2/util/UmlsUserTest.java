@@ -1,7 +1,8 @@
 package org.apache.ctakes.dictionary.lookup2.util;
 
 import org.apache.ctakes.core.ae.UmlsEnvironmentConfiguration;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UIMAFramework;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngine;
@@ -32,7 +33,7 @@ import java.util.Properties;
 @Ignore  // needed for successful maven build/test when no API key is supplied
 final public class UmlsUserTest {
 
-   static private final Logger LOGGER = Logger.getLogger( "UmlsUserTester" );
+   static private final Logger LOGGER = LogManager.getLogger( "UmlsUserTester" );
    static UimaContext _uimaContext = null;
    
    private final String apiKeyForTesting = "CHANGE_ME";

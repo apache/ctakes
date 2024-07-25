@@ -6,7 +6,8 @@ import org.apache.ctakes.core.pipeline.CliOptionals;
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.core.pipeline.PipelineBuilder;
 import org.apache.ctakes.core.pipeline.PiperFileReader;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UIMAException;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngine;
@@ -35,7 +36,7 @@ import java.nio.file.Paths;
 )
 public class PiperFileRunEngine extends JCasAnnotator_ImplBase {
 
-   static private final Logger LOGGER = Logger.getLogger( "PiperFileRunEngine" );
+   static private final Logger LOGGER = LogManager.getLogger( "PiperFileRunEngine" );
 
    @ConfigurationParameter(
       name = "PiperParams",

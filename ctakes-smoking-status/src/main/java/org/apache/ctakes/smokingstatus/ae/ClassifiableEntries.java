@@ -31,7 +31,8 @@ import org.apache.ctakes.smokingstatus.util.TruthValue;
 import org.apache.ctakes.typesystem.type.structured.DocumentID;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UIMAFramework;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngine;
@@ -136,7 +137,7 @@ public class ClassifiableEntries extends JCasAnnotator_ImplBase {
 			System.out.println("descFile "+descFile.getAbsolutePath());
 //			if (!descFile.getAbsolutePath().contains(apiMacroHome)) {
 //				ClassLoader thisBundle = this.getClass().getClassLoader();
-//				iv_logger.info("Using data path : "+dataPath);
+//				LOGGER.info("Using data path : "+dataPath);
 //				if (!windowsSystem) {
 //					//thisBundle.getSystemResources(dataPath);
 //					dataPath = "\""+dataPath+"\"";
@@ -147,15 +148,15 @@ public class ClassifiableEntries extends JCasAnnotator_ImplBase {
 //					ResMgr.setExtensionClassPath(dataPath, true);
 //				}
 //			}
-//			else if (iv_logger.isInfoEnabled()) {
-//				iv_logger.warn("Shouldn't need to set the classpath "+descFile.getAbsolutePath());
+//			else if (LOGGER.isInfoEnabled()) {
+//				LOGGER.warn("Shouldn't need to set the classpath "+descFile.getAbsolutePath());
 //			}
 			taeStep1 = UIMAFramework.produceAnalysisEngine(taeSpecifierStep1, ResMgr, null);
 			taeStep2 = UIMAFramework.produceAnalysisEngine(taeSpecifierStep2, ResMgr, null);
 			jcas_local = CasCreationUtils.createCas(taeStep1.getAnalysisEngineMetaData()).getJCas();
 			
-//			if (iv_logger.isInfoEnabled())
-//				iv_logger.info("Loaded UIMA TAE from descriptor: "
+//			if (LOGGER.isInfoEnabled())
+//				LOGGER.info("Loaded UIMA TAE from descriptor: "
 //						+ descFile.getAbsolutePath().replaceAll(apiMacroHome, "."));
 
 			// get sections to ignore
@@ -246,7 +247,7 @@ public class ClassifiableEntries extends JCasAnnotator_ImplBase {
 				iv_truthMap.put(recordID, tVal);
 
 			} else {
-				iv_logger.warn("Malformed line " + lineNum + ": " + line);
+				LOGGER.warn("Malformed line " + lineNum + ": " + line);
 			}
 
 			line = br.readLine();
@@ -254,8 +255,8 @@ public class ClassifiableEntries extends JCasAnnotator_ImplBase {
 		}
 		br.close();
 
-		if (iv_logger.isInfoEnabled())
-			iv_logger.info("Truth data loaded for "
+		if (LOGGER.isInfoEnabled())
+			LOGGER.info("Truth data loaded for "
 					+ iv_truthMap.keySet().size() + " records");
 	}
 
@@ -277,15 +278,15 @@ public class ClassifiableEntries extends JCasAnnotator_ImplBase {
 		List<ClassifiableEntry> entryList = new ArrayList<ClassifiableEntry>();
 		String recordID = null;
 
-		if (iv_logger.isInfoEnabled()) {
+		if (LOGGER.isInfoEnabled()) {
 		 	JFSIndexRepository indexes = jcas.getJFSIndexRepository();
 		 	FSIterator<TOP> documentIDIterator = indexes.getAllIndexedFS(DocumentID.type);
 			if (documentIDIterator.hasNext()) {
 				DocumentID didAnn = (DocumentID) documentIDIterator.next();
 				recordID = didAnn.getDocumentID();
 
-				if (iv_logger.isInfoEnabled())
-					iv_logger.info("Processing record [" + recordID + "]");
+				if (LOGGER.isInfoEnabled())
+					LOGGER.info("Processing record [" + recordID + "]");
 			}
 		}
 
@@ -381,8 +382,8 @@ public class ClassifiableEntries extends JCasAnnotator_ImplBase {
 					copy_sa.setId(sa.getId());
 					copy_sa.addToIndexes();
 				} else {
-					if (iv_logger.isDebugEnabled())
-						iv_logger.error("Invalid Segment for sentence ["
+					if (LOGGER.isDebugEnabled())
+						LOGGER.error("Invalid Segment for sentence ["
 								+ rs.getCoveredText() + "]");
 				}
 
@@ -581,8 +582,8 @@ public class ClassifiableEntries extends JCasAnnotator_ImplBase {
 					iv_procEntryList.add(entry);
 					allowedCnt++;
 				} else {
-					if (iv_logger.isInfoEnabled())
-						iv_logger.info("disallowed value:"
+					if (LOGGER.isInfoEnabled())
+						LOGGER.info("disallowed value:"
 								+ entry.iv_classification);
 					disallowedCnt++;
 				}
@@ -591,10 +592,10 @@ public class ClassifiableEntries extends JCasAnnotator_ImplBase {
 		}
 
 		int totalCnt = allowedCnt + disallowedCnt;
-		if (iv_logger.isInfoEnabled()) {
-			iv_logger.info("# total sentences: " + totalCnt);
-			iv_logger.info("# allowed sentences: " + allowedCnt);
-			iv_logger.info("# disallowed sentences: " + disallowedCnt);
+		if (LOGGER.isInfoEnabled()) {
+			LOGGER.info("# total sentences: " + totalCnt);
+			LOGGER.info("# allowed sentences: " + allowedCnt);
+			LOGGER.info("# disallowed sentences: " + disallowedCnt);
 		}
 	}
 
@@ -628,7 +629,7 @@ public class ClassifiableEntries extends JCasAnnotator_ImplBase {
 	private ResourceSpecifier taeSpecifierStep2;
 
 	// LOG4J logger based on class name
-	protected Logger iv_logger = Logger.getLogger(getClass().getName());
+	protected Logger LOGGER = LogManager.getLogger(getClass().getName());
 
 	// counters to track sentence classification
 	private int iSmokerCtr;

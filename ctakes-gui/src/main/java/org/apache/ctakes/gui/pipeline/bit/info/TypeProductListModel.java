@@ -2,7 +2,8 @@ package org.apache.ctakes.gui.pipeline.bit.info;
 
 import javax.swing.*;
 import javax.swing.event.ListDataListener;
-import java.util.logging.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import static org.apache.ctakes.core.pipeline.PipeBitInfo.TypeProduct;
 
@@ -13,7 +14,7 @@ import static org.apache.ctakes.core.pipeline.PipeBitInfo.TypeProduct;
  */
 final public class TypeProductListModel implements ListModel<TypeProduct> {
 
-   static private final Logger LOGGER = Logger.getLogger( "TypeProductListModel" );
+   static private final Logger LOGGER = LogManager.getLogger( "TypeProductListModel" );
 
    private final TypeProduct[] _typeProducts;
 

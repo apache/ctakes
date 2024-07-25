@@ -20,7 +20,8 @@ package org.apache.ctakes.dictionary.lookup.ae;
 
 import org.apache.ctakes.core.ae.UmlsEnvironmentConfiguration;
 import org.apache.ctakes.utils.env.EnvironmentVariable;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.resource.ResourceInitializationException;
 
@@ -39,7 +40,7 @@ import java.net.URLEncoder;
 public class ThreadedUmlsDictionaryLookupAnnotator extends ThreadedDictionaryLookupAnnotator {
 
    // TODO: use consistent variable names (_logger vs LOGGER vs logger)
-   static final private Logger _logger = Logger.getLogger( ThreadedUmlsDictionaryLookupAnnotator.class );
+   static final private Logger _LOGGER = LogManager.getLogger( ThreadedUmlsDictionaryLookupAnnotator.class );
 
    @Override
    public void initialize( final UimaContext aContext ) throws ResourceInitializationException {
@@ -48,9 +49,9 @@ public class ThreadedUmlsDictionaryLookupAnnotator extends ThreadedDictionaryLoo
       final String umlsVendor = EnvironmentVariable.getEnv( UmlsEnvironmentConfiguration.VENDOR.toString(), aContext );
       final String umlsUser = EnvironmentVariable.getEnv( UmlsEnvironmentConfiguration.USER.toString(), aContext );
       final String umlsPassword = EnvironmentVariable.getEnv( UmlsEnvironmentConfiguration.PASSWORD.toString(), aContext );
-      _logger.info( "Using " + UmlsEnvironmentConfiguration.URL + ": " + umlsAddress + ": " + umlsUser );
+      _LOGGER.info( "Using " + UmlsEnvironmentConfiguration.URL + ": " + umlsAddress + ": " + umlsUser );
       if ( !isValidUMLSUser( umlsAddress, umlsVendor, umlsUser, umlsPassword ) ) {
-         _logger.error( "Error: Invalid UMLS License.  " +
+         _LOGGER.error( "Error: Invalid UMLS License.  " +
                         "A UMLS License is required to use the UMLS dictionary lookup. \n" +
                         "Error: You may request one at: https://uts.nlm.nih.gov/license.html \n" +
                         "Please verify your UMLS license settings in the " +
@@ -67,7 +68,7 @@ public class ThreadedUmlsDictionaryLookupAnnotator extends ThreadedDictionaryLoo
          data += "&" + URLEncoder.encode( "user", "UTF-8" ) + "=" + URLEncoder.encode( username, "UTF-8" );
          data += "&" + URLEncoder.encode( "password", "UTF-8" ) + "=" + URLEncoder.encode( password, "UTF-8" );
       } catch ( UnsupportedEncodingException unseE ) {
-         _logger.error( "Could not encode URL for " + username + " with vendor license " + vendor );
+         _LOGGER.error( "Could not encode URL for " + username + " with vendor license " + vendor );
          return false;
       }
       try {
@@ -94,7 +95,7 @@ public class ThreadedUmlsDictionaryLookupAnnotator extends ThreadedDictionaryLoo
             return result;
          }
       } catch ( IOException ioE ) {
-         _logger.error( ioE.getMessage() );
+         _LOGGER.error( ioE.getMessage() );
          return false;
       }
    }

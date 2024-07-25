@@ -2,7 +2,8 @@ package org.apache.ctakes.fhir.resource;
 
 import org.apache.ctakes.fhir.element.FhirElementFactory;
 import org.apache.ctakes.fhir.util.FhirNoteSpecs;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.TOP;
 import org.hl7.fhir.dstu3.model.CodeableConcept;
@@ -16,7 +17,7 @@ import org.hl7.fhir.dstu3.model.Composition;
  */
 final public class CompositionCreator implements FhirResourceCreator<TOP, Composition> {
 
-   static private final Logger LOGGER = Logger.getLogger( "DpheCompositionCreator" );
+   static private final Logger LOGGER = LogManager.getLogger( "DpheCompositionCreator" );
 
    static public final String ID_NAME_COMPOSITION = "Composition";
 

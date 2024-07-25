@@ -18,7 +18,8 @@
  */
 package org.apache.ctakes.core.knowtator;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
@@ -30,7 +31,7 @@ import java.util.*;
 
 public class KnowtatorXMLParser {
 
-  private static final Logger LOGGER = Logger.getLogger(KnowtatorXMLParser.class.getName());
+  private static final Logger LOGGER = LogManager.getLogger(KnowtatorXMLParser.class.getName());
 
   private XMLOutputter xmlOutputter = new XMLOutputter();
 

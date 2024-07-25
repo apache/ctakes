@@ -20,11 +20,11 @@ package org.apache.ctakes.ytex.kernel;
 
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.ctakes.ytex.kernel.dao.ClassifierEvaluationDao;
 import org.apache.ctakes.ytex.kernel.model.ClassifierEvaluation;
 import org.apache.ctakes.ytex.kernel.model.ClassifierInstanceEvaluation;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -43,8 +43,7 @@ import java.util.regex.Pattern;
  */
 public abstract class BaseClassifierEvaluationParser implements
 		ClassifierEvaluationParser {
-	private static final Log log = LogFactory
-			.getLog(BaseClassifierEvaluationParser.class);
+	static private final Logger LOGGER = LogManager.getLogger( "BaseClassifierEvaluationParser" );
 
 	public static Pattern wsPattern = Pattern.compile("\\s|\\z");
 	public static Pattern wsDotPattern = Pattern.compile("\\s|\\.|\\z");
@@ -123,7 +122,7 @@ public abstract class BaseClassifierEvaluationParser implements
 				instanceIds.add(Long.parseLong(instanceId));
 			return instanceIds;
 		} catch (FileNotFoundException e) {
-			log.warn(instanceIdFile
+			LOGGER.warn(instanceIdFile
 					+ " not available, instance_ids will not be stored");
 			return null;
 		} finally {
@@ -147,7 +146,7 @@ public abstract class BaseClassifierEvaluationParser implements
 			try {
 				return Double.parseDouble(toParse);
 			} catch (NumberFormatException nfe) {
-				log.warn("could not parse: " + toParse, nfe);
+				LOGGER.warn("could not parse: " + toParse, nfe);
 			}
 		}
 		return null;
@@ -329,7 +328,7 @@ public abstract class BaseClassifierEvaluationParser implements
 				if (line.trim().length() > 0) {
 					String classInfoToks[] = line.split("\\s");
 					if (classInfoToks.length != 3) {
-						log.error("error parsing line: " + line);
+						LOGGER.error("error parsing line: " + line);
 						return null;
 					}
 					listClassInfo
@@ -340,7 +339,7 @@ public abstract class BaseClassifierEvaluationParser implements
 				}
 			}
 		} catch (FileNotFoundException fe) {
-			log.warn("class.txt file not available: " + classFileName, fe);
+			LOGGER.warn("class.txt file not available: " + classFileName, fe);
 			listClassInfo = null;
 		} finally {
 			if (r != null) {
@@ -367,14 +366,14 @@ public abstract class BaseClassifierEvaluationParser implements
 						classInfo.add(Long.parseLong(tok));
 					}
 					if (classInfo.size() != 3) {
-						log.error("error parsing line: " + line);
+						LOGGER.error("error parsing line: " + line);
 						return null;
 					}
 					listClassInfo.add(classInfo);
 				}
 			}
 		} catch (FileNotFoundException fe) {
-			log.warn("class.txt file not available: " + classFileName, fe);
+			LOGGER.warn("class.txt file not available: " + classFileName, fe);
 			listClassInfo = null;
 		} finally {
 			if (r != null) {

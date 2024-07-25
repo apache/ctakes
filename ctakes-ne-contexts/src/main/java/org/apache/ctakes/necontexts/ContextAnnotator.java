@@ -20,7 +20,8 @@ package org.apache.ctakes.necontexts;
 
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.core.util.JCasUtil;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -61,7 +62,7 @@ import java.util.List;
 )
 public class ContextAnnotator extends org.apache.uima.fit.component.JCasAnnotator_ImplBase {
 	// LOG4J logger based on class name
-	private Logger iv_logger = Logger.getLogger(getClass().getName());
+	private Logger LOGGER = LogManager.getLogger(getClass().getName());
 
 	/**
 	 * "MaxLeftScopeSize" is a required, single, integer parameter that
@@ -216,29 +217,29 @@ public class ContextAnnotator extends org.apache.uima.fit.component.JCasAnnotato
 		try {
 //			leftScopeSize = ((Integer) uimaContext.getConfigParameterValue(MAX_LEFT_SCOPE_SIZE_PARAM)).intValue();
 //			rightScopeSize = ((Integer) uimaContext.getConfigParameterValue(MAX_RIGHT_SCOPE_SIZE_PARAM)).intValue();
-			iv_logger.info( "Using left , right scope sizes: " + leftScopeSize + " , " + rightScopeSize );
+			LOGGER.info( "Using left , right scope sizes: " + leftScopeSize + " , " + rightScopeSize );
 
 //			String[] scopeOrderArr = (String[]) uimaContext.getConfigParameterValue(SCOPE_ORDER_PARAM);
 //			parseScopeOrder(scopeOrderArr);
-			iv_logger.info( "Using scope order: " + _scopeOrder );
+			LOGGER.info( "Using scope order: " + _scopeOrder );
 			parseScopeOrder( _scopeOrder );
 
 //			String contextAnalyzerClassName = (String) uimaContext.getConfigParameterValue(CONTEXT_ANALYZER_CLASS_PARAM);
 //			String contextConsumerClassName = (String) uimaContext.getConfigParameterValue(CONTEXT_HIT_CONSUMER_CLASS_PARAM);
-			iv_logger.info( "Using context analyzer: " + contextAnalyzerClassName );
+			LOGGER.info( "Using context analyzer: " + contextAnalyzerClassName );
 			contextAnalyzer = (ContextAnalyzer) Class.forName(contextAnalyzerClassName).newInstance();
 			contextAnalyzer.initialize(uimaContext);
-			iv_logger.info( "Using context consumer: " + contextConsumerClassName );
+			LOGGER.info( "Using context consumer: " + contextConsumerClassName );
 			contextConsumer = (ContextHitConsumer) Class.forName(contextConsumerClassName).newInstance();
 
 //			windowType = JCasUtil.getType((String) uimaContext.getConfigParameterValue(WINDOW_ANNOTATION_CLASS_PARAM));
-			iv_logger.info( "Using lookup window type: " + windowClassName );
+			LOGGER.info( "Using lookup window type: " + windowClassName );
 			windowType = JCasUtil.getType( windowClassName );
 //			focusType = JCasUtil.getType((String) uimaContext.getConfigParameterValue(FOCUS_ANNOTATION_CLASS_PARAM));
-			iv_logger.info( "Using focus type: " + focusClassName );
+			LOGGER.info( "Using focus type: " + focusClassName );
 			focusType = JCasUtil.getType( focusClassName );
 //			contextType = JCasUtil.getType((String) uimaContext.getConfigParameterValue(CONTEXT_ANNOTATION_CLASS_PARAM));
-			iv_logger.info( "Using context type: " + contextClassName );
+			LOGGER.info( "Using context type: " + contextClassName );
 			contextType = JCasUtil.getType( contextClassName );
 		} catch (Exception e) {
 			throw new ResourceInitializationException(e);
@@ -269,7 +270,7 @@ public class ContextAnnotator extends org.apache.uima.fit.component.JCasAnnotato
 				throw new AnnotatorConfigurationException( e );
 			}
 		}
-		iv_logger.info("SCOPE ORDER: " + scopes);
+		LOGGER.info("SCOPE ORDER: " + scopes);
 	}
 
 	public void process(JCas jCas) throws AnalysisEngineProcessException {

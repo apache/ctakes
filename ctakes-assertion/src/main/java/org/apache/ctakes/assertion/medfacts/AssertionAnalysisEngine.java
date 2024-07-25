@@ -25,8 +25,9 @@ import org.apache.ctakes.assertion.stub.*;
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.typesystem.type.constants.CONST;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -61,7 +62,7 @@ import java.util.Set;
 @Deprecated
 public class AssertionAnalysisEngine extends JCasAnnotator_ImplBase
 {
-  private static Logger logger = Logger.getLogger(AssertionAnalysisEngine.class.getName());
+  private static Logger LOGGER = LogManager.getLogger(AssertionAnalysisEngine.class.getName());
   
   AssertionDecoderConfiguration assertionDecoderConfiguration;
 
@@ -111,13 +112,13 @@ public class AssertionAnalysisEngine extends JCasAnnotator_ImplBase
 
       AssertionDecoderConfiguration assertionDecoderConfiguration = new AssertionDecoderConfiguration();
 
-      logger.info(String.format("scope model file: %s", scopeModelFilePath));
-      logger.info(String.format("cue model file: %s", cueModelFilePath));
+      LOGGER.info(String.format("scope model file: %s", scopeModelFilePath));
+      LOGGER.info(String.format("cue model file: %s", cueModelFilePath));
       ScopeParser scopeParser = new ScopeParser(scopeModelFilePath,
           cueModelFilePath);
       assertionDecoderConfiguration.setScopeParser(scopeParser);
 
-      logger.info(String.format("pos model file: %s", posModelFilePath));
+      LOGGER.info(String.format("pos model file: %s", posModelFilePath));
       PartOfSpeechTagger posTagger = new PartOfSpeechTagger(posModelFilePath);
       assertionDecoderConfiguration.setPosTagger(posTagger);
 
@@ -136,7 +137,7 @@ public class AssertionAnalysisEngine extends JCasAnnotator_ImplBase
   @Override
   public void process(JCas jcas) throws AnalysisEngineProcessException
   {
-    logger.debug("(logging statement) AssertionAnalysisEngine.process() BEGIN");
+    LOGGER.debug("(logging statement) AssertionAnalysisEngine.process() BEGIN");
     String contents = jcas.getDocumentText();
 
     // String tokenizedContents = tokenizeCasDocumentText(jcas);
@@ -167,7 +168,7 @@ public class AssertionAnalysisEngine extends JCasAnnotator_ImplBase
     // String conceptFilePath =
     // currentTextFile.getAbsolutePath().replaceFirst("\\.txt$", ".con");
     // File conceptFile = new File(conceptFilePath);
-    // logger.info(String.format("    - using concept file \"%s\"...",
+    // LOGGER.info(String.format("    - using concept file \"%s\"...",
     // conceptFile.getName()));
     // String conceptFileContents =
     // StringHandling.readEntireContents(conceptFile);
@@ -194,32 +195,32 @@ public class AssertionAnalysisEngine extends JCasAnnotator_ImplBase
     p.setConverter2(converter);
     for (ApiConcept apiConcept : apiConceptList)
     {
-      //logger
+      //LOGGER
       //    .info(String.format("dir loader concept: %s", apiConcept.toString()));
       p.addConcept(apiConcept);
     }
 
-    logger
+    LOGGER
         .debug("(logging statement) AssertionAnalysisEngine.process() BEFORE CALLING p.processSingleDocument()");
 
     p.processSingleDocument();
 
-    logger
+    LOGGER
         .debug("(logging statement) AssertionAnalysisEngine.process() AFTER CALLING p.processSingleDocument()");
 
     Map<Integer, String> assertionTypeMap = p.getAssertionTypeMap();
-    //logger.info(String.format("    - done processing ..\"."));
+    //LOGGER.info(String.format("    - done processing ..\"."));
 
     // Map<Integer, Annotation> annotationMap = generateAnnotationMap(jcas,
     // Concept.type);
     CasIndexer<Annotation> indexer = new CasIndexer<Annotation>(jcas, null);
 
-    //logger.info("assertionTypeMap loop OUTSIDE BEFORE...");
+    //LOGGER.info("assertionTypeMap loop OUTSIDE BEFORE...");
     for (Entry<Integer, String> current : assertionTypeMap.entrySet())
     {
-      //logger.info("    assertionTypeMap loop INSIDE BEGIN");
+      //LOGGER.info("    assertionTypeMap loop INSIDE BEGIN");
       String currentAssertionType = current.getValue();
-      //logger.info(String.format("  currentAssertionType: %s",
+      //LOGGER.info(String.format("  currentAssertionType: %s",
       //    currentAssertionType));
       Integer currentIndex = current.getKey();
       ApiConcept originalConcept = apiConceptList.get(currentIndex);
@@ -238,7 +239,7 @@ public class AssertionAnalysisEngine extends JCasAnnotator_ImplBase
       // hypothetical
       // possible
 
-//      logger.info(String.format("removed entityMention (%s) from indexes",
+//      LOGGER.info(String.format("removed entityMention (%s) from indexes",
 //          entityMention.toString()));
 //      entityMention.removeFromIndexes();
       mapI2B2AssertionValueToCtakes(currentAssertionType, annotation);
@@ -260,7 +261,7 @@ public class AssertionAnalysisEngine extends JCasAnnotator_ImplBase
 //      System.out.println("overwrote mastif's subject="+oldsubj+" for "+entityMention.getCoveredText()+" with "+subject);
 
 //      entityMention.addToIndexes();
-//      logger.info(String.format("added back entityMention (%s) to indexes",
+//      LOGGER.info(String.format("added back entityMention (%s) to indexes",
 //          entityMention.toString()));
 
       // Assertion assertion = new Assertion(jcas, originalConcept.getBegin(),
@@ -271,10 +272,10 @@ public class AssertionAnalysisEngine extends JCasAnnotator_ImplBase
       // assertion.setAssociatedConcept(associatedConcept);
       // assertion.addToIndexes();
 
-      //logger.info("    assertionTypeMap loop INSIDE END");
+      //LOGGER.info("    assertionTypeMap loop INSIDE END");
     }
-    //logger.info("assertionTypeMap loop OUTSIDE AFTER!!");
-    logger.debug("(logging statement) AssertionAnalysisEngine.process() END");
+    //LOGGER.info("assertionTypeMap loop OUTSIDE AFTER!!");
+    LOGGER.debug("(logging statement) AssertionAnalysisEngine.process() END");
   }
 
   public static void mapI2B2AssertionValueToCtakes(String assertionType,
@@ -284,7 +285,7 @@ public class AssertionAnalysisEngine extends JCasAnnotator_ImplBase
     {
       String message = "current assertion type is null; this is a problem!!";
       System.err.println(message);
-      logger.log(Level.ERROR,message);
+      LOGGER.log(Level.ERROR,message);
       // Exception runtimeException = new RuntimeException(message);
       // throw new AnalysisEngineProcessException(runtimeException);
     
@@ -364,7 +365,7 @@ public class AssertionAnalysisEngine extends JCasAnnotator_ImplBase
       String message = String.format(
           "unexpected assertion value returned!! \"%s\"",
           assertionType);
-      logger.log(Level.ERROR,message);
+      LOGGER.log(Level.ERROR,message);
 //      System.err.println(message);
       Exception runtimeException = new RuntimeException(message);
       throw new AnalysisEngineProcessException(runtimeException);
@@ -383,7 +384,7 @@ public class AssertionAnalysisEngine extends JCasAnnotator_ImplBase
     
     b.append(debugOutput);
     
-    logger.debug(b.toString());
+    LOGGER.debug(b.toString());
     
   }
 

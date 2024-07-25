@@ -1,7 +1,8 @@
 package org.apache.ctakes.gui.dictionary.umls;
 
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -19,7 +20,7 @@ public enum CuiCodeUtil {
       return INSTANCE;
    }
 
-   static private final Logger LOGGER = Logger.getLogger( "CuiCodeUtil" );
+   static private final Logger LOGGER = LogManager.getLogger( "CuiCodeUtil" );
    static private final long PREFIX_MULTIPLIER = 100000000;
 
    final private List<PrefixerPair> _prefixerPairList = new ArrayList<>();

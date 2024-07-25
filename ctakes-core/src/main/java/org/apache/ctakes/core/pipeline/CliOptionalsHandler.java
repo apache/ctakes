@@ -1,6 +1,8 @@
 package org.apache.ctakes.core.pipeline;
 
-import java.util.logging.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 
 /**
  * @author SPF , chip-nlp
@@ -9,7 +11,7 @@ import java.util.logging.Logger;
  */
 final public class CliOptionalsHandler {
 
-   static private final Logger LOGGER = Logger.getLogger( "CliOptionalsHandler" );
+   static private final Logger LOGGER = LogManager.getLogger( "CliOptionalsHandler" );
 
    private CliOptionalsHandler() {
    }
@@ -154,7 +156,7 @@ final public class CliOptionalsHandler {
          case "Z":
             return optionals.getOption_Z();
       }
-      LOGGER.warning( "No value specified on command line for " + optionChar );
+      LOGGER.warn( "No value specified on command line for " + optionChar );
       return "";
    }
 

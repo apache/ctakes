@@ -22,7 +22,8 @@ import org.apache.ctakes.dependency.parser.ae.ClearNLPDependencyParserAE;
 import org.apache.ctakes.temporal.eval.Evaluation_ImplBase.CopyNPChunksToLookupWindowAnnotations;
 import org.apache.ctakes.temporal.eval.Evaluation_ImplBase.RemoveEnclosedLookupWindows;
 import org.apache.ctakes.typesystem.type.textsem.EventMention;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UIMAException;
 import org.apache.uima.fit.factory.AggregateBuilder;
 import org.apache.uima.fit.factory.AnalysisEngineFactory;
@@ -42,7 +43,7 @@ import static org.junit.Assert.assertTrue;
 public class EventAnnotatorTest extends TemporalTest_ImplBase {
 
 	// LOG4J logger based on class name
-	private Logger LOGGER = Logger.getLogger(getClass().getName());
+	private Logger LOGGER = LogManager.getLogger(getClass().getName());
 
 	@Test
 	public void testPipeline() throws UIMAException, IOException {

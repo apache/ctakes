@@ -17,7 +17,8 @@ import org.apache.ctakes.typesystem.type.textsem.MedicationEventMention;
 import org.apache.ctakes.typesystem.type.textspan.Paragraph;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.descriptor.ConfigurationParameter;
@@ -73,7 +74,7 @@ public class EventCoreferenceAnnotator extends RelationExtractorAnnotator {
   private double lastScore;
   
   
-  private Logger logger = Logger.getLogger(EventCoreferenceAnnotator.class);
+  private Logger LOGGER = LogManager.getLogger(EventCoreferenceAnnotator.class);
   
   public static AnalysisEngineDescription createDataWriterDescription(
       Class<? extends DataWriter<String>> dataWriterClass,
@@ -153,7 +154,7 @@ public class EventCoreferenceAnnotator extends RelationExtractorAnnotator {
   @Override
   public void process(JCas jCas) throws AnalysisEngineProcessException {
     if(this.isTraining() && JCasUtil.select(jCas, CoreferenceRelation.class).size() == 0){
-      logger.debug("Skipping document with no gold standard coreference relations.");
+      LOGGER.debug("Skipping document with no gold standard coreference relations.");
       return;
     }
     numClassifications = 0;
@@ -182,7 +183,7 @@ public class EventCoreferenceAnnotator extends RelationExtractorAnnotator {
         chain.addToIndexes();
       }
     }
-    logger.debug("This document had : " + numClassifications + " pair classifications");
+    LOGGER.debug("This document had : " + numClassifications + " pair classifications");
     foundAnaphors.clear();
     chains.clear();
   }
@@ -559,7 +560,7 @@ public class EventCoreferenceAnnotator extends RelationExtractorAnnotator {
         anaEl.addToIndexes();
       }
     }else{
-      logger.error("Greedy coreference resolution violated -- anaphor linked to two candidate antecedents!");
+      LOGGER.error("Greedy coreference resolution violated -- anaphor linked to two candidate antecedents!");
     }
   }
   
@@ -589,11 +590,11 @@ public class EventCoreferenceAnnotator extends RelationExtractorAnnotator {
     if(cat != null && !cat.equals(NO_RELATION_CATEGORY)){
       // cat is some coref category
       foundAnaphors.add(ana);
-      logger.info(String.format("DISTSALIENCE: (%d,%f,1)\n", dist, ante.getConfidence()));    
+      LOGGER.info(String.format("DISTSALIENCE: (%d,%f,1)\n", dist, ante.getConfidence()));    
     }else{
       // sample 10 percent of negative examples:
       if(Math.random() < 0.1){
-        logger.info(String.format("DISTSALIENCE: (%d,%f,0)\n", dist, ante.getConfidence()));
+        LOGGER.info(String.format("DISTSALIENCE: (%d,%f,0)\n", dist, ante.getConfidence()));
       }
     }
     return cat;

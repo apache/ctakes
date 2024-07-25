@@ -2,7 +2,8 @@ package org.apache.ctakes.core.ae;
 
 import org.apache.ctakes.core.ae.inert.PausableAE;
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.descriptor.ConfigurationParameter;
@@ -23,7 +24,7 @@ import java.awt.*;
 )
 public class ExitForcer extends PausableAE {
 
-   static private final Logger LOGGER = Logger.getLogger( "ExitForcer" );
+   static private final Logger LOGGER = LogManager.getLogger( "ExitForcer" );
 
    static public final String FORCE_PARAM = "ForceExit";
    static public final String FORCE_DESC = "Forcibly exits the system when the value is yes.  Yes by default.";

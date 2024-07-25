@@ -2,7 +2,8 @@ package org.apache.ctakes.core.util.annotation;
 
 
 import org.apache.ctakes.typesystem.type.syntax.WordToken;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import javax.annotation.concurrent.Immutable;
 
@@ -14,7 +15,7 @@ import javax.annotation.concurrent.Immutable;
 @Immutable
 final public class WordTokenUtil {
 
-   static private final Logger LOGGER = Logger.getLogger( "WordTokenUtil" );
+   static private final Logger LOGGER = LogManager.getLogger( "WordTokenUtil" );
 
    static private final String MISSING_WORDTOKEN_TEXT = "MISSING_WORDTOKEN_TEXT";
 

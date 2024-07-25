@@ -29,7 +29,8 @@ import org.apache.ctakes.dictionary.lookup.phrasebuilder.VariantPhraseBuilderImp
 import org.apache.ctakes.dictionary.lookup.vo.LookupAnnotation;
 import org.apache.ctakes.dictionary.lookup.vo.LookupToken;
 import org.apache.ctakes.typesystem.type.syntax.*;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.annotator.AnnotatorInitializationException;
 import org.apache.uima.cas.text.AnnotationIndex;
@@ -50,7 +51,7 @@ public class FirstTokenPermLookupInitializerImpl implements LookupInitializer {
    static private final String FALSE_STRING = Boolean.toString( false );
 
    // LOG4J logger based on class name
-   final private Logger iv_logger = Logger.getLogger( getClass().getName() );
+   final private Logger LOGGER = LogManager.getLogger( getClass().getName() );
 
    // properties for firstWordPermutation algorithm
    static private final String TEXT_MFS_PRP_KEY = "textMetaFields";
@@ -126,7 +127,7 @@ public class FirstTokenPermLookupInitializerImpl implements LookupInitializer {
          for ( String tag : tagArr ) {
             iv_exclusionTagSet.add( tag.toLowerCase() );
          }
-         iv_logger.info( "Exclusion tagset loaded: " + iv_exclusionTagSet );
+         LOGGER.info( "Exclusion tagset loaded: " + iv_exclusionTagSet );
       } else {
          iv_exclusionTagSet = null;
       }
@@ -181,7 +182,7 @@ public class FirstTokenPermLookupInitializerImpl implements LookupInitializer {
       final AnnotationIndex<Annotation> annotationIndex = indexes.getAnnotationIndex( BaseToken.type );
       for ( Annotation annotation : annotationIndex ) {
          if ( !(annotation instanceof BaseToken) ) {
-            iv_logger.warn( getClass().getName() + " getLookupTokenIterator(..) Annotation is not a BaseToken" );
+            LOGGER.warn( getClass().getName() + " getLookupTokenIterator(..) Annotation is not a BaseToken" );
             continue;
          }
          final boolean isNonLookup = annotation instanceof NewlineToken

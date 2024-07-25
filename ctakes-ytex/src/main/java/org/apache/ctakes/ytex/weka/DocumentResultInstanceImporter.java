@@ -18,8 +18,8 @@
  */
 package org.apache.ctakes.ytex.weka;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.hibernate.SessionFactory;
 
 import java.util.List;
@@ -27,9 +27,7 @@ import java.util.List;
 public class DocumentResultInstanceImporter implements
 		WekaResultInstanceImporter {
 	private SessionFactory sessionFactory;
-	private static final Log log = LogFactory
-			.getLog(DocumentResultInstanceImporter.class);
-
+	private static final Logger LOGGER = LogManager.getLogger("DocumentResultInstanceImporter");
 	public SessionFactory getSessionFactory() {
 		return sessionFactory;
 	}
@@ -60,11 +58,11 @@ public class DocumentResultInstanceImporter implements
 //					log.error("no document for id: " + documentId);
 //				}
 			} else {
-				log.error("Invalid instance id: " + instanceKey
+				LOGGER.error("Invalid instance id: " + instanceKey
 						+ ", instanceNumber: " + instanceNumber);
 			}
 		} catch (NumberFormatException nfe) {
-			log.error("could not parse document id: " + instanceKey
+			LOGGER.error("could not parse document id: " + instanceKey
 					+ ", instanceNumber: " + instanceNumber, nfe);
 		}
 		// } else {

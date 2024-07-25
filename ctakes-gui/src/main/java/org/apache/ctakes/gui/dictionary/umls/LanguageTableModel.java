@@ -1,6 +1,7 @@
 package org.apache.ctakes.gui.dictionary.umls;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import javax.swing.event.EventListenerList;
 import javax.swing.event.TableModelEvent;
@@ -16,7 +17,7 @@ import java.util.*;
  */
 final public class LanguageTableModel implements TableModel {
 
-   static private final Logger LOGGER = Logger.getLogger( "LanguageTableModel" );
+   static private final Logger LOGGER = LogManager.getLogger( "LanguageTableModel" );
 
 
    static private final String[] COLUMN_NAMES = { "Use", "Language" };

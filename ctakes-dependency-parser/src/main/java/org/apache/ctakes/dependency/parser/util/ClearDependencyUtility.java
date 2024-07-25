@@ -23,7 +23,8 @@ import com.googlecode.clearnlp.dependency.DEPTree;
 import org.apache.ctakes.typesystem.type.syntax.BaseToken;
 import org.apache.ctakes.typesystem.type.syntax.ConllDependencyNode;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
 
@@ -39,7 +40,7 @@ public class ClearDependencyUtility extends DependencyUtility {
 //	public static UimaDepNode DUMMY_PARENT = new UimaDepNode();
 	
 	// LOG4J logger based on class name
-	public Logger logger = Logger.getLogger(getClass().getName());
+	public Logger LOGGER = LogManager.getLogger(getClass().getName());
 	
 //	public static UimaDepTree getDepTreeFromArray(ArrayList<ConllDependencyNode> nodes) {
 //	    UimaDepTree tree = new UimaDepTree();

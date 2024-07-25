@@ -27,7 +27,8 @@ import org.apache.ctakes.typesystem.type.relation.RelationArgument;
 import org.apache.ctakes.typesystem.type.textsem.AnatomicalSiteMention;
 import org.apache.ctakes.typesystem.type.textsem.DiseaseDisorderMention;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
@@ -53,7 +54,7 @@ import java.util.Map;
 )
 public class MetastasisAnaforaXMLReader extends JCasAnnotator_ImplBase {
   
-  private static Logger LOGGER = Logger.getLogger(MetastasisAnaforaXMLReader.class);
+  private static Logger LOGGER = LogManager.getLogger(MetastasisAnaforaXMLReader.class);
 
   public static AnalysisEngineDescription getDescription() throws ResourceInitializationException {
     return AnalysisEngineFactory.createEngineDescription(MetastasisAnaforaXMLReader.class);

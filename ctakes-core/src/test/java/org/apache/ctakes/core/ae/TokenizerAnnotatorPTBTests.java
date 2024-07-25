@@ -20,7 +20,8 @@ package org.apache.ctakes.core.ae;
 
 import org.apache.ctakes.typesystem.type.syntax.*;
 import org.apache.ctakes.utils.test.TestUtil;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.analysis_engine.AnalysisEngine;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
@@ -32,7 +33,7 @@ import java.util.Date;
 public class TokenizerAnnotatorPTBTests {
 
     TestData<SimpleToken []>[] tests;
-    private static final Logger logger = Logger.getLogger(TokenizerAnnotatorPTBTests.class.getName());
+    private static final Logger LOGGER = LogManager.getLogger(TokenizerAnnotatorPTBTests.class.getName());
     
     public TokenizerAnnotatorPTBTests() {
 	
@@ -110,8 +111,8 @@ public class TokenizerAnnotatorPTBTests {
     		boolean alreadyOutputDebugInfoForThisRunOfPipeline = false;
 
     		String DQUOTE = "\"";
-    		logger.info("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
-    		logger.info("Test PTB Tokenizer for string (shown here in quotes) " + DQUOTE + testInput + DQUOTE);
+    		LOGGER.info("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+    		LOGGER.info("Test PTB Tokenizer for string (shown here in quotes) " + DQUOTE + testInput + DQUOTE);
 
     		int numTokensTested = 0;
     		for (int i=0; i< expectedResults.length; i++) {
@@ -151,7 +152,7 @@ public class TokenizerAnnotatorPTBTests {
     			}
     		}
 
-    		logger.info("Verified " + numTokensTested + " token(s) using assertions.");
+    		LOGGER.info("Verified " + numTokensTested + " token(s) using assertions.");
 
     	}
     }

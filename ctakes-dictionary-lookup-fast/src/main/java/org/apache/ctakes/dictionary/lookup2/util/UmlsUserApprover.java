@@ -21,7 +21,8 @@ package org.apache.ctakes.dictionary.lookup2.util;
 import org.apache.ctakes.core.pipeline.StandardCliOptions;
 import org.apache.ctakes.core.util.log.DotLogger;
 import org.apache.ctakes.utils.env.EnvironmentVariable;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 
 import java.io.BufferedReader;
@@ -65,7 +66,7 @@ public enum UmlsUserApprover {
 	public final static String API_KEY_LABEL = "umls_api_key";
 	public final static String OLDY_KEY_PROP = "ctakes.umls_apikey";
 
-	static final private Logger LOGGER = Logger.getLogger( "UmlsUserApprover" );
+	static final private Logger LOGGER = LogManager.getLogger( "UmlsUserApprover" );
 
 	static final private String CHANGEME = "CHANGEME";
 	static final private String CHANGE_ME = "CHANGE_ME";

@@ -33,7 +33,8 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.*;
-import java.util.logging.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * Given a token, check if this token is inside any identified annotation
@@ -55,7 +56,7 @@ public class IdentifiedAnnotationFeatureExtractor implements FeatureExtractor1 {
   }
 
   static class StringToDoublesProcessor implements LineProcessor<Map<String, double[]>> {
-    private Logger logger = Logger.getLogger(this.getClass().getName());
+    static private final Logger LOGGER = LogManager.getLogger( "IdentifiedAnnotationFeatureExtractor" );
 
     private Map<String, double[]> result = new HashMap<String, double[]>();
 
@@ -75,7 +76,7 @@ public class IdentifiedAnnotationFeatureExtractor implements FeatureExtractor1 {
         this.length = parts.length;
       } else if (parts.length != this.length) {
         String message = "expected %d parts, found %d, skipping line '%s'";
-        this.logger.warning(String.format(message, this.length, parts.length, line));
+        LOGGER.warn(String.format(message, this.length, parts.length, line));
         return true;
       }
       double[] values = new double[parts.length - 1];

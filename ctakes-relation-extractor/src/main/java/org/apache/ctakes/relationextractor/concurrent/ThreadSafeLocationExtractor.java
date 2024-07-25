@@ -3,7 +3,8 @@ package org.apache.ctakes.relationextractor.concurrent;
 import org.apache.ctakes.core.concurrent.ThreadSafeWrapper;
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.relationextractor.ae.LocationOfRelationExtractorAnnotator;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -28,7 +29,7 @@ import org.apache.uima.resource.ResourceInitializationException;
 )
 final public class ThreadSafeLocationExtractor extends LocationOfRelationExtractorAnnotator {
 
-   static private final Logger LOGGER = Logger.getLogger( "ThreadSafeLocationExtractor" );
+   static private final Logger LOGGER = LogManager.getLogger( "ThreadSafeLocationExtractor" );
 
    /**
     * {@inheritDoc}

@@ -21,7 +21,8 @@ package org.apache.ctakes.core.ae;
 
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.core.util.doc.DocIdUtil;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
 import org.apache.uima.jcas.JCas;
@@ -34,14 +35,14 @@ import org.apache.uima.jcas.JCas;
 )
 public class DocumentIdPrinterAnalysisEngine extends JCasAnnotator_ImplBase
 {
-  protected final Logger logger = Logger.getLogger(DocumentIdPrinterAnalysisEngine.class.getName());
+  static private final Logger LOGGER = LogManager.getLogger( "DocumentIdPrinterAnalysisEngine" );
 
   @Override
   public void process(JCas jcas) throws AnalysisEngineProcessException
   {
      String documentId = DocIdUtil.getDocumentID( jcas );
     String logMessage = String.format("##### current file document id: \"%s\"", documentId);
-    logger.info(logMessage);
+    LOGGER.info(logMessage);
     System.out.println(logMessage);
   }
 

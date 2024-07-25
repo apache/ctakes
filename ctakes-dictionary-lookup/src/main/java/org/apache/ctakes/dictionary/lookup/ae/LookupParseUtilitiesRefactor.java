@@ -30,7 +30,8 @@ import org.apache.ctakes.dictionary.lookup.lucene.LuceneDictionaryImpl;
 import org.apache.ctakes.dictionary.lookup.strtable.StringTable;
 import org.apache.ctakes.dictionary.lookup.strtable.StringTableDictionaryImpl;
 import org.apache.ctakes.dictionary.lookup.strtable.StringTableFactory;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.search.IndexSearcher;
 import org.apache.uima.UimaContext;
@@ -59,7 +60,7 @@ import java.util.*;
 @SuppressWarnings( "unchecked" )
 final public class LookupParseUtilitiesRefactor {
 
-   static private final Logger CLASS_LOGGER = Logger.getLogger( LookupParseUtilitiesRefactor.class );
+   static private final Logger CLASS_LOGGER = LogManager.getLogger( LookupParseUtilitiesRefactor.class );
 
    private LookupParseUtilitiesRefactor() {}
 

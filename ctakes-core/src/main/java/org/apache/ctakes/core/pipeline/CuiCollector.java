@@ -3,7 +3,8 @@ package org.apache.ctakes.core.pipeline;
 
 import org.apache.ctakes.core.util.annotation.OntologyConceptUtil;
 import org.apache.ctakes.core.util.doc.DocIdUtil;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
 import org.apache.uima.jcas.JCas;
 
@@ -24,7 +25,7 @@ public enum CuiCollector {
       return INSTANCE;
    }
 
-   static private final Logger LOGGER = Logger.getLogger( "CuiCollector" );
+   static private final Logger LOGGER = LogManager.getLogger( "CuiCollector" );
 
    private final Map<String, Map<String, Long>> _cuiCountMap = new HashMap<>();
 

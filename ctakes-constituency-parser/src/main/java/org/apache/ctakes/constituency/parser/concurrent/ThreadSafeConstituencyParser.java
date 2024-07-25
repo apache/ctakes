@@ -10,7 +10,8 @@ import org.apache.uima.fit.factory.AnalysisEngineFactory;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
 
-import java.util.logging.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * Normally I would use composition and a singleton, but here extension is done for @ConfigurationParameter discovery.
@@ -28,7 +29,7 @@ import java.util.logging.Logger;
 )
 public class ThreadSafeConstituencyParser extends ConstituencyParser {
 
-   static private final Logger LOGGER = Logger.getLogger( "ThreadSafeConstituencyParser" );
+   static private final Logger LOGGER = LogManager.getLogger( "ThreadSafeConstituencyParser" );
 
    /**
     * {@inheritDoc}

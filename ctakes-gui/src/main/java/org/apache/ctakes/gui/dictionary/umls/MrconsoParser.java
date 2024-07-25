@@ -3,7 +3,8 @@ package org.apache.ctakes.gui.dictionary.umls;
 
 import org.apache.ctakes.gui.dictionary.util.FileUtil;
 import org.apache.ctakes.gui.dictionary.util.TextTokenizer;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -19,7 +20,7 @@ import static org.apache.ctakes.gui.dictionary.umls.MrconsoIndex.*;
  */
 final public class MrconsoParser {
 
-   static private final Logger LOGGER = Logger.getLogger( "MrConsoParser" );
+   static private final Logger LOGGER = LogManager.getLogger( "MrConsoParser" );
 
    static private final String MR_CONSO_SUB_PATH = "/META/MRCONSO.RRF";
 

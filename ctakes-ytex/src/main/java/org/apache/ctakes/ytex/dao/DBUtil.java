@@ -18,8 +18,8 @@
  */
 package org.apache.ctakes.ytex.dao;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -36,7 +36,7 @@ import java.util.Properties;
  */
 public class DBUtil {
 
-	private static final Log log = LogFactory.getLog(DBUtil.class);
+	static private final Logger LOGGER = LogManager.getLogger( "DBUtil" );
 	private static Properties ytexProperties;
 	private static boolean oracle;
 	private static boolean mysql;
@@ -66,7 +66,7 @@ public class DBUtil {
 				escapeEnd = "";
 			} 
 		} catch (Exception e) {
-			log.error("initalizer", e);
+			LOGGER.error("initalizer", e);
 		} finally {
 			if (ytexPropsIn != null) {
 				try {

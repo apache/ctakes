@@ -16,7 +16,8 @@ import org.cleartk.ml.jar.DirectoryDataWriterFactory;
 import org.cleartk.ml.jar.GenericJarClassifierFactory;
 
 import java.io.File;
-import java.util.logging.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import static org.apache.ctakes.core.pipeline.PipeBitInfo.TypeProduct.*;
 
@@ -36,7 +37,7 @@ import static org.apache.ctakes.core.pipeline.PipeBitInfo.TypeProduct.*;
 )
 public class ThreadSafeMentionClusterCoreferencer extends MentionClusterCoreferenceAnnotator {
 
-   static private final Logger LOGGER = Logger.getLogger( "ThreadSafeMentionClusterCoreferencer" );
+   static private final Logger LOGGER = LogManager.getLogger( "ThreadSafeMentionClusterCoreferencer" );
 
    /**
     * {@inheritDoc}

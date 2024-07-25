@@ -33,7 +33,8 @@ import org.apache.ctakes.typesystem.type.syntax.BaseToken;
 import org.apache.ctakes.typesystem.type.syntax.ConllDependencyNode;
 import org.apache.ctakes.typesystem.type.syntax.NewlineToken;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -86,8 +87,8 @@ public class ClearNLPDependencyParserAE extends JCasAnnotator_ImplBase {
    public final static Object LOCK = new Object();
    
    final String language = AbstractReader.LANG_EN;
-   //  public Logger logger = Logger.getLogger(getClass().getName());
-   static private final Logger LOGGER = Logger.getLogger( ClearNLPDependencyParserAE.class.getSimpleName() );
+   //  public Logger LOGGER = LogManager.getLogger(getClass().getName());
+   static private final Logger LOGGER = LogManager.getLogger( ClearNLPDependencyParserAE.class.getSimpleName() );
 
    // single class-based model:
 //   protected static ExternalResourceDescription defaultParserResource = ExternalResourceFactory.createExternalResourceDescription(

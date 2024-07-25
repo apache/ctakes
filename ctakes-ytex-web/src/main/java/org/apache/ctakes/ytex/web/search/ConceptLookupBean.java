@@ -19,8 +19,6 @@
 package org.apache.ctakes.ytex.web.search;
 
 import com.icesoft.faces.component.selectinputtext.SelectInputText;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 
 import javax.faces.event.ActionEvent;
 import javax.faces.event.ValueChangeEvent;
@@ -30,6 +28,9 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+
 
 /**
  * JSF Backing Bean for semanticSearch.jspx. Search for documents based on
@@ -45,7 +46,7 @@ public class ConceptLookupBean implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private static final Log log = LogFactory.getLog(ConceptLookupBean.class);
+	private static final Logger LOGGER = LogManager.getLogger("ConceptLookupBean");
 
 	private ConceptSearchService conceptSearchService;
 

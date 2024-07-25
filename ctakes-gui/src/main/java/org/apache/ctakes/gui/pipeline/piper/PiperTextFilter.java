@@ -1,7 +1,8 @@
 package org.apache.ctakes.gui.pipeline.piper;
 
 import org.apache.ctakes.core.pipeline.PiperFileReader;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UIMAException;
 
 import javax.swing.*;
@@ -19,7 +20,7 @@ import java.util.concurrent.*;
  */
 final public class PiperTextFilter extends DocumentFilter {
 
-   static private final Logger LOGGER = Logger.getLogger( "PiperTextFilter" );
+   static private final Logger LOGGER = LogManager.getLogger( "PiperTextFilter" );
 
    final private TextValidator _textValidator;
    final private TextFormatter _textFormatter;

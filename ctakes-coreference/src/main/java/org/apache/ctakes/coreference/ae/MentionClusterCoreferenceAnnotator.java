@@ -22,7 +22,8 @@ import org.apache.ctakes.typesystem.type.syntax.ConllDependencyNode;
 import org.apache.ctakes.typesystem.type.textsem.*;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
 import org.apache.ctakes.utils.struct.CounterMap;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -58,7 +59,7 @@ import static org.apache.ctakes.coreference.util.ClusterMentionFetcher.Collectio
         products = { COREFERENCE_RELATION }
 )
 public class MentionClusterCoreferenceAnnotator extends CleartkAnnotator<String> implements NamedEngine {
-  static private final Logger LOGGER = Logger.getLogger( MentionClusterCoreferenceAnnotator.class.getSimpleName() );
+  static private final Logger LOGGER = LogManager.getLogger( MentionClusterCoreferenceAnnotator.class.getSimpleName() );
 
   public static final String NO_RELATION_CATEGORY = "-NONE-";
   public static final String PARAM_PROBABILITY_OF_KEEPING_A_NEGATIVE_EXAMPLE =

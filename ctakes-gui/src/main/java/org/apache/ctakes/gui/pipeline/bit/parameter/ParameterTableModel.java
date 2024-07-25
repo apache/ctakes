@@ -1,7 +1,8 @@
 package org.apache.ctakes.gui.pipeline.bit.parameter;
 
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.fit.descriptor.ConfigurationParameter;
 
 import javax.swing.event.EventListenerList;
@@ -22,7 +23,7 @@ import java.util.stream.Collectors;
  */
 final public class ParameterTableModel implements TableModel {
 
-   static private final Logger LOGGER = Logger.getLogger( "ParameterTableModel" );
+   static private final Logger LOGGER = LogManager.getLogger( "ParameterTableModel" );
 
    static private final String[] COLUMN_NAMES = { "Parameter Name", "Value", "" };
    static private final Class<?>[] COLUMN_CLASSES = { ConfigurationParameter.class, String.class, File.class };

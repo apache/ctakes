@@ -19,8 +19,6 @@
 package org.apache.ctakes.ytex.weka;
 
 import org.apache.commons.cli.*;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.ctakes.ytex.kernel.*;
 import org.apache.ctakes.ytex.kernel.dao.ClassifierEvaluationDao;
 import org.apache.ctakes.ytex.kernel.model.ClassifierEvaluation;
@@ -28,6 +26,8 @@ import org.apache.ctakes.ytex.kernel.model.CrossValidationFold;
 import org.apache.ctakes.ytex.kernel.model.FeatureEvaluation;
 import org.apache.ctakes.ytex.kernel.model.FeatureRank;
 import org.apache.ctakes.ytex.weka.WekaFormatterFactory.WekaFormatter;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import weka.attributeSelection.ASEvaluation;
 import weka.attributeSelection.AttributeSelection;
 import weka.core.Instances;
@@ -73,8 +73,7 @@ public class WekaAttributeEvaluatorImpl implements WekaAttributeEvaluator {
 
 	}
 
-	private static final Log log = LogFactory
-			.getLog(WekaAttributeEvaluatorImpl.class);
+	private static final Logger LOGGER = LogManager.getLogger("WekaAttributeEvaluatorImpl");
 
 	/**
 	 * @param args
@@ -248,7 +247,7 @@ public class WekaAttributeEvaluatorImpl implements WekaAttributeEvaluator {
 			if (cvFold != null)
 				fe.setCrossValidationFoldId(cvFold.getCrossValidationFoldId());
 			else {
-				log.warn("could not obtain cv_fold_id. label=" + label
+				LOGGER.warn("could not obtain cv_fold_id. label=" + label
 						+ ", run=" + run + ", fold=" + fold);
 			}
 		}

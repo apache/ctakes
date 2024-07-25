@@ -5,7 +5,8 @@ import org.apache.ctakes.core.util.collection.HashSetMap;
 import org.apache.ctakes.dictionary.lookup2.util.CuiCodeUtil;
 import org.apache.ctakes.dictionary.lookup2.util.JdbcConnectionFactory;
 import org.apache.ctakes.dictionary.lookup2.util.TuiCodeUtil;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 
 import java.sql.*;
@@ -21,7 +22,7 @@ import static org.apache.ctakes.dictionary.lookup2.util.JdbcConnectionFactory.*;
 public class JdbcConceptFactory extends AbstractConceptFactory {
 
    // LOG4J logger based on class name
-   static final private Logger LOGGER = Logger.getLogger( "JdbcConceptFactory" );
+   static final private Logger LOGGER = LogManager.getLogger( "JdbcConceptFactory" );
 
    static private final String TABLE_KEY_SUFFIX = "TABLE";
    static private final String INT_CLASS = "INT";

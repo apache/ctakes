@@ -3,7 +3,8 @@ package org.apache.ctakes.core.cc.jdbc.i2b2;
 import org.apache.ctakes.core.cc.jdbc.AbstractJCasJdbcWriter;
 import org.apache.ctakes.core.cc.jdbc.db.JdbcDb;
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.descriptor.ConfigurationParameter;
 import org.apache.uima.jcas.JCas;
@@ -25,7 +26,7 @@ import java.sql.SQLException;
 )
 public class I2b2JdbcWriter extends AbstractJCasJdbcWriter {
 
-   static private final Logger LOGGER = Logger.getLogger( "I2b2JdbcWriter" );
+   static private final Logger LOGGER = LogManager.getLogger( "I2b2JdbcWriter" );
 
    static public final String PARAM_TABLE_NAME = "FactOutputTable";
    @ConfigurationParameter(

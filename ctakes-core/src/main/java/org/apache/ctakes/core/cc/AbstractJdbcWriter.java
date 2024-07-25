@@ -3,7 +3,8 @@ package org.apache.ctakes.core.cc;
 import org.apache.ctakes.core.resource.JdbcConnectionResource;
 import org.apache.ctakes.core.util.doc.SourceMetadataUtil;
 import org.apache.ctakes.typesystem.type.structured.SourceData;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.cas.CAS;
 import org.apache.uima.cas.CASException;
 import org.apache.uima.collection.CasConsumer_ImplBase;
@@ -28,7 +29,7 @@ import java.util.Map;
  */
 abstract public class AbstractJdbcWriter extends CasConsumer_ImplBase {
 
-   static private final Logger LOGGER = Logger.getLogger( "AbstractJdbcWriter" );
+   static private final Logger LOGGER = LogManager.getLogger( "AbstractJdbcWriter" );
 
    // Parameter names for the desc file
    static public final String PARAM_DB_CONN_RESRC = "DbConnResrcName";

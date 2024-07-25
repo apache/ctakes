@@ -1,7 +1,8 @@
 package org.apache.ctakes.gui.pipeline.piper;
 
 import io.github.classgraph.*;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,7 +20,7 @@ import java.util.function.Consumer;
  */
 public class PiperFinder {
 
-   static private final Logger LOGGER = Logger.getLogger( "PiperFinder" );
+   static private final Logger LOGGER = LogManager.getLogger( "PiperFinder" );
 
 
    private final Collection<PiperInfo> _piperFiles = new ArrayList<>();

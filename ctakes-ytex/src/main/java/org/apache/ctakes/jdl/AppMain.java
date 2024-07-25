@@ -76,6 +76,7 @@ public final class AppMain {
 		String cmdLineSyntax = "java [-options] -jar jarfile";
 		String header = "Java Data Loader";
 		try {
+			// TODO refactor for jewel
 			CommandLine cl = parsingCLI(args);
 			String srcConn = cl.getOptionValue(OPT_XDL_CONN);
 			String srcData = cl.getOptionValue(OPT_XDL_DATA);

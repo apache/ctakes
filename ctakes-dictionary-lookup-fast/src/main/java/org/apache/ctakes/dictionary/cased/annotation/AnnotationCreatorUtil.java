@@ -13,7 +13,8 @@ import org.apache.ctakes.dictionary.lookup2.util.TuiCodeUtil;
 import org.apache.ctakes.typesystem.type.constants.CONST;
 import org.apache.ctakes.typesystem.type.refsem.UmlsConcept;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.FSArray;
 
@@ -31,7 +32,7 @@ import java.util.stream.Collectors;
 @Immutable
 final public class AnnotationCreatorUtil {
 
-   static private final Logger LOGGER = Logger.getLogger( "AnnotationCreatorUtil" );
+   static private final Logger LOGGER = LogManager.getLogger( "AnnotationCreatorUtil" );
 
    static private final TermEncoding NULL_CODE = new TermEncoding( "", "" );
 

@@ -4,7 +4,8 @@ import io.github.classgraph.*;
 
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.core.util.log.DotLogger;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.analysis_component.Annotator_ImplBase;
 import org.apache.uima.analysis_component.CasAnnotator_ImplBase;
 import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
@@ -32,7 +33,7 @@ public enum PipeBitFinder {
 		return INSTANCE;
 	}
 
-	private final Logger LOGGER = Logger.getLogger("PipeBitFinder");
+	private final Logger LOGGER = LogManager.getLogger("PipeBitFinder");
 
 	private final Collection<Class<?>> _pipeBits = new ArrayList<>();
 	private boolean _didScan = false;

@@ -30,7 +30,8 @@ import org.apache.ctakes.dictionary.lookup2.textspan.TextSpan;
 import org.apache.ctakes.dictionary.lookup2.util.DictionarySpec;
 import org.apache.ctakes.dictionary.lookup2.util.FastLookupToken;
 import org.apache.ctakes.typesystem.type.syntax.*;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.analysis_engine.annotator.AnnotatorContextException;
@@ -56,7 +57,7 @@ abstract public class AbstractJCasTermAnnotator extends JCasAnnotator_ImplBase
       implements JCasTermAnnotator, WindowProcessor {
 
    // LOG4J logger based on interface name
-   final static private Logger LOGGER = Logger.getLogger( "AbstractJCasTermAnnotator" );
+   final static private Logger LOGGER = LogManager.getLogger( "AbstractJCasTermAnnotator" );
 
    //   private int _lookupWindowType;
    private Class<? extends Annotation> _lookupClass;

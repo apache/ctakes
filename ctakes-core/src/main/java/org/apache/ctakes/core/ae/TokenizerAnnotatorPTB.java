@@ -24,7 +24,8 @@ import org.apache.ctakes.typesystem.type.syntax.BaseToken;
 import org.apache.ctakes.typesystem.type.syntax.NewlineToken;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -53,7 +54,7 @@ import static org.apache.ctakes.core.pipeline.PipeBitInfo.TypeProduct.*;
 public class TokenizerAnnotatorPTB extends JCasAnnotator_ImplBase
 {
 	// LOG4J logger based on class name
-	private Logger logger = Logger.getLogger(getClass().getName());
+	static private final Logger LOGGER = LogManager.getLogger( "TokenizerAnnotatorPTB" );
 
 	/**
 	 * Value is "SegmentsToSkip".  This parameter specifies which segments to skip.  The parameter should be
@@ -75,7 +76,7 @@ public class TokenizerAnnotatorPTB extends JCasAnnotator_ImplBase
 	@Override
   public void initialize(UimaContext aContext) throws ResourceInitializationException {
 		super.initialize(aContext);
-		logger.info("Initializing " + this.getClass().getName());
+		LOGGER.info("Initializing " + this.getClass().getName());
 		tokenizer = new TokenizerPTB();
 		skipSegmentsSet = new HashSet<>();
     if(skipSegmentsArray != null){
@@ -89,7 +90,7 @@ public class TokenizerAnnotatorPTB extends JCasAnnotator_ImplBase
 	@Override
   public void process(JCas jcas) throws AnalysisEngineProcessException {
 
-		logger.info("process(JCas) in " + this.getClass().getName());
+		LOGGER.info("process(JCas) in " + this.getClass().getName());
 
 		tokenCount = 0;
 
@@ -156,7 +157,7 @@ public class TokenizerAnnotatorPTB extends JCasAnnotator_ImplBase
 					Exception e = new RuntimeException("bta==null tokenCount=" + tokenCount + " tokens.size()==" + tokens.size());
 					e.printStackTrace();
 				} else{
-					//logger.info("Token #" + tokenCount + " len = " + bta.getCoveredText().length() + " " + bta.getCoveredText());
+					//LOGGER.info("Token #" + tokenCount + " len = " + bta.getCoveredText().length() + " " + bta.getCoveredText());
 					// add the BaseToken to CAS index
 				  if(BaseToken.class.isAssignableFrom(bta.getClass())){
 				    BaseToken.class.cast(bta).addToIndexes();

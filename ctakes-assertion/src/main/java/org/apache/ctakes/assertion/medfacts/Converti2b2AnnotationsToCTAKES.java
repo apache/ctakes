@@ -24,7 +24,8 @@ import org.apache.ctakes.typesystem.type.textsem.EntityMention;
 import org.apache.ctakes.typesystem.type.textsem.EventMention;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UIMAFramework;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -55,7 +56,7 @@ import java.util.List;
  */
 
 public class Converti2b2AnnotationsToCTAKES {
-	private static Logger logger = Logger.getLogger(Converti2b2AnnotationsToCTAKES.class);
+	private static Logger LOGGER = LogManager.getLogger(Converti2b2AnnotationsToCTAKES.class);
 	
 	private static CAS getTypeSystemFromDescriptor(String descriptor) throws InvalidXMLException, IOException, ResourceInitializationException, CASException {
 		XMLParser xmlParser = UIMAFramework.getXMLParser();
@@ -163,10 +164,10 @@ public class Converti2b2AnnotationsToCTAKES {
 					tok.addToIndexes();
 				}
 			}
-			logger.info("before assertions");
+			LOGGER.info("before assertions");
 			for (Annotation a : assertions) {
-				logger.info("  begin assertion");
-				logger.info("  assertion: " + a.toString());
+				LOGGER.info("  begin assertion");
+				LOGGER.info("  assertion: " + a.toString());
 				//Concept assertion = new Concept(jcas);
 
 				AssertionAnnotation i2b2Assertion = (AssertionAnnotation)a;
@@ -205,9 +206,9 @@ public class Converti2b2AnnotationsToCTAKES {
 				AssertionAnalysisEngineFit.mapI2B2AssertionValueToCtakes(i2b2Assertion.getAssertionValue().toString().toLowerCase(), entityOrEventMention);
 
 				entityOrEventMention.addToIndexes();
-				logger.info("  end assertion");
+				LOGGER.info("  end assertion");
 			}
-			logger.info("after assertions");
+			LOGGER.info("after assertions");
 			writeXmi(cas,outFile);
 		}
 	}

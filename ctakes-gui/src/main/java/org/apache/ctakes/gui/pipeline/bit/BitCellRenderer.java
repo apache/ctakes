@@ -3,7 +3,8 @@ package org.apache.ctakes.gui.pipeline.bit;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.logging.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * @author SPF , chip-nlp
@@ -12,7 +13,7 @@ import java.util.logging.Logger;
  */
 final public class BitCellRenderer implements ListCellRenderer<Object> {
 
-   static private final Logger LOGGER = Logger.getLogger( "BitCellRenderer" );
+   static private final Logger LOGGER = LogManager.getLogger( "BitCellRenderer" );
 
 
    private final ListCellRenderer<Object> _delegate = new DefaultListCellRenderer();

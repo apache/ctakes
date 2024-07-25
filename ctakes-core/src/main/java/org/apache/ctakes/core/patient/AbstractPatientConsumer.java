@@ -3,7 +3,8 @@ package org.apache.ctakes.core.patient;
 import org.apache.ctakes.core.ae.NamedEngine;
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.core.util.doc.SourceMetadataUtil;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
@@ -53,7 +54,7 @@ abstract public class AbstractPatientConsumer extends JCasAnnotator_ImplBase imp
 
    protected AbstractPatientConsumer( final String aeName, final String action ) {
       _action = action;
-      _logger = Logger.getLogger( aeName );
+      _logger = LogManager.getLogger( aeName );
    }
 
    /**

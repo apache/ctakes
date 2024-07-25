@@ -24,7 +24,8 @@ import org.apache.ctakes.assertion.eval.AssertionEvaluation.ReferenceAnnotations
 import org.apache.ctakes.assertion.eval.AssertionEvaluation.ReferenceIdentifiedAnnotationsSystemToGoldCopier;
 import org.apache.ctakes.core.cc.FileTreeXmiWriter;
 import org.apache.ctakes.core.config.ConfigParameterConstants;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.collection.CollectionReader;
 import org.apache.uima.fit.factory.AggregateBuilder;
@@ -42,6 +43,8 @@ import org.cleartk.util.cr.XReader;
 import java.io.File;
 
 
+//  TODO This and TrainAllAssertionModels are the only classes in ctakes-assertion that uses commons-cli.  It should be replaced.
+//  ctakes-core (and others) depends upon jewel cli - reuse that library.
 public class TrainAssertionModel {
   
   public static final String PARAM_NAME_DECODING_OUTPUT_DIRECTORY = "decoding-output-directory";
@@ -52,7 +55,7 @@ public class TrainAssertionModel {
 
   public static final String PARAM_NAME_MODEL_DIRECTORY = "model-directory";
 
-  protected static final Logger logger = Logger.getLogger(TrainAssertionModel.class.getName());
+  protected static final Logger LOGGER = LogManager.getLogger(TrainAssertionModel.class.getName());
 
 	/**
 	 * @param args
@@ -178,7 +181,7 @@ public class TrainAssertionModel {
     } catch (ParseException e)
     {
       invalidInput = true;
-      logger.error("unable to parse command-line arguments", e);
+      LOGGER.error("unable to parse command-line arguments", e);
     }
     
     if (modelDirectory == null || modelDirectory.isEmpty() ||
@@ -187,7 +190,7 @@ public class TrainAssertionModel {
         decodingOutputDirectory == null || decodingOutputDirectory.isEmpty()
         )
     {
-      logger.error("required parameters not supplied");
+      LOGGER.error("required parameters not supplied");
       invalidInput = true;
     }
     
@@ -198,7 +201,7 @@ public class TrainAssertionModel {
       return;
     }
     
-    logger.info(String.format(
+    LOGGER.info(String.format(
         "%n" +
         "model dir:           \"%s\"%n" +
         "training input dir:  \"%s\"%n" +
@@ -228,7 +231,7 @@ public class TrainAssertionModel {
       );
     } catch (Exception e)
     {
-      logger.error("Some exception happened while training or decoding...", e);
+      LOGGER.error("Some exception happened while training or decoding...", e);
     }
     
  }
@@ -290,7 +293,7 @@ public class TrainAssertionModel {
 //    collectionReader.setConfigParameterValue(XReader.PARAM_XML_SCHEME, XReader.XMI);
 //    collectionReader.reconfigure();
 
-    logger.info("starting feature generation...");
+    LOGGER.info("starting feature generation...");
     SimplePipeline.runPipeline(
         trainingCollectionReader,
 //        FilesCollectionReader.getCollectionReaderWithView(
@@ -301,7 +304,7 @@ public class TrainAssertionModel {
 //        DefaultSnowballStemmer.getDescription("English"),
 //        dataWriter);
         trainingBuilder.createAggregateDescription());
-    logger.info("finished feature generation.");
+    LOGGER.info("finished feature generation.");
 
     String[] args;
     if (trainingArgs != null && trainingArgs.length > 0) {
@@ -313,9 +316,9 @@ public class TrainAssertionModel {
     }
 
     HideOutput hider = new HideOutput();
-    logger.info("starting training...");
+    LOGGER.info("starting training...");
     org.cleartk.ml.jar.Train.main(args);
-    logger.info("finished training.");
+    LOGGER.info("finished training.");
     hider.restoreOutput();
 
     AggregateBuilder decodingBuilder = new AggregateBuilder();
@@ -351,7 +354,7 @@ public class TrainAssertionModel {
 //        //AssertionComponents.TYPE_SYSTEM_DESCRIPTION,
 //        modelOutputDirectory + "/model.jar");
 
-    logger.info("starting decoding...");
+    LOGGER.info("starting decoding...");
     SimplePipeline.runPipeline(
         evaluationCollectionReader,
 //        BreakIteratorAnnotatorFactory.createSentenceAnnotator(Locale.US),
@@ -366,7 +369,7 @@ public class TrainAssertionModel {
 //            XmiWriterCasConsumerCtakes.PARAM_OUTPUTDIR,
               ConfigParameterConstants.PARAM_OUTPUTDIR,
             decodingOutputDirectory));
-    logger.info("finished decoding.");
+    LOGGER.info("finished decoding.");
 
   }
 

@@ -20,7 +20,8 @@ package org.apache.ctakes.core.ae;
 
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.core.util.ParamUtil;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
@@ -78,7 +79,7 @@ public class CopyAnnotator extends JCasAnnotator_ImplBase {
 	private Class<? extends TOP> srcClass;
 
 	// LOG4J logger based on class name
-	private Logger logger = Logger.getLogger(getClass().getName());
+	static private final  Logger LOGGER = LogManager.getLogger( "CopyAnnotator" );
 
 	// constructor used to create a new instance of the destination
 	// JCas object
@@ -132,7 +133,7 @@ public class CopyAnnotator extends JCasAnnotator_ImplBase {
 
 	@Override
   public void process(JCas jcas) throws AnalysisEngineProcessException {
-		logger.info("process(JCas)");
+		LOGGER.info("process(JCas)");
 
 		// iterate over source objects in JCas
 		Collection<? extends TOP> srcObjs = JCasUtil.select(jcas, srcClass);

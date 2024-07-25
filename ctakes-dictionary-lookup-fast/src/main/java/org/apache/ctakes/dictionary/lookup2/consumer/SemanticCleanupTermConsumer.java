@@ -6,7 +6,8 @@ import org.apache.ctakes.dictionary.lookup2.concept.Concept;
 import org.apache.ctakes.dictionary.lookup2.dictionary.RareWordDictionary;
 import org.apache.ctakes.dictionary.lookup2.textspan.TextSpan;
 import org.apache.ctakes.typesystem.type.constants.CONST;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.jcas.JCas;
@@ -27,7 +28,7 @@ import java.util.*;
  */
 public class SemanticCleanupTermConsumer extends AbstractTermConsumer {
 
-   static private final Logger LOGGER = Logger.getLogger( "SemanticCleanupTermConsumer" );
+   static private final Logger LOGGER = LogManager.getLogger( "SemanticCleanupTermConsumer" );
 
    private final TermConsumer _idHitConsumer;
 

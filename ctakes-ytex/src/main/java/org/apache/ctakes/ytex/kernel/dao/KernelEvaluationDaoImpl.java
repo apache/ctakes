@@ -18,11 +18,11 @@
  */
 package org.apache.ctakes.ytex.kernel.dao;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.ctakes.ytex.dao.DBUtil;
 import org.apache.ctakes.ytex.kernel.model.KernelEvaluation;
 import org.apache.ctakes.ytex.kernel.model.KernelEvaluationInstance;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -35,8 +35,7 @@ import java.util.List;
 
 public class KernelEvaluationDaoImpl implements KernelEvaluationDao {
 	private SessionFactory sessionFactory;
-	private static final Log log = LogFactory
-			.getLog(KernelEvaluationDaoImpl.class);
+	private static final Logger LOGGER = LogManager.getLogger("KernelEvaluationDaoImpl");
 	private PlatformTransactionManager transactionManager;
 
 	public PlatformTransactionManager getTransactionManager() {
@@ -175,9 +174,9 @@ public class KernelEvaluationDaoImpl implements KernelEvaluationDao {
 						getSessionFactory().getCurrentSession().save(
 								kernelEvaluation);
 					} catch (Exception e) {
-						log.warn("couldn't save kernel evaluation, maybe somebody else did. try to retrieve kernel eval");
-						if (log.isDebugEnabled())
-							log.debug("error saving kernel eval", e);
+						LOGGER.warn("couldn't save kernel evaluation, maybe somebody else did. try to retrieve kernel eval");
+						if ( LOGGER.isDebugEnabled())
+							LOGGER.debug("error saving kernel eval", e);
 						txStatus.setRollbackOnly();
 					}
 					return null;

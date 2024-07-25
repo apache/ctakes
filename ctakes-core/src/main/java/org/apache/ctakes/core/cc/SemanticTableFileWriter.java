@@ -8,7 +8,8 @@ import org.apache.ctakes.typesystem.type.textsem.AnatomicalSiteMention;
 import org.apache.ctakes.typesystem.type.textsem.EventMention;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 
@@ -31,7 +32,7 @@ import static org.apache.ctakes.core.pipeline.PipeBitInfo.TypeProduct.*;
 )
 public class SemanticTableFileWriter extends AbstractTableFileWriter {
 
-   static private final Logger LOGGER = Logger.getLogger( "SemanticTableFileWriter" );
+   static private final Logger LOGGER = LogManager.getLogger( "SemanticTableFileWriter" );
 
 
    /**

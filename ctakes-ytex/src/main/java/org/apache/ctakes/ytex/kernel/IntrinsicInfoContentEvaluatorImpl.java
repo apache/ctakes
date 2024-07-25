@@ -18,14 +18,14 @@
  */
 package org.apache.ctakes.ytex.kernel;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.ctakes.ytex.kernel.dao.ClassifierEvaluationDao;
 import org.apache.ctakes.ytex.kernel.dao.ConceptDao;
 import org.apache.ctakes.ytex.kernel.model.ConcRel;
 import org.apache.ctakes.ytex.kernel.model.ConceptGraph;
 import org.apache.ctakes.ytex.kernel.model.FeatureEvaluation;
 import org.apache.ctakes.ytex.kernel.model.FeatureRank;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -73,8 +73,7 @@ public class IntrinsicInfoContentEvaluatorImpl implements
 		}
 	}
 
-	private static final Log log = LogFactory
-			.getLog(IntrinsicInfoContentEvaluatorImpl.class);
+	private static final Logger LOGGER = LogManager.getLogger( "IntrinsicInfoContentEvaluatorImpl" );
 	private static final double log2adjust = 1d / Math.log(2);
 
 	/**
@@ -109,7 +108,7 @@ public class IntrinsicInfoContentEvaluatorImpl implements
 		// max_leaves + 1
 		double num = log2adjust * Math.log((double) maxLeaves + 1d);
 		if (denom == Double.NaN || num == Double.NaN) {
-			log.error("IC = NaN for " + icInfo.getConcept().getConceptID()
+			LOGGER.error("IC = NaN for " + icInfo.getConcept().getConceptID()
 					+ ", leafCount=" + icInfo.getLeafCount()
 					+ ", subsumerCount = " + icInfo.getSubsumerCount());
 			return -1d;
@@ -312,7 +311,7 @@ public class IntrinsicInfoContentEvaluatorImpl implements
 	@Override
 	public void evaluateIntrinsicInfoContent(String conceptGraphName,
 			String conceptGraphDir, ConceptGraph cg) throws IOException {
-		log.info("computing subsumer counts");
+		LOGGER.info("computing subsumer counts");
 		// compute the subsumer count
 		Map<String, IntrinsicICInfo> icInfoMap = new HashMap<String, IntrinsicICInfo>();
 		Map<String, Set<String>> subsumerMap = new WeakHashMap<String, Set<String>>();
@@ -332,7 +331,7 @@ public class IntrinsicInfoContentEvaluatorImpl implements
 			}
 		}
 		subsumerMap = null;
-		log.info("computing max leaves");
+		LOGGER.info("computing max leaves");
 		// get the leaves in this concept graph
 		Set<String> leafSet = null;
 		try {
@@ -346,7 +345,7 @@ public class IntrinsicInfoContentEvaluatorImpl implements
 				}
 			}
 		}
-		log.info("computing leaf counts");
+		LOGGER.info("computing leaf counts");
 		@SuppressWarnings("unchecked")
 		SoftReference<HashSet<Integer>>[] leafCache = (SoftReference<HashSet<Integer>>[]) Array
 				.newInstance((new SoftReference<HashSet<Integer>>(new HashSet<Integer>()))
@@ -369,10 +368,10 @@ public class IntrinsicInfoContentEvaluatorImpl implements
 			}
 		}
 		leafCache = null;
-		log.info("storing intrinsic ic");
+		LOGGER.info("storing intrinsic ic");
 		storeIntrinsicIC(conceptGraphName, leafSet.size(), icInfoMap,
 				depthArray, cg);
-		log.info("finished computing intrinsic ic");
+		LOGGER.info("finished computing intrinsic ic");
 	}
 
 	private BufferedWriter getOutputFile(final String conceptGraphName,
@@ -499,8 +498,8 @@ public class IntrinsicInfoContentEvaluatorImpl implements
 			cr.setIntrinsicInfoContent(ic);
 			if (ic > maxIC)
 				maxIC = ic;
-			if (log.isDebugEnabled())
-				log.debug(icInfo.getConcept().getConceptID() + "=" + ic);
+			if ( LOGGER.isDebugEnabled())
+				LOGGER.debug(icInfo.getConcept().getConceptID() + "=" + ic);
 			listFeatureRank.add(new FeatureRank(fe, icInfo.getConcept()
 					.getConceptID(), ic, depthArray[icInfo.getConcept()
 					.getNodeIndex()]));

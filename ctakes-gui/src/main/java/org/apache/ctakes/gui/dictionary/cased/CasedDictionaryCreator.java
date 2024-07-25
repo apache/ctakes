@@ -2,7 +2,8 @@ package org.apache.ctakes.gui.dictionary.cased;
 
 
 import org.apache.ctakes.gui.component.DisablerPane;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,7 +16,7 @@ import java.awt.*;
  */
 public class CasedDictionaryCreator {
 
-   static private final Logger LOGGER = Logger.getLogger( "CasedDictionaryCreator" );
+   static private final Logger LOGGER = LogManager.getLogger( "CasedDictionaryCreator" );
 
 
    static private JFrame createFrame() {

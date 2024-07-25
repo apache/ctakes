@@ -1,6 +1,7 @@
 package org.apache.ctakes.core.cr;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.junit.Test;
 
 import java.io.File;
@@ -17,7 +18,7 @@ import static org.junit.Assert.*;
  */
 public class FileTreeReaderTester {
 
-   static private final Logger LOGGER = Logger.getLogger( "FileTreeReaderTester" );
+   static private final Logger LOGGER = LogManager.getLogger( "FileTreeReaderTester" );
 
    static private final String DOCUMENT_ID = "someFile";
    static private final String PREFIX_SHORT = "subdir";

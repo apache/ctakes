@@ -37,7 +37,7 @@ public class NearbyVerbTenseXExtractor implements FeatureExtractor1 {
 
   private String name;
 
-  //private Logger logger = Logger.getLogger(this.getClass().getName());
+  //private Logger LOGGER = LogManager.getLogger(this.getClass().getName());
 
   public NearbyVerbTenseXExtractor() {
     super();
@@ -69,7 +69,7 @@ public class NearbyVerbTenseXExtractor implements FeatureExtractor1 {
 			  }
 			  Feature feature = new Feature(this.name, verbTP);
 			  features.add(feature);
-			  //logger.info("found nearby verb's pos tag: "+ verbTP);
+			  //LOGGER.info("found nearby verb's pos tag: "+ verbTP);
 		  }
 
 	  }

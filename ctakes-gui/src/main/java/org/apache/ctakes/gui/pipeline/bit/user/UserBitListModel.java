@@ -1,11 +1,12 @@
 package org.apache.ctakes.gui.pipeline.bit.user;
 
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
 /**
  * @author SPF , chip-nlp
@@ -14,7 +15,7 @@ import java.util.logging.Logger;
  */
 final public class UserBitListModel extends AbstractListModel<UserBit> {
 
-   static private final Logger LOGGER = Logger.getLogger( "UserBitListModel" );
+   static private final Logger LOGGER = LogManager.getLogger( "UserBitListModel" );
 
    private UserBit _readerBit = null;
    private final List<UserBit> _userBits = new ArrayList<>();
@@ -49,7 +50,7 @@ final public class UserBitListModel extends AbstractListModel<UserBit> {
 
    public void moveUserBitUp( final int viewIndex ) {
       if ( viewIndex >= getSize() ) {
-         LOGGER.warning( "No User Pipe Bit at index " + viewIndex );
+         LOGGER.warn( "No User Pipe Bit at index " + viewIndex );
          return;
       }
       int listIndex = viewIndex;
@@ -66,7 +67,7 @@ final public class UserBitListModel extends AbstractListModel<UserBit> {
 
    public void moveUserBitDown( final int viewIndex ) {
       if ( viewIndex >= getSize() ) {
-         LOGGER.warning( "No User Pipe Bit at index " + viewIndex );
+         LOGGER.warn( "No User Pipe Bit at index " + viewIndex );
          return;
       }
       int listIndex = viewIndex;
@@ -83,7 +84,7 @@ final public class UserBitListModel extends AbstractListModel<UserBit> {
 
    public void removeUserBit( final int viewIndex ) {
       if ( viewIndex >= getSize() ) {
-         LOGGER.warning( "No User Pipe Bit at index " + viewIndex );
+         LOGGER.warn( "No User Pipe Bit at index " + viewIndex );
          return;
       }
       int listIndex = viewIndex;

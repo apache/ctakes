@@ -3,7 +3,8 @@ package org.apache.ctakes.core.cc.jdbc;
 
 import org.apache.ctakes.core.cc.jdbc.db.JdbcDb;
 import org.apache.ctakes.core.cc.jdbc.table.JdbcTable;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
@@ -21,7 +22,7 @@ import java.util.Collection;
  */
 abstract public class AbstractJdbcWriter<T> extends JCasAnnotator_ImplBase {
 
-   static private final Logger LOGGER = Logger.getLogger( "AstractJdbcWriter" );
+   static private final Logger LOGGER = LogManager.getLogger( "AstractJdbcWriter" );
 
    static public final String PARAM_DB_DRIVER = "DbDriver";
    @ConfigurationParameter(

@@ -15,7 +15,8 @@ import org.apache.ctakes.gui.dictionary.umls.MrconsoIndex;
 import org.apache.ctakes.gui.dictionary.umls.MrsabIndex;
 import org.apache.ctakes.gui.dictionary.umls.SourceTableModel;
 import org.apache.ctakes.gui.dictionary.util.FileUtil;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -39,7 +40,7 @@ import java.util.concurrent.Executors;
  */
 final class CasedMainPanel extends JPanel {
 
-   static private final Logger LOGGER = Logger.getLogger( "CasedMainPanel" );
+   static private final Logger LOGGER = LogManager.getLogger( "CasedMainPanel" );
 
    private String _umlsDirPath = System.getProperty( "user.dir" );
    private String _ctakesPath = System.getProperty( "user.dir" );

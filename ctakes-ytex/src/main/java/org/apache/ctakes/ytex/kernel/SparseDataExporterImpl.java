@@ -19,8 +19,8 @@
 package org.apache.ctakes.ytex.kernel;
 
 import org.apache.commons.cli.*;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowCallbackHandler;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -36,8 +36,7 @@ import java.util.*;
 
 public class SparseDataExporterImpl implements SparseDataExporter {
 
-	private static final Log log = LogFactory
-			.getLog(SparseDataExporterImpl.class);
+	private static final Logger LOGGER = LogManager.getLogger( "SparseDataExporterImpl" );
 
 	@SuppressWarnings("static-access")
 	public static void main(String args[]) throws IOException {
@@ -167,9 +166,9 @@ public class SparseDataExporterImpl implements SparseDataExporter {
 					.keySet()) {
 				for (int fold : instanceLabel.getLabelToInstanceMap()
 						.get(label).get(run).keySet()) {
-					if (log.isInfoEnabled()
+					if ( LOGGER.isInfoEnabled()
 							&& (label.length() > 0 || run > 0 || fold > 0))
-						log.info("exporting, label " + label + " run " + run
+						LOGGER.info("exporting, label " + label + " run " + run
 								+ " fold " + fold);
 					if ("fold".equals(scope)) {
 						sparseData = this.loadData(instanceLabel, properties

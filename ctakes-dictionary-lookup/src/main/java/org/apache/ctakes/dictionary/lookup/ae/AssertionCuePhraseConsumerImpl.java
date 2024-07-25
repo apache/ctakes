@@ -23,7 +23,8 @@ import org.apache.ctakes.dictionary.lookup.MetaDataHit;
 import org.apache.ctakes.dictionary.lookup.vo.LookupHit;
 import org.apache.ctakes.typesystem.type.refsem.OntologyConcept;
 import org.apache.ctakes.typesystem.type.temporary.assertion.AssertionCuePhraseAnnotation;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.lucene.index.Term;
 import org.apache.lucene.search.*;
 import org.apache.uima.UimaContext;
@@ -50,7 +51,7 @@ public class AssertionCuePhraseConsumerImpl extends BaseLookupConsumerImpl
   public static final String CUE_PHRASE_FIRST_WORD_FIELD_NAME = "cuePhraseFirstWord";
 
 	// LOG4J logger based on class name
-	private Logger iv_logger = Logger.getLogger(getClass().getName());
+	private Logger LOGGER = LogManager.getLogger(getClass().getName());
 
 	private final String CODE_MF_PRP_KEY = "codeMetaField";
 
@@ -126,7 +127,7 @@ public class AssertionCuePhraseConsumerImpl extends BaseLookupConsumerImpl
 //				}
 //				else
 //				{
-//					iv_logger.warn("Filtered out: "+text);
+//					LOGGER.warn("Filtered out: "+text);
 //				}
 
 	      AssertionCuePhraseAnnotation cuePhraseAnnotation = new AssertionCuePhraseAnnotation(jcas);

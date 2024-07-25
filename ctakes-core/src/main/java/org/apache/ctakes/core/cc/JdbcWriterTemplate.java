@@ -22,7 +22,8 @@ import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.core.util.annotation.OntologyConceptUtil;
 import org.apache.ctakes.typesystem.type.refsem.UmlsConcept;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.cas.text.AnnotationIndex;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
@@ -48,7 +49,7 @@ import java.util.*;
 )
 public class JdbcWriterTemplate extends AbstractJdbcWriter {
 
-   static private final Logger LOGGER = Logger.getLogger( "JdbcWriterTemplate" );
+   static private final Logger LOGGER = LogManager.getLogger( "JdbcWriterTemplate" );
 
    // Parameter names for the desc file
    static public final String PARAM_VECTOR_TABLE = "VectorTable";

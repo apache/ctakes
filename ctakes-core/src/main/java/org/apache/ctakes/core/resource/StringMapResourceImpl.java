@@ -18,7 +18,8 @@
  */
 package org.apache.ctakes.core.resource;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.resource.DataResource;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.resource.SharedResourceObject;
@@ -39,7 +40,7 @@ public class StringMapResourceImpl
         implements StringMapResource, SharedResourceObject
 {
     // LOG4J logger based on class name
-    private Logger iv_logger = Logger.getLogger(getClass().getName());
+    static private final Logger LOGGER = LogManager.getLogger( "StringMapResourceImpl" );
 
     private final String DELIMITER = "|";
 
@@ -50,7 +51,7 @@ public class StringMapResourceImpl
      */
     public void load(DataResource dr) throws ResourceInitializationException
     {
-        iv_logger.info("Loading resource: "+dr.getUrl());
+        LOGGER.info("Loading resource: "+dr.getUrl());
         try
         {
             InputStream inStream = dr.getInputStream();
@@ -69,12 +70,12 @@ public class StringMapResourceImpl
                 }
                 else
                 {
-                    iv_logger.warn("Invalid resource line, character index of '"+DELIMITER+"' was "+delimiterIndex+" at line "+lineCount);
+                    LOGGER.warn("Invalid resource line, character index of '"+DELIMITER+"' was "+delimiterIndex+" at line "+lineCount);
                 }
                 line = br.readLine();
             }
             br.close();
-            iv_logger.info("Loaded resource, # lines=" + lineCount);
+            LOGGER.info("Loaded resource, # lines=" + lineCount);
         }
         catch (IOException ioe)
         {

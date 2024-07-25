@@ -5,7 +5,8 @@ import org.apache.ctakes.typesystem.type.refsem.Date;
 import org.apache.ctakes.typesystem.type.textsem.MedicationEventMention;
 import org.apache.ctakes.typesystem.type.textsem.MedicationMention;
 import org.apache.ctakes.typesystem.type.textsem.TimeMention;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
 import org.apache.uima.fit.util.JCasUtil;
@@ -26,7 +27,7 @@ import java.util.Collection;
 )
 final public class SimpleMedDatesPrinter extends JCasAnnotator_ImplBase {
 
-   static private final Logger LOGGER = Logger.getLogger( "SimpleMedDatesPrinter" );
+   static private final Logger LOGGER = LogManager.getLogger( "SimpleMedDatesPrinter" );
 
    /**
     * {@inheritDoc}

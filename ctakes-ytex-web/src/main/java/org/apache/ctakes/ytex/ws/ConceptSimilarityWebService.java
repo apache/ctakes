@@ -18,11 +18,11 @@
  */
 package org.apache.ctakes.ytex.ws;
 
+import jakarta.jws.WebMethod;
+import jakarta.jws.WebService;
 import org.apache.ctakes.ytex.kernel.metric.ConceptPair;
 import org.apache.ctakes.ytex.kernel.metric.ConceptPairSimilarity;
 
-import javax.jws.WebMethod;
-import javax.jws.WebService;
 import java.util.List;
 
 @WebService
@@ -34,7 +34,7 @@ public interface ConceptSimilarityWebService {
 	/**
 	 * compute similarity for a list of concept pairs
 	 * 
-	 * @param conceptGraphName optional
+	 * @param conceptGraph optional
 	 * @param conceptPairs
 	 *            required, concept pairs for which similarity should be
 	 *            computed

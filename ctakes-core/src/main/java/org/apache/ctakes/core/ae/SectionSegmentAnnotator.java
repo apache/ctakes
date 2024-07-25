@@ -25,7 +25,8 @@ import org.apache.ctakes.core.resource.FileResource;
 import org.apache.ctakes.core.util.DocumentSection;
 import org.apache.ctakes.core.util.doc.DocIdUtil;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -54,7 +55,7 @@ public class SectionSegmentAnnotator extends JCasAnnotator_ImplBase {
 	private StructFinder structureFinder;
 
 	private String templateFile= null;
-	Logger logger = Logger.getLogger(this.getClass());
+	static private final Logger LOGGER = LogManager.getLogger( "SectionSegmentAnnotator" );
 
 	public HashMap<Integer, DocumentSection> sections;
 
@@ -66,7 +67,7 @@ public class SectionSegmentAnnotator extends JCasAnnotator_ImplBase {
 			templateFile = ((FileResource)aContext.getResourceObject("template")).getFile().getAbsolutePath();
 			structureFinder = new StructFinder();
 		}catch(Exception e ){
-			logger.error("Error reading template file: " + e.getMessage());
+			LOGGER.error("Error reading template file: " + e.getMessage());
 		}
 
 		segmentId = (String) aContext.getConfigParameterValue("SegmentID");

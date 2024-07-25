@@ -18,7 +18,8 @@
  */
 package org.apache.ctakes.assertion.medfacts;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.cas.Type;
 import org.apache.uima.cas.text.AnnotationIndex;
 import org.apache.uima.jcas.JCas;
@@ -33,7 +34,7 @@ import java.util.TreeSet;
 
 public class CasIndexer<T extends Annotation>
 {
-  private Logger logger = Logger.getLogger(CasIndexer.class.getName());
+  private Logger LOGGER = LogManager.getLogger(CasIndexer.class.getName());
   private JCas jcas;
   protected Map<Integer, T> mapByAddress;
   protected Type targetType;
@@ -63,18 +64,18 @@ public class CasIndexer<T extends Annotation>
     
     mapByAddress = new HashMap<Integer, T>();
     
-    //logger.info("    before iterating over all annotations in index...");
+    //LOGGER.info("    before iterating over all annotations in index...");
     for (Annotation annotation : annotationIndex)
     {
-      //logger.info("    begin single annotation");
+      //LOGGER.info("    begin single annotation");
       Integer address = annotation.getAddress();
-      //logger.info(String.format("      address: %d; type: %s", address, annotation.getClass().getName()));
+      //LOGGER.info(String.format("      address: %d; type: %s", address, annotation.getClass().getName()));
       T current = (T)annotation;
       
       mapByAddress.put(address,  current);
-      //logger.info("    end single annotation");
+      //LOGGER.info("    end single annotation");
     }
-    //logger.info("    after iterating over all annotations in index...");
+    //LOGGER.info("    after iterating over all annotations in index...");
     
   }
   

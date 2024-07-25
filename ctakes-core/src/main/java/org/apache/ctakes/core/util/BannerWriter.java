@@ -1,6 +1,7 @@
 package org.apache.ctakes.core.util;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * @author SPF , chip-nlp
@@ -9,7 +10,7 @@ import org.apache.log4j.Logger;
 final public class BannerWriter {
 
    // The ProgressDone logger in our ctakes log4j configuration hides the name of the logger.
-   static private final Logger EOL_LOGGER = Logger.getLogger( "ProgressDone" );
+   static private final Logger EOL_LOGGER = LogManager.getLogger( "ProgressDone" );
 
    private BannerWriter() {
    }

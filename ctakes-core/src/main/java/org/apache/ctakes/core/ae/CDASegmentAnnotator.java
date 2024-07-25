@@ -23,7 +23,8 @@ import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.core.resource.FileLocator;
 import org.apache.ctakes.core.util.doc.DocIdUtil;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
@@ -51,7 +52,7 @@ import java.util.regex.Pattern;
 )
 public class CDASegmentAnnotator extends JCasAnnotator_ImplBase {
 
-	Logger logger = Logger.getLogger(this.getClass());
+	static private final Logger LOGGER = LogManager.getLogger( "CDASegmentAnnotator" );
 	protected static HashMap<String, Pattern> patterns = new HashMap<>();
 	protected static HashMap<String, String> section_names = new HashMap<>();
 	protected static final String DEFAULT_SECTION_FILE_NAME = "src/user/resources/org/apache/ctakes/core/sections"
@@ -82,7 +83,7 @@ public class CDASegmentAnnotator extends JCasAnnotator_ImplBase {
 
 		  // Read in the Section Mappings File
 		  // And load the RegEx Patterns into a Map
-		  logger.info("Reading Section File " + sections_path);
+			LOGGER.info("Reading Section File " + sections_path);
 		  String line = null;
 		  while ((line = br.readLine()) != null) {
 		    if (!line.trim().startsWith(PARAM_COMMENT)) {
@@ -101,7 +102,7 @@ public class CDASegmentAnnotator extends JCasAnnotator_ImplBase {
 		        }						
 
 		      } else {
-		        logger.info("Warning: Skipped reading sections config row: "
+					LOGGER.info("Warning: Skipped reading sections config row: "
 		            + Arrays.toString(l));
 		      }
 		    }
@@ -139,7 +140,7 @@ public class CDASegmentAnnotator extends JCasAnnotator_ImplBase {
 		String text = jCas.getDocumentText();
 		if (text == null) {
          String docId = DocIdUtil.getDocumentID( jCas );
-			logger.info("text is null for docId=" + docId);
+			LOGGER.info("text is null for docId=" + docId);
 		} else {
 			ArrayList<Segment> sorted_segments = new ArrayList<>();
 			for (String id : patterns.keySet()) {

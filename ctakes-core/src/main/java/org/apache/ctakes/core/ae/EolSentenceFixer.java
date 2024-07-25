@@ -3,7 +3,8 @@ package org.apache.ctakes.core.ae;
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.core.util.Pair;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
 import org.apache.uima.fit.util.JCasUtil;
@@ -26,7 +27,7 @@ import java.util.regex.Pattern;
 )
 final public class EolSentenceFixer extends JCasAnnotator_ImplBase {
 
-   static private final Logger LOGGER = Logger.getLogger( "EolSentenceFixer" );
+   static private final Logger LOGGER = LogManager.getLogger( "EolSentenceFixer" );
 
    static private final Pattern WHITESPACE = Pattern.compile( "\\s+" );
 

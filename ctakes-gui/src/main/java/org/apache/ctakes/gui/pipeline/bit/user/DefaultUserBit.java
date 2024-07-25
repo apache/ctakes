@@ -3,7 +3,8 @@ package org.apache.ctakes.gui.pipeline.bit.user;
 
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.gui.pipeline.bit.parameter.ParameterMapper;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.fit.descriptor.ConfigurationParameter;
 
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ import java.util.Map;
  */
 final public class DefaultUserBit implements UserBit {
 
-   static private final Logger LOGGER = Logger.getLogger( "DefaultUserBit" );
+   static private final Logger LOGGER = LogManager.getLogger( "DefaultUserBit" );
 
    private final PipeBitInfo _pipeBitInfo;
    private final Class<?> _pipeBitClass;

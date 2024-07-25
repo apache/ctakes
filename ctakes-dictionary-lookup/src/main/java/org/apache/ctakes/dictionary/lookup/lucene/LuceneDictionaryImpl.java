@@ -21,7 +21,8 @@ package org.apache.ctakes.dictionary.lookup.lucene;
 import org.apache.ctakes.dictionary.lookup.AbstractBaseDictionary;
 import org.apache.ctakes.dictionary.lookup.DictionaryException;
 import org.apache.ctakes.dictionary.lookup.MetaDataHit;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.lucene.analysis.core.KeywordAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.Term;
@@ -47,7 +48,7 @@ public class LuceneDictionaryImpl extends AbstractBaseDictionary {
    //ohnlp-Bugs-3296301 limits the search results to fixed 100 records.
    private int iv_maxHits;
    // LOG4J logger based on class name
-   private Logger iv_logger = Logger.getLogger( getClass().getName() );
+   private Logger LOGGER = LogManager.getLogger( getClass().getName() );
 
    /**
     * Constructor
@@ -98,17 +99,17 @@ public class LuceneDictionaryImpl extends AbstractBaseDictionary {
          }
          if ( topDoc == null ) {
             // avoids possible NPE on topDoc.scoreDocs 12-26-2012 SPF
-            iv_logger.warn( getClass().getName() + " getEntries(..) topDoc is null, returning empty collection" );
+            LOGGER.warn( getClass().getName() + " getEntries(..) topDoc is null, returning empty collection" );
             return Collections.emptySet();
          }
          if ( iv_maxHits == 0 ) {
             iv_maxHits = Integer.MAX_VALUE;
-            iv_logger.warn( "iv_maxHits was 0, using Integer.MAX_VALUE instead" );
+            LOGGER.warn( "iv_maxHits was 0, using Integer.MAX_VALUE instead" );
          }
          final ScoreDoc[] hits = topDoc.scoreDocs;
          if ( hits.length == iv_maxHits ) {
-            iv_logger.warn( "'iv_maxHits' equals the list length returned by the lucene query (" + hits.length + ")." );
-            iv_logger.warn(
+            LOGGER.warn( "'iv_maxHits' equals the list length returned by the lucene query (" + hits.length + ")." );
+            LOGGER.warn(
                   "You may want to consider setting a higher value, since there may be more entries not being returned in the event greater than "
                         + iv_maxHits + " exist." );
          }

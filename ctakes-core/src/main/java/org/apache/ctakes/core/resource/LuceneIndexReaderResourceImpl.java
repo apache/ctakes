@@ -18,7 +18,8 @@
  */
 package org.apache.ctakes.core.resource;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.store.*;
@@ -37,7 +38,7 @@ public class LuceneIndexReaderResourceImpl
         implements LuceneIndexReaderResource, SharedResourceObject {
 	
     // LOG4J logger based on class name
-    private Logger iv_logger = Logger.getLogger(getClass().getName());
+    static private final Logger LOGGER = LogManager.getLogger( "LuceneIndexReaderResourceImpl" );
 
     private IndexReader iv_indexReader;
 
@@ -55,13 +56,13 @@ public class LuceneIndexReaderResourceImpl
            File indexDir = FileLocator.getFile( indexDirStr );
 
             if(!indexDir.exists())
-            	iv_logger.info("indexDir="+indexDirStr+"  does not exist!");
+               LOGGER.info("indexDir="+indexDirStr+"  does not exist!");
             else
-            	iv_logger.info("indexDir="+indexDirStr+"  exists.");
+               LOGGER.info("indexDir="+indexDirStr+"  exists.");
             
             if (useMemoryIndex.booleanValue()) {
 
-                iv_logger.info("Loading Lucene Index into memory: " + indexDir);
+               LOGGER.info("Loading Lucene Index into memory: " + indexDir);
 //                FSDirectory fsd = FSDirectory.open(indexDir.toPath());
 //                Directory d = new RAMDirectory(fsd, IOContext.DEFAULT);
 //                iv_indexReader = IndexReader.open(d);
@@ -69,12 +70,12 @@ public class LuceneIndexReaderResourceImpl
                iv_indexReader = DirectoryReader.open( d );
             }
             else {
-                iv_logger.info("Loading Lucene Index: " + indexDir);
+               LOGGER.info("Loading Lucene Index: " + indexDir);
                 FSDirectory fsd = FSDirectory.open(indexDir.toPath());
 //                iv_indexReader = IndexReader.open(fsd);
                iv_indexReader = DirectoryReader.open( fsd );
             }
-            iv_logger.info("Loaded Lucene Index, # docs=" + iv_indexReader.numDocs());
+           LOGGER.info("Loaded Lucene Index, # docs=" + iv_indexReader.numDocs());
         }
         catch (Exception e) {
         	throw new ResourceInitializationException(e);

@@ -9,7 +9,8 @@ import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.awt.*;
-import java.util.logging.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * @author SPF , chip-nlp
@@ -18,7 +19,7 @@ import java.util.logging.Logger;
  */
 final public class AvailablesRenderer implements ListCellRenderer<Object> {
 
-   static private final Logger LOGGER = Logger.getLogger( "AvailablesRenderer" );
+   static private final Logger LOGGER = LogManager.getLogger( "AvailablesRenderer" );
 
    static private final Border SELECTED_BORDER = new LineBorder( Color.DARK_GRAY, 1, true );
    static private final Border UNSELECTED_BORDER = new EmptyBorder( 0, 0, 0, 5 );

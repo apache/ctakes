@@ -23,7 +23,8 @@ import org.apache.ctakes.core.util.StringUtil;
 import org.apache.ctakes.core.util.collection.CollectionMap;
 import org.apache.ctakes.dictionary.lookup2.term.RareWordTerm;
 import org.apache.ctakes.dictionary.lookup2.util.FastLookupToken;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 
 import java.io.BufferedReader;
@@ -46,7 +47,7 @@ import static org.apache.ctakes.dictionary.lookup2.dictionary.RareWordTermMapCre
  */
 final public class BsvRareWordDictionary implements RareWordDictionary {
 
-   static private final Logger LOGGER = Logger.getLogger( "BsvRareWordDictionary" );
+   static private final Logger LOGGER = LogManager.getLogger( "BsvRareWordDictionary" );
 
    static private final String BSV_FILE_PATH = "bsvPath";
 

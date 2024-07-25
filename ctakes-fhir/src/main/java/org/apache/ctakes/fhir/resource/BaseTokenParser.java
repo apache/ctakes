@@ -1,7 +1,8 @@
 package org.apache.ctakes.fhir.resource;
 
 import org.apache.ctakes.typesystem.type.syntax.BaseToken;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.jcas.JCas;
 import org.hl7.fhir.dstu3.model.Basic;
 import org.hl7.fhir.dstu3.model.CodeableConcept;
@@ -21,7 +22,7 @@ import static org.apache.ctakes.fhir.element.FhirElementFactory.CODING_TYPE_SYST
  */
 final public class BaseTokenParser implements FhirBasicParser<BaseToken> {
 
-   static private final Logger LOGGER = Logger.getLogger( "BaseTokenParser" );
+   static private final Logger LOGGER = LogManager.getLogger( "BaseTokenParser" );
 
    public BaseToken parseResource( final JCas jCas, final Basic resource ) {
       String className = "";

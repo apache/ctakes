@@ -4,7 +4,8 @@ import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.List;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.mitre.medfacts.zoner.ZonerCli.Range;
 
 /**
@@ -13,13 +14,13 @@ import org.mitre.medfacts.zoner.ZonerCli.Range;
  */
 public class ZonerRunner
 {
-  public static final Logger logger = Logger.getLogger(ZonerRunner.class.getName());
+  public static final Logger LOGGER = LogManager.getLogger(ZonerRunner.class.getName());
 
   protected String inputDirectoryString;
 
   public static void main(String args[])
   {
-    logger.info("ZonerRunner starting...");
+    LOGGER.info("ZonerRunner starting...");
 
     ZonerRunner runner = new ZonerRunner();
     
@@ -29,19 +30,19 @@ public class ZonerRunner
       inputDirectoryString = args[0];
     } else
     {
-      logger.error( "ZonerRunner requires an input parameter specifying the input directory." );
+      LOGGER.error( "ZonerRunner requires an input parameter specifying the input directory." );
       System.exit( 1 );
     }
 
     runner.setInputDirectoryString(inputDirectoryString);
     runner.execute();
 
-    logger.info("ZonerRunner finished");
+    LOGGER.info("ZonerRunner finished");
   }
 
   public void execute()
   {
-    logger.info("ZonerRunner.execute() begin");
+    LOGGER.info("ZonerRunner.execute() begin");
 
     File inputDirectory = new File(inputDirectoryString);
     File[] textFiles = inputDirectory.listFiles(new FilenameFilter()
@@ -54,7 +55,7 @@ public class ZonerRunner
     System.out.println("=== TEXT FILE LIST BEGIN ===");
     for (File currentTextFile : textFiles)
     {
-      logger.info(String.format("currentTextFile: %s", currentTextFile.getAbsolutePath()));
+      LOGGER.info(String.format("currentTextFile: %s", currentTextFile.getAbsolutePath()));
       
       try
       {
@@ -67,12 +68,12 @@ public class ZonerRunner
       } catch (IOException e)
       {
         String message = String.format("IOException while running zoner on file %s", currentTextFile.getAbsolutePath());
-        logger.warn(message, e);
+        LOGGER.warn(message, e);
         throw new RuntimeException(message, e);
       }
     }
 
-    logger.info("ZonerRunner.execute() end");
+    LOGGER.info("ZonerRunner.execute() end");
   }
 
   public static void findZones(String entireContents, String textLookup[][])
@@ -90,7 +91,7 @@ public class ZonerRunner
       LineAndTokenPosition rangeBegin = currentRange.getBeginLineAndToken();
       LineAndTokenPosition rangeEnd = currentRange.getEndLineAndToken();
       String rangeLabel = currentRange.getLabel();
-      logger.info(String.format("FOUND ZONE \"%s\"", rangeLabel));
+      LOGGER.info(String.format("FOUND ZONE \"%s\"", rangeLabel));
 
 //      int firstLine = rangeBegin.getLine();
 //      int lastLine = rangeEnd.getLine();

@@ -26,7 +26,8 @@ import org.apache.ctakes.typesystem.type.syntax.ConllDependencyNode;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
 import org.apache.ctakes.typesystem.type.textsem.SemanticArgument;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
@@ -56,7 +57,7 @@ public class SubjectAttributeClassifier {
 	public static final String OTHER_DEPTOK = "other_depsrl";
 	public static final String OTHER_OR = "other_or";
     public static ArrayList<String> FeatureIndex = new ArrayList<String>();
-    private static final Logger logger = Logger.getLogger(SubjectAttributeClassifier.class);
+    private static final Logger LOGGER = LogManager.getLogger( "SubjectAttributeClassifier" );
 
     static{
             FeatureIndex.add(DONOR_TOKEN);
@@ -207,7 +208,7 @@ public class SubjectAttributeClassifier {
 		
 		if (vfeat==null) {
 			// if missing values, use default subject value
-			logger.warn("Subject attribute classifier missing feature values, defaulting to 'patient'");
+			LOGGER.warn("Subject attribute classifier missing feature values, defaulting to 'patient'");
 			return CONST.ATTR_SUBJECT_PATIENT;
 		}
 

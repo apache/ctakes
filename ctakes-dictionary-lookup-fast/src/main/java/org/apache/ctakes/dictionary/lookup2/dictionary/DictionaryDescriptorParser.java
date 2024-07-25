@@ -22,7 +22,8 @@ import org.apache.ctakes.dictionary.lookup2.concept.ConceptFactory;
 import org.apache.ctakes.dictionary.lookup2.consumer.TermConsumer;
 import org.apache.ctakes.dictionary.lookup2.util.DefaultDictionarySpec;
 import org.apache.ctakes.dictionary.lookup2.util.DictionarySpec;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.annotator.AnnotatorContextException;
 import org.jdom2.Document;
@@ -52,7 +53,7 @@ import java.util.*;
 final public class DictionaryDescriptorParser {
 
    // LOG4J logger based on class name
-   static private final Logger LOGGER = Logger.getLogger( "DictionaryDescriptorParser" );
+   static private final Logger LOGGER = LogManager.getLogger( "DictionaryDescriptorParser" );
 
    /**
     * A <B>Utility Class</B> cannot be instantiated

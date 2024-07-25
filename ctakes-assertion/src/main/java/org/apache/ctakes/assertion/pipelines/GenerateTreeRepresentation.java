@@ -27,7 +27,8 @@ import org.apache.ctakes.typesystem.type.textsem.EntityMention;
 import org.apache.ctakes.typesystem.type.textsem.EventMention;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
 import org.apache.ctakes.utils.tree.SimpleTree;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.uima.UIMAException;
 import org.apache.uima.collection.CollectionReader;
 import org.apache.uima.fit.factory.CollectionReaderFactory;
@@ -72,7 +73,7 @@ public class GenerateTreeRepresentation{
 	protected static Options options = new Options();
 	private static SemanticClasses sems = null; 
 	private static PrintStream out = null;
-	private static Logger log = Logger.getLogger(GenerateTreeRepresentation.class);
+	private static final Logger LOGGER = LogManager.getLogger( "GenerateTreeRepresentation" );
 	
 	/**
 	 * @param args
@@ -112,7 +113,7 @@ public class GenerateTreeRepresentation{
 	}
 
 	private static void processDocument(JCas jcas) {
-      log.info( "Processing document: " + DocIdUtil.getDocumentID( jcas ) );
+      LOGGER.info( "Processing document: " + DocIdUtil.getDocumentID( jcas ) );
 		Collection<IdentifiedAnnotation> mentions = JCasUtil.select(jcas, IdentifiedAnnotation.class);
 		for(IdentifiedAnnotation mention : mentions){
 		  if(mention instanceof EventMention || mention instanceof EntityMention){

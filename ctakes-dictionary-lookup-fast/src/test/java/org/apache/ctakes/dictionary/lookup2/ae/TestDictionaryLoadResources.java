@@ -1,7 +1,8 @@
 //package org.apache.ctakes.dictionary.lookup2.ae;
 //
 //import org.apache.ctakes.dictionary.lookup2.util.UmlsUserTester;
-//import org.apache.log4j.Logger;
+//import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 //import org.apache.uima.UIMAException;
 //import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 //import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -17,7 +18,7 @@
 //
 //final public class TestDictionaryLoadResources {
 //
-//   static private final Logger LOGGER = Logger.getLogger( "TestDictionaryLoadResources" );
+//   static private final Logger LOGGER = LogManager.getLogger( "TestDictionaryLoadResources" );
 //
 //
 //   static private final String TEST_TEXT

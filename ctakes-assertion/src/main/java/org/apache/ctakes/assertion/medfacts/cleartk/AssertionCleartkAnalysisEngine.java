@@ -29,7 +29,8 @@ import org.apache.ctakes.typesystem.type.textsem.EntityMention;
 import org.apache.ctakes.typesystem.type.textsem.EventMention;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -61,7 +62,7 @@ import java.util.*;
  */
 public abstract class AssertionCleartkAnalysisEngine extends
                                                      CleartkAnnotator<String> {
-   Logger logger = Logger.getLogger( AssertionCleartkAnalysisEngine.class );
+   Logger LOGGER = LogManager.getLogger( AssertionCleartkAnalysisEngine.class );
 
    public static final String PARAM_GOLD_VIEW_NAME = "GoldViewName";
 
@@ -309,7 +310,7 @@ public abstract class AssertionCleartkAnalysisEngine extends
 
    @Override
    public void process( JCas jCas ) throws AnalysisEngineProcessException {
-      logger.info( "Processing ..." );
+      LOGGER.info( "Processing ..." );
       String documentId = DocIdUtil.getDocumentID( jCas );
       String domainId = "";
       String domainFeature = null;
@@ -319,7 +320,7 @@ public abstract class AssertionCleartkAnalysisEngine extends
       }
 
       if ( documentId != null ) {
-         logger.debug( "processing next doc: " + documentId );
+         LOGGER.debug( "processing next doc: " + documentId );
          // set the domain to be FeatureFunction'ed into all extractors
          if ( !fileToDomain.isEmpty() && ffDomainAdaptor != null ) {
             domainId = fileToDomain.get( documentId );
@@ -329,7 +330,7 @@ public abstract class AssertionCleartkAnalysisEngine extends
             domainFeature = fileToDomain.get( documentId );
          }
       } else {
-         logger.debug( "processing next doc (doc id is null)" );
+         LOGGER.debug( "processing next doc (doc id is null)" );
       }
 
       this.lastLabel = "<BEGIN>";
@@ -384,7 +385,7 @@ public abstract class AssertionCleartkAnalysisEngine extends
 
          for ( IdentifiedAnnotation identifiedAnnotation : entities ) {
             if ( identifiedAnnotation.getPolarity() == -1 ) {
-               logger.debug( String.format( " - identified annotation: [%d-%d] polarity %d (%s)",
+               LOGGER.debug( String.format( " - identified annotation: [%d-%d] polarity %d (%s)",
                      identifiedAnnotation.getBegin(),
                      identifiedAnnotation.getEnd(),
                      identifiedAnnotation.getPolarity(),
@@ -411,7 +412,7 @@ public abstract class AssertionCleartkAnalysisEngine extends
       } else
       {
         // TODO extract context features for annotations that don't fall within a sentence
-        logger.log(Level.WARN, "FIXME/TODO: generate context features for entities that don't fall within a sentence");
+        LOGGER.log(Level.WARN, "FIXME/TODO: generate context features for entities that don't fall within a sentence");
       }
       */
       
@@ -561,19 +562,19 @@ public abstract class AssertionCleartkAnalysisEngine extends
     
     if (zoneList == null || zoneList.isEmpty())
     {
-      //logger.info("AssertionCleartkAnalysisEngine.extractZoneFeatures() early END (no zones)");
+      //LOGGER.info("AssertionCleartkAnalysisEngine.extractZoneFeatures() early END (no zones)");
       return new ArrayList<Feature>();
     } else
     {
-      logger.debug("AssertionCleartkAnalysisEngine.extractZoneFeatures() found zones and adding zone features");
+      LOGGER.debug("AssertionCleartkAnalysisEngine.extractZoneFeatures() found zones and adding zone features");
     }
     
     ArrayList<Feature> featureList = new ArrayList<Feature>();
     for (Zone zone : zoneList)
     {
       Feature currentFeature = new Feature("zone", zone.getLabel());
-      logger.debug(String.format("zone: %s", zone.getLabel()));
-      logger.debug(String.format("zone feature: %s", currentFeature.toString()));
+      LOGGER.debug(String.format("zone: %s", zone.getLabel()));
+      LOGGER.debug(String.format("zone feature: %s", currentFeature.toString()));
       featureList.add(currentFeature);
     }
     

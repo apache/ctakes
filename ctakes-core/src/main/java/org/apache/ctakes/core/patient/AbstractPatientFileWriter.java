@@ -2,7 +2,8 @@ package org.apache.ctakes.core.patient;
 
 import org.apache.ctakes.core.ae.NamedEngine;
 import org.apache.ctakes.core.cc.AbstractFileWriter;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.jcas.JCas;
 
@@ -22,7 +23,7 @@ abstract public class AbstractPatientFileWriter
       extends AbstractFileWriter<Collection<JCas>>
       implements NamedEngine {
 
-   static private final Logger LOGGER = Logger.getLogger( "AbstractPatientFileWriter" );
+   static private final Logger LOGGER = LogManager.getLogger( "AbstractPatientFileWriter" );
 
    static private final Object DATA_LOCK = new Object();
 

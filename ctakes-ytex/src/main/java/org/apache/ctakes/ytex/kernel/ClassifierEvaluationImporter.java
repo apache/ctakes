@@ -19,8 +19,8 @@
 package org.apache.ctakes.ytex.kernel;
 
 import org.apache.commons.cli.*;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 import java.io.IOException;
@@ -37,8 +37,7 @@ import java.util.Map;
  * @author vijay
  */
 public class ClassifierEvaluationImporter {
-	private static final Log log = LogFactory
-			.getLog(ClassifierEvaluationImporter.class);
+	static private final Logger LOGGER = LogManager.getLogger( "ClassifierEvaluationImporter" );
 
 	private Map<String, ClassifierEvaluationParser> nameToParserMap;
 
@@ -130,7 +129,7 @@ public class ClassifierEvaluationImporter {
 			try {
 				lparser.parseDirectory(new File("."), directory);
 			} catch (IOException ioe) {
-				log.error("error parsing directory: " + directory, ioe);
+				LOGGER.error("error parsing directory: " + directory, ioe);
 			}
 		} else {
 			// look in subdirectories

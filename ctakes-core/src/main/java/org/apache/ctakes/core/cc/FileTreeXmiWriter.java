@@ -2,7 +2,8 @@ package org.apache.ctakes.core.cc;
 
 import org.apache.ctakes.core.config.ConfigParameterConstants;
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.analysis_engine.AnalysisEngine;
 import org.apache.uima.cas.CAS;
 import org.apache.uima.cas.impl.XmiCasSerializer;
@@ -30,7 +31,7 @@ import java.io.*;
 // TODO Create and extend AbstractInputFileReader  a'la the abstract writer
 final public class FileTreeXmiWriter extends AbstractJCasFileWriter {
 
-   static private final Logger LOGGER = Logger.getLogger( "FileTreeXmiWriter" );
+   static private final Logger LOGGER = LogManager.getLogger( "FileTreeXmiWriter" );
 
    /**
     * {@inheritDoc}

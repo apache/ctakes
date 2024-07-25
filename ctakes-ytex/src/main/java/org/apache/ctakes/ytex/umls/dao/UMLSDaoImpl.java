@@ -18,8 +18,6 @@
  */
 package org.apache.ctakes.ytex.umls.dao;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.ctakes.ytex.umls.model.UmlsAuiFirstWord;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
@@ -37,7 +35,6 @@ public class UMLSDaoImpl implements UMLSDao {
 
 	public static final String INCLUDE_REL[] = new String[] { "PAR" };
 	public static final String EXCLUDE_RELA[] = new String[] { "inverse_isa" };
-	private static final Log log = LogFactory.getLog(UMLSDaoImpl.class);
 
 	SessionFactory sessionFactory;
 	private JdbcTemplate t;

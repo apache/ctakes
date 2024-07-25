@@ -40,7 +40,7 @@ public class TimeXExtractor implements FeatureExtractor1 {
   private TimeWordTypeExtractor<IdentifiedAnnotation> timewd;
 //  private TemporalSingleTreeExtractor treeExt;
   
-//  private Logger logger = Logger.getLogger(this.getClass().getName());
+//  private Logger LOGGER = LogManager.getLogger(this.getClass().getName());
 
   public TimeXExtractor() throws ResourceInitializationException {
     super();
@@ -107,7 +107,7 @@ public class TimeXExtractor implements FeatureExtractor1 {
 		  for (Map.Entry<Integer, IdentifiedAnnotation> entry : timeDistMap.entrySet()) {
 			  Feature feature = new Feature(this.name, entry.getValue().getCoveredText());
 			  features.add(feature);
-			  //			  logger.info("add time feature: "+ entry.getValue().getCoveredText() + entry.getValue().getTimeClass());
+			  //			  LOGGER.info("add time feature: "+ entry.getValue().getCoveredText() + entry.getValue().getTimeClass());
 			  Feature indicator = new Feature("TimeXNearby", this.name);
 			  features.add(indicator);
 			  Feature type = new Feature("TimeXType", entry.getValue().getClass());
@@ -193,7 +193,7 @@ public class TimeXExtractor implements FeatureExtractor1 {
 		final List<Feature> features = new ArrayList<>();
 		final Feature feature = new Feature( this.name, closestTime.getCoveredText() );
 		features.add( feature );
-		//			  logger.info("add time feature: "+ entry.getValue().getCoveredText() + entry.getValue().getTimeClass());
+		//			  LOGGER.info("add time feature: "+ entry.getValue().getCoveredText() + entry.getValue().getTimeClass());
 		final Feature indicator = new Feature( "TimeXNearby", this.name );
 		features.add( indicator );
 		final Feature type = new Feature( "TimeXType", closestTime.getClass() );

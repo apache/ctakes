@@ -1,5 +1,8 @@
 package org.apache.ctakes.core.util.log;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.io.Closeable;
 import java.io.IOException;
 import java.util.TimerTask;
@@ -17,8 +20,8 @@ import java.util.concurrent.TimeUnit;
  */
 final public class DotLogger implements Closeable {
 
-   static private final org.apache.log4j.Logger DOT_LOGGER = org.apache.log4j.Logger.getLogger( "ProgressAppender" );
-   static private final org.apache.log4j.Logger EOL_LOGGER = org.apache.log4j.Logger.getLogger( "ProgressDone" );
+   static private final Logger DOT_LOGGER = LogManager.getLogger( "ProgressAppender" );
+   static private final Logger EOL_LOGGER = LogManager.getLogger( "ProgressDone" );
 
    private final ExecutorService _timer;
 

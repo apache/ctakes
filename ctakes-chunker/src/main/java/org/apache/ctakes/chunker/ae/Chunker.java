@@ -23,7 +23,8 @@ import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.core.resource.FileLocator;
 import org.apache.ctakes.typesystem.type.syntax.BaseToken;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -58,7 +59,7 @@ import java.util.List;
 public class Chunker extends JCasAnnotator_ImplBase {
 
 	// LOG4J logger based on class name
-	private final Logger logger = Logger.getLogger(getClass().getName());
+	private final Logger LOGGER = LogManager.getLogger(getClass().getName());
 
 
 	/**
@@ -104,20 +105,20 @@ public class Chunker extends JCasAnnotator_ImplBase {
   public void initialize(UimaContext uimaContext) throws ResourceInitializationException {
 		super.initialize(uimaContext);
 
-    logger.info("Chunker model file: " + chunkerModelPath); 
+    LOGGER.info("Chunker model file: " + chunkerModelPath); 
 		try (InputStream fis = FileLocator.getAsStream(chunkerModelPath)) {
 			ChunkerModel model = new ChunkerModel(fis);
 			chunker = new opennlp.tools.chunker.ChunkerME(model);
 
 		} catch (IOException e) {
-			logger.info("Chunker model: " + chunkerModelPath); 
+			LOGGER.info("Chunker model: " + chunkerModelPath); 
 			throw new ResourceInitializationException(e);
 		}
 		
     try {
       chunkerCreator = (ChunkCreator) Class.forName(chunkerCreatorClassName).getDeclaredConstructor().newInstance();
     } catch ( InstantiationException | IllegalAccessException | ClassNotFoundException | NoSuchMethodException e) {
-      logger.error("Error creating chunkerCreator from classname: " + chunkerCreatorClassName);
+      LOGGER.error("Error creating chunkerCreator from classname: " + chunkerCreatorClassName);
       throw new ResourceInitializationException(e);
     } catch ( InvocationTargetException e ) {
 		 throw new RuntimeException( e );
@@ -128,7 +129,7 @@ public class Chunker extends JCasAnnotator_ImplBase {
 	@Override
   public void process(JCas jCas) throws AnalysisEngineProcessException {
 
-		logger.info(" process(JCas)");
+		LOGGER.info(" process(JCas)");
 
 		Collection<Sentence> sentences = JCasUtil.select(jCas, Sentence.class);
 		

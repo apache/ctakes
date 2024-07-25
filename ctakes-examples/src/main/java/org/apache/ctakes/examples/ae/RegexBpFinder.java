@@ -4,7 +4,8 @@ import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.core.util.Pair;
 import org.apache.ctakes.core.util.regex.RegexSpanFinder;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
 import org.apache.uima.fit.util.JCasUtil;
@@ -27,7 +28,7 @@ import java.util.stream.Collectors;
 )
 final public class RegexBpFinder extends JCasAnnotator_ImplBase {
 
-   static private final Logger LOGGER = Logger.getLogger( "RegexBpFinder" );
+   static private final Logger LOGGER = LogManager.getLogger( "RegexBpFinder" );
 
    static private final Collection<String> BP_SECTIONS
          = Arrays.asList( "Vital Signs", "General Exam", "Objective", "SIMPLE_SEGMENT" );

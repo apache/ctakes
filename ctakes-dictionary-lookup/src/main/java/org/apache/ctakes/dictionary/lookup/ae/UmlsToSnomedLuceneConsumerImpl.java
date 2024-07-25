@@ -23,7 +23,8 @@ import org.apache.ctakes.core.resource.FileResource;
 import org.apache.ctakes.dictionary.lookup.DictionaryException;
 import org.apache.ctakes.dictionary.lookup.MetaDataHit;
 import org.apache.ctakes.dictionary.lookup.lucene.LuceneDictionaryImpl;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.search.IndexSearcher;
@@ -49,7 +50,7 @@ import java.util.Set;
 public class UmlsToSnomedLuceneConsumerImpl extends UmlsToSnomedConsumerImpl {
 
    // LOG4J logger based on class name
-   private Logger logger = Logger.getLogger( getClass().getName() );
+   private Logger LOGGER = LogManager.getLogger( getClass().getName() );
 
    //ohnlp-Bugs-3296301 limits the search results to fixed 100 records.
    // Added 'MaxListSize'
@@ -78,13 +79,13 @@ public class UmlsToSnomedLuceneConsumerImpl extends UmlsToSnomedConsumerImpl {
          // ohnlp Bugs tracker ID: 3425014 SNOMED lucene dictionary lookup hardcodes resource path
          FileResource fResrc = (FileResource) aCtx.getResourceObject( SNOMED_CODE_LIST_CONFIG_PARM );
          if ( fResrc == null ) {
-            logger.error( "Unable to find config parm " + SNOMED_CODE_LIST_CONFIG_PARM + "." );
+            LOGGER.error( "Unable to find config parm " + SNOMED_CODE_LIST_CONFIG_PARM + "." );
          }
          File indexDir = fResrc.getFile();
          indexDirAbsPath = indexDir.getAbsolutePath();
 
          try {
-            logger.info( "Using lucene index: " + indexDir.getAbsolutePath() );
+            LOGGER.info( "Using lucene index: " + indexDir.getAbsolutePath() );
          } catch ( Exception e ) {
             throw new AnnotatorConfigurationException( e );
          }
@@ -100,10 +101,10 @@ public class UmlsToSnomedLuceneConsumerImpl extends UmlsToSnomedConsumerImpl {
          // We will lookup entries based on lookupFieldName
          snomedLikeCodesIndex = new LuceneDictionaryImpl( indexSearcher, lookupFieldName, iv_maxListSize );
 
-         logger.info( "Loaded Lucene index with " + indexReader.numDocs() + " entries." );
+         LOGGER.info( "Loaded Lucene index with " + indexReader.numDocs() + " entries." );
 
       } catch ( IOException ioe ) {
-         logger.info( "Lucene index: " + indexDirAbsPath );
+         LOGGER.info( "Lucene index: " + indexDirAbsPath );
          throw new DictionaryException( ioe );
       }
    }

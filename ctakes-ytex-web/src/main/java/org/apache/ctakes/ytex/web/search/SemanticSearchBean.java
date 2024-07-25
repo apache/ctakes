@@ -19,14 +19,14 @@
 package org.apache.ctakes.ytex.web.search;
 
 import com.icesoft.faces.component.selectinputtext.SelectInputText;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 
 import javax.faces.event.ActionEvent;
 import javax.faces.event.ValueChangeEvent;
 import javax.faces.model.SelectItem;
 import java.io.Serializable;
 import java.util.*;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * JSF Backing Bean for semanticSearch.jspx. Search for documents based on
@@ -42,7 +42,7 @@ public class SemanticSearchBean implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private static final Log log = LogFactory.getLog(SemanticSearchBean.class);
+	private static final Logger LOGGER = LogManager.getLogger("SemanticSearchBean");
 
 	private transient ConceptSearchService umlsFirstWordService;
 	private transient DocumentSearchService documentSearchService;
@@ -141,8 +141,8 @@ public class SemanticSearchBean implements Serializable {
 				this.searchResultList = this.documentSearchService
 						.searchByCui(this.currentCUI.getConceptId());
 			}
-			if (log.isDebugEnabled())
-				log.debug(this.searchResultList);
+			if ( LOGGER.isDebugEnabled())
+				LOGGER.debug(this.searchResultList);
 		}
 	}
 

@@ -24,7 +24,8 @@ import org.apache.ctakes.core.util.doc.DocIdUtil;
 import org.apache.ctakes.typesystem.type.textsem.EntityMention;
 import org.apache.ctakes.typesystem.type.textsem.EventMention;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UIMAException;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngine;
@@ -75,7 +76,7 @@ import static org.apache.ctakes.core.pipeline.PipeBitInfo.TypeProduct.IDENTIFIED
 )
 public class MergeGoldViewFromOneCasIntoInitialViewOfAnotherCas extends JCasAnnotator_ImplBase {
 
-	static final Logger LOGGER = Logger.getLogger(MergeGoldViewFromOneCasIntoInitialViewOfAnotherCas.class.getName());
+	static final Logger LOGGER = LogManager.getLogger(MergeGoldViewFromOneCasIntoInitialViewOfAnotherCas.class.getName());
 
 
 	private static final String dirWithGoldViews = AssertionConst.testDirectories.get("polarity");// TODO parameterize this

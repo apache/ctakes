@@ -27,7 +27,8 @@ import org.apache.ctakes.core.util.doc.DocIdUtil;
 import org.apache.ctakes.typesystem.type.syntax.BaseToken;
 import org.apache.ctakes.typesystem.type.syntax.TopTreebankNode;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.FSIterator;
 import org.apache.uima.fit.util.JCasUtil;
@@ -45,7 +46,7 @@ public class MaxentParserWrapper implements ParserWrapper {
 
 	Parser parser = null;
 	private String parseStr = "";
-   static private final Logger LOGGER = Logger.getLogger( "MaxentParserWrapper" );
+   static private final Logger LOGGER = LogManager.getLogger( "MaxentParserWrapper" );
     private int maxTokens;
 
 	public MaxentParserWrapper(InputStream in){

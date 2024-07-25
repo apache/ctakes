@@ -1,7 +1,8 @@
 package org.apache.ctakes.fhir.resource;
 
 import org.apache.ctakes.typesystem.type.textspan.Segment;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.jcas.JCas;
 import org.hl7.fhir.dstu3.model.Basic;
 import org.hl7.fhir.dstu3.model.CodeableConcept;
@@ -20,7 +21,7 @@ import static org.apache.ctakes.fhir.resource.SectionCreator.CODING_SECTION_NAME
  */
 final public class SectionParser implements FhirBasicParser<Segment> {
 
-   static private final Logger LOGGER = Logger.getLogger( "SectionBasicParser" );
+   static private final Logger LOGGER = LogManager.getLogger( "SectionBasicParser" );
 
    public Segment parseResource( final JCas jCas, final Basic resource ) {
       final CodeableConcept codeableConcept = resource.getCode();

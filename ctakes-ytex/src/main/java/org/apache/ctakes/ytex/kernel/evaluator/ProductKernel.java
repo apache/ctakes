@@ -18,8 +18,8 @@
  */
 package org.apache.ctakes.ytex.kernel.evaluator;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
 import java.util.List;
@@ -31,7 +31,7 @@ import java.util.List;
  * 
  */
 public class ProductKernel extends CacheKernel {
-	private static final Log log = LogFactory.getLog(ProductKernel.class);
+	private static final Logger LOGGER = LogManager.getLogger("ProductKernel");
 	/**
 	 * use array instead of list. when running thread dumps, see a lot of action
 	 * in list.size(). may be a fluke, but can't hurt
@@ -56,9 +56,9 @@ public class ProductKernel extends CacheKernel {
 			if (d == 0)
 				break;
 		}
-		if (log.isTraceEnabled()) {
-			log.trace(new StringBuilder("K<").append(o1).append(",").append(o2)
-					.append("> = ").append(d));
+		if ( LOGGER.isTraceEnabled()) {
+			LOGGER.trace(new StringBuilder("K<").append(o1).append(",").append(o2)
+															.append("> = ").append(d));
 		}
 		return d;
 	}

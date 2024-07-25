@@ -10,7 +10,8 @@ import org.apache.commons.cli.Option;
 import org.apache.commons.cli.OptionBuilder;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 
 import org.apache.uima.collection.CollectionReader;
@@ -38,6 +39,8 @@ import org.cleartk.classifier.jar.DefaultDataWriterFactory;
 import org.cleartk.examples.pos.ExamplePOSPlainTextWriter;
 
 
+//  TODO This and TrainAssertionModel are the only classes in ctakes-assertion that uses commons-cli.  It should be replaced.
+//  ctakes-core (and others) depends upon jewel cli - reuse that library.
 public class TrainAllAssertionModels {
 	
 	public static final String PARAM_NAME_DECODING_OUTPUT_DIRECTORY = "decoding-output-directory";
@@ -48,7 +51,7 @@ public class TrainAllAssertionModels {
 
 	  public static final String PARAM_NAME_MODEL_DIRECTORY = "model-directory";
 
-	  protected static final Logger logger = Logger.getLogger(TrainAssertionModel.class.getName());
+	  protected static final Logger LOGGER = LogManager.getLogger(TrainAssertionModel.class.getName());
 
 
 	/**
@@ -118,7 +121,7 @@ public class TrainAllAssertionModels {
 	    } catch (ParseException e)
 	    {
 	      invalidInput = true;
-	      logger.error("unable to parse command-line arguments", e);
+	      LOGGER.error("unable to parse command-line arguments", e);
 	    }
 	    
 	    if (modelDirectory == null || modelDirectory.isEmpty() ||
@@ -127,7 +130,7 @@ public class TrainAllAssertionModels {
 	        decodingOutputDirectory == null || decodingOutputDirectory.isEmpty()
 	        )
 	    {
-	      logger.error("required parameters not supplied");
+	      LOGGER.error("required parameters not supplied");
 	      invalidInput = true;
 	    }
 	    
@@ -138,7 +141,7 @@ public class TrainAllAssertionModels {
 	      return;
 	    }
 	    
-	    logger.info(String.format(
+	    LOGGER.info(String.format(
 	        "%n" +
 	        "model dir:           \"%s\"%n" +
 	        "training input dir:  \"%s\"%n" +
@@ -202,7 +205,7 @@ public class TrainAllAssertionModels {
 	      );
 	    } catch (Exception e)
 	    {
-	      logger.error("Some exception happened while training or decoding...", e);
+	      LOGGER.error("Some exception happened while training or decoding...", e);
 	      return;
 	    }
 	 }
@@ -234,53 +237,53 @@ public class TrainAllAssertionModels {
 		        XReader.PARAM_XML_SCHEME,
 		        XReader.XMI);
 		    
-		    logger.info("starting feature generation... POLARITY");
+		    LOGGER.info("starting feature generation... POLARITY");
 		    SimplePipeline.runPipeline(
 		        trainingCollectionReader,
 		        polarityDataWriter);
-		    logger.info("finished feature generation... POLARITY");
+		    LOGGER.info("finished feature generation... POLARITY");
 
 		    trainingCollectionReader.reconfigure();
-		    logger.info("starting feature generation... UNCERTAINTY");
+		    LOGGER.info("starting feature generation... UNCERTAINTY");
 		    SimplePipeline.runPipeline(
 		        trainingCollectionReader,
 		        uncertaintyDataWriter);
-		    logger.info("finished feature generation... UNCERTAINTY.");
+		    LOGGER.info("finished feature generation... UNCERTAINTY.");
 
 		    trainingCollectionReader.reconfigure();
-		    logger.info("starting feature generation... UNCERTAINTY");
+		    LOGGER.info("starting feature generation... UNCERTAINTY");
 		    SimplePipeline.runPipeline(
 		        trainingCollectionReader,
 		        conditionalDataWriter);
-		    logger.info("finished feature generation... UNCERTAINTY.");
+		    LOGGER.info("finished feature generation... UNCERTAINTY.");
 
 		    trainingCollectionReader.reconfigure();
-		    logger.info("starting feature generation... UNCERTAINTY");
+		    LOGGER.info("starting feature generation... UNCERTAINTY");
 		    SimplePipeline.runPipeline(
 		        trainingCollectionReader,
 		        subjectDataWriter);
-		    logger.info("finished feature generation... UNCERTAINTY.");
+		    LOGGER.info("finished feature generation... UNCERTAINTY.");
 		    
 		    String[] args = new String[] {polarityModelOutputDirectory};
 		    HideOutput hider = new HideOutput();
-		    logger.info("starting training POLARITY...");
+		    LOGGER.info("starting training POLARITY...");
 		    org.cleartk.classifier.jar.Train.main(args);
-		    logger.info("finished training POLARITY .");
+		    LOGGER.info("finished training POLARITY .");
 		    
 		    args = new String[] {uncertaintyModelOutputDirectory};
-		    logger.info("starting training UNCERTAINTY...");
+		    LOGGER.info("starting training UNCERTAINTY...");
 		    org.cleartk.classifier.jar.Train.main(args);
-		    logger.info("finished training UNCERTAINTY .");
+		    LOGGER.info("finished training UNCERTAINTY .");
 		    
 		    args = new String[] {conditionalModelOutputDirectory};
-		    logger.info("starting training CONDITIONAL...");
+		    LOGGER.info("starting training CONDITIONAL...");
 		    org.cleartk.classifier.jar.Train.main(args);
-		    logger.info("finished training CONDITIONAL .");
+		    LOGGER.info("finished training CONDITIONAL .");
 		    
 		    args = new String[] {subjectModelOutputDirectory};
-		    logger.info("starting training SUBJECT...");
+		    LOGGER.info("starting training SUBJECT...");
 		    org.cleartk.classifier.jar.Train.main(args);
-		    logger.info("finished training SUBJECT .");		    
+		    LOGGER.info("finished training SUBJECT .");
 		    hider.restoreOutput();		    
 
 		    AnalysisEngineDescription polarityTaggerDescription = AnalysisEngineFactory.createPrimitiveDescription(
@@ -303,7 +306,7 @@ public class TrainAllAssertionModels {
 			        GenericJarClassifierFactory.PARAM_CLASSIFIER_JAR_PATH,
 			        subjectModelOutputDirectory + "/model.jar");
 
-		    logger.info("starting decoding...");
+		    LOGGER.info("starting decoding...");
 		    SimplePipeline.runPipeline(
 		        evaluationCollectionReader,
 //		        BreakIteratorAnnotatorFactory.createSentenceAnnotator(Locale.US),
@@ -320,7 +323,7 @@ public class TrainAllAssertionModels {
 		            decodingOutputDirectory,
 		            XWriter.PARAM_XML_SCHEME_NAME,
 		            XWriter.XMI));
-		    logger.info("finished decoding.");
+		    LOGGER.info("finished decoding.");
 
 				  
 			  }

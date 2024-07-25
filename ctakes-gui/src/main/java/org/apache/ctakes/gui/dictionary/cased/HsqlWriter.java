@@ -6,7 +6,8 @@ import org.apache.ctakes.gui.dictionary.umls.VocabularyStore;
 import org.apache.ctakes.gui.dictionary.util.HsqlUtil;
 import org.apache.ctakes.gui.dictionary.util.JdbcUtil;
 import org.apache.ctakes.gui.dictionary.util.RareWordUtil;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -27,7 +28,7 @@ import java.util.stream.Collectors;
  */
 final public class HsqlWriter {
 
-   static private final Logger LOGGER = Logger.getLogger( "HsqlWriter" );
+   static private final Logger LOGGER = LogManager.getLogger( "HsqlWriter" );
 
    static public boolean writeHsql( final String hsqlPath,
                                     final String dictionaryName,

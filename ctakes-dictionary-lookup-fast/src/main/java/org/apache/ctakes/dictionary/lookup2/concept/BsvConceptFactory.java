@@ -6,7 +6,8 @@ import org.apache.ctakes.core.util.collection.CollectionMap;
 import org.apache.ctakes.core.util.collection.HashSetMap;
 import org.apache.ctakes.dictionary.lookup2.util.CuiCodeUtil;
 import org.apache.ctakes.dictionary.lookup2.util.TuiCodeUtil;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 
 import java.io.BufferedReader;
@@ -21,7 +22,7 @@ import java.util.*;
  */
 final public class BsvConceptFactory implements ConceptFactory {
 
-   static private final Logger LOGGER = Logger.getLogger( "BsvConceptFactory" );
+   static private final Logger LOGGER = LogManager.getLogger( "BsvConceptFactory" );
 
    static private final String BSV_FILE_PATH = "bsvPath";
 

@@ -3,7 +3,8 @@ package org.apache.ctakes.pbj.ae;
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.core.util.external.SystemUtil;
 import org.apache.ctakes.pbj.util.ArtemisController;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.fit.factory.AnalysisEngineFactory;
@@ -23,7 +24,7 @@ import java.io.IOException;
 )
 public class ArtemisStarter extends ArtemisController {
 
-   static private final Logger LOGGER = Logger.getLogger( "ArtemisStarter" );
+   static private final Logger LOGGER = LogManager.getLogger( "ArtemisStarter" );
 
    /**
     * {@inheritDoc}

@@ -8,7 +8,8 @@ import org.apache.ctakes.typesystem.type.refsem.*;
 import org.apache.ctakes.typesystem.type.relation.BinaryTextRelation;
 import org.apache.ctakes.typesystem.type.textsem.*;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.cas.text.AnnotationFS;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
@@ -29,7 +30,7 @@ import java.util.*;
  */
 public class PropertyTextWriter {
 
-   static private final Logger LOGGER = Logger.getLogger( "PropertyTextWriter" );
+   static private final Logger LOGGER = LogManager.getLogger( "PropertyTextWriter" );
    static private final String FILE_EXTENSION = ".properties.txt";
 
    private String _outputDirPath;

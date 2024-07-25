@@ -21,7 +21,8 @@ package org.apache.ctakes.core.ae;
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.core.util.doc.DocIdUtil;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -46,7 +47,7 @@ import java.io.StringReader;
 public class SimpleSegmentWithTagsAnnotator extends JCasAnnotator_ImplBase {
 	private String segmentId;
 
-	private Logger logger = Logger.getLogger(getClass().getName());
+	static private final Logger LOGGER = LogManager.getLogger( "SimpleSegmentWithTagsAnnotator" );
 
    @Override
    public void initialize( UimaContext aContext )
@@ -64,7 +65,7 @@ public class SimpleSegmentWithTagsAnnotator extends JCasAnnotator_ImplBase {
 	 */
    @Override
    public void process( JCas jcas ) throws AnalysisEngineProcessException {
-      logger.info( "process(JCas)" );
+		LOGGER.info( "process(JCas)" );
       // sa.setBegin(0);
 		String text = jcas.getDocumentText();
 		if (text == null) {

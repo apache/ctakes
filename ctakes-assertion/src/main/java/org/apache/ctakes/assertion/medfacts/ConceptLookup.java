@@ -21,7 +21,8 @@ package org.apache.ctakes.assertion.medfacts;
 import org.apache.ctakes.assertion.stub.ConceptType;
 import org.apache.ctakes.typesystem.type.refsem.OntologyConcept;
 import org.apache.ctakes.typesystem.type.refsem.UmlsConcept;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.cas.FeatureStructure;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.FSArray;
@@ -31,7 +32,7 @@ import java.util.HashSet;
 
 public class ConceptLookup
 {
-  public static final Logger logger = Logger.getLogger(ConceptConverterAnalysisEngine.class.getName());
+  public static final Logger LOGGER = LogManager.getLogger(ConceptConverterAnalysisEngine.class.getName());
 
   protected static HashSet<String> problemSet = new HashSet<String>();
   protected static HashSet<String> testSet = new HashSet<String>();
@@ -95,7 +96,7 @@ public class ConceptLookup
   
   public static ConceptType lookupConceptType(FSArray ontologyConceptArray)
   {
-    //logger.info("begin ConceptLookup.lookupConceptType");
+    //LOGGER.info("begin ConceptLookup.lookupConceptType");
     FeatureStructure firstConceptFS = null;
     boolean hasConcept =
       (ontologyConceptArray != null &&
@@ -106,7 +107,7 @@ public class ConceptLookup
     {
       firstConceptFS = ontologyConceptArray.get(0);
     }
-    //logger.info("hasConcept: " + hasConcept);
+    //LOGGER.info("hasConcept: " + hasConcept);
     OntologyConcept ontologyConcept = (OntologyConcept)firstConceptFS;
     boolean isRxnorm = false;
     boolean isUmls = false;
@@ -126,7 +127,7 @@ public class ConceptLookup
       isRxnorm = "RXNORM".equalsIgnoreCase(ontologyConcept.getCodingScheme());
     }
     
-    //logger.info(String.format("isUmls: %b; isRxnorm: %b", isUmls, isRxnorm));
+    //LOGGER.info(String.format("isUmls: %b; isRxnorm: %b", isUmls, isRxnorm));
     
     if (isRxnorm)
     {
@@ -139,7 +140,7 @@ public class ConceptLookup
     // if we're continuing, this means we are umls (and we are not rxnorm)
     
     String tui = umlsConcept.getTui();
-    //logger.info(String.format("tui: %s", tui));
+    //LOGGER.info(String.format("tui: %s", tui));
     
     ConceptType conceptType = null;
     if (problemSet.contains(tui))
@@ -156,7 +157,7 @@ public class ConceptLookup
       conceptType = null;
     }
     
-    //logger.info(String.format("ConceptLookup.lookupConceptType() END -- conceptType is %s", (conceptType == null ? null : conceptType.toString())));
+    //LOGGER.info(String.format("ConceptLookup.lookupConceptType() END -- conceptType is %s", (conceptType == null ? null : conceptType.toString())));
     
     return conceptType;
   }

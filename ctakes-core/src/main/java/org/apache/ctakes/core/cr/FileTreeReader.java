@@ -2,7 +2,8 @@ package org.apache.ctakes.core.cr;
 
 import org.apache.ctakes.core.config.ConfigParameterConstants;
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.collection.CollectionReader;
 import org.apache.uima.fit.factory.CollectionReaderFactory;
 import org.apache.uima.jcas.JCas;
@@ -35,7 +36,7 @@ import java.util.stream.Stream;
 )
 final public class FileTreeReader extends AbstractFileTreeReader {
 
-   static private final Logger LOGGER = Logger.getLogger( "FileTreeReader" );
+   static private final Logger LOGGER = LogManager.getLogger( "FileTreeReader" );
 
    /**
     * @param jCas unpopulated jcas

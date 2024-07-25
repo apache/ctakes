@@ -8,7 +8,8 @@ import org.apache.ctakes.core.resource.FileLocator;
 import org.apache.ctakes.core.util.log.DotLogger;
 import org.apache.ctakes.smokingstatus.type.libsvm.NominalAttributeValue;
 import org.apache.ctakes.typesystem.type.syntax.WordToken;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
@@ -40,7 +41,7 @@ import static org.apache.ctakes.smokingstatus.Const.*;
 )
 public class PcsClassifier extends JCasAnnotator_ImplBase {
 
-   static private final Logger LOGGER = Logger.getLogger( "PcsClassifier" );
+   static private final Logger LOGGER = LogManager.getLogger( "PcsClassifier" );
 
    static public final String CASED_PARAM = "CaseSensitive";
    static public final String CASED_DESC = "yes/no for case sensitivity.";

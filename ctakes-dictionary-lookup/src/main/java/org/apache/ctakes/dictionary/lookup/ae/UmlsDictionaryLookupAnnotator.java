@@ -24,7 +24,8 @@ import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.core.resource.FileResourceImpl;
 import org.apache.ctakes.core.resource.JdbcConnectionResourceImpl;
 import org.apache.ctakes.utils.env.EnvironmentVariable;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.fit.factory.AnalysisEngineFactory;
@@ -58,7 +59,7 @@ public class UmlsDictionaryLookupAnnotator extends DictionaryLookupAnnotator {
     * User's will need to configure their UMLS username/password in their config
     */
 
-   private Logger iv_logger = Logger.getLogger( getClass().getName() );
+   private Logger LOGGER = LogManager.getLogger( getClass().getName() );
 
    private String UMLSAddr;
    private String UMLSVendor;
@@ -76,9 +77,9 @@ public class UmlsDictionaryLookupAnnotator extends DictionaryLookupAnnotator {
          UMLSUser = EnvironmentVariable.getEnv( UmlsEnvironmentConfiguration.USER.toString(), aContext );
          UMLSPW = EnvironmentVariable.getEnv( UmlsEnvironmentConfiguration.PASSWORD.toString(), aContext );
 
-         iv_logger.info( "Using " + UmlsEnvironmentConfiguration.URL + ": " + UMLSAddr + ": " + UMLSUser );
+         LOGGER.info( "Using " + UmlsEnvironmentConfiguration.URL + ": " + UMLSAddr + ": " + UMLSUser );
          if ( !isValidUMLSUser( UMLSAddr, UMLSVendor, UMLSUser, UMLSPW ) ) {
-            iv_logger.error(
+            LOGGER.error(
                   "Error: Invalid UMLS License.  A UMLS License is required to use the UMLS dictionary lookup. \n" +
                   "Error: You may request one at: https://uts.nlm.nih.gov/license.html \n" +
                   "Please verify your UMLS license settings in the DictionaryLookupAnnotatorUMLS.xml configuration." );

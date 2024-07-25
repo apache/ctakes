@@ -21,13 +21,13 @@ package org.apache.ctakes.ytex.kernel;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 import org.apache.commons.beanutils.BeanUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.ctakes.ytex.kernel.dao.ClassifierEvaluationDao;
 import org.apache.ctakes.ytex.kernel.dao.KernelEvaluationDao;
 import org.apache.ctakes.ytex.kernel.model.CrossValidationFold;
 import org.apache.ctakes.ytex.kernel.model.KernelEvaluation;
 import org.apache.ctakes.ytex.kernel.model.KernelEvaluationInstance;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowCallbackHandler;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -46,7 +46,7 @@ import java.util.*;
 
 
 public class KernelUtilImpl implements KernelUtil {
-	private static final Log log = LogFactory.getLog(KernelUtilImpl.class);
+	private static final Logger LOGGER = LogManager.getLogger( "KernelUtilImpl" );
 	private ClassifierEvaluationDao classifierEvaluationDao;
 
 	private JdbcTemplate jdbcTemplate = null;
@@ -160,7 +160,7 @@ public class KernelUtilImpl implements KernelUtil {
 		KernelEvaluation kernelEval = this.kernelEvaluationDao.getKernelEval(
 				name, experiment, label, foldId, param1, param2);
 		if (kernelEval == null) {
-			log.warn("could not find kernelEvaluation.  name=" + name
+			LOGGER.warn("could not find kernelEvaluation.  name=" + name
 					+ ", experiment=" + experiment + ", label=" + label
 					+ ", fold=" + fold + ", run=" + run);
 		} else {
@@ -257,9 +257,9 @@ public class KernelUtilImpl implements KernelUtil {
 				try {
 					BeanUtils.setProperty(s, "responseBuffering", "adaptive");
 				} catch (IllegalAccessException e) {
-					log.warn("error setting responseBuffering", e);
+					LOGGER.warn("error setting responseBuffering", e);
 				} catch (InvocationTargetException e) {
-					log.warn("error setting responseBuffering", e);
+					LOGGER.warn("error setting responseBuffering", e);
 				}
 			}
 			rs = s.executeQuery();
@@ -267,7 +267,7 @@ public class KernelUtilImpl implements KernelUtil {
 				ch.processRow(rs);
 			}
 		} catch (SQLException j) {
-			log.error("loadInstances failed", j);
+			LOGGER.error("loadInstances failed", j);
 			throw new RuntimeException(j);
 		} finally {
 			if (rs != null) {

@@ -2,7 +2,8 @@ package org.apache.ctakes.core.patient;
 
 
 import org.apache.ctakes.core.util.NumberedSuffixComparator;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.cas.CAS;
 import org.apache.uima.cas.CASException;
 import org.apache.uima.jcas.JCas;
@@ -28,7 +29,7 @@ final public class PatientViewUtil {
    static private final Predicate<String> isNameGold = s -> s.startsWith( GOLD_PREFIX );
    static private final Predicate<JCas> isCasGold = c -> c.getViewName().startsWith( GOLD_PREFIX );
 
-   static private final Logger LOGGER = Logger.getLogger( "PatientViewUtil" );
+   static private final Logger LOGGER = LogManager.getLogger( "PatientViewUtil" );
 
    private PatientViewUtil() {
    }

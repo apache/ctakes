@@ -20,7 +20,8 @@ package org.apache.ctakes.core.cc;
 
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.core.util.doc.DocIdUtil;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.cas.CAS;
 import org.apache.uima.cas.impl.XCASSerializer;
 import org.apache.uima.collection.CasConsumer_ImplBase;
@@ -46,7 +47,7 @@ import java.io.OutputStream;
 )
 public class CasConsumer extends CasConsumer_ImplBase {
    // LOG4J logger based on class name
-   private Logger iv_logger = Logger.getLogger( getClass().getName() );
+   static private final Logger LOGGER = LogManager.getLogger( "CasConsumer" );
 
    private String iv_outputDir = null;
 
@@ -108,7 +109,7 @@ public class CasConsumer extends CasConsumer_ImplBase {
    @Override
    public void processCas( CAS cas ) throws ResourceProcessException {
 
-      iv_logger.info( "Started" );
+      LOGGER.info( "Started" );
 
       try {
 

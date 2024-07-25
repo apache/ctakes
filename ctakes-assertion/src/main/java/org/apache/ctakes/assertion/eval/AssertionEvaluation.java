@@ -37,7 +37,8 @@ import org.apache.ctakes.typesystem.type.textsem.EventMention;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
 import org.apache.ctakes.typesystem.type.textsem.Modifier;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UIMAException;
 import org.apache.uima.analysis_engine.AnalysisEngine;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
@@ -82,7 +83,7 @@ import java.util.*;
 
 public class AssertionEvaluation extends Evaluation_ImplBase<File, Map<String, AnnotationStatisticsCompact<String>>> {
   
-private static final Logger logger = Logger.getLogger( AssertionEvaluation.class );
+private static final Logger LOGGER = LogManager.getLogger( AssertionEvaluation.class );
 
   private static final String YTEX_NEGATION_DESCRIPTOR = "ytex.uima.NegexAnnotator";
 
@@ -397,7 +398,7 @@ private static final Logger logger = Logger.getLogger( AssertionEvaluation.class
       List<File> testFiles;
       if (options.evalOnly) {
     	  testFiles = Arrays.asList(options.evaluationOutputDirectory.listFiles());
-    	  logger.debug("evalOnly using files in directory " + evaluationOutputDirectory.getName() + " aka " + evaluationOutputDirectory.getCanonicalPath());
+    	  LOGGER.debug("evalOnly using files in directory " + evaluationOutputDirectory.getName() + " aka " + evaluationOutputDirectory.getCanonicalPath());
       } else if (options.trainOnly){
     	  testFiles = new ArrayList<>();
       } else {
@@ -414,7 +415,7 @@ private static final Logger logger = Logger.getLogger( AssertionEvaluation.class
     	  if (testFiles==null || testFiles.size()==0) {
     		  throw new RuntimeException("testFiles = " + testFiles + " testFiles.size() = " + (testFiles==null ? "null": testFiles.size())) ;
     	  }
-    	  logger.debug("testFiles.size() = " + testFiles.size());
+    	  LOGGER.debug("testFiles.size() = " + testFiles.size());
     	  CollectionReader testCollectionReader = evaluation.getCollectionReader(testFiles);
     	  Map<String, AnnotationStatisticsCompact<String>> stats = evaluation.test(testCollectionReader, modelsDir);
 
@@ -494,7 +495,7 @@ private static void printOptionsForDebugging(Options optionsArg)
 		//(options.crossValidationFolds != null) ? options.crossValidationFolds.intValue()+"" : "",
 		optionsArg.noCleartk
 	    );
-	logger.info(message);
+	LOGGER.info(message);
   }
 
 public static void printScore(Map<String, AnnotationStatisticsCompact<String>> map, String directory)
@@ -855,7 +856,7 @@ public static void printScore(Map<String, AnnotationStatisticsCompact<String>> m
       try {
         goldView = jCas.getView(GOLD_VIEW_NAME);
       } catch (CASException e) {
-    	logger.info("jCas.getViewName() = " + jCas.getViewName());
+    	LOGGER.info("jCas.getViewName() = " + jCas.getViewName());
         throw new AnalysisEngineProcessException(e);
       }
 
@@ -1058,7 +1059,7 @@ private static void printErrors(JCas jCas,
 		  Object goldLabel=null;
 		  Object systemLabel=null;
 		  if (goldAnnotation == null) {
-			  logger.debug(key + " not found in gold annotations ");
+			  LOGGER.debug(key + " not found in gold annotations ");
 		  } else {
 			  Feature feature = goldAnnotation.getType().getFeatureByBaseName(classifierType);
 			  goldLabel = getFeatureValue(feature, categoryClass, goldAnnotation);
@@ -1066,7 +1067,7 @@ private static void printErrors(JCas jCas,
 		  }
 		  
 		  if (systemAnnotation == null) {
-			  logger.info(key + " not found in system annotations ");
+			  LOGGER.info(key + " not found in system annotations ");
 		  } else {
 			  Feature feature = systemAnnotation.getType().getFeatureByBaseName(classifierType);
 			  systemLabel = getFeatureValue(feature, categoryClass, systemAnnotation);
@@ -1082,9 +1083,9 @@ private static void printErrors(JCas jCas,
 		  
 		  if (goldLabel==null) {
 			  // skip counting the attribute value since we have no gold label to compare to
-			  logger.debug("Skipping annotation with label " + systemLabel + " because gold label is null");
+			  LOGGER.debug("Skipping annotation with label " + systemLabel + " because gold label is null");
 		  } else if (systemLabel==null){
-			  logger.debug("Skipping annotation with label " + systemLabel + " because system label is null");
+			  LOGGER.debug("Skipping annotation with label " + systemLabel + " because system label is null");
 		  } else  {
 			  if(!goldLabel.equals(systemLabel)){
 				  if(trueCategory == null){
@@ -1137,7 +1138,7 @@ private static void printInstances(JCas jCas,
 			  Object goldLabel=null;
 			  Object systemLabel=null;
 			  if (goldAnnotation == null) {
-				  logger.debug(key + " not found in gold annotations ");
+				  LOGGER.debug(key + " not found in gold annotations ");
 			  } else {
 				  Feature feature = goldAnnotation.getType().getFeatureByBaseName(classifierType);
 				  goldLabel = getFeatureValue(feature, categoryClass, goldAnnotation);
@@ -1145,7 +1146,7 @@ private static void printInstances(JCas jCas,
 			  }
 
 			  if (systemAnnotation == null) {
-				  logger.info(key + " not found in system annotations ");
+				  LOGGER.info(key + " not found in system annotations ");
 			  } else {
 				  Feature feature = systemAnnotation.getType().getFeatureByBaseName(classifierType);
 				  systemLabel = getFeatureValue(feature, categoryClass, systemAnnotation);
@@ -1175,9 +1176,9 @@ private static void printInstances(JCas jCas,
 
 			  if (goldLabel==null) {
 				  // skip counting the attribute value since we have no gold label to compare to
-				  logger.debug("Skipping annotation with label " + systemLabel + " because gold label is null");
+				  LOGGER.debug("Skipping annotation with label " + systemLabel + " because gold label is null");
 			  } else if (systemLabel == null){			  
-				  logger.debug("Skipping annotation with label " + systemLabel + " because system label is null");
+				  LOGGER.debug("Skipping annotation with label " + systemLabel + " because system label is null");
 			  } else if (instanceData.equals("")) {
 				  continue;
 			  }

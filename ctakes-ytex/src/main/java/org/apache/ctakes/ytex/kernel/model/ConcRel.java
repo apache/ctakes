@@ -23,10 +23,11 @@ import org.apache.ctakes.ytex.kernel.metric.LCSPath;
 
 import java.util.*;
 import java.util.logging.Level;
-import java.util.logging.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 public class ConcRel implements java.io.Serializable {
-	private static final Logger log = Logger.getLogger(ConcRel.class.getName());
+	private static final Logger LOGGER = LogManager.getLogger( "ConcRel" );
 	/**
 	 * 
 	 */
@@ -55,9 +56,7 @@ public class ConcRel implements java.io.Serializable {
 	 */
 	public static ObjPair<ConcRel, Integer> getLeastCommonConcept(ConcRel c1,
 			ConcRel c2) {
-		if (log.isLoggable(Level.FINE)) {
-			log.fine("getLeastCommonConcept(" + c1 + "," + c2 + ")");
-		}
+			LOGGER.debug("getLeastCommonConcept(" + c1 + "," + c2 + ")");
 		// result
 		ObjPair<ConcRel, Integer> res = new ObjPair<ConcRel, Integer>(null,
 				Integer.MAX_VALUE);
@@ -153,9 +152,7 @@ public class ConcRel implements java.io.Serializable {
 	 */
 	public static int getLeastCommonConcept(ConcRel c1, ConcRel c2,
 			Set<ConcRel> lcses, Map<ConcRel, LCSPath> paths) {
-		if (log.isLoggable(Level.FINE)) {
-			log.fine("getLeastCommonConcept(" + c1 + "," + c2 + ")");
-		}
+			LOGGER.debug("getLeastCommonConcept(" + c1 + "," + c2 + ")");
 		// concept 1's parent distance map
 		Map<ConcRel, Integer> cand1 = new HashMap<ConcRel, Integer>();
 		// concept 2's parent distance map

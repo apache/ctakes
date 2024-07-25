@@ -19,7 +19,8 @@
 package org.apache.ctakes.pbj.ae;
 
 import org.apache.ctakes.core.cc.XMISerializer;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.CAS;
@@ -43,7 +44,7 @@ import static org.apache.ctakes.pbj.util.PbjConstants.*;
  */
 abstract public class PbjSender extends JCasAnnotator_ImplBase {
 
-   static private final Logger LOGGER = Logger.getLogger( "PbjSender" );
+   static private final Logger LOGGER = LogManager.getLogger( "PbjSender" );
 
    static public final String PARAM_SENDER_NAME = "SendName";
    static public final String PARAM_SENDER_PASS = "SendPass";

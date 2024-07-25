@@ -20,7 +20,8 @@ package org.apache.ctakes.core.ae;
 
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.core.util.JCasUtil;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -61,7 +62,7 @@ import java.util.*;
 )
 public class OverlapAnnotator extends JCasAnnotator_ImplBase {
 	// LOG4J logger based on class name
-	private Logger iv_logger = Logger.getLogger(getClass().getName());
+	static private final Logger LOGGER = LogManager.getLogger( "OverlapAnnotator" );
 
 	/**
 	 * No overlap at all between A and B
@@ -162,8 +163,8 @@ public class OverlapAnnotator extends JCasAnnotator_ImplBase {
 					"NONE overlap type is exclusive and cannot be combined with other types.");
 		}
 
-		if (iv_logger.isDebugEnabled()) {
-			iv_logger.debug("Overlap bitset: " + iv_typesOfOverlapToProcess);
+		if (LOGGER.isDebugEnabled()) {
+			LOGGER.debug("Overlap bitset: " + iv_typesOfOverlapToProcess);
 		}
 	}
 
@@ -283,7 +284,7 @@ public class OverlapAnnotator extends JCasAnnotator_ImplBase {
 
    @Override
    public void process( JCas jcas ) throws AnalysisEngineProcessException {
-      iv_logger.info( "process(JCas)" );
+		LOGGER.info( "process(JCas)" );
 
 		JFSIndexRepository indexes = jcas.getJFSIndexRepository();
 

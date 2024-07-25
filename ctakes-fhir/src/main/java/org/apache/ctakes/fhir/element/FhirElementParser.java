@@ -4,7 +4,8 @@ package org.apache.ctakes.fhir.element;
 import org.apache.ctakes.core.util.Pair;
 import org.apache.ctakes.core.util.StringUtil;
 import org.apache.ctakes.typesystem.type.refsem.UmlsConcept;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.jcas.JCas;
 import org.hl7.fhir.dstu3.model.*;
 import org.hl7.fhir.instance.model.api.IBaseExtension;
@@ -26,7 +27,7 @@ import static org.apache.ctakes.fhir.element.FhirElementFactory.*;
  */
 final public class FhirElementParser {
 
-   static private final Logger LOGGER = Logger.getLogger( "FhirElementParser" );
+   static private final Logger LOGGER = LogManager.getLogger( "FhirElementParser" );
 
    private FhirElementParser() {
    }

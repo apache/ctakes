@@ -21,7 +21,8 @@
 //import org.apache.ctakes.dictionary.lookup.Dictionary;
 //import org.apache.ctakes.dictionary.lookup.DictionaryException;
 //import org.apache.ctakes.dictionary.lookup.MetaDataHit;
-//import org.apache.log4j.Logger;
+//import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 //
 //import java.util.Collection;
 //import java.util.Collections;
@@ -35,7 +36,7 @@
 //public class RareWordDictionaryWrapper extends AbstractRareWordDictionary implements Dictionary {
 //
 //   // LOG4J logger based on class name
-//   final private Logger _logger = Logger.getLogger( getClass().getName() );
+//   final private Logger _LOGGER = LogManager.getLogger( getClass().getName() );
 //
 //   final private Dictionary _metaDataHitDictionary;
 //

@@ -18,10 +18,7 @@
  */
 package org.apache.ctakes.ytex.kernel.dao;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.hibernate.HibernateException;
-import org.hibernate.engine.spi.SessionImplementor;
 import org.hibernate.engine.spi.SharedSessionContractImplementor;
 import org.hibernate.usertype.UserType;
 
@@ -33,7 +30,6 @@ import java.sql.Types;
 import java.util.*;
 
 public class StringArrayUserType implements UserType {
-	private static final Log log = LogFactory.getLog(StringArrayUserType.class);
 
 	public int[] sqlTypes() {
 		return new int[] { Types.VARCHAR };

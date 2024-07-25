@@ -26,7 +26,8 @@ import org.apache.ctakes.typesystem.type.refsem.Event;
 import org.apache.ctakes.typesystem.type.refsem.EventProperties;
 import org.apache.ctakes.typesystem.type.relation.TemporalTextRelation;
 import org.apache.ctakes.typesystem.type.textsem.EventMention;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UIMAException;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.factory.AggregateBuilder;
@@ -43,7 +44,7 @@ import java.util.Collection;
 public class EventTimeRelationAnnotatorTest extends TemporalTest_ImplBase {
 
 	// LOG4J logger based on class name
-	private Logger LOGGER = Logger.getLogger(getClass().getName());
+	private Logger LOGGER = LogManager.getLogger(getClass().getName());
 
 	@Test
 	public void testPipeline() throws UIMAException, IOException {

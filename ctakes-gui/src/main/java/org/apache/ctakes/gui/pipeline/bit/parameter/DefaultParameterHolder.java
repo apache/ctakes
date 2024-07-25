@@ -1,7 +1,8 @@
 package org.apache.ctakes.gui.pipeline.bit.parameter;
 
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.fit.descriptor.ConfigurationParameter;
 
 import javax.annotation.concurrent.Immutable;
@@ -18,7 +19,7 @@ import java.util.Map;
 @Immutable
 final public class DefaultParameterHolder implements ParameterHolder {
 
-   static private final Logger LOGGER = Logger.getLogger( "DefaultParameterHolder" );
+   static private final Logger LOGGER = LogManager.getLogger( "DefaultParameterHolder" );
 
    private final List<ConfigurationParameter> _parameters;
    private final Map<ConfigurationParameter, String> _typeMap;

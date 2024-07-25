@@ -12,7 +12,8 @@ import org.apache.ctakes.gui.pipeline.bit.parameter.ParameterCellRenderer;
 import org.apache.ctakes.gui.pipeline.piper.PiperFileView;
 import org.apache.ctakes.gui.pipeline.piper.PiperTextFilter;
 import org.apache.ctakes.gui.util.IconLoader;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.fit.descriptor.ConfigurationParameter;
 
 import javax.swing.*;
@@ -45,7 +46,7 @@ import java.util.stream.Collectors;
  */
 final public class PiperRunnerPanel extends JPanel {
 
-   static private final Logger LOGGER = Logger.getLogger( "PiperRunnerPanel" );
+   static private final Logger LOGGER = LogManager.getLogger( "PiperRunnerPanel" );
 
    static private final String CLI_EXTENSION = "piper_cli";
 

@@ -30,7 +30,7 @@ import java.util.List;
 
 public class SurroundingExtractor implements FeatureExtractor1
 {
-//	protected static final Logger logger = Logger.getLogger(SurroundingExtractor.class);
+//	protected static final Logger LOGGER = LogManager.getLogger(SurroundingExtractor.class);
 //	
 ////	Class<? extends Annotation> ancestorAnnotationClass;
 ////	
@@ -43,7 +43,7 @@ public class SurroundingExtractor implements FeatureExtractor1
 	public List<Feature> extract(JCas jcas, Annotation targetAnnotation)
 			throws CleartkExtractorException
 	{
-//		logger.info("SurroundingExtractor.extract() BEGIN");
+//		LOGGER.info("SurroundingExtractor.extract() BEGIN");
 //		//JCasUtil.indexCovering(jcas, IdentifiedAnnotation.class, this.ancestorAnnotationClass)
 //		
 //		Map<IdentifiedAnnotation, Collection<Zone>> coveringMap =
@@ -56,7 +56,7 @@ public class SurroundingExtractor implements FeatureExtractor1
 //		if (zoneList == null || zoneList.isEmpty())
 //		{
 //			//return null;
-//			logger.info("SurroundingExtractor.extract() early END (no zones)");
+//			LOGGER.info("SurroundingExtractor.extract() early END (no zones)");
 //			new ArrayList<Feature>();
 //		}
 //		
@@ -64,12 +64,12 @@ public class SurroundingExtractor implements FeatureExtractor1
 //		for (Zone zone : zoneList)
 //		{
 //			Feature currentFeature = new Feature("zone", zone.getLabel());
-//			logger.info(String.format("zone: %s", zone.getLabel()));
-//			logger.info(String.format("zone feature: %s", currentFeature.toString()));
+//			LOGGER.info(String.format("zone: %s", zone.getLabel()));
+//			LOGGER.info(String.format("zone feature: %s", currentFeature.toString()));
 //			featureList.add(currentFeature);
 //		}
 //		
-//		logger.debug("SurroundingExtractor.extract() END");
+//		LOGGER.debug("SurroundingExtractor.extract() END");
 		return featureList;
 	}
 //

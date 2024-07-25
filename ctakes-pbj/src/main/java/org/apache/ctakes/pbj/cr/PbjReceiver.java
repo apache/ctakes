@@ -5,7 +5,8 @@ import org.apache.activemq.artemis.jms.client.ActiveMQConnectionFactory;
 import org.apache.activemq.artemis.jms.client.ActiveMQQueue;
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.core.util.doc.JCasBuilder;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.cas.impl.XmiCasDeserializer;
 import org.apache.uima.collection.CollectionException;
@@ -51,7 +52,7 @@ final public class PbjReceiver extends JCasCollectionReader_ImplBase {
    static public final String DESC_QUEUE = "The Artemis Queue from which this pipeline receives information.";
    static public final String DESC_ACCEPT_STOP = "Yes to shut down when this pipeline receives a stop signal.";
 
-   static private final Logger LOGGER = Logger.getLogger( "PbjReceiver" );
+   static private final Logger LOGGER = LogManager.getLogger( "PbjReceiver" );
    static private final String EMPTY_CAS = "BadMessageFormatReceivedCreateEmptyJCas";
 
    @ConfigurationParameter(

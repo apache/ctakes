@@ -20,7 +20,8 @@ import org.apache.ctakes.typesystem.type.textspan.ListEntry;
 import org.apache.ctakes.typesystem.type.textspan.Paragraph;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.fit.util.FSCollectionFactory;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
@@ -75,7 +76,7 @@ final public class HtmlTextWriter extends AbstractJCasFileWriter {
    static final String WIKI_CENTER = "_WK_";
    static final String WIKI_END = "_WIK";
 
-   static private final Logger LOGGER = Logger.getLogger( "HtmlTextWriter" );
+   static private final Logger LOGGER = LogManager.getLogger( "HtmlTextWriter" );
 
    static private final String PREFERRED_TERM_UNKNOWN = "Unknown Preferred Term";
    static private final String CTAKES_VERSION = "6.0.0-SNAPSHOT";

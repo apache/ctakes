@@ -18,7 +18,8 @@
 // */
 //package org.apache.ctakes.dictionary.lookup2.relation;
 //
-//import org.apache.log4j.Logger;
+//import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 //
 //import java.sql.Connection;
 //import java.sql.PreparedStatement;
@@ -54,7 +55,7 @@
 //   }
 //
 //   // LOG4J logger based on class name
-//   final private Logger _logger = Logger.getLogger( getClass().getName() );
+//   final private Logger _LOGGER = LogManager.getLogger( getClass().getName() );
 //
 //   final private Connection _connection;
 //   final private String _tableName;
@@ -86,7 +87,7 @@
 //         // it is up to the driver to implement this behavior ...  historically some drivers have not done so
 //         resultSet.close();
 //      } catch ( SQLException e ) {
-//         _logger.error( e.getMessage() );
+//         _LOGGER.error( e.getMessage() );
 //      }
 //      return relatedCuis;
 //   }

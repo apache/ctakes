@@ -19,11 +19,11 @@
 package org.apache.ctakes.ytex.kernel;
 
 import org.apache.commons.cli.*;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.ctakes.ytex.kernel.dao.ClassifierEvaluationDao;
 import org.apache.ctakes.ytex.kernel.dao.ConceptDao;
 import org.apache.ctakes.ytex.kernel.model.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowCallbackHandler;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -602,8 +602,7 @@ public class ImputedFeatureEvaluatorImpl implements ImputedFeatureEvaluator {
 	// }
 	// }
 
-	private static final Log log = LogFactory
-			.getLog(ImputedFeatureEvaluatorImpl.class);
+	private static final Logger LOGGER = LogManager.getLogger( "ImputedFeatureEvaluatorImpl" );
 
 	protected static double entropy(double[] classProbs) {
 		double entropy = 0;
@@ -779,7 +778,7 @@ public class ImputedFeatureEvaluatorImpl implements ImputedFeatureEvaluator {
 	/**
 	 * finalize the joint distribution tables wrt a fold.
 	 * 
-	 * @param jointDistroMap
+	 * @param conceptInstanceMap
 	 * @param yMargin
 	 * @param yVals
 	 * @param xVals
@@ -858,8 +857,8 @@ public class ImputedFeatureEvaluatorImpl implements ImputedFeatureEvaluator {
 			Map<String, Set<Long>> yMargin, ConceptGraph cg,
 			InstanceData instanceData, String label,
 			Map<String, Map<String, Set<Long>>> conceptInstanceMap, int foldId) {
-		if (log.isInfoEnabled())
-			log.info("evaluateCorpusFold() label = " + label + ", fold = "
+		if ( LOGGER.isInfoEnabled())
+			LOGGER.info("evaluateCorpusFold() label = " + label + ", fold = "
 					+ foldId);
 		deleteFeatureEval(params, label, foldId);
 
@@ -886,22 +885,15 @@ public class ImputedFeatureEvaluatorImpl implements ImputedFeatureEvaluator {
 	/**
 	 * evaluate corpus on label
 	 * 
-	 * @param classFeatureQuery
-	 * @param minInfo
-	 * @param xVals
-	 * @param xLeftover
-	 * @param xMerge
-	 * @param eval
+	 * @param params
 	 * @param cg
 	 * @param instanceData
 	 * @param label
-	 * @param parentConceptTopThreshold
-	 * @param parentConceptEvalThreshold
 	 */
 	private void evaluateCorpusLabel(Parameters params, ConceptGraph cg,
 			InstanceData instanceData, String label) {
-		if (log.isInfoEnabled())
-			log.info("evaluateCorpusLabel() label = " + label);
+		if ( LOGGER.isInfoEnabled())
+			LOGGER.info("evaluateCorpusLabel() label = " + label);
 		Map<String, Map<String, Set<Long>>> conceptInstanceMap = loadConceptInstanceMap(
 				params.getClassFeatureQuery(), cg, label);
 		for (int run : instanceData.getLabelToInstanceMap().get(label).keySet()) {
@@ -940,7 +932,7 @@ public class ImputedFeatureEvaluatorImpl implements ImputedFeatureEvaluator {
 			if (cvFold != null) {
 				foldId = cvFold.getCrossValidationFoldId();
 			} else {
-				log.warn("could not find cv fold, name="
+				LOGGER.warn("could not find cv fold, name="
 						+ params.getCorpusName() + ", run=" + run + ", fold="
 						+ fold);
 			}
@@ -1016,11 +1008,11 @@ public class ImputedFeatureEvaluatorImpl implements ImputedFeatureEvaluator {
 	 * the joint distribution of all concepts recursively.
 	 * 
 	 * @param rawJointDistroMap
-	 * @param labelEval
+	 * @param params
+	 * @param label
+	 * @param foldId
 	 * @param cg
 	 * @param yMargin
-	 * @param xMerge
-	 * @param minInfo
 	 */
 	private FeatureEvaluation propagateJointDistribution(
 			Map<String, JointDistribution> rawJointDistroMap,
@@ -1172,9 +1164,10 @@ public class ImputedFeatureEvaluatorImpl implements ImputedFeatureEvaluator {
 	/**
 	 * save the children of the 'top' parent concepts.
 	 * 
-	 * @param labelEval
-	 * @param parentConceptTopThreshold
-	 * @param parentConceptEvalThreshold
+	 * @param listRawRanks
+	 * @param params
+	 * @param label
+	 * @param foldId
 	 * @param cg
 	 * @param bAll
 	 *            impute to all concepts/concepts actually in corpus. if we are

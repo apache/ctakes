@@ -25,7 +25,8 @@ import org.apache.ctakes.coreference.type.PronounMarkable;
 import org.apache.ctakes.coreference.util.AnnotationSelector;
 import org.apache.ctakes.typesystem.type.syntax.Chunk;
 import org.apache.ctakes.typesystem.type.syntax.WordToken;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
@@ -66,7 +67,7 @@ public class MipacqMarkableCreator extends JCasAnnotator_ImplBase {
 	Set<String> otherVerb;
 
 	// LOG4J logger based on class name
-	private Logger logger = Logger.getLogger(getClass().getName());
+	private Logger LOGGER = LogManager.getLogger(getClass().getName());
 
 	@Override
 	public void initialize(UimaContext uc) throws ResourceInitializationException {
@@ -107,7 +108,7 @@ public class MipacqMarkableCreator extends JCasAnnotator_ImplBase {
 
 		nextID += la.size();
 
-		ArrayList<WordToken> lw = AnnotationSelector.selectPronoun(aJCas, modalAdj, cogved, otherVerb, logger);
+		ArrayList<WordToken> lw = AnnotationSelector.selectPronoun(aJCas, modalAdj, cogved, otherVerb, LOGGER);
 		for (int i = 0; i < lw.size(); ++i) {
 			WordToken t = lw.get(i);
 			PronounMarkable m = new PronounMarkable(aJCas, t.getBegin(), t.getEnd());

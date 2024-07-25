@@ -20,7 +20,8 @@ package org.apache.ctakes.smokingstatus.ae;
 
 import org.apache.ctakes.typesystem.type.textspan.Segment;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.analysis_engine.annotator.AnnotatorContextException;
@@ -54,7 +55,7 @@ public class SentenceAdjuster extends JCasAnnotator_ImplBase {
 	public static final String PARAM_WORDS_IN_PATTERN = "WordsInPattern";
 
 	// LOG4J logger based on class name
-	public Logger iv_logger = Logger.getLogger(getClass().getName());
+	public Logger LOGGER = LogManager.getLogger(getClass().getName());
 
 
 
@@ -91,8 +92,8 @@ public class SentenceAdjuster extends JCasAnnotator_ImplBase {
 		for (int i = 0; i < ignoreWords.length; i++)
 			wordsToIgnore.add(ignoreWords[i]);
 
-		if (iv_logger.isInfoEnabled())
-			iv_logger.info("Loaded list of " + ignoreWords.length
+		if (LOGGER.isInfoEnabled())
+			LOGGER.info("Loaded list of " + ignoreWords.length
 					+ " words to ignore during adjustment.");
 
 		// populate the HashSet of the laterality or tobacco-related words
@@ -102,8 +103,8 @@ public class SentenceAdjuster extends JCasAnnotator_ImplBase {
 		for (int i = 0; i < patternWords.length; i++)
 			wordsInPattern.add(patternWords[i]);
 
-		if (iv_logger.isInfoEnabled())
-			iv_logger.info("Loaded list of " + patternWords.length
+		if (LOGGER.isInfoEnabled())
+			LOGGER.info("Loaded list of " + patternWords.length
 					+ " pattern words for adjustment.");
 
 		useSegments = ((Boolean) context.getConfigParameterValue("UseSegments"))
@@ -114,15 +115,15 @@ public class SentenceAdjuster extends JCasAnnotator_ImplBase {
 		for (int i = 0; i < skipSegmentIDs.length; i++)
 			skipSegmentsSet.add(skipSegmentIDs[i]);
 
-		if (iv_logger.isInfoEnabled())
-			iv_logger.info("List of words to ignore during adjustment:");
+		if (LOGGER.isInfoEnabled())
+			LOGGER.info("List of words to ignore during adjustment:");
 
 		Object[] o = wordsToIgnore.toArray();
 		// String [] ignoreTheseWords = (String []) wordsToIgnore.toArray();
 
-		if (iv_logger.isInfoEnabled()) {
+		if (LOGGER.isInfoEnabled()) {
 			for (int i = 0; i < ignoreWords.length; i++)
-				iv_logger.info("  " + o[i]);
+				LOGGER.info("  " + o[i]);
 		}
 
 	}
@@ -135,7 +136,7 @@ public class SentenceAdjuster extends JCasAnnotator_ImplBase {
 		String text = jcas.getDocumentText();
 		try {
 			// just one sentence
-			iv_logger.info(" jcas "+ jcas.getViewName());
+			LOGGER.info(" jcas "+ jcas.getViewName());
 			if (!useSegments) {
 				// annotate over full doc text
 				annotateRange(jcas, text, 0, text.length());
@@ -164,8 +165,8 @@ public class SentenceAdjuster extends JCasAnnotator_ImplBase {
 	 */
 	protected void annotateRange(JCas jcas, String text, int rangeBegin,
 			int rangeEnd) throws AnnotatorContextException {
-		if (iv_logger.isInfoEnabled())
-			iv_logger.info("started Sentence merging process.");
+		if (LOGGER.isInfoEnabled())
+			LOGGER.info("started Sentence merging process.");
 
 		JFSIndexRepository indexes = jcas.getJFSIndexRepository();
 
@@ -182,7 +183,7 @@ public class SentenceAdjuster extends JCasAnnotator_ImplBase {
 			currSent = (Sentence) sentences.get(i);
 
 			if (currSent == null)
-				iv_logger.error("Wow! some sentence is null");
+				LOGGER.error("Wow! some sentence is null");
 
 			if (prevSent == null)
 				continue; // got to have 2 sentences

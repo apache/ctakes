@@ -1,7 +1,8 @@
 package org.apache.ctakes.core.cr.jdbc;
 
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * Performs no decrpytion, just returns the note text
@@ -12,7 +13,7 @@ import org.apache.log4j.Logger;
  */
 final public class PassThroughDecryptor implements Decryptor {
 
-   static private final Logger LOGGER = Logger.getLogger( "PassThroughDecryptor" );
+   static private final Logger LOGGER = LogManager.getLogger( "PassThroughDecryptor" );
 
    /**
     * Performs no decryption, just returns the note text

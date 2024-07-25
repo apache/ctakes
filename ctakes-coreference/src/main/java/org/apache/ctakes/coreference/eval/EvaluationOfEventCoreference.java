@@ -7,7 +7,6 @@ import com.google.common.collect.Sets;
 import com.lexicalscope.jewel.cli.CliFactory;
 import com.lexicalscope.jewel.cli.Option;
 import de.bwaldvogel.liblinear.FeatureNode;
-import org.apache.commons.lang.NotImplementedException;
 import org.apache.ctakes.assertion.medfacts.cleartk.*;
 import org.apache.ctakes.core.config.ConfigParameterConstants;
 import org.apache.ctakes.core.patient.AbstractPatientConsumer;
@@ -43,8 +42,8 @@ import org.apache.ctakes.typesystem.type.textspan.Segment;
 import org.apache.ctakes.utils.distsem.WordEmbeddings;
 import org.apache.ctakes.utils.distsem.WordVector;
 import org.apache.ctakes.utils.distsem.WordVectorReader;
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UIMAException;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
@@ -120,7 +119,7 @@ public class EvaluationOfEventCoreference extends EvaluationOfTemporalRelations_
     public boolean getSkipTest();
   }
   
-  private static Logger logger = Logger.getLogger(EvaluationOfEventCoreference.class);
+  private static final Logger LOGGER = LogManager.getLogger(EvaluationOfEventCoreference.class);
   public static float COREF_PAIRS_DOWNSAMPLE = 0.5f;
   public static float COREF_CLUSTER_DOWNSAMPLE=0.5f;
   private static final int NUM_SAMPLES = 0;
@@ -263,7 +262,8 @@ public class EvaluationOfEventCoreference extends EvaluationOfTemporalRelations_
       aggregateBuilder.add(BackwardsTimeAnnotator.createAnnotatorDescription("/org/apache/ctakes/temporal/models/timeannotator/model.jar"));
       aggregateBuilder.add(DocTimeRelAnnotator.createAnnotatorDescription("/org/apache/ctakes/temporal/models/doctimerel/model.jar"));
       if(this.goldMarkables){
-        throw new NotImplementedException("Using gold markables needs to be rewritten to be compatible with patient-level annotations.");
+//        throw new NotImplementedException("Using gold markables needs to be rewritten to be compatible with patient-level annotations.");
+        throw new NoSuchMethodException("Using gold markables needs to be rewritten to be compatible with patient-level annotations.");
 //        aggregateBuilder.add(AnalysisEngineFactory.createEngineDescription(CopyGoldMarkablesInChains.class));
       }else{
         aggregateBuilder.add(AnalysisEngineFactory.createEngineDescription(DeterministicMarkableAnnotator.class));
@@ -283,7 +283,6 @@ public class EvaluationOfEventCoreference extends EvaluationOfTemporalRelations_
             directory,
             params.probabilityOfKeepingANegativeExample
             ));
-        Logger.getLogger(EventCoreferenceAnnotator.class).setLevel(Level.WARN);
       }else if(this.evalType == EVAL_SYSTEM.MENTION_CLUSTER){
         aggregateBuilder.add(AnalysisEngineFactory.createEngineDescription(PatientNoteCollector.class));
         aggregateBuilder.add(ThymeAnaforaCrossDocCorefXmlReader.getDescription(this.xmlDirectory.getAbsolutePath(), true ) );
@@ -307,7 +306,7 @@ public class EvaluationOfEventCoreference extends EvaluationOfTemporalRelations_
             directory,
             params.probabilityOfKeepingANegativeExample));
       }else{
-        logger.warn("Encountered a training configuration that does not add an annotator: " + this.evalType);
+        LOGGER.warn("Encountered a training configuration that does not add an annotator: " + this.evalType);
       }
 
       AnalysisEngineDescription aed = aggregateBuilder.createAggregateDescription();
@@ -343,7 +342,7 @@ public class EvaluationOfEventCoreference extends EvaluationOfTemporalRelations_
     AnnotationStatistics<String> mentionStats = new AnnotationStatistics<>();
     
     if(this.skipTest){
-      logger.info("Skipping test");
+      LOGGER.info("Skipping test");
       return corefStats;
     }
     AggregateBuilder aggregateBuilder = this.getPreprocessorAggregateBuilder();
@@ -362,7 +361,8 @@ public class EvaluationOfEventCoreference extends EvaluationOfTemporalRelations_
     aggregateBuilder.add(DocTimeRelAnnotator.createAnnotatorDescription("/org/apache/ctakes/temporal/models/doctimerel/model.jar"));
 
     if(this.goldMarkables){
-      throw new NotImplementedException("Using gold markables needs to be rewritten to be compatible with patient-level annotations.");
+//      throw new NotImplementedException("Using gold markables needs to be rewritten to be compatible with patient-level annotations.");
+      throw new NoSuchMethodException("Using gold markables needs to be rewritten to be compatible with patient-level annotations.");
 //      aggregateBuilder.add(AnalysisEngineFactory.createEngineDescription(CopyGoldMarkablesInChains.class)); //CopyFromGold.getDescription(Markable.class));
     }else{
       aggregateBuilder.add(AnalysisEngineFactory.createEngineDescription(DeterministicMarkableAnnotator.class));
@@ -400,7 +400,7 @@ public class EvaluationOfEventCoreference extends EvaluationOfTemporalRelations_
       }else if(this.evalType == EVAL_SYSTEM.BASELINE){
         aggregateBuilder.add(CoreferenceAnnotatorFactory.getLegacyCoreferencePipeline());
       }else{
-        logger.info("Running an evaluation that does not add an annotator: " + this.evalType);
+        LOGGER.info("Running an evaluation that does not add an annotator: " + this.evalType);
       }
     }
 
@@ -509,14 +509,14 @@ public class EvaluationOfEventCoreference extends EvaluationOfTemporalRelations_
     }
   }
   public static class DocumentIDPrinter extends org.apache.uima.fit.component.JCasAnnotator_ImplBase {
-    static Logger logger = Logger.getLogger(DocumentIDPrinter.class);
+    static Logger LOGGER = LogManager.getLogger(DocumentIDPrinter.class);
     @Override
     public void process(JCas jCas) throws AnalysisEngineProcessException {
        String docId = DocIdUtil.getDocumentID( jCas );
        if ( docId.startsWith( DocIdUtil.NO_DOCUMENT_ID ) ) {
         docId = new File(ViewUriUtil.getURI(jCas)).getName();
       }
-      logger.info(String.format("Processing %s\n", docId));
+      LOGGER.info(String.format("Processing %s\n", docId));
     }
     
   }
@@ -739,7 +739,7 @@ public class EvaluationOfEventCoreference extends EvaluationOfTemporalRelations_
       for (JCas goldCas : goldCases) {
         JCas docCas = getAlignedDocCas(docCases, goldCas);
         if (docCas == null) {
-          logger.error("Could not find aligned document CAS for this gold CAS.");
+          LOGGER.error("Could not find aligned document CAS for this gold CAS.");
           throw new AnalysisEngineProcessException();
         }
         Map<ConllDependencyNode, List<Markable>> depIndex = JCasUtil.indexCovering(docCas, ConllDependencyNode.class, Markable.class);
@@ -749,14 +749,14 @@ public class EvaluationOfEventCoreference extends EvaluationOfTemporalRelations_
           // for markables that are events, the headword and the markable itself have the same span -- we need to
           // expand those in the training data to match the
           if(headNode == null){
-            logger.warn(String.format("The markable %s has no head node, probably because of poorly-segmented text.", goldMarkable.getCoveredText()));
+            LOGGER.warn(String.format("The markable %s has no head node, probably because of poorly-segmented text.", goldMarkable.getCoveredText()));
             continue;
           }
 
           // map the gold markable to a system markable if they have the same headword
           boolean match = CopyCoreferenceRelations.mapGoldMarkable(docCas, goldMarkable, gold2sys, depIndex);
           if (!match) {
-            logger.warn(String.format("There is a gold markable %s [%d, %d] which could not map to a system markable.",
+            LOGGER.warn(String.format("There is a gold markable %s [%d, %d] which could not map to a system markable.",
                     goldMarkable.getCoveredText(), goldMarkable.getBegin(), goldMarkable.getEnd()));
           }
         }
@@ -765,7 +765,7 @@ public class EvaluationOfEventCoreference extends EvaluationOfTemporalRelations_
       for (JCas goldCas : goldCases) {
         JCas docCas = getAlignedDocCas(docCases, goldCas);
         if (docCas == null) {
-          logger.error("Could not find aligned document CAS for this gold CAS.");
+          LOGGER.error("Could not find aligned document CAS for this gold CAS.");
           throw new AnalysisEngineProcessException();
         }
         // create system chains from all the mapped markables
@@ -779,7 +779,7 @@ public class EvaluationOfEventCoreference extends EvaluationOfTemporalRelations_
             if (sysElement != null) mappedElements.add(sysElement);
           }
           if (mappedElements.size() <= 1) {
-            logger.warn("Gold chain did not have enough markables map to system markables.");
+            LOGGER.warn("Gold chain did not have enough markables map to system markables.");
           } else {
             System.out.println("Mapped a gold chain to system using system markables:");
             System.out.print("     ");
@@ -871,7 +871,7 @@ public class EvaluationOfEventCoreference extends EvaluationOfTemporalRelations_
 
   public static class EvaluationPatientNoteCollector extends JCasAnnotator_ImplBase {
 
-    private final Logger LOGGER = Logger.getLogger( "EvaluationPatientNoteCollector" );
+    private final Logger LOGGER = LogManager.getLogger( "EvaluationPatientNoteCollector" );
 
     /**
      * Adds the primary view of this cas to a cache of views for patients.

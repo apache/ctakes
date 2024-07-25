@@ -6,7 +6,8 @@ import org.apache.ctakes.gui.component.SmoothTipTable;
 import org.apache.ctakes.gui.pipeline.bit.parameter.ParameterCellRenderer;
 import org.apache.ctakes.gui.pipeline.bit.parameter.ParameterInfoPanel;
 import org.apache.ctakes.gui.pipeline.bit.parameter.ParameterTableModel;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.fit.descriptor.ConfigurationParameter;
 
 import javax.swing.*;
@@ -25,7 +26,7 @@ import java.io.File;
  */
 abstract public class BitInfoPanel extends JPanel {
 
-   static private final Logger LOGGER = Logger.getLogger( "BitInfoPanel" );
+   static private final Logger LOGGER = LogManager.getLogger( "BitInfoPanel" );
 
    protected PipeBitInfo _pipeBitInfo;
    protected Class<?> _pipeBitClass;

@@ -19,12 +19,12 @@
 package org.apache.ctakes.ytex.semil;
 
 import com.google.common.collect.BiMap;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.ctakes.ytex.kernel.BaseClassifierEvaluationParser;
 import org.apache.ctakes.ytex.kernel.KernelContextHolder;
 import org.apache.ctakes.ytex.kernel.model.ClassifierEvaluation;
 import org.apache.ctakes.ytex.kernel.model.SemiLClassifierEvaluation;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.*;
 import java.util.HashMap;
@@ -55,8 +55,7 @@ import java.util.regex.Pattern;
  * 
  */
 public class SemiLEvaluationParser extends BaseClassifierEvaluationParser {
-	public final static Log log = LogFactory
-			.getLog(SemiLEvaluationParser.class);
+	public final static Logger LOGGER = LogManager.getLogger("SemiLEvaluationParser");
 	/**
 	 * parse options
 	 * 
@@ -80,8 +79,6 @@ public class SemiLEvaluationParser extends BaseClassifierEvaluationParser {
 
 	/**
 	 * 
-	 * @param fileBaseName
-	 *            e.g. label1_run1_fold1
 	 * @param dataDir
 	 *            where train, test, id files are located
 	 * @param outputDir
@@ -113,7 +110,7 @@ public class SemiLEvaluationParser extends BaseClassifierEvaluationParser {
 				}
 			}
 		} else {
-			log.warn("couldn't parse directory; kernel.label.base not defined. Dir: "
+			LOGGER.warn("couldn't parse directory; kernel.label.base not defined. Dir: "
 					+ outputDir);
 		}
 	}
@@ -130,8 +127,6 @@ public class SemiLEvaluationParser extends BaseClassifierEvaluationParser {
 	 *            semil output file with predictions
 	 * @param listClassInfo
 	 *            instance and class ids
-	 * @param saveInstanceEval
-	 *            should the instance-level evaluations be saved?
 	 * @throws IOException
 	 */
 	private void parseSemiLOutput(File dataDir, String fileBaseName, Properties kernelProps,
@@ -258,7 +253,7 @@ public class SemiLEvaluationParser extends BaseClassifierEvaluationParser {
 				try {
 					instanceReader.close();
 				} catch (Exception e) {
-					log.error(labelFile, e);
+					LOGGER.error(labelFile, e);
 				}
 			}
 		}

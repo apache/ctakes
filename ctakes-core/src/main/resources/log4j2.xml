@@ -19,34 +19,38 @@
     under the License.
 
 -->
-<Configuration>
+<Configuration status="WARN">
     <Appenders>
-        <Console name="consoleAppender" target="SYSTEM_OUT">
+<!--        <Console name="consoleAppender" target="SYSTEM_OUT">-->
 <!--            <PatternLayout pattern="%d{dd MMM yyyy HH:mm:ss} %5p %c{1} - %m%n"/>-->
+<!--        </Console>-->
+<!--        <Console name="noEolAppender" target="SYSTEM_OUT">-->
+<!--            <PatternLayout pattern="%m"/>-->
+<!--        </Console>-->
+<!--        <Console name="eolAppender" target="SYSTEM_OUT">-->
+<!--            <PatternLayout pattern="%m%n"/>-->
+<!--        </Console>-->
+        <Console name="Console" target="SYSTEM_OUT">
             <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
-        </Console>
-        <Console name="noEolAppender" target="SYSTEM_OUT">
-            <PatternLayout pattern="%m"/>
-        </Console>
-        <Console name="eolAppender" target="SYSTEM_OUT">
-            <PatternLayout pattern="%m%n"/>
         </Console>
         <File name="fileAppender" fileName="out/ctakes.log" append="false">
             <Log4j1XmlLayout />
         </File>
     </Appenders>
     <Loggers>
-        <Logger name="ProgressAppender" level="info" additivity="false">
-            <AppenderRef ref="noEolAppender"/>
-        </Logger>
-        <Logger name="ProgressDone" level="info" additivity="false">
-            <AppenderRef ref="eolAppender"/>
-        </Logger>
-<!--        <Logger name="org.apache.log4j.xml" level="info"/>-->
-
-        <Root level="info">
-            <AppenderRef ref="consoleAppender"/>
+<!--        <Logger name="ProgressAppender" level="info" additivity="false">-->
+<!--            <AppenderRef ref="noEolAppender"/>-->
+<!--        </Logger>-->
+<!--        <Logger name="ProgressDone" level="info" additivity="false">-->
+<!--            <AppenderRef ref="eolAppender"/>-->
+<!--        </Logger>-->
+        <Root level="error">
+            <AppenderRef ref="Console"/>
         </Root>
+
+<!--        <Root level="info">-->
+<!--            <AppenderRef ref="consoleAppender"/>-->
+<!--        </Root>-->
     </Loggers>
 
 </Configuration>

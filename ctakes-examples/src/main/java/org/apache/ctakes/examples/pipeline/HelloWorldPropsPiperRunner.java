@@ -4,7 +4,8 @@ package org.apache.ctakes.examples.pipeline;
 import org.apache.ctakes.core.pipeline.EntityCollector;
 import org.apache.ctakes.core.pipeline.PipelineBuilder;
 import org.apache.ctakes.core.pipeline.PiperFileReader;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UIMAException;
 
 import java.io.IOException;
@@ -21,7 +22,7 @@ import java.io.IOException;
  */
 final public class HelloWorldPropsPiperRunner {
 
-   static private final Logger LOGGER = Logger.getLogger( "HelloWorldPropsPiperRunner" );
+   static private final Logger LOGGER = LogManager.getLogger( "HelloWorldPropsPiperRunner" );
 
    static private final String PIPER_FILE_PATH
          = "org/apache/ctakes/examples/pipeline/HelloWorldProps.piper";

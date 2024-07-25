@@ -1,7 +1,8 @@
 package org.apache.ctakes.core.cc.jdbc.row;
 
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * Does nothing.  Can be passed to JdbcRow to do nothing for patient, document initialization.
@@ -12,6 +13,6 @@ import org.apache.log4j.Logger;
  */
 final public class EmptyInitializer {
 
-   static private final Logger LOGGER = Logger.getLogger( "EmptyInitializer" );
+   static private final Logger LOGGER = LogManager.getLogger( "EmptyInitializer" );
 
 }

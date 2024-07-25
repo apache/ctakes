@@ -24,7 +24,8 @@ import org.apache.ctakes.dictionary.lookup.phrasebuilder.PhraseBuilder;
 import org.apache.ctakes.dictionary.lookup.vo.LookupAnnotation;
 import org.apache.ctakes.dictionary.lookup.vo.LookupHit;
 import org.apache.ctakes.dictionary.lookup.vo.LookupToken;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import java.util.*;
 
@@ -47,7 +48,7 @@ import java.util.*;
  */
 public class FirstTokenPermutationImpl implements LookupAlgorithm {
    // LOG4J logger based on class name
-   final private Logger iv_logger = Logger.getLogger( getClass().getName() );
+   final private Logger LOGGER = LogManager.getLogger( getClass().getName() );
 
    /**
     * Key value for context map. Value is expected to be a List of
@@ -139,12 +140,12 @@ public class FirstTokenPermutationImpl implements LookupAlgorithm {
             }
          }
          if ( wEndOffset == -1 ) {
-            iv_logger.debug( "Window size set to max perm level." );
+            LOGGER.debug( "Window size set to max perm level." );
             wEndOffset = getFixedWindowEndOffset( currentIndex, lookupToken, lookupTokenList );
          }
          final List<LookupToken> endLookupTokenList = getLookupTokenList( wEndOffset, ltEndOffsetMap, false );
          if ( endLookupTokenList.isEmpty() ) {
-            iv_logger.debug( "Invalid window:" + currentIndex + "," + wEndOffset );
+            LOGGER.debug( "Invalid window:" + currentIndex + "," + wEndOffset );
             continue;
          }
          final LookupToken endLookupToken = endLookupTokenList.get( endLookupTokenList.size() - 1 );
@@ -175,8 +176,8 @@ public class FirstTokenPermutationImpl implements LookupAlgorithm {
                mdhSet.add( firstTokenHit );
                namedMetaDataHits.put( text, mdhSet );
             } else {
-               if ( iv_logger.isDebugEnabled() ) {
-                  iv_logger.debug( "MetaField " + name + " contains no data." );
+               if ( LOGGER.isDebugEnabled() ) {
+                  LOGGER.debug( "MetaField " + name + " contains no data." );
                }
             }
          }
@@ -189,7 +190,7 @@ public class FirstTokenPermutationImpl implements LookupAlgorithm {
                                                 final List<LookupToken> wLookupTokenList,
                                                 final int firstTokenIndex ) throws Exception {
       if ( wLookupTokenList.size() - 1 > iv_maxPermutationLevel ) {
-         iv_logger.debug( "Beyond permutation cache size." );
+         LOGGER.debug( "Beyond permutation cache size." );
          return Collections.emptyList();
       }
       final Map<String,Set<MetaDataHit>> namedMetaDataHits = getNamedMetaDataHits( firstTokenHits );
@@ -277,7 +278,7 @@ public class FirstTokenPermutationImpl implements LookupAlgorithm {
    private List<LookupAnnotation> getWindowAnnotations( final Map<String, List<LookupAnnotation>> contextMap ) {
       final List<LookupAnnotation> list = contextMap.get( CTX_KEY_WINDOW_ANNOTATIONS );
       if ( list == null || list.isEmpty() ) {
-         iv_logger.debug( "No context window annotations." );
+         LOGGER.debug( "No context window annotations." );
          return Collections.emptyList();
       }
       return list;
@@ -302,7 +303,7 @@ public class FirstTokenPermutationImpl implements LookupAlgorithm {
       final List<LookupToken> endLookupTokenList = getLookupTokenList( endOffset, ltEndOffsetMap, false );
 
       if ( startLookupTokenList.isEmpty() || endLookupTokenList.isEmpty() ) {
-         iv_logger.debug( "Invalid window:" + startOffset + "," + endOffset );
+         LOGGER.debug( "Invalid window:" + startOffset + "," + endOffset );
          return -1;
       }
       final LookupToken startLookupToken = startLookupTokenList.get( 0 );
@@ -395,8 +396,8 @@ public class FirstTokenPermutationImpl implements LookupAlgorithm {
 
             if ( ltCount <= iv_maxPermutationLevel && ltCount > 0 ) {
                largestWindowAnnot = tempLookupAnnot;
-            } else if ( iv_logger.isDebugEnabled() ) {
-               iv_logger.debug( "Window size of " + ltCount
+            } else if ( LOGGER.isDebugEnabled() ) {
+               LOGGER.debug( "Window size of " + ltCount
                                 + " exceeds the max permutation level of " + iv_maxPermutationLevel + "." );
             }
          }

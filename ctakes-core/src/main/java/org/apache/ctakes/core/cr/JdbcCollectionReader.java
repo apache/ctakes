@@ -22,7 +22,8 @@ import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.core.resource.FileResource;
 import org.apache.ctakes.core.resource.JdbcConnectionResource;
 import org.apache.ctakes.typesystem.type.structured.DocumentID;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.collection.CollectionException;
 import org.apache.uima.fit.component.JCasCollectionReader_ImplBase;
@@ -56,7 +57,7 @@ import java.util.StringTokenizer;
 public class JdbcCollectionReader extends JCasCollectionReader_ImplBase {
 
    // LOG4J logger based on class name
-   private Logger logger = Logger.getLogger( getClass().getName() );
+   static private final Logger LOGGER = LogManager.getLogger( "JdbcCollectionReader" );
 
    /**
     * SQL statement to retrieve the document.
@@ -165,7 +166,7 @@ public class JdbcCollectionReader extends JCasCollectionReader_ImplBase {
                loadValueFile( fileResrc.getFile() );
                _usePrepStmtVals = true;
             } else {
-               logger.error( "Failed to get " + _fileResrcName + " from ResourceManager" );
+               LOGGER.error( "Failed to get " + _fileResrcName + " from ResourceManager" );
                throw new ResourceInitializationException();
             }
          }
@@ -204,7 +205,7 @@ public class JdbcCollectionReader extends JCasCollectionReader_ImplBase {
          }
          _prepStmtValArr[ i ] = valList;
       }
-      logger.info( "Loaded " + lineList.size() + " lines from value file: "
+      LOGGER.info( "Loaded " + lineList.size() + " lines from value file: "
                    + valueFile.getAbsolutePath() );
    }
 
@@ -282,11 +283,10 @@ public class JdbcCollectionReader extends JCasCollectionReader_ImplBase {
             docIdAnnot.setDocumentID( getDocumentID( _resultSet ) );
             docIdAnnot.addToIndexes();
 
-            logger.info( "Reading document with ID="
-                         + docIdAnnot.getDocumentID() );
+            LOGGER.info( "Reading document with ID=" + docIdAnnot.getDocumentID() );
          } catch ( Exception e ) {
-            logger.error( "CasInitializer failed to process document: " );
-            logger.error( document );
+            LOGGER.error( "CasInitializer failed to process document: " );
+            LOGGER.error( document );
             throw e;
          }
       } catch ( Exception e ) {

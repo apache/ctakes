@@ -3,7 +3,8 @@ package org.apache.ctakes.pbj.util;
 import org.apache.ctakes.core.ae.PausableFileLoggerAE;
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.core.util.external.SystemUtil;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.descriptor.ConfigurationParameter;
@@ -76,13 +77,13 @@ abstract public class ArtemisController extends PausableFileLoggerAE {
                   new IOException( "Cannot find Artemis Root Directory " + _artemisRoot ) );
         }
         if ( new File( _artemisRoot, "LICENSE" ).exists() && new File( _artemisRoot, "NOTICE" ).exists() ) {
-            final Logger logger = Logger.getLogger( "ArtemisController" );
-            logger.error( "It looks like " + _artemisRoot + " might point to an Apache Artemis Source or binary "
+            final Logger LOGGER = LogManager.getLogger( "ArtemisController" );
+            LOGGER.error( "It looks like " + _artemisRoot + " might point to an Apache Artemis Source or binary "
                          + "distribution." );
-            logger.error( "You must point " + ARTEMIS_ROOT_PARAM + " to the root directory of an Artemis broker." );
-            logger.error( "If you have not created a broker, use the 'artemis create' command to do so." );
-            logger.error( "For more information, search for 'artemis create' online.  It isn't part of cTAKES." );
-            logger.info( "If you are certain that the directory that you've specified contains a broker, remove its "
+            LOGGER.error( "You must point " + ARTEMIS_ROOT_PARAM + " to the root directory of an Artemis broker." );
+            LOGGER.error( "If you have not created a broker, use the 'artemis create' command to do so." );
+            LOGGER.error( "For more information, search for 'artemis create' online.  It isn't part of cTAKES." );
+            LOGGER.info( "If you are certain that the directory that you've specified contains a broker, remove its "
                          + "LICENSE or NOTICE file." );
             throw new ResourceInitializationException(
                   new IOException( "Cannot find Artemis Broker in Root Directory " + _artemisRoot ) );

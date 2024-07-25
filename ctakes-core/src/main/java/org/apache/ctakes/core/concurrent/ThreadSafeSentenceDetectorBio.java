@@ -2,7 +2,8 @@ package org.apache.ctakes.core.concurrent;
 
 import org.apache.ctakes.core.ae.SentenceDetectorAnnotatorBIO;
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -28,7 +29,7 @@ import org.cleartk.ml.jar.GenericJarClassifierFactory;
 )
 final public class ThreadSafeSentenceDetectorBio extends SentenceDetectorAnnotatorBIO {
 
-   static private final Logger LOGGER = Logger.getLogger( "ThreadSafeSentenceDetectorBio" );
+   static private final Logger LOGGER = LogManager.getLogger( "ThreadSafeSentenceDetectorBio" );
 
    /**
     * {@inheritDoc}

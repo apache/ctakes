@@ -1,7 +1,8 @@
 package org.apache.ctakes.gui.pipeline.piper;
 
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * @author SPF , chip-nlp
@@ -10,7 +11,7 @@ import org.apache.log4j.Logger;
  */
 final public class PiperInfo {
 
-   static private final Logger LOGGER = Logger.getLogger( "PiperInfo" );
+   static private final Logger LOGGER = LogManager.getLogger( "PiperInfo" );
 
    private final String _urlPath;
    private final String _filePath;

@@ -4,7 +4,8 @@ import org.apache.ctakes.gui.pipeline.bit.parameter.ParameterInfoPanel;
 
 import javax.swing.*;
 import javax.swing.text.JTextComponent;
-import java.util.logging.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * @author SPF , chip-nlp
@@ -13,7 +14,7 @@ import java.util.logging.Logger;
  */
 public class UserParameterInfoPanel extends ParameterInfoPanel {
 
-   static private final Logger LOGGER = Logger.getLogger( "UserParameterInfoPanel" );
+   static private final Logger LOGGER = LogManager.getLogger( "UserParameterInfoPanel" );
 
    @Override
    protected String getValueLabelPrefix() {

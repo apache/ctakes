@@ -21,7 +21,6 @@ package org.apache.ctakes.ytex.uima.mapper;
 import com.google.common.base.Predicate;
 import com.google.common.base.Strings;
 import com.google.common.collect.*;
-import org.apache.commons.collections4.map.CaseInsensitiveMap;
 import org.apache.commons.jxpath.JXPathContext;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -195,7 +194,8 @@ public class DocumentMapperServiceImpl implements DocumentMapperService,
 	private Dialect dialect;
 	private String dialectClassName;
 
-	private CaseInsensitiveMap docTableCols = new CaseInsensitiveMap();
+//	private CaseInsensitiveMap docTableCols = new CaseInsensitiveMap();
+   final private Map<String,Integer> docTableCols = new HashMap<>();
 
 	private String formattedTableName = null;
 
@@ -534,7 +534,7 @@ public class DocumentMapperServiceImpl implements DocumentMapperService,
 				if (!mappedCols.contains(colName)) {
 					log.info("document candidate foreign key column: "
 							+ colName);
-					docTableCols.put(colName, rsmd.getColumnType(i));
+					docTableCols.put(colName.toLowerCase(), rsmd.getColumnType(i));
 				}
 			}
 			if (log.isDebugEnabled()) {
@@ -1348,20 +1348,21 @@ public class DocumentMapperServiceImpl implements DocumentMapperService,
 		for (int i = 0; i < fsa.size(); i++) {
 			KeyValuePair kp = (KeyValuePair) fsa.get(i);
 			String key = kp.getKey();
+			final String lowerKey = key.toLowerCase();
 			if (key.equalsIgnoreCase("instance_id")) {
 				// instance_id is something we 'know' about - set it
 				document.setInstanceID(kp.getValueLong());
 			} else if (key.equalsIgnoreCase("instance_key")) {
 				document.setInstanceKey(kp.getValueString());
-			} else if (this.docTableCols.containsKey(key)) {
+			} else if (this.docTableCols.containsKey(lowerKey)) {
 				// only attempt to map keys that correspond to valid columns
 				boolean badArg = false;
 				// verify that the value matches the datatype
 				// if valueString not null then assume integer
 				if (kp.getValueString() != null
-						&& stringTypes.contains(docTableCols.get(key))) {
+						&& stringTypes.contains(docTableCols.get(lowerKey))) {
 					args.add(kp.getValueString());
-				} else if (numericTypes.contains(docTableCols.get(key))) {
+				} else if (numericTypes.contains(docTableCols.get(lowerKey))) {
 					args.add(kp.getValueLong());
 				} else {
 					// invalid type for argument

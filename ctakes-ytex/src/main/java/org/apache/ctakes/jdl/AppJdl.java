@@ -18,8 +18,6 @@
  */
 package org.apache.ctakes.jdl;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.ctakes.jdl.data.base.JdlConnection;
 import org.apache.ctakes.jdl.data.loader.CsvLoader;
 import org.apache.ctakes.jdl.data.loader.XmlLoader;
@@ -31,6 +29,8 @@ import org.apache.ctakes.jdl.schema.xdl.CsvLoadType;
 import org.apache.ctakes.jdl.schema.xdl.JdbcType;
 import org.apache.ctakes.jdl.schema.xdl.LoadType;
 import org.apache.ctakes.jdl.schema.xdl.XmlLoadType;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.xml.bind.JAXBException;
 import java.io.File;
@@ -44,7 +44,8 @@ import java.sql.SQLException;
  * @author mas
  */
 public class AppJdl {
-	private static final Log log = LogFactory.getLog(AppJdl.class);
+//	private static final Log log = LogFactory.getLog(AppJdl.class);
+	static private final Logger LOGGER = LogManager.getLogger( "AppJdl" );
 	private String srcConn;
 	private String srcData;
 	private String srcLoad;
@@ -104,7 +105,7 @@ public class AppJdl {
 						if (jdlConnection != null)
 							jdlConnection.closeConnection();
 					} catch (SQLException e) {
-						log.error("closing connection", e);
+						LOGGER.error( "closing connection", e );
 					}
 				}
 			} else {

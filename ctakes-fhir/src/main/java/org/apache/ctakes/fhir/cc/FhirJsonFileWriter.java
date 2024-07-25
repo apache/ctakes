@@ -3,7 +3,8 @@ package org.apache.ctakes.fhir.cc;
 import org.apache.ctakes.core.cc.AbstractJCasFileWriter;
 import org.apache.ctakes.core.config.ConfigParameterConstants;
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.analysis_engine.AnalysisEngine;
 import org.apache.uima.fit.descriptor.ConfigurationParameter;
 import org.apache.uima.fit.factory.AnalysisEngineFactory;
@@ -35,7 +36,7 @@ public class FhirJsonFileWriter extends AbstractJCasFileWriter {
    )
    private boolean _writeNlpFhir;
 
-   static private final Logger LOGGER = Logger.getLogger( "FhirJsonFileWriter" );
+   static private final Logger LOGGER = LogManager.getLogger( "FhirJsonFileWriter" );
 
    /**
     * {@inheritDoc}

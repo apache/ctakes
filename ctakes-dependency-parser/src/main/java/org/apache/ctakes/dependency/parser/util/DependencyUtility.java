@@ -20,7 +20,8 @@ package org.apache.ctakes.dependency.parser.util;
 
 import org.apache.ctakes.typesystem.type.syntax.ConllDependencyNode;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.cas.FSIterator;
 import org.apache.uima.cas.text.AnnotationIndex;
 import org.apache.uima.fit.util.JCasUtil;
@@ -37,7 +38,7 @@ import java.util.regex.Pattern;
  */
 public abstract class DependencyUtility {
 
-	public static Logger logger = Logger.getLogger("org.apache.ctakes.dependency.parser.util.DependencyUtility");
+	public static final Logger LOGGER = LogManager.getLogger("DependencyUtility");
 
 	static private final Pattern N_DOT_PATTERN = Pattern.compile( "N..?" );
 
@@ -281,8 +282,8 @@ public abstract class DependencyUtility {
 			} else {
 				node2txt = node2.getCoveredText();
 			}
-			
-			logger.debug(String.format("Cannot find path between nodes in different sentences. Node1: %s  Node2: %s",
+
+			LOGGER.debug(String.format("Cannot find path between nodes in different sentences. Node1: %s  Node2: %s",
 					node1txt, node2txt));			
 		}
 		return null;

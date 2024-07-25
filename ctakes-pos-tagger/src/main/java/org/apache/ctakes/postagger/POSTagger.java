@@ -57,7 +57,8 @@ import org.apache.ctakes.typesystem.type.syntax.BaseToken;
 import org.apache.ctakes.typesystem.type.syntax.NewlineToken;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -84,7 +85,7 @@ import java.util.List;
 public class POSTagger extends JCasAnnotator_ImplBase {
 
 	// LOG4J logger based on class name
-	private Logger logger = Logger.getLogger(getClass().getName());
+	static private final Logger LOGGER = LogManager.getLogger( "POSTagger" );
 
 	/**
 	 * "PosModelFile" is a required, single, string parameter that contains the
@@ -103,13 +104,13 @@ public class POSTagger extends JCasAnnotator_ImplBase {
 			throws ResourceInitializationException {
 		super.initialize(uimaContext);
 
-		logger.info("POS tagger model file: " + posModelPath);
+		LOGGER.info("POS tagger model file: " + posModelPath);
 
 		try (InputStream fis = FileLocator.getAsStream(posModelPath)) {
 			POSModel modelFile = new POSModel(fis);
 			tagger = new opennlp.tools.postag.POSTaggerME(modelFile);
 		} catch (Exception e) {
-			logger.info("Error loading POS tagger model: " + posModelPath);
+			LOGGER.info("Error loading POS tagger model: " + posModelPath);
 			throw new ResourceInitializationException(e);
 		}
 	}
@@ -117,7 +118,7 @@ public class POSTagger extends JCasAnnotator_ImplBase {
 	@Override
 	public void process(JCas jCas) throws AnalysisEngineProcessException {
 
-		logger.info("process(JCas)");
+		LOGGER.info("process(JCas)");
 
 		Collection<Sentence> sentences = JCasUtil.select(jCas, Sentence.class);
 		for (Sentence sentence : sentences) {

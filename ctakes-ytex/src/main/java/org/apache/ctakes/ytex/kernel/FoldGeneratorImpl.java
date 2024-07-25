@@ -19,11 +19,11 @@
 package org.apache.ctakes.ytex.kernel;
 
 import org.apache.commons.cli.*;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.ctakes.ytex.kernel.dao.ClassifierEvaluationDao;
 import org.apache.ctakes.ytex.kernel.model.CrossValidationFold;
 import org.apache.ctakes.ytex.kernel.model.CrossValidationFoldInstance;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.util.*;
@@ -53,7 +53,7 @@ import java.util.*;
  * @author vijay
  */
 public class FoldGeneratorImpl implements FoldGenerator {
-	private static final Log log = LogFactory.getLog(FoldGeneratorImpl.class);
+	private static final Logger LOGGER = LogManager.getLogger( "FoldGeneratorImpl" );
 
 	/**
 	 * iterate through the labels, split instances into folds
@@ -61,7 +61,7 @@ public class FoldGeneratorImpl implements FoldGenerator {
 	 * @param mapClassToInstanceId
 	 * @param nFolds
 	 * @param nMinPerClass
-	 * @param nSeed
+	 * @param r
 	 * @return list with nFolds sets of instance ids corresponding to the folds
 	 */
 	private static List<Set<Long>> createFolds(
@@ -190,11 +190,11 @@ public class FoldGeneratorImpl implements FoldGenerator {
 						.parseInt(props.getProperty("rand")) : null;
 				boolean argsOk = true;
 				if (corpusName == null) {
-					log.error("missing parameter: org.apache.ctakes.ytex.corpusName");
+					LOGGER.error("missing parameter: org.apache.ctakes.ytex.corpusName");
 					argsOk = false;
 				}
 				if (query == null) {
-					log.error("missing parameter: instanceClassQuery");
+					LOGGER.error("missing parameter: instanceClassQuery");
 					argsOk = false;
 				}
 				if (!argsOk) {
@@ -229,8 +229,8 @@ public class FoldGeneratorImpl implements FoldGenerator {
 	 * generate folds for a run
 	 * 
 	 * @param labels
-	 * @param mapInstanceToClassLabel
-	 * @param name
+	 * @param instances
+	 * @param corpusName
 	 * @param splitName
 	 * @param run
 	 * @param query

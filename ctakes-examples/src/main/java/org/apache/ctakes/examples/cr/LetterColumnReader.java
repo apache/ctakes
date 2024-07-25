@@ -8,7 +8,8 @@ import org.apache.ctakes.core.util.StringUtil;
 import org.apache.ctakes.core.util.doc.JCasBuilder;
 import org.apache.ctakes.core.util.doc.TextBySectionBuilder;
 import org.apache.ctakes.core.util.regex.RegexSpanFinder;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.collection.CollectionException;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.util.Progress;
@@ -28,7 +29,7 @@ import java.util.stream.Collectors;
 )
 public class LetterColumnReader extends AbstractFileTreeReader {
 
-   static private final Logger LOGGER = Logger.getLogger( "LetterColumnReader" );
+   static private final Logger LOGGER = LogManager.getLogger( "LetterColumnReader" );
 
    static private final Pattern LETTER_PATTERN = Pattern.compile( "\\bLetter [0-9]+\\|" );
 

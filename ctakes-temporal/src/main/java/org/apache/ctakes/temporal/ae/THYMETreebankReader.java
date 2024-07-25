@@ -20,7 +20,8 @@ package org.apache.ctakes.temporal.ae;
 
 import org.apache.ctakes.typesystem.type.syntax.*;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -53,7 +54,7 @@ import java.util.regex.Pattern;
 
 public class THYMETreebankReader extends JCasAnnotator_ImplBase {
 
-	public static Logger logger = Logger.getLogger(THYMETreebankReader.class);
+	public static Logger LOGGER = LogManager.getLogger(THYMETreebankReader.class);
 	public static final String TREEBANK_DIRECTORY = "treebankDirectory";
 	private static final Pattern headerPatt = Pattern.compile("\\[(meta|start|end) [^\\]]*?\\]"); //"\\[meta [^\\]]*\\]");
 	
@@ -76,7 +77,7 @@ public class THYMETreebankReader extends JCasAnnotator_ImplBase {
 	@Override
 	public void process(JCas jcas) throws AnalysisEngineProcessException {
 		URI uri = ViewUriUtil.getURI(jcas);
-		logger.info("Document id is: " + uri.toString());
+		LOGGER.info("Document id is: " + uri.toString());
 
 		String fn = uri.getPath().substring(uri.getPath().lastIndexOf('/')+1) + ".xml.tree";
 		File treeFile = null;

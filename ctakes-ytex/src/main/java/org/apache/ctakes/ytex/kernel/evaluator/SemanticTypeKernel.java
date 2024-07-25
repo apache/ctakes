@@ -18,9 +18,9 @@
  */
 package org.apache.ctakes.ytex.kernel.evaluator;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.ctakes.ytex.kernel.metric.ConceptSimilarityService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.*;
 
@@ -43,7 +43,7 @@ import java.util.*;
  * 
  */
 public class SemanticTypeKernel extends CacheKernel {
-	private static final Log log = LogFactory.getLog(SemanticTypeKernel.class);
+	private static final Logger LOGGER = LogManager.getLogger("SemanticTypeKernel");
 	private static final String MAINSUI = "MAINSUI";
 	private static final String TUI = "TUI";
 
@@ -249,7 +249,7 @@ public class SemanticTypeKernel extends CacheKernel {
 		else if (TUI.equals(this.getMode()))
 			return tuiCheck(o1, o2);
 		else {
-			log.error("invalid mode");
+			LOGGER.error("invalid mode");
 			throw new RuntimeException("invalid mode");
 		}
 	}

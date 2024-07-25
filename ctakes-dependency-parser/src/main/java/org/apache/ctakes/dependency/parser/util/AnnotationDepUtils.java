@@ -23,7 +23,8 @@ import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 import org.apache.ctakes.typesystem.type.syntax.ConllDependencyNode;
 import org.apache.ctakes.utils.tree.SimpleTree;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
@@ -31,7 +32,7 @@ import org.apache.uima.jcas.tcas.Annotation;
 import java.util.*;
 
 public class AnnotationDepUtils {
-  private static Logger logger = Logger.getLogger(AnnotationDepUtils.class);
+  private static Logger LOGGER = LogManager.getLogger(AnnotationDepUtils.class);
 
   public static String getTokenRelTreeString(JCas jCas, List<ConllDependencyNode> nodes, Annotation[] annotations, String[] labels){
     return getTokenRelTreeString(jCas, nodes, annotations, labels, false);
@@ -230,11 +231,11 @@ public class AnnotationDepUtils {
     while(curNode != root){
       lastNode = curNode;
       if(curNode == null || curNode.parent == null){
-        logger.error("Something weird.");
+        LOGGER.error("Something weird.");
       }
       curNode = curNode.parent;
       if(curNode == null || curNode.children == null){
-        logger.error("Something is null on the left side of the tree in PET!");
+        LOGGER.error("Something is null on the left side of the tree in PET!");
         break;
       }
       while(curNode.children.get(0) != lastNode){
@@ -248,7 +249,7 @@ public class AnnotationDepUtils {
       lastNode = curNode;
       curNode = curNode.parent;
       if(curNode == null){
-        logger.error("Something is null on the right side of the tree in PET!");
+        LOGGER.error("Something is null on the right side of the tree in PET!");
         break;
       }
       if(curNode.children == null || curNode.children.size() == 0){

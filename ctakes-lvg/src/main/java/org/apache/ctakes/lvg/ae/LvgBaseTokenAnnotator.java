@@ -28,7 +28,8 @@ import org.apache.ctakes.lvg.resource.LvgCmdApiResource;
 import org.apache.ctakes.typesystem.type.syntax.BaseToken;
 import org.apache.ctakes.typesystem.type.syntax.Lemma;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -82,7 +83,7 @@ public class LvgBaseTokenAnnotator extends JCasAnnotator_ImplBase {
 	public static final String PARAM_LEMMA_CACHE_FREQUENCY_CUTOFF = "LemmaCacheFrequencyCutoff";
 
 	// LOG4J logger based on class name
-	private final Logger logger = Logger.getLogger( getClass().getName() );
+	private final Logger LOGGER = LogManager.getLogger( getClass().getName() );
 
 	private LvgCmdApi lvgCmd;
 
@@ -139,17 +140,17 @@ public class LvgBaseTokenAnnotator extends JCasAnnotator_ImplBase {
 			lvgCmd = lvgResource.getLvg();
 
 			if (useCmdCache) {
-				logger.info("Loading Cmd cache=" + cmdCacheFileLocation);
+				LOGGER.info("Loading Cmd cache=" + cmdCacheFileLocation);
 				loadCmdCacheFile(cmdCacheFileLocation);
-				logger.info("Loaded " + normCacheMap.size() + " entries");
+				LOGGER.info("Loaded " + normCacheMap.size() + " entries");
 			}
 
 			if (postLemmas) {
 				lvgLexItem = lvgResource.getLvgLex();
 				if (useLemmaCache) {
-					logger.info("Loading Lemma cache=" + lemmaCacheFileLocation);
+					LOGGER.info("Loading Lemma cache=" + lemmaCacheFileLocation);
 					loadLemmaCacheFile(lemmaCacheFileLocation);
-					logger.info("Loaded " + lemmaCacheMap.size() + " entries");
+					LOGGER.info("Loaded " + lemmaCacheMap.size() + " entries");
 				}
 			}
 
@@ -219,7 +220,7 @@ public class LvgBaseTokenAnnotator extends JCasAnnotator_ImplBase {
 	public void process(JCas jcas)
 			throws AnalysisEngineProcessException {
 
-		logger.info(" process(JCas, ResultSpecification)");
+		LOGGER.info(" process(JCas, ResultSpecification)");
 
 		String text = jcas.getDocumentText();
 
@@ -277,7 +278,7 @@ public class LvgBaseTokenAnnotator extends JCasAnnotator_ImplBase {
 		if (useCmdCache) {
 			normalizedForm = normCacheMap.get(token);
 //			if (normalizedForm == null) {
-				// logger.info("["+ word+ "] was not found in LVG norm cache.");
+				// LOGGER.info("["+ word+ "] was not found in LVG norm cache.");
 //			}
 		}
 
@@ -312,7 +313,7 @@ public class LvgBaseTokenAnnotator extends JCasAnnotator_ImplBase {
 		if (useLemmaCache) {
 			Collection<LemmaLocalClass> lemmaSet = lemmaCacheMap.get(word);
 			if (lemmaSet == null) {
-				// logger.info("["+ word+
+				// LOGGER.info("["+ word+
 				// "] was not found in LVG lemma cache.");
 			} else {
 				lemmaMap = new HashMap<>();
@@ -401,11 +402,11 @@ public class LvgBaseTokenAnnotator extends JCasAnnotator_ImplBase {
 						normCacheMap.put(origWord, normWord);
 					}
 				} else {
-					logger.debug("Discarding norm cache line due to frequency cutoff: "
+					LOGGER.debug("Discarding norm cache line due to frequency cutoff: "
 							+ line);
 				}
 			} else {
-				logger.warn("Invalid LVG norm cache " + "line: " + line);
+				LOGGER.warn("Invalid LVG norm cache " + "line: " + line);
 			}
 			line = br.readLine();
 		}
@@ -468,11 +469,11 @@ public class LvgBaseTokenAnnotator extends JCasAnnotator_ImplBase {
 					lemmaSet.add(l);
 					lemmaCacheMap.put(origWord, lemmaSet);
 				} else {
-					logger.debug("Discarding lemma cache line due to frequency cutoff: "
+					LOGGER.debug("Discarding lemma cache line due to frequency cutoff: "
 							+ line);
 				}
 			} else {
-				logger.warn("Invalid LVG lemma cache " + "line: " + line);
+				LOGGER.warn("Invalid LVG lemma cache " + "line: " + line);
 			}
 			line = br.readLine();
 		}

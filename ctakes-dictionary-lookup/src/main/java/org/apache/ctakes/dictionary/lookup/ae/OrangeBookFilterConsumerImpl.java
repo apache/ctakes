@@ -25,7 +25,8 @@ import org.apache.ctakes.typesystem.type.constants.CONST;
 import org.apache.ctakes.typesystem.type.refsem.OntologyConcept;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
 import org.apache.ctakes.typesystem.type.textsem.MedicationMention;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.lucene.index.Term;
 import org.apache.lucene.search.*;
 import org.apache.uima.UimaContext;
@@ -45,7 +46,7 @@ import java.util.*;
  */
 public class OrangeBookFilterConsumerImpl extends BaseLookupConsumerImpl {
    // LOG4J logger based on class name
-   private final Logger iv_logger = Logger.getLogger( getClass().getName() );
+   private final Logger LOGGER = LogManager.getLogger( getClass().getName() );
 
    static private final String CODE_MF_PRP_KEY = "codeMetaField";
 
@@ -107,7 +108,7 @@ public class OrangeBookFilterConsumerImpl extends BaseLookupConsumerImpl {
             neAnnot.setOntologyConceptArr( ocArr );
             neAnnot.addToIndexes();
          } else {
-            iv_logger.warn( "Filtered out: " + text );
+            LOGGER.warn( "Filtered out: " + text );
          }
       }
    }

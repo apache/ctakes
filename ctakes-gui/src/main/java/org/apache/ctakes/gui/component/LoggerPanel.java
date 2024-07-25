@@ -1,7 +1,12 @@
 package org.apache.ctakes.gui.component;
 
-import org.apache.log4j.*;
-import org.apache.log4j.spi.LoggingEvent;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.core.Appender;
+import org.apache.logging.log4j.core.LogEvent;
+import org.apache.logging.log4j.core.appender.AbstractAppender;
+import org.apache.logging.log4j.core.config.Property;
 
 import javax.swing.*;
 import javax.swing.text.BadLocationException;
@@ -21,17 +26,28 @@ final public class LoggerPanel extends JScrollPane {
 
    static public LoggerPanel createLoggerPanel( final Level... levels ) {
       final LoggerPanel panel = new LoggerPanel( levels );
-      LogManager.getRootLogger()
-                .addAppender( panel.getLogHandler() );
+      addAppender( LogManager.getRootLogger(), panel.getLogHandler() );
+//      LogManager.getRootLogger()
+//                .addAppender( panel.getLogHandler() );
       final Logger pa = LogManager.getLogger( "ProgressAppender" );
       if ( pa != null ) {
-         pa.addAppender( panel.getLogHandler() );
+//         pa.addAppender( panel.getLogHandler() );
+         addAppender( pa, panel.getLogHandler() );
       }
       final Logger pd = LogManager.getLogger( "ProgressDone" );
       if ( pd != null ) {
-         pd.addAppender( panel.getLogHandler() );
+//         pd.addAppender( panel.getLogHandler() );
+         addAppender( pd, panel.getLogHandler() );
       }
       return panel;
+   }
+
+   static private void addAppender( final Logger logger, final Appender appender ) {
+      if ( logger instanceof org.apache.logging.log4j.core.Logger ) {
+         ((org.apache.logging.log4j.core.Logger)logger).addAppender( appender );
+      } else {
+         logger.error( logger.getClass().getName() + " is not a org.apache.logging.log4j.core.Logger !" );
+      }
    }
 
    static private final Level[] ALL_LEVELS = { Level.FATAL, Level.ERROR, Level.WARN, Level.INFO, Level.DEBUG,
@@ -106,10 +122,12 @@ final public class LoggerPanel extends JScrollPane {
    /**
     * Handles reception of logging messages
     */
-   private class LogHandler extends AppenderSkeleton {
+//   private class LogHandler extends AppenderSkeleton {
+   private class LogHandler extends AbstractAppender {
       private final Collection<Level> _levels;
 
       private LogHandler( final Level... levels ) {
+         super( "LoggerPanel", null, null, true, Property.EMPTY_ARRAY );
          _levels = Arrays.asList( (levels.length == 0 ? ALL_LEVELS : levels) );
       }
 
@@ -117,7 +135,8 @@ final public class LoggerPanel extends JScrollPane {
        * {@inheritDoc}
        */
       @Override
-      protected void append( final LoggingEvent event ) {
+//      protected void append( final LogEvent event ) {
+      public void append( final LogEvent event ) {
          if ( event == null ) {
             return;
          }
@@ -148,22 +167,22 @@ final public class LoggerPanel extends JScrollPane {
          }
       }
 
-      /**
-       * {@inheritDoc}
-       *
-       * @return false
-       */
-      @Override
-      public boolean requiresLayout() {
-         return false;
-      }
-
-      /**
-       * {@inheritDoc}
-       */
-      @Override
-      public void close() {
-      }
+//      /**
+//       * {@inheritDoc}
+//       *
+//       * @return false
+//       */
+//      @Override
+//      public boolean requiresLayout() {
+//         return false;
+//      }
+//
+//      /**
+//       * {@inheritDoc}
+//       */
+//      @Override
+//      public void close() {
+//      }
    }
 
 

@@ -31,7 +31,8 @@ import org.apache.ctakes.core.sentence.SentenceDetectorCtakes;
 import org.apache.ctakes.core.sentence.SentenceSpan;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -102,14 +103,14 @@ public class SentenceDetector extends JCasAnnotator_ImplBase {
 	private String NEWLINE = "\n";
 
   // LOG4J logger based on class name
-  private Logger logger = Logger.getLogger(getClass().getName());
+  static private final Logger LOGGER = LogManager.getLogger( "SentenceDetector" );
 
   @Override
   public void initialize(UimaContext aContext)
 			throws ResourceInitializationException {
 		super.initialize(aContext);
 		try (InputStream is = FileLocator.getAsStream(sdModelPath)){
-		  logger.info("Sentence detector model file: " + sdModelPath);
+		  LOGGER.info("Sentence detector model file: " + sdModelPath);
 		  sdmodel = new SentenceModel(is);
 		  EndOfSentenceScannerImpl eoss = new EndOfSentenceScannerImpl();
 		  DefaultSDContextGenerator cg = new DefaultSDContextGenerator(eoss.getEndOfSentenceCharacters());
@@ -131,7 +132,7 @@ public class SentenceDetector extends JCasAnnotator_ImplBase {
 	@Override
   public void process(JCas jcas) throws AnalysisEngineProcessException {
 
-		logger.info("Starting processing.");
+		LOGGER.info("Starting processing.");
 
 		int sentenceCount = 0;
 
@@ -246,9 +247,9 @@ public class SentenceDetector extends JCasAnnotator_ImplBase {
 					sentenceCount++;
 					previousEnd = span.getEnd();
 				} else {
-					logger.error("Skipping sentence from " + span.getStart()
+					LOGGER.error("Skipping sentence from " + span.getStart()
 							+ " to " + span.getEnd());
-					logger.error("Overlap with previous sentence that ended at "
+					LOGGER.error("Overlap with previous sentence that ended at "
 							+ previousEnd);
 				}
 			}
@@ -270,12 +271,12 @@ public class SentenceDetector extends JCasAnnotator_ImplBase {
 	 * @throws IOException
 	 */
 	public static void main(String[] args) throws IOException {
-		final Logger logger = Logger.getLogger(SentenceDetector.class.getName()
+		final Logger LOGGER = LogManager.getLogger(SentenceDetector.class.getName()
 				+ ".main()");
 
 		// Handle arguments
 		if (args.length < 2 || args.length > 4) {
-			usage(logger);
+			usage( LOGGER );
 			System.exit(-1);
 		}
 
@@ -286,20 +287,20 @@ public class SentenceDetector extends JCasAnnotator_ImplBase {
 
 		int iters = 100;
 		if (args.length > 2) {
-			iters = parseInt(args[2], logger);
+			iters = parseInt(args[2], LOGGER);
 		}
 
 		int cut = 5;
 		if (args.length > 3) {
-			cut = parseInt(args[3], logger);
+			cut = parseInt(args[3], LOGGER);
 		}
 
 		// Now, do the actual training
 		EndOfSentenceScannerImpl scanner = new EndOfSentenceScannerImpl();
 		int numEosc = scanner.getEndOfSentenceCharacters().length;
 
-		logger.info("Training new model from " + inFile.getAbsolutePath());
-		logger.info("Using " + numEosc + " end of sentence characters.");
+		LOGGER.info("Training new model from " + inFile.getAbsolutePath());
+		LOGGER.info("Using " + numEosc + " end of sentence characters.");
 
 
 		Charset charset = Charset.forName("UTF-8");
@@ -330,7 +331,7 @@ public class SentenceDetector extends JCasAnnotator_ImplBase {
 		}
 		
 		try(FileOutputStream outStream = new FileOutputStream(outFile)){
-		  logger.info("Saving the model as: " + outFile.getAbsolutePath());
+		  LOGGER.info("Saving the model as: " + outFile.getAbsolutePath());
 		  mod.serialize(outStream);
 		}
 	}

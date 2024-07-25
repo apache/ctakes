@@ -4,7 +4,8 @@ import org.apache.ctakes.core.concurrent.ThreadSafeWrapper;
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.relationextractor.ae.RelationExtractorAnnotator;
 import org.apache.ctakes.temporal.ae.EventEventRelationAnnotator;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -36,7 +37,7 @@ import java.io.File;
 )
 final public class ThreadSafeEventEventRelAnnotator extends EventEventRelationAnnotator {
 
-   static private final Logger LOGGER = Logger.getLogger( "ThreadSafeEventEventRelAnnotator" );
+   static private final Logger LOGGER = LogManager.getLogger( "ThreadSafeEventEventRelAnnotator" );
 
    /**
     * {@inheritDoc}

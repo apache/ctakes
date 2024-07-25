@@ -5,7 +5,8 @@ import org.apache.ctakes.core.util.annotation.OntologyConceptUtil;
 import org.apache.ctakes.typesystem.type.refsem.UmlsConcept;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 
@@ -24,7 +25,7 @@ import java.util.Map;
  */
 public class CuiLookupLister extends AbstractJCasFileWriter {
 
-   static private final Logger LOGGER = Logger.getLogger( "CuiLookupLister" );
+   static private final Logger LOGGER = LogManager.getLogger( "CuiLookupLister" );
 
    /**
     * {@inheritDoc}

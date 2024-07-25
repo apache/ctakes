@@ -43,7 +43,8 @@ import org.apache.ctakes.core.config.ConfigParameterConstants;
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.core.resource.FileLocator;
 import org.apache.ctakes.typesystem.type.structured.DocumentID;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.cas.CAS;
 import org.apache.uima.cas.CASException;
 import org.apache.uima.collection.CollectionException;
@@ -112,7 +113,7 @@ public class FilesInDirectoryCollectionReader extends CollectionReader_ImplBase
 	 */
 	@Override
 	public void initialize() throws ResourceInitializationException {
-		Logger.getLogger( getClass().getSimpleName() ).warn( "Deprecated.  Please use FileTreeReader instead." );
+		LogManager.getLogger( getClass().getSimpleName() ).warn( "Deprecated.  Please use FileTreeReader instead." );
 		final String inputDirPath = (String)getConfigParameterValue( ConfigParameterConstants.PARAM_INPUTDIR );
 		File directory;
 		try {

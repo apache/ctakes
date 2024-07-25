@@ -18,7 +18,8 @@
  */
 package org.apache.ctakes.assertion.cr;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import java.util.Date;
 
@@ -28,7 +29,7 @@ import java.util.Date;
  * some mistakes in gold standard (e.g. where entity is longer than the sentence!)
  */
 public class NegExAnnotation {
-	static Logger LOGGER = Logger.getLogger(NegExAnnotation.class);
+	static Logger LOGGER = LogManager.getLogger(NegExAnnotation.class);
 
 	/**
 	 * Each line consist of following fields

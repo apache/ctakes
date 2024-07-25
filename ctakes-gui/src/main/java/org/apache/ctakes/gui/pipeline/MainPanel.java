@@ -11,7 +11,8 @@ import org.apache.ctakes.gui.pipeline.bit.available.AvailablesListModel;
 import org.apache.ctakes.gui.pipeline.bit.available.AvailablesRenderer;
 import org.apache.ctakes.gui.pipeline.bit.info.PipeBitInfoPanel;
 import org.apache.ctakes.gui.pipeline.bit.user.*;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -30,7 +31,7 @@ import java.util.concurrent.Executors;
  */
 final class MainPanel extends JPanel {
 
-   static private final Logger LOGGER = Logger.getLogger( "MainPanel" );
+   static private final Logger LOGGER = LogManager.getLogger( "MainPanel" );
 
 
    private final AvailablesListModel _availablesListModel = new AvailablesListModel();

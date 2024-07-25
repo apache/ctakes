@@ -1,7 +1,8 @@
 package org.apache.ctakes.core.cc.html;
 
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -17,7 +18,7 @@ import static org.apache.ctakes.core.cc.html.HtmlTextWriter.*;
  */
 final class JsWriter {
 
-   static private final Logger LOGGER = Logger.getLogger( "JsWriter" );
+   static private final Logger LOGGER = LogManager.getLogger( "JsWriter" );
 
 
    private JsWriter() {

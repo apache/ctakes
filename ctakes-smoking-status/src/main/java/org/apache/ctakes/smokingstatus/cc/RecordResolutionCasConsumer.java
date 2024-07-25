@@ -21,7 +21,8 @@ package org.apache.ctakes.smokingstatus.cc;
 import org.apache.ctakes.core.cc.AbstractFileWriter;
 import org.apache.ctakes.core.util.doc.DocIdUtil;
 import org.apache.ctakes.smokingstatus.type.SmokingDocumentClassification;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.CASException;
@@ -36,7 +37,7 @@ import java.util.Collection;
 // TODO Rename.  Also, extend AbstractTableFileWriter.
 public class RecordResolutionCasConsumer extends AbstractFileWriter<String> {
 
-   static private final Logger LOGGER = Logger.getLogger( "RecordResolutionCasConsumer" );
+   static private final Logger LOGGER = LogManager.getLogger( "RecordResolutionCasConsumer" );
 
    @ConfigurationParameter(
          name = "OutputFile",

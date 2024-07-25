@@ -13,7 +13,8 @@ import org.apache.ctakes.typesystem.type.syntax.BaseToken;
 import org.apache.ctakes.typesystem.type.syntax.WordToken;
 import org.apache.ctakes.typesystem.type.textsem.EventMention;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.jcas.JCas;
 import org.hl7.fhir.dstu3.model.*;
 import org.hl7.fhir.utilities.xhtml.NodeType;
@@ -31,7 +32,7 @@ import static org.apache.ctakes.fhir.resource.SectionCreator.SECTION_EXT;
  */
 final public class FhirElementFactory {
 
-   static private final Logger LOGGER = Logger.getLogger( "FhirElementFactory" );
+   static private final Logger LOGGER = LogManager.getLogger( "FhirElementFactory" );
 
    static public final String CTAKES_FHIR_URL = "http://org.apache.ctakes/fhir/";
    static public final String SPAN_BEGIN_EXT = "span-begin";

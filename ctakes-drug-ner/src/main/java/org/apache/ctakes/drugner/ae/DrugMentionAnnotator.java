@@ -40,7 +40,8 @@ import org.apache.ctakes.typesystem.type.syntax.*;
 import org.apache.ctakes.typesystem.type.textsem.*;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -71,7 +72,7 @@ import java.util.*;
 public class DrugMentionAnnotator extends JCasAnnotator_ImplBase
 {
 	// LOG4J logger based on class name
-	public static Logger iv_logger = Logger.getLogger(DrugMentionAnnotator.class);
+	public static Logger LOGGER = LogManager.getLogger(DrugMentionAnnotator.class);
 
 	/**
 	 * This identifies the section ids that will be considered in generating DrugMentionAnnotaitons
@@ -138,7 +139,7 @@ public class DrugMentionAnnotator extends JCasAnnotator_ImplBase
 		iv_frequencyUnitFSM = new FrequencyUnitFSM();
 		iv_formFSM = new FormFSM();
 		iv_subMedSectionFSM = new SubSectionIndicatorFSM();
-		iv_logger.info("Finite state machines loaded.");
+		LOGGER.info("Finite state machines loaded.");
 		
 		try {
 			//gather window size and annotation type
@@ -163,7 +164,7 @@ public class DrugMentionAnnotator extends JCasAnnotator_ImplBase
 	throws AnalysisEngineProcessException
 	{
 
-		iv_logger.info("process(JCas)");
+		LOGGER.info("process(JCas)");
 
 		try
 		{
@@ -449,19 +450,19 @@ public class DrugMentionAnnotator extends JCasAnnotator_ImplBase
 		{
 			for (int j = 0; j < holdOutSet.length; j++)
 			{
-				iv_logger.debug("Comparing ["
+				LOGGER.debug("Comparing ["
 						+ ((Annotation) holdOutSet[i]).getCoveredText() + "] ==? ["
 						+ ((Annotation) holdOutSet[j]).getCoveredText() + "]");
 				isDuplicate = (isDuplicate(holdOutSet, i, j) || isDuplicate);
 			}
 			if (!isDuplicate)
 			{
-				iv_logger.debug("Adding NE: "
+				LOGGER.debug("Adding NE: "
 						+ ((Annotation) holdOutSet[i]).getCoveredText());
 				list.add(holdOutSet[i]);
 			} else
 			{
-				iv_logger.debug("NOT Adding NE: "
+				LOGGER.debug("NOT Adding NE: "
 						+ ((Annotation) holdOutSet[i]).getCoveredText());
 			}
 		}
@@ -472,7 +473,7 @@ public class DrugMentionAnnotator extends JCasAnnotator_ImplBase
 	{
 		if (curIdx == checkIdx || checkIdx > neArray.length)
 		{
-			iv_logger.debug("Are indices equal?:" + curIdx + "==" + checkIdx);
+			LOGGER.debug("Are indices equal?:" + curIdx + "==" + checkIdx);
 			return false;
 		}
 
@@ -933,10 +934,10 @@ public class DrugMentionAnnotator extends JCasAnnotator_ImplBase
 								windowSpans[count][0], windowSpans[count][1], null, null, 0, globalDrugNERList);
 					} catch (NumberFormatException nfe)
 					{
-						iv_logger.info(nfe.getMessage());
+						LOGGER.info(nfe.getMessage());
 					} catch (Exception e)
 					{
-						iv_logger.info(e.getMessage());
+						LOGGER.info(e.getMessage());
 					}
 
 					globalDrugNERList.clear();
@@ -1074,10 +1075,10 @@ public class DrugMentionAnnotator extends JCasAnnotator_ImplBase
 									generateDrugMentionsAndAnnotations(jcas, neTokenUpdatedList, begin, end, null, null, 0, globalDrugNERList);
 								} catch (NumberFormatException nfe)
 								{
-									iv_logger.info(nfe.getMessage());
+									LOGGER.info(nfe.getMessage());
 								} catch (Exception e)
 								{
-									iv_logger.info(e.getMessage());
+									LOGGER.info(e.getMessage());
 								}
 
 								globalDrugNERList.clear();
@@ -1301,7 +1302,7 @@ public class DrugMentionAnnotator extends JCasAnnotator_ImplBase
 							} catch (NoSuchElementException nsee)
 							{
 								noWeirdError = false;
-								iv_logger.info(nsee.getLocalizedMessage());
+								LOGGER.info(nsee.getLocalizedMessage());
 							}
 						}
 					}
@@ -1331,7 +1332,7 @@ public class DrugMentionAnnotator extends JCasAnnotator_ImplBase
 								modifiedOrderDrugStatusChanges.add(hos1);
 
 							} else {
-								iv_logger.info("found reverse case . . need to handle");
+								LOGGER.info("found reverse case . . need to handle");
 							}
 
 						} else if (!skipNext) {

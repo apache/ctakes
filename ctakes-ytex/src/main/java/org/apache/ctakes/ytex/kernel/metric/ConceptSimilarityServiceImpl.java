@@ -23,8 +23,6 @@ import net.sf.ehcache.Cache;
 import net.sf.ehcache.CacheManager;
 import net.sf.ehcache.Element;
 import org.apache.commons.cli.*;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.ctakes.ytex.kernel.ImputedFeatureEvaluator;
 import org.apache.ctakes.ytex.kernel.InfoContentEvaluator;
 import org.apache.ctakes.ytex.kernel.IntrinsicInfoContentEvaluator;
@@ -35,6 +33,8 @@ import org.apache.ctakes.ytex.kernel.model.ConcRel;
 import org.apache.ctakes.ytex.kernel.model.ConceptGraph;
 import org.apache.ctakes.ytex.kernel.model.FeatureRank;
 import org.apache.ctakes.ytex.kernel.pagerank.PageRankService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.TransactionCallback;
@@ -50,8 +50,7 @@ import java.util.*;
  * 
  */
 public class ConceptSimilarityServiceImpl implements ConceptSimilarityService {
-	private static final Log log = LogFactory
-			.getLog(ConceptSimilarityServiceImpl.class);
+	private static final Logger LOGGER = LogManager.getLogger( "ConceptSimilarityServiceImpl" );
 
 	private static String formatPaths(List<LCSPath> lcsPaths) {
 		StringBuilder b = new StringBuilder();
@@ -605,11 +604,11 @@ public class ConceptSimilarityServiceImpl implements ConceptSimilarityService {
 				}
 			}
 		} else {
-			if (log.isDebugEnabled()) {
+			if ( LOGGER.isDebugEnabled()) {
 				if (cr1 == null)
-					log.debug("could not find concept:" + concept1);
+					LOGGER.debug("could not find concept:" + concept1);
 				if (cr2 == null)
-					log.debug("could not find concept:" + concept2);
+					LOGGER.debug("could not find concept:" + concept2);
 			}
 		}
 		return lcsDist;
@@ -682,10 +681,10 @@ public class ConceptSimilarityServiceImpl implements ConceptSimilarityService {
 	}
 
 	public void init() {
-		log.info("begin initialization for concept graph: " + conceptGraphName);
+		LOGGER.info("begin initialization for concept graph: " + conceptGraphName);
 		cg = conceptDao.getConceptGraph(conceptGraphName);
 		if (cg == null) {
-			log.warn("concept graph null, name: " + conceptGraphName);
+			LOGGER.warn("concept graph null, name: " + conceptGraphName);
 		} else {
 			initSimilarityMetricMap();
 			if (isPreload()) {
@@ -702,13 +701,13 @@ public class ConceptSimilarityServiceImpl implements ConceptSimilarityService {
 						}
 					});
 				} catch (Exception e) {
-					log.info("could not initialize cui-tui map: "
+					LOGGER.info("could not initialize cui-tui map: "
 							+ e.getMessage()
 							+ ".  This is expected if you do not have umls installed in your db.");
 				}
 			}
 		}
-		log.info("end initialization for concept graph: " + conceptGraphName);
+		LOGGER.info("end initialization for concept graph: " + conceptGraphName);
 	}
 
 	/**
@@ -788,14 +787,14 @@ public class ConceptSimilarityServiceImpl implements ConceptSimilarityService {
 		// }
 		// }
 		// fill corpusIC
-		log.info("loading corpus infocontent for corpusName=" + corpusName
+		LOGGER.info("loading corpus infocontent for corpusName=" + corpusName
 				+ ", conceptGraphName=" + conceptGraphName
 				+ ", conceptSetName=" + conceptSetName);
 		Map<String, Double> corpusICMap = classifierEvaluationDao
 				.getInfoContent(corpusName, conceptGraphName,
 						this.conceptSetName);
 		if (corpusICMap == null || corpusICMap.isEmpty()) {
-			log.warn("IC not found");
+			LOGGER.warn("IC not found");
 		}
 		ImmutableMap.Builder<String, Double> mb = new ImmutableMap.Builder<String, Double>();
 		for (Map.Entry<String, Double> corpusICEntry : corpusICMap.entrySet()) {
@@ -822,7 +821,7 @@ public class ConceptSimilarityServiceImpl implements ConceptSimilarityService {
 	 * initialize the metrics
 	 */
 	private void initSimilarityMetricMap() {
-		log.info("initializing similarity measures");
+		LOGGER.info("initializing similarity measures");
 		// Double maxIC = this.classifierEvaluationDao.getMaxFeatureEvaluation(
 		// null, null, null,
 		// IntrinsicInfoContentEvaluator.INTRINSIC_INFOCONTENT, 0, 0,

@@ -31,6 +31,9 @@ Thumbs.db
 cTAKES.error.log
 /temp/
 /tmp/
+/ctakes-core/out/
+/out/
 
 Web ARchives - built by ctakes
 *.war
+

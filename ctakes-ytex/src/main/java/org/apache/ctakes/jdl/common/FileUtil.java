@@ -18,7 +18,8 @@
  */
 package org.apache.ctakes.jdl.common;
 
-import org.apache.commons.lang.SystemUtils;
+
+import org.apache.ctakes.core.util.StringUtil;
 
 import java.io.File;
 import java.io.IOException;
@@ -32,12 +33,21 @@ public final class FileUtil {
 	private FileUtil() {
 	}
 
+//	/**
+//	 * @return the javaClassPaths
+//	 */
+//	public static String[] getJavaClassPaths() {
+//		return SystemUtils.JAVA_CLASS_PATH.split(File.pathSeparator);
+//	}
+
 	/**
 	 * @return the javaClassPaths
 	 */
 	public static String[] getJavaClassPaths() {
-		return SystemUtils.JAVA_CLASS_PATH.split(SystemUtils.PATH_SEPARATOR);
+//		return SystemUtils.JAVA_CLASS_PATH.split(File.pathSeparator);
+		return StringUtil.fastSplit( System.getProperty( "java.class.path" ), File.pathSeparatorChar );
 	}
+
 
 	/**
 	 * @param fileName
@@ -50,7 +60,8 @@ public final class FileUtil {
 			return file;
 		}
 		for (String token : getJavaClassPaths()) {
-			file = new File(token + SystemUtils.FILE_SEPARATOR + fileName);
+//			file = new File(token + SystemUtils.FILE_SEPARATOR + fileName);
+			file = new File(token + File.separator + fileName);
 			if (file.exists()) {
 				return file;
 			}
@@ -81,7 +92,8 @@ public final class FileUtil {
 	 * @return the canonical pathname string or USER_DIR if the file is null
 	 */
 	public static String getCanonical(File file) {
-		return getCanonical(file, SystemUtils.USER_DIR);
+//		return getCanonical(file, SystemUtils.USER_DIR);
+		return getCanonical(file, System.getProperty( "user.dir" ));
 	}
 
 	/**
@@ -92,6 +104,7 @@ public final class FileUtil {
 	 * @return the canonical pathname string
 	 */
 	public static String fullPath(File filePath, String fileName) {
-		return getCanonical(filePath) + SystemUtils.FILE_SEPARATOR + fileName;
+//		return getCanonical(filePath) + SystemUtils.FILE_SEPARATOR + fileName;
+		return getCanonical(filePath) + File.separator + fileName;
 	}
 }

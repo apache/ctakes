@@ -26,7 +26,8 @@ import org.apache.ctakes.coreference.util.PairAttributeCalculator;
 import org.apache.ctakes.typesystem.type.syntax.BaseToken;
 import org.apache.ctakes.typesystem.type.syntax.Chunk;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
@@ -57,7 +58,7 @@ public class MipacqMarkablePairGenerator extends JCasAnnotator_ImplBase {
   HashSet<String> stopwords;
   
 	// LOG4J logger based on class name
-	private Logger logger = Logger.getLogger(getClass().getName());
+	private Logger LOGGER = LogManager.getLogger(getClass().getName());
 	int numVecs = 0;
 	
 	@Override
@@ -79,10 +80,10 @@ public class MipacqMarkablePairGenerator extends JCasAnnotator_ImplBase {
 			      stopwords.add(l.trim());
 			  }
 			}
-			logger.info("Stop words list loaded: " + stopwordFile.getAbsolutePath());
+			LOGGER.info("Stop words list loaded: " + stopwordFile.getAbsolutePath());
 		} catch (Exception e) {
 			e.printStackTrace();
-			logger.error("Error loading stop words list");
+			LOGGER.error("Error loading stop words list");
 		}
 		
 	}

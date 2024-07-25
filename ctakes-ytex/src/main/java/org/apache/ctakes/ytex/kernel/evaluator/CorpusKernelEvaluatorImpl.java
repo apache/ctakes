@@ -19,8 +19,6 @@
 package org.apache.ctakes.ytex.kernel.evaluator;
 
 import org.apache.commons.cli.*;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.ctakes.ytex.dao.DBUtil;
 import org.apache.ctakes.ytex.kernel.dao.KernelEvaluationDao;
 import org.apache.ctakes.ytex.kernel.model.KernelEvaluation;
@@ -28,6 +26,8 @@ import org.apache.ctakes.ytex.kernel.model.KernelEvaluationInstance;
 import org.apache.ctakes.ytex.kernel.tree.InstanceTreeBuilder;
 import org.apache.ctakes.ytex.kernel.tree.Node;
 import org.apache.ctakes.ytex.kernel.tree.TreeMappingInfo;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
@@ -78,15 +78,14 @@ public class CorpusKernelEvaluatorImpl implements CorpusKernelEvaluator {
 			try {
 				evaluateKernelOnCorpus(instanceIDMap, nMod, nSlice, evalTest);
 			} catch (Exception e) {
-				log.error("error on slice: " + nSlice, e);
+				LOGGER.error("error on slice: " + nSlice, e);
 				throw e;
 			}
 			return null;
 		}
 	}
 
-	private static final Log log = LogFactory
-			.getLog(CorpusKernelEvaluator.class);
+	private static final Logger LOGGER = LogManager.getLogger( "CorpusKernelEvaluator");
 
 	@SuppressWarnings("static-access")
 	private static Options initOptions() {
@@ -244,8 +243,8 @@ public class CorpusKernelEvaluatorImpl implements CorpusKernelEvaluator {
 	private void evalInstance(Map<Long, Node> instanceIDMap,
 			KernelEvaluation kernelEvaluation, long instanceId1,
 			SortedSet<Long> rightDocumentIDs) {
-		if (log.isDebugEnabled()) {
-			log.debug("left: " + instanceId1 + ", right: " + rightDocumentIDs);
+		if ( LOGGER.isDebugEnabled()) {
+			LOGGER.debug("left: " + instanceId1 + ", right: " + rightDocumentIDs);
 		}
 		for (long instanceId2 : rightDocumentIDs) {
 			// if (instanceId1 != instanceId2) {
@@ -306,7 +305,7 @@ public class CorpusKernelEvaluatorImpl implements CorpusKernelEvaluator {
 			nMod = Math.min(total, nMod);
 		}
 		if (nMod > 0 && nSlice > nMod) {
-			log.info("more slices than documents, skipping slice: " + nSlice);
+			LOGGER.info("more slices than documents, skipping slice: " + nSlice);
 			return;
 		}
 		if (nMod > 0) {
@@ -318,8 +317,8 @@ public class CorpusKernelEvaluatorImpl implements CorpusKernelEvaluator {
 		for (int i = nStart; i < nEnd; i++) {
 			// left hand side of kernel evaluation
 			final long instanceId1 = documentIds.get(i);
-			if (log.isInfoEnabled())
-				log.info("evaluating kernel for instance_id1 = " + instanceId1);
+			if ( LOGGER.isInfoEnabled())
+				LOGGER.info("evaluating kernel for instance_id1 = " + instanceId1);
 			// list of instance ids right hand side of kernel evaluation
 			final SortedSet<Long> rightDocumentIDs = new TreeSet<Long>(
 					testDocumentIds);

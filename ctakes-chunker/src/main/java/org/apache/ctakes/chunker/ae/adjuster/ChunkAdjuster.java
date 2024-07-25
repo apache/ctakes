@@ -21,7 +21,8 @@ package org.apache.ctakes.chunker.ae.adjuster;
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.typesystem.type.syntax.Chunk;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -96,7 +97,7 @@ public class ChunkAdjuster extends JCasAnnotator_ImplBase {
 	// pattern within, instead of always Sentence
 
 	// LOG4J logger based on class name
-	private Logger logger = Logger.getLogger(getClass().getName());
+	private Logger LOGGER = LogManager.getLogger(getClass().getName());
 
 	/**
 	 * Performs initialization logic. This implementation just reads values for
@@ -140,7 +141,7 @@ public class ChunkAdjuster extends JCasAnnotator_ImplBase {
 	public void process(JCas jcas)
 	    throws AnalysisEngineProcessException {
 
-	  logger.info(" process(JCas)");
+	  LOGGER.info(" process(JCas)");
 
 	  try {
 	    Collection<Sentence> sentences = JCasUtil.select(jcas, Sentence.class);
@@ -184,7 +185,7 @@ public class ChunkAdjuster extends JCasAnnotator_ImplBase {
 			int rangeEnd)
 			throws AnalysisEngineProcessException {
 
-		// logger.info("Adjuster: from " + rangeBegin + " to " + rangeEnd);
+		// LOGGER.info("Adjuster: from " + rangeBegin + " to " + rangeEnd);
 
 		// Find the Chunks in this Sentence
 		// For each Chunk, there is a corresponding more specific such as NP,
@@ -222,7 +223,7 @@ public class ChunkAdjuster extends JCasAnnotator_ImplBase {
 		for (int j = 0; j < indexOfTokenToInclude; j++) {
 			list.remove(i + 1);
 //			if (false)
-//				logger.info("removed '" + chunk.getCoveredText() + "'");
+//				LOGGER.info("removed '" + chunk.getCoveredText() + "'");
 		}
 	}
 
@@ -279,12 +280,12 @@ public class ChunkAdjuster extends JCasAnnotator_ImplBase {
 					+ ") < begin offset (" + chunk.getBegin() + ").");
 			throw new AnalysisEngineProcessException(e);
 		}
-		// logger.info("Extending chunk end from " +chunk.getEnd()+ " to " +
+		// LOGGER.info("Extending chunk end from " +chunk.getEnd()+ " to " +
 		// newEnd + ".");
-		// logger.info("For chunk " + chunk.getChunkType());
-		// logger.info(" text =      '" + chunk.getCoveredText() + "'.");
+		// LOGGER.info("For chunk " + chunk.getChunkType());
+		// LOGGER.info(" text =      '" + chunk.getCoveredText() + "'.");
 		chunk.setEnd(newEnd);
-		// logger.info(" new text =  '" + chunk.getCoveredText() + "'.");
+		// LOGGER.info(" new text =  '" + chunk.getCoveredText() + "'.");
 		return chunk;
 
 	}

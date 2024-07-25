@@ -18,7 +18,8 @@
  */
 package org.apache.ctakes.ytex.uima.annotators;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UIMAException;
 import org.apache.uima.fit.factory.JCasFactory;
 import org.apache.uima.jcas.JCas;
@@ -40,7 +41,7 @@ import static org.junit.Assert.*;
  */
 public class DateAnnotatorTest {
 
-	private final static Logger LOGGER = Logger.getLogger(DateAnnotatorTest.class);
+	private final static Logger LOGGER = LogManager.getLogger(DateAnnotatorTest.class);
 	private final static String TYPESYSTEM_DESCRIPTOR_RESOURCE = "org/apache/ctakes/ytex/types/TypeSystem.xml";
 
 	private static URL TYPESYSTEM_URL = null;

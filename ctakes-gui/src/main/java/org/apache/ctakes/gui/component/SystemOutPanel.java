@@ -1,6 +1,7 @@
 package org.apache.ctakes.gui.component;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import javax.annotation.concurrent.NotThreadSafe;
 import javax.swing.*;
@@ -20,7 +21,7 @@ import java.io.PrintStream;
  */
 final public class SystemOutPanel extends JScrollPane {
 
-   static private final Logger LOGGER = Logger.getLogger( "SystemOutPanel" );
+   static private final Logger LOGGER = LogManager.getLogger( "SystemOutPanel" );
 
 
    private final boolean _isStandardOutRedirect;

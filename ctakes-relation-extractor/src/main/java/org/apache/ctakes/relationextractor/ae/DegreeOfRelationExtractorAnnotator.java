@@ -26,7 +26,8 @@ import org.apache.ctakes.typesystem.type.textsem.EventMention;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
 import org.apache.ctakes.typesystem.type.textsem.Modifier;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.util.JCasUtil;
@@ -49,7 +50,7 @@ import java.util.List;
       products = { PipeBitInfo.TypeProduct.DEGREE_RELATION }
 )
 public class DegreeOfRelationExtractorAnnotator extends RelationExtractorAnnotator {
-  static private final Logger LOGGER = Logger.getLogger( "DegreeOfRelationExtractorAnnotator" );
+  static private final Logger LOGGER = LogManager.getLogger( "DegreeOfRelationExtractorAnnotator" );
 
   @Override
   public void initialize( UimaContext context ) throws ResourceInitializationException {

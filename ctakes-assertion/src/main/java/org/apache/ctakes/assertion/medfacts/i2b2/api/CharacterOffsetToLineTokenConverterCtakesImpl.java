@@ -24,7 +24,8 @@ import org.apache.ctakes.assertion.stub.LineAndTokenPosition;
 import org.apache.ctakes.typesystem.type.syntax.BaseToken;
 import org.apache.ctakes.typesystem.type.syntax.NewlineToken;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.cas.FSIterator;
 import org.apache.uima.cas.Type;
 import org.apache.uima.cas.text.AnnotationIndex;
@@ -34,7 +35,7 @@ import org.apache.uima.jcas.tcas.Annotation;
 import java.util.*;
 
 public class CharacterOffsetToLineTokenConverterCtakesImpl implements CharacterOffsetToLineTokenConverter {
-  protected Logger logger = Logger.getLogger(CharacterOffsetToLineTokenConverterCtakesImpl.class.getName());
+  protected Logger LOGGER = LogManager.getLogger(CharacterOffsetToLineTokenConverterCtakesImpl.class.getName());
   protected JCas jcas;
 
   protected TreeMap<Integer, Sentence> beginTreeMap;
@@ -112,37 +113,37 @@ public class CharacterOffsetToLineTokenConverterCtakesImpl implements CharacterO
   }
 
   public int adjustOffsetToBestMatch(int original) {
-    logger.debug("inside adjustOffsetToBestMatch");
+    LOGGER.debug("inside adjustOffsetToBestMatch");
     Integer newValue = tokenBeginEndTreeSet.floor(original);
 
     if (newValue == null)
     {
-      logger.debug("no previous token begin or end found. using begin of first token.");
+      LOGGER.debug("no previous token begin or end found. using begin of first token.");
       newValue = tokenBeginEndTreeSet.first();
     } else
     {
       if (original == newValue)
-        logger.debug("value not adjusted: " + original);
+        LOGGER.debug("value not adjusted: " + original);
       else
-        logger.debug("found previous token boundary. original: " + original + "; new value: " + newValue);
+        LOGGER.debug("found previous token boundary. original: " + original + "; new value: " + newValue);
     }
 
     if (newValue == null)
     {
-      logger.info("no previous and no first token found!!");
+      LOGGER.info("no previous and no first token found!!");
     }
 
-    logger.debug("end adjustOffsetToBestMatch");
+    LOGGER.debug("end adjustOffsetToBestMatch");
 
     return newValue;
   }
 
   public LineAndTokenPosition convertCharacterOffsetToLineToken(int characterOffset) {
-    logger.debug("entering CharacterOffsetToLineTokenConverterCtakesImpl.convertCharacterOffsetToLineToken() with a characterOffset of: " + characterOffset);
+    LOGGER.debug("entering CharacterOffsetToLineTokenConverterCtakesImpl.convertCharacterOffsetToLineToken() with a characterOffset of: " + characterOffset);
 
-    logger.debug("before adjusting input character offset...");
+    LOGGER.debug("before adjusting input character offset...");
     characterOffset = adjustOffsetToBestMatch(characterOffset);
-    logger.debug("after adjusting input character offset.");
+    LOGGER.debug("after adjusting input character offset.");
     int baseTokenTypeId = BaseToken.type;
 
     ConstraintConstructorFindContainedBy constraintConstructorFindContainedBy = new ConstraintConstructorFindContainedBy(jcas);
@@ -162,14 +163,14 @@ public class CharacterOffsetToLineTokenConverterCtakesImpl implements CharacterO
     //    Annotation sentenceAnnotation = filteredIterator.next();
     //    Sentence sentence = (Sentence)sentenceAnnotation;
 
-    logger.debug("finding current or previous sentence for character offset " + characterOffset);
+    LOGGER.debug("finding current or previous sentence for character offset " + characterOffset);
     Sentence sentence = findPreviousOrCurrentSentence(characterOffset);
     if (sentence == null)
     {
-      logger.info("current or previous sentence IS NULL!");
+      LOGGER.info("current or previous sentence IS NULL!");
     } else
     {
-      logger.debug("current or previous sentence -- id: " + sentence.getAddress() +
+      LOGGER.debug("current or previous sentence -- id: " + sentence.getAddress() +
           "; begin: " + sentence.getBegin() + 
           "; end: " + sentence.getEnd());
     }

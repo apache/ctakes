@@ -21,9 +21,9 @@ package org.apache.ctakes.ytex.kernel.evaluator;
 import net.sf.ehcache.Cache;
 import net.sf.ehcache.CacheManager;
 import net.sf.ehcache.Element;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.ctakes.ytex.kernel.tree.Node;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 
 /**
@@ -37,7 +37,7 @@ import org.apache.ctakes.ytex.kernel.tree.Node;
  * 
  */
 public class NormKernel implements Kernel {
-	private static final Log log = LogFactory.getLog(NormKernel.class);
+	private static final Logger LOGGER = LogManager.getLogger( "NormKernel" );
 
 	private Cache normCache;
 	private CacheManager cacheManager;
@@ -119,8 +119,8 @@ public class NormKernel implements Kernel {
 			if (norm1 != 0 && norm2 != 0)
 				d = delegateKernel.evaluate(o1, o2) / (norm1 * norm2);
 		}
-		if (log.isTraceEnabled()) {
-			log.trace("K<" + o1 + "," + o2 + "> = " + d);
+		if ( LOGGER.isTraceEnabled()) {
+			LOGGER.trace("K<" + o1 + "," + o2 + "> = " + d);
 		}
 		return d;
 	}

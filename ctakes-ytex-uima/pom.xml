@@ -99,12 +99,6 @@
 			<scope>test</scope>
 		</dependency>
 		<!-- end dependencies added from ctakes-assertion -->
-		<!-- <dependency> <groupId>org.apache.ctakes</groupId> <artifactId>ctakes-core-res</artifactId> 
-			<scope>test</scope> </dependency> -->
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-collections4</artifactId>
-		</dependency>
 		<dependency>
 			<groupId>cglib</groupId>
 			<artifactId>cglib</artifactId>

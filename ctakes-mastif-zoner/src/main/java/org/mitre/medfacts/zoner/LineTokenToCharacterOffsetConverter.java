@@ -13,7 +13,8 @@ import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
 import java.util.logging.Level;
-import java.util.logging.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -23,7 +24,7 @@ import java.util.regex.Pattern;
  */
 public class LineTokenToCharacterOffsetConverter
 {
-  public static final Logger logger = Logger.getLogger(LineTokenToCharacterOffsetConverter.class.getName());
+  public static final Logger LOGGER = LogManager.getLogger( "LineTokenToCharacterOffsetConverter" );
 
   public static final Pattern endOfLinePattern = Pattern.compile("\\r?\\n");
   public static final Pattern eolOrSpacePattern = Pattern.compile("( +)|(\\r?\\n)");
@@ -60,7 +61,7 @@ public class LineTokenToCharacterOffsetConverter
 
       String line = inputString.substring(i, eolStart);
 
-      logger.finest(String.format("LINE [%d-%d] \"%s\"", i, eolStart - 1, line));
+      LOGGER.debug(String.format("LINE [%d-%d] \"%s\"", i, eolStart - 1, line));
       parseLine(line, lineOffsets, i);
 
       //lineList.add(line);
@@ -71,7 +72,7 @@ public class LineTokenToCharacterOffsetConverter
     {
       String line = inputString.substring(i);
       ArrayList<BeginAndEndCharacterOffsetPair> lineOffsets = new ArrayList<BeginAndEndCharacterOffsetPair>();
-      logger.finest(String.format("LINE (before eof) [%d-%d] \"%s\"", i, inputString.length() - 1, line));
+      LOGGER.debug(String.format("LINE (before eof) [%d-%d] \"%s\"", i, inputString.length() - 1, line));
       offsets.add(lineOffsets);
 
       parseLine(line, lineOffsets, i);
@@ -119,7 +120,7 @@ public class LineTokenToCharacterOffsetConverter
 
       String token = line.substring(j, spaceBegin);
 
-      logger.finest(String.format("    TOKEN [%d-%d] [%d-%d] \"%s\"", wordBegin, wordEnd, wordBeginOverall, wordEndOverall, token));
+      LOGGER.debug(String.format("    TOKEN [%d-%d] [%d-%d] \"%s\"", wordBegin, wordEnd, wordBeginOverall, wordEndOverall, token));
       BeginAndEndCharacterOffsetPair current = new BeginAndEndCharacterOffsetPair();
       current.setBegin(wordBeginOverall);
       current.setEnd(wordEndOverall);
@@ -135,7 +136,7 @@ public class LineTokenToCharacterOffsetConverter
       int wordEndOverall = startOfLineOffset + wordEnd;
 
       String token = line.substring(j);
-      logger.finest(String.format("    TOKEN (before eol) [%d-%d] [%d-%d] \"%s\"", wordBegin, wordEnd, wordBeginOverall, wordEndOverall, token));
+      LOGGER.debug(String.format("    TOKEN (before eol) [%d-%d] [%d-%d] \"%s\"", wordBegin, wordEnd, wordBeginOverall, wordEndOverall, token));
 
       BeginAndEndCharacterOffsetPair current = new BeginAndEndCharacterOffsetPair();
       current.setBegin(wordBeginOverall);
@@ -173,50 +174,50 @@ public class LineTokenToCharacterOffsetConverter
 
     Entry<Integer, WhitespaceType> currentEntry = null;
 
-    logger.log(Level.FINEST,("before line loop"));
+    LOGGER.info( "before line loop");
     boolean lineFound = false;
     int lineNumber = 1;
     if (line == 1)
     {
-      logger.log(Level.FINEST,("searching for first line, not going into line loop."));
+      LOGGER.info( "searching for first line, not going into line loop.");
       lineFound = true;
     } else
     while(!lineFound && iterator.hasNext())
     {
       currentEntry = iterator.next();
-      logger.log(Level.FINEST,String.format("::currentEntry (%d, %s) [line loop]%n", currentEntry.getKey(), currentEntry.getValue()));
+      LOGGER.info( String.format("::currentEntry (%d, %s) [line loop]%n", currentEntry.getKey(), currentEntry.getValue()));
       if (WhitespaceType.EOL == currentEntry.getValue())
       {
         lineNumber++;
-        logger.log(Level.FINEST,String.format("processed line %d%n", lineNumber));
+        LOGGER.info( String.format("processed line %d%n", lineNumber));
       }
       if (lineNumber == line)
       {
-        logger.log(Level.FINEST,String.format("found requested line!%n"));
+        LOGGER.info( String.format("found requested line!%n"));
         lineFound = true;
       }
     }
-    logger.log(Level.FINEST,("after line loop"));
+    LOGGER.info( "after line loop");
 
     if (token == 0)
     {
-      logger.log(Level.FINEST,String.format("token 0 was requested on line %d, so not going through second loop%n", line));
+      LOGGER.info( String.format("token 0 was requested on line %d, so not going through second loop%n", line));
       return (currentEntry == null) ? 0 : currentEntry.getKey() + 2;
     }
 
     boolean tokenFound = false;
     int tokenCount = 0;
-    logger.log(Level.FINEST,("before token loop"));
+    LOGGER.info( "before token loop");
     if (token == 0)
     {
-      logger.log(Level.FINEST,("searching for first token, not going into token loop."));
+      LOGGER.info( "searching for first token, not going into token loop.");
       tokenFound = true;
     }
     while(!tokenFound && iterator.hasNext())
     {
-      logger.log(Level.FINEST,("inside token loop..."));
+      LOGGER.info( "inside token loop...");
       currentEntry = iterator.next();
-      logger.log(Level.FINEST,String.format("::currentEntry (%d, %s) [token loop]%n", currentEntry.getKey(), currentEntry.getValue()));
+      LOGGER.info( String.format("::currentEntry (%d, %s) [token loop]%n", currentEntry.getKey(), currentEntry.getValue()));
       if (WhitespaceType.EOL == currentEntry.getValue())
       {
         System.err.println("ERROR: found EOL before finding token!");
@@ -225,22 +226,22 @@ public class LineTokenToCharacterOffsetConverter
       if (WhitespaceType.SPACE == currentEntry.getValue())
       {
         tokenCount++;
-        logger.log(Level.FINEST,String.format("processed token %d%n", tokenCount));
+        LOGGER.info( String.format("processed token %d%n", tokenCount));
       }
 
       if (tokenCount == token)
       {
         tokenFound = true;
-        logger.log(Level.FINEST,String.format(("found requested token!%n")));
+        LOGGER.info( String.format(("found requested token!%n")));
         Entry<Integer, WhitespaceType> whatWouldHaveBeenNext = iterator.next();
-        logger.log(Level.FINEST,String.format("::currentEntry (%d, %s) [token loop]%n", whatWouldHaveBeenNext.getKey(), whatWouldHaveBeenNext.getValue()));
+        LOGGER.info( String.format("::currentEntry (%d, %s) [token loop]%n", whatWouldHaveBeenNext.getKey(), whatWouldHaveBeenNext.getValue()));
       }
     }
-    logger.log(Level.FINEST,("after line loop"));
+    LOGGER.info( "after line loop");
 
     if (lineFound && tokenFound)
     {
-      logger.log(Level.FINEST,String.format("token 0 was requested on line %d, so not going through second loop%n", line));
+      LOGGER.info( String.format("token 0 was requested on line %d, so not going through second loop%n", line));
       return (currentEntry == null) ? null : currentEntry.getKey() + 2;
     } else
     {

@@ -20,7 +20,6 @@ package org.apache.ctakes.jdl.data.loader;
 
 import org.apache.commons.jxpath.JXPathContext;
 import org.apache.commons.jxpath.ri.model.NodePointer;
-import org.apache.commons.lang.StringUtils;
 import org.apache.ctakes.jdl.data.base.JdlConnection;
 import org.apache.ctakes.jdl.data.xml.DomUtil;
 import org.apache.ctakes.jdl.schema.xdl.XmlLoadType;
@@ -64,7 +63,15 @@ public class XmlLoader extends Loader {
 			query += column.getName() + ",";
 			values += "?,";
 		}
-		return StringUtils.removeEnd(query, ",") + StringUtils.removeEnd(values, ",") + ")";
+		return removeEnd(query, ",") + removeEnd(values, ",") + ")";
+	}
+
+	static private String removeEnd( final String text, final String endSplitter ) {
+		final int lastIndex = text.lastIndexOf( endSplitter );
+		if ( lastIndex < 0 ) {
+			return text;
+		}
+		return text.substring( 0, lastIndex );
 	}
 
 	/**

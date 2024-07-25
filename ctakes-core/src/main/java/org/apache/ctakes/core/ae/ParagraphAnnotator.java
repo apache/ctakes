@@ -6,7 +6,8 @@ import org.apache.ctakes.core.util.Pair;
 import org.apache.ctakes.core.util.regex.RegexSpanFinder;
 import org.apache.ctakes.typesystem.type.textspan.Paragraph;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
@@ -34,7 +35,7 @@ import java.util.regex.Pattern;
 )
 final public class ParagraphAnnotator extends JCasAnnotator_ImplBase {
 
-   static private final Logger LOGGER = Logger.getLogger( "ParagraphAnnotator" );
+   static private final Logger LOGGER = LogManager.getLogger( "ParagraphAnnotator" );
 
 
    static public final String PARAGRAPH_TYPES_PATH = "PARAGRAPH_TYPES_PATH";

@@ -6,7 +6,8 @@ import org.apache.ctakes.core.pipeline.EntityCollector;
 import org.apache.ctakes.core.pipeline.PipelineBuilder;
 import org.apache.ctakes.core.pipeline.PiperFileReader;
 import org.apache.ctakes.core.resource.FileLocator;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UIMAException;
 
 import java.io.File;
@@ -24,7 +25,7 @@ import java.io.IOException;
  */
 final public class ProcessLinesClinicalRunner {
 
-   static private final Logger LOGGER = Logger.getLogger( "ProcessLinesClinicalRunner" );
+   static private final Logger LOGGER = LogManager.getLogger( "ProcessLinesClinicalRunner" );
 
    static private final String PIPER_FILE_PATH = "org/apache/ctakes/clinical/pipeline/DefaultFastPipeline.piper";
 

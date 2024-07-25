@@ -22,7 +22,8 @@ import org.apache.activemq.artemis.jms.client.ActiveMQConnectionFactory;
 import org.apache.activemq.artemis.jms.client.ActiveMQQueue;
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.core.util.log.DotLogger;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.resource.ResourceInitializationException;
 
@@ -44,7 +45,7 @@ import java.util.Enumeration;
 )
 public class PbjJmsSender extends PbjSender {
 
-   static private final Logger LOGGER = Logger.getLogger( "PbjJmsSender" );
+   static private final Logger LOGGER = LogManager.getLogger( "PbjJmsSender" );
 
    private MessageProducer _producer;
    private Connection _connection;

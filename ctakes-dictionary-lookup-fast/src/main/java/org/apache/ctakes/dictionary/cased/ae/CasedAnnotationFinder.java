@@ -20,7 +20,8 @@ import org.apache.ctakes.typesystem.type.syntax.NewlineToken;
 import org.apache.ctakes.typesystem.type.syntax.WordToken;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
 import org.apache.ctakes.utils.env.EnvironmentVariable;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
@@ -66,7 +67,7 @@ import static org.apache.ctakes.core.pipeline.PipeBitInfo.TypeProduct.*;
 )
 final public class CasedAnnotationFinder extends JCasAnnotator_ImplBase {
 
-   static private final Logger LOGGER = Logger.getLogger( "CasedAnnotationFinder" );
+   static private final Logger LOGGER = LogManager.getLogger( "CasedAnnotationFinder" );
 
    static public final String DICTIONARY_TYPE = "_type";
    static public final String ENCODER_TYPE = "_type";

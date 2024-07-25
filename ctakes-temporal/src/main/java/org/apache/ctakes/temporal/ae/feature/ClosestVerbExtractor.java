@@ -34,7 +34,7 @@ public class ClosestVerbExtractor implements FeatureExtractor1 {
 
   private String name;
 
-//  private Logger logger = Logger.getLogger(this.getClass().getName());
+//  private Logger LOGGER = LogManager.getLogger(this.getClass().getName());
 
   public ClosestVerbExtractor() {
     super();
@@ -69,7 +69,7 @@ public class ClosestVerbExtractor implements FeatureExtractor1 {
 			  for (Map.Entry<Integer, WordToken> entry : verbDistMap.entrySet()) {
 				  Feature feature = new Feature(this.name+"_token", entry.getValue().getCoveredText());
 				  features.add(feature);
-				  //logger.info("found nearby closest verb: "+ entry.getValue().getCoveredText() + " POS:" + entry.getValue().getPartOfSpeech());
+				  //LOGGER.info("found nearby closest verb: "+ entry.getValue().getCoveredText() + " POS:" + entry.getValue().getPartOfSpeech());
 				  Feature posfeature = new Feature(this.name, entry.getValue().getPartOfSpeech());
 				  features.add(posfeature);
 				  break;		          
@@ -101,7 +101,7 @@ public class ClosestVerbExtractor implements FeatureExtractor1 {
 		}
 		final Feature feature = new Feature( this.name+"_token", closestToken.getCoveredText() );
 		features.add( feature );
-		//logger.info("found nearby closest verb: "+ entry.getValue().getCoveredText() + " POS:" + entry.getValue().getPartOfSpeech());
+		//LOGGER.info("found nearby closest verb: "+ entry.getValue().getCoveredText() + " POS:" + entry.getValue().getPartOfSpeech());
 		final Feature posfeature = new Feature( this.name, closestToken.getPartOfSpeech() );
 		features.add( posfeature );
 		return features;

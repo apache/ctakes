@@ -2,7 +2,8 @@ package org.apache.ctakes.core.concurrent;
 
 import org.apache.ctakes.core.ae.SentenceDetector;
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -26,7 +27,7 @@ import org.apache.uima.resource.ResourceInitializationException;
 )
 final public class ThreadSafeSentenceDetector extends SentenceDetector {
 
-   static private final Logger LOGGER = Logger.getLogger( "ThreadedSentenceDetector" );
+   static private final Logger LOGGER = LogManager.getLogger( "ThreadedSentenceDetector" );
 
    /**
     * {@inheritDoc}

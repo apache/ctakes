@@ -1,6 +1,7 @@
 package org.apache.ctakes.fhir.resource;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
 import org.hl7.fhir.dstu3.model.Basic;
@@ -20,7 +21,7 @@ import static org.apache.ctakes.fhir.element.FhirElementFactory.CODING_TYPE_SYST
  */
 final public class AnnotationParser implements FhirBasicParser<Annotation> {
 
-   static private final Logger LOGGER = Logger.getLogger( "AnnotationBasicParser" );
+   static private final Logger LOGGER = LogManager.getLogger( "AnnotationBasicParser" );
 
    public Annotation parseResource( final JCas jCas, final Basic resource ) {
       String className = "";

@@ -20,7 +20,8 @@ package org.apache.ctakes.assertion.attributes;
 
 import org.apache.ctakes.assertion.attributes.subject.SubjectAttributeClassifier;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
@@ -38,7 +39,7 @@ import org.apache.uima.resource.ResourceInitializationException;
 
 public class SubjectAttributeAnalysisEngine extends JCasAnnotator_ImplBase {
 
-	public Logger logger = Logger.getLogger(getClass().getName());
+	public Logger LOGGER = LogManager.getLogger(getClass().getName());
 	
 	@Override
 	public void initialize(UimaContext context) throws ResourceInitializationException {

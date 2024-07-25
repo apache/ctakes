@@ -30,7 +30,8 @@ import org.apache.ctakes.lvg.resource.LvgCmdApiResourceImpl;
 import org.apache.ctakes.typesystem.type.syntax.Lemma;
 import org.apache.ctakes.typesystem.type.syntax.WordToken;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -186,7 +187,7 @@ public class LvgAnnotator extends JCasAnnotator_ImplBase {
   private Set<String> exclusionSet;
   
 	// LOG4J logger based on class name
-	private Logger logger = Logger.getLogger(getClass().getName());
+	static private final Logger LOGGER = LogManager.getLogger( "LvgAnnotator" );
 
 	public static final String PARAM_LVGCMDAPI_RESRC_KEY = "LvgCmdApi";
   @ExternalResource(
@@ -221,17 +222,17 @@ public class LvgAnnotator extends JCasAnnotator_ImplBase {
 			lvgCmd = lvgResource.getLvg();
 
 			if (useCmdCache) {
-				logger.info("Loading Cmd cache=" + cmdCacheFileLocation);
+				LOGGER.info("Loading Cmd cache=" + cmdCacheFileLocation);
 				loadCmdCacheFile(cmdCacheFileLocation);
-				logger.info("Loaded " + normCacheMap.size() + " entries");
+				LOGGER.info("Loaded " + normCacheMap.size() + " entries");
 			}
 
 			if (postLemmas) {
 				lvgLexItem = lvgResource.getLvgLex();
 				if (useLemmaCache) {
-					logger.info("Loading Lemma cache=" + lemmaCacheFileLocation);
+					LOGGER.info("Loading Lemma cache=" + lemmaCacheFileLocation);
 					loadLemmaCacheFile(lemmaCacheFileLocation);
-					logger.info("Loaded " + lemmaCacheMap.size() + " entries");
+					LOGGER.info("Loaded " + lemmaCacheMap.size() + " entries");
 				}
 			}
 		} catch (IOException e) {
@@ -272,7 +273,7 @@ public class LvgAnnotator extends JCasAnnotator_ImplBase {
   public void process(JCas jcas)
 			throws AnalysisEngineProcessException {
 
-		logger.info("process(JCas)");
+		LOGGER.info("process(JCas)");
 
 		String text = jcas.getDocumentText();
 
@@ -342,7 +343,7 @@ public class LvgAnnotator extends JCasAnnotator_ImplBase {
 		if (useCmdCache) {
 			canonicalForm = normCacheMap.get(word);
 			if (canonicalForm == null) {
-				// logger.info("["+ word+ "] was not found in LVG norm cache.");
+				// LOGGER.info("["+ word+ "] was not found in LVG norm cache.");
 			}
 		}
 
@@ -377,7 +378,7 @@ public class LvgAnnotator extends JCasAnnotator_ImplBase {
 		if (useLemmaCache) {
 			Set<?> lemmaSet = lemmaCacheMap.get(word);
 			if (lemmaSet == null) {
-				// logger.info("["+ word+
+				// LOGGER.info("["+ word+
 				// "] was not found in LVG lemma cache.");
 			} else {
 				lemmaMap = new HashMap<>();
@@ -473,11 +474,11 @@ public class LvgAnnotator extends JCasAnnotator_ImplBase {
 	            normCacheMap.put(origWord, normWord);
 	          }
 	        } else {
-	          logger.debug("Discarding norm cache line due to frequency cutoff: "
+				  LOGGER.debug("Discarding norm cache line due to frequency cutoff: "
 	              + line);
 	        }
 	      } else {
-	        logger.warn("Invalid LVG norm cache " + "line: " + line);
+				LOGGER.warn("Invalid LVG norm cache " + "line: " + line);
 	      }
 	      line = br.readLine();
 	    }
@@ -539,11 +540,11 @@ public class LvgAnnotator extends JCasAnnotator_ImplBase {
 		        lemmaSet.add(l);
 		        lemmaCacheMap.put(origWord, lemmaSet);
 		      } else {
-		        logger.debug("Discarding lemma cache line due to frequency cutoff: "
+					LOGGER.debug("Discarding lemma cache line due to frequency cutoff: "
 		            + line);
 		      }
 		    } else {
-		      logger.warn("Invalid LVG lemma cache " + "line: " + line);
+				 LOGGER.warn("Invalid LVG lemma cache " + "line: " + line);
 		    }
 		    line = br.readLine();
 		  }
@@ -596,8 +597,8 @@ public class LvgAnnotator extends JCasAnnotator_ImplBase {
 		InputStream stream =  LvgAnnotator.class.getClassLoader().getResourceAsStream(prefix+path);
 		
 		File file = new File(absolutePath, path);
-		Logger logger = Logger.getLogger(LvgAnnotator.class.getName());
-		logger.info("Copying lvg-related file to " + file.getAbsolutePath());
+		Logger LOGGER = LogManager.getLogger(LvgAnnotator.class.getName());
+		LOGGER.info("Copying lvg-related file to " + file.getAbsolutePath());
 
 		try {
 	        FileUtils.copyInputStreamToFile(stream, file);
@@ -620,15 +621,15 @@ public class LvgAnnotator extends JCasAnnotator_ImplBase {
 	// the lvg properties file or the lvg resources (plural.rul etc.)
 	// Instead we use getResource to find the URL for the lvg.properties file. 
 	final String lvgProperties = "org/apache/ctakes/lvg/data/config/lvg.properties";
-	Logger logger = Logger.getLogger(LvgAnnotator.class.getName());
+	Logger LOGGER = LogManager.getLogger(LvgAnnotator.class.getName());
 	java.net.URL url = LvgAnnotator.class.getClassLoader().getResource(lvgProperties);
 	if (url!=null) {
-		logger.info("URL for lvg.properties =" + url.getFile());
+		LOGGER.info("URL for lvg.properties =" + url.getFile());
 	} else {
 		String absolutePath = "/tmp/";
-		logger.info("URL==null");
-		logger.info("Unable to find " + lvgProperties + ".");
-		logger.info("Copying files and directories to under " + absolutePath);
+		LOGGER.info("URL==null");
+		LOGGER.info("Unable to find " + lvgProperties + ".");
+		LOGGER.info("Copying files and directories to under " + absolutePath);
 	    File lvgFile = new File(copyLvgFiles(absolutePath));
 	    url = lvgFile.toURI().toURL();
 	}

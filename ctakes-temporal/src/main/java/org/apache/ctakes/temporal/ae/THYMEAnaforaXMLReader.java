@@ -28,7 +28,8 @@ import org.apache.ctakes.typesystem.type.relation.*;
 import org.apache.ctakes.typesystem.type.textsem.EventMention;
 import org.apache.ctakes.typesystem.type.textsem.Markable;
 import org.apache.ctakes.typesystem.type.textsem.TimeMention;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.analysis_engine.AnalysisEngine;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -56,7 +57,7 @@ import java.util.List;
 import java.util.Map;
 
 public class THYMEAnaforaXMLReader extends JCasAnnotator_ImplBase {
-  private static Logger LOGGER = Logger.getLogger(THYMEAnaforaXMLReader.class);
+  private static Logger LOGGER = LogManager.getLogger(THYMEAnaforaXMLReader.class);
 
   public static final String PARAM_ANAFORA_DIRECTORY = "anaforaDirectory";
 

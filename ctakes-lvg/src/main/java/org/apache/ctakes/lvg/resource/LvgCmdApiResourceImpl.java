@@ -20,7 +20,8 @@ package org.apache.ctakes.lvg.resource;
 
 import gov.nih.nlm.nls.lvg.Api.LvgCmdApi;
 import gov.nih.nlm.nls.lvg.Api.LvgLexItemApi;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.resource.DataResource;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.resource.SharedResourceObject;
@@ -46,7 +47,7 @@ public class LvgCmdApiResourceImpl
         implements LvgCmdApiResource, SharedResourceObject
 {
     // LOG4J logger based on class name
-    private Logger logger = Logger.getLogger(getClass().getName());
+    private Logger LOGGER = LogManager.getLogger(getClass().getName());
 
     private LvgCmdApi lvg;
     private LvgLexItemApi lvgLexItem;
@@ -63,8 +64,8 @@ public class LvgCmdApiResourceImpl
     		File configFile = new File(dr.getUrl().toExternalForm());
 	        configFileName = configFile.getPath();
 	         
-	        logger.info("Loading NLM Norm and Lvg with config file = " + configFileName);
-	        logger.info("  config file absolute path = " + configFile.getAbsolutePath());
+	        LOGGER.info("Loading NLM Norm and Lvg with config file = " + configFileName);
+	        LOGGER.info("  config file absolute path = " + configFile.getAbsolutePath());
 
 	    	// Set the current working directory appropriately so the lvg files
 	        // will be found if the lvg properties file contains LVG_DIR=AUTO_MODE
@@ -74,7 +75,7 @@ public class LvgCmdApiResourceImpl
 	    	String lvgDir = getLvgDir(configFile);
 	    	cwd = getCurrentWorkingDirectory();
 	    	if (cwd!=null) {
-	    		logger.info("cwd = " + cwd);
+	    		LOGGER.info("cwd = " + cwd);
 	    		changeCurrentWorkingDirectory(lvgDir);
 	    	}
 
@@ -115,7 +116,7 @@ public class LvgCmdApiResourceImpl
     private boolean changeCurrentWorkingDirectory(String s) {
     	try {
     		System.setProperty(CWD_PROPERTY, s);
-    		logger.info("cd " + s);
+    		LOGGER.info("cd " + s);
     	} catch (SecurityException se) {
     		se.printStackTrace();
     		return false;

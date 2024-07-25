@@ -20,7 +20,8 @@ package org.apache.ctakes.core.cr;
 
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.typesystem.type.structured.DocumentID;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.cas.CAS;
 import org.apache.uima.cas.CASException;
 import org.apache.uima.collection.CollectionException;
@@ -102,7 +103,7 @@ public class LinesFromFileCollectionReader extends CollectionReader_ImplBase {
 	String iv_language; 
 	String iv_delimeter;
 	
-	private Logger iv_logger = Logger.getLogger(getClass().getName());
+	static private final Logger LOGGER = LogManager.getLogger( "LinesFromFileCollectionReader" );
 
    @Override
    public void initialize() throws ResourceInitializationException {
@@ -170,10 +171,10 @@ public class LinesFromFileCollectionReader extends CollectionReader_ImplBase {
 		  		id = Integer.toString(lineNumber); //id will one more than its index into iv_linesFromFile (iv_currentIndex has already been incremented)
 		  		text = line;
 		  	}
-	  		
 
-		  	iv_logger.debug("id="+id);
-		  	iv_logger.debug("text="+text);
+
+			 LOGGER.debug("id="+id);
+			 LOGGER.debug("text="+text);
 		  	
 				jcas.setDocumentText(text);
 

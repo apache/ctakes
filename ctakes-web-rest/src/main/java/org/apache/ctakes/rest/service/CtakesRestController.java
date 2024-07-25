@@ -22,7 +22,8 @@ import jakarta.servlet.ServletException;
 import org.apache.ctakes.core.pipeline.PipelineBuilder;
 import org.apache.ctakes.core.pipeline.PiperFileReader;
 import org.apache.ctakes.rest.util.JCasFormatter;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UIMAFramework;
 import org.apache.uima.analysis_engine.AnalysisEngine;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
@@ -45,7 +46,7 @@ import java.util.function.Function;
 @RestController
 public class CtakesRestController {
 
-    private static final Logger LOGGER = Logger.getLogger(CtakesRestController.class);
+    private static final Logger LOGGER = LogManager.getLogger(CtakesRestController.class);
     private static final String DEFAULT_PIPER_FILE_PATH = "pipers/Default.piper";
     private static final String FULL_PIPER_FILE_PATH = "pipers/Full.piper";
     private static final String DEFAULT_PIPELINE = "Default";

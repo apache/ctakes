@@ -18,9 +18,6 @@
  */
 package org.apache.ctakes.ytex.kernel.metric;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
 import java.util.Map;
 
 /**
@@ -30,7 +27,6 @@ import java.util.Map;
  * 
  */
 public class LinMetric extends BaseSimilarityMetric {
-	private static final Log log = LogFactory.getLog(LinMetric.class);
 	private boolean intrinsicIC = true;
 	private boolean validCG = false;
 	private String rootConcept = simSvc.getConceptGraph().getRoot();

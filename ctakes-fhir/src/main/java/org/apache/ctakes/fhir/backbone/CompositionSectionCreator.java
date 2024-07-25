@@ -3,7 +3,8 @@ package org.apache.ctakes.fhir.backbone;
 
 import org.apache.ctakes.fhir.element.FhirElementFactory;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.jcas.JCas;
 import org.hl7.fhir.dstu3.model.CodeableConcept;
 import org.hl7.fhir.dstu3.model.Coding;
@@ -18,7 +19,7 @@ import static org.hl7.fhir.dstu3.model.Composition.SectionComponent;
  */
 final public class CompositionSectionCreator {
 
-   static private final Logger LOGGER = Logger.getLogger( "CompositionSectionCreator" );
+   static private final Logger LOGGER = LogManager.getLogger( "CompositionSectionCreator" );
 
    private CompositionSectionCreator() {
    }

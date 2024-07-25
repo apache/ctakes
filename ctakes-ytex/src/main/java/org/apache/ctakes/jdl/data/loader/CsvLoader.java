@@ -20,14 +20,11 @@ package org.apache.ctakes.jdl.data.loader;
 
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVStrategy;
-import org.apache.commons.lang.BooleanUtils;
-import org.apache.commons.lang.CharUtils;
-import org.apache.commons.lang.StringUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.ctakes.jdl.data.base.JdlConnection;
 import org.apache.ctakes.jdl.schema.xdl.CsvLoadType;
 import org.apache.ctakes.jdl.schema.xdl.CsvLoadType.Column;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.*;
 import java.lang.reflect.Constructor;
@@ -50,7 +47,7 @@ public class CsvLoader extends Loader {
 	 */
 	static final char DISABLED = '\ufffe';
 
-	static final Log log = LogFactory.getLog(CsvLoader.class);
+	static private final Logger LOGGER = LogManager.getLogger( "CsvLoader" );
 	private Map<String, Format> formatMap;
 
 	/**
@@ -66,11 +63,11 @@ public class CsvLoader extends Loader {
 			throws FileNotFoundException {
 		InputStream inputStrem = new FileInputStream(file);
 		Reader reader = new InputStreamReader(inputStrem);
-		char delimiter = CharUtils.toChar(loader.getDelimiter());
+		char delimiter = toChar(loader.getDelimiter());
 		char encapsulator = (loader.getEncapsulator() == null || loader
 				.getEncapsulator().length() == 0) ? CSVStrategy.ENCAPSULATOR_DISABLED
-				: CharUtils.toChar(loader.getEncapsulator());
-		log.info(String.format("delimiter %d encapsulator %d", (int)delimiter, (int)encapsulator));
+				: toChar(loader.getEncapsulator());
+		LOGGER.info(String.format("delimiter %d encapsulator %d", (int)delimiter, (int)encapsulator));
 		CSVStrategy strategy = new CSVStrategy(delimiter, encapsulator, CSVStrategy.COMMENTS_DISABLED,
 				CSVStrategy.ESCAPE_DISABLED, true, true, false, true);
 		parser = new CSVParser(reader, strategy);
@@ -91,6 +88,20 @@ public class CsvLoader extends Loader {
 
 	}
 
+	static private char toChar( final String text ) {
+		if ( text == null || text.isEmpty() ) {
+			throw new IllegalArgumentException();
+		}
+		return text.charAt( 0 );
+	}
+
+	static private char toChar( final Character c ) {
+		if ( c == null ) {
+			throw new IllegalArgumentException();
+		}
+		return c;
+	}
+
 	/**
 	 * @param loader
 	 *            the loader to manage
@@ -100,13 +111,29 @@ public class CsvLoader extends Loader {
 		String query = "insert into " + loader.getTable() + " (";
 		String values = ") values (";
 		for (Column column : loader.getColumn()) {
-			if (BooleanUtils.isNotTrue(column.isSkip())) {
+			if (isNotTrue(column.isSkip())) {
 				query += column.getName() + ",";
 				values += "?,";
 			}
 		}
-		return StringUtils.removeEnd(query, ",")
-				+ StringUtils.removeEnd(values, ",") + ")";
+		return removeEnd(query, ",")
+				+ removeEnd(values, ",") + ")";
+	}
+
+	static private boolean isNotTrue( final Boolean value ) {
+		return value == null || !value;
+	}
+
+	static private boolean isTrue( final Boolean value ) {
+		return value != null && value;
+	}
+
+	static private String removeEnd( final String text, final String endSplitter ) {
+		final int lastIndex = text.lastIndexOf( endSplitter );
+		if ( lastIndex < 0 ) {
+			return text;
+		}
+		return text.substring( 0, lastIndex );
 	}
 
 	/**
@@ -116,8 +143,7 @@ public class CsvLoader extends Loader {
 	@Override
 	public final void dataInsert(final JdlConnection jdlConnection) {
 		String sql = getSqlInsert(loader);
-		if (log.isInfoEnabled())
-			log.info(sql);
+			LOGGER.info(sql);
 		Number ncommit = loader.getCommit();
 		int rs = (loader.getSkip() == null) ? 0 : loader.getSkip().intValue();
 		PreparedStatement preparedStatement = null;
@@ -151,7 +177,7 @@ public class CsvLoader extends Loader {
 					// jdlConnection.setAutoCommit(false);
 					// }
 					for (Column column : loader.getColumn()) {
-						if (BooleanUtils.isTrue(column.isSkip())) {
+						if (isTrue(column.isSkip())) {
 							cs++;
 						} else {
 							c++;
@@ -207,7 +233,7 @@ public class CsvLoader extends Loader {
 						preparedStatement.executeBatch();
 						jdlConnection.commitConnection();
 						leftoversToCommit = false;
-						log.info("inserted " + ncommit.intValue() + " rows");
+						LOGGER.info("inserted " + ncommit.intValue() + " rows");
 					}
 				} catch (SQLException e) {
 					// e.printStackTrace();
@@ -219,15 +245,15 @@ public class CsvLoader extends Loader {
 				jdlConnection.commitConnection();
 				leftoversToCommit = false;
 			}
-			log.info("inserted " + (r - rs) + " rows total");
+			LOGGER.info("inserted " + (r - rs) + " rows total");
 		} catch (InstantiationException e) {
-			log.error("", e);
+			LOGGER.error("", e);
 		} catch (IllegalAccessException e) {
-			log.error("", e);
+			LOGGER.error("", e);
 		} catch (ClassNotFoundException e) {
-			log.error("", e);
+			LOGGER.error("", e);
 		} catch (IOException e) {
-			log.error("", e);
+			LOGGER.error("", e);
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		} finally {

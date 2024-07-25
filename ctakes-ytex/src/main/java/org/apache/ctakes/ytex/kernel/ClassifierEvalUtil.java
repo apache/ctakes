@@ -18,8 +18,8 @@
  */
 package org.apache.ctakes.ytex.kernel;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -28,7 +28,7 @@ import java.util.List;
 import java.util.Properties;
 
 public class ClassifierEvalUtil {
-	private static final Log log = LogFactory.getLog(ClassifierEvalUtil.class);
+	static private final Logger LOGGER = LogManager.getLogger( "ClassifierEvalUtil" );
 	Properties props;
 
 	public ClassifierEvalUtil(String propFile) throws IOException {
@@ -67,13 +67,11 @@ public class ClassifierEvalUtil {
 		String weightPropsFile = props.getProperty(
 				"kernel.svmlin.classweights", kernelDataDir
 						+ "/classWeights.properties");
-		if (log.isDebugEnabled()) {
-			log.debug("loading weights from " + weightPropsFile);
-		}
+		LOGGER.debug("loading weights from " + weightPropsFile);
 		Properties weightProps = FileUtil
 				.loadProperties(weightPropsFile, false);
 		if (weightProps == null) {
-			log.warn("could not load weights from file: " + weightPropsFile);
+			LOGGER.warn("could not load weights from file: " + weightPropsFile);
 		}
 		Properties props = new Properties();
 		File[] labelFiles = kernelDataDir.listFiles(new FilenameFilter() {
@@ -118,7 +116,7 @@ public class ClassifierEvalUtil {
 		if (dataFile != null && dataFile.exists()) {
 			return dataFile.getName();
 		} else {
-			log.warn("no data files match label file: " + labelFile);
+			LOGGER.warn("no data files match label file: " + labelFile);
 			return null;
 		}
 	}
@@ -259,8 +257,7 @@ public class ClassifierEvalUtil {
 	 * generate parameter grid for each training file. add a property [file base
 	 * name].kernel.evalLines=xxx to props.
 	 * 
-	 * @param props
-	 *            properties to populate
+	 * @param params properties to populate
 	 * @param trainFile
 	 * @param kernelDataDir
 	 * @param svmType
@@ -404,7 +401,7 @@ public class ClassifierEvalUtil {
 				"yes"))) {
 			File evalFile = new File(evalFileName);
 			if (evalFile.exists()) {
-				log.warn("skipping because eval file exists: " + evalFileName);
+				LOGGER.warn("skipping because eval file exists: " + evalFileName);
 				return;
 			}
 		}
@@ -514,7 +511,7 @@ public class ClassifierEvalUtil {
 			}
 			return listDistFiles;
 		} else {
-			log.warn("no dist files match label file: " + labelFile);
+			LOGGER.warn("no dist files match label file: " + labelFile);
 			return null;
 		}
 	}

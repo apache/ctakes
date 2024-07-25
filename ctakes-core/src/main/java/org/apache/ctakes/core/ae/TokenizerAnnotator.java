@@ -25,7 +25,8 @@ import org.apache.ctakes.core.resource.StringIntegerMapResource;
 import org.apache.ctakes.core.util.ParamUtil;
 import org.apache.ctakes.typesystem.type.syntax.BaseToken;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -54,7 +55,7 @@ import java.util.Set;
 )
 public class TokenizerAnnotator extends JCasAnnotator_ImplBase {
 	// LOG4J logger based on class name
-	private Logger logger = Logger.getLogger(getClass().getName());
+	static private final Logger LOGGER = LogManager.getLogger( "TokenizerAnnotator" );
 
 	public static final int TOKEN_CAP_NONE = 0;
 	public static final int TOKEN_CAP_FIRST_ONLY = 1;
@@ -112,12 +113,12 @@ public class TokenizerAnnotator extends JCasAnnotator_ImplBase {
 		StringIntegerMapResource strIntMapResrc = (StringIntegerMapResource) context
 				.getResourceObject(HYPH_FREQ_TABLE_RESRC_KEY);
 		if (strIntMapResrc == null) {
-			logger.warn("Unable to locate resource with key="
+			LOGGER.warn("Unable to locate resource with key="
 					+ HYPH_FREQ_TABLE_RESRC_KEY
 					+ ".  Proceeding without hyphenation support.");
 			tokenizer = new Tokenizer();
 		} else {
-			logger.info("Hyphen dictionary: " + strIntMapResrc.toString());
+			LOGGER.info("Hyphen dictionary: " + strIntMapResrc.toString());
 			Map<String, Integer> hyphMap = strIntMapResrc.getMap();
 			tokenizer = new Tokenizer(hyphMap, freqCutoff);
 		}
@@ -130,7 +131,7 @@ public class TokenizerAnnotator extends JCasAnnotator_ImplBase {
    @Override
    public void process( JCas jcas ) throws AnalysisEngineProcessException {
 
-		logger.info("process(JCas)");
+		LOGGER.info("process(JCas)");
 
 		tokenCount = 0;
 

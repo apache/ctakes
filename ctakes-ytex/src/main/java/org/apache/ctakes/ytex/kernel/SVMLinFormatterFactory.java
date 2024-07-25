@@ -19,9 +19,9 @@
 package org.apache.ctakes.ytex.kernel;
 
 import com.google.common.base.Strings;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.ctakes.ytex.semil.SemiLFormatterFactory.SemiLDataFormatter;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -44,8 +44,7 @@ import java.util.*;
  */
 public class SVMLinFormatterFactory implements SparseDataFormatterFactory {
 	public static class SVMLinDataFormatter extends SemiLDataFormatter {
-		private static final Log log = LogFactory
-				.getLog(SVMLinDataFormatter.class);
+		private static final Logger LOGGER = LogManager.getLogger( "SVMLinFormatterFactory" );
 
 		public SVMLinDataFormatter(KernelUtil kernelUtil) {
 			super(kernelUtil);
@@ -101,7 +100,7 @@ public class SVMLinFormatterFactory implements SparseDataFormatterFactory {
 			classIds.remove(0);
 			// if there is only 1 class, abort
 			if (classIds.size() < 2) {
-				log.warn("<2 classes, skipping export for label " + label
+				LOGGER.warn("<2 classes, skipping export for label " + label
 						+ " run " + run + " fold " + fold);
 				return;
 			}
