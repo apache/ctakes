@@ -24,7 +24,6 @@ import java.util.regex.Pattern;
 
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
@@ -35,8 +34,8 @@ import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -143,7 +142,7 @@ public class ZonerCli {
 	private boolean doSubsections;
 	private boolean convertOffsets;
 	private boolean includeGenerics = false;
-	private static final  Logger LOGGER = LogManager.getLogger("ZonerCli");;
+	private static final  Logger LOGGER = LoggerFactory.getLogger("ZonerCli");;
 
 
 	public ZonerCli() {
@@ -438,10 +437,8 @@ public class ZonerCli {
 			transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
 			transformer.transform(new DOMSource(node), new StreamResult(buffer));
 			str = buffer.toString();
-		} catch (TransformerConfigurationException ex) {
-			 LOGGER.error(ex);
 		} catch (TransformerException ex) {
-			 LOGGER.error(ex);
+			 LOGGER.error("Unable to convert node to string", ex);
 		}
 		return str;
 	}
@@ -537,8 +534,9 @@ public class ZonerCli {
 		int offset = 0;
 		for (HeadingRange r : this.getHeadings()) {
 			// gaps are only calculated around defined headings
-			if (r.isGeneric())
-				continue;
+			if (r.isGeneric()) {
+                continue;
+            }
 			if (gaps.size() == 0 && r.getHeadingBegin() != 0) {
 				int[] theGap = new int[]{offset, r.getHeadingBegin()};
 				gaps.add(theGap);
@@ -674,8 +672,9 @@ public class ZonerCli {
 		 Collections.sort(headings);
 		 for(Range r : genRangeList){
 			 if (r.isGeneric()) {
-				 if(!headingsListHasRangeFuzzy(r))
-					 headingFromRange(r);
+				 if(!headingsListHasRangeFuzzy(r)) {
+                    headingFromRange(r);
+                }
 			 }
 		 }
 	}
@@ -684,10 +683,12 @@ public class ZonerCli {
 		int rmidpoint = (r.getBegin() + r.getEnd()) / 2;
 		for(HeadingRange hr : this.headings) {
 			int hmidpoint = (hr.getHeadingBegin() + hr.getHeadingEnd()) / 2;
-			if (Math.abs(hmidpoint - rmidpoint) < 6)
-				return true;
-			if(hr.getHeadingBegin() > r.getEnd())
-				break;
+			if (Math.abs(hmidpoint - rmidpoint) < 6) {
+                return true;
+            }
+			if(hr.getHeadingBegin() > r.getEnd()) {
+                break;
+            }
 		}
 		return false;
 	}
@@ -786,8 +787,9 @@ public class ZonerCli {
 				 for (String fragName : fragList) {
 					  LOGGER.debug(String.format("checking for match with fragment named %s", fragName));
 					 // PA don't waste time on these two
-					 if (fragName.equals(EOH_FRAG) || fragName.equals(PROLOG_FRAG))
-						 continue;
+					 if (fragName.equals(EOH_FRAG) || fragName.equals(PROLOG_FRAG)) {
+                        continue;
+                    }
 					 try {
 						 if (currentMatcher.group(fragName) != null) {
 							  LOGGER.debug(String.format(">>> found match for fragment %s with attrs %s", 
@@ -805,8 +807,9 @@ public class ZonerCli {
 			 // key collection by the text that was captured as a generic
 			 boolean isGeneric = false;
 			 if (currentRange.getLabel().indexOf(GENERIC_TYPE) >= 0) {
-				 if (parentRange != null && parentRange.subsumes(currentRange))
-					 continue;
+				 if (parentRange != null && parentRange.subsumes(currentRange)) {
+                    continue;
+                }
 				 
 				 String genkey = getEntireContents().substring(currentRange.getBegin(), currentRange.getEnd()).trim();
 				 // allows us to remember the generic both as a potential section and subsection
@@ -997,7 +1000,8 @@ public class ZonerCli {
 	  */
 	 public void trimFinalHeadingStarts() {
 		 getHeadings().forEach(new Consumer<HeadingRange>() {
-			public void accept(HeadingRange t) {
+			@Override
+            public void accept(HeadingRange t) {
 				String orig = t.getHeadingText();
 				String trimmed = orig.trim();
 				if (orig.equals(trimmed)) {
@@ -1177,8 +1181,9 @@ public class ZonerCli {
 		  }
 		  
 		  private String makeString(final String s) {
-			  if (s == null)
-				  return "null";
+			  if (s == null) {
+                return "null";
+            }
 			  return s;			 
 		  }
 
@@ -1329,7 +1334,8 @@ public class ZonerCli {
 			  this.truncated = truncated;
 		  }
 
-		  public int compareTo(Range other) {
+		  @Override
+        public int compareTo(Range other) {
 			  if (this.begin < other.begin) {
 				  return -1;
 			  } else if (this.begin > other.begin) {
@@ -1441,7 +1447,8 @@ public class ZonerCli {
 			  return String.format("HEADING \"%s\" (%s)", headingText, label);
 		  }
 		  
-		  public int compareTo(HeadingRange other) {
+		  @Override
+        public int compareTo(HeadingRange other) {
 			  if (this.headingBegin < other.headingBegin) {
 				  return -1;
 			  } else if (this.headingBegin > other.headingBegin) {

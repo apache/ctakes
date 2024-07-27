@@ -20,8 +20,8 @@ package org.apache.ctakes.dependency.parser.util;
 
 import org.apache.ctakes.typesystem.type.syntax.ConllDependencyNode;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.cas.FSIterator;
 import org.apache.uima.cas.text.AnnotationIndex;
 import org.apache.uima.fit.util.JCasUtil;
@@ -38,7 +38,7 @@ import java.util.regex.Pattern;
  */
 public abstract class DependencyUtility {
 
-	public static final Logger LOGGER = LogManager.getLogger("DependencyUtility");
+	public static final Logger LOGGER = LoggerFactory.getLogger("DependencyUtility");
 
 	static private final Pattern N_DOT_PATTERN = Pattern.compile( "N..?" );
 

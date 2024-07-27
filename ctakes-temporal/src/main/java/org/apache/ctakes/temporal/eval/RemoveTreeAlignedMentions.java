@@ -20,8 +20,8 @@ package org.apache.ctakes.temporal.eval;
 
 import org.apache.ctakes.typesystem.type.syntax.TreebankNode;
 import org.apache.ctakes.typesystem.type.textsem.TimeMention;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
 import org.apache.uima.fit.descriptor.ConfigurationParameter;
@@ -36,7 +36,7 @@ import java.util.List;
 public class RemoveTreeAlignedMentions extends JCasAnnotator_ImplBase {
 
   public static final String PARAM_GOLDVIEW_NAME = "GOLD_VIEW_NAME";
-  public static Logger LOGGER = LogManager.getLogger(RemoveTreeAlignedMentions.class);
+  public static Logger LOGGER = LoggerFactory.getLogger(RemoveTreeAlignedMentions.class);
   
   @ConfigurationParameter(
       name = PARAM_GOLDVIEW_NAME,

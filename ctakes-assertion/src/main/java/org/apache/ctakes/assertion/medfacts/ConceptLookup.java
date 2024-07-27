@@ -21,8 +21,8 @@ package org.apache.ctakes.assertion.medfacts;
 import org.apache.ctakes.assertion.stub.ConceptType;
 import org.apache.ctakes.typesystem.type.refsem.OntologyConcept;
 import org.apache.ctakes.typesystem.type.refsem.UmlsConcept;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.cas.FeatureStructure;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.FSArray;
@@ -32,7 +32,7 @@ import java.util.HashSet;
 
 public class ConceptLookup
 {
-  public static final Logger LOGGER = LogManager.getLogger(ConceptConverterAnalysisEngine.class.getName());
+  public static final Logger LOGGER = LoggerFactory.getLogger(ConceptConverterAnalysisEngine.class.getName());
 
   protected static HashSet<String> problemSet = new HashSet<String>();
   protected static HashSet<String> testSet = new HashSet<String>();

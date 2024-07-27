@@ -20,8 +20,8 @@ package org.apache.ctakes.examples.ae;
 
 import org.apache.ctakes.typesystem.type.syntax.BaseToken;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
@@ -38,7 +38,7 @@ public class ConfigParameterExample extends JCasAnnotator_ImplBase {
 
 	public static final String PARAM_SAVE_ANN = "PARAM_SAVE_ANN";
 	public static final String PARAM_PRINT_ANN = "PARAM_PRINT_ANN";
-	static private final Logger LOGGER = LogManager.getLogger( "ConfigParameterExample" );
+	static private final Logger LOGGER = LoggerFactory.getLogger( "ConfigParameterExample" );
 
 	@ConfigurationParameter(name = PARAM_SAVE_ANN, mandatory = false,
 									description = "Example of Options/Parameters Save Annotation?")

@@ -2,8 +2,8 @@ package org.apache.ctakes.gui.dictionary;
 
 
 import org.apache.ctakes.gui.component.DisablerPane;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,7 +15,7 @@ import java.awt.*;
  */
 final public class DictionaryCreator {
 
-   static private final Logger LOGGER = LogManager.getLogger( DictionaryCreator.class );
+   static private final Logger LOGGER = LoggerFactory.getLogger( DictionaryCreator.class );
 
    private DictionaryCreator() {
    }

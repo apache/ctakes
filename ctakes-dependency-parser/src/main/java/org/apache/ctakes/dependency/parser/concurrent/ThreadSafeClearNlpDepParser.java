@@ -3,8 +3,8 @@ package org.apache.ctakes.dependency.parser.concurrent;
 import org.apache.ctakes.core.concurrent.ThreadSafeWrapper;
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.dependency.parser.ae.ClearNLPDependencyParserAE;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -41,7 +41,7 @@ import org.apache.uima.resource.ResourceInitializationException;
 )
 final public class ThreadSafeClearNlpDepParser extends ClearNLPDependencyParserAE {
 
-   static private final Logger LOGGER = LogManager.getLogger( "ThreadSafeClearNlpSemRoleLabeler" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "ThreadSafeClearNlpSemRoleLabeler" );
 
    /**
     * {@inheritDoc}

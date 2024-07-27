@@ -8,8 +8,8 @@ import org.apache.ctakes.typesystem.type.refsem.EventProperties;
 import org.apache.ctakes.typesystem.type.refsem.UmlsConcept;
 import org.apache.ctakes.typesystem.type.textsem.EventMention;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.FSArray;
 import org.hl7.fhir.dstu3.model.Basic;
@@ -31,7 +31,7 @@ import static org.apache.ctakes.fhir.resource.IdentifiedAnnotationCreator.*;
  */
 final public class IdentifiedAnnotationParser implements FhirBasicParser<IdentifiedAnnotation> {
 
-   static private final Logger LOGGER = LogManager.getLogger( "IdentifiedAnnotationBasicParser" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "IdentifiedAnnotationBasicParser" );
 
    public IdentifiedAnnotation parseResource( final JCas jCas, final Basic resource ) {
 

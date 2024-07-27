@@ -3,8 +3,8 @@ package org.apache.ctakes.dictionary.lookup2.dictionary;
 import org.apache.ctakes.dictionary.lookup2.term.RareWordTerm;
 import org.apache.ctakes.dictionary.lookup2.util.FastLookupToken;
 import org.apache.ctakes.dictionary.lookup2.util.UmlsUserApprover;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 
 import java.sql.SQLException;
@@ -18,7 +18,7 @@ import java.util.Properties;
  */
 final public class UmlsJdbcRareWordDictionary implements RareWordDictionary {
 
-   static private final Logger LOGGER = LogManager.getLogger( "UmlsJdbcRareWordDictionary" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "UmlsJdbcRareWordDictionary" );
 
    final private RareWordDictionary _delegateDictionary;
 

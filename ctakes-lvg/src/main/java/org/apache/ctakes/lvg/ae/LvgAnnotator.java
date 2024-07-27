@@ -30,8 +30,8 @@ import org.apache.ctakes.lvg.resource.LvgCmdApiResourceImpl;
 import org.apache.ctakes.typesystem.type.syntax.Lemma;
 import org.apache.ctakes.typesystem.type.syntax.WordToken;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -187,7 +187,7 @@ public class LvgAnnotator extends JCasAnnotator_ImplBase {
   private Set<String> exclusionSet;
   
 	// LOG4J logger based on class name
-	static private final Logger LOGGER = LogManager.getLogger( "LvgAnnotator" );
+	static private final Logger LOGGER = LoggerFactory.getLogger( "LvgAnnotator" );
 
 	public static final String PARAM_LVGCMDAPI_RESRC_KEY = "LvgCmdApi";
   @ExternalResource(
@@ -597,7 +597,7 @@ public class LvgAnnotator extends JCasAnnotator_ImplBase {
 		InputStream stream =  LvgAnnotator.class.getClassLoader().getResourceAsStream(prefix+path);
 		
 		File file = new File(absolutePath, path);
-		Logger LOGGER = LogManager.getLogger(LvgAnnotator.class.getName());
+		Logger LOGGER = LoggerFactory.getLogger(LvgAnnotator.class.getName());
 		LOGGER.info("Copying lvg-related file to " + file.getAbsolutePath());
 
 		try {
@@ -621,7 +621,7 @@ public class LvgAnnotator extends JCasAnnotator_ImplBase {
 	// the lvg properties file or the lvg resources (plural.rul etc.)
 	// Instead we use getResource to find the URL for the lvg.properties file. 
 	final String lvgProperties = "org/apache/ctakes/lvg/data/config/lvg.properties";
-	Logger LOGGER = LogManager.getLogger(LvgAnnotator.class.getName());
+	Logger LOGGER = LoggerFactory.getLogger(LvgAnnotator.class.getName());
 	java.net.URL url = LvgAnnotator.class.getClassLoader().getResource(lvgProperties);
 	if (url!=null) {
 		LOGGER.info("URL for lvg.properties =" + url.getFile());

@@ -31,8 +31,8 @@ import org.apache.ctakes.typesystem.type.structured.DocumentID;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
 import org.apache.ctakes.typesystem.type.util.Pair;
 import org.apache.ctakes.typesystem.type.util.Pairs;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
@@ -69,7 +69,7 @@ public class CdaCasInitializer extends JCasAnnotator_ImplBase
 	protected static final String DEFAULT_DTD_FILE = "org/apache/ctakes/preprocessor/cda/NotesIIST_RTF.DTD";	
 	
     // LOG4J logger based on class name
-    static private final Logger LOGGER = LogManager.getLogger( "CdaCasInitializer" );
+    static private final Logger LOGGER = LoggerFactory.getLogger( "CdaCasInitializer" );
 
     private Boolean includeSectionMarkers;
     private TextModifier tm;

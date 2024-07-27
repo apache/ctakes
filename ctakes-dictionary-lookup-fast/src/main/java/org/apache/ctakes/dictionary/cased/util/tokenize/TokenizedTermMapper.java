@@ -20,8 +20,8 @@ package org.apache.ctakes.dictionary.cased.util.tokenize;
 
 import org.apache.ctakes.dictionary.cased.lookup.CandidateTerm;
 import org.apache.ctakes.dictionary.lookup2.term.RareWordTerm;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.*;
 import java.util.function.Function;
@@ -38,7 +38,7 @@ import java.util.stream.Collectors;
  */
 final public class TokenizedTermMapper {
 
-   static private final Logger LOGGER = LogManager.getLogger( "TokenizedTermMapper" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "TokenizedTermMapper" );
 
    private TokenizedTermMapper() {
    }

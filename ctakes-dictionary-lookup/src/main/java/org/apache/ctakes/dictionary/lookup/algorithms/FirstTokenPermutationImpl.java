@@ -24,8 +24,8 @@ import org.apache.ctakes.dictionary.lookup.phrasebuilder.PhraseBuilder;
 import org.apache.ctakes.dictionary.lookup.vo.LookupAnnotation;
 import org.apache.ctakes.dictionary.lookup.vo.LookupHit;
 import org.apache.ctakes.dictionary.lookup.vo.LookupToken;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.*;
 
@@ -48,7 +48,7 @@ import java.util.*;
  */
 public class FirstTokenPermutationImpl implements LookupAlgorithm {
    // LOG4J logger based on class name
-   final private Logger LOGGER = LogManager.getLogger( getClass().getName() );
+   final private Logger LOGGER = LoggerFactory.getLogger( getClass().getName() );
 
    /**
     * Key value for context map. Value is expected to be a List of

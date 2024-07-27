@@ -4,8 +4,8 @@ import org.apache.ctakes.core.cc.AbstractJCasFileWriter;
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.typesystem.type.syntax.BaseToken;
 import org.apache.ctakes.typesystem.type.syntax.NewlineToken;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 
@@ -27,7 +27,7 @@ import static org.apache.ctakes.core.pipeline.PipeBitInfo.TypeProduct.DOCUMENT_I
 public class TokenSpanWriter extends AbstractJCasFileWriter {
 
    // If you do not need to utilize the entire cas, or need more than the doc cas, consider AbstractFileWriter<T>.
-   static private final Logger LOGGER = LogManager.getLogger( "TokenSpanWriter" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "TokenSpanWriter" );
    // to add a configuration parameter, type "param" and hit tab.
 
    /**

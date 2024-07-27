@@ -24,8 +24,8 @@ import org.apache.ctakes.typesystem.type.textsem.EntityMention;
 import org.apache.ctakes.typesystem.type.textsem.EventMention;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UIMAException;
 import org.apache.uima.fit.factory.AggregateBuilder;
 import org.apache.uima.fit.factory.JCasFactory;
@@ -48,7 +48,7 @@ import java.util.Map;
 @SuppressWarnings("unchecked")
 public class CueWordTest2
 {
-  Logger LOGGER = LogManager.getLogger(CueWordTest2.class.getName());
+  Logger LOGGER = LoggerFactory.getLogger(CueWordTest2.class.getName());
 
   /**
    * @param args

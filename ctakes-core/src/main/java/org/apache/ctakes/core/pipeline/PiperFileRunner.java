@@ -3,8 +3,8 @@ package org.apache.ctakes.core.pipeline;
 
 import com.lexicalscope.jewel.cli.CliFactory;
 import org.apache.ctakes.core.config.ConfigParameterConstants;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UIMAException;
 
 import java.io.FileNotFoundException;
@@ -19,7 +19,7 @@ import java.nio.file.Paths;
  */
 final public class PiperFileRunner {
 
-   static private final Logger LOGGER = LogManager.getLogger( "PiperFileRunner" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "PiperFileRunner" );
 
    private PiperFileRunner() {
    }

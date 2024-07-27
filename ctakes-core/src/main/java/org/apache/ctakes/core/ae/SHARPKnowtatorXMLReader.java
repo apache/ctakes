@@ -33,8 +33,8 @@ import org.apache.ctakes.typesystem.type.refsem.*;
 import org.apache.ctakes.typesystem.type.relation.*;
 import org.apache.ctakes.typesystem.type.structured.DocumentID;
 import org.apache.ctakes.typesystem.type.textsem.*;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.analysis_engine.AnalysisEngine;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.CASRuntimeException;
@@ -65,7 +65,7 @@ import java.util.*;
                    PipeBitInfo.TypeProduct.DEGREE_RELATION, PipeBitInfo.TypeProduct.TEMPORAL_RELATION }
 )
 public class SHARPKnowtatorXMLReader extends JCasAnnotator_ImplBase {
-  static Logger LOGGER = LogManager.getLogger(SHARPKnowtatorXMLReader.class);
+  static Logger LOGGER = LoggerFactory.getLogger(SHARPKnowtatorXMLReader.class);
   
   public static final String PARAM_TEXT_DIRECTORY = "TextDirectory";
   @ConfigurationParameter(
@@ -133,7 +133,7 @@ public class SHARPKnowtatorXMLReader extends JCasAnnotator_ImplBase {
     // determine Knowtator XML file from the CAS
     URI knowtatorURI = this.getKnowtatorURI(jCas);
     if (!new File(knowtatorURI).exists()) {
-      LOGGER.fatal("no such Knowtator XML file " + knowtatorURI);
+      LOGGER.error("no such Knowtator XML file " + knowtatorURI);
       return;
     }
 
@@ -919,15 +919,23 @@ public class SHARPKnowtatorXMLReader extends JCasAnnotator_ImplBase {
           KnowtatorAnnotation.Span unitSpan = unit.getCoveringSpan();
           String unitString = text.substring(unitSpan.begin, unitSpan.end);
           attribute.setUnit(unitString);
-          if(unitSpan.begin < spanStart) spanStart = unitSpan.begin;
-          if(unitSpan.end > spanEnd) spanEnd = unitSpan.end;
+          if(unitSpan.begin < spanStart) {
+            spanStart = unitSpan.begin;
+        }
+          if(unitSpan.end > spanEnd) {
+            spanEnd = unitSpan.end;
+        }
         }
         if (number != null) {
           KnowtatorAnnotation.Span numberSpan = number.getCoveringSpan();
           String numberString = text.substring(numberSpan.begin, numberSpan.end);
           attribute.setNumber(numberString);
-          if(numberSpan.begin < spanStart) spanStart = numberSpan.begin;
-          if(numberSpan.end > spanEnd) spanEnd = numberSpan.end;
+          if(numberSpan.begin < spanStart) {
+            spanStart = numberSpan.begin;
+        }
+          if(numberSpan.end > spanEnd) {
+            spanEnd = numberSpan.end;
+        }
         }
         attribute.addToIndexes();
         MedicationStrengthModifier modifier = new MedicationStrengthModifier(jCas, spanStart, spanEnd);

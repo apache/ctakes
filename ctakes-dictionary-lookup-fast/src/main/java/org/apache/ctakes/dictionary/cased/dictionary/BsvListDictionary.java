@@ -7,8 +7,8 @@ import org.apache.ctakes.dictionary.cased.lookup.LookupToken;
 import org.apache.ctakes.dictionary.cased.util.tokenize.TokenizedTerm;
 import org.apache.ctakes.dictionary.cased.util.tokenize.TokenizedTermMapper;
 import org.apache.ctakes.utils.env.EnvironmentVariable;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 
 import java.util.*;
@@ -23,7 +23,7 @@ final public class BsvListDictionary implements CasedDictionary {
 
    static public final String DICTIONARY_TYPE = "BSV_LIST";
 
-   static private final Logger LOGGER = LogManager.getLogger( "BsvListDictionary" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "BsvListDictionary" );
 
    final private CasedDictionary _delegateDictionary;
 

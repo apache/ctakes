@@ -24,8 +24,8 @@ import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.typesystem.type.textsem.EntityMention;
 import org.apache.ctakes.typesystem.type.textsem.EventMention;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.FeatureStructure;
@@ -41,7 +41,7 @@ import org.apache.uima.jcas.tcas.Annotation;
 )
 public class ConceptConverterAnalysisEngine extends JCasAnnotator_ImplBase
 {
-  public static final Logger LOGGER = LogManager.getLogger(ConceptConverterAnalysisEngine.class.getName());
+  public static final Logger LOGGER = LoggerFactory.getLogger(ConceptConverterAnalysisEngine.class.getName());
 
   public ConceptConverterAnalysisEngine()
   {

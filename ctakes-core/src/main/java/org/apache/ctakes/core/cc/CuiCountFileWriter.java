@@ -5,8 +5,8 @@ import org.apache.ctakes.core.util.annotation.OntologyConceptUtil;
 import org.apache.ctakes.core.util.doc.DocIdUtil;
 import org.apache.ctakes.typesystem.type.constants.CONST;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.CAS;
@@ -43,7 +43,7 @@ import static org.apache.ctakes.core.config.ConfigParameterConstants.PARAM_OUTPU
 // TODO extend AbstractOutputFileWriter
 public class CuiCountFileWriter extends CasConsumer_ImplBase {
 
-   static private final Logger LOGGER = LogManager.getLogger( "CuiCountFileWriter" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "CuiCountFileWriter" );
 
    static private final String FILE_EXTENSION = ".cuicount.bsv";
 

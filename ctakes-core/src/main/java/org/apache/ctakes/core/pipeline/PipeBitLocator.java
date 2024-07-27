@@ -1,8 +1,8 @@
 package org.apache.ctakes.core.pipeline;
 
 
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.analysis_component.AnalysisComponent;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.collection.CollectionReader;
@@ -31,7 +31,7 @@ public enum PipeBitLocator {
       return INSTANCE;
    }
 
-   static private final Logger LOGGER = LogManager.getLogger( "PipeBitFinder" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "PipeBitFinder" );
    static private final Object[] EMPTY_OBJECT_ARRAY = new Object[ 0 ];
    static private final String[] CTAKES_PACKAGES
          = { "core",

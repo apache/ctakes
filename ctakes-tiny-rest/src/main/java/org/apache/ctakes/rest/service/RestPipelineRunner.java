@@ -22,8 +22,8 @@ package org.apache.ctakes.rest.service;
 import org.apache.ctakes.core.pipeline.PipelineBuilder;
 import org.apache.ctakes.core.pipeline.PiperFileReader;
 import org.apache.ctakes.rest.service.response.ResponseFormatter;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UIMAException;
 import org.apache.uima.UIMAFramework;
 import org.apache.uima.analysis_engine.AnalysisEngine;
@@ -48,7 +48,7 @@ public enum RestPipelineRunner {
       return INSTANCE;
    }
 
-   static private final Logger LOGGER = LogManager.getLogger( "RestPipelineRunner" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "RestPipelineRunner" );
 
    // Use a constant piper name.
    // This piper can wrap (load *) another piper that contains the actual desired pipeline.
@@ -69,7 +69,7 @@ public enum RestPipelineRunner {
          _engine = UIMAFramework.produceAnalysisEngine( pipeline );
          _pool = new JCasPool( 2, _engine );
       } catch ( IOException | UIMAException multE ) {
-         LogManager.getLogger( "RestPipelineRunner" ).error( multE.getMessage() );
+         LoggerFactory.getLogger( "RestPipelineRunner" ).error( multE.getMessage() );
          throw new ExceptionInInitializerError( multE );
       }
    }

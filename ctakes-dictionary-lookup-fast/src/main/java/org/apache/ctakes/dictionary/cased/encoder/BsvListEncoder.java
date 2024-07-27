@@ -4,8 +4,8 @@ package org.apache.ctakes.dictionary.cased.encoder;
 import org.apache.ctakes.core.util.StringUtil;
 import org.apache.ctakes.dictionary.lookup2.util.CuiCodeUtil;
 import org.apache.ctakes.utils.env.EnvironmentVariable;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 
 import java.util.*;
@@ -19,7 +19,7 @@ final public class BsvListEncoder implements TermEncoder {
 
    static public final String ENCODER_TYPE = "BSV_LIST";
 
-   static private final Logger LOGGER = LogManager.getLogger( "BsvListEncoder" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "BsvListEncoder" );
 
 
    private final InMemoryEncoder _delegate;

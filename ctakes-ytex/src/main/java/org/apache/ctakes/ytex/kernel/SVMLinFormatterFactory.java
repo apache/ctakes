@@ -20,8 +20,8 @@ package org.apache.ctakes.ytex.kernel;
 
 import com.google.common.base.Strings;
 import org.apache.ctakes.ytex.semil.SemiLFormatterFactory.SemiLDataFormatter;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -44,7 +44,7 @@ import java.util.*;
  */
 public class SVMLinFormatterFactory implements SparseDataFormatterFactory {
 	public static class SVMLinDataFormatter extends SemiLDataFormatter {
-		private static final Logger LOGGER = LogManager.getLogger( "SVMLinFormatterFactory" );
+		private static final Logger LOGGER = LoggerFactory.getLogger( "SVMLinFormatterFactory" );
 
 		public SVMLinDataFormatter(KernelUtil kernelUtil) {
 			super(kernelUtil);

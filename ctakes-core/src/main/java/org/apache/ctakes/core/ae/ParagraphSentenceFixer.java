@@ -4,8 +4,8 @@ import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.core.util.Pair;
 import org.apache.ctakes.typesystem.type.textspan.Paragraph;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
 import org.apache.uima.fit.util.JCasUtil;
@@ -29,7 +29,7 @@ import java.util.stream.Collectors;
 )
 final public class ParagraphSentenceFixer extends JCasAnnotator_ImplBase {
 
-   static private final Logger LOGGER = LogManager.getLogger( "ParagraphSentenceFixer" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "ParagraphSentenceFixer" );
 
 
    /**

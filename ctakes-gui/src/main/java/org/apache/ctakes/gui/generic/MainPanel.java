@@ -3,8 +3,8 @@ package org.apache.ctakes.gui.generic;
 import org.apache.ctakes.core.util.external.SystemUtil;
 import org.apache.ctakes.gui.component.LoggerPanel;
 import org.apache.ctakes.gui.util.IconLoader;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -22,7 +22,7 @@ import java.io.IOException;
  */
 public class MainPanel extends JPanel {
 
-   static private final Logger LOGGER = LogManager.getLogger( "MainPanel" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "MainPanel" );
 
    private JButton _runButton;
    private JButton _stopButton;

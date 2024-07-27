@@ -24,8 +24,8 @@ import org.apache.ctakes.ytex.kernel.model.ConcRel;
 import org.apache.ctakes.ytex.kernel.model.ConceptGraph;
 import org.apache.ctakes.ytex.kernel.model.FeatureEvaluation;
 import org.apache.ctakes.ytex.kernel.model.FeatureRank;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -73,7 +73,7 @@ public class IntrinsicInfoContentEvaluatorImpl implements
 		}
 	}
 
-	private static final Logger LOGGER = LogManager.getLogger( "IntrinsicInfoContentEvaluatorImpl" );
+	private static final Logger LOGGER = LoggerFactory.getLogger( "IntrinsicInfoContentEvaluatorImpl" );
 	private static final double log2adjust = 1d / Math.log(2);
 
 	/**

@@ -31,8 +31,8 @@ import org.apache.ctakes.core.sentence.SentenceDetectorCtakes;
 import org.apache.ctakes.core.sentence.SentenceSpan;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -103,7 +103,7 @@ public class SentenceDetector extends JCasAnnotator_ImplBase {
 	private String NEWLINE = "\n";
 
   // LOG4J logger based on class name
-  static private final Logger LOGGER = LogManager.getLogger( "SentenceDetector" );
+  static private final Logger LOGGER = LoggerFactory.getLogger( "SentenceDetector" );
 
   @Override
   public void initialize(UimaContext aContext)
@@ -271,7 +271,7 @@ public class SentenceDetector extends JCasAnnotator_ImplBase {
 	 * @throws IOException
 	 */
 	public static void main(String[] args) throws IOException {
-		final Logger LOGGER = LogManager.getLogger(SentenceDetector.class.getName()
+		final Logger LOGGER = LoggerFactory.getLogger(SentenceDetector.class.getName()
 				+ ".main()");
 
 		// Handle arguments

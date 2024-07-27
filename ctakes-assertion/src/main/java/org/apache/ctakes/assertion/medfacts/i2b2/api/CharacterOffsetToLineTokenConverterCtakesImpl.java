@@ -24,8 +24,8 @@ import org.apache.ctakes.assertion.stub.LineAndTokenPosition;
 import org.apache.ctakes.typesystem.type.syntax.BaseToken;
 import org.apache.ctakes.typesystem.type.syntax.NewlineToken;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.cas.FSIterator;
 import org.apache.uima.cas.Type;
 import org.apache.uima.cas.text.AnnotationIndex;
@@ -35,7 +35,7 @@ import org.apache.uima.jcas.tcas.Annotation;
 import java.util.*;
 
 public class CharacterOffsetToLineTokenConverterCtakesImpl implements CharacterOffsetToLineTokenConverter {
-  protected Logger LOGGER = LogManager.getLogger(CharacterOffsetToLineTokenConverterCtakesImpl.class.getName());
+  protected Logger LOGGER = LoggerFactory.getLogger(CharacterOffsetToLineTokenConverterCtakesImpl.class.getName());
   protected JCas jcas;
 
   protected TreeMap<Integer, Sentence> beginTreeMap;

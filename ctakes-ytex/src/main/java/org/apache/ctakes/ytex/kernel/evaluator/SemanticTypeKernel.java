@@ -19,8 +19,8 @@
 package org.apache.ctakes.ytex.kernel.evaluator;
 
 import org.apache.ctakes.ytex.kernel.metric.ConceptSimilarityService;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 
 import java.util.*;
 
@@ -43,7 +43,7 @@ import java.util.*;
  * 
  */
 public class SemanticTypeKernel extends CacheKernel {
-	private static final Logger LOGGER = LogManager.getLogger("SemanticTypeKernel");
+	private static final Logger LOGGER = LoggerFactory.getLogger("SemanticTypeKernel");
 	private static final String MAINSUI = "MAINSUI";
 	private static final String TUI = "TUI";
 

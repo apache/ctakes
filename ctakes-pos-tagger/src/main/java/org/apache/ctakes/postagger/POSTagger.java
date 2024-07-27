@@ -57,8 +57,8 @@ import org.apache.ctakes.typesystem.type.syntax.BaseToken;
 import org.apache.ctakes.typesystem.type.syntax.NewlineToken;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -85,7 +85,7 @@ import java.util.List;
 public class POSTagger extends JCasAnnotator_ImplBase {
 
 	// LOG4J logger based on class name
-	static private final Logger LOGGER = LogManager.getLogger( "POSTagger" );
+	static private final Logger LOGGER = LoggerFactory.getLogger( "POSTagger" );
 
 	/**
 	 * "PosModelFile" is a required, single, string parameter that contains the

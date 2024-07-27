@@ -23,8 +23,8 @@ import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.core.resource.FileLocator;
 import org.apache.ctakes.core.util.doc.DocIdUtil;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
@@ -52,7 +52,7 @@ import java.util.regex.Pattern;
 )
 public class CDASegmentAnnotator extends JCasAnnotator_ImplBase {
 
-	static private final Logger LOGGER = LogManager.getLogger( "CDASegmentAnnotator" );
+	static private final Logger LOGGER = LoggerFactory.getLogger( "CDASegmentAnnotator" );
 	protected static HashMap<String, Pattern> patterns = new HashMap<>();
 	protected static HashMap<String, String> section_names = new HashMap<>();
 	protected static final String DEFAULT_SECTION_FILE_NAME = "src/user/resources/org/apache/ctakes/core/sections"

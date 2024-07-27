@@ -18,8 +18,8 @@
  */
 package org.apache.ctakes.core.resource;
 
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.resource.DataResource;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.resource.SharedResourceObject;
@@ -34,7 +34,7 @@ import java.net.URL;
 public class FileResourceImpl implements FileResource, SharedResourceObject
 {
     private File iv_file;
-    static private final Logger LOGGER = LogManager.getLogger( "FileResourceImpl" );
+    static private final Logger LOGGER = LoggerFactory.getLogger( "FileResourceImpl" );
     
     public void load(DataResource dr) throws ResourceInitializationException
     {

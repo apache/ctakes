@@ -46,8 +46,8 @@ import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.core.util.doc.DocIdUtil;
 import org.apache.ctakes.typesystem.type.syntax.ConllDependencyNode;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.cas.CAS;
 import org.apache.uima.cas.FSIterator;
 import org.apache.uima.cas.text.AnnotationIndex;
@@ -74,7 +74,7 @@ import java.io.FileWriter;
 )
 public class DependencyNodeWriter extends CasConsumer_ImplBase {
    // LOG4J logger based on class name
-   private Logger LOGGER = LogManager.getLogger( getClass().getName() );
+   private Logger LOGGER = LoggerFactory.getLogger( getClass().getName() );
 
    private String iv_outputDir = null;
    private String iv_outputFormat = null;

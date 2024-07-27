@@ -3,8 +3,8 @@ package org.apache.ctakes.chunker.concurrent;
 import org.apache.ctakes.chunker.ae.Chunker;
 import org.apache.ctakes.core.concurrent.ThreadSafeWrapper;
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -29,7 +29,7 @@ import org.apache.uima.resource.ResourceInitializationException;
 )
 final public class ThreadSafeChunker extends Chunker {
 
-   static private final Logger LOGGER = LogManager.getLogger( "ThreadSafeChunker" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "ThreadSafeChunker" );
 
    /**
     * {@inheritDoc}

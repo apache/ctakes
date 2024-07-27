@@ -21,8 +21,8 @@ package org.apache.ctakes.core.ae;
 
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.core.util.doc.DocIdUtil;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
 import org.apache.uima.jcas.JCas;
@@ -35,7 +35,7 @@ import org.apache.uima.jcas.JCas;
 )
 public class DocumentIdPrinterAnalysisEngine extends JCasAnnotator_ImplBase
 {
-  static private final Logger LOGGER = LogManager.getLogger( "DocumentIdPrinterAnalysisEngine" );
+  static private final Logger LOGGER = LoggerFactory.getLogger( "DocumentIdPrinterAnalysisEngine" );
 
   @Override
   public void process(JCas jcas) throws AnalysisEngineProcessException

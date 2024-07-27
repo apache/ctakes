@@ -23,8 +23,8 @@ import org.apache.ctakes.core.util.collection.ArrayListMap;
 import org.apache.ctakes.core.util.collection.CollectionMap;
 import org.apache.ctakes.dictionary.lookup2.term.RareWordTerm;
 import org.apache.ctakes.dictionary.lookup2.util.CuiCodeUtil;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.*;
 
@@ -40,7 +40,7 @@ import java.util.*;
  */
 final public class RareWordTermMapCreator {
 
-   static private final Logger LOGGER = LogManager.getLogger( "RareWordTermMapCreator" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "RareWordTermMapCreator" );
 
    private RareWordTermMapCreator() {
    }

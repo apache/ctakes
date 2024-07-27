@@ -3,8 +3,8 @@ package org.apache.ctakes.gui.pipeline.bit.info;
 
 import org.apache.ctakes.gui.component.CellRendererLabel;
 import org.apache.ctakes.gui.util.ColorFactory;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,7 +18,7 @@ import static org.apache.ctakes.core.pipeline.PipeBitInfo.TypeProduct;
  */
 final public class TypeProductRenderer implements ListCellRenderer<Object> {
 
-   static private final Logger LOGGER = LogManager.getLogger( "TypeProductRenderer" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "TypeProductRenderer" );
 
    private final JLabel _delegate = new CellRendererLabel();
 

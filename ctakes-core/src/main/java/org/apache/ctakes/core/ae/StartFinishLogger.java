@@ -1,8 +1,8 @@
 package org.apache.ctakes.core.ae;
 
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_component.AnalysisComponent;
 import org.apache.uima.analysis_engine.AnalysisEngine;
@@ -65,7 +65,7 @@ public class StartFinishLogger extends JCasAnnotator_ImplBase {
    public void initialize( final UimaContext context )
          throws ResourceInitializationException {
       super.initialize( context );
-      _logger = LogManager.getLogger( _loggerName );
+      _logger = LoggerFactory.getLogger( _loggerName );
       if ( _isStart != null && _isStart ) {
          if ( _loggerTask == null || _loggerTask.equals( DEFAULT_TASK ) ) {
             _logger.info( "Starting initializing" );

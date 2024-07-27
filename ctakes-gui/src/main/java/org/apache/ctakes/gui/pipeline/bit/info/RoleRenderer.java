@@ -3,8 +3,8 @@ package org.apache.ctakes.gui.pipeline.bit.info;
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.gui.component.CellRendererLabel;
 import org.apache.ctakes.gui.util.IconLoader;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -17,7 +17,7 @@ import java.awt.*;
  */
 final public class RoleRenderer implements ListCellRenderer<Object> {
 
-   static private final Logger LOGGER = LogManager.getLogger( "RoleRenderer" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "RoleRenderer" );
 
    static private final String READER_ICON_FILE = "GreenArrowIn.png";
    static private final String ANNOTATOR_ICON_FILE = "BlueGear.png";

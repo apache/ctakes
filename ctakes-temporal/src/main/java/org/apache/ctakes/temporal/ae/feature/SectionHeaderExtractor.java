@@ -36,7 +36,7 @@ public class SectionHeaderExtractor implements FeatureExtractor1 {
 
 	private String name;
 
-	//  private Logger LOGGER = LogManager.getLogger(this.getClass().getName());
+	//  private Logger LOGGER = LoggerFactory.getLogger(this.getClass().getName());
 
 	public SectionHeaderExtractor() {
 		super();

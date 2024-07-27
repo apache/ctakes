@@ -20,8 +20,8 @@ package org.apache.ctakes.dictionary.lookup.ae;
 
 import org.apache.ctakes.core.ae.UmlsEnvironmentConfiguration;
 import org.apache.ctakes.utils.env.EnvironmentVariable;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 import org.apache.uima.resource.ResourceInitializationException;
 
@@ -40,7 +40,7 @@ import java.net.URLEncoder;
 public class ThreadedUmlsDictionaryLookupAnnotator extends ThreadedDictionaryLookupAnnotator {
 
    // TODO: use consistent variable names (_logger vs LOGGER vs logger)
-   static final private Logger _LOGGER = LogManager.getLogger( ThreadedUmlsDictionaryLookupAnnotator.class );
+   static final private Logger _LOGGER = LoggerFactory.getLogger( ThreadedUmlsDictionaryLookupAnnotator.class );
 
    @Override
    public void initialize( final UimaContext aContext ) throws ResourceInitializationException {

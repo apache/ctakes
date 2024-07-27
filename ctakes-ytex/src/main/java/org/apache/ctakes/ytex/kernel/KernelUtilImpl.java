@@ -26,8 +26,8 @@ import org.apache.ctakes.ytex.kernel.dao.KernelEvaluationDao;
 import org.apache.ctakes.ytex.kernel.model.CrossValidationFold;
 import org.apache.ctakes.ytex.kernel.model.KernelEvaluation;
 import org.apache.ctakes.ytex.kernel.model.KernelEvaluationInstance;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowCallbackHandler;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -46,7 +46,7 @@ import java.util.*;
 
 
 public class KernelUtilImpl implements KernelUtil {
-	private static final Logger LOGGER = LogManager.getLogger( "KernelUtilImpl" );
+	private static final Logger LOGGER = LoggerFactory.getLogger( "KernelUtilImpl" );
 	private ClassifierEvaluationDao classifierEvaluationDao;
 
 	private JdbcTemplate jdbcTemplate = null;

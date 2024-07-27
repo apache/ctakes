@@ -20,8 +20,8 @@ package org.apache.ctakes.necontexts;
 
 import org.apache.ctakes.core.fsm.adapters.TextTokenAdapter;
 import org.apache.ctakes.core.fsm.token.TextToken;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.jcas.tcas.Annotation;
@@ -37,7 +37,7 @@ import java.util.*;
  */
 public abstract class NamedEntityContextAnalyzer implements ContextAnalyzer {
 
-	private static final Logger LOGGER = LogManager.getLogger(NamedEntityContextAnalyzer.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(NamedEntityContextAnalyzer.class);
 
 	private Set<String> _boundaryWordSet;
 

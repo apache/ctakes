@@ -1,7 +1,7 @@
 package org.apache.ctakes.gui.component;
 
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
 import java.awt.*;
@@ -27,7 +27,7 @@ public final class DisablerPane extends JPanel implements MouseListener,
       static private final DisablerPane INSTANCE = new DisablerPane();
    }
 
-   static private final Logger LOGGER = LogManager.getLogger( "DisablerPane" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "DisablerPane" );
 
    private JMenuBar _menuBar;
    private Container _contentPane;

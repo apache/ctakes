@@ -18,8 +18,8 @@
  */
 package org.apache.ctakes.preprocessor;
 
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.xml.sax.*;
 import org.xml.sax.helpers.DefaultHandler;
 import org.xml.sax.helpers.XMLReaderFactory;
@@ -45,7 +45,7 @@ public class ClinicalNotePreProcessor extends DefaultHandler
         implements PreProcessor
 {
     // LOG4J logger based on class name
-    static private final Logger LOGGER = LogManager.getLogger( "ClinicalNotePreProcessor" );
+    static private final Logger LOGGER = LoggerFactory.getLogger( "ClinicalNotePreProcessor" );
 
     // Jan 1, 1AM, 0001
     // private final long DEFAULT_DATE_MILLIS = -62135571600l;

@@ -22,8 +22,8 @@ import org.apache.commons.cli.*;
 import org.apache.ctakes.ytex.kernel.dao.ClassifierEvaluationDao;
 import org.apache.ctakes.ytex.kernel.dao.ConceptDao;
 import org.apache.ctakes.ytex.kernel.model.*;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowCallbackHandler;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -602,7 +602,7 @@ public class ImputedFeatureEvaluatorImpl implements ImputedFeatureEvaluator {
 	// }
 	// }
 
-	private static final Logger LOGGER = LogManager.getLogger( "ImputedFeatureEvaluatorImpl" );
+	private static final Logger LOGGER = LoggerFactory.getLogger( "ImputedFeatureEvaluatorImpl" );
 
 	protected static double entropy(double[] classProbs) {
 		double entropy = 0;

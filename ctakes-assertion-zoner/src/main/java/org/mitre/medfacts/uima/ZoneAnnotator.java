@@ -26,8 +26,8 @@ import java.util.Iterator;
 import java.util.List;
 import org.apache.ctakes.assertion.zoner.types.Heading;
 import org.apache.ctakes.assertion.zoner.types.Zone;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
@@ -64,7 +64,7 @@ public class ZoneAnnotator extends JCasAnnotator_ImplBase {
 	      mandatory = false)
   protected Boolean includeGenerics = Boolean.FALSE;
 
-  static private final Logger LOGGER = LogManager.getLogger( "ZoneAnnotator" );
+  static private final Logger LOGGER = LoggerFactory.getLogger( "ZoneAnnotator" );
 	
 	@Override
 	public void initialize (UimaContext aContext) throws ResourceInitializationException {

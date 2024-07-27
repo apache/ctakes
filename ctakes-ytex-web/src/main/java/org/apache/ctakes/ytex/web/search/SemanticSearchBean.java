@@ -25,8 +25,8 @@ import javax.faces.event.ValueChangeEvent;
 import javax.faces.model.SelectItem;
 import java.io.Serializable;
 import java.util.*;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * JSF Backing Bean for semanticSearch.jspx. Search for documents based on
@@ -42,7 +42,7 @@ public class SemanticSearchBean implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private static final Logger LOGGER = LogManager.getLogger("SemanticSearchBean");
+	private static final Logger LOGGER = LoggerFactory.getLogger("SemanticSearchBean");
 
 	private transient ConceptSearchService umlsFirstWordService;
 	private transient DocumentSearchService documentSearchService;
@@ -90,8 +90,9 @@ public class SemanticSearchBean implements Serializable {
 	}
 
 	public void setPatientId(Integer patientId) {
-		if (patientId != null && patientId != 0)
-			this.patientId = patientId;
+		if (patientId != null && patientId != 0) {
+            this.patientId = patientId;
+        }
 	}
 
 	public Boolean getNegationStatus() {
@@ -141,8 +142,9 @@ public class SemanticSearchBean implements Serializable {
 				this.searchResultList = this.documentSearchService
 						.searchByCui(this.currentCUI.getConceptId());
 			}
-			if ( LOGGER.isDebugEnabled())
-				LOGGER.debug(this.searchResultList);
+			if ( LOGGER.isDebugEnabled()) {
+                LOGGER.debug("{}", this.searchResultList);
+            }
 		}
 	}
 
@@ -232,7 +234,8 @@ public class SemanticSearchBean implements Serializable {
 	public static Comparator<Object> umlsFirstWordComparator = new Comparator<Object>() {
 
 		// compare method for city entries.
-		public int compare(Object o1, Object o2) {
+		@Override
+        public int compare(Object o1, Object o2) {
 			String s1;
 			String s2;
 

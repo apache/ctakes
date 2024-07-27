@@ -1,8 +1,8 @@
 package org.apache.ctakes.gui.pipeline.bit.user;
 
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ import java.util.List;
  */
 final public class UserBitListModel extends AbstractListModel<UserBit> {
 
-   static private final Logger LOGGER = LogManager.getLogger( "UserBitListModel" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "UserBitListModel" );
 
    private UserBit _readerBit = null;
    private final List<UserBit> _userBits = new ArrayList<>();

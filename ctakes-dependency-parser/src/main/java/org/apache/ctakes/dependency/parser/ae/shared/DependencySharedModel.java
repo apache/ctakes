@@ -5,8 +5,8 @@ import com.googlecode.clearnlp.engine.EngineGetter;
 import com.googlecode.clearnlp.nlp.NLPLib;
 import com.googlecode.clearnlp.reader.AbstractReader;
 import org.apache.ctakes.core.resource.FileLocator;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.resource.DataResource;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.resource.SharedResourceObject;
@@ -22,7 +22,7 @@ public class DependencySharedModel implements SharedResourceObject {
    static public final String DEFAULT_LANGUAGE = AbstractReader.LANG_EN;
    // If this is final then why don't we just use a default such as above?  Future mutability?
    final String language = DEFAULT_LANGUAGE;
-   public Logger LOGGER = LogManager.getLogger( getClass().getName() );
+   public Logger LOGGER = LoggerFactory.getLogger( getClass().getName() );
 
    @Override
    public void load( final DataResource aData ) throws ResourceInitializationException {

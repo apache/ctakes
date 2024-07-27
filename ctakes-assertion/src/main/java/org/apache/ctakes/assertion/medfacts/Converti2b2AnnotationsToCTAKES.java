@@ -24,8 +24,8 @@ import org.apache.ctakes.typesystem.type.textsem.EntityMention;
 import org.apache.ctakes.typesystem.type.textsem.EventMention;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UIMAFramework;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -56,7 +56,7 @@ import java.util.List;
  */
 
 public class Converti2b2AnnotationsToCTAKES {
-	private static Logger LOGGER = LogManager.getLogger(Converti2b2AnnotationsToCTAKES.class);
+	private static Logger LOGGER = LoggerFactory.getLogger(Converti2b2AnnotationsToCTAKES.class);
 	
 	private static CAS getTypeSystemFromDescriptor(String descriptor) throws InvalidXMLException, IOException, ResourceInitializationException, CASException {
 		XMLParser xmlParser = UIMAFramework.getXMLParser();

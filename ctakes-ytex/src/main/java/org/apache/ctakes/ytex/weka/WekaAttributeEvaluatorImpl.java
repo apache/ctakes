@@ -26,8 +26,8 @@ import org.apache.ctakes.ytex.kernel.model.CrossValidationFold;
 import org.apache.ctakes.ytex.kernel.model.FeatureEvaluation;
 import org.apache.ctakes.ytex.kernel.model.FeatureRank;
 import org.apache.ctakes.ytex.weka.WekaFormatterFactory.WekaFormatter;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 import weka.attributeSelection.ASEvaluation;
 import weka.attributeSelection.AttributeSelection;
 import weka.core.Instances;
@@ -73,7 +73,7 @@ public class WekaAttributeEvaluatorImpl implements WekaAttributeEvaluator {
 
 	}
 
-	private static final Logger LOGGER = LogManager.getLogger("WekaAttributeEvaluatorImpl");
+	private static final Logger LOGGER = LoggerFactory.getLogger("WekaAttributeEvaluatorImpl");
 
 	/**
 	 * @param args

@@ -8,8 +8,8 @@ import org.apache.ctakes.dictionary.cased.encoder.TermEncoding;
 import org.apache.ctakes.dictionary.cased.lookup.DiscoveredTerm;
 import org.apache.ctakes.dictionary.cased.util.textspan.MagicTextSpan;
 import org.apache.ctakes.dictionary.cased.wsd.WsdUtil;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.jcas.JCas;
 
 import javax.annotation.concurrent.Immutable;
@@ -25,7 +25,7 @@ import static org.apache.ctakes.core.util.annotation.SemanticGroup.*;
 @Immutable
 final public class SemanticSubsumingAnnotationCreator implements AnnotationCreator {
 
-   static private final Logger LOGGER = LogManager.getLogger( "SemanticSubsumingAnnotationCreator" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "SemanticSubsumingAnnotationCreator" );
 
    public SemanticSubsumingAnnotationCreator() {
    }

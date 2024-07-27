@@ -2,8 +2,8 @@ package org.apache.ctakes.core.cc.pretty.html;
 
 
 import org.apache.ctakes.core.cc.pretty.SemanticGroup;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -19,7 +19,7 @@ import static org.apache.ctakes.core.cc.pretty.html.HtmlTextWriter.*;
  */
 final class JsWriter {
 
-   static private final Logger LOGGER = LogManager.getLogger( "JsWriter" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "JsWriter" );
 
 
    private JsWriter() {

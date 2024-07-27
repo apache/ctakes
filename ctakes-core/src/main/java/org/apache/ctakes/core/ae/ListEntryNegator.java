@@ -7,8 +7,8 @@ import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
 import org.apache.ctakes.typesystem.type.textsem.SignSymptomMention;
 import org.apache.ctakes.typesystem.type.textspan.List;
 import org.apache.ctakes.typesystem.type.textspan.ListEntry;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.text.AnnotationFS;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
@@ -38,7 +38,7 @@ import static org.apache.ctakes.core.pipeline.PipeBitInfo.TypeProduct.LIST;
 )
 public class ListEntryNegator extends JCasAnnotator_ImplBase {
 
-   static private final Logger LOGGER = LogManager.getLogger( "ListEntryNegator" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "ListEntryNegator" );
 
    static private final Pattern NEGATIVE_PATTERN
          = Pattern

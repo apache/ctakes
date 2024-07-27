@@ -5,8 +5,8 @@ import org.apache.ctakes.core.cc.XMISerializer;
 import org.apache.ctakes.core.config.ConfigParameterConstants;
 import org.apache.ctakes.core.patient.PatientViewUtil;
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.analysis_engine.AnalysisEngine;
 import org.apache.uima.cas.CAS;
 import org.apache.uima.cas.impl.XmiCasSerializer;
@@ -33,7 +33,7 @@ import java.util.Collection;
 )
 final public class FileTreeViewXmiWriter extends AbstractJCasFileWriter {
 
-   static private final Logger LOGGER = LogManager.getLogger( "FileTreeViewXmiWriter" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "FileTreeViewXmiWriter" );
 
    /**
     * {@inheritDoc}

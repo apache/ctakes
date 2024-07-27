@@ -24,8 +24,8 @@ import org.apache.ctakes.assertion.eval.AssertionEvaluation.ReferenceAnnotations
 import org.apache.ctakes.assertion.eval.AssertionEvaluation.ReferenceIdentifiedAnnotationsSystemToGoldCopier;
 import org.apache.ctakes.core.cc.FileTreeXmiWriter;
 import org.apache.ctakes.core.config.ConfigParameterConstants;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.collection.CollectionReader;
 import org.apache.uima.fit.factory.AggregateBuilder;
@@ -55,7 +55,7 @@ public class TrainAssertionModel {
 
   public static final String PARAM_NAME_MODEL_DIRECTORY = "model-directory";
 
-  protected static final Logger LOGGER = LogManager.getLogger(TrainAssertionModel.class.getName());
+  protected static final Logger LOGGER = LoggerFactory.getLogger(TrainAssertionModel.class.getName());
 
 	/**
 	 * @param args

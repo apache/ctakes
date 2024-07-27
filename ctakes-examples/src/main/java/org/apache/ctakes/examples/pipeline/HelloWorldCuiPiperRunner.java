@@ -4,8 +4,8 @@ package org.apache.ctakes.examples.pipeline;
 import org.apache.ctakes.core.pipeline.CuiCollector;
 import org.apache.ctakes.core.pipeline.PipelineBuilder;
 import org.apache.ctakes.core.pipeline.PiperFileReader;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UIMAException;
 
 import java.io.IOException;
@@ -22,7 +22,7 @@ import java.io.IOException;
  */
 final public class HelloWorldCuiPiperRunner {
 
-   static private final Logger LOGGER = LogManager.getLogger( "HelloWorldCuiPiperRunner" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "HelloWorldCuiPiperRunner" );
 
    static private final String PIPER_FILE_PATH = "org/apache/ctakes/examples/pipeline/HelloWorldCui.piper";
 

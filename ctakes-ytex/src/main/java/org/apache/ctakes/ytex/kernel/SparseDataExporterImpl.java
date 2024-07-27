@@ -19,8 +19,8 @@
 package org.apache.ctakes.ytex.kernel;
 
 import org.apache.commons.cli.*;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowCallbackHandler;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -36,7 +36,7 @@ import java.util.*;
 
 public class SparseDataExporterImpl implements SparseDataExporter {
 
-	private static final Logger LOGGER = LogManager.getLogger( "SparseDataExporterImpl" );
+	private static final Logger LOGGER = LoggerFactory.getLogger( "SparseDataExporterImpl" );
 
 	@SuppressWarnings("static-access")
 	public static void main(String args[]) throws IOException {

@@ -32,7 +32,7 @@ import org.apache.ctakes.typesystem.type.textsem.EventMention;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.CAS;
@@ -127,7 +127,7 @@ public class EventEventCRFRelationAnnotator extends TemporalSequenceAnnotator_Im
 		try {
 			featureExtractors = getFeatureExtractors();
 		} catch ( ResourceInitializationException riE ) {
-			LogManager.getLogger( "EventEventCRFRelationAnnotator" ).error( riE.getMessage() );
+			LoggerFactory.getLogger( "EventEventCRFRelationAnnotator" ).error( riE.getMessage() );
 		}
 
 	}

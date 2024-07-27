@@ -1,8 +1,8 @@
 package org.apache.ctakes.gui.component;
 
 
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
 import javax.swing.table.TableCellEditor;
@@ -21,7 +21,7 @@ import java.nio.file.Paths;
 final public class FileTableCellEditor extends AbstractCellEditor
       implements TableCellRenderer, TableCellEditor, ActionListener {
 
-   static private final Logger LOGGER = LogManager.getLogger( "FileTableCellEditor" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "FileTableCellEditor" );
 
    final private JButton _button;
    final private JFileChooser _chooser;

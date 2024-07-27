@@ -3,8 +3,8 @@ package org.apache.ctakes.relationextractor.concurrent;
 import org.apache.ctakes.core.concurrent.ThreadSafeWrapper;
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.relationextractor.ae.DegreeOfRelationExtractorAnnotator;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -29,7 +29,7 @@ import org.apache.uima.resource.ResourceInitializationException;
 )
 final public class ThreadSafeDegreeExtractor extends DegreeOfRelationExtractorAnnotator {
 
-   static private final Logger LOGGER = LogManager.getLogger( "ThreadSafeDegreeExtractor" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "ThreadSafeDegreeExtractor" );
 
    /**
     * {@inheritDoc}

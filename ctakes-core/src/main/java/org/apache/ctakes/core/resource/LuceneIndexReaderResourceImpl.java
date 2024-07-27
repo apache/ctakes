@@ -18,8 +18,8 @@
  */
 package org.apache.ctakes.core.resource;
 
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.store.*;
@@ -38,7 +38,7 @@ public class LuceneIndexReaderResourceImpl
         implements LuceneIndexReaderResource, SharedResourceObject {
 	
     // LOG4J logger based on class name
-    static private final Logger LOGGER = LogManager.getLogger( "LuceneIndexReaderResourceImpl" );
+    static private final Logger LOGGER = LoggerFactory.getLogger( "LuceneIndexReaderResourceImpl" );
 
     private IndexReader iv_indexReader;
 

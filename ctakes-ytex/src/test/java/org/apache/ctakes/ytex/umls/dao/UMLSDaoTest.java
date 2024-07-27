@@ -20,16 +20,16 @@ package org.apache.ctakes.ytex.umls.dao;
 
 import org.apache.ctakes.core.ae.UmlsEnvironmentConfiguration;
 import org.apache.ctakes.utils.env.EnvironmentVariable;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.access.ContextSingletonBeanFactoryLocator;
 
+import java.lang.invoke.MethodHandles;
 import java.util.List;
 
 import static org.junit.Assume.assumeTrue;
@@ -42,7 +42,7 @@ import static org.junit.Assume.assumeTrue;
  * 
  */
 public class UMLSDaoTest {
-	private static final Logger log = Logger.getLogger(UMLSDaoTest.class);
+	private static final Logger log = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	private ApplicationContext appCtx = null;
 	private UMLSDao umlsDao = null;

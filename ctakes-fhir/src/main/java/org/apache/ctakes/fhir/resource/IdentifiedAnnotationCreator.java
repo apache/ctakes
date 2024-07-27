@@ -5,8 +5,8 @@ import org.apache.ctakes.fhir.util.FhirNoteSpecs;
 import org.apache.ctakes.typesystem.type.constants.CONST;
 import org.apache.ctakes.typesystem.type.textsem.EventMention;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.jcas.JCas;
 import org.hl7.fhir.dstu3.model.Basic;
 import org.hl7.fhir.dstu3.model.Extension;
@@ -19,7 +19,7 @@ import org.hl7.fhir.dstu3.model.Extension;
  */
 final public class IdentifiedAnnotationCreator implements FhirBasicCreator<IdentifiedAnnotation> {
 
-   static private final Logger LOGGER = LogManager.getLogger( "IdentifiedAnnotationBasicCreator" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "IdentifiedAnnotationBasicCreator" );
 
    static public final String ID_NAME_IDENTIFIED_ANNOTATION = "IdentifiedAnnotation";
 

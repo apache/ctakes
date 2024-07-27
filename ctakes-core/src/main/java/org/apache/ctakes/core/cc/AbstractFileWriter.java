@@ -5,8 +5,8 @@ import org.apache.ctakes.core.config.ConfigParameterConstants;
 import org.apache.ctakes.core.util.doc.DocIdUtil;
 import org.apache.ctakes.typesystem.type.structured.DocumentIdPrefix;
 import org.apache.ctakes.typesystem.type.structured.DocumentPath;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
@@ -26,7 +26,7 @@ import java.util.Collection;
  */
 abstract public class AbstractFileWriter<T> extends JCasAnnotator_ImplBase {
 
-   static private final Logger LOGGER = LogManager.getLogger( "AbstractOutputFileWriter" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "AbstractOutputFileWriter" );
 
    /**
     * Name of configuration parameter that must be set to the path of a directory into which the

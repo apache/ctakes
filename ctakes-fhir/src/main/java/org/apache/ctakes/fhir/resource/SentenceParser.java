@@ -1,8 +1,8 @@
 package org.apache.ctakes.fhir.resource;
 
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.jcas.JCas;
 import org.hl7.fhir.dstu3.model.Basic;
 
@@ -14,7 +14,7 @@ import org.hl7.fhir.dstu3.model.Basic;
  */
 final public class SentenceParser implements FhirBasicParser<Sentence> {
 
-   static private final Logger LOGGER = LogManager.getLogger( "SentenceBasicParser" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "SentenceBasicParser" );
 
    public Sentence parseResource( final JCas jCas, final Basic resource ) {
       final Sentence sentence = new Sentence( jCas );

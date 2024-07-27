@@ -24,8 +24,8 @@ import org.apache.ctakes.typesystem.type.syntax.BaseToken;
 import org.apache.ctakes.typesystem.type.syntax.NewlineToken;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -54,7 +54,7 @@ import static org.apache.ctakes.core.pipeline.PipeBitInfo.TypeProduct.*;
 public class TokenizerAnnotatorPTB extends JCasAnnotator_ImplBase
 {
 	// LOG4J logger based on class name
-	static private final Logger LOGGER = LogManager.getLogger( "TokenizerAnnotatorPTB" );
+	static private final Logger LOGGER = LoggerFactory.getLogger( "TokenizerAnnotatorPTB" );
 
 	/**
 	 * Value is "SegmentsToSkip".  This parameter specifies which segments to skip.  The parameter should be

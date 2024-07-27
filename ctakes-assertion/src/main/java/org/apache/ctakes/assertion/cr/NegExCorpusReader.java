@@ -26,8 +26,8 @@ import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.core.pipeline.PipelineBuilder;
 import org.apache.ctakes.typesystem.type.structured.DocumentID;
 import org.apache.ctakes.typesystem.type.textsem.EventMention;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.cas.CAS;
 import org.apache.uima.cas.CASException;
 import org.apache.uima.collection.CollectionException;
@@ -56,7 +56,7 @@ import java.util.List;
 		products = { PipeBitInfo.TypeProduct.DOCUMENT_ID, PipeBitInfo.TypeProduct.IDENTIFIED_ANNOTATION }
 )
 public class NegExCorpusReader extends CollectionReader_ImplBase {
-  static Logger LOGGER = LogManager.getLogger(NegExCorpusReader.class);
+  static Logger LOGGER = LoggerFactory.getLogger(NegExCorpusReader.class);
   
   private boolean skipReadingValuesJustReadText = false;
   

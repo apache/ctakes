@@ -23,8 +23,8 @@ import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.necontexts.ContextAnnotator;
 import org.apache.ctakes.typesystem.type.syntax.BaseToken;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -40,7 +40,7 @@ import org.apache.uima.resource.ResourceInitializationException;
         dependencies = { PipeBitInfo.TypeProduct.SENTENCE, PipeBitInfo.TypeProduct.BASE_TOKEN }
 )
 final public class ThreadSafeContextAnnotator extends ContextAnnotator {
-    static private final Logger LOGGER = LogManager.getLogger( "ThreadSafeContextAnnotator" );
+    static private final Logger LOGGER = LoggerFactory.getLogger( "ThreadSafeContextAnnotator" );
 
     /**
      * {@inheritDoc}

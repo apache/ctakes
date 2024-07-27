@@ -1,8 +1,8 @@
 package org.apache.ctakes.gui.action;
 
 
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
 import java.awt.*;
@@ -31,7 +31,7 @@ final public class GlobalHotKeyManager extends EventQueue implements HotKeyManag
    private GlobalHotKeyManager() {
    }
 
-   static private final Logger LOGGER = LogManager.getLogger( "HotKeyManager" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "HotKeyManager" );
 
    private final InputMap _keyStrokes = new InputMap();
    private final ActionMap _actions = new ActionMap();

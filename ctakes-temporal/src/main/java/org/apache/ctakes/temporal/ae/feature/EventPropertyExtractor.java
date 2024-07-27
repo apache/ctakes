@@ -33,15 +33,15 @@ import org.cleartk.ml.feature.extractor.FeatureExtractor1;
 
 import java.util.*;
 
-//import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+//import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class EventPropertyExtractor implements FeatureExtractor1<Annotation> {
 
 	//	private String name;
 	private static Integer polarity;
 
-	//  private Logger LOGGER = LogManager.getLogger(this.getClass().getName());
+	//  private Logger LOGGER = LoggerFactory.getLogger(this.getClass().getName());
 
 	public EventPropertyExtractor() {
 		super();

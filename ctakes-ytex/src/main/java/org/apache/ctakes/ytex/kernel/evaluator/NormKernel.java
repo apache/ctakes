@@ -22,8 +22,8 @@ import net.sf.ehcache.Cache;
 import net.sf.ehcache.CacheManager;
 import net.sf.ehcache.Element;
 import org.apache.ctakes.ytex.kernel.tree.Node;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 
 
 /**
@@ -37,7 +37,7 @@ import org.apache.logging.log4j.Logger;
  * 
  */
 public class NormKernel implements Kernel {
-	private static final Logger LOGGER = LogManager.getLogger( "NormKernel" );
+	private static final Logger LOGGER = LoggerFactory.getLogger( "NormKernel" );
 
 	private Cache normCache;
 	private CacheManager cacheManager;

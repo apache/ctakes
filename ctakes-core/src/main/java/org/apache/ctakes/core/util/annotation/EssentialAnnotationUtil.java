@@ -9,8 +9,8 @@ import org.apache.ctakes.typesystem.type.relation.RelationArgument;
 import org.apache.ctakes.typesystem.type.syntax.ConllDependencyNode;
 import org.apache.ctakes.typesystem.type.textsem.*;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.fit.util.FSCollectionFactory;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
@@ -28,7 +28,7 @@ import java.util.stream.Collectors;
  */
 final public class EssentialAnnotationUtil {
 
-   static private final Logger LOGGER = LogManager.getLogger( "EssentialAnnotationUtil" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "EssentialAnnotationUtil" );
 
    private EssentialAnnotationUtil() {
    }

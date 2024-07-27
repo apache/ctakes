@@ -9,8 +9,8 @@ import org.apache.ctakes.typesystem.type.refsem.EventProperties;
 import org.apache.ctakes.typesystem.type.relation.*;
 import org.apache.ctakes.typesystem.type.textsem.EventMention;
 import org.apache.ctakes.typesystem.type.textsem.TimeMention;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.factory.AnalysisEngineFactory;
@@ -32,7 +32,7 @@ import java.util.List;
 import java.util.Map;
 
 public class THYMEQAAnaforaXMLReader extends THYMEAnaforaXMLReader {
-	private static Logger LOGGER = LogManager.getLogger(THYMEQAAnaforaXMLReader.class);
+	private static Logger LOGGER = LoggerFactory.getLogger(THYMEQAAnaforaXMLReader.class);
 	
   public static AnalysisEngineDescription getDescription(File anaforaDirectory)
       throws ResourceInitializationException {

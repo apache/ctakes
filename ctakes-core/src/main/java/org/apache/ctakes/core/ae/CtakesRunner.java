@@ -2,8 +2,8 @@ package org.apache.ctakes.core.ae;
 
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.core.util.external.SystemUtil;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -26,7 +26,7 @@ import java.io.IOException;
 )
 public class CtakesRunner extends PausableFileLoggerAE {
 
-   static private final Logger LOGGER = LogManager.getLogger( "CtakesRunner" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "CtakesRunner" );
 
    static public final String PIPE_PARAM = "Pipeline";
    static public final String PIPE_DESC = "Piper parameters. Make sure to quote.";

@@ -8,8 +8,8 @@ import org.apache.ctakes.dictionary.cased.encoder.TermEncoding;
 import org.apache.ctakes.dictionary.cased.lookup.DiscoveredTerm;
 import org.apache.ctakes.dictionary.cased.util.textspan.MagicTextSpan;
 import org.apache.ctakes.dictionary.cased.wsd.WsdUtil;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.jcas.JCas;
 
 import javax.annotation.concurrent.Immutable;
@@ -24,7 +24,7 @@ import java.util.*;
 @Immutable
 final public class AlikeSubsumingAnnotationCreator implements AnnotationCreator {
 
-   static private final Logger LOGGER = LogManager.getLogger( "AlikeSubsumingAnnotationCreator" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "AlikeSubsumingAnnotationCreator" );
 
    public AlikeSubsumingAnnotationCreator() {
    }

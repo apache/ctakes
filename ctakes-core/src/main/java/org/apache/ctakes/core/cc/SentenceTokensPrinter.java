@@ -5,8 +5,8 @@ import org.apache.ctakes.core.util.JCasUtil;
 import org.apache.ctakes.core.util.doc.DocIdUtil;
 import org.apache.ctakes.typesystem.type.syntax.BaseToken;
 import org.apache.ctakes.typesystem.type.syntax.NewlineToken;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.cas.CAS;
 import org.apache.uima.cas.CASException;
 import org.apache.uima.cas.text.AnnotationIndex;
@@ -46,7 +46,7 @@ import static org.apache.ctakes.core.config.ConfigParameterConstants.PARAM_OUTPU
 public class SentenceTokensPrinter extends CasConsumer_ImplBase {
 
    // LOG4J logger based on interface name
-   final static private Logger LOGGER = LogManager.getLogger( "SentenceTokensPrinter" );
+   final static private Logger LOGGER = LoggerFactory.getLogger( "SentenceTokensPrinter" );
 
 
    private String _outputDirPath;

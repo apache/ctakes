@@ -11,8 +11,8 @@ import org.apache.ctakes.gui.pipeline.bit.parameter.ParameterTableModel;
 import org.apache.ctakes.gui.pipeline.piper.PiperFileView;
 import org.apache.ctakes.gui.pipeline.piper.PiperTextFilter;
 import org.apache.ctakes.gui.util.IconLoader;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
 import javax.swing.event.TableModelEvent;
@@ -45,7 +45,7 @@ import static javax.swing.JOptionPane.PLAIN_MESSAGE;
  */
 final class MainPanel2 extends JPanel {
 
-   static private final Logger LOGGER = LogManager.getLogger( "MainPanel" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "MainPanel" );
 
    private final JFileChooser _chooser = new JFileChooser();
 

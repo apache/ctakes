@@ -1,7 +1,7 @@
 package org.apache.ctakes.core.util;
 
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Comparator;
 
@@ -15,7 +15,7 @@ import java.util.Comparator;
  * @since 8/25/2017
  */
 public class NumberedSuffixComparator implements Comparator<String> {
-   static private final Logger LOGGER = LogManager.getLogger( "NumberedSuffixComparator" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "NumberedSuffixComparator" );
 
    /**
     * {@inheritDoc}

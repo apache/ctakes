@@ -1,8 +1,8 @@
 package org.apache.ctakes.core.util;
 
 
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Arrays;
 
@@ -13,7 +13,7 @@ import java.util.Arrays;
  */
 final public class StringUtil {
 
-   static private final Logger LOGGER = LogManager.getLogger( "StringUtil" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "StringUtil" );
 
    private StringUtil() {
    }

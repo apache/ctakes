@@ -25,8 +25,8 @@ import org.apache.ctakes.core.resource.StringIntegerMapResource;
 import org.apache.ctakes.core.util.ParamUtil;
 import org.apache.ctakes.typesystem.type.syntax.BaseToken;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -55,7 +55,7 @@ import java.util.Set;
 )
 public class TokenizerAnnotator extends JCasAnnotator_ImplBase {
 	// LOG4J logger based on class name
-	static private final Logger LOGGER = LogManager.getLogger( "TokenizerAnnotator" );
+	static private final Logger LOGGER = LoggerFactory.getLogger( "TokenizerAnnotator" );
 
 	public static final int TOKEN_CAP_NONE = 0;
 	public static final int TOKEN_CAP_FIRST_ONLY = 1;

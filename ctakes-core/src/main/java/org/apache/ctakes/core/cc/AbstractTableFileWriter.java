@@ -1,7 +1,7 @@
 package org.apache.ctakes.core.cc;
 
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.fit.descriptor.ConfigurationParameter;
 import org.apache.uima.jcas.JCas;
 
@@ -14,7 +14,7 @@ import java.util.List;
 abstract public class AbstractTableFileWriter
       extends AbstractFileWriter<List<List<String>>> {
 
-   static private final Logger LOGGER = LogManager.getLogger( "AbstractTableFileWriter" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "AbstractTableFileWriter" );
 
 
    protected enum TableType {

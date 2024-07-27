@@ -1,8 +1,8 @@
 package org.apache.ctakes.lvg.ae;
 
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -28,7 +28,7 @@ import java.io.IOException;
 )
 final public class ThreadSafeLvg extends JCasAnnotator_ImplBase {
 
-   static private final Logger LOGGER = LogManager.getLogger( "ThreadSafeLvg" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "ThreadSafeLvg" );
 
 
    /**

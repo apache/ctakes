@@ -18,8 +18,8 @@
  */
 package org.apache.ctakes.ytex.kernel;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -28,7 +28,7 @@ import java.util.List;
 import java.util.Properties;
 
 public class ClassifierEvalUtil {
-	static private final Logger LOGGER = LogManager.getLogger( "ClassifierEvalUtil" );
+	static private final Logger LOGGER = LoggerFactory.getLogger( "ClassifierEvalUtil" );
 	Properties props;
 
 	public ClassifierEvalUtil(String propFile) throws IOException {

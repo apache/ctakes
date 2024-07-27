@@ -20,8 +20,8 @@ package org.apache.ctakes.lvg.resource;
 
 import gov.nih.nlm.nls.lvg.Api.LvgCmdApi;
 import gov.nih.nlm.nls.lvg.Api.LvgLexItemApi;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.resource.DataResource;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.resource.SharedResourceObject;
@@ -47,7 +47,7 @@ public class LvgCmdApiResourceImpl
         implements LvgCmdApiResource, SharedResourceObject
 {
     // LOG4J logger based on class name
-    private Logger LOGGER = LogManager.getLogger(getClass().getName());
+    private Logger LOGGER = LoggerFactory.getLogger(getClass().getName());
 
     private LvgCmdApi lvg;
     private LvgLexItemApi lvgLexItem;

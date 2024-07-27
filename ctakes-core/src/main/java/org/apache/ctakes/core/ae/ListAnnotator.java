@@ -7,8 +7,8 @@ import org.apache.ctakes.core.util.regex.RegexSpanFinder;
 import org.apache.ctakes.typesystem.type.textspan.ListEntry;
 import org.apache.ctakes.typesystem.type.textspan.Paragraph;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -43,7 +43,7 @@ import java.util.stream.Collectors;
 )
 final public class ListAnnotator extends JCasAnnotator_ImplBase {
 
-   static private final Logger LOGGER = LogManager.getLogger( "ListAnnotator" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "ListAnnotator" );
 
 
    static public final String LIST_TYPES_PATH = "LIST_TYPES_PATH";

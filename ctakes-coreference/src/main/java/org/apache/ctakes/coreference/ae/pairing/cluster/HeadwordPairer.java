@@ -5,8 +5,8 @@ import org.apache.ctakes.coreference.util.ClusterMentionFetcher;
 import org.apache.ctakes.dependency.parser.util.DependencyUtility;
 import org.apache.ctakes.typesystem.type.syntax.ConllDependencyNode;
 import org.apache.ctakes.typesystem.type.textsem.Markable;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.jcas.JCas;
 
 import java.util.*;
@@ -30,7 +30,7 @@ public class HeadwordPairer extends ClusterMentionPairer_ImplBase {
 
     ConllDependencyNode headNode = DependencyUtility.getNominalHeadNode(jcas, mention);
     if(headNode == null){
-      LogManager.getLogger(MentionClusterCoreferenceAnnotator.class).warn("There is a markable with no dependency node covering it.");
+      LoggerFactory.getLogger(MentionClusterCoreferenceAnnotator.class).warn("There is a markable with no dependency node covering it.");
       return pairs;
     }
     String head = headNode.getCoveredText().toLowerCase();

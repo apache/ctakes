@@ -2,8 +2,8 @@ package org.apache.ctakes.fhir.cr;
 
 import org.apache.ctakes.core.cr.AbstractFileTreeReader;
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.jcas.JCas;
 import org.hl7.fhir.dstu3.model.Bundle;
 
@@ -24,7 +24,7 @@ import java.io.IOException;
 )
 public class FhirXmlFileReader extends AbstractFileTreeReader {
 
-   static private final Logger LOGGER = LogManager.getLogger( "FhirXmlFileReader" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "FhirXmlFileReader" );
 
    /**
     * {@inheritDoc}

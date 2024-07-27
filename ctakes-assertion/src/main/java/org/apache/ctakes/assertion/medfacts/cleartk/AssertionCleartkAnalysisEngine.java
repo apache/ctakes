@@ -29,8 +29,6 @@ import org.apache.ctakes.typesystem.type.textsem.EntityMention;
 import org.apache.ctakes.typesystem.type.textsem.EventMention;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -62,8 +60,6 @@ import java.util.*;
  */
 public abstract class AssertionCleartkAnalysisEngine extends
                                                      CleartkAnnotator<String> {
-   Logger LOGGER = LogManager.getLogger( AssertionCleartkAnalysisEngine.class );
-
    public static final String PARAM_GOLD_VIEW_NAME = "GoldViewName";
 
    public enum FEATURE_CONFIG {
@@ -310,7 +306,7 @@ public abstract class AssertionCleartkAnalysisEngine extends
 
    @Override
    public void process( JCas jCas ) throws AnalysisEngineProcessException {
-      LOGGER.info( "Processing ..." );
+      getLogger().info( "Processing ..." );
       String documentId = DocIdUtil.getDocumentID( jCas );
       String domainId = "";
       String domainFeature = null;
@@ -320,7 +316,7 @@ public abstract class AssertionCleartkAnalysisEngine extends
       }
 
       if ( documentId != null ) {
-         LOGGER.debug( "processing next doc: " + documentId );
+          getLogger().debug( "processing next doc: " + documentId );
          // set the domain to be FeatureFunction'ed into all extractors
          if ( !fileToDomain.isEmpty() && ffDomainAdaptor != null ) {
             domainId = fileToDomain.get( documentId );
@@ -330,7 +326,7 @@ public abstract class AssertionCleartkAnalysisEngine extends
             domainFeature = fileToDomain.get( documentId );
          }
       } else {
-         LOGGER.debug( "processing next doc (doc id is null)" );
+          getLogger().debug( "processing next doc (doc id is null)" );
       }
 
       this.lastLabel = "<BEGIN>";
@@ -385,7 +381,7 @@ public abstract class AssertionCleartkAnalysisEngine extends
 
          for ( IdentifiedAnnotation identifiedAnnotation : entities ) {
             if ( identifiedAnnotation.getPolarity() == -1 ) {
-               LOGGER.debug( String.format( " - identified annotation: [%d-%d] polarity %d (%s)",
+                getLogger().debug( String.format( " - identified annotation: [%d-%d] polarity %d (%s)",
                      identifiedAnnotation.getBegin(),
                      identifiedAnnotation.getEnd(),
                      identifiedAnnotation.getPolarity(),
@@ -668,7 +664,8 @@ public abstract class AssertionCleartkAnalysisEngine extends
   */
 
    // Object.finalize() was deprecated in jdk 9.  Given the manner of this code, this is a -reasonable- replacement.
-   public void collectionProcessComplete() throws AnalysisEngineProcessException {
+   @Override
+public void collectionProcessComplete() throws AnalysisEngineProcessException {
       super.collectionProcessComplete();
       if ( classifier instanceof AutoCloseable ) {
          try {

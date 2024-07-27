@@ -6,8 +6,8 @@ import org.apache.uima.jcas.JCas;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author SPF , chip-nlp
@@ -16,7 +16,7 @@ import org.apache.logging.log4j.LogManager;
  */
 final public class DefaultUmlsConceptCreator implements UmlsConceptCreator {
 
-   static private final Logger LOGGER = LogManager.getLogger( "DefaultUmlsConceptCreator" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "DefaultUmlsConceptCreator" );
 
    /**
     * {@inheritDoc}

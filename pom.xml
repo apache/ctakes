@@ -21,8 +21,8 @@
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
     <modelVersion>4.0.0</modelVersion>
+    
     <groupId>org.apache.ctakes</groupId>
     <artifactId>ctakes</artifactId>
     <version>6.0.0-SNAPSHOT</version>
@@ -186,18 +186,7 @@
         <scala-tools.version>0.4.0</scala-tools.version>
         <servlet-jsp-api.version>2.2</servlet-jsp-api.version>
         <servlet-jstl.version>1.2</servlet-jstl.version>
-
-
-
-        <slf4j.version>1.6.1</slf4j.version>
-
-<!--        <slf4j.version>2.0.13</slf4j.version>-->
-<!--        <slf4j.version>2.0.5</slf4j.version>-->
-<!--        <slf4j2.version>2.23.1</slf4j2.version>-->
-
-
-
-
+        <slf4j.version>2.0.13</slf4j.version>
         <solr.version>3.5.0</solr.version>
         <spring.version>5.3.20</spring.version>
         <spring-aop.version>6.1.11</spring-aop.version>
@@ -379,6 +368,13 @@
             </dependency>
 
             <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-bom</artifactId>
+                <version>${slf4j.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
                 <groupId>org.apache.logging.log4j</groupId>
                 <artifactId>log4j-1.2-api</artifactId>
                 <version>${log4j.version}</version>
@@ -426,15 +422,21 @@
 <!--            </dependency>-->
 
             <!-- There is an xml=apis 2.0 in maven central, but it is pom only, therefore broken.  -->
-            <dependency>
-                <groupId>xml-apis</groupId>
-                <artifactId>xml-apis</artifactId>
-                <version>${xml-apis.version}</version>
-            </dependency>
+<!--            <dependency>-->
+<!--                <groupId>xml-apis</groupId>-->
+<!--                <artifactId>xml-apis</artifactId>-->
+<!--                <version>${xml-apis.version}</version>-->
+<!--            </dependency>-->
             <dependency>
                 <groupId>xerces</groupId>
                 <artifactId>xercesImpl</artifactId>
                 <version>${xerces.version}</version>
+                <exclusions>
+                  <exclusion>
+                    <groupId>xml-apis</groupId>
+                    <artifactId>xml-apis</artifactId>
+                  </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>org.jdom</groupId>
@@ -1504,7 +1506,7 @@
                                     <pluginExecutionFilter>
                                         <groupId>org.apache.maven.plugins</groupId>
                                         <artifactId>maven-dependency-plugin</artifactId>
-                                        <versionRange>${maven-dependency-plugin.version}</versionRange>
+                                        <versionRange>[${maven-dependency-plugin.version},)</versionRange>
                                         <goals>
                                             <goal>unpack-dependencies</goal>
                                         </goals>
@@ -1523,8 +1525,7 @@
                                     <pluginExecutionFilter>
                                         <groupId>org.apache.maven.plugins</groupId>
                                         <artifactId>maven-remote-resources-plugin</artifactId>
-                                        <!--										<versionRange>${maven-remote-resources-plugin.version}</versionRange>-->
-                                        <version>${maven-remote-resources-plugin.version}</version>
+                                        <versionRange>[${maven-remote-resources-plugin.version},)</versionRange>
                                         <goals>
                                             <goal>process</goal>
                                         </goals>

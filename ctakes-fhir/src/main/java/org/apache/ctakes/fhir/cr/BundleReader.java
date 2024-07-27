@@ -8,8 +8,8 @@ import org.hl7.fhir.dstu3.model.Bundle;
 import org.hl7.fhir.instance.model.api.IBaseResource;
 
 import java.io.*;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author SPF , chip-nlp
@@ -21,7 +21,7 @@ final public class BundleReader {
    private BundleReader() {
    }
 
-   static private final Logger LOGGER = LogManager.getLogger( "BundleReader" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "BundleReader" );
 
 
    static public Bundle readJsonBundle( final File file ) throws IOException {

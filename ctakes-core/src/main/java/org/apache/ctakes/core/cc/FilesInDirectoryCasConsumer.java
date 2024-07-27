@@ -20,8 +20,8 @@ package org.apache.ctakes.core.cc;
 
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.core.util.doc.DocIdUtil;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.cas.CAS;
 import org.apache.uima.collection.CasConsumer_ImplBase;
 import org.apache.uima.jcas.JCas;
@@ -53,7 +53,7 @@ public class FilesInDirectoryCasConsumer extends CasConsumer_ImplBase {
 
    public static final String PARAM_OUTPUTDIR = "OutputDirectory";
 
-   static private final Logger LOGGER = LogManager.getLogger( "FilesInDirectoryCasConsumer" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "FilesInDirectoryCasConsumer" );
 
    File iv_outputDirectory;
 

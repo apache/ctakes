@@ -29,8 +29,8 @@ import org.apache.ctakes.jdl.schema.xdl.CsvLoadType;
 import org.apache.ctakes.jdl.schema.xdl.JdbcType;
 import org.apache.ctakes.jdl.schema.xdl.LoadType;
 import org.apache.ctakes.jdl.schema.xdl.XmlLoadType;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 
 import javax.xml.bind.JAXBException;
 import java.io.File;
@@ -45,7 +45,7 @@ import java.sql.SQLException;
  */
 public class AppJdl {
 //	private static final Log log = LogFactory.getLog(AppJdl.class);
-	static private final Logger LOGGER = LogManager.getLogger( "AppJdl" );
+	static private final Logger LOGGER = LoggerFactory.getLogger( "AppJdl" );
 	private String srcConn;
 	private String srcData;
 	private String srcLoad;

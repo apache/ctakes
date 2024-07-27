@@ -17,8 +17,8 @@ import org.apache.ctakes.typesystem.type.relation.RelationArgument;
 import org.apache.ctakes.typesystem.type.textsem.EventMention;
 import org.apache.ctakes.typesystem.type.textsem.Markable;
 import org.apache.ctakes.utils.struct.CounterMap;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.CAS;
@@ -66,7 +66,7 @@ public class ThymeAnaforaCrossDocCorefXmlReader extends AbstractPatientConsumer 
     )boolean isTraining;
 
     private static final String NAME = ThymeAnaforaCrossDocCorefXmlReader.class.getSimpleName();
-    private static final Logger LOGGER = LogManager.getLogger(ThymeAnaforaCrossDocCorefXmlReader.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ThymeAnaforaCrossDocCorefXmlReader.class);
 
     public ThymeAnaforaCrossDocCorefXmlReader(){
         super(NAME,

@@ -28,8 +28,8 @@ import org.apache.ctakes.core.sentence.SentenceDetectorCtakes;
 import org.apache.ctakes.core.util.ParamUtil;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -86,7 +86,7 @@ public class SentenceDetector extends JCasAnnotator_ImplBase {
 	public static final String PARAM_SEGMENTS_TO_SKIP = "SegmentsToSkip";
 
 	// LOG4J logger based on class name
-	static private final Logger LOGGER = LogManager.getLogger( "SentenceDetector" );
+	static private final Logger LOGGER = LoggerFactory.getLogger( "SentenceDetector" );
 
 	public static final String SD_MODEL_FILE_PARAM = "SentenceModelFile";
 
@@ -135,11 +135,12 @@ public class SentenceDetector extends JCasAnnotator_ImplBase {
 
 	private int sentenceCount = 0;
 
-	public void initialize(UimaContext aContext)
+	@Override
+    public void initialize(UimaContext aContext)
 			throws ResourceInitializationException {
 
 		super.initialize(aContext);
-		LOGGER.info(Arrays.asList(aContext.getConfigParameterNames()));
+		LOGGER.info("{}", Arrays.asList(aContext.getConfigParameterNames()));
 
 		context = aContext;
 		try {
@@ -186,8 +187,9 @@ public class SentenceDetector extends JCasAnnotator_ImplBase {
 	private Pattern compilePatternCheck(String patternKey, String patternDefault) {
 		String strPattern = (String) context
 				.getConfigParameterValue(patternKey);
-		if (strPattern == null)
-			strPattern = patternDefault;
+		if (strPattern == null) {
+            strPattern = patternDefault;
+        }
 		Pattern pat = null;
 		try {
 			pat = Strings.isNullOrEmpty(strPattern) ? null : Pattern
@@ -203,7 +205,8 @@ public class SentenceDetector extends JCasAnnotator_ImplBase {
 	/**
 	 * Entry point for processing.
 	 */
-	public void process(JCas jcas) throws AnalysisEngineProcessException {
+	@Override
+    public void process(JCas jcas) throws AnalysisEngineProcessException {
 
 		LOGGER.info("Starting processing.");
 
@@ -402,7 +405,7 @@ public class SentenceDetector extends JCasAnnotator_ImplBase {
 	 * @throws IOException
 	 */
 	public static void main(String[] args) throws IOException {
-		final Logger LOGGER = LogManager.getLogger(SentenceDetector.class.getName()
+		final Logger LOGGER = LoggerFactory.getLogger(SentenceDetector.class.getName()
 				+ ".main()");
 
 		// Handle arguments

@@ -20,8 +20,8 @@ package org.apache.ctakes.smokingstatus.ae;
 
 import org.apache.ctakes.typesystem.type.textspan.Segment;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.analysis_engine.annotator.AnnotatorContextException;
@@ -55,7 +55,7 @@ public class SentenceAdjuster extends JCasAnnotator_ImplBase {
 	public static final String PARAM_WORDS_IN_PATTERN = "WordsInPattern";
 
 	// LOG4J logger based on class name
-	public Logger LOGGER = LogManager.getLogger(getClass().getName());
+	public Logger LOGGER = LoggerFactory.getLogger(getClass().getName());
 
 
 

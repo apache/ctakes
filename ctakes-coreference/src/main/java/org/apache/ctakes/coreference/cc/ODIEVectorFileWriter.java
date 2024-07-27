@@ -29,8 +29,8 @@ import org.apache.ctakes.coreference.util.*;
 import org.apache.ctakes.relationextractor.eval.XMIReader;
 import org.apache.ctakes.typesystem.type.syntax.TreebankNode;
 import org.apache.ctakes.utils.tree.SimpleTree;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
 import org.apache.uima.analysis_engine.AnalysisEngine;
@@ -59,7 +59,7 @@ import java.util.Scanner;
 )
 public class ODIEVectorFileWriter extends JCasAnnotator_ImplBase {
 
-	private Logger LOGGER = LogManager.getLogger(this.getClass());
+	private Logger LOGGER = LoggerFactory.getLogger(this.getClass());
 //	private static final Integer NGRAM_THRESHOLD = 0;
 	private String outputDir = null;
 	private String goldStandardDir = null;

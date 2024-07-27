@@ -28,8 +28,8 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 /**
@@ -46,7 +46,7 @@ public class ConceptLookupBean implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private static final Logger LOGGER = LogManager.getLogger("ConceptLookupBean");
+	private static final Logger LOGGER = LoggerFactory.getLogger("ConceptLookupBean");
 
 	private ConceptSearchService conceptSearchService;
 

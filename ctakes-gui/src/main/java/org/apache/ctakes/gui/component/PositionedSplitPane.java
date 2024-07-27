@@ -1,7 +1,7 @@
 package org.apache.ctakes.gui.component;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,7 +13,7 @@ import java.awt.*;
  */
 final public class PositionedSplitPane extends JSplitPane {
 
-   static private final Logger LOGGER = LogManager.getLogger( "PositionedSplitPane" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "PositionedSplitPane" );
 
    private final Object LOCKER = new Object();
    private boolean _isLocationSet;

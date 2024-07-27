@@ -23,8 +23,8 @@ import org.apache.ctakes.core.resource.FileResource;
 import org.apache.ctakes.dictionary.lookup.DictionaryException;
 import org.apache.ctakes.dictionary.lookup.MetaDataHit;
 import org.apache.ctakes.dictionary.lookup.lucene.LuceneDictionaryImpl;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.search.IndexSearcher;
@@ -50,7 +50,7 @@ import java.util.Set;
 public class UmlsToSnomedLuceneConsumerImpl extends UmlsToSnomedConsumerImpl {
 
    // LOG4J logger based on class name
-   private Logger LOGGER = LogManager.getLogger( getClass().getName() );
+   private Logger LOGGER = LoggerFactory.getLogger( getClass().getName() );
 
    //ohnlp-Bugs-3296301 limits the search results to fixed 100 records.
    // Added 'MaxListSize'

@@ -1,8 +1,8 @@
 package org.apache.ctakes.gui.pipeline.bit.parameter;
 
 
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.fit.descriptor.ConfigurationParameter;
 
 import java.lang.reflect.Field;
@@ -15,7 +15,7 @@ import java.util.*;
  */
 final public class ParameterMapper {
 
-   static private final Logger LOGGER = LogManager.getLogger( "ParameterMapper" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "ParameterMapper" );
 
    private ParameterMapper() {
    }

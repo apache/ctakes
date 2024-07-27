@@ -22,8 +22,8 @@ import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.core.resource.FileResource;
 import org.apache.ctakes.core.resource.JdbcConnectionResource;
 import org.apache.ctakes.typesystem.type.structured.DocumentID;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 import org.apache.uima.collection.CollectionException;
 import org.apache.uima.fit.component.JCasCollectionReader_ImplBase;
@@ -57,7 +57,7 @@ import java.util.StringTokenizer;
 public class JdbcCollectionReader extends JCasCollectionReader_ImplBase {
 
    // LOG4J logger based on class name
-   static private final Logger LOGGER = LogManager.getLogger( "JdbcCollectionReader" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "JdbcCollectionReader" );
 
    /**
     * SQL statement to retrieve the document.

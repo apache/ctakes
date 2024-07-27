@@ -3,8 +3,8 @@ package org.apache.ctakes.core.util.annotation;
 import org.apache.ctakes.typesystem.type.refsem.OntologyConcept;
 import org.apache.ctakes.typesystem.type.refsem.UmlsConcept;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.cas.FeatureStructure;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
@@ -25,7 +25,7 @@ import java.util.stream.Stream;
  */
 final public class OntologyConceptUtil {
 
-   static private final Logger LOGGER = LogManager.getLogger( "IdentifiedAnnotationUtil" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "IdentifiedAnnotationUtil" );
 
    static private final FeatureStructure[] EMPTY_FEATURE_ARRAY = new FeatureStructure[ 0 ];
 

@@ -3,8 +3,8 @@ package org.apache.ctakes.fhir.resource;
 import org.apache.ctakes.fhir.element.FhirElementFactory;
 import org.apache.ctakes.fhir.util.FhirNoteSpecs;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.jcas.JCas;
 import org.hl7.fhir.dstu3.model.Basic;
 import org.hl7.fhir.dstu3.model.CodeableConcept;
@@ -18,7 +18,7 @@ import org.hl7.fhir.dstu3.model.Coding;
  */
 final public class SectionCreator implements FhirBasicCreator<Segment> {
 
-   static private final Logger LOGGER = LogManager.getLogger( "SectionBasicCreator" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "SectionBasicCreator" );
 
    static public final String CODING_SECTION_NAME = "section-name";
    static public final String CODING_SECTION_ID = "section-id";

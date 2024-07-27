@@ -40,7 +40,7 @@ public class TimeXExtractor implements FeatureExtractor1 {
   private TimeWordTypeExtractor<IdentifiedAnnotation> timewd;
 //  private TemporalSingleTreeExtractor treeExt;
   
-//  private Logger LOGGER = LogManager.getLogger(this.getClass().getName());
+//  private Logger LOGGER = LoggerFactory.getLogger(this.getClass().getName());
 
   public TimeXExtractor() throws ResourceInitializationException {
     super();

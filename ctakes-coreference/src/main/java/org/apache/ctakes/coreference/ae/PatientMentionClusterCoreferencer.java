@@ -1,8 +1,8 @@
 package org.apache.ctakes.coreference.ae;
 
 import org.apache.ctakes.core.patient.AbstractPatientConsumer;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.analysis_engine.ResultSpecification;
@@ -17,7 +17,7 @@ import org.apache.uima.resource.ResourceInitializationException;
  */
 public class PatientMentionClusterCoreferencer extends AbstractPatientConsumer {
 
-   static private final Logger LOGGER = LogManager.getLogger( "PatientMentionClusterCoreferencer" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "PatientMentionClusterCoreferencer" );
 
    private final MentionClusterCoreferenceAnnotator _delegate;
 

@@ -2,8 +2,8 @@ package org.apache.ctakes.gui.dictionary.umls;
 
 import org.apache.ctakes.core.util.annotation.SemanticGroup;
 import org.apache.ctakes.core.util.annotation.SemanticTui;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.swing.event.EventListenerList;
 import javax.swing.event.TableModelListener;
@@ -22,7 +22,7 @@ import static org.apache.ctakes.core.util.annotation.SemanticTui.*;
  */
 final public class TuiTableModel implements TableModel {
 
-   static private final Logger LOGGER = LogManager.getLogger( "TuiTableModel" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "TuiTableModel" );
 
 //   static public final Tui[] CTAKES_ANAT = { T021, T022, T023, T024, T025, T026, T029, T030 };
 //   static public final Tui[] CTAKES_DRUG = { T109, T110, T114, T115, T116, T118, T119, T121, T122, T123, T124,

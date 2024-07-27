@@ -27,8 +27,8 @@ import org.apache.ctakes.dictionary.lookup.vo.LookupAnnotation;
 import org.apache.ctakes.dictionary.lookup.vo.LookupToken;
 import org.apache.ctakes.typesystem.type.syntax.*;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.annotator.AnnotatorInitializationException;
 import org.apache.uima.cas.text.AnnotationIndex;
@@ -46,7 +46,7 @@ public class DirectLookupInitializerImpl implements LookupInitializer {
    private final String CANONICAL_VARIANT_ATTR = "canonicalATTR";
 
    // LOG4J logger based on class name
-   final private Logger LOGGER = LogManager.getLogger( getClass().getName() );
+   final private Logger LOGGER = LoggerFactory.getLogger( getClass().getName() );
 
    public DirectLookupInitializerImpl( final UimaContext uimaContext, final Properties props ) {
       // TODO property validation could be done here

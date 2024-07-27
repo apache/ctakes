@@ -25,8 +25,8 @@ import org.apache.ctakes.core.resource.FileResource;
 import org.apache.ctakes.core.util.DocumentSection;
 import org.apache.ctakes.core.util.doc.DocIdUtil;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -55,7 +55,7 @@ public class SectionSegmentAnnotator extends JCasAnnotator_ImplBase {
 	private StructFinder structureFinder;
 
 	private String templateFile= null;
-	static private final Logger LOGGER = LogManager.getLogger( "SectionSegmentAnnotator" );
+	static private final Logger LOGGER = LoggerFactory.getLogger( "SectionSegmentAnnotator" );
 
 	public HashMap<Integer, DocumentSection> sections;
 

@@ -22,8 +22,8 @@ import org.apache.commons.cli.*;
 import org.apache.ctakes.ytex.kernel.dao.ClassifierEvaluationDao;
 import org.apache.ctakes.ytex.kernel.model.CrossValidationFold;
 import org.apache.ctakes.ytex.kernel.model.CrossValidationFoldInstance;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 
 import java.io.IOException;
 import java.util.*;
@@ -53,7 +53,7 @@ import java.util.*;
  * @author vijay
  */
 public class FoldGeneratorImpl implements FoldGenerator {
-	private static final Logger LOGGER = LogManager.getLogger( "FoldGeneratorImpl" );
+	private static final Logger LOGGER = LoggerFactory.getLogger( "FoldGeneratorImpl" );
 
 	/**
 	 * iterate through the labels, split instances into folds

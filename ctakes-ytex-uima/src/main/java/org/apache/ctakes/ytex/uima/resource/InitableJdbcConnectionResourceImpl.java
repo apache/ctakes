@@ -46,8 +46,8 @@ package org.apache.ctakes.ytex.uima.resource;
 
 import org.apache.ctakes.core.resource.JdbcConnectionResource;
 import org.apache.ctakes.ytex.uima.ApplicationContextHolder;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.resource.DataResource;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.resource.SharedResourceObject;
@@ -72,7 +72,7 @@ import java.util.Properties;
 public class InitableJdbcConnectionResourceImpl implements JdbcConnectionResource,
 		SharedResourceObject
 {
-    private Logger LOGGER = LogManager.getLogger(getClass().getName());
+    private Logger LOGGER = LoggerFactory.getLogger(getClass().getName());
 
     /**
 	 * JDBC driver ClassName.

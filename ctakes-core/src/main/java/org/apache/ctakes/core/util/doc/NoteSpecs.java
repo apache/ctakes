@@ -3,8 +3,8 @@ package org.apache.ctakes.core.util.doc;
 
 import org.apache.ctakes.typesystem.type.structured.SourceData;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 
@@ -28,7 +28,7 @@ import static org.apache.ctakes.core.util.doc.SourceMetadataUtil.UNKNOWN_PATIENT
  */
 final public class NoteSpecs {
 
-   static private final Logger LOGGER = LogManager.getLogger( "NoteSpecs" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "NoteSpecs" );
 
    // ClinicalNote is not yet a fhir resource, but it may be in the future and is the best fit.
    // http://wiki.hl7.org/index.php?title=ClinicalNote_FHIR_Resource_Proposal

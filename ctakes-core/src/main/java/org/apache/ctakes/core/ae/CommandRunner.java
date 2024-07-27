@@ -2,8 +2,8 @@ package org.apache.ctakes.core.ae;
 
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.core.util.external.SystemUtil;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -25,7 +25,7 @@ import java.io.IOException;
 )
 public class CommandRunner extends AbstractCommandRunner {
 
-   static private final Logger LOGGER = LogManager.getLogger( "CommandRunner" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "CommandRunner" );
 
 
    static public final String SET_JAVAHOME_PARAM = "SetJavaHome";
@@ -106,14 +106,14 @@ public class CommandRunner extends AbstractCommandRunner {
    private Logger getRunLogger() {
       final String logName = getLogName();
       if ( logName != null && !logName.isEmpty() ) {
-         return LogManager.getLogger( logName );
+         return LoggerFactory.getLogger( logName );
       }
       final String command = getCommand().trim();
       final int spaceIndex = command.indexOf( ' ' );
       if ( spaceIndex < 0 ) {
-         return LogManager.getLogger( command );
+         return LoggerFactory.getLogger( command );
       }
-      return LogManager.getLogger( command.substring( 0, spaceIndex ) );
+      return LoggerFactory.getLogger( command.substring( 0, spaceIndex ) );
    }
 
    static public AnalysisEngineDescription createEngineDescription( final String command )

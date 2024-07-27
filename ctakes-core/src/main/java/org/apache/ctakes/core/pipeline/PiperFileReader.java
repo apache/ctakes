@@ -3,8 +3,8 @@ package org.apache.ctakes.core.pipeline;
 
 import org.apache.ctakes.core.resource.FileLocator;
 import org.apache.ctakes.core.util.log.DotLogger;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UIMAException;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 
@@ -46,7 +46,7 @@ import java.util.regex.Pattern;
 @SuppressWarnings( "unchecked" )
 final public class PiperFileReader {
 
-   static private final Logger LOGGER = LogManager.getLogger( "PiperFileReader" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "PiperFileReader" );
 
    static public final String AE_VIEW_NAMES = "AeViews";
 

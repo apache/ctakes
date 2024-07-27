@@ -20,8 +20,8 @@ package org.apache.ctakes.core.ae;
 
 import org.apache.ctakes.typesystem.type.syntax.*;
 import org.apache.ctakes.utils.test.TestUtil;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.analysis_engine.AnalysisEngine;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
@@ -33,7 +33,7 @@ import java.util.Date;
 public class TokenizerAnnotatorPTBTests {
 
     TestData<SimpleToken []>[] tests;
-    private static final Logger LOGGER = LogManager.getLogger(TokenizerAnnotatorPTBTests.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(TokenizerAnnotatorPTBTests.class.getName());
     
     public TokenizerAnnotatorPTBTests() {
 	

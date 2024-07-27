@@ -19,7 +19,7 @@ import org.apache.ctakes.typesystem.type.textsem.MedicationEventMention;
 import org.apache.ctakes.typesystem.type.textspan.Paragraph;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.descriptor.ConfigurationParameter;
@@ -321,7 +321,7 @@ public class MentionClusterRankingCoreferenceAnnotator extends CleartkAnnotator<
 
     ConllDependencyNode headNode = DependencyUtility.getNominalHeadNode(jcas, mention);
     if(headNode == null){
-      LogManager.getLogger(MentionClusterRankingCoreferenceAnnotator.class).warn("There is a markable with no dependency node covering it.");
+      LoggerFactory.getLogger(MentionClusterRankingCoreferenceAnnotator.class).warn("There is a markable with no dependency node covering it.");
       return pairs;
     }
     String head = headNode.getCoveredText().toLowerCase();

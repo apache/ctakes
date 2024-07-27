@@ -6,8 +6,8 @@ import org.apache.ctakes.typesystem.type.constants.CONST;
 import org.apache.ctakes.typesystem.type.refsem.OntologyConcept;
 import org.apache.ctakes.typesystem.type.refsem.UmlsConcept;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.FSArray;
 
@@ -25,7 +25,7 @@ import java.util.stream.Collectors;
  */
 final public class IdentifiedAnnotationBuilder {
 
-   static private final Logger LOGGER = LogManager.getLogger( "IdentifiedAnnotationBuilder" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "IdentifiedAnnotationBuilder" );
    static private final Pair<Integer> NULL_SPAN = new Pair<>( -1, -1 );
 
    private Pair<Integer> _textSpan = NULL_SPAN;

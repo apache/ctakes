@@ -8,8 +8,8 @@ import org.apache.ctakes.dictionary.cased.util.bsv.BsvObjectCreator;
 import org.apache.ctakes.dictionary.cased.util.tokenize.TokenizedTerm;
 import org.apache.ctakes.dictionary.cased.util.tokenize.TokenizedTermMapper;
 import org.apache.ctakes.utils.env.EnvironmentVariable;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 
 import java.io.IOException;
@@ -28,7 +28,7 @@ final public class BsvDictionary implements CasedDictionary {
 
    static public final String DICTIONARY_TYPE = "BSV";
 
-   static private final Logger LOGGER = LogManager.getLogger( "BsvDictionary" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "BsvDictionary" );
 
    final private CasedDictionary _delegateDictionary;
 

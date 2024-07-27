@@ -1,8 +1,8 @@
 package org.apache.ctakes.core.cc.property.plaintext;
 
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.CAS;
 import org.apache.uima.cas.CASException;
@@ -32,7 +32,7 @@ import static org.apache.ctakes.core.config.ConfigParameterConstants.PARAM_OUTPU
 public class PropertyTextWriterUima extends CasConsumer_ImplBase {
 
 
-   static private final Logger LOGGER = LogManager.getLogger( "PrettyTextWriterUima" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "PrettyTextWriterUima" );
 
    // delegate
    final private PropertyTextWriter _propertyTextWriter;

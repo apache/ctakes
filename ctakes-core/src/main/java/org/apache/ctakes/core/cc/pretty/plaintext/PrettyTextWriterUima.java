@@ -1,8 +1,8 @@
 package org.apache.ctakes.core.cc.pretty.plaintext;
 
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.CAS;
 import org.apache.uima.cas.CASException;
@@ -33,7 +33,7 @@ import static org.apache.ctakes.core.pipeline.PipeBitInfo.TypeProduct.*;
 final public class PrettyTextWriterUima extends CasConsumer_ImplBase {
 
 
-   static private final Logger LOGGER = LogManager.getLogger( "PrettyTextWriterUima" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "PrettyTextWriterUima" );
 
    // delegate
    final private PrettyTextWriter _prettyTextWriter;
