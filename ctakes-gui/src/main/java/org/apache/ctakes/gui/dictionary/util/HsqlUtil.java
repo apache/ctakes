@@ -2,8 +2,8 @@ package org.apache.ctakes.gui.dictionary.util;
 
 
 import org.apache.ctakes.gui.dictionary.umls.VocabularyStore;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
  */
 final public class HsqlUtil {
 
-   static private final Logger LOGGER = LogManager.getLogger( "HsqlUtil" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "HsqlUtil" );
 
    static public final String URL_PREFIX = "jdbc:hsqldb:file:";
 

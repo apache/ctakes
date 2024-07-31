@@ -18,8 +18,8 @@
  */
 package org.apache.ctakes.assertion.medfacts;
 
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.cas.Type;
 import org.apache.uima.cas.text.AnnotationIndex;
 import org.apache.uima.jcas.JCas;
@@ -34,7 +34,7 @@ import java.util.TreeSet;
 
 public class CasIndexer<T extends Annotation>
 {
-  private Logger LOGGER = LogManager.getLogger(CasIndexer.class.getName());
+  private Logger LOGGER = LoggerFactory.getLogger(CasIndexer.class.getName());
   private JCas jcas;
   protected Map<Integer, T> mapByAddress;
   protected Type targetType;

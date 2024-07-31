@@ -26,8 +26,8 @@ import org.apache.ctakes.ytex.kernel.model.KernelEvaluationInstance;
 import org.apache.ctakes.ytex.kernel.tree.InstanceTreeBuilder;
 import org.apache.ctakes.ytex.kernel.tree.Node;
 import org.apache.ctakes.ytex.kernel.tree.TreeMappingInfo;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
@@ -85,7 +85,7 @@ public class CorpusKernelEvaluatorImpl implements CorpusKernelEvaluator {
 		}
 	}
 
-	private static final Logger LOGGER = LogManager.getLogger( "CorpusKernelEvaluator");
+	private static final Logger LOGGER = LoggerFactory.getLogger( "CorpusKernelEvaluator");
 
 	@SuppressWarnings("static-access")
 	private static Options initOptions() {

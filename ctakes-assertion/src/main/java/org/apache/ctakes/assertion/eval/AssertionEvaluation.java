@@ -37,8 +37,8 @@ import org.apache.ctakes.typesystem.type.textsem.EventMention;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
 import org.apache.ctakes.typesystem.type.textsem.Modifier;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UIMAException;
 import org.apache.uima.analysis_engine.AnalysisEngine;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
@@ -83,7 +83,7 @@ import java.util.*;
 
 public class AssertionEvaluation extends Evaluation_ImplBase<File, Map<String, AnnotationStatisticsCompact<String>>> {
   
-private static final Logger LOGGER = LogManager.getLogger( AssertionEvaluation.class );
+private static final Logger LOGGER = LoggerFactory.getLogger( AssertionEvaluation.class );
 
   private static final String YTEX_NEGATION_DESCRIPTOR = "ytex.uima.NegexAnnotator";
 

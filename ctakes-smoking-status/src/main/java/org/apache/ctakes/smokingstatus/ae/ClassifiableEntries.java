@@ -31,8 +31,8 @@ import org.apache.ctakes.smokingstatus.util.TruthValue;
 import org.apache.ctakes.typesystem.type.structured.DocumentID;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UIMAFramework;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngine;
@@ -629,7 +629,7 @@ public class ClassifiableEntries extends JCasAnnotator_ImplBase {
 	private ResourceSpecifier taeSpecifierStep2;
 
 	// LOG4J logger based on class name
-	protected Logger LOGGER = LogManager.getLogger(getClass().getName());
+	protected Logger LOGGER = LoggerFactory.getLogger(getClass().getName());
 
 	// counters to track sentence classification
 	private int iSmokerCtr;

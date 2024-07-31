@@ -2,8 +2,8 @@ package org.apache.ctakes.lvg.ae;
 
 
 import org.apache.ctakes.lvg.resource.LvgCmdApiResourceImpl;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.factory.ExternalResourceFactory;
@@ -32,7 +32,7 @@ enum LvgSingleton {
 
    static public final String PROPERTIES_PATH = "org/apache/ctakes/lvg/data/config/lvg.properties";
 
-   private final Logger LOGGER = LogManager.getLogger( "LvgSingleton" );
+   private final Logger LOGGER = LoggerFactory.getLogger( "LvgSingleton" );
    private final Object LOCK = new Object();
 
    private final LvgAnnotator _lvgAnnotator;

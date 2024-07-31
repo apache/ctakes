@@ -22,8 +22,8 @@ import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.typesystem.type.constants.CONST;
 import org.apache.ctakes.typesystem.type.structured.DocumentID;
 import org.apache.ctakes.typesystem.type.textsem.EventMention;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.cas.CAS;
 import org.apache.uima.cas.CASException;
 import org.apache.uima.collection.CollectionException;
@@ -62,7 +62,7 @@ public class I2B2Challenge2010CollectionReader extends CollectionReader_ImplBase
 	private String mEncoding = null;
 //	Pattern conPatt = Pattern.compile("c=\"(.*)\" (\\d+):(\\d+) (\\d+):(\\d+)\\|\\|t=\"(.*)\"");
 	Pattern astPatt = Pattern.compile("c=\"(.*)\" (\\d+):(\\d+) (\\d+):(\\d+)\\|\\|t=\"(.*)\"\\|\\|a=\"(.*)\"");
-	Logger LOGGER = LogManager.getLogger(this.getClass());
+	Logger LOGGER = LoggerFactory.getLogger(this.getClass());
 	HashMap<String,String> conLocs = new HashMap<String, String>();
 	
 	

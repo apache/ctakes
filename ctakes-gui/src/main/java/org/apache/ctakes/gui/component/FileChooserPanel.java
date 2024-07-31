@@ -1,7 +1,7 @@
 package org.apache.ctakes.gui.component;
 
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -25,7 +25,7 @@ import java.nio.file.Paths;
  */
 final public class FileChooserPanel extends JPanel {
 
-   static private final Logger LOGGER = LogManager.getLogger( "FileChooserPanel" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "FileChooserPanel" );
 
    public FileChooserPanel( final String name, final String defaultDirectory,
                             final ActionListener fileChangeListener ) {

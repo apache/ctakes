@@ -23,8 +23,8 @@ import org.apache.ctakes.ytex.kernel.BaseClassifierEvaluationParser;
 import org.apache.ctakes.ytex.kernel.KernelContextHolder;
 import org.apache.ctakes.ytex.kernel.model.ClassifierEvaluation;
 import org.apache.ctakes.ytex.kernel.model.SemiLClassifierEvaluation;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 
 import java.io.*;
 import java.util.HashMap;
@@ -55,7 +55,7 @@ import java.util.regex.Pattern;
  * 
  */
 public class SemiLEvaluationParser extends BaseClassifierEvaluationParser {
-	public final static Logger LOGGER = LogManager.getLogger("SemiLEvaluationParser");
+	public final static Logger LOGGER = LoggerFactory.getLogger("SemiLEvaluationParser");
 	/**
 	 * parse options
 	 * 

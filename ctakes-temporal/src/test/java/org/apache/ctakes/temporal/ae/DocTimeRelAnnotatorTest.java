@@ -37,8 +37,8 @@
 //import org.apache.ctakes.typesystem.type.textsem.EventMention;
 //import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
 //import org.apache.ctakes.typesystem.type.textsem.TimeMention;
-//import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 //import org.apache.uima.UIMAException;
 //import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 //import org.apache.uima.jcas.JCas;
@@ -57,7 +57,7 @@ import org.apache.logging.log4j.LogManager;
 //public class DocTimeRelAnnotatorTest {
 //
 //	// LOG4J logger based on class name
-//	private Logger LOGGER = LogManager.getLogger(getClass().getName());
+//	private Logger LOGGER = LoggerFactory.getLogger(getClass().getName());
 //
 //	@Test
 //	public void testPipeline() throws UIMAException, IOException {

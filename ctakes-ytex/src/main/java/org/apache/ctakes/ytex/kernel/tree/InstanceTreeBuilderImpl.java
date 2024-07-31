@@ -18,8 +18,8 @@
  */
 package org.apache.ctakes.ytex.kernel.tree;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.sql.DataSource;
@@ -27,7 +27,7 @@ import java.io.*;
 import java.util.*;
 
 public class InstanceTreeBuilderImpl implements InstanceTreeBuilder {
-	static final Logger LOGGER = LogManager.getLogger("InstanceTreeBuilderImpl");
+	static final Logger LOGGER = LoggerFactory.getLogger("InstanceTreeBuilderImpl");
 	JdbcTemplate jdbcTemplate;
 	private DataSource dataSource;
 

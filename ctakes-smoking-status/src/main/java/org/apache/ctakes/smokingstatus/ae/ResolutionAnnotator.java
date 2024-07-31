@@ -25,8 +25,8 @@ import org.apache.ctakes.smokingstatus.type.SmokerNamedEntityAnnotation;
 import org.apache.ctakes.smokingstatus.type.libsvm.NominalAttributeValue;
 import org.apache.ctakes.typesystem.type.syntax.WordToken;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.annotator.AnnotatorConfigurationException;
 import org.apache.uima.analysis_engine.annotator.AnnotatorInitializationException;
@@ -54,7 +54,7 @@ public class ResolutionAnnotator
 {
     Set<String> conWords; //contradiction words for negation -- if this word appears in sentence do not negate
 	// LOG4J logger based on class name
-	public Logger LOGGER = LogManager.getLogger(getClass().getName());
+	public Logger LOGGER = LoggerFactory.getLogger(getClass().getName());
 
 	public void initialize(UimaContext aContext)
 	throws AnnotatorConfigurationException, AnnotatorInitializationException

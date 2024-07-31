@@ -5,8 +5,8 @@ import org.apache.ctakes.core.util.log.DotLogger;
 import org.apache.ctakes.gui.component.DisablerPane;
 import org.apache.ctakes.gui.component.LoggerPanel;
 import org.apache.ctakes.gui.util.IconLoader;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,7 +21,7 @@ import java.util.concurrent.Executors;
  */
 final public class DictionaryDownloader {
 
-   static private final Logger LOGGER = LogManager.getLogger( "PiperRunnerGui" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "PiperRunnerGui" );
    static private final String DICTIONARY_NAME = "Fast UMLS Dictionary for Apache cTAKES";
    static private final String DICTIONARY_URL
          = "https://sourceforge.net/projects/ctakesresources/files/sno_rx_16ab.zip";

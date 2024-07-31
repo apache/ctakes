@@ -22,8 +22,8 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.sql.DataSource;
 import java.sql.ResultSet;
@@ -48,7 +48,7 @@ public class DocumentSearchServiceImpl implements DocumentSearchService,
 			return result;
 		}
 	}
-	private static final Logger LOGGER = LogManager.getLogger("DocumentSearchServiceImpl");
+	private static final Logger LOGGER = LoggerFactory.getLogger("DocumentSearchServiceImpl");
 	private DataSource dataSource;	
 	private JdbcTemplate jdbcTemplate;
 	private String query;

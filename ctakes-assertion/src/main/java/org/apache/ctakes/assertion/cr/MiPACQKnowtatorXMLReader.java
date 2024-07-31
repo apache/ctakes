@@ -32,8 +32,8 @@ import org.apache.ctakes.typesystem.type.refsem.*;
 import org.apache.ctakes.typesystem.type.relation.*;
 import org.apache.ctakes.typesystem.type.structured.DocumentID;
 import org.apache.ctakes.typesystem.type.textsem.*;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.analysis_engine.AnalysisEngine;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.Feature;
@@ -66,7 +66,7 @@ import java.util.*;
       products = { PipeBitInfo.TypeProduct.IDENTIFIED_ANNOTATION, PipeBitInfo.TypeProduct.GENERIC_RELATION }
 )
 public class MiPACQKnowtatorXMLReader extends JCasAnnotator_ImplBase {
-  static Logger LOGGER = LogManager.getLogger(MiPACQKnowtatorXMLReader.class);
+  static Logger LOGGER = LoggerFactory.getLogger(MiPACQKnowtatorXMLReader.class);
   
   public static final String PARAM_TEXT_DIRECTORY = "TextDirectory";
   @ConfigurationParameter(

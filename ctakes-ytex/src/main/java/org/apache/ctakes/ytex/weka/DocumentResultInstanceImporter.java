@@ -18,8 +18,8 @@
  */
 package org.apache.ctakes.ytex.weka;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 import org.hibernate.SessionFactory;
 
 import java.util.List;
@@ -27,7 +27,7 @@ import java.util.List;
 public class DocumentResultInstanceImporter implements
 		WekaResultInstanceImporter {
 	private SessionFactory sessionFactory;
-	private static final Logger LOGGER = LogManager.getLogger("DocumentResultInstanceImporter");
+	private static final Logger LOGGER = LoggerFactory.getLogger("DocumentResultInstanceImporter");
 	public SessionFactory getSessionFactory() {
 		return sessionFactory;
 	}

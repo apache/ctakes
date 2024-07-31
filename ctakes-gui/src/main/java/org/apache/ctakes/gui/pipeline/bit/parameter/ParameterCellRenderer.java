@@ -1,7 +1,7 @@
 package org.apache.ctakes.gui.pipeline.bit.parameter;
 
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.fit.descriptor.ConfigurationParameter;
 
 import javax.swing.*;
@@ -16,7 +16,7 @@ import java.awt.*;
  */
 final public class ParameterCellRenderer implements TableCellRenderer {
 
-   static private final Logger LOGGER = LogManager.getLogger( "ParameterCellRenderer" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "ParameterCellRenderer" );
 
    private final TableCellRenderer _delegate = new DefaultTableCellRenderer();
 

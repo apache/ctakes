@@ -5,8 +5,8 @@ import org.apache.ctakes.core.util.annotation.SemanticGroup;
 import org.apache.ctakes.core.util.annotation.SemanticTui;
 import org.apache.ctakes.gui.dictionary.cased.umls.file.Tty;
 import org.apache.ctakes.gui.dictionary.util.HsqlUtil;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.*;
 import java.util.Collection;
@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
  */
 final public class CasedReadmeWriter {
 
-   static private final Logger LOGGER = LogManager.getLogger( "CasedReadmeWriter" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "CasedReadmeWriter" );
 
 
    private CasedReadmeWriter() {

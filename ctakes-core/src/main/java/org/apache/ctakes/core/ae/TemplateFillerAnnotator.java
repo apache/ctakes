@@ -25,8 +25,8 @@ import org.apache.ctakes.typesystem.type.relation.DegreeOfTextRelation;
 import org.apache.ctakes.typesystem.type.relation.LocationOfTextRelation;
 import org.apache.ctakes.typesystem.type.relation.RelationArgument;
 import org.apache.ctakes.typesystem.type.textsem.*;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -47,7 +47,7 @@ import java.util.Map;
 public class TemplateFillerAnnotator extends JCasAnnotator_ImplBase{
 
     // LOG4J logger based on class name
-    static private final Logger LOGGER = LogManager.getLogger( "TemplateFillerAnnotator" );
+    static private final Logger LOGGER = LoggerFactory.getLogger( "TemplateFillerAnnotator" );
 
 
 	/**

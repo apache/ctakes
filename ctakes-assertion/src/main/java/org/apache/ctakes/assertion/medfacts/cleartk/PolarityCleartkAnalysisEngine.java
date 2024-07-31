@@ -108,7 +108,7 @@ public class PolarityCleartkAnalysisEngine extends AssertionCleartkAnalysisEngin
 	        // downsampling. initialize probabilityOfKeepingADefaultExample to 1.0 for no downsampling
 	        if (NEGATED.equals(polarity))
 	        {
-	          LOGGER.debug("TRAINING: " + polarity);
+	            getLogger().debug("TRAINING: " + polarity);
 	        }
 	        if (NOT_NEGATED.equals(polarity) 
 	        		&& coin.nextDouble() >= this.probabilityOfKeepingADefaultExample) {
@@ -127,7 +127,7 @@ public class PolarityCleartkAnalysisEngine extends AssertionCleartkAnalysisEngin
 	        } else if (NEGATED.equals(label))
 	        {
 	          polarity = CONST.NE_POLARITY_NEGATION_PRESENT;
-            LOGGER.debug(String.format("DECODING/EVAL: %s//%s [%d-%d] (%s)", label, polarity, entityOrEventMention.getBegin(), entityOrEventMention.getEnd(), entityOrEventMention.getClass().getName()));
+	          getLogger().debug(String.format("DECODING/EVAL: %s//%s [%d-%d] (%s)", label, polarity, entityOrEventMention.getBegin(), entityOrEventMention.getEnd(), entityOrEventMention.getClass().getName()));
 	        }
 	        entityOrEventMention.setPolarity(polarity);
 	      }

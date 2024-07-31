@@ -20,8 +20,8 @@ package org.apache.ctakes.ytex.kernel;
 
 import com.google.common.collect.BiMap;
 import org.apache.ctakes.ytex.kernel.model.SVMClassifierEvaluation;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 
 import java.io.*;
 import java.util.*;
@@ -29,7 +29,7 @@ import java.util.regex.Pattern;
 
 
 public class SvmlinEvaluationParser extends BaseClassifierEvaluationParser {
-	private static final Logger LOGGER = LogManager.getLogger( "SvmlinEvaluationParser" );
+	private static final Logger LOGGER = LoggerFactory.getLogger( "SvmlinEvaluationParser" );
 	public static Pattern pAlgo = Pattern.compile("-A\\s+(\\d)");
 	public static Pattern pLambdaW = Pattern.compile("-W\\s+([\\d\\.eE-]+)");
 	public static Pattern pLambaU = Pattern.compile("-U\\s+([\\d\\.eE-]+)");

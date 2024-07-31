@@ -3,8 +3,8 @@ package org.apache.ctakes.core.pipeline;
 
 import org.apache.ctakes.core.util.doc.DocIdUtil;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
@@ -29,7 +29,7 @@ public enum EntityCollector {
       return INSTANCE;
    }
 
-   static private final Logger LOGGER = LogManager.getLogger( "EntityCollector" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "EntityCollector" );
 
 
    private final Map<String, Collection<Entity>> _entityMap = new HashMap<>();

@@ -18,18 +18,19 @@
  */
 package org.apache.ctakes.coreference.eval.helpers;
 
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
+import java.lang.invoke.MethodHandles;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class SpanTest {
 
-	private Logger log = Logger.getLogger(SpanTest.class);
+	private static final Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	@Test
 	public void testSpanCreation () {
@@ -50,9 +51,9 @@ public class SpanTest {
 		int[] id1 = sa.get1();
 		String line1 = IntStream.of(sa.get1()).boxed().map(i -> i.toString()).collect(Collectors.joining(" "));
 		assertEquals("1 2 3 4", line1);
-		log.info( line1 );
+		LOG.info( line1 );
 		String line2 = IntStream.of(sa.get2()).boxed().map(i -> i.toString()).collect(Collectors.joining(" "));
 		assertEquals("1 2 3 5", line2);
-		log.info( line2 );
+		LOG.info( line2 );
 	}
 }

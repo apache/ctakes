@@ -1,8 +1,8 @@
 package org.apache.ctakes.gui.generic;
 
 import org.apache.ctakes.gui.component.DisablerPane;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,7 +15,7 @@ import java.awt.*;
  */
 final public class GenericRunnerGui {
 
-   static private final Logger LOGGER = LogManager.getLogger( "GenericRunnerGui" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "GenericRunnerGui" );
 
    static private JFrame createFrame() {
       final JFrame frame = new JFrame( "cTAKES Simple Program Frame" );

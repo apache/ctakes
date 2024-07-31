@@ -1,8 +1,8 @@
 package org.apache.ctakes.gui.dictionary.umls;
 
 
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.swing.event.EventListenerList;
 import javax.swing.event.TableModelEvent;
@@ -17,7 +17,7 @@ import java.util.*;
  */
 final public class SourceTableModel implements TableModel {
 
-   static private final Logger LOGGER = LogManager.getLogger( "SourceTableModel" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "SourceTableModel" );
 
    static private final String[] COLUMN_NAMES = { "Read Synonyms", "Record Codes", "Code", "Vocabulary", "Version",
                                                   "CUIs" };

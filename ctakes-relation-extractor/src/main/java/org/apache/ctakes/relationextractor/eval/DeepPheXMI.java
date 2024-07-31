@@ -35,8 +35,8 @@ import org.apache.ctakes.typesystem.type.constants.CONST;
 import org.apache.ctakes.typesystem.type.relation.LocationOfTextRelation;
 import org.apache.ctakes.typesystem.type.relation.RelationArgument;
 import org.apache.ctakes.typesystem.type.textsem.*;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.CAS;
@@ -185,7 +185,7 @@ public class DeepPheXMI extends CorpusXMI {
      * Created by tmill on 2/7/17.
      */
     public static class DeepPheAnaforaXMLReader extends JCasAnnotator_ImplBase {
-        private static Logger LOGGER = LogManager.getLogger(DeepPheAnaforaXMLReader.class);
+        private static Logger LOGGER = LoggerFactory.getLogger(DeepPheAnaforaXMLReader.class);
 
         public static final String PARAM_ANAFORA_DIRECTORY = "anaforaDirectory";
 

@@ -3,8 +3,8 @@ package org.apache.ctakes.gui.pipeline.bit;
 
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.gui.util.IconLoader;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -23,7 +23,7 @@ public enum PipeBitPainter {
       return INSTANCE;
    }
 
-   static private final Logger LOGGER = LogManager.getLogger( "PipeBitPainter" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "PipeBitPainter" );
 
    static private final Color READER_COLOR = Color.GREEN.darker().darker();
    static private final Color ANNOTATOR_COLOR = Color.CYAN.darker().darker();

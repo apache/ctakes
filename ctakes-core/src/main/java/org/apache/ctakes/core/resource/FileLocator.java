@@ -18,8 +18,8 @@
  */
 package org.apache.ctakes.core.resource;
 
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.*;
 import java.net.*;
@@ -33,7 +33,7 @@ import java.util.*;
  */
 final public class FileLocator {
 
-   static private final Logger LOGGER = LogManager.getLogger( "FileLocator" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "FileLocator" );
 
    /**
     * $CTAKES_HOME is an environment variable that may be set to indicate

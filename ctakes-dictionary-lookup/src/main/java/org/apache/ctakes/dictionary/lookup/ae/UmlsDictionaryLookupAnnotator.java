@@ -24,8 +24,8 @@ import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.core.resource.FileResourceImpl;
 import org.apache.ctakes.core.resource.JdbcConnectionResourceImpl;
 import org.apache.ctakes.utils.env.EnvironmentVariable;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.fit.factory.AnalysisEngineFactory;
@@ -59,7 +59,7 @@ public class UmlsDictionaryLookupAnnotator extends DictionaryLookupAnnotator {
     * User's will need to configure their UMLS username/password in their config
     */
 
-   private Logger LOGGER = LogManager.getLogger( getClass().getName() );
+   private Logger LOGGER = LoggerFactory.getLogger( getClass().getName() );
 
    private String UMLSAddr;
    private String UMLSVendor;

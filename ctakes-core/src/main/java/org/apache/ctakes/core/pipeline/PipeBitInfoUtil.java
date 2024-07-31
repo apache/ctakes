@@ -1,8 +1,8 @@
 package org.apache.ctakes.core.pipeline;
 
 
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
 import org.apache.uima.collection.CasConsumer_ImplBase;
 import org.apache.uima.collection.CollectionReader_ImplBase;
@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 @Immutable
 final public class PipeBitInfoUtil {
 
-   static private final Logger LOGGER = LogManager.getLogger( "PipeBitInfoUtil" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "PipeBitInfoUtil" );
 
    static private final String UNKNOWN_PIPE_BIT = "! Unfamiliar";
 

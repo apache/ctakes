@@ -30,8 +30,8 @@ import org.apache.ctakes.typesystem.type.constants.CONST;
 import org.apache.ctakes.typesystem.type.refsem.UmlsConcept;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
 import org.apache.ctakes.utils.env.EnvironmentVariable;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.CASRuntimeException;
@@ -51,7 +51,7 @@ import java.util.*;
  * Date: 1/9/14
  */
 final public class DefaultTermConsumer extends AbstractTermConsumer {
-   static private final Logger LOGGER = LogManager.getLogger( "DefaultTermConsumer" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "DefaultTermConsumer" );
 
    // case insensitive blacklist
    static private final String BLACKLIST_KEY = "Blacklist";

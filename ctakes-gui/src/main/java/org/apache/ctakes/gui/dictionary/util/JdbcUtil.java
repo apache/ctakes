@@ -1,7 +1,7 @@
 package org.apache.ctakes.gui.dictionary.util;
 
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.*;
 
@@ -12,7 +12,7 @@ import java.sql.*;
  */
 final public class JdbcUtil {
 
-   static private final Logger LOGGER = LogManager.getLogger( "JdbcUtil" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "JdbcUtil" );
 
    private JdbcUtil() {
    }

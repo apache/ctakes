@@ -1,12 +1,12 @@
 package org.apache.ctakes.assertion.stub;
 
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 
 public class StringHandling {
-	static private final Logger LOGGER = LogManager.getLogger( "StringHandling" );
+	static private final Logger LOGGER = LoggerFactory.getLogger( "StringHandling" );
 
 	public static String readEntireContents(File file) {
 		// TODO Auto-generated method stub

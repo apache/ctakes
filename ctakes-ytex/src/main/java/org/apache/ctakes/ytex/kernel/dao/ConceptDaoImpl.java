@@ -26,8 +26,8 @@ import org.apache.ctakes.ytex.kernel.IntrinsicInfoContentEvaluator;
 import org.apache.ctakes.ytex.kernel.KernelContextHolder;
 import org.apache.ctakes.ytex.kernel.model.ConcRel;
 import org.apache.ctakes.ytex.kernel.model.ConceptGraph;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 import org.hibernate.SessionFactory;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowCallbackHandler;
@@ -70,7 +70,7 @@ public class ConceptDaoImpl implements ConceptDao {
 			"C1274012", "C1274013", "C1276325", "C1274014", "C1274015",
 			"C1274021", "C1443286", "C1274012", "C2733115" };
 	private static Set<String> defaultForbiddenConcepts;
-	private static final Logger LOGGER = LogManager.getLogger("ConceptDaoImpl");
+	private static final Logger LOGGER = LoggerFactory.getLogger("ConceptDaoImpl");
 
 	static {
 		defaultForbiddenConcepts = new HashSet<String>();

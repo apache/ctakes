@@ -1,8 +1,8 @@
 package org.apache.ctakes.fhir.resource;
 
 import org.apache.ctakes.typesystem.type.textspan.Paragraph;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.jcas.JCas;
 import org.hl7.fhir.dstu3.model.Basic;
 
@@ -14,7 +14,7 @@ import org.hl7.fhir.dstu3.model.Basic;
  */
 final public class ParagraphParser implements FhirBasicParser<Paragraph> {
 
-   static private final Logger LOGGER = LogManager.getLogger( "ParagraphBasicParser" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "ParagraphBasicParser" );
 
    public Paragraph parseResource( final JCas jCas, final Basic resource ) {
       final Paragraph paragraph = new Paragraph( jCas );

@@ -23,11 +23,11 @@ import org.apache.ctakes.ytex.kernel.metric.LCSPath;
 
 import java.util.*;
 import java.util.logging.Level;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class ConcRel implements java.io.Serializable {
-	private static final Logger LOGGER = LogManager.getLogger( "ConcRel" );
+	private static final Logger LOGGER = LoggerFactory.getLogger( "ConcRel" );
 	/**
 	 * 
 	 */

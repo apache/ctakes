@@ -12,8 +12,8 @@ import org.apache.ctakes.typesystem.type.syntax.WordToken;
 import org.apache.ctakes.typesystem.type.textsem.AnatomicalSiteMention;
 import org.apache.ctakes.typesystem.type.textsem.BodySideModifier;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UIMAException;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
@@ -50,7 +50,7 @@ import java.util.stream.Collectors;
 )
 final public class BodySideFinder extends JCasAnnotator_ImplBase {
 
-   static private final Logger LOGGER = LogManager.getLogger( "BodySideFinder" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "BodySideFinder" );
 
    /**
     * Holds a umls CUI and some synonyms for body sides.

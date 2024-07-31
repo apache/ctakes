@@ -2,8 +2,8 @@ package org.apache.ctakes.core.ae;
 
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.core.util.external.SystemUtil;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -26,7 +26,7 @@ import java.io.IOException;
 )
 public class PythonRunner extends AbstractCommandRunner {
 
-   static private final Logger LOGGER = LogManager.getLogger( "PythonRunner" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "PythonRunner" );
 
    static public final String VENV_PARAM = "VirtualEnv";
    static public final String VENV_DESC = "Path to Python virtual environment.";
@@ -147,9 +147,9 @@ public class PythonRunner extends AbstractCommandRunner {
    private Logger getRunLogger() {
       final String logName = getLogName();
       if ( logName != null && !logName.isEmpty() ) {
-         return LogManager.getLogger( logName );
+         return LoggerFactory.getLogger( logName );
       }
-      return LogManager.getLogger( getModuleName() );
+      return LoggerFactory.getLogger( getModuleName() );
    }
 
 

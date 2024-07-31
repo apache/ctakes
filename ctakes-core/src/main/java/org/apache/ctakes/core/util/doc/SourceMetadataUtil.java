@@ -2,8 +2,8 @@ package org.apache.ctakes.core.util.doc;
 
 import org.apache.ctakes.typesystem.type.structured.Metadata;
 import org.apache.ctakes.typesystem.type.structured.SourceData;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceProcessException;
@@ -21,7 +21,7 @@ import java.util.Collection;
  */
 final public class SourceMetadataUtil {
 
-   static private final Logger LOGGER = LogManager.getLogger( "SourceMetadataUtil" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "SourceMetadataUtil" );
 
    static public final String UNKNOWN_PATIENT = "UnknownPatient";
    static public final long UNKNOWN_PATIENT_NUM = -1;

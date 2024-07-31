@@ -2,8 +2,8 @@ package org.apache.ctakes.fhir.resource;
 
 import org.apache.ctakes.core.util.Pair;
 import org.apache.ctakes.fhir.element.FhirElementParser;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.jcas.tcas.Annotation;
 import org.hl7.fhir.dstu3.model.Basic;
 

@@ -23,14 +23,14 @@ import org.apache.ctakes.ytex.kernel.KernelContextHolder;
 import org.apache.ctakes.ytex.kernel.dao.ConceptDao;
 import org.apache.ctakes.ytex.kernel.model.ConcRel;
 import org.apache.ctakes.ytex.kernel.model.ConceptGraph;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 
 import java.util.*;
 
 
 public class PageRankServiceImpl implements PageRankService {
-	private static final Logger LOGGER = LogManager.getLogger( "PageRankServiceImpl" );
+	private static final Logger LOGGER = LoggerFactory.getLogger( "PageRankServiceImpl" );
 
 	private double[] rankInternal(Map<Integer, Double> dampingVector,
 			ConceptGraph cg, int iter, double threshold, double dampingFactor) {

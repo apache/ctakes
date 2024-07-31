@@ -20,8 +20,8 @@ package org.apache.ctakes.dictionary.lookup.ae;
 
 import org.apache.ctakes.dictionary.lookup.MetaDataHit;
 import org.apache.ctakes.dictionary.lookup.vo.LookupHit;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.jcas.JCas;
@@ -39,7 +39,7 @@ import java.util.Properties;
 public class DebugConsumerImpl implements LookupConsumer
 {
     // LOG4J logger based on class name
-    private Logger LOGGER = LogManager.getLogger(getClass().getName());
+    private Logger LOGGER = LoggerFactory.getLogger(getClass().getName());
 
     public DebugConsumerImpl(UimaContext aCtx, Properties props)
     {        

@@ -4,8 +4,8 @@ package org.apache.ctakes.gui.pipeline.bit.user;
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.gui.pipeline.bit.BitInfoPanel;
 import org.apache.ctakes.gui.pipeline.bit.parameter.ParameterInfoPanel;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
  */
 final public class UserBitInfoPanel extends BitInfoPanel {
 
-   static private final Logger LOGGER = LogManager.getLogger( "UserBitInfoPanel" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "UserBitInfoPanel" );
 
    private BitNameListener _bitNameListener = new BitNameListener();
 

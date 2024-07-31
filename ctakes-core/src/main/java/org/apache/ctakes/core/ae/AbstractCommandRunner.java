@@ -1,8 +1,8 @@
 package org.apache.ctakes.core.ae;
 
 import org.apache.ctakes.core.util.external.SystemUtil;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 import org.apache.uima.fit.descriptor.ConfigurationParameter;
 import org.apache.uima.resource.ResourceInitializationException;
@@ -16,7 +16,7 @@ import java.io.IOException;
  */
 abstract public class AbstractCommandRunner extends PausableFileLoggerAE {
 
-   static private final Logger LOGGER = LogManager.getLogger( "AbstractCommandRunner" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "AbstractCommandRunner" );
 
 
    // This parameter is not mandatory so that extending classes can have fixed commands.

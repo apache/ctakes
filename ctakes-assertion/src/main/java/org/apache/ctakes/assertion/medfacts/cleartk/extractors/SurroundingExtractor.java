@@ -30,7 +30,7 @@ import java.util.List;
 
 public class SurroundingExtractor implements FeatureExtractor1
 {
-//	protected static final Logger LOGGER = LogManager.getLogger(SurroundingExtractor.class);
+//	protected static final Logger LOGGER = LoggerFactory.getLogger(SurroundingExtractor.class);
 //	
 ////	Class<? extends Annotation> ancestorAnnotationClass;
 ////	

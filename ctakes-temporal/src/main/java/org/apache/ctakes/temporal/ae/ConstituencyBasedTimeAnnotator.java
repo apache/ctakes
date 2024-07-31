@@ -28,8 +28,8 @@ import org.apache.ctakes.typesystem.type.syntax.TopTreebankNode;
 import org.apache.ctakes.typesystem.type.syntax.TreebankNode;
 import org.apache.ctakes.typesystem.type.textsem.TimeMention;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -69,7 +69,7 @@ public class ConstituencyBasedTimeAnnotator extends TemporalEntityAnnotator_Impl
 
   private static final String NON_MENTION = "NON_TIME_MENTION";
   private static final String MENTION = "TIME_MENTION";
-  private static Logger LOGGER = LogManager.getLogger(ConstituencyBasedTimeAnnotator.class);
+  private static Logger LOGGER = LoggerFactory.getLogger(ConstituencyBasedTimeAnnotator.class);
   private static final int	SPAN_LIMIT = 12;
 
   public static final String PARAM_TIMEX_VIEW = "TimexView";

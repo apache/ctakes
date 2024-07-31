@@ -28,8 +28,8 @@ import org.apache.ctakes.core.ae.SHARPKnowtatorXMLReader;
 import org.apache.ctakes.core.cc.FileTreeXmiWriter;
 import org.apache.ctakes.core.config.ConfigParameterConstants;
 import org.apache.ctakes.core.cr.FileTreeReader;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UIMAException;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.collection.CollectionReaderDescription;
@@ -57,7 +57,7 @@ import java.util.HashMap;
  */
 public class GoldEntityAndAttributeReaderPipelineForSeedCorpus {
 	
-	static final Logger LOGGER = LogManager.getLogger(GoldEntityAndAttributeReaderPipelineForSeedCorpus.class.getName());
+	static final Logger LOGGER = LoggerFactory.getLogger(GoldEntityAndAttributeReaderPipelineForSeedCorpus.class.getName());
 
 	public static void main(String[] args) throws UIMAException, IOException {
 		
@@ -87,7 +87,7 @@ public class GoldEntityAndAttributeReaderPipelineForSeedCorpus {
 //		File parentDirectory = new File(parentDirectoryString);
 		if (!parentDirectory.exists())
 		{
-			LOGGER.fatal(String.format("parent directory %s does not exist! exiting!", parentDirectory.getAbsolutePath()));
+			LOGGER.error(String.format("parent directory %s does not exist! exiting!", parentDirectory.getAbsolutePath()));
 			return;
 		}
 		
@@ -107,7 +107,7 @@ public class GoldEntityAndAttributeReaderPipelineForSeedCorpus {
 			
 			if (!currentBatchDirectory.exists())
 			{
-				LOGGER.fatal(String.format("current batch directory does not exist! exiting! [\"%s\"]", currentBatchDirectory.toString()));
+				LOGGER.error(String.format("current batch directory does not exist! exiting! [\"%s\"]", currentBatchDirectory.toString()));
 				continue;
 			}
 			
@@ -223,7 +223,8 @@ public class GoldEntityAndAttributeReaderPipelineForSeedCorpus {
 	  
 	  readSharpUmls(new File[] {mayoStrat}, trainDirectory, testDirectory, devDirectory, 
 	      new Function<File,Subcorpus>(){
-	    public Subcorpus apply(File f){
+	    @Override
+        public Subcorpus apply(File f){
 	      return SharpCorpusSplit.splitStratified(f);
 	  }
 	  });
@@ -233,7 +234,8 @@ public class GoldEntityAndAttributeReaderPipelineForSeedCorpus {
 	  File seed1 = new File(releaseDirectory, "SHARP/SeedSet1/by-batch/umls");
 	  readSharpUmls(new File[] {seed1}, trainDirectory, testDirectory, devDirectory,
 	       new Function<File,Subcorpus>(){
-	      public Subcorpus apply(File f){
+	      @Override
+        public Subcorpus apply(File f){
 	        return SharpCorpusSplit.splitSeed(f);
 	    }
 	    });

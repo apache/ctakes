@@ -2,8 +2,8 @@ package org.apache.ctakes.gui.dictionary.util;
 
 
 import org.apache.ctakes.core.resource.FileLocator;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.swing.filechooser.FileSystemView;
 import java.io.*;
@@ -19,7 +19,7 @@ final public class FileUtil {
    private FileUtil() {
    }
 
-   static private final Logger LOGGER = LogManager.getLogger( "FileUtil" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "FileUtil" );
 
    static public String parseDirText( final String dirPath ) {
       if ( dirPath == null || dirPath.isEmpty() ) {

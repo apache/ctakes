@@ -39,8 +39,8 @@ import org.apache.ctakes.typesystem.type.textsem.EventMention;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -80,7 +80,7 @@ import java.util.Random;
 public class EventAnnotator extends TemporalEntityAnnotator_ImplBase {
 
   public static final String PARAM_PROBABILITY_OF_KEEPING_A_NEGATIVE_EXAMPLE = "ProbabilityOfKeepingANegativeExample";
-  static private final Logger LOGGER = LogManager.getLogger( "EventAnnotator" );
+  static private final Logger LOGGER = LoggerFactory.getLogger( "EventAnnotator" );
 
   @ConfigurationParameter(
       name = PARAM_PROBABILITY_OF_KEEPING_A_NEGATIVE_EXAMPLE,

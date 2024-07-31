@@ -28,8 +28,8 @@ import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.typesystem.type.syntax.*;
 import org.apache.ctakes.typesystem.type.textsem.*;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -53,7 +53,7 @@ import java.util.*;
 )
 public class ContextDependentTokenizerAnnotator extends JCasAnnotator_ImplBase {
 	// LOG4J logger based on class name
-	private Logger LOGGER = LogManager.getLogger(getClass().getName());
+	private Logger LOGGER = LoggerFactory.getLogger(getClass().getName());
 
 	private DateFSM iv_dateFSM;
 	private TimeFSM iv_timeFSM;

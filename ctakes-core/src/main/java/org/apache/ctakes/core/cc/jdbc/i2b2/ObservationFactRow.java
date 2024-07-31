@@ -7,8 +7,8 @@ import org.apache.ctakes.typesystem.type.constants.CONST;
 import org.apache.ctakes.typesystem.type.refsem.UmlsConcept;
 import org.apache.ctakes.typesystem.type.structured.SourceData;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceProcessException;
 
@@ -32,7 +32,7 @@ import static org.apache.ctakes.core.cc.jdbc.i2b2.ObservationFactTable.CorpusSet
 public class ObservationFactRow
       implements JdbcRow<CorpusSettings, JCas, JCas, IdentifiedAnnotation, UmlsConcept> {
 
-   static private final Logger LOGGER = LogManager.getLogger( "ObservationFactRow" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "ObservationFactRow" );
 
    static private final String PATIENT_NUM = "patient_num";
    static private final String PROVIDER_ID = "provider_id";

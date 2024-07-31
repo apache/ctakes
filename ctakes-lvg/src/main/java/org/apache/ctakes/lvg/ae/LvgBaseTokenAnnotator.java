@@ -28,8 +28,8 @@ import org.apache.ctakes.lvg.resource.LvgCmdApiResource;
 import org.apache.ctakes.typesystem.type.syntax.BaseToken;
 import org.apache.ctakes.typesystem.type.syntax.Lemma;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -83,7 +83,7 @@ public class LvgBaseTokenAnnotator extends JCasAnnotator_ImplBase {
 	public static final String PARAM_LEMMA_CACHE_FREQUENCY_CUTOFF = "LemmaCacheFrequencyCutoff";
 
 	// LOG4J logger based on class name
-	private final Logger LOGGER = LogManager.getLogger( getClass().getName() );
+	private final Logger LOGGER = LoggerFactory.getLogger( getClass().getName() );
 
 	private LvgCmdApi lvgCmd;
 

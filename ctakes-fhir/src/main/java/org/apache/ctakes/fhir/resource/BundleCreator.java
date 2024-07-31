@@ -2,8 +2,8 @@ package org.apache.ctakes.fhir.resource;
 
 import org.apache.ctakes.fhir.element.FhirElementFactory;
 import org.apache.ctakes.fhir.util.FhirNoteSpecs;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.TOP;
 import org.hl7.fhir.dstu3.model.Bundle;
@@ -20,7 +20,7 @@ import java.util.Date;
  */
 final public class BundleCreator implements FhirResourceCreator<TOP, Bundle> {
 
-   static private final Logger LOGGER = LogManager.getLogger( "BundleCreator" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "BundleCreator" );
 
    static private final String CTAKES_BUNDLE_ID = "ctakes_bundle";
    static private final DateFormat DATE_FORMAT = new SimpleDateFormat( "yyyyMMddhhmm" );

@@ -27,8 +27,8 @@ import org.apache.ctakes.typesystem.type.textsem.EntityMention;
 import org.apache.ctakes.typesystem.type.textsem.EventMention;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
 import org.apache.ctakes.utils.tree.SimpleTree;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 import org.apache.uima.UIMAException;
 import org.apache.uima.collection.CollectionReader;
 import org.apache.uima.fit.factory.CollectionReaderFactory;
@@ -73,7 +73,7 @@ public class GenerateTreeRepresentation{
 	protected static Options options = new Options();
 	private static SemanticClasses sems = null; 
 	private static PrintStream out = null;
-	private static final Logger LOGGER = LogManager.getLogger( "GenerateTreeRepresentation" );
+	private static final Logger LOGGER = LoggerFactory.getLogger( "GenerateTreeRepresentation" );
 	
 	/**
 	 * @param args

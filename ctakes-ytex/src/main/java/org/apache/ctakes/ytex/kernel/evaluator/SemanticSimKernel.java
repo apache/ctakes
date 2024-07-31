@@ -21,8 +21,8 @@ package org.apache.ctakes.ytex.kernel.evaluator;
 import org.apache.ctakes.ytex.kernel.metric.ConceptPairSimilarity;
 import org.apache.ctakes.ytex.kernel.metric.ConceptSimilarityService;
 import org.apache.ctakes.ytex.kernel.metric.ConceptSimilarityService.SimilarityMetricEnum;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.InitializingBean;
 
 import java.util.ArrayList;
@@ -32,7 +32,7 @@ import java.util.Map;
 
 
 public class SemanticSimKernel extends CacheKernel implements InitializingBean {
-	private static final Logger LOGGER = LogManager.getLogger( "SemanticSimKernel");
+	private static final Logger LOGGER = LoggerFactory.getLogger( "SemanticSimKernel");
 	private Map<String, Double> conceptFilter = null;
 	private ConceptSimilarityService conceptSimilarityService;
 	private double cutoff = 0;

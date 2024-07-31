@@ -18,6 +18,12 @@
  */
 package org.apache.ctakes.assertion.attributes.subject;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Objects;
+
 import org.apache.ctakes.dependency.parser.util.DependencyPath;
 import org.apache.ctakes.dependency.parser.util.DependencyUtility;
 import org.apache.ctakes.typesystem.type.constants.CONST;
@@ -26,13 +32,11 @@ import org.apache.ctakes.typesystem.type.syntax.ConllDependencyNode;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
 import org.apache.ctakes.typesystem.type.textsem.SemanticArgument;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
-
-import java.util.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 /**
@@ -57,7 +61,7 @@ public class SubjectAttributeClassifier {
 	public static final String OTHER_DEPTOK = "other_depsrl";
 	public static final String OTHER_OR = "other_or";
     public static ArrayList<String> FeatureIndex = new ArrayList<String>();
-    private static final Logger LOGGER = LogManager.getLogger( "SubjectAttributeClassifier" );
+    private static final Logger LOGGER = LoggerFactory.getLogger( "SubjectAttributeClassifier" );
 
     static{
             FeatureIndex.add(DONOR_TOKEN);

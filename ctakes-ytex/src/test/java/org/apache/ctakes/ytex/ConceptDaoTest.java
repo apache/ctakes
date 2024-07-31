@@ -25,8 +25,8 @@ import org.apache.ctakes.ytex.kernel.metric.ConceptPairSimilarity;
 import org.apache.ctakes.ytex.kernel.metric.ConceptSimilarityService;
 import org.apache.ctakes.ytex.kernel.metric.ConceptSimilarityService.SimilarityMetricEnum;
 import org.apache.ctakes.ytex.kernel.model.ConceptGraph;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -46,7 +46,7 @@ import static org.junit.Assert.assertTrue;
 
 public class ConceptDaoTest extends JdbcOperationsHelper {
 
-	static private final Logger LOGGER = LogManager.getLogger(ConceptDaoTest.class);
+	static private final Logger LOGGER = LoggerFactory.getLogger(ConceptDaoTest.class);
 
 	private ConceptDao conceptDao = null;
 

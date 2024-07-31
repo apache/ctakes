@@ -1,8 +1,8 @@
 package org.apache.ctakes.gui.util;
 
 import org.apache.ctakes.core.resource.FileLocator;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -18,7 +18,7 @@ import java.io.InputStream;
  */
 final public class IconLoader {
 
-   static private final Logger LOGGER = LogManager.getLogger( "IconLoader" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "IconLoader" );
 
    private IconLoader() {
    }

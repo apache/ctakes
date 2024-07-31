@@ -5,9 +5,8 @@ import org.apache.ctakes.dictionary.lookup2.ae.DefaultJCasTermAnnotator;
 import org.apache.ctakes.postagger.POSTagger;
 import org.apache.ctakes.typesystem.type.textsem.LabMention;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
-import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UIMAException;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.fit.factory.AggregateBuilder;
@@ -39,7 +38,7 @@ import static org.apache.ctakes.core.ae.LabValueFinder.PARAM_ALL_SECTIONS;
  */
 
 public class LabValueFinderTester {
-	static private final Logger LOGGER = Logger
+	static private final Logger LOGGER = LoggerFactory
 			.getLogger("LabValueFinderTester");
 
 	static private final String LAB_RESULTS_OID = "2.16.840.1.113883.10.20.22.2.3.1";
@@ -89,8 +88,8 @@ public class LabValueFinderTester {
 				// LabValueFinder.PARAM_USE_DRUGS, "true",
 				LabValueFinder.PARAM_MAX_NEWLINES, 1, 
 				PARAM_ALL_SECTIONS, "false");
-		Logger LOGGER = LogManager.getLogger("LabValueFinder");
-		LOGGER.setLevel(Level.INFO);
+//		Logger LOGGER = LoggerFactory.getLogger("LabValueFinder");
+//		LOGGER.setLevel(Level.INFO);
 	}
 
 	/**

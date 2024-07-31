@@ -20,8 +20,8 @@ package org.apache.ctakes.core.util.doc;
 
 import org.apache.ctakes.typesystem.type.structured.DocumentID;
 import org.apache.ctakes.typesystem.type.structured.DocumentIdPrefix;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.cas.CASException;
 import org.apache.uima.cas.CASRuntimeException;
 import org.apache.uima.fit.util.JCasUtil;
@@ -40,7 +40,7 @@ final public class DocIdUtil {
    static public final String NO_DOCUMENT_ID = "UnknownDocument";
    static public final String NO_DOCUMENT_ID_PREFIX = "UnknownDocumentPrefix";
 
-   static private final Logger LOGGER = LogManager.getLogger( "DocumentIDAnnotationUtil" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "DocumentIDAnnotationUtil" );
 
    static private final Pattern FILE_FIX_PATTERN = Pattern.compile( "[^A-Za-z0-9\\.]" );
 

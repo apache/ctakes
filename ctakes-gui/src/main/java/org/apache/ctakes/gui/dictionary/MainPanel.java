@@ -7,8 +7,8 @@ import org.apache.ctakes.gui.component.LoggerPanel;
 import org.apache.ctakes.gui.component.PositionedSplitPane;
 import org.apache.ctakes.gui.dictionary.umls.*;
 import org.apache.ctakes.gui.dictionary.util.FileUtil;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -33,7 +33,7 @@ import static org.apache.ctakes.gui.dictionary.DictionaryBuilder.CTAKES_APP_DB_P
  */
 final class MainPanel extends JPanel {
 
-   static private final Logger LOGGER = LogManager.getLogger( "MainPanel" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "MainPanel" );
 
    private String _umlsDirPath = System.getProperty( "user.dir" );
    private String _ctakesPath = System.getProperty( "user.dir" );

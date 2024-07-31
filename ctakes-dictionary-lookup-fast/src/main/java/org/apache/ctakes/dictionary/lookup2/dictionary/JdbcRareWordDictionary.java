@@ -20,8 +20,8 @@ package org.apache.ctakes.dictionary.lookup2.dictionary;
 
 import org.apache.ctakes.dictionary.lookup2.term.RareWordTerm;
 import org.apache.ctakes.dictionary.lookup2.util.JdbcConnectionFactory;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 
 import java.sql.Connection;
@@ -59,7 +59,7 @@ final public class JdbcRareWordDictionary extends AbstractRareWordDictionary {
    }
 
    // LOG4J logger based on class name
-   static final private Logger LOGGER = LogManager.getLogger( "JdbcRareWordDictionary" );
+   static final private Logger LOGGER = LoggerFactory.getLogger( "JdbcRareWordDictionary" );
 
 
    static public final String RARE_WORD_TABLE = "rareWordTable";

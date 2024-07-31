@@ -20,8 +20,8 @@ package org.apache.ctakes.temporal.ae;
 
 import org.apache.ctakes.typesystem.type.syntax.*;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -54,7 +54,7 @@ import java.util.regex.Pattern;
 
 public class THYMETreebankReader extends JCasAnnotator_ImplBase {
 
-	public static Logger LOGGER = LogManager.getLogger(THYMETreebankReader.class);
+	public static Logger LOGGER = LoggerFactory.getLogger(THYMETreebankReader.class);
 	public static final String TREEBANK_DIRECTORY = "treebankDirectory";
 	private static final Pattern headerPatt = Pattern.compile("\\[(meta|start|end) [^\\]]*?\\]"); //"\\[meta [^\\]]*\\]");
 	

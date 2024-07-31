@@ -3,8 +3,8 @@ package org.apache.ctakes.gui.pipeline;
 import org.apache.ctakes.gui.component.DisablerPane;
 import org.apache.ctakes.gui.pipeline.bit.PipeBitPainter;
 import org.apache.ctakes.gui.util.IconLoader;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,7 +16,7 @@ import java.awt.*;
  */
 final public class PiperCreator {
 
-   static private final Logger LOGGER = LogManager.getLogger( "PiperCreator" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "PiperCreator" );
 
    private PiperCreator() {
    }

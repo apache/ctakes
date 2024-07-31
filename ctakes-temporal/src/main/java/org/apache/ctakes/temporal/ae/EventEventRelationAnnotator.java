@@ -31,8 +31,8 @@ import org.apache.ctakes.typesystem.type.relation.TemporalTextRelation;
 import org.apache.ctakes.typesystem.type.textsem.EventMention;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -72,7 +72,7 @@ import java.util.Map;
 )
 public class EventEventRelationAnnotator extends TemporalRelationExtractorAnnotator {
 
-   static private final Logger LOGGER = LogManager.getLogger( "EventEventRelationAnnotator" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "EventEventRelationAnnotator" );
 
 	public static AnalysisEngineDescription createDataWriterDescription(
 			Class<? extends DataWriter<String>> dataWriterClass,

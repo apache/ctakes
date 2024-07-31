@@ -27,8 +27,8 @@ import org.apache.ctakes.dictionary.lookup.phrasebuilder.VariantPhraseBuilderImp
 import org.apache.ctakes.dictionary.lookup.vo.LookupAnnotation;
 import org.apache.ctakes.dictionary.lookup.vo.LookupToken;
 import org.apache.ctakes.typesystem.type.syntax.*;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.annotator.AnnotatorInitializationException;
 import org.apache.uima.cas.text.AnnotationIndex;
@@ -47,7 +47,7 @@ public class FirstTokenPermLookupInitializerImpl implements LookupInitializer {
    static private final String FALSE_STRING = Boolean.toString( false );
 
    // LOG4J logger based on class name
-   final private Logger LOGGER = LogManager.getLogger( getClass().getName() );
+   final private Logger LOGGER = LoggerFactory.getLogger( getClass().getName() );
 
    // properties for firstWordPermutation algorithm
    static private final String TEXT_MFS_PRP_KEY = "textMetaFields";

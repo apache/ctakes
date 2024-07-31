@@ -3,8 +3,8 @@ package org.apache.ctakes.pbj.util;
 import org.apache.ctakes.core.ae.PausableFileLoggerAE;
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.core.util.external.SystemUtil;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.descriptor.ConfigurationParameter;
@@ -77,7 +77,7 @@ abstract public class ArtemisController extends PausableFileLoggerAE {
                   new IOException( "Cannot find Artemis Root Directory " + _artemisRoot ) );
         }
         if ( new File( _artemisRoot, "LICENSE" ).exists() && new File( _artemisRoot, "NOTICE" ).exists() ) {
-            final Logger LOGGER = LogManager.getLogger( "ArtemisController" );
+            final Logger LOGGER = LoggerFactory.getLogger( "ArtemisController" );
             LOGGER.error( "It looks like " + _artemisRoot + " might point to an Apache Artemis Source or binary "
                          + "distribution." );
             LOGGER.error( "You must point " + ARTEMIS_ROOT_PARAM + " to the root directory of an Artemis broker." );

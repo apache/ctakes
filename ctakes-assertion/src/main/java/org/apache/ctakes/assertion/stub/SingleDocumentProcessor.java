@@ -1,14 +1,14 @@
 package org.apache.ctakes.assertion.stub;
 
 import org.apache.ctakes.assertion.medfacts.i2b2.api.CharacterOffsetToLineTokenConverterCtakesImpl;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 import java.util.Map;
 
 public class SingleDocumentProcessor {
-	static private final Logger LOGGER = LogManager.getLogger( "SingleDocumentProcessor" );
+	static private final Logger LOGGER = LoggerFactory.getLogger( "SingleDocumentProcessor" );
 
 	protected CharacterOffsetToLineTokenConverterCtakesImpl converter2;
 

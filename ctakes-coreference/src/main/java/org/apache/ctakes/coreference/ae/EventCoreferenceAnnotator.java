@@ -17,8 +17,8 @@ import org.apache.ctakes.typesystem.type.textsem.MedicationEventMention;
 import org.apache.ctakes.typesystem.type.textspan.Paragraph;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.descriptor.ConfigurationParameter;
@@ -74,7 +74,7 @@ public class EventCoreferenceAnnotator extends RelationExtractorAnnotator {
   private double lastScore;
   
   
-  private Logger LOGGER = LogManager.getLogger(EventCoreferenceAnnotator.class);
+  private Logger LOGGER = LoggerFactory.getLogger(EventCoreferenceAnnotator.class);
   
   public static AnalysisEngineDescription createDataWriterDescription(
       Class<? extends DataWriter<String>> dataWriterClass,

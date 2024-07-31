@@ -175,6 +175,10 @@
             <artifactId>jakarta.activation</artifactId>
         </dependency>
         <!--  ytex should depend upon ctakes-clinical-pipeline , not the other way around.  -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
     </dependencies>
     <build>
         <extensions>

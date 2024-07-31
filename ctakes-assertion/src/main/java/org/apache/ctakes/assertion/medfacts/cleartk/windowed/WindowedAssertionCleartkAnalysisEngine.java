@@ -34,8 +34,8 @@ import org.apache.ctakes.typesystem.type.textsem.EntityMention;
 import org.apache.ctakes.typesystem.type.textsem.EventMention;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -65,7 +65,7 @@ import java.util.*;
  */
 public abstract class WindowedAssertionCleartkAnalysisEngine extends
                                                              CleartkAnnotator<String> {
-   Logger LOGGER = LogManager.getLogger( WindowedAssertionCleartkAnalysisEngine.class );
+   Logger LOGGER = LoggerFactory.getLogger( WindowedAssertionCleartkAnalysisEngine.class );
 
    public static final String PARAM_GOLD_VIEW_NAME = "GoldViewName";
 

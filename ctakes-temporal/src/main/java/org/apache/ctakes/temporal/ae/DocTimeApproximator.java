@@ -6,8 +6,8 @@ import org.apache.ctakes.temporal.utils.CalendarUtil;
 import org.apache.ctakes.typesystem.type.structured.SourceData;
 import org.apache.ctakes.typesystem.type.textsem.DateAnnotation;
 import org.apache.ctakes.typesystem.type.textsem.TimeMention;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
 import org.apache.uima.fit.util.JCasUtil;
@@ -37,7 +37,7 @@ import static org.apache.ctakes.temporal.utils.CalendarUtil.NULL_CALENDAR;
 )
 final public class DocTimeApproximator extends JCasAnnotator_ImplBase {
 
-   static private final Logger LOGGER = LogManager.getLogger( "DocTimeApproximator" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "DocTimeApproximator" );
 
    /**
     * {@inheritDoc}

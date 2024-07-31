@@ -10,8 +10,8 @@ import org.apache.ctakes.core.util.doc.DocIdUtil;
 import org.apache.ctakes.core.util.doc.JCasBuilder;
 import org.apache.ctakes.core.util.doc.NoteSpecs;
 import org.apache.ctakes.core.util.doc.SourceMetadataUtil;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 import org.apache.uima.collection.CollectionException;
 import org.apache.uima.collection.impl.CollectionReaderDescription_impl;
@@ -55,7 +55,7 @@ import java.util.stream.Collectors;
  */
 abstract public class AbstractFileTreeReader extends JCasCollectionReader_ImplBase {
 
-   static private final Logger LOGGER = LogManager.getLogger( "AbstractFileTreeReader" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "AbstractFileTreeReader" );
 
    static public final String PARAM_WRITE_BANNER = "WriteBanner";
    @ConfigurationParameter(

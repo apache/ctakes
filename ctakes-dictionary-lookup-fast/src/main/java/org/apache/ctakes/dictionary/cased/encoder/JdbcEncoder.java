@@ -4,8 +4,8 @@ package org.apache.ctakes.dictionary.cased.encoder;
 import org.apache.ctakes.dictionary.cased.table.column.CodeType;
 import org.apache.ctakes.dictionary.cased.table.column.SchemaCode;
 import org.apache.ctakes.dictionary.cased.util.jdbc.JdbcUtil;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 
 import java.sql.PreparedStatement;
@@ -27,7 +27,7 @@ final public class JdbcEncoder implements TermEncoder {
 
    static public final String ENCODER_TYPE = "JDBC";
 
-   static private final Logger LOGGER = LogManager.getLogger( "JdbcEncoder" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "JdbcEncoder" );
 
    private final String _name;
    private final PreparedStatement _selectCodeStatement;

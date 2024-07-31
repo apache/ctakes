@@ -23,8 +23,8 @@ import org.apache.commons.csv.CSVStrategy;
 import org.apache.ctakes.jdl.data.base.JdlConnection;
 import org.apache.ctakes.jdl.schema.xdl.CsvLoadType;
 import org.apache.ctakes.jdl.schema.xdl.CsvLoadType.Column;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 
 import java.io.*;
 import java.lang.reflect.Constructor;
@@ -47,7 +47,7 @@ public class CsvLoader extends Loader {
 	 */
 	static final char DISABLED = '\ufffe';
 
-	static private final Logger LOGGER = LogManager.getLogger( "CsvLoader" );
+	static private final Logger LOGGER = LoggerFactory.getLogger( "CsvLoader" );
 	private Map<String, Format> formatMap;
 
 	/**

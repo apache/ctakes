@@ -34,8 +34,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class CoveredTextToValuesExtractor implements FeatureExtractor1 {
 
@@ -50,7 +50,7 @@ public class CoveredTextToValuesExtractor implements FeatureExtractor1 {
   }
 
   static class StringToDoublesProcessor implements LineProcessor<Map<String, double[]>> {
-    static private final Logger LOGGER = LogManager.getLogger( "CoveredTextToValuesExtractor" );
+    static private final Logger LOGGER = LoggerFactory.getLogger( "CoveredTextToValuesExtractor" );
 
     private Map<String, double[]> result = new HashMap<String, double[]>();
 

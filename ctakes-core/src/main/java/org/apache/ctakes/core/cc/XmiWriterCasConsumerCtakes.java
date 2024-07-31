@@ -39,8 +39,8 @@ package org.apache.ctakes.core.cc;
 
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.core.util.doc.DocIdUtil;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UIMAFramework;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -99,7 +99,7 @@ public class XmiWriterCasConsumerCtakes extends CasConsumer_ImplBase {
 	@Override
 	public void initialize( UimaContext context ) throws ResourceInitializationException {
 		super.initialize( context );
-		LogManager.getLogger( getClass().getSimpleName() ).warn( "Deprecated.  Please use FileTreeXmiWriter instead." );
+		LoggerFactory.getLogger( getClass().getSimpleName() ).warn( "Deprecated.  Please use FileTreeXmiWriter instead." );
 		mDocNum = 0;
 		if ( !mOutputDir.exists() ) {
 			mOutputDir.mkdirs();

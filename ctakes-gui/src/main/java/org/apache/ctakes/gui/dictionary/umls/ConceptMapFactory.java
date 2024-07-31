@@ -2,8 +2,8 @@ package org.apache.ctakes.gui.dictionary.umls;
 
 
 import org.apache.ctakes.core.util.annotation.SemanticTui;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -16,7 +16,7 @@ import java.util.Map;
  */
 final public class ConceptMapFactory {
 
-   static private final Logger LOGGER = LogManager.getLogger( "ConceptMapFactory" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "ConceptMapFactory" );
 
    private ConceptMapFactory() {
    }

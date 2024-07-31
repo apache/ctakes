@@ -2,8 +2,8 @@ package org.apache.ctakes.gui.dictionary;
 
 
 import org.apache.ctakes.gui.dictionary.umls.VocabularyStore;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.*;
 
@@ -14,7 +14,7 @@ import java.io.*;
  */
 final class DictionaryXmlWriter {
 
-   static private final Logger LOGGER = LogManager.getLogger( "DictionaryXmlWriter" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "DictionaryXmlWriter" );
 
    private DictionaryXmlWriter() {
    }

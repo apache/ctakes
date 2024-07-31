@@ -2,8 +2,8 @@ package org.apache.ctakes.pbj.ae;
 
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.pbj.cr.PbjReceiver;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.impl.CASImpl;
@@ -29,7 +29,7 @@ import static org.apache.ctakes.pbj.util.PbjConstants.*;
 )
 public class PbjReceiverAE extends JCasAnnotator_ImplBase {
 
-   static private final Logger LOGGER = LogManager.getLogger( "PbjReceiverAE" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "PbjReceiverAE" );
 
    // Duplicates of all the PbjReceiver configuration parameters.
 

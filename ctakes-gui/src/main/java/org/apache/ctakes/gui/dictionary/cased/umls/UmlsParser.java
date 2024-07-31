@@ -9,8 +9,8 @@ import org.apache.ctakes.gui.dictionary.cased.term.CuiTerm;
 import org.apache.ctakes.gui.dictionary.cased.umls.file.MrConso;
 import org.apache.ctakes.gui.dictionary.cased.umls.file.Tty;
 import org.apache.ctakes.gui.dictionary.umls.CuiCodeUtil;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -27,7 +27,7 @@ import static org.apache.ctakes.gui.dictionary.cased.umls.file.MrConso.*;
  */
 public class UmlsParser {
 
-   static private final Logger LOGGER = LogManager.getLogger( "UmlsParser" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "UmlsParser" );
 
 
    static public Collection<CuiTerm> createCuiTerms( final String consoPath,

@@ -26,8 +26,8 @@ import org.apache.ctakes.dictionary.lookup.vo.LookupAnnotation;
 import org.apache.ctakes.dictionary.lookup.vo.LookupHit;
 import org.apache.ctakes.dictionary.lookup.vo.LookupToken;
 import org.apache.ctakes.dictionary.lookup.vo.LookupTokenComparator;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -57,7 +57,7 @@ import java.util.*;
 public class DictionaryLookupAnnotator extends JCasAnnotator_ImplBase
 {
 	// LOG4J logger based on class name
-	private Logger LOGGER = LogManager.getLogger(getClass().getName());
+	private Logger LOGGER = LoggerFactory.getLogger(getClass().getName());
 
 	private UimaContext iv_context;
 

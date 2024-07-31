@@ -5,8 +5,8 @@ import org.apache.ctakes.core.resource.FileLocator;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
 import org.apache.ctakes.utils.struct.CounterMap;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -59,7 +59,7 @@ import java.util.*;
 )
 public class SentenceDetectorAnnotatorBIO extends CleartkAnnotator<String>{
 
-  static private final Logger LOGGER = LogManager.getLogger( "SentenceDetectorAnnotatorBIO" );
+  static private final Logger LOGGER = LoggerFactory.getLogger( "SentenceDetectorAnnotatorBIO" );
   private static final int WINDOW_SIZE = 3;
   
   public static enum FEAT_CONFIG {GILLICK, CHAR, SHAPE, LINE_POS, CHAR_SHAPE, CHAR_POS, CHAR_SHAPE_POS }

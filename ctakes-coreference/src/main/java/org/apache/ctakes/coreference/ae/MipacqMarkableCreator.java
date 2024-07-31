@@ -25,8 +25,8 @@ import org.apache.ctakes.coreference.type.PronounMarkable;
 import org.apache.ctakes.coreference.util.AnnotationSelector;
 import org.apache.ctakes.typesystem.type.syntax.Chunk;
 import org.apache.ctakes.typesystem.type.syntax.WordToken;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
@@ -67,7 +67,7 @@ public class MipacqMarkableCreator extends JCasAnnotator_ImplBase {
 	Set<String> otherVerb;
 
 	// LOG4J logger based on class name
-	private Logger LOGGER = LogManager.getLogger(getClass().getName());
+	private Logger LOGGER = LoggerFactory.getLogger(getClass().getName());
 
 	@Override
 	public void initialize(UimaContext uc) throws ResourceInitializationException {

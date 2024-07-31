@@ -7,8 +7,8 @@ import org.apache.ctakes.core.config.ConfigParameterConstants;
 import org.apache.ctakes.core.cr.FileTreeReader;
 import org.apache.ctakes.core.util.PropertyAeFactory;
 import org.apache.ctakes.core.util.external.SystemUtil;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UIMAException;
 import org.apache.uima.analysis_component.AnalysisComponent;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
@@ -42,7 +42,7 @@ import java.util.List;
  */
 final public class PipelineBuilder {
 
-   static private final Logger LOGGER = LogManager.getLogger( "PipelineBuilder" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "PipelineBuilder" );
 
    private CollectionReaderDescription _readerDesc;
    // TODO replace pairs of 3 lists with 2 instances of a single class.  Put a build() (sub) method in class?

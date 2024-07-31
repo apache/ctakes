@@ -24,8 +24,8 @@ import org.apache.ctakes.core.nlp.tokenizer.TokenizerPTB;
 import org.apache.ctakes.ytex.kernel.KernelContextHolder;
 import org.apache.ctakes.ytex.umls.dao.UMLSDao;
 import org.apache.ctakes.ytex.umls.model.UmlsAuiFirstWord;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.support.TransactionTemplate;
 import org.w3c.dom.Document;
@@ -48,7 +48,7 @@ import java.util.*;
  */
 public class SetupAuiFirstWord {
 
-	static private final Logger LOGGER = LogManager.getLogger(SetupAuiFirstWord.class);
+	static private final Logger LOGGER = LoggerFactory.getLogger(SetupAuiFirstWord.class);
 	
 	// private static final Pattern nonWord = Pattern.compile("\\W");
 	private TokenizerPTB tokenizer;

@@ -16,8 +16,8 @@ import org.cleartk.ml.jar.DirectoryDataWriterFactory;
 import org.cleartk.ml.jar.GenericJarClassifierFactory;
 
 import java.io.File;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Normally I would use composition and a singleton, but here extension is done for @ConfigurationParameter discovery.
@@ -37,7 +37,7 @@ import org.apache.logging.log4j.LogManager;
 )
 public class ThreadSafeMarkableSalienceAnnotator extends MarkableSalienceAnnotator {
 
-   static private final Logger LOGGER = LogManager.getLogger( "ThreadSafeMarkableSalienceAnnotator" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "ThreadSafeMarkableSalienceAnnotator" );
 
    /**
     * {@inheritDoc}

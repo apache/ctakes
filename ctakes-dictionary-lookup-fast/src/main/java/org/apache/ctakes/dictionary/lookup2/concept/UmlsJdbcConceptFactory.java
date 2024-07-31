@@ -1,8 +1,8 @@
 package org.apache.ctakes.dictionary.lookup2.concept;
 
 import org.apache.ctakes.dictionary.lookup2.util.UmlsUserApprover;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 
 import java.sql.SQLException;
@@ -17,7 +17,7 @@ import java.util.Properties;
  */
 final public class UmlsJdbcConceptFactory implements ConceptFactory {
 
-   static private final Logger LOGGER = LogManager.getLogger( "UmlsJdbcConceptFactory" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "UmlsJdbcConceptFactory" );
 
    final private ConceptFactory _delegateConceptFactory;
 

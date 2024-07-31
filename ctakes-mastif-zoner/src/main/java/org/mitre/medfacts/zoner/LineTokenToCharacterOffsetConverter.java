@@ -13,8 +13,8 @@ import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
 import java.util.logging.Level;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -24,7 +24,7 @@ import java.util.regex.Pattern;
  */
 public class LineTokenToCharacterOffsetConverter
 {
-  public static final Logger LOGGER = LogManager.getLogger( "LineTokenToCharacterOffsetConverter" );
+  public static final Logger LOGGER = LoggerFactory.getLogger( "LineTokenToCharacterOffsetConverter" );
 
   public static final Pattern endOfLinePattern = Pattern.compile("\\r?\\n");
   public static final Pattern eolOrSpacePattern = Pattern.compile("( +)|(\\r?\\n)");

@@ -27,8 +27,8 @@ import org.apache.ctakes.typesystem.type.syntax.BaseToken;
 import org.apache.ctakes.typesystem.type.textsem.TimeMention;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -69,7 +69,7 @@ import java.util.List;
 )
 public class BackwardsTimeAnnotator extends TemporalEntityAnnotator_ImplBase {
 
-   static private final Logger LOGGER = LogManager.getLogger( "BackwardsTimeAnnotator" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "BackwardsTimeAnnotator" );
 
   public static final String PARAM_TIMEX_VIEW = "TimexView";
   @ConfigurationParameter(

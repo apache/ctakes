@@ -5,8 +5,8 @@ import org.apache.ctakes.typesystem.type.structured.Demographics;
 import org.apache.ctakes.typesystem.type.structured.DocumentID;
 import org.apache.ctakes.typesystem.type.structured.Metadata;
 import org.apache.ctakes.typesystem.type.structured.SourceData;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 import org.apache.uima.cas.CASRuntimeException;
 import org.apache.uima.collection.CollectionException;
@@ -41,7 +41,7 @@ import java.sql.*;
 )
 final public class JdbcNotesReader extends JCasCollectionReader_ImplBase {
 
-   static private final Logger LOGGER = LogManager.getLogger( "JdbcNoteTableReader" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "JdbcNoteTableReader" );
 
 
    static public final String PARAM_DB_DRIVER = "DbDriver";

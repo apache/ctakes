@@ -21,8 +21,8 @@ package org.apache.ctakes.regression.test;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.ctakes.core.ae.UmlsEnvironmentConfiguration;
 import org.apache.ctakes.utils.env.EnvironmentVariable;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UIMAFramework;
 import org.apache.uima.cas.CAS;
 import org.apache.uima.collection.CollectionProcessingEngine;
@@ -69,7 +69,7 @@ import java.util.List;
  */
 public class RegressionPipelineTest {
 
-	static Logger LOGGER = LogManager.getLogger(RegressionPipelineTest.class.getName());
+	static Logger LOGGER = LoggerFactory.getLogger(RegressionPipelineTest.class.getName());
 
 	// MAX timeout for the CPE
 	private static final int MAX_TIMEOUT_MS = 60 * 60 * 1000; // 60 mins

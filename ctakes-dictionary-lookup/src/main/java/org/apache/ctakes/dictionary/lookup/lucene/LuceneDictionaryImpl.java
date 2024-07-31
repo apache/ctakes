@@ -21,8 +21,8 @@ package org.apache.ctakes.dictionary.lookup.lucene;
 import org.apache.ctakes.dictionary.lookup.AbstractBaseDictionary;
 import org.apache.ctakes.dictionary.lookup.DictionaryException;
 import org.apache.ctakes.dictionary.lookup.MetaDataHit;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.lucene.analysis.core.KeywordAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.Term;
@@ -48,7 +48,7 @@ public class LuceneDictionaryImpl extends AbstractBaseDictionary {
    //ohnlp-Bugs-3296301 limits the search results to fixed 100 records.
    private int iv_maxHits;
    // LOG4J logger based on class name
-   private Logger LOGGER = LogManager.getLogger( getClass().getName() );
+   private Logger LOGGER = LoggerFactory.getLogger( getClass().getName() );
 
    /**
     * Constructor

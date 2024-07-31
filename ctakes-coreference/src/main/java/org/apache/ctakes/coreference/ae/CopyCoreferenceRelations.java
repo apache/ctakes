@@ -10,8 +10,8 @@ import org.apache.ctakes.typesystem.type.relation.CoreferenceRelation;
 import org.apache.ctakes.typesystem.type.relation.RelationArgument;
 import org.apache.ctakes.typesystem.type.syntax.ConllDependencyNode;
 import org.apache.ctakes.typesystem.type.textsem.Markable;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.CASException;
 import org.apache.uima.fit.descriptor.ConfigurationParameter;
@@ -32,7 +32,7 @@ import java.util.*;
         dependencies = { PipeBitInfo.TypeProduct.MARKABLE, PipeBitInfo.TypeProduct.COREFERENCE_RELATION, PipeBitInfo.TypeProduct.DEPENDENCY_NODE }
 )
 public class CopyCoreferenceRelations extends org.apache.uima.fit.component.JCasAnnotator_ImplBase {
-    private static final Logger LOGGER = LogManager.getLogger( "CopyCoreferenceRelations" );
+    private static final Logger LOGGER = LoggerFactory.getLogger( "CopyCoreferenceRelations" );
     private static final double DROPOUT_RATE = 0.1;
 
     // TODO - make document aware for mention-cluster coreference? Not as easy as relation remover because this should work for

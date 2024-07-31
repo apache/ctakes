@@ -18,8 +18,8 @@
 // */
 //package org.apache.ctakes.dictionary.lookup2.relation;
 //
-//import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 //
 //import java.sql.Connection;
 //import java.sql.PreparedStatement;
@@ -55,7 +55,7 @@ import org.apache.logging.log4j.LogManager;
 //   }
 //
 //   // LOG4J logger based on class name
-//   final private Logger _LOGGER = LogManager.getLogger( getClass().getName() );
+//   final private Logger _LOGGER = LoggerFactory.getLogger( getClass().getName() );
 //
 //   final private Connection _connection;
 //   final private String _tableName;

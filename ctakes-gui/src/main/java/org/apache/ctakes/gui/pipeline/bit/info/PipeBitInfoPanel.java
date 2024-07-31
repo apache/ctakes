@@ -7,8 +7,8 @@ import org.apache.ctakes.gui.pipeline.bit.available.AvailablesListModel;
 import org.apache.ctakes.gui.pipeline.bit.parameter.DefaultParameterHolder;
 import org.apache.ctakes.gui.pipeline.bit.parameter.ParameterHolder;
 import org.apache.ctakes.gui.pipeline.bit.parameter.ParameterInfoPanel;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
  */
 final public class PipeBitInfoPanel extends BitInfoPanel {
 
-   static private final Logger LOGGER = LogManager.getLogger( "PipeBitInfoPanel" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "PipeBitInfoPanel" );
 
    public void setPipeBitInfoList( final JList<PipeBitInfo> pipeBitList ) {
       pipeBitList.getSelectionModel().addListSelectionListener( new PipeBitListListener( pipeBitList ) );

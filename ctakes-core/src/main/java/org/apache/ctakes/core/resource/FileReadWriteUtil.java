@@ -1,8 +1,8 @@
 package org.apache.ctakes.core.resource;
 
 
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -21,7 +21,7 @@ final public class FileReadWriteUtil {
    private FileReadWriteUtil() {
    }
 
-   static private final Logger LOGGER = LogManager.getLogger( "FileReadWriteUtil" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "FileReadWriteUtil" );
 
    /**
     * Reading text from a file or resource is done everywhere, but a common implementation is missing from ctakes.

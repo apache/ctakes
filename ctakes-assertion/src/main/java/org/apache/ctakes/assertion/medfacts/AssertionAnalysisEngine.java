@@ -25,9 +25,8 @@ import org.apache.ctakes.assertion.stub.*;
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.typesystem.type.constants.CONST;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
-import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -62,7 +61,7 @@ import java.util.Set;
 @Deprecated
 public class AssertionAnalysisEngine extends JCasAnnotator_ImplBase
 {
-  private static Logger LOGGER = LogManager.getLogger(AssertionAnalysisEngine.class.getName());
+  private static Logger LOGGER = LoggerFactory.getLogger(AssertionAnalysisEngine.class.getName());
   
   AssertionDecoderConfiguration assertionDecoderConfiguration;
 
@@ -285,7 +284,7 @@ public class AssertionAnalysisEngine extends JCasAnnotator_ImplBase
     {
       String message = "current assertion type is null; this is a problem!!";
       System.err.println(message);
-      LOGGER.log(Level.ERROR,message);
+      // LOGGER.log(Level.ERROR,message);
       // Exception runtimeException = new RuntimeException(message);
       // throw new AnalysisEngineProcessException(runtimeException);
     
@@ -365,7 +364,7 @@ public class AssertionAnalysisEngine extends JCasAnnotator_ImplBase
       String message = String.format(
           "unexpected assertion value returned!! \"%s\"",
           assertionType);
-      LOGGER.log(Level.ERROR,message);
+      // LOGGER.log(Level.ERROR,message);
 //      System.err.println(message);
       Exception runtimeException = new RuntimeException(message);
       throw new AnalysisEngineProcessException(runtimeException);

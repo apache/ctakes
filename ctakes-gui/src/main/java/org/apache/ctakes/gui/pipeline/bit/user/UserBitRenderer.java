@@ -10,8 +10,8 @@ import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.awt.*;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author SPF , chip-nlp
@@ -20,7 +20,7 @@ import org.apache.logging.log4j.LogManager;
  */
 final public class UserBitRenderer implements ListCellRenderer<Object> {
 
-   static private final Logger LOGGER = LogManager.getLogger( "UsersRenderer" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "UsersRenderer" );
 
    static private final Border SELECTED_BORDER = new LineBorder( Color.DARK_GRAY, 1, true );
    static private final Border UNSELECTED_BORDER = new EmptyBorder( 0, 0, 0, 5 );

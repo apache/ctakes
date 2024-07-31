@@ -5,8 +5,8 @@ import org.apache.ctakes.dictionary.cased.util.bsv.BsvFileParser;
 import org.apache.ctakes.dictionary.cased.util.bsv.StringArrayCreator;
 import org.apache.ctakes.dictionary.lookup2.util.CuiCodeUtil;
 import org.apache.ctakes.utils.env.EnvironmentVariable;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 
 import java.io.IOException;
@@ -21,7 +21,7 @@ final public class BsvEncoder implements TermEncoder {
 
    static public final String ENCODER_TYPE = "BSV";
 
-   static private final Logger LOGGER = LogManager.getLogger( "BsvEncoder" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "BsvEncoder" );
 
 
    private final InMemoryEncoder _delegate;

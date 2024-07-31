@@ -18,8 +18,8 @@
  */
 package org.apache.ctakes.ytex.dao;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -36,7 +36,7 @@ import java.util.Properties;
  */
 public class DBUtil {
 
-	static private final Logger LOGGER = LogManager.getLogger( "DBUtil" );
+	static private final Logger LOGGER = LoggerFactory.getLogger( "DBUtil" );
 	private static Properties ytexProperties;
 	private static boolean oracle;
 	private static boolean mysql;

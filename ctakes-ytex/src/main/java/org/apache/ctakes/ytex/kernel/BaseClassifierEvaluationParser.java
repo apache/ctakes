@@ -23,8 +23,8 @@ import com.google.common.collect.HashBiMap;
 import org.apache.ctakes.ytex.kernel.dao.ClassifierEvaluationDao;
 import org.apache.ctakes.ytex.kernel.model.ClassifierEvaluation;
 import org.apache.ctakes.ytex.kernel.model.ClassifierInstanceEvaluation;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -43,7 +43,7 @@ import java.util.regex.Pattern;
  */
 public abstract class BaseClassifierEvaluationParser implements
 		ClassifierEvaluationParser {
-	static private final Logger LOGGER = LogManager.getLogger( "BaseClassifierEvaluationParser" );
+	static private final Logger LOGGER = LoggerFactory.getLogger( "BaseClassifierEvaluationParser" );
 
 	public static Pattern wsPattern = Pattern.compile("\\s|\\z");
 	public static Pattern wsDotPattern = Pattern.compile("\\s|\\.|\\z");

@@ -1,8 +1,8 @@
 package org.apache.ctakes.gui.dictionary.umls;
 
 
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author SPF , chip-nlp
@@ -14,7 +14,7 @@ final public class AutoTermExtractor {
    private AutoTermExtractor() {
    }
 
-   static private final Logger LOGGER = LogManager.getLogger( "AutoTermExtractor" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "AutoTermExtractor" );
 
 
 //   private Collection<String> autoExtractAcronyms( final String tokenizedText ) {

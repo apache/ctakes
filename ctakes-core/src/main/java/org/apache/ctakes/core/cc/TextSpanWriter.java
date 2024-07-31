@@ -6,8 +6,8 @@ import org.apache.ctakes.core.util.doc.DocIdUtil;
 import org.apache.ctakes.typesystem.type.refsem.Entity;
 import org.apache.ctakes.typesystem.type.refsem.Event;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.CAS;
@@ -38,7 +38,7 @@ import static org.apache.ctakes.core.config.ConfigParameterConstants.PARAM_OUTPU
 )
 public class TextSpanWriter extends CasConsumer_ImplBase {
 
-   static private final Logger LOGGER = LogManager.getLogger( "TextSpanWriter" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "TextSpanWriter" );
 
    static private final String FILE_EXTENSION = ".textspan.bsv";
 

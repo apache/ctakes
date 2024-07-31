@@ -3,8 +3,8 @@ package org.apache.ctakes.core.ae;
 
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.core.resource.FileLocator;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.fit.descriptor.ConfigurationParameter;
 import org.apache.uima.fit.factory.AnalysisEngineFactory;
@@ -27,7 +27,7 @@ import java.io.InputStreamReader;
 )
 public class BsvRegexSectionizer extends RegexSectionizer {
 
-   static private final Logger LOGGER = LogManager.getLogger( "BsvRegexSectionizer" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "BsvRegexSectionizer" );
 
 
    static public final String SECTION_TYPES_PATH = "SectionsBsv";

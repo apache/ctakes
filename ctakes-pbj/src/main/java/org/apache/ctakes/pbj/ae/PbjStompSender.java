@@ -1,8 +1,8 @@
 package org.apache.ctakes.pbj.ae;
 
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.resource.ResourceInitializationException;
 
@@ -24,7 +24,7 @@ import java.nio.charset.StandardCharsets;
 )
 public class PbjStompSender extends PbjSender {
 
-   static private final Logger LOGGER = LogManager.getLogger( "PbjStompSender" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "PbjStompSender" );
 
    private static final String END_OF_FRAME = "\u0000";
    static private final Object SOCKET_LOCK = new Object();

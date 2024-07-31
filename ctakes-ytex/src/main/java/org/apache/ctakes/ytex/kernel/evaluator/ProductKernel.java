@@ -18,8 +18,8 @@
  */
 package org.apache.ctakes.ytex.kernel.evaluator;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 
 import java.util.Arrays;
 import java.util.List;
@@ -31,7 +31,7 @@ import java.util.List;
  * 
  */
 public class ProductKernel extends CacheKernel {
-	private static final Logger LOGGER = LogManager.getLogger("ProductKernel");
+	private static final Logger LOGGER = LoggerFactory.getLogger("ProductKernel");
 	/**
 	 * use array instead of list. when running thread dumps, see a lot of action
 	 * in list.size(). may be a fluke, but can't hurt
@@ -44,8 +44,9 @@ public class ProductKernel extends CacheKernel {
 
 	public void setDelegateKernels(List<Kernel> delegateKernels) {
 		this.delegateKernels = new Kernel[delegateKernels.size()];
-		for (int i = 0; i < this.delegateKernels.length; i++)
-			this.delegateKernels[i] = delegateKernels.get(i);
+		for (int i = 0; i < this.delegateKernels.length; i++) {
+            this.delegateKernels[i] = delegateKernels.get(i);
+        }
 	}
 
 	@Override
@@ -53,12 +54,12 @@ public class ProductKernel extends CacheKernel {
 		double d = 1;
 		for (Kernel k : delegateKernels) {
 			d *= k.evaluate(o1, o2);
-			if (d == 0)
-				break;
+			if (d == 0) {
+                break;
+            }
 		}
 		if ( LOGGER.isTraceEnabled()) {
-			LOGGER.trace(new StringBuilder("K<").append(o1).append(",").append(o2)
-															.append("> = ").append(d));
+			LOGGER.trace("K<{},{}> = {}", o1, o2, d);
 		}
 		return d;
 	}

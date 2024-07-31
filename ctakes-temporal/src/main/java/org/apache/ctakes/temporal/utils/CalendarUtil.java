@@ -9,7 +9,7 @@ import org.apache.ctakes.core.util.StringUtil;
 import org.apache.ctakes.typesystem.type.refsem.Date;
 import org.apache.ctakes.typesystem.type.textsem.DateAnnotation;
 import org.apache.ctakes.typesystem.type.textsem.TimeMention;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
 
@@ -150,7 +150,7 @@ final public class CalendarUtil {
          }
          return span.getEndCalendar();
       } catch ( RuntimeException rtE ) {
-         LogManager.getLogger( "CalendarUtil" ).error( rtE.getMessage() );
+         LoggerFactory.getLogger( "CalendarUtil" ).error( rtE.getMessage() );
          return NULL_CALENDAR;
       }
    }

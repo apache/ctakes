@@ -10,8 +10,8 @@ import org.apache.ctakes.typesystem.type.textsem.EventMention;
 import org.apache.ctakes.typesystem.type.textsem.Markable;
 import org.apache.ctakes.typesystem.type.textsem.TimeMention;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
@@ -36,7 +36,7 @@ import static org.apache.ctakes.dependency.parser.util.DependencyUtility.*;
       products = { MARKABLE }
 )
 public class DeterministicMarkableAnnotator extends JCasAnnotator_ImplBase {
-  static private final Logger LOGGER = LogManager.getLogger( "DeterministicMarkableAnnotator" );
+  static private final Logger LOGGER = LoggerFactory.getLogger( "DeterministicMarkableAnnotator" );
 
   // list starters like A.  or #1    or 3)
   static Pattern headerPatt = Pattern.compile("^(([A-Z][\\.\\:\\)])|(#\\d+)|(\\d+[\\.\\:\\)])) *");

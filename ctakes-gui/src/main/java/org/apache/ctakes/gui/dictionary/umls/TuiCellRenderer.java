@@ -1,7 +1,7 @@
 package org.apache.ctakes.gui.dictionary.umls;
 
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
 import javax.swing.table.TableCellRenderer;
@@ -15,7 +15,7 @@ import java.awt.*;
  */
 final public class TuiCellRenderer implements TableCellRenderer {
 
-   static private final Logger LOGGER = LogManager.getLogger( "TuiCellRenderer" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "TuiCellRenderer" );
 
    private final TuiTableModel _tuiModel;
    private final TableCellRenderer _delegate;

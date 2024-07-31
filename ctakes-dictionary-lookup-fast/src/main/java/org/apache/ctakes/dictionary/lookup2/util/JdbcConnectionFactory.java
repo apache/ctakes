@@ -1,8 +1,8 @@
 package org.apache.ctakes.dictionary.lookup2.util;
 
 import org.apache.ctakes.core.resource.FileLocator;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.FileNotFoundException;
 import java.lang.reflect.InvocationTargetException;
@@ -26,9 +26,9 @@ public enum JdbcConnectionFactory {
    static public final String JDBC_USER = "jdbcUser";
    static public final String JDBC_PASS = "jdbcPass";
 
-   static final private Logger LOGGER = LogManager.getLogger( "JdbcConnectionFactory" );
-   static final private Logger DOT_LOGGER = LogManager.getLogger( "ProgressAppender" );
-   static final private Logger EOL_LOGGER = LogManager.getLogger( "ProgressDone" );
+   static final private Logger LOGGER = LoggerFactory.getLogger( "JdbcConnectionFactory" );
+   static final private Logger DOT_LOGGER = LoggerFactory.getLogger( "ProgressAppender" );
+   static final private Logger EOL_LOGGER = LoggerFactory.getLogger( "ProgressDone" );
 
    static private final String HSQL_PREFIX = "jdbc:hsqldb:";
    static private final String FILE_PREFIX = "file:";

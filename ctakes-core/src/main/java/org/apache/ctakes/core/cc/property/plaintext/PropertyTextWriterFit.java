@@ -43,7 +43,7 @@ public class PropertyTextWriterFit extends CasConsumer_ImplBase {
    )
    private String fitOutputDirectoryPath;
 
-//   static private final Logger LOGGER = LogManager.getLogger( "PropertyTextWriterFit" );
+//   static private final Logger LOGGER = LoggerFactory.getLogger( "PropertyTextWriterFit" );
 
    // delegate
    final private PropertyTextWriter _propertyTextWriter;

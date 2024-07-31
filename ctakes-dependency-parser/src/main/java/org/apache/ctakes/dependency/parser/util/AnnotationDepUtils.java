@@ -23,8 +23,8 @@ import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 import org.apache.ctakes.typesystem.type.syntax.ConllDependencyNode;
 import org.apache.ctakes.utils.tree.SimpleTree;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
@@ -32,7 +32,7 @@ import org.apache.uima.jcas.tcas.Annotation;
 import java.util.*;
 
 public class AnnotationDepUtils {
-  private static Logger LOGGER = LogManager.getLogger(AnnotationDepUtils.class);
+  private static Logger LOGGER = LoggerFactory.getLogger(AnnotationDepUtils.class);
 
   public static String getTokenRelTreeString(JCas jCas, List<ConllDependencyNode> nodes, Annotation[] annotations, String[] labels){
     return getTokenRelTreeString(jCas, nodes, annotations, labels, false);

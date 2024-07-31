@@ -42,8 +42,8 @@ import org.apache.ctakes.typesystem.type.textspan.Segment;
 import org.apache.ctakes.utils.distsem.WordEmbeddings;
 import org.apache.ctakes.utils.distsem.WordVector;
 import org.apache.ctakes.utils.distsem.WordVectorReader;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UIMAException;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
@@ -119,7 +119,7 @@ public class EvaluationOfEventCoreference extends EvaluationOfTemporalRelations_
     public boolean getSkipTest();
   }
   
-  private static final Logger LOGGER = LogManager.getLogger(EvaluationOfEventCoreference.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger(EvaluationOfEventCoreference.class);
   public static float COREF_PAIRS_DOWNSAMPLE = 0.5f;
   public static float COREF_CLUSTER_DOWNSAMPLE=0.5f;
   private static final int NUM_SAMPLES = 0;
@@ -509,7 +509,7 @@ public class EvaluationOfEventCoreference extends EvaluationOfTemporalRelations_
     }
   }
   public static class DocumentIDPrinter extends org.apache.uima.fit.component.JCasAnnotator_ImplBase {
-    static Logger LOGGER = LogManager.getLogger(DocumentIDPrinter.class);
+    static Logger LOGGER = LoggerFactory.getLogger(DocumentIDPrinter.class);
     @Override
     public void process(JCas jCas) throws AnalysisEngineProcessException {
        String docId = DocIdUtil.getDocumentID( jCas );
@@ -871,7 +871,7 @@ public class EvaluationOfEventCoreference extends EvaluationOfTemporalRelations_
 
   public static class EvaluationPatientNoteCollector extends JCasAnnotator_ImplBase {
 
-    private final Logger LOGGER = LogManager.getLogger( "EvaluationPatientNoteCollector" );
+    private final Logger LOGGER = LoggerFactory.getLogger( "EvaluationPatientNoteCollector" );
 
     /**
      * Adds the primary view of this cas to a cache of views for patients.

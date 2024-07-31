@@ -25,8 +25,8 @@ import org.apache.ctakes.typesystem.type.constants.CONST;
 import org.apache.ctakes.typesystem.type.refsem.OntologyConcept;
 import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
 import org.apache.ctakes.typesystem.type.textsem.MedicationMention;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.lucene.index.Term;
 import org.apache.lucene.search.*;
 import org.apache.uima.UimaContext;
@@ -46,7 +46,7 @@ import java.util.*;
  */
 public class OrangeBookFilterConsumerImpl extends BaseLookupConsumerImpl {
    // LOG4J logger based on class name
-   private final Logger LOGGER = LogManager.getLogger( getClass().getName() );
+   private final Logger LOGGER = LoggerFactory.getLogger( getClass().getName() );
 
    static private final String CODE_MF_PRP_KEY = "codeMetaField";
 

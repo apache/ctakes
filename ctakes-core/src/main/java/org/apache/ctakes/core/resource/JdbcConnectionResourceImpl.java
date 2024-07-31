@@ -18,8 +18,8 @@
  */
 package org.apache.ctakes.core.resource;
 
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.resource.DataResource;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.resource.SharedResourceObject;
@@ -39,7 +39,7 @@ import java.sql.DriverManager;
 public class JdbcConnectionResourceImpl implements JdbcConnectionResource,
 		SharedResourceObject
 {
-    static private final Logger LOGGER = LogManager.getLogger( "JdbcConnectionResourceImpl" );
+    static private final Logger LOGGER = LoggerFactory.getLogger( "JdbcConnectionResourceImpl" );
 
     /**
 	 * JDBC driver ClassName.

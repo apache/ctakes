@@ -55,8 +55,8 @@ import org.apache.ctakes.typesystem.type.textspan.LookupWindowAnnotation;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
 import org.apache.ctakes.utils.struct.CounterMap;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UIMAException;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngine;
@@ -113,7 +113,7 @@ import java.util.regex.Pattern;
 public abstract class Evaluation_ImplBase<STATISTICS_TYPE> extends
 org.cleartk.eval.Evaluation_ImplBase<Integer, STATISTICS_TYPE> {
 
-	static Logger LOGGER = LogManager.getLogger( Evaluation_ImplBase.class );
+	static Logger LOGGER = LoggerFactory.getLogger( Evaluation_ImplBase.class );
 
 	private static final String LOOKUP_PATH = "/org/apache/ctakes/temporal/badEEContainNotes.txt";
 

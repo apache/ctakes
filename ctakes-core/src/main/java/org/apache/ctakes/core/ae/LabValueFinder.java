@@ -11,8 +11,8 @@ import org.apache.ctakes.typesystem.type.syntax.NumToken;
 import org.apache.ctakes.typesystem.type.syntax.WordToken;
 import org.apache.ctakes.typesystem.type.textsem.*;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -66,7 +66,7 @@ final public class LabValueFinder extends JCasAnnotator_ImplBase {
          "C1715372",    // "Medical problem"
          "C1441604" }; // "High sensitivity"
 
-   static final Logger LOGGER = LogManager.getLogger( "LabValueFinder" );
+   static final Logger LOGGER = LoggerFactory.getLogger( "LabValueFinder" );
 
    @ConfigurationParameter( name = PARAM_ALL_SECTIONS,
          description = "Use all Annotatable sections.  This ignores the value of " + PARAM_SECTIONS,

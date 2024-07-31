@@ -20,8 +20,8 @@ package org.apache.ctakes.temporal.ae;
 
 import org.apache.ctakes.dependency.parser.ae.ClearNLPDependencyParserAE;
 import org.apache.ctakes.typesystem.type.textsem.TimeMention;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.uima.UIMAException;
 import org.apache.uima.fit.factory.AggregateBuilder;
 import org.apache.uima.fit.factory.AnalysisEngineFactory;
@@ -41,7 +41,7 @@ import static org.junit.Assert.assertTrue;
 public class BackwardsTimeAnnotatorTest extends TemporalTest_ImplBase {
 
 	// LOG4J logger based on class name
-	private Logger LOGGER = LogManager.getLogger(getClass().getName());
+	private Logger LOGGER = LoggerFactory.getLogger(getClass().getName());
 
 	@Test
 	public void testPipeline() throws UIMAException, IOException {
