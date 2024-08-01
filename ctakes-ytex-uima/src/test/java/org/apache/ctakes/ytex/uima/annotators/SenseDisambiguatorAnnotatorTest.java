@@ -22,6 +22,7 @@ import com.google.common.collect.Lists;
 import org.apache.ctakes.typesystem.type.refsem.OntologyConcept;
 import org.apache.ctakes.typesystem.type.textsem.EntityMention;
 import org.apache.ctakes.util.JdbcOperationsHelper;
+import org.apache.ctakes.ytex.kernel.KernelContextHolder;
 import org.apache.ctakes.ytex.kernel.dao.ConceptDao;
 import org.apache.ctakes.ytex.kernel.model.ConceptGraph;
 import org.apache.ctakes.ytex.kernel.wsd.WordSenseDisambiguator;
@@ -38,7 +39,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.access.ContextSingletonBeanFactoryLocator;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.sql.DataSource;
@@ -53,10 +53,12 @@ public class SenseDisambiguatorAnnotatorTest extends JdbcOperationsHelper {
 
 	@Before
 	public void setUp() throws Exception {
-		appCtx = (ApplicationContext) ContextSingletonBeanFactoryLocator
-				.getInstance("classpath*:org/apache/ctakes/ytex/kernelBeanRefContext.xml")
-				.useBeanFactory("kernelApplicationContext").getFactory();
-		conceptDao = appCtx.getBean(ConceptDao.class);
+//		appCtx = (ApplicationContext) ContextSingletonBeanFactoryLocator
+//				.getInstance("classpath*:org/apache/ctakes/ytex/kernelBeanRefContext.xml")
+//				.useBeanFactory("kernelApplicationContext").getFactory();
+//		conceptDao = appCtx.getBean(ConceptDao.class);
+		conceptDao = KernelContextHolder.getApplicationContext().getBean( ConceptDao.class );
+
 		JdbcTemplate jdbcTemplate = new JdbcTemplate();
 		jdbcTemplate.setDataSource(appCtx.getBean(DataSource.class));
 		Properties ytexProperties = (Properties)appCtx.getBean("ytexProperties");

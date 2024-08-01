@@ -22,6 +22,7 @@ import org.apache.ctakes.core.ae.UmlsEnvironmentConfiguration;
 import org.apache.ctakes.utils.env.EnvironmentVariable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.apache.ctakes.ytex.kernel.KernelContextHolder;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -29,7 +30,6 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 
-import java.lang.invoke.MethodHandles;
 import java.util.List;
 
 import static org.junit.Assume.assumeTrue;
@@ -42,7 +42,7 @@ import static org.junit.Assume.assumeTrue;
  * 
  */
 public class UMLSDaoTest {
-	private static final Logger log = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+	private static final Logger log = LoggerFactory.getLogger( "UMLSDaoTest" );
 
 	private ApplicationContext appCtx = null;
 	private UMLSDao umlsDao = null;
@@ -56,12 +56,12 @@ public class UMLSDaoTest {
 	public void setUp() throws Exception {
 		assumeTrue( hasUMLSCredentials() );
 
-		appCtx = (ApplicationContext) ContextSingletonBeanFactoryLocator
-				.getInstance("classpath*:org/apache/ctakes/ytex/kernelBeanRefContext.xml")
-				.useBeanFactory("kernelApplicationContext").getFactory();
-
-		umlsDao = appCtx.getBean(UMLSDao.class);
-	}
+//		appCtx = (ApplicationContext) ContextSingletonBeanFactoryLocator
+//				.getInstance("classpath*:org/apache/ctakes/ytex/kernelBeanRefContext.xml")
+//				.useBeanFactory("kernelApplicationContext").getFactory();
+//		umlsDao = appCtx.getBean(UMLSDao.class);
+      umlsDao = KernelContextHolder.getApplicationContext().getBean( UMLSDao.class );
+   }
 
 
 	@Test
