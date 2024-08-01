@@ -605,7 +605,7 @@ final public class WikiPipeLister {
       sb.append( "\n### " ).append( piperDesc._name ).append( "\n" );
       sb.append( "<details>\n<summary>" ).append( piperDesc._description ).append( "</summary>\n\n" );
       sb.append( "[" ).append( piperDesc._name ).append( "](" ).append( REPO ).append( piperDesc._module )
-              .append( "/src/user/main/" ).append( piperDesc._path ).append( ")  \n\n" );
+              .append( "/src/user/resources/" ).append( piperDesc._path ).append( ")  \n\n" );
       final String[] lines = StringUtil.fastSplit( piperDesc._contents, '\n' );
       for ( String line : lines ) {
          sb.append( "> " );
