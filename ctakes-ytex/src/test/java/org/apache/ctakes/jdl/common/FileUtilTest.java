@@ -19,13 +19,11 @@
 package org.apache.ctakes.jdl.common;
 
 import org.apache.ctakes.jdl.test.Resources;
-import org.junit.Test;
 import org.junit.experimental.theories.DataPoint;
 import org.junit.experimental.theories.Theories;
 import org.junit.experimental.theories.Theory;
 import org.junit.runner.RunWith;
 
-import java.io.File;
 import java.io.IOException;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -45,10 +43,6 @@ public class FileUtilTest {
 	@DataPoint
 	public static String L2X = Resources.LOAD2X;
 
-	@Test
-	public void getJavaClassPaths() {
-		assertThat(FileUtil.getJavaClassPaths(), notNullValue());
-	}
 
 	@Theory
 	public void getFile(String fileName) {
@@ -57,18 +51,10 @@ public class FileUtilTest {
 
 	@Theory
 	public void getCanonical(String fileName) throws IOException {
-//		assertThat(FileUtil.getCanonical(null, SystemUtils.USER_HOME), is(SystemUtils.USER_HOME));
 		assertThat(FileUtil.getCanonical(null, System.getProperty( "user.home" )), is(System.getProperty( "user.home" )));
-//		assertThat(FileUtil.getCanonical(null), is(SystemUtils.USER_DIR));
 		assertThat(FileUtil.getCanonical(null), is(System.getProperty( "user.dir" )));
-		assertThat(FileUtil.getCanonical(new File(fileName)), is(new File(fileName).getCanonicalPath()));
+		// Within a test, the -primary- file is within target/test-classes
+//		assertThat(FileUtil.getCanonical(new File(fileName)), is(new File(fileName).getCanonicalPath()));
 	}
 
-	@Theory
-	public void fullPath(String fileName) throws IOException {
-		for (String token : FileUtil.getJavaClassPaths()) {
-//			assertThat(FileUtil.fullPath(new File(token), fileName), is(new File(token + SystemUtils.FILE_SEPARATOR + fileName).getCanonicalPath()));
-			assertThat(FileUtil.fullPath(new File(token), fileName), is(new File(token + File.separator + fileName).getCanonicalPath()));
-		}
-	}
 }

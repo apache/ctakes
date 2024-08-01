@@ -20,6 +20,7 @@ package org.apache.ctakes.jdl.data.loader;
 
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVStrategy;
+import org.apache.ctakes.core.resource.FileLocator;
 import org.apache.ctakes.jdl.data.base.JdlConnection;
 import org.apache.ctakes.jdl.schema.xdl.CsvLoadType;
 import org.apache.ctakes.jdl.schema.xdl.CsvLoadType.Column;
@@ -33,6 +34,7 @@ import java.sql.SQLException;
 import java.text.Format;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * Loader of CSV file.
@@ -53,15 +55,15 @@ public class CsvLoader extends Loader {
 	/**
 	 * @param loader
 	 *            the loader
-	 * @param file
-	 *            the file
+	 * @param path
+	 *            the file name/path
 	 * @throws FileNotFoundException
 	 *             exception
 	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public CsvLoader(final CsvLoadType loader, final File file)
+	public CsvLoader(final CsvLoadType loader, final String path )
 			throws FileNotFoundException {
-		InputStream inputStrem = new FileInputStream(file);
+		final InputStream inputStrem = FileLocator.getStreamQuiet( path );
 		Reader reader = new InputStreamReader(inputStrem);
 		char delimiter = toChar(loader.getDelimiter());
 		char encapsulator = (loader.getEncapsulator() == null || loader
@@ -108,32 +110,23 @@ public class CsvLoader extends Loader {
 	 * @return the sql string
 	 */
 	public final String getSqlInsert(final CsvLoadType loader) {
-		String query = "insert into " + loader.getTable() + " (";
-		String values = ") values (";
-		for (Column column : loader.getColumn()) {
-			if (isNotTrue(column.isSkip())) {
-				query += column.getName() + ",";
-				values += "?,";
-			}
-		}
-		return removeEnd(query, ",")
-				+ removeEnd(values, ",") + ")";
-	}
-
-	static private boolean isNotTrue( final Boolean value ) {
-		return value == null || !value;
+//		System.out.println( "CsvLoader.getSqlInsert" );
+//		loader.getColumn().forEach( c -> System.out.println( c.getName() + " " + c.isSkip() ) );
+		final String columns = loader.getColumn()
+											  .stream()
+											  .filter( c -> !Boolean.TRUE.equals( c.isSkip() ) )
+											  .map( Column::getName )
+											  .collect( Collectors.joining( "," ) );
+		final String values = loader.getColumn()
+											 .stream()
+											 .filter( c -> !Boolean.TRUE.equals( c.isSkip() ) )
+											 .map( c -> "?" )
+											 .collect( Collectors.joining( "," ) );
+		return "insert into " + loader.getTable() + " (" + columns + ") values (" + values + ")";
 	}
 
 	static private boolean isTrue( final Boolean value ) {
 		return value != null && value;
-	}
-
-	static private String removeEnd( final String text, final String endSplitter ) {
-		final int lastIndex = text.lastIndexOf( endSplitter );
-		if ( lastIndex < 0 ) {
-			return text;
-		}
-		return text.substring( 0, lastIndex );
 	}
 
 	/**

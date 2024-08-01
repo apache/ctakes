@@ -19,34 +19,21 @@
 package org.apache.ctakes.jdl.common;
 
 
-import org.apache.ctakes.core.util.StringUtil;
+import org.apache.ctakes.core.resource.FileLocator;
 
 import java.io.File;
-import java.io.IOException;
 
 /**
+ * @deprecated Use FileLocator in ctakes-core.
  * Utility to get a file.
  * 
  * @author mas
  */
+@Deprecated
 public final class FileUtil {
 	private FileUtil() {
 	}
 
-//	/**
-//	 * @return the javaClassPaths
-//	 */
-//	public static String[] getJavaClassPaths() {
-//		return SystemUtils.JAVA_CLASS_PATH.split(File.pathSeparator);
-//	}
-
-	/**
-	 * @return the javaClassPaths
-	 */
-	public static String[] getJavaClassPaths() {
-//		return SystemUtils.JAVA_CLASS_PATH.split(File.pathSeparator);
-		return StringUtil.fastSplit( System.getProperty( "java.class.path" ), File.pathSeparatorChar );
-	}
 
 
 	/**
@@ -55,18 +42,7 @@ public final class FileUtil {
 	 * @return the file if exist in one of all the javaClassPaths otherwise null
 	 */
 	public static File getFile(final String fileName) {
-		File file = new File(fileName);
-		if (file.exists()) {
-			return file;
-		}
-		for (String token : getJavaClassPaths()) {
-//			file = new File(token + SystemUtils.FILE_SEPARATOR + fileName);
-			file = new File(token + File.separator + fileName);
-			if (file.exists()) {
-				return file;
-			}
-		}
-		return null;
+		return FileLocator.getFileQuiet( fileName );
 	}
 
 	/**
@@ -77,11 +53,12 @@ public final class FileUtil {
 	 * @return the canonical pathname string
 	 */
 	public static String getCanonical(File file, String defaultString) {
-		try {
-			return (file == null) ? defaultString : file.getCanonicalPath();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if ( file == null ) {
+			return defaultString;
+		}
+		final File foundFile = FileLocator.getFileQuiet( file.getPath() );
+		if ( foundFile != null ) {
+			return foundFile.getPath();
 		}
 		return defaultString;
 	}
@@ -92,19 +69,7 @@ public final class FileUtil {
 	 * @return the canonical pathname string or USER_DIR if the file is null
 	 */
 	public static String getCanonical(File file) {
-//		return getCanonical(file, SystemUtils.USER_DIR);
 		return getCanonical(file, System.getProperty( "user.dir" ));
 	}
 
-	/**
-	 * @param filePath
-	 *            the filePath of the file
-	 * @param fileName
-	 *            the fileName of the file
-	 * @return the canonical pathname string
-	 */
-	public static String fullPath(File filePath, String fileName) {
-//		return getCanonical(filePath) + SystemUtils.FILE_SEPARATOR + fileName;
-		return getCanonical(filePath) + File.separator + fileName;
-	}
 }

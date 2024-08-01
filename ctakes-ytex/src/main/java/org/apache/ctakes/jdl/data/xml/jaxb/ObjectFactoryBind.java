@@ -18,13 +18,18 @@
  */
 package org.apache.ctakes.jdl.data.xml.jaxb;
 
-import org.apache.ctakes.jdl.schema.xdl.ObjectFactory;
+import org.apache.ctakes.core.resource.FileLocator;
 
 import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
-import java.io.File;
+import javax.xml.transform.Source;
+import javax.xml.transform.stream.StreamSource;
+import java.io.FileNotFoundException;
 import java.io.StringReader;
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -33,28 +38,47 @@ import java.io.StringReader;
  * @author mas
  */
 public class ObjectFactoryBind {
-	private Unmarshaller unmarshaller;
+//	private Unmarshaller unmarshaller;
+
+	static private final Map<String,Unmarshaller> UNMARSHALLER_MAP = new HashMap<>();
 
 	/**
 	 * @throws JAXBException
 	 *             exception
 	 */
 	public ObjectFactoryBind() throws JAXBException {
-		unmarshaller = JAXBContext.newInstance(ObjectFactory.class.getPackage().getName()).createUnmarshaller();
+//		unmarshaller = JAXBContext.newInstance(ObjectFactory.class.getPackage().getName()).createUnmarshaller();
+//		unmarshaller = JAXBContext.newInstance( ObjectFactory.class ).createUnmarshaller();
+	}
+
+	private <O> Unmarshaller getUnmarshaller( final Class<O> oType ) throws JAXBException {
+		Unmarshaller unmarshaller = UNMARSHALLER_MAP.get( oType.getName() );
+		if ( unmarshaller != null ) {
+			return unmarshaller;
+		}
+		final JAXBContext context = JAXBContext.newInstance( oType );
+		unmarshaller = context.createUnmarshaller();
+		UNMARSHALLER_MAP.put( oType.getName(), unmarshaller );
+		return unmarshaller;
 	}
 
 	/**
-	 * @param srcXml
-	 *            the srcXml to unmarshal
+	 * @param srcXml the srcXml to unmarshal
+	 * @param oType class of expected return
 	 * @return the object unmarshalled
-	 * @throws JAXBException
-	 *             exception
+	 * @throws JAXBException -
 	 */
-	public final Object unmarshalSrcXml(final String srcXml) throws JAXBException {
+	public final <O> O unmarshalSrcXml(final String srcXml, final Class<O> oType ) throws JAXBException {
+		final Unmarshaller unmarshaller = getUnmarshaller( oType );
 		try {
-			return unmarshaller.unmarshal(new File(srcXml));
-		} catch (JAXBException e) {
-			throw e;
+//			return oType.cast( unmarshaller.unmarshal( FileLocator.getAsStream( srcXml ) ) );
+//			return oType.cast( unmarshaller.unmarshal( new StreamSource( FileLocator.getAsStream( srcXml ) ), oType ) );
+			final Source source = new StreamSource( FileLocator.getAsStream( srcXml ) );
+//			System.out.println( "ObjectFactoryBind.unmarshalSrcXml srcXml: " + srcXml + " path " + FileLocator.getFileQuiet( srcXml ).getPath() );
+			final JAXBElement<O> element = unmarshaller.unmarshal( source, oType );
+			return element.getValue();
+		} catch ( FileNotFoundException fnfE ) {
+			throw new JAXBException( fnfE );
 		}
 	}
 
@@ -65,11 +89,8 @@ public class ObjectFactoryBind {
 	 * @throws JAXBException
 	 *             exception
 	 */
-	public final Object unmarshalStrXml(final String strXml) throws JAXBException {
-		try {
-			return unmarshaller.unmarshal(new StringReader(strXml));
-		} catch (JAXBException e) {
-			throw e;
-		}
+	public final <O> O unmarshalStrXml( final String strXml, final Class<O> oType ) throws JAXBException {
+		final Unmarshaller unmarshaller = getUnmarshaller( oType );
+		return oType.cast( unmarshaller.unmarshal( new StringReader(strXml) ) );
 	}
 }

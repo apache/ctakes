@@ -18,7 +18,8 @@
  */
 package org.apache.ctakes.jdl.data.xml.jaxb;
 
-import org.apache.ctakes.jdl.common.FileUtil;
+import org.apache.ctakes.jdl.schema.xdl.JdbcType;
+import org.apache.ctakes.jdl.schema.xdl.LoadType;
 import org.apache.ctakes.jdl.test.Resources;
 import org.junit.Test;
 import org.junit.experimental.theories.DataPoint;
@@ -30,7 +31,6 @@ import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.UnmarshalException;
 
-import java.util.Objects;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.junit.Assert.assertThat;
@@ -46,17 +46,31 @@ public class ObjectFactoryBindTest {
 	@DataPoint
 	public static String L2C = Resources.LOAD2C;
 	@DataPoint
-	public static String L2X = Resources.LOAD1X;
+	public static String L2X = Resources.LOAD2X;
 
 	@Theory
 	public void unmarshalSrcXml(String xml) throws JAXBException {
-		xml = Objects.requireNonNull( FileUtil.getFile( xml ) ).getPath();
-		Object obj = new ObjectFactoryBind().unmarshalSrcXml(xml);
-		assertThat(obj, instanceOf(JAXBElement.class));
+//		xml = Objects.requireNonNull( FileUtil.getFile( xml ) ).getPath();
+//		Object obj = new ObjectFactoryBind().unmarshalSrcXml(xml);
+//		final InputStream xmlStream = Objects.requireNonNull( FileLocator.getStreamQuiet( xml ) );
+
+//		JAXBElement obj = new ObjectFactoryBind().unmarshalSrcXml( xml, JAXBElement.class );
+//		assertThat(obj, instanceOf(JAXBElement.class));
+		if ( xml.equals( CX ) ) {
+			final JdbcType obj = ObjectFactoryUtil.getJdbcTypeBySrcXml( xml );
+			assertThat(obj, instanceOf(JdbcType.class));
+		} else if ( xml.equals( L1C ) || xml.equals( L2C ) ) {
+			final LoadType obj = ObjectFactoryUtil.getLoadTypeBySrcXml( xml );
+			assertThat(obj, instanceOf(LoadType.class));
+		} else {
+			final LoadType obj = ObjectFactoryUtil.getLoadTypeBySrcXml( xml );
+			assertThat(obj, instanceOf(LoadType.class));
+		}
 	}
 
 	@Test(expected = UnmarshalException.class)
 	public void unmarshalStrXml() throws JAXBException {
-		new ObjectFactoryBind().unmarshalStrXml("<root />");
+//		new ObjectFactoryBind().unmarshalStrXml("<root />");
+		new ObjectFactoryBind().unmarshalStrXml("<root />", JAXBElement.class );
 	}
 }

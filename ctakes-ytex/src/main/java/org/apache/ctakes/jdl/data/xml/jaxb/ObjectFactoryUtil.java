@@ -18,9 +18,7 @@
  */
 package org.apache.ctakes.jdl.data.xml.jaxb;
 
-import org.apache.ctakes.jdl.schema.xdl.ConnType;
-import org.apache.ctakes.jdl.schema.xdl.JdbcType;
-import org.apache.ctakes.jdl.schema.xdl.LoadType;
+import org.apache.ctakes.jdl.schema.xdl.*;
 
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
@@ -38,19 +36,31 @@ public final class ObjectFactoryUtil {
 	}
 
 	private static ObjectFactoryBind getObjectFactoryMapping() throws JAXBException {
-		return (objectFactoryMapping == null) ? new ObjectFactoryBind() : objectFactoryMapping;
+		if ( objectFactoryMapping == null ) {
+			objectFactoryMapping = new ObjectFactoryBind();
+		}
+		return objectFactoryMapping;
 	}
 
-	private static Object getJAXBElement(final Object obj) {
-		return (obj == null) ? obj : ((JAXBElement<?>) obj).getValue();
+	private static <O> O getJAXBElement( final Object obj, final Class<O> oType ) {
+		if ( oType.isInstance( obj ) ) {
+			return oType.cast( obj );
+		}
+		if ( obj instanceof JAXBElement ) {
+			final Object value = ((JAXBElement<?>)obj).getValue();
+			if ( oType.isInstance( value ) ) {
+				return oType.cast( value );
+			}
+		}
+		return null;
 	}
 
-	private static Object getJAXBElementBySrcXml(final String srcXml) throws JAXBException {
-		return getJAXBElement(getObjectFactoryMapping().unmarshalSrcXml(srcXml));
+	private static <O> O getJAXBElementBySrcXml(final String srcXml, final Class<O> oType ) throws JAXBException {
+		return getJAXBElement (getObjectFactoryMapping().unmarshalSrcXml(srcXml, oType), oType );
 	}
 
-	private static Object getJAXBElementByStrXml(final String strXml) throws JAXBException {
-		return getJAXBElement(getObjectFactoryMapping().unmarshalStrXml(strXml));
+	private static <O> O getJAXBElementByStrXml(final String strXml, final Class<O> oType ) throws JAXBException {
+		return getJAXBElement( getObjectFactoryMapping().unmarshalStrXml(strXml, oType), oType );
 	}
 
 	/**
@@ -83,7 +93,7 @@ public final class ObjectFactoryUtil {
 	 *             exception
 	 */
 	public static ConnType getConnTypeBySrcXml(final String srcXml) throws JAXBException {
-		return (ConnType) getJAXBElementBySrcXml(srcXml);
+		return getJAXBElementBySrcXml( srcXml, ConnType.class );
 	}
 
 	/**
@@ -94,7 +104,7 @@ public final class ObjectFactoryUtil {
 	 *             exception
 	 */
 	public static ConnType getConnTypeByStrXml(final String strXml) throws JAXBException {
-		return (ConnType) getJAXBElementByStrXml(strXml);
+		return getJAXBElementByStrXml( strXml, ConnType.class );
 	}
 
 	/**
@@ -105,7 +115,7 @@ public final class ObjectFactoryUtil {
 	 *             exception
 	 */
 	public static LoadType getLoadTypeBySrcXml(final String srcXml) throws JAXBException {
-		return (LoadType) getJAXBElementBySrcXml(srcXml);
+		return getJAXBElementBySrcXml( srcXml, LoadType.class );
 	}
 
 	/**
@@ -116,6 +126,51 @@ public final class ObjectFactoryUtil {
 	 *             exception
 	 */
 	public static LoadType getLoadTypeByStrXml(final String strXml) throws JAXBException {
-		return (LoadType) getJAXBElementByStrXml(strXml);
+		return getJAXBElementByStrXml( strXml, LoadType.class );
 	}
+
+	/**
+	 * @param srcXml
+	 *            the srcXml to manage
+	 * @return the loadType
+	 * @throws JAXBException
+	 *             exception
+	 */
+	public static XmlLoadType getXmlLoadTypeBySrcXml( final String srcXml) throws JAXBException {
+		return getJAXBElementBySrcXml( srcXml, XmlLoadType.class );
+	}
+
+	/**
+	 * @param strXml
+	 *            the strXml to manage
+	 * @return the loadType
+	 * @throws JAXBException
+	 *             exception
+	 */
+	public static XmlLoadType getXmlLoadTypeByStrXml(final String strXml) throws JAXBException {
+		return getJAXBElementByStrXml( strXml, XmlLoadType.class );
+	}
+
+	/**
+	 * @param srcXml
+	 *            the srcXml to manage
+	 * @return the loadType
+	 * @throws JAXBException
+	 *             exception
+	 */
+	public static CsvLoadType getCsvLoadTypeBySrcXml(final String srcXml) throws JAXBException {
+		return getJAXBElementBySrcXml( srcXml, CsvLoadType.class );
+	}
+
+	/**
+	 * @param strXml
+	 *            the strXml to manage
+	 * @return the loadType
+	 * @throws JAXBException
+	 *             exception
+	 */
+	public static CsvLoadType getCsvLoadTypeByStrXml(final String strXml) throws JAXBException {
+		return getJAXBElementByStrXml( strXml, CsvLoadType.class );
+	}
+
 }

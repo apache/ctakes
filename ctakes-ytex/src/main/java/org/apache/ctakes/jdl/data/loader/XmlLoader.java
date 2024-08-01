@@ -30,6 +30,7 @@ import org.w3c.dom.Node;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Iterator;
+import java.util.stream.Collectors;
 
 /**
  * Loader of XML file.
@@ -57,21 +58,17 @@ public class XmlLoader extends Loader {
 	 * @return the sql string
 	 */
 	public final String getSqlInsert(final XmlLoadType loader) {
-		String query = "insert into " + loader.getTable() + " (";
-		String values = ") values (";
-		for (Column column : loader.getColumn()) {
-			query += column.getName() + ",";
-			values += "?,";
-		}
-		return removeEnd(query, ",") + removeEnd(values, ",") + ")";
-	}
-
-	static private String removeEnd( final String text, final String endSplitter ) {
-		final int lastIndex = text.lastIndexOf( endSplitter );
-		if ( lastIndex < 0 ) {
-			return text;
-		}
-		return text.substring( 0, lastIndex );
+//		System.out.println( "XmlLoader.getSqlInsert" );
+//		loader.getColumn().forEach( c -> System.out.println( c.getName() ) );
+		final String columns = loader.getColumn()
+											  .stream()
+											  .map( Column::getName )
+											  .collect( Collectors.joining( "," ) );
+		final String values = loader.getColumn()
+											 .stream()
+											 .map( c -> "?" )
+											 .collect( Collectors.joining( "," ) );
+		return "insert into " + loader.getTable() + " (" + columns + ") values (" + values + ")";
 	}
 
 	/**

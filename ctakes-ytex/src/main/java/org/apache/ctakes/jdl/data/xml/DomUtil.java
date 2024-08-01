@@ -18,6 +18,7 @@
  */
 package org.apache.ctakes.jdl.data.xml;
 
+import org.apache.ctakes.core.resource.FileLocator;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.xml.sax.InputSource;
@@ -109,7 +110,8 @@ public final class DomUtil {
 		try {
 			DocumentBuilder builder = factory.newDocumentBuilder();
 			// return builder.parse(new InputSource(srcXml));
-			return builder.parse(srcXml);
+//			return builder.parse(srcXml);
+			return builder.parse( FileLocator.getStreamQuiet( srcXml ) );
 		} catch (ParserConfigurationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -136,7 +138,7 @@ public final class DomUtil {
 			transformer.setOutputProperty(OutputKeys.INDENT, YES);
 			transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, YES);
 			transformer.transform(new DOMSource(node), new StreamResult(sw));
-			return sw.toString();
+			return sw.toString().trim();
 		} catch (TransformerFactoryConfigurationError e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -33,7 +33,6 @@ import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 
 import javax.xml.bind.JAXBException;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -44,7 +43,6 @@ import java.sql.SQLException;
  * @author mas
  */
 public class AppJdl {
-//	private static final Log log = LogFactory.getLog(AppJdl.class);
 	static private final Logger LOGGER = LoggerFactory.getLogger( "AppJdl" );
 	private String srcConn;
 	private String srcData;
@@ -85,8 +83,7 @@ public class AppJdl {
 					CsvLoadType csv = load.getCsv();
 					if (csv != null) {
 						try {
-							CsvLoader csvLoader = new CsvLoader(csv, new File(
-									srcData));
+							CsvLoader csvLoader = new CsvLoader( csv, srcData );
 							csvLoader.dataInsert(jdlConnection);
 						} catch (FileNotFoundException e) {
 							throw new RuntimeException(e);

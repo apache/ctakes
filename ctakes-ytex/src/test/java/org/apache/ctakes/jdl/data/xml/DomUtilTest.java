@@ -71,10 +71,9 @@ public final class DomUtilTest {
 		xml = FileUtil.getFile(xml).toString();
 		Document document = DomUtil.srcToDocument(xml);
 		Element element = document.getDocumentElement();
-//		assertThat(StringUtils.startsWith(DomUtil.nodeToStr(element), "<" + Resources.ROOT_LOAD), is(true));
-//		assertThat(StringUtils.endsWith(DomUtil.nodeToStr(element).trim(), "</" + Resources.ROOT_LOAD + ">"), is(true));
 		final String elementText = DomUtil.nodeToStr(element);
 		assertNotNull( elementText );
+//		System.out.println( "DomUtilTest.nodeToStr elementText: " + elementText );
 		assertThat(elementText.startsWith( "<" + Resources.ROOT_LOAD), is(true));
 		assertThat(elementText.endsWith( "</" + Resources.ROOT_LOAD + ">"), is(true));
 	}

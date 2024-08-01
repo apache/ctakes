@@ -44,11 +44,11 @@ import static org.junit.Assume.assumeThat;
 public class AppMainTest {
 	private static JdbcType jdbc;
 	private static JdlConnection jdlConnection;
-	final private static String CX = Objects.requireNonNull( FileUtil.getFile( Resources.CONN_X ) ).getPath();
-	final private static String D1C = Objects.requireNonNull( FileUtil.getFile( Resources.DATA1C ) ).getPath();
-	final private static String D1X = Objects.requireNonNull( FileUtil.getFile( Resources.DATA1X ) ).getPath();
-	final private static String L1C = Objects.requireNonNull( FileUtil.getFile( Resources.LOAD1C ) ).getPath();
-	final private static String L1X = Objects.requireNonNull( FileUtil.getFile( Resources.LOAD1X ) ).getPath();
+	final private static String CX = Resources.CONN_X;
+	final private static String D1C = Resources.DATA1C;
+	final private static String D1X = Resources.DATA1X;
+	final private static String L1C = Resources.LOAD1C;
+	final private static String L1X = Resources.LOAD1X;
 	final private static String C = "-" + AppMain.OPT_XDL_CONN;
 	final private static String D = "-" + AppMain.OPT_XDL_DATA;
 	final private static String L = "-" + AppMain.OPT_XDL_LOAD;
