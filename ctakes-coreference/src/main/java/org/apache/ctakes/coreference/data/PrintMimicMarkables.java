@@ -18,15 +18,7 @@
  */
 package org.apache.ctakes.coreference.data;
 
-import org.apache.ctakes.constituency.parser.ae.ConstituencyParser;
-import org.apache.ctakes.context.tokenizer.ae.ContextDependentTokenizerAnnotator;
-import org.apache.ctakes.core.ae.SentenceDetectorAnnotatorBIO;
-import org.apache.ctakes.core.ae.SimpleSegmentAnnotator;
-import org.apache.ctakes.core.ae.TokenizerAnnotatorPTB;
 import org.apache.ctakes.core.cr.LuceneCollectionReader;
-import org.apache.ctakes.coreference.ae.DeterministicMarkableAnnotator;
-import org.apache.ctakes.dependency.parser.ae.ClearNLPDependencyParserAE;
-import org.apache.ctakes.postagger.POSTagger;
 import org.apache.ctakes.typesystem.type.syntax.BaseToken;
 import org.apache.ctakes.typesystem.type.textsem.Markable;
 import org.apache.uima.UIMAException;
@@ -137,28 +129,30 @@ public class PrintMimicMarkables {
   }
   
   public static AnalysisEngineDescription getMarkableExtractorDescription() throws ResourceInitializationException{
-    AggregateBuilder aggregateBuilder = new AggregateBuilder();
-
-    aggregateBuilder.add(SimpleSegmentAnnotator.createAnnotatorDescription());
-    aggregateBuilder.add(SentenceDetectorAnnotatorBIO.getDescription());
-
-    // identify tokens
-    aggregateBuilder.add( AnalysisEngineFactory.createEngineDescription( TokenizerAnnotatorPTB.class ) );
-    // merge some tokens
-    aggregateBuilder.add( AnalysisEngineFactory.createEngineDescription( ContextDependentTokenizerAnnotator.class ) );
-
-    // identify part-of-speech tags
-    aggregateBuilder.add( POSTagger.createAnnotatorDescription());
-
-    // add dependency parser
-    aggregateBuilder.add( ClearNLPDependencyParserAE.createAnnotatorDescription() );
-
-    // add ctakes constituency parses to system view
-    aggregateBuilder.add( AnalysisEngineFactory.createEngineDescription( ConstituencyParser.class,
-        ConstituencyParser.PARAM_MODEL_FILENAME,
-        "org/apache/ctakes/constituency/parser/models/thyme.bin" ) );
-    
-    aggregateBuilder.add( AnalysisEngineFactory.createEngineDescription(DeterministicMarkableAnnotator.class));
-    return aggregateBuilder.createAggregateDescription();
+    throw new ResourceInitializationException( new Exception( "Use piper files when building pipelines," +
+          " otherwise modules and their dependencies are unnecessarily added." ) );
+//    AggregateBuilder aggregateBuilder = new AggregateBuilder();
+//
+//    aggregateBuilder.add(SimpleSegmentAnnotator.createAnnotatorDescription());
+//    aggregateBuilder.add(SentenceDetectorAnnotatorBIO.getDescription());
+//
+//    // identify tokens
+//    aggregateBuilder.add( AnalysisEngineFactory.createEngineDescription( TokenizerAnnotatorPTB.class ) );
+//    // merge some tokens
+//    aggregateBuilder.add( AnalysisEngineFactory.createEngineDescription( ContextDependentTokenizerAnnotator.class ) );
+//
+//    // identify part-of-speech tags
+//    aggregateBuilder.add( POSTagger.createAnnotatorDescription());
+//
+//    // add dependency parser
+//    aggregateBuilder.add( ClearNLPDependencyParserAE.createAnnotatorDescription() );
+//
+//    // add ctakes constituency parses to system view
+//    aggregateBuilder.add( AnalysisEngineFactory.createEngineDescription( ConstituencyParser.class,
+//        ConstituencyParser.PARAM_MODEL_FILENAME,
+//        "org/apache/ctakes/constituency/parser/models/thyme.bin" ) );
+//
+//    aggregateBuilder.add( AnalysisEngineFactory.createEngineDescription(DeterministicMarkableAnnotator.class));
+//    return aggregateBuilder.createAggregateDescription();
   }
 }

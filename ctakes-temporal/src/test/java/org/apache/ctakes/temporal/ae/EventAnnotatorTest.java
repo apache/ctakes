@@ -18,17 +18,12 @@
  */
 package org.apache.ctakes.temporal.ae;
 
-import org.apache.ctakes.dependency.parser.ae.ClearNLPDependencyParserAE;
-import org.apache.ctakes.temporal.eval.Evaluation_ImplBase.CopyNPChunksToLookupWindowAnnotations;
-import org.apache.ctakes.temporal.eval.Evaluation_ImplBase.RemoveEnclosedLookupWindows;
+import org.apache.ctakes.core.pipeline.PiperFileReader;
 import org.apache.ctakes.typesystem.type.textsem.EventMention;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.apache.uima.UIMAException;
-import org.apache.uima.fit.factory.AggregateBuilder;
-import org.apache.uima.fit.factory.AnalysisEngineFactory;
 import org.apache.uima.fit.factory.JCasFactory;
-import org.apache.uima.fit.pipeline.SimplePipeline;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.junit.Test;
@@ -47,30 +42,36 @@ public class EventAnnotatorTest extends TemporalTest_ImplBase {
 
 	@Test
 	public void testPipeline() throws UIMAException, IOException {
-
+		if ( !canUseUmlsDictionary() ) {
+			LOGGER.warn( "Running this test requires that UmlsKey is set in your environment." );
+			return;
+		}
 		String note = "The patient is a 55-year-old man referred by Dr. Good for recently diagnosed colorectal cancer.  "
 				+ "The patient was well till 6 months ago, when he started having a little blood with stool.";
 		JCas jcas = JCasFactory.createJCas();
 		jcas.setDocumentText(note);
 
-		// Get the default pipeline
-		AggregateBuilder builder = new AggregateBuilder();
-		builder.add(getTokenProcessingPipeline());
-		builder.add(AnalysisEngineFactory
-				.createEngineDescription(CopyNPChunksToLookupWindowAnnotations.class));
-		builder.add(AnalysisEngineFactory
-				.createEngineDescription(RemoveEnclosedLookupWindows.class));
-		// Commented out the Dictionary lookup for the test
-		// Uncomment and set -Dctakes.umlsuser and -Dctakes.umlspw env params if
-		// needed
-		// builder.add(UmlsDictionaryLookupAnnotator.createAnnotatorDescription());
-		builder.add(ClearNLPDependencyParserAE.createAnnotatorDescription());
+//		// Get the default pipeline
+//		AggregateBuilder builder = new AggregateBuilder();
+//		builder.add(getTokenProcessingPipeline());
+//		builder.add(AnalysisEngineFactory
+//				.createEngineDescription(CopyNPChunksToLookupWindowAnnotations.class));
+//		builder.add(AnalysisEngineFactory
+//				.createEngineDescription(RemoveEnclosedLookupWindows.class));
+//		// Commented out the Dictionary lookup for the test
+//		// Uncomment and set -Dctakes.umlsuser and -Dctakes.umlspw env params if
+//		// needed
+//		// builder.add(UmlsDictionaryLookupAnnotator.createAnnotatorDescription());
+//		builder.add(ClearNLPDependencyParserAE.createAnnotatorDescription());
+//
+//		// Add EventAnnotator
+//		builder.add(EventAnnotator
+//				.createAnnotatorDescription("/org/apache/ctakes/temporal/models/eventannotator/model.jar"));
+//
+//		SimplePipeline.runPipeline(jcas, builder.createAggregateDescription());
 
-		// Add EventAnnotator
-		builder.add(EventAnnotator
-				.createAnnotatorDescription("/org/apache/ctakes/temporal/models/eventannotator/model.jar"));
-
-		SimplePipeline.runPipeline(jcas, builder.createAggregateDescription());
+		// Use piper files so that a module doesn't need to depend upon all of ctakes just to run a test.
+		new PiperFileReader( "DefaultTemporalPipeline" ).getBuilder().run( jcas );
 
 		Collection<EventMention> mentions = JCasUtil.select(jcas,
 				EventMention.class);

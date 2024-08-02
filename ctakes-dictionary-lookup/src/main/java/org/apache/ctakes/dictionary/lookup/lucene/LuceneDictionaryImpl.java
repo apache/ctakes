@@ -30,7 +30,6 @@ import org.apache.lucene.queryparser.classic.ParseException;
 import org.apache.lucene.queryparser.classic.QueryParser;
 import org.apache.lucene.queryparser.classic.QueryParserBase;
 import org.apache.lucene.search.*;
-import org.apache.lucene.util.Version;
 
 import java.io.IOException;
 import java.util.Collection;

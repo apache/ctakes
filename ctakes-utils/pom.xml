@@ -31,8 +31,8 @@
     </parent>
     <dependencies>
         <dependency>
-            <groupId>org.apache.ctakes</groupId>
-            <artifactId>ctakes-type-system</artifactId>
+            <groupId>org.apache.uima</groupId>
+            <artifactId>uimaj-core</artifactId>
         </dependency>
         <dependency>
             <groupId>tw.edu.ntu.csie</groupId>
@@ -44,21 +44,21 @@
             <!-- TODO: refactor TestUtil.java and remove dependency over scope:compile -->
             <scope>compile</scope>
         </dependency>
-        <dependency>
-            <groupId>org.apache.lucene</groupId>
-            <artifactId>lucene-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.lucene</groupId>
-            <artifactId>lucene-queries</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.apache.lucene</groupId>-->
+<!--            <artifactId>lucene-core</artifactId>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.apache.lucene</groupId>-->
+<!--            <artifactId>lucene-queries</artifactId>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.apache.lucene</groupId>
             <artifactId>lucene-queryparser</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.apache.lucene</groupId>
-            <artifactId>lucene-analyzers-common</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.apache.lucene</groupId>-->
+<!--            <artifactId>lucene-analyzers-common</artifactId>-->
+<!--        </dependency>-->
     </dependencies>
 </project>

@@ -35,15 +35,41 @@
             <artifactId>ctakes-relation-extractor-models</artifactId>
             <version>${ctakes-models.version}</version>
         </dependency>
-        <!--  Clinical Pipeline contains ctakes modules that are needed.  -->
-        <!--  Is Clinical Pipeline the best dependency?  -->
         <dependency>
             <groupId>org.apache.ctakes</groupId>
-            <artifactId>ctakes-clinical-pipeline</artifactId>
+            <artifactId>ctakes-constituency-parser</artifactId>
         </dependency>
+
+<!--        <dependency>-->
+<!--            <groupId>org.cleartk</groupId>-->
+<!--            <artifactId>cleartk-ml-opennlp-maxent</artifactId>-->
+<!--        </dependency>-->
+        <dependency>
+            <groupId>org.cleartk</groupId>
+            <artifactId>cleartk-ml-liblinear</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.cleartk</groupId>
+            <artifactId>cleartk-util</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.cleartk</groupId>
+            <artifactId>cleartk-eval</artifactId>
+        </dependency>
+
+        <!--  Clinical Pipeline contains ctakes modules that are needed.  -->
+        <!--  Is Clinical Pipeline the best dependency?  -->
+<!--        <dependency>-->
+<!--            <groupId>org.apache.ctakes</groupId>-->
+<!--            <artifactId>ctakes-clinical-pipeline</artifactId>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>edu.mit</groupId>
             <artifactId>jwi</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>args4j</groupId>
+            <artifactId>args4j</artifactId>
         </dependency>
     </dependencies>
     <build>

@@ -121,6 +121,7 @@
         <gson.version>2.8.9</gson.version>
         <guava.version>33.2.1-jre</guava.version>
         <hapi.fhir.version>6.6.0</hapi.fhir.version>
+        <hapi.fhir.dstu3.version>6.3.18</hapi.fhir.dstu3.version>
         <hibernate.version>5.4.24.Final</hibernate.version>
         <hsqldb.version>2.7.3</hsqldb.version>
         <httpclient.version>5.3.1</httpclient.version>
@@ -314,10 +315,16 @@
                 <artifactId>classgraph</artifactId>
                 <version>${classgraph.version}</version>
             </dependency>
+            <!--  hapi-fhir-structures-dstu3 is required to actually write a dstu3 json file  -->
             <dependency>
                 <groupId>ca.uhn.hapi.fhir</groupId>
                 <artifactId>hapi-fhir-structures-dstu3</artifactId>
                 <version>${hapi.fhir.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ca.uhn.hapi.fhir</groupId>
+                <artifactId>org.hl7.fhir.dstu3</artifactId>
+                <version>${hapi.fhir.dstu3.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.google.code.gson</groupId>
@@ -955,7 +962,7 @@
             </dependency>
             <dependency>
                 <groupId>org.apache.ctakes</groupId>
-                <artifactId>ctakes-core-model</artifactId>
+                <artifactId>ctakes-core-models</artifactId>
                 <version>${ctakes-models.version}</version>
             </dependency>
             <dependency>
@@ -980,7 +987,7 @@
             </dependency>
             <dependency>
                 <groupId>org.apache.ctakes</groupId>
-                <artifactId>ctakes-pos-tagger-model</artifactId>
+                <artifactId>ctakes-pos-tagger-models</artifactId>
                 <version>${ctakes-models.version}</version>
             </dependency>
             <dependency>
@@ -990,7 +997,7 @@
             </dependency>
             <dependency>
                 <groupId>org.apache.ctakes</groupId>
-                <artifactId>ctakes-chunker-model</artifactId>
+                <artifactId>ctakes-chunker-models</artifactId>
                 <version>${ctakes-models.version}</version>
             </dependency>
             <dependency>
@@ -1025,7 +1032,7 @@
             </dependency>
             <dependency>
                 <groupId>org.apache.ctakes</groupId>
-                <artifactId>ctakes-assertion-model</artifactId>
+                <artifactId>ctakes-assertion-models</artifactId>
                 <version>${ctakes-models.version}</version>
             </dependency>
             <dependency>
@@ -1040,7 +1047,7 @@
             </dependency>
             <dependency>
                 <groupId>org.apache.ctakes</groupId>
-                <artifactId>ctakes-constituency-parser-model</artifactId>
+                <artifactId>ctakes-constituency-parser-models</artifactId>
                 <version>${ctakes-models.version}</version>
             </dependency>
             <dependency>
@@ -1050,7 +1057,7 @@
             </dependency>
             <dependency>
                 <groupId>org.apache.ctakes</groupId>
-                <artifactId>ctakes-coreference-model</artifactId>
+                <artifactId>ctakes-coreference-models</artifactId>
                 <version>${ctakes-models.version}</version>
             </dependency>
             <dependency>
@@ -1065,7 +1072,7 @@
             </dependency>
             <dependency>
                 <groupId>org.apache.ctakes</groupId>
-                <artifactId>ctakes-side-effect-model</artifactId>
+                <artifactId>ctakes-side-effect-models</artifactId>
                 <version>${ctakes-models.version}</version>
             </dependency>
             <dependency>
@@ -1075,7 +1082,7 @@
             </dependency>
             <dependency>
                 <groupId>org.apache.ctakes</groupId>
-                <artifactId>ctakes-smoking-status-model</artifactId>
+                <artifactId>ctakes-smoking-status-models</artifactId>
                 <version>${ctakes-models.version}</version>
             </dependency>
             <dependency>
@@ -1085,12 +1092,12 @@
             </dependency>
             <dependency>
                 <groupId>org.apache.ctakes</groupId>
-                <artifactId>ctakes-dependency-parser-model</artifactId>
+                <artifactId>ctakes-dependency-parser-models</artifactId>
                 <version>${ctakes-models.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.ctakes</groupId>
-                <artifactId>ctakes-dependency-parser-model-clear</artifactId>
+                <artifactId>ctakes-dependency-parser-models-clear</artifactId>
                 <version>${ctakes-models.version}</version>
             </dependency>
             <dependency>
@@ -1100,7 +1107,7 @@
             </dependency>
             <dependency>
                 <groupId>org.apache.ctakes</groupId>
-                <artifactId>ctakes-relation-extractor-model</artifactId>
+                <artifactId>ctakes-relation-extractor-models</artifactId>
                 <version>${ctakes-models.version}</version>
             </dependency>
             <dependency>
@@ -1110,7 +1117,7 @@
             </dependency>
             <dependency>
                 <groupId>org.apache.ctakes</groupId>
-                <artifactId>ctakes-temporal-model</artifactId>
+                <artifactId>ctakes-temporal-models</artifactId>
                 <version>${ctakes-models.version}</version>
             </dependency>
             <dependency>
@@ -1391,6 +1398,31 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-dependency-plugin</artifactId>
                     <version>${maven-dependency-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>analyze</id>
+                            <goals>
+                                <goal>analyze</goal>
+                            </goals>
+                            <phase>test-compile</phase>
+                            <configuration>
+                                <ignoredUnusedDeclaredDependencies>
+                                    <ignoredUnusedDeclaredDependency>org.apache.ctakes:ctakes-core-models</ignoredUnusedDeclaredDependency>
+                                    <ignoredUnusedDeclaredDependency>org.apache.ctakes:ctakes-pos-tagger-models</ignoredUnusedDeclaredDependency>
+                                    <ignoredUnusedDeclaredDependency>org.apache.ctakes:ctakes-chunker-models</ignoredUnusedDeclaredDependency>
+                                    <ignoredUnusedDeclaredDependency>org.apache.ctakes:ctakes-constituency-parser-models</ignoredUnusedDeclaredDependency>
+                                    <ignoredUnusedDeclaredDependency>org.apache.ctakes:ctakes-smoking-status-models</ignoredUnusedDeclaredDependency>
+                                    <ignoredUnusedDeclaredDependency>org.apache.ctakes:ctakes-side-effect-models</ignoredUnusedDeclaredDependency>
+                                    <ignoredUnusedDeclaredDependency>org.apache.ctakes:ctakes-dependency-parser-models</ignoredUnusedDeclaredDependency>
+                                    <ignoredUnusedDeclaredDependency>org.apache.ctakes:ctakes-dependency-parser-models-clear</ignoredUnusedDeclaredDependency>
+                                    <ignoredUnusedDeclaredDependency>org.apache.ctakes:ctakes-assertion-models</ignoredUnusedDeclaredDependency>
+                                    <ignoredUnusedDeclaredDependency>org.apache.ctakes:ctakes-relation-extractor-models</ignoredUnusedDeclaredDependency>
+                                    <ignoredUnusedDeclaredDependency>org.apache.ctakes:ctakes-temporal-models</ignoredUnusedDeclaredDependency>
+                                    <ignoredUnusedDeclaredDependency>org.apache.ctakes:ctakes-coreference-models</ignoredUnusedDeclaredDependency>
+                                </ignoredUnusedDeclaredDependencies>
+                            </configuration>
+                        </execution>
+                    </executions>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>

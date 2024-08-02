@@ -39,7 +39,7 @@
             <groupId>org.apache.ctakes</groupId>
             <artifactId>ctakes-core</artifactId>
         </dependency>
-        <!--  Clearnlp uses log4j v1.  Add the log4j bridge.  -->
+        <!--  Clearnlp uses log4j v1.  Add the log4j bridge for it.  -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-1.2-api</artifactId>

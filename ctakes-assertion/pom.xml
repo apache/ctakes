@@ -43,23 +43,23 @@
             <groupId>org.apache.ctakes</groupId>
             <artifactId>ctakes-dependency-parser</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.apache.ctakes</groupId>
-            <artifactId>ctakes-context-tokenizer</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.ctakes</groupId>
-            <artifactId>ctakes-chunker</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.apache.ctakes</groupId>-->
+<!--            <artifactId>ctakes-context-tokenizer</artifactId>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.apache.ctakes</groupId>-->
+<!--            <artifactId>ctakes-chunker</artifactId>-->
+<!--        </dependency>-->
 
-        <dependency>
-            <groupId>org.cleartk</groupId>
-            <artifactId>cleartk-ml-libsvm</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.cleartk</groupId>
-            <artifactId>cleartk-type-system</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.cleartk</groupId>-->
+<!--            <artifactId>cleartk-ml-libsvm</artifactId>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.cleartk</groupId>-->
+<!--            <artifactId>cleartk-type-system</artifactId>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.cleartk</groupId>
             <artifactId>cleartk-ml-opennlp-maxent</artifactId>
@@ -80,34 +80,34 @@
             <groupId>org.apache.uima</groupId>
             <artifactId>uimaj-document-annotation</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.scala-tools.sbinary</groupId>
-            <artifactId>sbinary_2.9.0</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework</groupId>-->
+<!--            <artifactId>spring-core</artifactId>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework</groupId>-->
+<!--            <artifactId>spring-context</artifactId>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>com.fasterxml.jackson.core</groupId>-->
+<!--            <artifactId>jackson-databind</artifactId>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.scala-tools.sbinary</groupId>-->
+<!--            <artifactId>sbinary_2.9.0</artifactId>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.cleartk</groupId>
             <artifactId>cleartk-ml-liblinear</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.apache.httpcomponents.client5</groupId>
-            <artifactId>httpclient5</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.apache.httpcomponents.client5</groupId>-->
+<!--            <artifactId>httpclient5</artifactId>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>com.google.code.gson</groupId>-->
+<!--            <artifactId>gson</artifactId>-->
+<!--        </dependency>-->
     </dependencies>
     <build>
         <plugins>

@@ -46,7 +46,16 @@
         -->
         <dependency>
             <groupId>org.apache.ctakes</groupId>
-            <artifactId>ctakes-pos-tagger</artifactId>
+            <artifactId>ctakes-core</artifactId>
+        </dependency>
+        <!--  Clearnlp uses log4j v1.  Add the log4j bridge.  -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-1.2-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.googlecode.clearnlp</groupId>
+            <artifactId>clearnlp</artifactId>
         </dependency>
         <dependency>
             <groupId>args4j</groupId>

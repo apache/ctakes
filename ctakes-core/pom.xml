@@ -39,32 +39,40 @@
             <groupId>org.apache.ctakes</groupId>
             <artifactId>ctakes-utils</artifactId>
         </dependency>
-
         <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
+            <groupId>org.apache.ctakes</groupId>
+            <artifactId>ctakes-type-system</artifactId>
         </dependency>
 
+<!--        <dependency>-->
+<!--            <groupId>org.apache.logging.log4j</groupId>-->
+<!--            <artifactId>log4j-api</artifactId>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.apache.logging.log4j</groupId>-->
+<!--            <artifactId>log4j-core</artifactId>-->
+<!--        </dependency>-->
+
         <dependency>
-            <groupId>xerces</groupId>
-            <artifactId>xercesImpl</artifactId>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-core</artifactId>
         </dependency>
-        <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>xerces</groupId>-->
+<!--            <artifactId>xercesImpl</artifactId>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>commons-io</groupId>-->
+<!--            <artifactId>commons-io</artifactId>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.jdom</groupId>
             <artifactId>jdom2</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.cleartk</groupId>
-            <artifactId>cleartk-util</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.cleartk</groupId>-->
+<!--            <artifactId>cleartk-util</artifactId>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.cleartk</groupId>
             <artifactId>cleartk-ml</artifactId>
@@ -77,10 +85,10 @@
             <groupId>org.apache.opennlp</groupId>
             <artifactId>opennlp-tools</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.apache.opennlp</groupId>
-            <artifactId>opennlp-maxent</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.apache.opennlp</groupId>-->
+<!--            <artifactId>opennlp-maxent</artifactId>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>edu.mit.findstruct</groupId>
             <artifactId>findstructapi</artifactId>
@@ -98,10 +106,10 @@
             <groupId>com.lexicalscope.jewelcli</groupId>
             <artifactId>jewelcli</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.apache.uima</groupId>
-            <artifactId>uimafit-core</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.apache.uima</groupId>-->
+<!--            <artifactId>uimafit-core</artifactId>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.apache.uima</groupId>
             <artifactId>uimafit-cpe</artifactId>

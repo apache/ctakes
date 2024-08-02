@@ -36,10 +36,10 @@
             <artifactId>ctakes-side-effect-models</artifactId>
             <version>${ctakes-models.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache.ctakes</groupId>
-            <artifactId>ctakes-dictionary-lookup</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.apache.ctakes</groupId>-->
+<!--            <artifactId>ctakes-dictionary-lookup</artifactId>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.apache.ctakes</groupId>
             <artifactId>ctakes-drug-ner</artifactId>

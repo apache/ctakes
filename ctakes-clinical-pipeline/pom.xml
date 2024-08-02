@@ -25,21 +25,33 @@
             <groupId>org.apache.ctakes</groupId>
             <artifactId>ctakes-dictionary-lookup-fast</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.apache.ctakes</groupId>
-            <artifactId>ctakes-preprocessor</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.apache.ctakes</groupId>-->
+<!--            <artifactId>ctakes-preprocessor</artifactId>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.apache.ctakes</groupId>
             <artifactId>ctakes-lvg</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.apache.ctakes</groupId>
-            <artifactId>ctakes-ne-contexts</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.apache.ctakes</groupId>-->
+<!--            <artifactId>ctakes-ne-contexts</artifactId>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.apache.ctakes</groupId>
             <artifactId>ctakes-assertion</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.ctakes</groupId>
+            <artifactId>ctakes-context-tokenizer</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.ctakes</groupId>
+            <artifactId>ctakes-pos-tagger</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.ctakes</groupId>
+            <artifactId>ctakes-chunker</artifactId>
         </dependency>
     </dependencies>
 </project>

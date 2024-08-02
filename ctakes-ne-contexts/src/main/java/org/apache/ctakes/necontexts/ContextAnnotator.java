@@ -33,7 +33,6 @@ import org.apache.uima.fit.descriptor.ConfigurationParameter;
 import org.apache.uima.fit.factory.AnalysisEngineFactory;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
-import org.apache.uima.jcas.tcas.DocumentAnnotation;
 import org.apache.uima.resource.ResourceInitializationException;
 
 import java.util.ArrayList;
@@ -96,7 +95,7 @@ public class ContextAnnotator extends org.apache.uima.fit.component.JCasAnnotato
 	 * <li>...</li>
 	 * </ul>
 	 * 
-	 * @see DocumentAnnotation
+//	 * @see DocumentAnnotation
 //	 * @see edu.mayo.bmi.common.type.Sentence
 //	 * @see edu.mayo.bmi.common.type.Segment
 	 * 

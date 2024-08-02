@@ -21,29 +21,14 @@ package org.apache.ctakes.temporal.eval;
 import com.google.common.collect.Lists;
 import com.google.common.io.CharStreams;
 import com.lexicalscope.jewel.cli.Option;
-import org.apache.ctakes.chunker.ae.Chunker;
-import org.apache.ctakes.chunker.ae.DefaultChunkCreator;
-import org.apache.ctakes.chunker.ae.adjuster.ChunkAdjuster;
-import org.apache.ctakes.constituency.parser.ae.ConstituencyParser;
-import org.apache.ctakes.context.tokenizer.ae.ContextDependentTokenizerAnnotator;
-import org.apache.ctakes.core.ae.OverlapAnnotator;
-import org.apache.ctakes.core.ae.SentenceDetector;
-import org.apache.ctakes.core.ae.TokenizerAnnotatorPTB;
 import org.apache.ctakes.core.patient.PatientNoteStore;
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
-import org.apache.ctakes.core.resource.FileLocator;
-import org.apache.ctakes.dependency.parser.ae.ClearNLPDependencyParserAE;
-import org.apache.ctakes.dictionary.lookup2.ae.DefaultJCasTermAnnotator;
-import org.apache.ctakes.lvg.ae.LvgAnnotator;
-import org.apache.ctakes.postagger.POSTagger;
 import org.apache.ctakes.temporal.ae.I2B2TemporalXMLReader;
 import org.apache.ctakes.temporal.ae.THYMEAnaforaXMLReader;
 import org.apache.ctakes.temporal.ae.THYMEKnowtatorXMLReader;
-import org.apache.ctakes.temporal.ae.THYMETreebankReader;
 import org.apache.ctakes.temporal.duration.Utils;
 import org.apache.ctakes.typesystem.type.constants.CONST;
 import org.apache.ctakes.typesystem.type.relation.TemporalTextRelation;
-import org.apache.ctakes.typesystem.type.syntax.BaseToken;
 import org.apache.ctakes.typesystem.type.syntax.Chunk;
 import org.apache.ctakes.typesystem.type.syntax.TerminalTreebankNode;
 import org.apache.ctakes.typesystem.type.syntax.TreebankNode;
@@ -53,7 +38,6 @@ import org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation;
 import org.apache.ctakes.typesystem.type.textsem.TimeMention;
 import org.apache.ctakes.typesystem.type.textspan.LookupWindowAnnotation;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
-import org.apache.ctakes.typesystem.type.textspan.Sentence;
 import org.apache.ctakes.utils.struct.CounterMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -74,8 +58,6 @@ import org.apache.uima.fit.component.ViewTextCopierAnnotator;
 import org.apache.uima.fit.descriptor.ConfigurationParameter;
 import org.apache.uima.fit.factory.AggregateBuilder;
 import org.apache.uima.fit.factory.AnalysisEngineFactory;
-import org.apache.uima.fit.factory.TypePrioritiesFactory;
-import org.apache.uima.fit.factory.TypeSystemDescriptionFactory;
 import org.apache.uima.fit.pipeline.SimplePipeline;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
@@ -107,8 +89,6 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-//import org.apache.ctakes.core.cleartk.ae.SentenceDetectorAnnotator;
-//import org.threeten.bp.temporal.TemporalUnit;
 
 public abstract class Evaluation_ImplBase<STATISTICS_TYPE> extends
 org.cleartk.eval.Evaluation_ImplBase<Integer, STATISTICS_TYPE> {
@@ -527,96 +507,97 @@ org.cleartk.eval.Evaluation_ImplBase<Integer, STATISTICS_TYPE> {
 	}
 	
 	protected AnalysisEngineDescription getLinguisticProcessingDescription() throws Exception{
-	  AggregateBuilder aggregateBuilder = new AggregateBuilder();
-    // identify segments
-    if(this.subcorpus == Subcorpus.DeepPhe){
-      aggregateBuilder.add(AnalysisEngineFactory.createEngineDescription(PittHeaderAnnotator.class));
-    }else{
-      aggregateBuilder
-      .add( AnalysisEngineFactory.createEngineDescription( SegmentsFromBracketedSectionTagsAnnotator.class ) );
-    }
-    // identify sentences
-    aggregateBuilder.add( AnalysisEngineFactory.createEngineDescription(
-        SentenceDetector.class,
-        SentenceDetector.SD_MODEL_FILE_PARAM,
-        "org/apache/ctakes/core/models/sentdetect/sd-med-model.zip" ) );
-    //      aggregateBuilder.add(SentenceDetectorAnnotatorBIO.getDescription(FileLocator.locateFile("org/apache/ctakes/core/sentdetect/model.jar").getPath()));
-
-    // identify tokens
-    aggregateBuilder.add( AnalysisEngineFactory.createEngineDescription( TokenizerAnnotatorPTB.class ) );
-    // merge some tokens
-    aggregateBuilder.add( AnalysisEngineFactory.createEngineDescription( ContextDependentTokenizerAnnotator.class ) );
-
-    // identify part-of-speech tags
-    aggregateBuilder.add( AnalysisEngineFactory.createEngineDescription(
-        POSTagger.class,
-        TypeSystemDescriptionFactory.createTypeSystemDescription(),
-        TypePrioritiesFactory.createTypePriorities( Segment.class, Sentence.class, BaseToken.class ),
-        POSTagger.POS_MODEL_FILE_PARAM,
-        "org/apache/ctakes/postagger/models/mayo-pos.zip" ) );
-
-    // identify chunks
-    aggregateBuilder.add( AnalysisEngineFactory.createEngineDescription(
-        Chunker.class,
-        Chunker.CHUNKER_MODEL_FILE_PARAM,
-        FileLocator.getFile( "org/apache/ctakes/chunker/models/chunker-model.zip" ),
-        Chunker.CHUNKER_CREATOR_CLASS_PARAM,
-        DefaultChunkCreator.class ) );
-
-    // identify UMLS named entities
-
-    // adjust NP in NP NP to span both
-    aggregateBuilder.add( AnalysisEngineFactory.createEngineDescription(
-        ChunkAdjuster.class,
-        ChunkAdjuster.PARAM_CHUNK_PATTERN,
-        new String[] { "NP", "NP" },
-        ChunkAdjuster.PARAM_EXTEND_TO_INCLUDE_TOKEN,
-        1 ) );
-    // adjust NP in NP PP NP to span all three
-    aggregateBuilder.add( AnalysisEngineFactory.createEngineDescription(
-        ChunkAdjuster.class,
-        ChunkAdjuster.PARAM_CHUNK_PATTERN,
-        new String[] { "NP", "PP", "NP" },
-        ChunkAdjuster.PARAM_EXTEND_TO_INCLUDE_TOKEN,
-        2 ) );
-    // add lookup windows for each NP
-    aggregateBuilder
-    .add( AnalysisEngineFactory.createEngineDescription( CopyNPChunksToLookupWindowAnnotations.class ) );
-    // maximize lookup windows
-    aggregateBuilder.add( AnalysisEngineFactory.createEngineDescription(
-        OverlapAnnotator.class,
-        "A_ObjectClass",
-        LookupWindowAnnotation.class,
-        "B_ObjectClass",
-        LookupWindowAnnotation.class,
-        "OverlapType",
-        "A_ENV_B",
-        "ActionType",
-        "DELETE",
-        "DeleteAction",
-        new String[] { "selector=B" } ) );
-    // add UMLS on top of lookup windows
-    aggregateBuilder.add( LvgAnnotator.createAnnotatorDescription() );
-    aggregateBuilder.add( DefaultJCasTermAnnotator.createAnnotatorDescription() );
-
-    // add dependency parser
-    aggregateBuilder.add( ClearNLPDependencyParserAE.createAnnotatorDescription() );
-
-    // add semantic role labeler
-//    aggregateBuilder.add( AnalysisEngineFactory.createEngineDescription( ClearNLPSemanticRoleLabelerAE.class ) );
-
-    // add gold standard parses to gold view, and adjust gold view to correct a few annotation mis-steps
-    if ( this.treebankDirectory != null ) {
-      aggregateBuilder.add( THYMETreebankReader.getDescription( this.treebankDirectory ) );
-      aggregateBuilder.add( AnalysisEngineFactory.createEngineDescription( TimexAnnotationCorrector.class ) );
-    } else {
-      // add ctakes constituency parses to system view
-      aggregateBuilder.add( AnalysisEngineFactory.createEngineDescription( ConstituencyParser.class,
-          ConstituencyParser.PARAM_MODEL_FILENAME,
-          "org/apache/ctakes/constituency/parser/models/thyme.bin" ) );
-    }
-	  
-	  return aggregateBuilder.createAggregateDescription();
+		throw new Exception( "Use a piper file to build pipelines.  This method adds many maven dependencies that aren't required by the actual module." );
+//	  AggregateBuilder aggregateBuilder = new AggregateBuilder();
+//    // identify segments
+//    if(this.subcorpus == Subcorpus.DeepPhe){
+//      aggregateBuilder.add(AnalysisEngineFactory.createEngineDescription(PittHeaderAnnotator.class));
+//    }else{
+//      aggregateBuilder
+//      .add( AnalysisEngineFactory.createEngineDescription( SegmentsFromBracketedSectionTagsAnnotator.class ) );
+//    }
+//    // identify sentences
+//    aggregateBuilder.add( AnalysisEngineFactory.createEngineDescription(
+//        SentenceDetector.class,
+//        SentenceDetector.SD_MODEL_FILE_PARAM,
+//        "org/apache/ctakes/core/models/sentdetect/sd-med-model.zip" ) );
+//    //      aggregateBuilder.add(SentenceDetectorAnnotatorBIO.getDescription(FileLocator.locateFile("org/apache/ctakes/core/sentdetect/model.jar").getPath()));
+//
+//    // identify tokens
+//    aggregateBuilder.add( AnalysisEngineFactory.createEngineDescription( TokenizerAnnotatorPTB.class ) );
+//    // merge some tokens
+//    aggregateBuilder.add( AnalysisEngineFactory.createEngineDescription( ContextDependentTokenizerAnnotator.class ) );
+//
+//    // identify part-of-speech tags
+//    aggregateBuilder.add( AnalysisEngineFactory.createEngineDescription(
+//        POSTagger.class,
+//        TypeSystemDescriptionFactory.createTypeSystemDescription(),
+//        TypePrioritiesFactory.createTypePriorities( Segment.class, Sentence.class, BaseToken.class ),
+//        POSTagger.POS_MODEL_FILE_PARAM,
+//        "org/apache/ctakes/postagger/models/mayo-pos.zip" ) );
+//
+//    // identify chunks
+//    aggregateBuilder.add( AnalysisEngineFactory.createEngineDescription(
+//        Chunker.class,
+//        Chunker.CHUNKER_MODEL_FILE_PARAM,
+//        FileLocator.getFile( "org/apache/ctakes/chunker/models/chunker-model.zip" ),
+//        Chunker.CHUNKER_CREATOR_CLASS_PARAM,
+//        DefaultChunkCreator.class ) );
+//
+//    // identify UMLS named entities
+//
+//    // adjust NP in NP NP to span both
+//    aggregateBuilder.add( AnalysisEngineFactory.createEngineDescription(
+//        ChunkAdjuster.class,
+//        ChunkAdjuster.PARAM_CHUNK_PATTERN,
+//        new String[] { "NP", "NP" },
+//        ChunkAdjuster.PARAM_EXTEND_TO_INCLUDE_TOKEN,
+//        1 ) );
+//    // adjust NP in NP PP NP to span all three
+//    aggregateBuilder.add( AnalysisEngineFactory.createEngineDescription(
+//        ChunkAdjuster.class,
+//        ChunkAdjuster.PARAM_CHUNK_PATTERN,
+//        new String[] { "NP", "PP", "NP" },
+//        ChunkAdjuster.PARAM_EXTEND_TO_INCLUDE_TOKEN,
+//        2 ) );
+//    // add lookup windows for each NP
+//    aggregateBuilder
+//    .add( AnalysisEngineFactory.createEngineDescription( CopyNPChunksToLookupWindowAnnotations.class ) );
+//    // maximize lookup windows
+//    aggregateBuilder.add( AnalysisEngineFactory.createEngineDescription(
+//        OverlapAnnotator.class,
+//        "A_ObjectClass",
+//        LookupWindowAnnotation.class,
+//        "B_ObjectClass",
+//        LookupWindowAnnotation.class,
+//        "OverlapType",
+//        "A_ENV_B",
+//        "ActionType",
+//        "DELETE",
+//        "DeleteAction",
+//        new String[] { "selector=B" } ) );
+//    // add UMLS on top of lookup windows
+//    aggregateBuilder.add( LvgAnnotator.createAnnotatorDescription() );
+//    aggregateBuilder.add( DefaultJCasTermAnnotator.createAnnotatorDescription() );
+//
+//    // add dependency parser
+//    aggregateBuilder.add( ClearNLPDependencyParserAE.createAnnotatorDescription() );
+//
+//    // add semantic role labeler
+////    aggregateBuilder.add( AnalysisEngineFactory.createEngineDescription( ClearNLPSemanticRoleLabelerAE.class ) );
+//
+//    // add gold standard parses to gold view, and adjust gold view to correct a few annotation mis-steps
+//    if ( this.treebankDirectory != null ) {
+//      aggregateBuilder.add( THYMETreebankReader.getDescription( this.treebankDirectory ) );
+//      aggregateBuilder.add( AnalysisEngineFactory.createEngineDescription( TimexAnnotationCorrector.class ) );
+//    } else {
+//      // add ctakes constituency parses to system view
+//      aggregateBuilder.add( AnalysisEngineFactory.createEngineDescription( ConstituencyParser.class,
+//          ConstituencyParser.PARAM_MODEL_FILENAME,
+//          "org/apache/ctakes/constituency/parser/models/thyme.bin" ) );
+//    }
+//
+//	  return aggregateBuilder.createAggregateDescription();
 	}
 	
 	public static <T extends Annotation> List<T> selectExact( JCas jCas, Class<T> annotationClass, Segment segment ) {

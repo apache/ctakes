@@ -55,6 +55,14 @@
         <groupId>org.apache.ctakes</groupId>
         <artifactId>ctakes-smoking-status</artifactId>
      </dependency>
+      <dependency>
+          <groupId>org.apache.ctakes</groupId>
+          <artifactId>ctakes-pos-tagger</artifactId>
+      </dependency>
+      <dependency>
+          <groupId>org.apache.ctakes</groupId>
+          <artifactId>ctakes-dictionary-lookup-fast</artifactId>
+      </dependency>
      <dependency>
      	<groupId>org.apache.uima</groupId>
      	<artifactId>uimafit-cpe</artifactId>

@@ -37,7 +37,7 @@
         </dependency>
         <dependency>
             <groupId>org.apache.ctakes</groupId>
-            <artifactId>ctakes-pos-tagger</artifactId>
+            <artifactId>ctakes-core</artifactId>
         </dependency>
     </dependencies>
     <build>

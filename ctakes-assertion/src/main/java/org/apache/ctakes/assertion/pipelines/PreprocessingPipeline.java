@@ -18,15 +18,7 @@
  */
 package org.apache.ctakes.assertion.pipelines;
 
-import org.apache.ctakes.constituency.parser.ae.ConstituencyParser;
-import org.apache.ctakes.context.tokenizer.ae.ContextDependentTokenizerAnnotator;
-import org.apache.ctakes.core.ae.SentenceDetector;
-import org.apache.ctakes.core.ae.SimpleSegmentAnnotator;
-import org.apache.ctakes.core.ae.TokenizerAnnotatorPTB;
-import org.apache.ctakes.dependency.parser.ae.ClearNLPDependencyParserAE;
-import org.apache.ctakes.postagger.POSTagger;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
-import org.apache.uima.fit.factory.AggregateBuilder;
 import org.apache.uima.resource.ResourceInitializationException;
 
 import java.net.MalformedURLException;
@@ -34,25 +26,28 @@ import java.net.MalformedURLException;
 //import org.apache.ctakes.lvg.ae.LvgAnnotator;
 
 /**
+ * @deprecated Use a piper or a PipelineBuilder within your own code.  This required unnecessary dependencies.
  * Meant to replace the XML descriptors in the preprocessing pipeline, making it easier
  * to access with API calls from outside projects that want to have the same preprocessing
  * workflow as the standard training scripts.
  */
+@Deprecated
 public class PreprocessingPipeline {
     // This method gives a UimaFit version of the preprocessing pipeline that
     // is otherwise in an xml descriptor file:
     public static AnalysisEngineDescription getPreprocessingDescription() throws ResourceInitializationException, MalformedURLException {
-        AggregateBuilder builder = new AggregateBuilder();
-        builder.add(SimpleSegmentAnnotator.createAnnotatorDescription());
-        builder.add(SentenceDetector.createAnnotatorDescription());
-        builder.add(TokenizerAnnotatorPTB.createAnnotatorDescription());
-//        builder.add(LvgAnnotator.createAnnotatorDescription());
-        builder.add(ContextDependentTokenizerAnnotator.createAnnotatorDescription());
-        builder.add(POSTagger.createAnnotatorDescription());
-        builder.add(ClearNLPDependencyParserAE.createAnnotatorDescription());
-        builder.add(ConstituencyParser.createAnnotatorDescription());
+        throw new ResourceInitializationException( new Exception( "This class has been deprecated." ) );
+//        AggregateBuilder builder = new AggregateBuilder();
+//        builder.add(SimpleSegmentAnnotator.createAnnotatorDescription());
+//        builder.add(SentenceDetector.createAnnotatorDescription());
+//        builder.add(TokenizerAnnotatorPTB.createAnnotatorDescription());
+////        builder.add(LvgAnnotator.createAnnotatorDescription());
+//        builder.add(ContextDependentTokenizerAnnotator.createAnnotatorDescription());
+//        builder.add(POSTagger.createAnnotatorDescription());
+//        builder.add(ClearNLPDependencyParserAE.createAnnotatorDescription());
+//        builder.add(ConstituencyParser.createAnnotatorDescription());
 
-        return builder.createAggregateDescription();
+//        return builder.createAggregateDescription();
     }
 
     // This method is more appropriate for preprocessing of texts for which
@@ -60,12 +55,13 @@ public class PreprocessingPipeline {
     // from the domains which trained those models, or perhaps have another
     // language.
     public static AnalysisEngineDescription getTokenPreprocessingDescription() throws ResourceInitializationException, MalformedURLException {
-        AggregateBuilder builder = new AggregateBuilder();
-        builder.add(SimpleSegmentAnnotator.createAnnotatorDescription());
-        builder.add(SentenceDetector.createAnnotatorDescription());
-        builder.add(TokenizerAnnotatorPTB.createAnnotatorDescription());
-        builder.add(ContextDependentTokenizerAnnotator.createAnnotatorDescription());
-        builder.add(POSTagger.createAnnotatorDescription());
-        return builder.createAggregateDescription();
+        throw new ResourceInitializationException( new Exception( "This class has been deprecated." ) );
+//        AggregateBuilder builder = new AggregateBuilder();
+//        builder.add(SimpleSegmentAnnotator.createAnnotatorDescription());
+//        builder.add(SentenceDetector.createAnnotatorDescription());
+//        builder.add(TokenizerAnnotatorPTB.createAnnotatorDescription());
+//        builder.add(ContextDependentTokenizerAnnotator.createAnnotatorDescription());
+//        builder.add(POSTagger.createAnnotatorDescription());
+//        return builder.createAggregateDescription();
     }
 }

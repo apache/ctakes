@@ -35,7 +35,8 @@ import java.util.List;
  * Created by tmill on 1/31/17.
  */
 public abstract class CorpusXMI {
-    public enum Corpus {SHARP, SHARP_RELEASE, DeepPhe}
+//    public enum Corpus {SHARP, SHARP_RELEASE, DeepPhe}
+    public enum Corpus {SHARP, SHARP_RELEASE}
 
     public enum EvaluateOn {
         TRAIN, DEV, TEST, OTHER
@@ -60,8 +61,8 @@ public abstract class CorpusXMI {
             trainFiles = SHARPXMI.getTrainTextFiles(corpusDirectory);
         } else if (trainCorpus == Corpus.SHARP_RELEASE) {
             trainFiles = SHARPXMI.getTrainTextFilesFromCorpus(corpusDirectory);
-        } else if (trainCorpus == Corpus.DeepPhe) {
-            trainFiles = DeepPheXMI.getTrainTextFiles(corpusDirectory);
+//        } else if (trainCorpus == Corpus.DeepPhe) {
+//            trainFiles = DeepPheXMI.getTrainTextFiles(corpusDirectory);
         } else {
             throw new RuntimeException("Unrecognized train corpus option: " + trainCorpus);
         }
@@ -73,8 +74,8 @@ public abstract class CorpusXMI {
                 trainFiles.addAll(SHARPXMI.getDevTextFiles(corpusDirectory));
             } else if (trainCorpus == Corpus.SHARP_RELEASE) {
                 trainFiles.addAll(SHARPXMI.getTrainTextFilesFromCorpus(corpusDirectory));
-            } else if (trainCorpus == Corpus.DeepPhe) {
-                trainFiles.addAll(DeepPheXMI.getTrainTextFiles(corpusDirectory));
+//            } else if (trainCorpus == Corpus.DeepPhe) {
+//                trainFiles.addAll(DeepPheXMI.getTrainTextFiles(corpusDirectory));
             } else {
                 throw new RuntimeException("Unrecognized train corpus option: " + trainCorpus);
             }
@@ -91,16 +92,16 @@ public abstract class CorpusXMI {
                 testFiles = SHARPXMI.getTrainTextFiles(corpusDirectory);
             } else if (testCorpus == CorpusXMI.Corpus.SHARP_RELEASE) {
                 testFiles = SHARPXMI.getTrainTextFilesFromCorpus(corpusDirectory);
-            } else if (testCorpus == CorpusXMI.Corpus.DeepPhe) {
-                testFiles = DeepPheXMI.getTrainTextFiles(corpusDirectory);
+//            } else if (testCorpus == CorpusXMI.Corpus.DeepPhe) {
+//                testFiles = DeepPheXMI.getTrainTextFiles(corpusDirectory);
             }
         } else if (split == CorpusXMI.EvaluateOn.DEV) {
             if (testCorpus == CorpusXMI.Corpus.SHARP) {
                 testFiles = SHARPXMI.getDevTextFiles(corpusDirectory);
             } else if (testCorpus == Corpus.SHARP_RELEASE) {
                 testFiles = SHARPXMI.getDevTextFilesFromCorpus(corpusDirectory);
-            } else if (testCorpus == CorpusXMI.Corpus.DeepPhe) {
-                testFiles = DeepPheXMI.getDevTextFiles(corpusDirectory);
+//            } else if (testCorpus == CorpusXMI.Corpus.DeepPhe) {
+//                testFiles = DeepPheXMI.getDevTextFiles(corpusDirectory);
             }
         } else if (split == CorpusXMI.EvaluateOn.TEST) {
             // find the test set files:
@@ -108,8 +109,8 @@ public abstract class CorpusXMI {
                 testFiles = SHARPXMI.getTestTextFiles(corpusDirectory);
             } else if (testCorpus == Corpus.SHARP_RELEASE) {
                 testFiles = SHARPXMI.getTestTextFilesFromCorpus(corpusDirectory);
-            } else if (testCorpus == CorpusXMI.Corpus.DeepPhe) {
-                testFiles = DeepPheXMI.getTestTextFiles(corpusDirectory);
+//            } else if (testCorpus == CorpusXMI.Corpus.DeepPhe) {
+//                testFiles = DeepPheXMI.getTestTextFiles(corpusDirectory);
             }
         }
         return testFiles;

@@ -56,23 +56,23 @@ public class ModifierExtractorEvaluation extends RelationEvaluation_ImplBase {
       boolean generateSharp = false, generateDeepPhe = false;
       if (options.getTestCorpus() == CorpusXMI.Corpus.SHARP || options.getTestCorpus() == CorpusXMI.Corpus.SHARP_RELEASE) {
         generateSharp = true;
-      } else if (options.getTestCorpus() == CorpusXMI.Corpus.DeepPhe) {
-        generateDeepPhe = true;
+//      } else if (options.getTestCorpus() == CorpusXMI.Corpus.DeepPhe) {
+//        generateDeepPhe = true;
       }
       for(CorpusXMI.Corpus corpus : options.getTrainCorpus()){
         if(corpus == CorpusXMI.Corpus.SHARP_RELEASE || corpus == CorpusXMI.Corpus.SHARP){
           generateSharp = true;
-        }else if(corpus == CorpusXMI.Corpus.DeepPhe){
-          generateDeepPhe = true;
+//        }else if(corpus == CorpusXMI.Corpus.DeepPhe){
+//          generateDeepPhe = true;
         }
       }
 
       if(generateSharp){
         SHARPXMI.generateXMI(options.getXMIDirectory(), options.getSharpCorpusDirectory(), options.getSharpBatchesDirectory());
       }
-      if(generateDeepPhe){
-        DeepPheXMI.generateXMI(options.getXMIDirectory(), options.getDeepPheAnaforaDirectory());
-      }
+//      if(generateDeepPhe){
+//        DeepPheXMI.generateXMI(options.getXMIDirectory(), options.getDeepPheAnaforaDirectory());
+//      }
     }
 
     // determine the grid of parameters to search through
@@ -92,7 +92,7 @@ public class ModifierExtractorEvaluation extends RelationEvaluation_ImplBase {
       File trainCorpusDirectory;
       if(corpus == CorpusXMI.Corpus.SHARP) trainCorpusDirectory = options.getSharpBatchesDirectory();
       else if(corpus == CorpusXMI.Corpus.SHARP_RELEASE) trainCorpusDirectory = options.getSharpCorpusDirectory();
-      else if(corpus == CorpusXMI.Corpus.DeepPhe) trainCorpusDirectory = options.getDeepPheAnaforaDirectory();
+//      else if(corpus == CorpusXMI.Corpus.DeepPhe) trainCorpusDirectory = options.getDeepPheAnaforaDirectory();
       else{
         throw new Exception("Train corpus not recognized: " + corpus);
       }
@@ -102,7 +102,7 @@ public class ModifierExtractorEvaluation extends RelationEvaluation_ImplBase {
     File testCorpusDirectory=null;
     if(options.getTestCorpus() == CorpusXMI.Corpus.SHARP) testCorpusDirectory = options.getSharpBatchesDirectory();
     else if(options.getTestCorpus() == CorpusXMI.Corpus.SHARP_RELEASE) testCorpusDirectory = options.getSharpCorpusDirectory();
-    else if(options.getTestCorpus() == CorpusXMI.Corpus.DeepPhe) testCorpusDirectory = options.getDeepPheAnaforaDirectory();
+//    else if(options.getTestCorpus() == CorpusXMI.Corpus.DeepPhe) testCorpusDirectory = options.getDeepPheAnaforaDirectory();
 
     List<File> testFiles = CorpusXMI.getTestTextFiles(options.getTestCorpus(), options.getEvaluateOn(), testCorpusDirectory);
 
