@@ -18,25 +18,14 @@
 # under the License.
 #
 #
-#   Runs the pipeline in a piper file.
+#   Starts a simple gui to fetch the cTAKES umls (snomed, rxnorm) dictionary.
 #
-# Requires JAVA JDK 1.8+
+# Requires JAVA JDK 17
 #
 
-PRG="$0"
-while [ -h "$PRG" ]; do
-  ls=`ls -ld "$PRG"`
-  link=`expr "$ls" : '.*-> \(.*\)$'`
-  if expr "$link" : '/.*' > /dev/null; then
-    PRG="$link"
-  else
-    PRG=`dirname "$PRG"`/"$link"
-  fi
-done
-PRGDIR=`dirname "$PRG"`
-
-# Only set CTAKES_HOME if not already set
-[ -z "$CTAKES_HOME" ] && CTAKES_HOME=`cd "$PRGDIR/.." >/dev/null; pwd`
+# Sets up environment for cTAKES
+. ${HOME}/setenv.sh
 
 cd $CTAKES_HOME
-java -cp $CTAKES_HOME/desc/:$CTAKES_HOME/resources/:$CTAKES_HOME/lib/* -Dlog4j.configuration=file:$CTAKES_HOME/config/log4j.xml -Xms512M -Xmx3g org.apache.ctakes.gui.dictionary.DictionaryDownloader "$@"
+
+java -cp "$CLASS_PATH" -Xms512M -Xmx3g $DICT_DOWNLOADER "$@"

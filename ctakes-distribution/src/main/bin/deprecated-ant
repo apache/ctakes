@@ -19,6 +19,6 @@
 #
 
 # simple script to run ant
-. ${HOME}/ctakes.profile
+. ${HOME}/deprecated-ctakes.profile
 java -cp ${ANT_CP} org.apache.tools.ant.Main $*
 

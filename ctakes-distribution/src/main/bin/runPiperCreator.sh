@@ -16,29 +16,11 @@
 # specific language governing permissions and limitations
 # under the License.
 #
+# Requires JAVA JDK 17
+#
 
-# If you plan to use the UMLS Resources, set/export env variables
-#  set ctakes.umlsuser=[username]
-#  set ctakes.umlspw=[password]
-# For example:
-#   set ctakes.umlsuser=myusername
-#   set ctakes.umlspw=mypassword
-# or add the properties
-#   -Dctakes.umlsuser=[username] -Dctakes.umlspw=[password]
-# for example:  
-#   -Dctakes.umlsuser=myusername -Dctakes.umlspw="mypassw@rd"
-
-PRG="$0"
-while [ -h "$PRG" ]; do
-  ls=`ls -ld "$PRG"`
-  link=`expr "$ls" : '.*-> \(.*\)$'`
-  if expr "$link" : '/.*' > /dev/null; then
-    PRG="$link"
-  else
-    PRG=`dirname "$PRG"`/"$link"
-  fi
-done
-PRGDIR=`dirname "$PRG"`
+# Sets up environment for cTAKES
+. ${HOME}/setenv.sh
 
 ALL_IMPL=""
 if [ "$1" = "-a" ]; then
@@ -48,8 +30,7 @@ elif [ "$1" = "-h" ]; then
   exit
 fi
 
-# Only set CTAKES_HOME if not already set
-[ -z "$CTAKES_HOME" ] && CTAKES_HOME=`cd "$PRGDIR/.." >/dev/null; pwd`
 
 cd $CTAKES_HOME
-java -cp $CTAKES_HOME/desc/:$CTAKES_HOME/resources/:$CTAKES_HOME/lib/* $ALL_IMPL -Dlog4j.configuration=file:$CTAKES_HOME/config/log4j.xml -Xms512M -Xmx3g org.apache.ctakes.gui.pipeline.PiperCreator
+
+java -cp "$CLASS_PATH" $ALL_IMPL -Xms512M -Xmx3g org.apache.ctakes.gui.pipeline.PiperCreator

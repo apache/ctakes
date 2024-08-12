@@ -17,33 +17,16 @@
 @REM under the License.
 @REM
 
-@REM Requires JAVA JDK 1.8+
-@REM If you plan to use the UMLS Resources, set/export env variables
-@REM set ctakes.umlsuser=[username], ctakes.umlspw=[password]
-@REM or add the properties
-@REM -Dctakes.umlsuser=[username] -Dctakes.umlspw=[password]
-
-@REM Guess CTAKES_HOME if not defined
 SETLOCAL
-set CURRENT_DIR=%cd%
-if not "%CTAKES_HOME%" == "" goto gotHome
-set CTAKES_HOME=%CURRENT_DIR%
-if exist "%CTAKES_HOME%\bin\runctakesCPE.bat" goto okHome
-cd ..
-set CTAKES_HOME=%cd%
 
-:gotHome
-if exist "%CTAKES_HOME%\bin\runctakesCPE.bat" goto okHome
-echo The CTAKES_HOME environment variable is not defined correctly
-echo This environment variable is needed to run this program
-goto end
+@REM The setenv script sets up the environment needed by cTAKES.
+@call %~sdp0\setenv.bat
 
-:okHome
-@REM use JAVA_HOME if set
-if exist "%JAVA_HOME%\bin\java.exe" set PATH=%JAVA_HOME%\bin;%PATH%
-@set PATH=%PATH%;%CTAKES_HOME%\lib\auth\x64
 cd %CTAKES_HOME%
-java -cp "%CTAKES_HOME%\desc\;%CTAKES_HOME%\resources\;%CTAKES_HOME%\lib\*" -Dlog4j.configuration="file:\%CTAKES_HOME%\config\log4j.xml" -Xms512M -Xmx3g org.apache.uima.tools.cpm.CpmFrame
+
+java -cp "%CLASS_PATH%" -Xms512M -Xmx3g org.apache.uima.tools.cpm.CpmFrame
+
 cd %CURRENT_DIR%
+
 :end
 ENDLOCAL

@@ -28,24 +28,8 @@
 @REM for example:  
 @REM   -Dctakes.umlsuser=myusername -Dctakes.umlspw="mypassw@rd"
 
-@REM Guess CTAKES_HOME if not defined
-set CURRENT_DIR=%cd%
-if not "%CTAKES_HOME%" == "" goto gotHome
-set CTAKES_HOME=%CURRENT_DIR%
-if exist "%CTAKES_HOME%\bin\runctakesCVD.bat" goto okHome
-cd ..
-set CTAKES_HOME=%cd%
-
-:gotHome
-if exist "%CTAKES_HOME%\bin\runctakesCVD.bat" goto okHome
-echo The CTAKES_HOME environment variable is not defined correctly
-echo This environment variable is needed to run this program
-goto end
-
-:okHome
-@REM use JAVA_HOME if set
-if exist "%JAVA_HOME%\bin\java.exe" set PATH=%JAVA_HOME%\bin;%PATH%
-@set PATH=%PATH%;%CTAKES_HOME%\lib\auth\x64
+@REM The setenv script sets up the environment needed by cTAKES.
+@call %~sdp0\setenv.bat
 
 cd %CTAKES_HOME%
 
@@ -55,7 +39,7 @@ IF NOT "%~2"=="" GOTO MoreThanOneParam
 
 if exist "%CTAKES_HOME%\%1" (
   echo CVD will load AE "%CTAKES_HOME%\%1"
-  java -cp "%CTAKES_HOME%\desc\;%CTAKES_HOME%\resources\;%CTAKES_HOME%\lib\*" -Dlog4j.configuration="file:\%CTAKES_HOME%\config\log4j.xml" -Xms512M -Xmx3g org.apache.uima.tools.cvd.CVD -desc "%1"
+  java -cp "%CLASS_PATH%" -Xms512M -Xmx3g org.apache.uima.tools.cvd.CVD -desc "%1"
 ) else (
   echo Unable to find descriptor "%1"
   GOTO NoParam
@@ -65,7 +49,7 @@ GOTO ChangeBack
 
 :NoParam
   echo Use the GUI to select the AE to load
-  java -cp "%CTAKES_HOME%\desc\;%CTAKES_HOME%\resources\;%CTAKES_HOME%\lib\*" -Dlog4j.configuration="file:\%CTAKES_HOME%\config\log4j.xml" -Xms512M -Xmx3g org.apache.uima.tools.cvd.CVD
+  java -cp "%CLASS_PATH%" -Xms512M -Xmx3g org.apache.uima.tools.cvd.CVD
 GOTO ChangeBack
 
 

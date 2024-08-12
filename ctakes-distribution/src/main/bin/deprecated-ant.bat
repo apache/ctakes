@@ -19,6 +19,6 @@
 
 @rem simple script to run ant
 @setlocal
-@call %~dp0setenv.bat
+@call %~dp0deprecated-setenv.bat
 java -cp %ANT_CP% org.apache.tools.ant.Main %1 %2 %3 %4 %5 %6 %7 %8 %9
 @endlocal

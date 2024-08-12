@@ -36,23 +36,12 @@
 #   and when executing this script use:
 #      runPiperFile -p path/to/my/custom.piper -t path/to/my/custom.bsv  ...
 #
-# Requires JAVA JDK 1.8+
+# Requires JAVA JDK 17
 #
 
-PRG="$0"
-while [ -h "$PRG" ]; do
-  ls=`ls -ld "$PRG"`
-  link=`expr "$ls" : '.*-> \(.*\)$'`
-  if expr "$link" : '/.*' > /dev/null; then
-    PRG="$link"
-  else
-    PRG=`dirname "$PRG"`/"$link"
-  fi
-done
-PRGDIR=`dirname "$PRG"`
-
-# Only set CTAKES_HOME if not already set
-[ -z "$CTAKES_HOME" ] && CTAKES_HOME=`cd "$PRGDIR/.." >/dev/null; pwd`
+# Sets up environment for cTAKES
+. ${HOME}/setenv.sh
 
 cd $CTAKES_HOME
-java -cp $CTAKES_HOME/desc/:$CTAKES_HOME/resources/:$CTAKES_HOME/lib/* -Dlog4j.configuration=file:$CTAKES_HOME/config/log4j.xml -Xms512M -Xmx3g org.apache.ctakes.core.pipeline.PiperFileRunner "$@"
+
+java -cp "$CLASS_PATH" -Xms512M -Xmx3g $PIPE_RUNNER "$@"

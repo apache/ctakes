@@ -26,5 +26,6 @@
 @rem * or modify the PATH system environment variable and put the JDK bin directory at the beginning
 @setlocal
 @call %~dp0setenv.bat
-java -cp "%CLASSPATH%" -Dlog4j.configuration="file:\%CTAKES_HOME%\config\log4j.xml" -XX:MaxPermSize=128m -Xmx512m org.eclipse.jetty.runner.Runner "%CTAKES_HOME%\desc\ctakes-ytex-web"
+@REM java -cp "%CLASSPATH%" -Dlog4j.configuration="file:\%CTAKES_HOME%\config\log4j.xml" -XX:MaxPermSize=128m -Xmx512m org.eclipse.jetty.runner.Runner "%CTAKES_HOME%\desc\ctakes-ytex-web"
+java -cp "%CLASSPATH%" -XX:MaxPermSize=128m -Xmx512m org.eclipse.jetty.runner.Runner "%CTAKES_HOME%\desc\ctakes-ytex-web"
 @endlocal

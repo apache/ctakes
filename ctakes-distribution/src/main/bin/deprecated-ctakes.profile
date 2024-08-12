@@ -24,11 +24,11 @@
 # -Dctakes.umlsuser=[username] -Dctakes.umlspw=[password]
 
 # change CTAKES_HOME to match your environment
-CTAKES_HOME=${HOME}/apache-ctakes-3.2.1-SNAPSHOT
+CTAKES_HOME=${HOME}/apache-ctakes-6.0.0-SNAPSHOT
 export CTAKES_HOME
 
 ANT_CP=${CTAKES_HOME}/lib/ant-1.9.2.jar:${CTAKES_HOME}/lib/ant-launcher-1.9.2.jar:${CTAKES_HOME}/lib/ant-contrib-1.0b3.jar
 export ANT_CP
 
-CLASSPATH="${CTAKES_HOME}/desc/:${CTAKES_HOME}/resources/:${CTAKES_HOME}/lib/*"
+CLASSPATH="${CTAKES_HOME}/desc/:${CTAKES_HOME}/resources/:${CTAKES_HOME}/config/:${CTAKES_HOME}/lib/*"
 export CLASSPATH

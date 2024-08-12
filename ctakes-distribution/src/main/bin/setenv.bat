@@ -1,43 +1,55 @@
-@REM
-@REM Licensed to the Apache Software Foundation (ASF) under one
-@REM or more contributor license agreements.  See the NOTICE file
-@REM distributed with this work for additional information
-@REM regarding copyright ownership.  The ASF licenses this file
-@REM to you under the Apache License, Version 2.0 (the
-@REM "License"); you may not use this file except in compliance
-@REM with the License.  You may obtain a copy of the License at
-@REM
-@REM   http://www.apache.org/licenses/LICENSE-2.0
-@REM
-@REM Unless required by applicable law or agreed to in writing,
-@REM software distributed under the License is distributed on an
-@REM "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-@REM KIND, either express or implied.  See the License for the
-@REM specific language governing permissions and limitations
-@REM under the License.
-@REM
+@ECHO OFF
+::
+:: Licensed to the Apache Software Foundation (ASF) under one
+:: or more contributor license agreements.  See the NOTICE file
+:: distributed with this work for additional information
+:: regarding copyright ownership.  The ASF licenses this file
+:: to you under the Apache License, Version 2.0 (the
+:: "License"); you may not use this file except in compliance
+:: with the License.  You may obtain a copy of the License at
+::
+::   http://www.apache.org/licenses/LICENSE-2.0
+::
+:: Unless required by applicable law or agreed to in writing,
+:: software distributed under the License is distributed on an
+:: "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+:: KIND, either express or implied.  See the License for the
+:: specific language governing permissions and limitations
+:: under the License.
+::
+::
+::   Runs the default clinical pipeline on files in the input directory specified by -i {directory}
+::   Writes .xmi files to the output directory specified by --xmiOut {directory}
+::   Uses UMLS credentials specified by --user {username} --pass {password}
+::   Can also use a custom dictionary with -l {dictionaryConfigFile}
+::
+::
+:: Requires JAVA JDK 1.8+
+::
 
+@REM Guess CTAKES_HOME if not defined
+set CURRENT_DIR=%cd%
+if not "%CTAKES_HOME%" == "" goto gotHome
+set CTAKES_HOME=%CURRENT_DIR%
+if exist "%CTAKES_HOME%\bin\runClinicalPipeline.bat" goto okHome
+cd ..
+set CTAKES_HOME=%cd%
 
-@rem determine CTAKES_HOME - set it to the parent of the directory in which this file is located
-@set CURDIR=%cd%
-@set BINDIR=%~dp0
-@rem change to CTAKES_HOME dir and save the directory
-@cd %BINDIR%..
-@set CTAKES_HOME=%cd%
-@rem change back to the original directory
-@cd %CURDIR%
+:gotHome
+if exist "%CTAKES_HOME%\bin\runClinicalPipeline.bat" goto okHome
+echo The CTAKES_HOME environment variable is not defined correctly
+echo This environment variable is needed to run this program
+goto end
 
-@rem -------------------------------------------
-@rem customize these variables to match your environment
-@rem -------------------------------------------
-
-@rem add 64-bit MS SQL Server authentication library to path
-@rem modify this accordingly if you are using the 32-bit jdk
+:okHome
 @set PATH=%PATH%;%CTAKES_HOME%\lib\auth\x64
+@REM use JAVA_HOME if set
+if exist "%JAVA_HOME%\bin\java.exe" set PATH=%JAVA_HOME%\bin;%PATH%
 
-@rem -------------------------------------------
-@rem end customizations.  The following is environment-independent
-@rem -------------------------------------------
+set CLASS_PATH=%CTAKES_HOME%\desc\;%CTAKES_HOME%\resources\;%CTAKES_HOME%\config\;%CTAKES_HOME%\lib\*
+REM set LOG4J_PARM=-Dlog4j.configuration="file:\%CTAKES_HOME%\config\log4j.xml"
+set PIPE_RUNNER=org.apache.ctakes.core.pipeline.PiperFileRunner
+set PIPE_RUNNER_GUI=org.apache.ctakes.gui.pipeline.PiperRunnerGui
+set DICT_DOWNLOADER=org.apache.ctakes.gui.dictionary.DictionaryDownloader
 
-@set ANT_CP=%CTAKES_HOME%\lib\ant-1.9.2.jar;%CTAKES_HOME%\lib\ant-launcher-1.9.2.jar;%CTAKES_HOME%\lib\ant-contrib-1.0b3.jar
-@set CLASSPATH="%CTAKES_HOME%\desc\;%CTAKES_HOME%\resources\;%CTAKES_HOME%\lib\*"
+set FAST_PIPER=resources\org\apache\ctakes\clinical\pipeline\DefaultFastPipeline.piper

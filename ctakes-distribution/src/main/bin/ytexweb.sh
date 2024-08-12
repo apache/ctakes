@@ -19,6 +19,10 @@
 #
 
 # simple script to start jetty with the desc/ctakes-ytex-web web app
-. ${HOME}/ctakes.profile
-java -cp ${CLASSPATH} -Dlog4j.configuration=file:${CTAKES_HOME}/config/log4j.xml -XX:MaxPermSize=128m -Xmx512m org.eclipse.jetty.runner.Runner ${CTAKES_HOME}/desc/ctakes-ytex-web
+# Requires JAVA JDK 17
+#
+# Sets up environment for cTAKES
+. ${HOME}/setenv.sh
+
+java -cp "${CLASSPATH}" -XX:MaxPermSize=128m -Xmx512m org.eclipse.jetty.runner.Runner ${CTAKES_HOME}/desc/ctakes-ytex-web
 
