@@ -48,6 +48,11 @@
             <groupId>net.sourceforge.ctakesresources</groupId>
             <artifactId>ctakes-resources-orangebook-hsqldb</artifactId>
         </dependency>
+<!--        &lt;!&ndash;  hsqldb uses log4j v2. (via reflection) Add the log4j 2.  &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.apache.logging.log4j</groupId>-->
+<!--            <artifactId>log4j-core</artifactId>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.hsqldb</groupId>
             <artifactId>hsqldb</artifactId>

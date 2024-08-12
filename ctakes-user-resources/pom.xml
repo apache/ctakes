@@ -294,6 +294,10 @@
                                     <filtering>true</filtering>
                                 </resource>
                                 <resource>
+                                    <directory>${project.basedir}/../ctakes-type-system/src/user/config</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                                <resource>
                                     <directory>${project.basedir}/../ctakes-utils/src/user/resources</directory>
                                     <filtering>true</filtering>
                                 </resource>

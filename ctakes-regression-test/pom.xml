@@ -16,10 +16,10 @@
             <groupId>org.apache.ctakes</groupId>
             <artifactId>ctakes-examples</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.apache.uima</groupId>
-            <artifactId>uimaj-cpe</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.apache.uima</groupId>-->
+<!--            <artifactId>uimaj-cpe</artifactId>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>xmlunit</groupId>
             <artifactId>xmlunit</artifactId>

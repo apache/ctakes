@@ -102,7 +102,7 @@ public class ArtemisStopper extends ArtemisController {
                        }
                        runCommand();
                    } catch ( IOException ioE ) {
-                       LOGGER.error( "Could not stop Artemis.", ioE );
+                       System.err.println( "Could not stop Artemis.\n" + ioE.getMessage() );
                    }
                } ) );
     }

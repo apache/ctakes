@@ -3,6 +3,7 @@ target/
 
 # Developer environment setup
 /resources/
+/config/
 *.patch
 
 # Subversion
@@ -28,11 +29,10 @@ Thumbs.db
 .DS_Store
 
 # log files and temp dirs
+/log/
 cTAKES.error.log
 /temp/
 /tmp/
-/ctakes-core/out/
-/out/
 
 Web ARchives - built by ctakes
 *.war

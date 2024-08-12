@@ -519,7 +519,8 @@ final public class SystemUtil {
                          process.waitFor();
                       }
                    } catch ( InterruptedException multE ) {
-                      LOGGER.error( "Could not stop process.", multE );
+//                      LOGGER.error( "Could not stop process.", multE );
+                      System.err.println( "Could not stop process.\n" + multE.getMessage() );
                    }
                 } ) );
       }

@@ -66,9 +66,9 @@
 	development mode: by default use ytex test log4j props
 	production mode: use ctakes log4j props
 	-->
-	<condition property="log4j.conf" value="${ctakes.home}/ctakes-ytex/src/test/resources/log4j.properties" else="${ctakes.home}/config/log4j2.xml">
-		<isset property="ctakes.dev.mode" />
-	</condition>
+<!--	<condition property="log4j.conf" value="${ctakes.home}/ctakes-ytex/src/test/resources/log4j.properties" else="${ctakes.home}/config/log4j2.xml">-->
+<!--		<isset property="ctakes.dev.mode" />-->
+<!--	</condition>-->
 	<!-- set concept graph directory -->
 	<property name="ytex.conceptGraphDir" value="${config.local}/org/apache/ctakes/ytex/conceptGraph" />
 	<!-- metamap -->
@@ -106,13 +106,13 @@
 	<condition property="kernel.cp" value="kernel.cp.dev" else="kernel.cp.prod">
 		<isset property="ctakes.dev.mode" />
 	</condition>
-	<makeurl property="log4j.url" file="${log4j.conf}" />
-	<property name="log4j.configuration" value="${log4j.url}" />
-	<property name="log4j.arg" value="-Dlog4j.configuration=${log4j.configuration}" />
+<!--	<makeurl property="log4j.url" file="${log4j.conf}" />-->
+<!--	<property name="log4j.configuration" value="${log4j.url}" />-->
+<!--	<property name="log4j.arg" value="-Dlog4j.configuration=${log4j.configuration}" />-->
 	<property name="java.util.logging.config.file" value="${java.log.arg}" />
-	<propertyset id="ytex.jvm.props">
-		<propertyref name="log4j.configuration" />
-	</propertyset>
+<!--	<propertyset id="ytex.jvm.props">-->
+<!--		<propertyref name="log4j.configuration" />-->
+<!--	</propertyset>-->
 	<property name="db.name" value="" />
 	<property name="umls.catalog" value="${db.name}" />
 	<property name="umls.schema" value="${db.schema}" />

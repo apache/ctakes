@@ -33,11 +33,7 @@
         </dependency>
         <dependency>
             <groupId>org.apache.activemq</groupId>
-            <artifactId>activemq-all</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.activemq</groupId>
-            <artifactId>artemis-jms-client-all</artifactId>
+            <artifactId>artemis-jms-client</artifactId>
         </dependency>
     </dependencies>
     <build>

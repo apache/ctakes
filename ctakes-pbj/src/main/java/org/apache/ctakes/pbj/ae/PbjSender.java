@@ -327,7 +327,7 @@ abstract public class PbjSender extends JCasAnnotator_ImplBase {
                    if ( aE.getMessage() == null || aE.getMessage().equals( "null" ) ) {
                       return;
                    }
-                   LOGGER.info( "Artemis Disconnect: " + aE.getMessage() );
+                   System.out.println( "Artemis Disconnect: " + aE.getMessage() );
                 }
              } ) );
    }

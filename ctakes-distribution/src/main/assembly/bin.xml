@@ -303,6 +303,12 @@
 			<directoryMode>755</directoryMode>
 		</fileSet>
 		<fileSet>
+			<directory>../ctakes-type-system/src/user/config</directory>
+			<outputDirectory>config</outputDirectory>
+			<fileMode>644</fileMode>
+			<directoryMode>755</directoryMode>
+		</fileSet>
+		<fileSet>
 			<directory>../ctakes-utils/src/user/resources</directory>
 			<outputDirectory>resources</outputDirectory>
 			<fileMode>644</fileMode>
@@ -343,38 +349,38 @@
 			<fileMode>644</fileMode>
 			<directoryMode>755</directoryMode>
 		</fileSet>
-		<!-- Copy the default log4j config -->
-		<fileSet>
-			<directory>../ctakes-core/src/main/resources</directory>
-			<includes>
-				<include>log4j.*</include>
-			</includes>
-			<outputDirectory>config</outputDirectory>
-			<fileMode>644</fileMode>
-			<directoryMode>755</directoryMode>
-		</fileSet>
-		<fileSet>
-			<directory>src/main/bin</directory>
-			<outputDirectory>bin</outputDirectory>
-			<fileMode>755</fileMode>
-			<directoryMode>755</directoryMode>
-		</fileSet>
-		<fileSet>
-			<directory>src/main/config</directory>
-			<outputDirectory>config</outputDirectory>
-			<fileMode>644</fileMode>
-			<directoryMode>755</directoryMode>
-		</fileSet>
-		<!-- Copy a log4j config that could be overridden -->
-		<fileSet>
-			<directory>../ctakes-core/src/main/resources</directory>
-			<includes>
-				<include>log4j.*</include>
-			</includes>
-			<outputDirectory>resources</outputDirectory>
-			<fileMode>644</fileMode>
-			<directoryMode>755</directoryMode>
-		</fileSet>
+<!--		&lt;!&ndash; Copy the default log4j config &ndash;&gt;-->
+<!--		<fileSet>-->
+<!--			<directory>../ctakes-core/src/main/resources</directory>-->
+<!--			<includes>-->
+<!--				<include>log4j2.*</include>-->
+<!--			</includes>-->
+<!--			<outputDirectory>resources</outputDirectory>-->
+<!--			<fileMode>644</fileMode>-->
+<!--			<directoryMode>755</directoryMode>-->
+<!--		</fileSet>-->
+<!--		<fileSet>-->
+<!--			<directory>src/main/bin</directory>-->
+<!--			<outputDirectory>bin</outputDirectory>-->
+<!--			<fileMode>755</fileMode>-->
+<!--			<directoryMode>755</directoryMode>-->
+<!--		</fileSet>-->
+<!--		<fileSet>-->
+<!--			<directory>src/main/config</directory>-->
+<!--			<outputDirectory>config</outputDirectory>-->
+<!--			<fileMode>644</fileMode>-->
+<!--			<directoryMode>755</directoryMode>-->
+<!--		</fileSet>-->
+<!--		&lt;!&ndash; Copy a log4j config that could be overridden &ndash;&gt;-->
+<!--		<fileSet>-->
+<!--			<directory>../ctakes-core/src/main/resources</directory>-->
+<!--			<includes>-->
+<!--				<include>log4j.*</include>-->
+<!--			</includes>-->
+<!--			<outputDirectory>resources</outputDirectory>-->
+<!--			<fileMode>644</fileMode>-->
+<!--			<directoryMode>755</directoryMode>-->
+<!--		</fileSet>-->
 		<!-- Copy all of the XML Descriptors. Preserving this structure so
 			that the relative paths still work. -->
 		<fileSet>

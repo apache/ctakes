@@ -90,7 +90,7 @@ Database connection parameters are taken from ytex.properties.
 	</target>
 	<target name="dbping" description="verify db connection params" unless="hsql">
 		<java classname="org.apache.ctakes.ytex.tools.DBPing" fork="yes" classpathref="${kernel.cp}" failonerror="yes">
-			<jvmarg value="${log4j.arg}" />
+<!--			<jvmarg value="${log4j.arg}" />-->
 			<jvmarg value="-Xmx64m" />
 			<arg value="${config.local}/org/apache/ctakes/ytex/ytex.properties" />
 		</java>
@@ -261,7 +261,7 @@ Database connection parameters are taken from ytex.properties.
 		</antcall>
 		<echo>setting up umls_aui_fword table. please be patient - this can take a while</echo>
 		<java classname="org.apache.ctakes.ytex.tools.SetupAuiFirstWord" fork="yes" classpathref="${kernel.cp}" failonerror="yes">
-			<jvmarg value="${log4j.arg}" />
+<!--			<jvmarg value="${log4j.arg}" />-->
 		</java>
 		<echo>index umls_aui_fword tables</echo>
 		<antcall target="jdbc.sqlcmd">
@@ -456,7 +456,7 @@ ${sql.delimiter}
 		<java classpathref="${kernel.cp}" classname="org.apache.ctakes.jdl.AppMain" fork="yes" failonerror="yes">
 			<jvmarg value="-Dfile.encoding=UTF-8" />
 			<jvmarg value="-Xmx256m" />
-			<jvmarg value="${log4j.arg}" />
+<!--			<jvmarg value="${log4j.arg}" />-->
 			<arg value="-c" />
 			<arg value="${java.io.tmpdir}/conn.xml" />
 			<arg value="-d" />
