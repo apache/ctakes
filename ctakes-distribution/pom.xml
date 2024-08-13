@@ -169,22 +169,6 @@
     </dependencies>
 
     <profiles>
-        <!--  Disable this profile to leave log4j2 out of your build.  You must then supply your own logger.  -->
-        <profile>
-            <id>enable-log4j2-build</id>
-            <activation>
-                <property>
-                    <name>!nolog4j</name>
-                </property>
-            </activation>
-            <dependencies>
-                <dependency>
-                    <groupId>org.apache.logging.log4j</groupId>
-                    <artifactId>log4j-slf4j2-impl</artifactId>
-                    <version>${log4j-slf4j2.version}</version>
-                </dependency>
-            </dependencies>
-        </profile>
         <!--  Disable this profile if you do not want to zip your build.  Useful when all that you want are jars.  -->
         <profile>
             <id>zips-build</id>
@@ -249,12 +233,6 @@
                 </plugins>
             </build>
         </profile>
-
-<!--        <profile>-->
-<!--            &lt;!&ndash;			Because I got tired of building multiple zips when all I wanted were jars.  &ndash;&gt;-->
-<!--            <id>no-zips-build</id>-->
-<!--        </profile>-->
-
     </profiles>
 
 </project>

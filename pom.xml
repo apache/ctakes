@@ -1716,7 +1716,7 @@
         </profile>
         <!--  Disable this profile if you do not want to use log4j2 while running in IDEs etc.  -->
         <profile>
-            <id>enable-log4j2-run</id>
+            <id>use-log4j2</id>
             <activation>
                 <property>
                     <name>!nolog4j</name>
