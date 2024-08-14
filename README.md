@@ -31,7 +31,7 @@ We encourage people from all backgrounds to get involved! (link)
 <br>
 
 ## Supported Environments
-1. **Java 1.8** is required to run cTAKES. Run this command to check your Java version:
+1. **Java 1.8** is required to run cTAKES versions 5.x and older. Versions 6+ require java 17.  Run this command to check your Java version:
 ```
 $ java -version
 ```
