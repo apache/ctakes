@@ -30,8 +30,8 @@
         <Console name="eolAppender" target="SYSTEM_OUT">
             <PatternLayout pattern="%m%n"/>
         </Console>
-        <File name="fileAppender" fileName="log/ctakes.log" append="false">
-        </File>
+<!--        <File name="fileAppender" fileName="log/ctakes.log" append="false">-->
+<!--        </File>-->
     </Appenders>
     <Loggers>
         <Logger name="ProgressAppender" level="info" additivity="false">

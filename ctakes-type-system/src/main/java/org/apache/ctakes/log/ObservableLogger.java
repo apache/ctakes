@@ -6,8 +6,8 @@ import org.slf4j.event.DefaultLoggingEvent;
 import org.slf4j.event.Level;
 import org.slf4j.spi.LoggingEventAware;
 
-import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 
 import static org.slf4j.event.Level.*;
 
@@ -24,14 +24,14 @@ final public class ObservableLogger implements Logger {
 
    private final Logger _delegate;
 
-   private final Collection<LoggingEventAware> _listeners;
+   // No real concerns about thread safety ...
+   static private final Collection<LoggingEventAware> _listeners = new HashSet<>();
 
    static private final Object[] EMPTY_ARGS = new Object[]{};
 
 
    public ObservableLogger( final Logger delegate ) {
       _delegate = delegate;
-      _listeners = new ArrayList<>();
    }
 
    public void addListener( final LoggingEventAware listener ) {

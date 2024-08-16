@@ -29,10 +29,6 @@ final public class LoggerPanel extends JScrollPane {
       final LoggerPanel panel = new LoggerPanel( levels );
       final Logger rootLogger = LoggerFactory.getLogger( org.slf4j.Logger.ROOT_LOGGER_NAME );
       addLogListener( rootLogger, panel.getLogHandler() );
-      final Logger pa = LoggerFactory.getLogger( "ProgressAppender" );
-      addLogListener( pa, panel.getLogHandler() );
-      final Logger pd = LoggerFactory.getLogger( "ProgressDone" );
-      addLogListener( pd, panel.getLogHandler() );
       return panel;
    }
 
@@ -130,9 +126,9 @@ final public class LoggerPanel extends JScrollPane {
          }
          final Level level = event.getLevel();
          if ( _levels.contains( level ) ) {
-            final Object message = event.getMessage();
+            final String message = constructMessage( event );
             if ( message != null ) {
-               String text = message.toString();
+               String text = message;
                if ( text.equals( "." ) ) {
                   appendText( text );
                   return;
@@ -155,6 +151,43 @@ final public class LoggerPanel extends JScrollPane {
          }
       }
 
+      /**
+       *
+       * @param event slf4j event
+       * @return message reconstructed from parameterized logging: ( "text {}", arg )
+       */
+      static private String constructMessage( final LoggingEvent event ) {
+         return constructMessage( event.getMessage(), event.getArguments() );
+      }
+
+      /**
+       *
+       * @param message -
+       * @param args -
+       * @return message reconstructed from parameterized logging: ( "text {}", arg )
+       */
+      static private String constructMessage( final String message, final java.util.List<Object> args ) {
+         if ( args == null || args.isEmpty() ) {
+            return message;
+         }
+         final StringBuilder sb = new StringBuilder();
+         int lastIndex = 0;
+         for ( Object arg : args ) {
+            final int nextIndex = message.indexOf( "{}", lastIndex );
+            if ( nextIndex < 0 ) {
+               break;
+            }
+            if ( nextIndex > lastIndex ) {
+               sb.append( message, lastIndex, nextIndex );
+            }
+            sb.append( arg.toString() );
+            lastIndex = nextIndex+2;
+         }
+         if ( lastIndex < message.length() ) {
+            sb.append( message.substring( lastIndex ) );
+         }
+         return sb.toString();
+      }
 
 //      /**
 //       * {@inheritDoc}
@@ -174,5 +207,16 @@ final public class LoggerPanel extends JScrollPane {
 //      }
    }
 
+//   public static void main( String[] args ) {
+//      System.out.println( "EMPTY:" + LogHandler.constructMessage( "", null ));
+//      System.out.println( "ONE:" + LogHandler.constructMessage( "{}", Collections.singletonList("Hello") ));
+//      System.out.println( "TWO:" + LogHandler.constructMessage( "{}{}", Arrays.asList( "One","Two" ) ));
+//      System.out.println( "TWO1:" + LogHandler.constructMessage( " {}{}", Arrays.asList( "One","Two" ) ));
+//      System.out.println( "TWO2:" + LogHandler.constructMessage( "{} {}", Arrays.asList( "One","Two" ) ));
+//      System.out.println( "TWO3:" + LogHandler.constructMessage( "{}{} ", Arrays.asList( "One","Two" ) ));
+//      System.out.println( "TWO1:" + LogHandler.constructMessage( "- {}{}-", Arrays.asList( "One","Two" ) ));
+//      System.out.println( "TWO2:" + LogHandler.constructMessage( "-{} -{}", Arrays.asList( "One","Two" ) ));
+//      System.out.println( "TWO3:" + LogHandler.constructMessage( "-{}{}- -", Arrays.asList( "One","Two" ) ));
+//   }
 
 }
