@@ -140,6 +140,18 @@
 
 	<fileSets>
 		<fileSet>
+			<directory>src/main/bin</directory>
+			<outputDirectory>bin</outputDirectory>
+			<fileMode>755</fileMode>
+			<directoryMode>755</directoryMode>
+		</fileSet>
+		<fileSet>
+			<directory>src/main/config</directory>
+			<outputDirectory>config</outputDirectory>
+			<fileMode>644</fileMode>
+			<directoryMode>755</directoryMode>
+		</fileSet>
+		<fileSet>
 			<directory>../ctakes-assertion/src/user/resources</directory>
 			<outputDirectory>resources</outputDirectory>
 			<fileMode>644</fileMode>
