@@ -1,6 +1,7 @@
 package org.apache.ctakes.gui.generic;
 
 import org.apache.ctakes.gui.component.DisablerPane;
+import org.apache.ctakes.gui.pipeline.PiperRunnerGui;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -34,7 +35,16 @@ final public class GenericRunnerGui {
    }
 
 
+   static private String[] _args;
+
    public static void main( final String... args ) {
+      // At jdk 8 this was supposedly unnecessary.  I guess that it is back ...
+      _args = args;
+      SwingUtilities.invokeLater( GenericRunnerGui::run );
+   }
+
+
+   static private void run() {
       try {
          UIManager.setLookAndFeel( UIManager.getSystemLookAndFeelClassName() );
          UIManager.getDefaults()
@@ -53,7 +63,7 @@ final public class GenericRunnerGui {
       frame.setVisible( true );
       DisablerPane.getInstance()
                   .initialize( frame );
-      mainPanel.readParameterFile( args );
+      mainPanel.readParameterFile( _args );
       LOGGER.info( "To start, click the Green Circular button above." );
       LOGGER.info( "To stop, click the Red X button above." );
       // Check for -p and -c specification of piper file and cli parameter file

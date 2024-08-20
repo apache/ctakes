@@ -4,6 +4,7 @@ import org.apache.ctakes.core.util.external.SystemUtil;
 import org.apache.ctakes.core.util.log.DotLogger;
 import org.apache.ctakes.gui.component.DisablerPane;
 import org.apache.ctakes.gui.component.LoggerPanel;
+import org.apache.ctakes.gui.generic.GenericRunnerGui;
 import org.apache.ctakes.gui.util.IconLoader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -46,7 +47,14 @@ final public class DictionaryDownloader {
    }
 
 
+
    public static void main( final String... args ) {
+      // At jdk 8 this was supposedly unnecessary.  I guess that it is back ...
+      SwingUtilities.invokeLater( DictionaryDownloader::run );
+   }
+
+
+   static private void run() {
       try {
          UIManager.setLookAndFeel( UIManager.getSystemLookAndFeelClassName() );
          UIManager.getDefaults()

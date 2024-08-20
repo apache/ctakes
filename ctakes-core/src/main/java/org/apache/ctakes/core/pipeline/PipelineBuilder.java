@@ -45,6 +45,7 @@ final public class PipelineBuilder {
    static private final Logger LOGGER = LoggerFactory.getLogger( "PipelineBuilder" );
 
    private CollectionReaderDescription _readerDesc;
+   private boolean _ignoreReader = false;
    // TODO replace pairs of 3 lists with 2 instances of a single class.  Put a build() (sub) method in class?
    private final List<String> _aeNameList;
    private final List<String[]> _aeViewList;
@@ -348,15 +349,15 @@ final public class PipelineBuilder {
    public PipelineBuilder threads( final int threadCount ) {
       if ( threadCount <= 1 ) {
          if ( threadCount < 1 ) {
-            LOGGER.warn( "Thread count (" + threadCount + ") cannot be below 1.  Using 1 thread for processing." );
+            LOGGER.warn( "Thread count ({}) cannot be below 1.  Using 1 thread for processing.", threadCount );
          }
          _threadCount = 1;
          return this;
       }
       final int coreCount = Runtime.getRuntime().availableProcessors();
       if ( threadCount > coreCount ) {
-         LOGGER.warn( "Thread count (" + threadCount + ") is greater than core count ("
-               + coreCount + ").  Using core count for processing." );
+         LOGGER.warn( "Thread count ({}) is greater than core count ({}).  Using core count for processing.",
+               threadCount, coreCount );
          _threadCount = coreCount;
          return this;
       }
@@ -402,7 +403,8 @@ final public class PipelineBuilder {
     */
    public PipelineBuilder run() throws IOException, UIMAException {
       if ( _readerDesc == null ) {
-         LOGGER.error( "No Collection Reader specified." );
+         LOGGER.error( "No Collection Reader specified, cannot run pipeline." );
+         LOGGER.info( "Set the InputDirectory (-i) parameter to use the default reader FileTreeReader." );
          return this;
       }
       build();
@@ -435,10 +437,7 @@ final public class PipelineBuilder {
     * @throws UIMAException if the pipeline could not be run
     */
    public PipelineBuilder run( final String text ) throws IOException, UIMAException {
-      if ( _readerDesc != null ) {
-         LOGGER.error( "Collection Reader specified, ignoring." );
-         return this;
-      }
+      ignoreReader();
       final JCas jcas = JCasFactory.createJCas();
       jcas.setDocumentText( text );
       return run( jcas );
@@ -455,13 +454,17 @@ final public class PipelineBuilder {
     * @throws UIMAException if the pipeline could not be run
     */
    public PipelineBuilder run( final JCas jCas ) throws IOException, UIMAException {
-      if ( _readerDesc != null ) {
-         LOGGER.error( "Collection Reader specified, ignoring." );
-         return this;
-      }
+      ignoreReader();
       build();
       SimplePipeline.runPipeline( jCas, _analysisEngineDesc );
       return this;
+   }
+
+   private void ignoreReader() {
+      if ( !_ignoreReader && _readerDesc != null ) {
+         LOGGER.warn( "Running text directly, ignoring Collection Reader {}", _readerDesc.getClass().getSimpleName() );
+      }
+      _ignoreReader = true;
    }
 
    /**

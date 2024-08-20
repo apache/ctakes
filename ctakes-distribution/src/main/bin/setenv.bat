@@ -46,7 +46,7 @@ goto end
 @REM use JAVA_HOME if set
 if exist "%JAVA_HOME%\bin\java.exe" set PATH=%JAVA_HOME%\bin;%PATH%
 
-set CLASS_PATH=%CTAKES_HOME%\desc\;%CTAKES_HOME%\resources\;%CTAKES_HOME%\config\;%CTAKES_HOME%\lib\*
+set CLASS_PATH=%CTAKES_HOME%\desc\;%CTAKES_HOME%\resources\;%CTAKES_HOME%\config\*;%CTAKES_HOME%\lib\*
 REM set LOG4J_PARM=-Dlog4j.configuration="file:\%CTAKES_HOME%\config\log4j.xml"
 set PIPE_RUNNER=org.apache.ctakes.core.pipeline.PiperFileRunner
 set PIPE_RUNNER_GUI=org.apache.ctakes.gui.pipeline.PiperRunnerGui

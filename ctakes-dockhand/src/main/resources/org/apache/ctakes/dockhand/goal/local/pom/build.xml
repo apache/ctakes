@@ -44,7 +44,7 @@
          <outputDirectory/>
       </file>
       <file>
-         <source>log4j.xml</source>
+         <source>log4j2.xml</source>
          <outputDirectory/>
       </file>
    </files>

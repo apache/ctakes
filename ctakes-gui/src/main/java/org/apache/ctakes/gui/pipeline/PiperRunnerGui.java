@@ -42,7 +42,16 @@ final public class PiperRunnerGui {
    }
 
 
+   static private String[] _args;
+
    public static void main( final String... args ) {
+      // At jdk 8 this was supposedly unnecessary.  I guess that it is back ...
+      _args = args;
+      SwingUtilities.invokeLater( PiperRunnerGui::run );
+   }
+
+
+   static private void run() {
       try {
          UIManager.setLookAndFeel( UIManager.getSystemLookAndFeelClassName() );
          UIManager.getDefaults()
@@ -70,7 +79,7 @@ final public class PiperRunnerGui {
       LOGGER.info( "4. Save your Command Line Interface (cli) values to a piper_cli parameter file." );
       LOGGER.info( "5. Run the Pipeline." );
       // Check for -p and -c specification of piper file and cli parameter file
-      final CliOptionals options = CliFactory.parseArguments( CliOptionals.class, args );
+      final CliOptionals options = CliFactory.parseArguments( CliOptionals.class, _args );
       final String piperPath = options.getPiperPath();
       if ( piperPath != null && !piperPath.isEmpty() ) {
          mainPanel.loadPiperFile( options.getPiperPath() );

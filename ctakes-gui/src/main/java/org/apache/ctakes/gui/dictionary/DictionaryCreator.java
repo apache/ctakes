@@ -2,6 +2,7 @@ package org.apache.ctakes.gui.dictionary;
 
 
 import org.apache.ctakes.gui.component.DisablerPane;
+import org.apache.ctakes.gui.generic.GenericRunnerGui;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -45,7 +46,14 @@ final public class DictionaryCreator {
       return new MainPanel();
    }
 
+
    public static void main( final String... args ) {
+      // At jdk 8 this was supposedly unnecessary.  I guess that it is back ...
+      SwingUtilities.invokeLater( DictionaryCreator::run );
+   }
+
+
+   static private void run() {
       try {
          UIManager.setLookAndFeel( UIManager.getSystemLookAndFeelClassName() );
          UIManager.getDefaults().put( "SplitPane.border", BorderFactory.createEmptyBorder() );

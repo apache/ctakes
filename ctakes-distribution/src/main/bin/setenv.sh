@@ -13,7 +13,7 @@ PRGDIR=`dirname "$PRG"`
 # Only set CTAKES_HOME if not already set
 [ -z "$CTAKES_HOME" ] && CTAKES_HOME=`cd "$PRGDIR/.." >/dev/null; pwd`
 
-CLASS_PATH=$CTAKES_HOME/desc/:$CTAKES_HOME/resources/:$CTAKES_HOME/config/:$CTAKES_HOME/lib/*
+CLASS_PATH=$CTAKES_HOME/desc/:$CTAKES_HOME/resources/:$CTAKES_HOME/config/*:$CTAKES_HOME/lib/*
 #LOG4J2_PARM=-Dlog4j.configuration=file:$CTAKES_HOME/config/log4j2.xml
 PIPE_RUNNER=org.apache.ctakes.core.pipeline.PiperFileRunner
 PIPE_RUNNER_GUI=org.apache.ctakes.gui.pipeline.PiperRunnerGui
