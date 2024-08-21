@@ -11,6 +11,7 @@ import org.apache.ctakes.gui.component.*;
 import org.apache.ctakes.gui.pipeline.bit.parameter.ParameterCellRenderer;
 import org.apache.ctakes.gui.pipeline.piper.PiperFileView;
 import org.apache.ctakes.gui.pipeline.piper.PiperTextFilter;
+import org.apache.ctakes.gui.util.FileChooserUtil;
 import org.apache.ctakes.gui.util.IconLoader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -98,14 +99,8 @@ final public class PiperRunnerPanel extends JPanel {
       _piperChooser.setFileView( new PiperFileView() );
       _parmChooser.setFileFilter( new FileNameExtensionFilter( "Pipeline Definition (Piper) Parameter File", CLI_EXTENSION ) );
       _parmChooser.setFileView( new PiperFileView() );
-      String cwdPath = Paths.get( "" ).toAbsolutePath().toFile().getPath();
-      if ( cwdPath.isEmpty() ) {
-         cwdPath = System.getProperty( "user.dir" );
-      }
-      if ( cwdPath != null && !cwdPath.isEmpty() ) {
-         _piperChooser.setCurrentDirectory( new File( cwdPath ) );
-         _parmChooser.setCurrentDirectory( new File( cwdPath ) );
-      }
+      FileChooserUtil.selectWorkingDir( _piperChooser );
+      FileChooserUtil.selectWorkingDir( _parmChooser );
    }
 
    private JToolBar createToolBar() {

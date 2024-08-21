@@ -1,6 +1,7 @@
 package org.apache.ctakes.gui.component;
 
 
+import org.apache.ctakes.gui.util.FileChooserUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -35,14 +36,14 @@ final public class FileTableCellEditor extends AbstractCellEditor
       _button.setToolTipText( "Select File" );
       _button.addActionListener( this );
       _chooser = new JFileChooser();
-      String cwdPath = Paths.get( "" ).toAbsolutePath().toFile().getPath();
-      if ( cwdPath.isEmpty() ) {
-         cwdPath = System.getProperty( "user.dir" );
-      }
-      if ( cwdPath != null && !cwdPath.isEmpty() ) {
-         _chooser.setCurrentDirectory( new File( cwdPath ) );
-      }
-
+//      String cwdPath = Paths.get( "" ).toAbsolutePath().toFile().getPath();
+//      if ( cwdPath.isEmpty() ) {
+//         cwdPath = System.getProperty( "user.dir" );
+//      }
+//      if ( cwdPath != null && !cwdPath.isEmpty() ) {
+//         _chooser.setCurrentDirectory( new File( cwdPath ) );
+//      }
+      FileChooserUtil.selectWorkingDir( _chooser );
    }
 
    public JFileChooser getFileChooser() {

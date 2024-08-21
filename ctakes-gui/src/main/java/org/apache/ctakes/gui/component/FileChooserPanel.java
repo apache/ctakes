@@ -1,5 +1,6 @@
 package org.apache.ctakes.gui.component;
 
+import org.apache.ctakes.gui.util.FileChooserUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -65,13 +66,14 @@ final public class FileChooserPanel extends JPanel {
          super( "Select " + (selectDir ? "Directory" : "File") );
          __textComponent = textComponent;
          __chooser = new JFileChooser();
-         String cwdPath = Paths.get( "" ).toAbsolutePath().toFile().getPath();
-         if ( cwdPath.isEmpty() ) {
-            cwdPath = System.getProperty( "user.dir" );
-         }
-         if ( cwdPath != null && !cwdPath.isEmpty() ) {
-            __chooser.setCurrentDirectory( new File( cwdPath ) );
-         }
+//         String cwdPath = Paths.get( "" ).toAbsolutePath().toFile().getPath();
+//         if ( cwdPath.isEmpty() ) {
+//            cwdPath = System.getProperty( "user.dir" );
+//         }
+//         if ( cwdPath != null && !cwdPath.isEmpty() ) {
+//            __chooser.setCurrentDirectory( new File( cwdPath ) );
+//         }
+         FileChooserUtil.selectWorkingDir( __chooser );
          __chooser.setFileSelectionMode( (selectDir ? JFileChooser.DIRECTORIES_ONLY : JFileChooser.FILES_ONLY) );
          __fileChangeListener = dirChangeListener;
       }
@@ -82,7 +84,8 @@ final public class FileChooserPanel extends JPanel {
          if ( startDirPath != null && !startDirPath.isEmpty() ) {
             final File startingDir = new File( startDirPath );
             if ( startingDir.exists() ) {
-               __chooser.setCurrentDirectory( startingDir );
+//               __chooser.setCurrentDirectory( startingDir );
+               FileChooserUtil.selectDir( __chooser, startingDir.getPath() );
             }
          }
          final int option = __chooser.showOpenDialog( null );
