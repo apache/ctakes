@@ -3,6 +3,8 @@ package org.apache.ctakes.core.pipeline;
 
 import com.lexicalscope.jewel.cli.CliFactory;
 import org.apache.ctakes.core.config.ConfigParameterConstants;
+import org.apache.uima.resource.ResourceInitializationException;
+import org.apache.uima.util.CasCreationUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.apache.uima.UIMAException;
@@ -11,6 +13,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.nio.file.Paths;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 /**
  * @author SPF , chip-nlp
@@ -78,6 +82,17 @@ final public class PiperFileRunner {
                         .noneMatch( n -> n.contains( "htmlwriter" ) ) ) {
                builder.writeHtml( htmlOutDir );
             }
+         }
+         // Workaround https://github.com/apache/uima-uimaj/issues/234
+         // https://github.com/ClearTK/cleartk/issues/470
+         try {
+            LOGGER.debug( "Creating empty CAS to make certain that the typesystem is initialized ..." );
+            CasCreationUtils.createCas();
+         } catch ( ResourceInitializationException riE ) {
+            LOGGER.error( "Could not create base CAS for initialization.\n{}", riE.getMessage() );
+            LOGGER.error( Arrays.stream( riE.getStackTrace() )
+                                .map( StackTraceElement::toString )
+                                .collect( Collectors.joining("\n" ) ) );
          }
          // run the pipeline
          builder.run();

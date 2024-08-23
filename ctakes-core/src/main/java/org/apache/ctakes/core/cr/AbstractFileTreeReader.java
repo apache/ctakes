@@ -184,10 +184,10 @@ abstract public class AbstractFileTreeReader extends JCasCollectionReader_ImplBa
       // Workaround https://github.com/apache/uima-uimaj/issues/234
       // https://github.com/ClearTK/cleartk/issues/470
       try {
-         LOGGER.info( "Creating empty CAS to make certain that the typesystem is initialized ..." );
+         LOGGER.debug( "Creating empty CAS to make certain that the typesystem is initialized ..." );
          CasCreationUtils.createCas();
       } catch ( ResourceInitializationException riE ) {
-         LOGGER.error( "Could not create base CAS for initialization.\n" + riE.getMessage() );
+         LOGGER.error( "Could not create base CAS for initialization.\n{}", riE.getMessage() );
          LOGGER.error( Arrays.stream( riE.getStackTrace() )
                              .map( StackTraceElement::toString )
                              .collect( Collectors.joining("\n" ) ) );
