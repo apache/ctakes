@@ -17,7 +17,7 @@
 	<parent>
 		<groupId>org.apache.ctakes</groupId>
 		<artifactId>ctakes</artifactId>
-		<version>6.0.0-SNAPSHOT</version>
+		<version>6.0.0</version>
 	</parent>
 	<dependencies>
 		<dependency>
@@ -162,32 +162,32 @@
 				</executions>
 			</plugin>
 			<!-- run ant scripts to setup test properties and database -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>generate-test-config</id>
-						<phase>pre-integration-test</phase>
-						<goals>
-							<goal>run</goal>
-						</goals>
-						<configuration>
-							<target>
-								<!-- default to hsql, override via -D -->
-								<property name="db.type" value="hsql" />
-								<ant antfile="build-setup.xml" dir="${project.basedir}/../ctakes-ytex/scripts" target="test.setup">
-									<property name="config.local" value="${project.build.testOutputDirectory}" />
-<!--									<property name="db.type" value="${db.type}" />-->
-									<property name="db.type" value="hsql" />
-									<property name="ytex.test" value="true" />
-									<property name="ctakes.home" value="${project.basedir}/.." />
-								</ant>
-							</target>
-						</configuration>
-					</execution>			
-				</executions>
-			</plugin>
+<!--			<plugin>-->
+<!--				<groupId>org.apache.maven.plugins</groupId>-->
+<!--				<artifactId>maven-antrun-plugin</artifactId>-->
+<!--				<executions>-->
+<!--					<execution>-->
+<!--						<id>generate-test-config</id>-->
+<!--						<phase>pre-integration-test</phase>-->
+<!--						<goals>-->
+<!--							<goal>run</goal>-->
+<!--						</goals>-->
+<!--						<configuration>-->
+<!--							<target>-->
+<!--								&lt;!&ndash; default to hsql, override via -D &ndash;&gt;-->
+<!--								<property name="db.type" value="hsql" />-->
+<!--								<ant antfile="build-setup.xml" dir="${project.basedir}/../ctakes-ytex/scripts" target="test.setup">-->
+<!--									<property name="config.local" value="${project.build.testOutputDirectory}" />-->
+<!--&lt;!&ndash;									<property name="db.type" value="${db.type}" />&ndash;&gt;-->
+<!--									<property name="db.type" value="hsql" />-->
+<!--									<property name="ytex.test" value="true" />-->
+<!--									<property name="ctakes.home" value="${project.basedir}/.." />-->
+<!--								</ant>-->
+<!--							</target>-->
+<!--						</configuration>-->
+<!--					</execution>			-->
+<!--				</executions>-->
+<!--			</plugin>-->
 			<!-- run all tests in the integration test phase -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -268,21 +268,21 @@
 										</execute>
 									</action>
 								</pluginExecution>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>org.apache.maven.plugins</groupId>
-										<artifactId>maven-antrun-plugin</artifactId>
-										<versionRange>[1.0,)</versionRange>
-										<goals>
-											<goal>run</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<execute>
-											<runOnIncremental>false</runOnIncremental>
-										</execute>
-									</action>
-								</pluginExecution>								
+<!--								<pluginExecution>-->
+<!--									<pluginExecutionFilter>-->
+<!--										<groupId>org.apache.maven.plugins</groupId>-->
+<!--										<artifactId>maven-antrun-plugin</artifactId>-->
+<!--										<versionRange>[1.0,)</versionRange>-->
+<!--										<goals>-->
+<!--											<goal>run</goal>-->
+<!--										</goals>-->
+<!--									</pluginExecutionFilter>-->
+<!--									<action>-->
+<!--										<execute>-->
+<!--											<runOnIncremental>false</runOnIncremental>-->
+<!--										</execute>-->
+<!--									</action>-->
+<!--								</pluginExecution>								-->
 							</pluginExecutions>
 						</lifecycleMappingMetadata>
 					</configuration>

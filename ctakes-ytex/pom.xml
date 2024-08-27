@@ -17,7 +17,7 @@
     <parent>
         <groupId>org.apache.ctakes</groupId>
         <artifactId>ctakes</artifactId>
-        <version>6.0.0-SNAPSHOT</version>
+        <version>6.0.0</version>
     </parent>
     <dependencies>
         <dependency>
@@ -269,26 +269,26 @@
                             </target>
                         </configuration>
                     </execution>
-                    <execution>
-                        <id>generate-test-config</id>
-                        <phase>pre-integration-test</phase>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                        <configuration>
-                            <target>
-                                <!-- default to hsql, override via -D -->
-                                <property name="db.type" value="hsql"/>
-                                <ant antfile="build-setup.xml" dir="scripts" target="test.setup">
-                                    <property name="config.local" value="${project.build.testOutputDirectory}"/>
-                                    <!--									<property name="db.type" value="${db.type}" />-->
-                                    <property name="db.type" value="hsql"/>
-                                    <property name="ytex.test" value="true"/>
-                                    <property name="ctakes.home" value="${project.basedir}/.."/>
-                                </ant>
-                            </target>
-                        </configuration>
-                    </execution>
+<!--                    <execution>-->
+<!--                        <id>generate-test-config</id>-->
+<!--                        <phase>pre-integration-test</phase>-->
+<!--                        <goals>-->
+<!--                            <goal>run</goal>-->
+<!--                        </goals>-->
+<!--                        <configuration>-->
+<!--                            <target>-->
+<!--                                &lt;!&ndash; default to hsql, override via -D &ndash;&gt;-->
+<!--                                <property name="db.type" value="hsql"/>-->
+<!--                                <ant antfile="build-setup.xml" dir="scripts" target="test.setup">-->
+<!--                                    <property name="config.local" value="${project.build.testOutputDirectory}"/>-->
+<!--                                    &lt;!&ndash;									<property name="db.type" value="${db.type}" />&ndash;&gt;-->
+<!--                                    <property name="db.type" value="hsql"/>-->
+<!--                                    <property name="ytex.test" value="true"/>-->
+<!--                                    <property name="ctakes.home" value="${project.basedir}/.."/>-->
+<!--                                </ant>-->
+<!--                            </target>-->
+<!--                        </configuration>-->
+<!--                    </execution>-->
                 </executions>
             </plugin>
 
