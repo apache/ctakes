@@ -75,10 +75,10 @@ public enum PipeBitFinder {
 		  }
 		
 		  final ClassGraph scanner = new ClassGraph().enableAllInfo();
-		
+
+		String message = (_allImplementations) ? "all possible " : "official";
+      LOGGER.info( "Starting Scan for ({}) Pipeline Bits", message );
 		  try ( DotLogger dotter = new DotLogger(); ScanResult result = scanner.scan()) {
-			String message = (_allImplementations) ? "all possible " : "official";
-			LOGGER.info( "Starting Scan for ("+message+") Pipeline Bits" );
 			ClassInfoList list = null;
 			if(_allImplementations)
 				list = findByType(result);

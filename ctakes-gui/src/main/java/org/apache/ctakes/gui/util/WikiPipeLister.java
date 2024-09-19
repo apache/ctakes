@@ -43,6 +43,15 @@ final public class WikiPipeLister {
 
 
 //       core_AE.md
+   static private final String MODULE_SUB_DIR = "auto/modules/";
+   static private final String PIPER_SUB_DIR = "auto/pipers/";
+   static private final String READER_SUB_DIR = "auto/readers/";
+   static private final String ANNOTATORS_SUB_DIR = "auto/annotators/";
+   static private final String WRITERS_SUB_DIR = "auto/writers/";
+   static private final String UTILS_SUB_DIR = "auto/utils/";
+   static private final String SCRIPTS_SUB_DIR = "auto/scripts/";
+
+
 
    static private final String WIKI = "https://github.com/apache/ctakes/wiki/";
    static private final String PREFIX = "org.apache.ctakes.";
@@ -154,7 +163,7 @@ final public class WikiPipeLister {
                  .append( "](" )
                  .append( moduleDesc._name ).append( ")\n" );
       }
-      try ( Writer writer = new BufferedWriter( new FileWriter( dir + "/" + moduleDesc._name + ".md" ) ) ) {
+      try ( Writer writer = new BufferedWriter( new FileWriter( dir + "/" + MODULE_SUB_DIR + moduleDesc._name + ".md" ) ) ) {
          writer.write( markdownModule( moduleDesc ) );
       } catch ( IOException ioE ) {
          System.err.println( ioE.getMessage() );
@@ -225,7 +234,7 @@ final public class WikiPipeLister {
    }
 
    private void writeAllPipers( final String dir ) {
-      try ( Writer writer = new BufferedWriter( new FileWriter( dir + "/Piper File List.md" ) ) ) {
+      try ( Writer writer = new BufferedWriter( new FileWriter( dir + "/" + PIPER_SUB_DIR + "Piper File List.md" ) ) ) {
          writer.write( markdownPipers() );
       } catch ( IOException ioE ) {
          System.err.println( ioE.getMessage() );
@@ -235,7 +244,7 @@ final public class WikiPipeLister {
 
    private String markdownPipers() {
       final Collection<PiperDesc> pipers = _pipers.values().stream().flatMap( Collection::stream )
-              .sorted( Comparator.comparing( PiperDesc::getName ) ).collect( Collectors.toList() );
+              .sorted( Comparator.comparing( PiperDesc::getName ) ).toList();
       final StringBuilder sb = new StringBuilder();
       sb.append( "# Piper File List\n\n| Name | Description |\n|---|---|\n" );
       for ( PiperDesc piper : pipers ) {
@@ -264,17 +273,17 @@ final public class WikiPipeLister {
    }
 
    private void writeAllBitTypes( final String dir ) {
-      writeBitType( dir, getBitType( "Reader" ), COLLECTION_READERS );
-      writeBitType( dir, getBitType( "Annotator" ), ANNOTATION_ENGINES );
-      writeBitType( dir, getBitType( "Writer" ), WRITERS_CONSUMERS );
-      writeBitType( dir, getBitType( "Special" ), UTILITIES_SPECIAL );
+      writeBitType( dir + "/" + READER_SUB_DIR, getBitType( "Reader" ), COLLECTION_READERS );
+      writeBitType( dir + "/" + ANNOTATORS_SUB_DIR, getBitType( "Annotator" ), ANNOTATION_ENGINES );
+      writeBitType( dir + "/" + WRITERS_SUB_DIR, getBitType( "Writer" ), WRITERS_CONSUMERS );
+      writeBitType( dir + "/" + UTILS_SUB_DIR, getBitType( "Special" ), UTILITIES_SPECIAL );
    }
 
    private void writeBitType( final String dir, final List<PipeBitDesc> bitDescs, final String title ) {
       _sidebar.append( "- [" ).append( title )
               .append( "](" )
               .append( title.replace( ' ', '-' ) ).append( ")\n" );
-      try ( Writer writer = new BufferedWriter( new FileWriter( dir + "/" + title + ".md" ) ) ) {
+      try ( Writer writer = new BufferedWriter( new FileWriter( dir + title + ".md" ) ) ) {
          writer.write( markdownBitType( bitDescs, title ) );
       } catch ( IOException ioE ) {
          System.err.println( ioE.getMessage() );
@@ -633,58 +642,64 @@ final public class WikiPipeLister {
    }
 
    static private final String SH_LICENSE =
-         "# Licensed to the Apache Software Foundation (ASF) under one\n" +
-         "# or more contributor license agreements.  See the NOTICE file\n" +
-         "# distributed with this work for additional information\n" +
-         "# regarding copyright ownership.  The ASF licenses this file\n" +
-         "# to you under the Apache License, Version 2.0 (the\n" +
-         "# \"License\"); you may not use this file except in compliance\n" +
-         "# with the License.  You may obtain a copy of the License at\n" +
-         "#\n" +
-         "#   http://www.apache.org/licenses/LICENSE-2.0\n" +
-         "#\n" +
-         "# Unless required by applicable law or agreed to in writing,\n" +
-         "# software distributed under the License is distributed on an\n" +
-         "# \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY\n" +
-         "# KIND, either express or implied.  See the License for the\n" +
-         "# specific language governing permissions and limitations\n" +
-         "# under the License.\n";
+         """
+               # Licensed to the Apache Software Foundation (ASF) under one
+               # or more contributor license agreements.  See the NOTICE file
+               # distributed with this work for additional information
+               # regarding copyright ownership.  The ASF licenses this file
+               # to you under the Apache License, Version 2.0 (the
+               # "License"); you may not use this file except in compliance
+               # with the License.  You may obtain a copy of the License at
+               #
+               #   http://www.apache.org/licenses/LICENSE-2.0
+               #
+               # Unless required by applicable law or agreed to in writing,
+               # software distributed under the License is distributed on an
+               # "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+               # KIND, either express or implied.  See the License for the
+               # specific language governing permissions and limitations
+               # under the License.
+               """;
 
    static private final String BAT_LICENSE =
-         "@REM Licensed to the Apache Software Foundation (ASF) under one\n" +
-         "@REM or more contributor license agreements.  See the NOTICE file\n" +
-         "@REM distributed with this work for additional information\n" +
-         "@REM regarding copyright ownership.  The ASF licenses this file\n" +
-         "@REM to you under the Apache License, Version 2.0 (the\n" +
-         "@REM \"License\"); you may not use this file except in compliance\n" +
-         "@REM with the License.  You may obtain a copy of the License at\n" +
-         "@REM\n" +
-         "@REM   http://www.apache.org/licenses/LICENSE-2.0\n" +
-         "@REM\n" +
-         "@REM Unless required by applicable law or agreed to in writing,\n" +
-         "@REM software distributed under the License is distributed on an\n" +
-         "@REM \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY\n" +
-         "@REM KIND, either express or implied.  See the License for the\n" +
-         "@REM specific language governing permissions and limitations\n" +
-         "@REM under the License.\n";
+         """
+               @REM Licensed to the Apache Software Foundation (ASF) under one
+               @REM or more contributor license agreements.  See the NOTICE file
+               @REM distributed with this work for additional information
+               @REM regarding copyright ownership.  The ASF licenses this file
+               @REM to you under the Apache License, Version 2.0 (the
+               @REM "License"); you may not use this file except in compliance
+               @REM with the License.  You may obtain a copy of the License at
+               @REM
+               @REM   http://www.apache.org/licenses/LICENSE-2.0
+               @REM
+               @REM Unless required by applicable law or agreed to in writing,
+               @REM software distributed under the License is distributed on an
+               @REM "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+               @REM KIND, either express or implied.  See the License for the
+               @REM specific language governing permissions and limitations
+               @REM under the License.
+               """;
 
    static private final String BAT_LICENSE_2 =
-           ":: Licensed to the Apache Software Foundation (ASF) under one\n" +
-          ":: or more contributor license agreements.  See the NOTICE file\n" +
-          ":: distributed with this work for additional information\n" +
-          ":: regarding copyright ownership.  The ASF licenses this file\n" +
-          ":: to you under the Apache License, Version 2.0 (the\n" +
-          ":: \"License\"); you may not use this file except in compliance\n" +
-          ":: with the License.  You may obtain a copy of the License at\n" +
-          "::\n" +
-          "::   http://www.apache.org/licenses/LICENSE-2.0\n" +
-          "::\n" +
-          ":: Unless required by applicable law or agreed to in writing,\n" +
-          ":: software distributed under the License is distributed on an\n" +
-          ":: \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY\n" +
-          ":: KIND, either express or implied.  See the License for the\n" +
-          ":: specific language governing permissions and limitations\n" +
-          ":: under the License.\n";
+         """
+               :: Licensed to the Apache Software Foundation (ASF) under one
+               :: or more contributor license agreements.  See the NOTICE file
+               :: distributed with this work for additional information
+               :: regarding copyright ownership.  The ASF licenses this file
+               :: to you under the Apache License, Version 2.0 (the
+               :: "License"); you may not use this file except in compliance
+               :: with the License.  You may obtain a copy of the License at
+               ::
+               ::   http://www.apache.org/licenses/LICENSE-2.0
+               ::
+               :: Unless required by applicable law or agreed to in writing,
+               :: software distributed under the License is distributed on an
+               :: "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+               :: KIND, either express or implied.  See the License for the
+               :: specific language governing permissions and limitations
+               :: under the License.
+               """;
 
    static private String getScriptType( final String filename ) {
       if ( filename.endsWith( ".sh" ) || filename.endsWith( ".bash" ) ) {
@@ -750,11 +765,11 @@ final public class WikiPipeLister {
    private void writeBinScripts( final String dir ) {
       _sidebar.append( "- [Scripts](Shell+Scripts)\n" );
       final Map<String,String> binScripts = getBinScriptsMap();
-      try ( Writer writer = new BufferedWriter( new FileWriter( dir + "/Shell Scripts.md" ) ) ) {
+      try ( Writer writer = new BufferedWriter( new FileWriter( dir +"/" + SCRIPTS_SUB_DIR + "Shell Scripts.md" ) ) ) {
          writer.write( "Shell Scripts included in the bin/ directory of a cTAKES installation.  \n" );
          writer.write( "These scripts can only be run in a cTAKES installation.  \n" );
          writer.write( "They cannot be used within a source code project.\n\n" );
-         final List<String> names = binScripts.keySet().stream().sorted().collect( Collectors.toList() );
+         final List<String> names = binScripts.keySet().stream().sorted().toList();
          for ( String name : names ) {
             writer.write( binScripts.get( name ) );
          }
@@ -765,8 +780,17 @@ final public class WikiPipeLister {
    }
 
    private List<ModuleDesc> parseModules() {
-      PipeBitFinder.getInstance().scan();
       final Map<String, ModuleDesc> moduleMap = new HashMap<>();
+      final File[] files = new File( "." ).listFiles();
+      if ( files != null ) {
+         for  ( File file : files ) {
+            if ( file.isDirectory() && file.getName().startsWith( "ctakes-" )
+                  && new File( file.getName(), "src" ).isDirectory() ) {
+               moduleMap.put( file.getName(), new ModuleDesc( file.getName() ) );
+            }
+         }
+      }
+      PipeBitFinder.getInstance().scan();
       final Collection<Class<?>> bitClasses = PipeBitFinder.getInstance().getPipeBits();
       for ( Class<?> bitClass : bitClasses ) {
          final PipeBitDesc bitDesc = new PipeBitDesc( bitClass );
@@ -810,6 +834,7 @@ final public class WikiPipeLister {
    private void startSidebar() {
       _sidebar.append( "[[/images/ctakes_logo.jpg|Apache cTAKES]]\n\n" )
               .append( "\n### [Home](Home)\n\n" )
+              .append( "- [New in v6](Differences+between+5.0+and+6.0)\n" )
               .append( "- [New in v5](Differences+between+4.0+and+5.0)\n" )
               .append( "- [Videos](Videos)\n" );
    }
@@ -875,7 +900,7 @@ final public class WikiPipeLister {
               .append( "- [Get Involved](Get-Involved)\n" )
               .append( "- [Apache™ Sponsorship](https://www.apache.org/foundation/sponsorship.html)\n" )
               .append( "- [Thank you](https://www.apache.org/foundation/thanks.html)\n" );
-      try ( BufferedWriter writer = new BufferedWriter( new FileWriter( dir + "/_Sidebar.md" ) ) ) {
+      try ( BufferedWriter writer = new BufferedWriter( new FileWriter( dir + "/auto_Sidebar.md" ) ) ) {
          writer.write( _sidebar.toString() );
       } catch ( IOException ioE ) {
          System.err.println( ioE.getMessage() );
@@ -898,8 +923,17 @@ final public class WikiPipeLister {
 
    static public void main( final String... args ) {
 //      final String dir = args[ 0 ];
-      final String dir = "C:/temp/wiki_modules";
+      final String dir = "C:/temp/wiki2_modules";
       new File( dir ).mkdirs();
+      new File( dir + "/" + MODULE_SUB_DIR ).mkdirs();
+      new File( dir + "/" +  PIPER_SUB_DIR ).mkdirs();
+      new File( dir + "/" +  READER_SUB_DIR ).mkdirs();
+      new File( dir + "/" +  ANNOTATORS_SUB_DIR ).mkdirs();
+      new File( dir + "/" +  WRITERS_SUB_DIR ).mkdirs();
+      new File( dir + "/" +  UTILS_SUB_DIR ).mkdirs();
+      new File( dir + "/" +  SCRIPTS_SUB_DIR ).mkdirs();
+
+      System.out.println( "Run this with the classpath of ctakes-dist, otherwise you will miss modules." );
       final WikiPipeLister tabler = new WikiPipeLister();
       tabler.startSidebar();
       tabler.sidebarRunCtakes( dir );
