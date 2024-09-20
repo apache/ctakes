@@ -18,7 +18,7 @@
 @REM
 
 @rem simple script to start jetty with the desc\ctakes-ytex-web web app
-@rem YOU MUST use a java JDK, not JRE.
+@rem YOU MUST use a Java, not JRE.
 @rem typical windows Paths include the JRE, not the JDK
 @rem do one of the following:
 @rem * change java in this script to the full path of java from the JDK

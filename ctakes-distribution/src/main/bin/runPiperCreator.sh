@@ -15,9 +15,12 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
-#
-# Requires JAVA JDK 17
-#
+
+
+#    Starts a GUI that can facilitate creation of a pipeline.
+
+# Requires Java 17
+
 
 # Sets up environment for cTAKES
 . ${HOME}/setenv.sh

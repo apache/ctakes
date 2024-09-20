@@ -16,18 +16,24 @@
 :: KIND, either express or implied.  See the License for the
 :: specific language governing permissions and limitations
 :: under the License.
-::
-::
-::   Runs the default clinical pipeline on files in the input directory specified by -i {directory}
-::   Writes .xmi files to the output directory specified by --xmiOut {directory}
-::   Uses UMLS credentials specified by --user {username} --pass {password}
-::   Can also use a custom dictionary with -l {dictionaryConfigFile}
-::
-::
-:: Requires JAVA JDK 1.8+
-::
 
-@REM The setenv script sets up the environment needed by cTAKES.
+
+::   Runs the default clinical pipeline with provided parameters.
+::   Required parameters are:
+::   -i , --inputDir {inputDirectory}
+::   -o , --outputDir {outputDirectory}
+::   --key {umlsKey}
+
+::   Optional standard parameters are:
+::   -s , --subDir {subDirectory}  (for i/o)
+::   --xmiOut {xmiOutputDirectory} (if different from -o)
+::   -l , --lookupXml {dictionaryConfigFile} (fast only)
+::   -? , --help
+
+:: Requires Java 17
+
+
+:: The setenv script sets up the environment needed by cTAKES.
 @call %~sdp0\setenv.bat
 
 cd %CTAKES_HOME%

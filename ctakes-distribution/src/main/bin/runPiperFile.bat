@@ -16,8 +16,8 @@
 :: KIND, either express or implied.  See the License for the
 :: specific language governing permissions and limitations
 :: under the License.
-::
-::
+
+
 ::   Runs the pipeline in the piper file specified by -p {piperfile}
 ::   with any other provided parameters.  Standard parameters are:
 ::   -i , --inputDir {inputDirectory}
@@ -27,7 +27,7 @@
 ::   -l , --lookupXml {dictionaryConfigFile} (fast only)
 ::   --key {umlsKey}
 ::   -? , --help
-::
+
 ::   Other parameters may be declared in the piper file using the cli command:
 ::     cli {parameterName}={singleCharacter}
 ::   For instance, for declaration of ParagraphAnnotator path to regex file optional parameter PARAGRAPH_TYPES_PATH,
@@ -35,11 +35,11 @@
 ::     cli PARAGRAPH_TYPES_PATH=t
 ::   and when executing this script use:
 ::      runPiperFile -p path/to/my/custom.piper -t path/to/my/custom.bsv  ...
-::
-:: Requires JAVA JDK 17
-::
 
-@REM The setenv script sets up the environment needed by cTAKES.
+:: Requires Java 17
+
+
+:: The setenv script sets up the environment needed by cTAKES.
 @call %~sdp0\setenv.bat
 
 cd %CTAKES_HOME%

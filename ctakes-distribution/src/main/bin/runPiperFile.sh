@@ -16,8 +16,8 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
-#
-#
+
+
 #   Runs the pipeline in the piper file specified by -p (piperfile)
 #   with any other provided parameters.  Standard parameters are:
 #     -i , --inputDir {inputDirectory}
@@ -35,9 +35,9 @@
 #     cli PARAGRAPH_TYPES_PATH=t
 #   and when executing this script use:
 #      runPiperFile -p path/to/my/custom.piper -t path/to/my/custom.bsv  ...
-#
-# Requires JAVA JDK 17
-#
+
+# Requires Java 17
+
 
 # Sets up environment for cTAKES
 . ${HOME}/setenv.sh

@@ -17,7 +17,7 @@
 # under the License.
 #
 
-# Requires JAVA JDK 1.6+
+# Requires Java 1.6+
 # If you plan to use the UMLS Resources, set/export env variables
 # export ctakes.umlsuser=[username], ctakes.umlspw=[password]
 # or add the properties

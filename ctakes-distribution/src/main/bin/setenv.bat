@@ -16,18 +16,14 @@
 :: KIND, either express or implied.  See the License for the
 :: specific language governing permissions and limitations
 :: under the License.
-::
-::
-::   Runs the default clinical pipeline on files in the input directory specified by -i {directory}
-::   Writes .xmi files to the output directory specified by --xmiOut {directory}
-::   Uses UMLS credentials specified by --user {username} --pass {password}
-::   Can also use a custom dictionary with -l {dictionaryConfigFile}
-::
-::
-:: Requires JAVA JDK 1.8+
-::
 
-@REM Guess CTAKES_HOME if not defined
+
+::   Sets up the standard environment for cTAKES.
+
+:: Requires Java 17
+
+
+:: Guess CTAKES_HOME if not defined
 set CURRENT_DIR=%cd%
 if not "%CTAKES_HOME%" == "" goto gotHome
 set CTAKES_HOME=%CURRENT_DIR%

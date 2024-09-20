@@ -16,16 +16,21 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
-#
-#
-#   Runs the default clinical pipeline on files in the input directory specified by -i {directory}
-#   Writes .xmi files to the output directory specified by --xmiOut {directory}
-#   Uses UMLS credentials specified by --key {umlsKey}
-#   Can also use a custom dictionary with -l {dictionaryConfigFile}
-#
-#
-# Requires JAVA JDK 17
-#
+
+#   Runs the default clinical pipeline with provided parameters.
+#   Required parameters are:
+#   -i , --inputDir {inputDirectory}
+#   -o , --outputDir {outputDirectory}
+#   --key {umlsKey}
+
+#   Optional standard parameters are:
+#   -s , --subDir {subDirectory}  (for i/o)
+#   --xmiOut {xmiOutputDirectory} (if different from -o)
+#   -l , --lookupXml {dictionaryConfigFile} (fast only)
+#   -? , --help
+
+# Requires Java 17
+
 
 # Sets up environment for cTAKES
 . ${HOME}/setenv.sh

@@ -19,7 +19,7 @@
 #
 
 # simple script to start jetty with the desc/ctakes-ytex-web web app
-# Requires JAVA JDK 17
+# Requires Java 17
 #
 # Sets up environment for cTAKES
 . ${HOME}/setenv.sh

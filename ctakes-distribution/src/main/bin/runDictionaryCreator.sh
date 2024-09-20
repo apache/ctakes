@@ -16,7 +16,10 @@
 # specific language governing permissions and limitations
 # under the License.
 #
-# Requires JAVA JDK 17
+#   Starts a GUI that can facilitate creation of a dictionary for the
+#   [ctakes-dictionary-lookup-fast](ctakes-dictionary-lookup-fast) module.
+#
+# Requires Java 17
 #
 
 # Sets up environment for cTAKES

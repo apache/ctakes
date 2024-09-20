@@ -16,12 +16,12 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
-#
-#
-#   Starts a simple gui to fetch the cTAKES umls (snomed, rxnorm) dictionary.
-#
-# Requires JAVA JDK 17
-#
+
+
+#   Starts a simple GUI to fetch the cTAKES umls (snomed, rxnorm) dictionary.
+
+# Requires Java 17
+
 
 # Sets up environment for cTAKES
 . ${HOME}/setenv.sh

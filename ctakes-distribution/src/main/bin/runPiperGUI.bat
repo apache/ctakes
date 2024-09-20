@@ -16,14 +16,14 @@
 :: KIND, either express or implied.  See the License for the
 :: specific language governing permissions and limitations
 :: under the License.
-::
-::
-::   Runs the pipeline in a piper file using a GUI.
-::::
-:: Requires JAVA JDK 1.8+
-::
 
-@REM The setenv script sets up the environment needed by cTAKES.
+
+::   Starts a GUI that can run a pipeline.
+
+:: Requires Java 17
+
+
+:: The setenv script sets up the environment needed by cTAKES.
 @call %~sdp0\setenv.bat
 
 cd %CTAKES_HOME%
