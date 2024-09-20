@@ -33,6 +33,10 @@ classifiers = [
     "License :: OSI Approved :: Apache Software License",
     "Operating System :: OS Independent",
 ]
+dependencies = [
+    "dkpro-cassis~=0.9.1",
+    "stomp-py~=8.1.2"
+]
 
 [project.urls]
 "Homepage" = "https://github.com/apache/ctakes"
