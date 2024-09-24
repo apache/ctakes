@@ -10,7 +10,7 @@ Having that ability is very important as most modern Machine Learning is done in
 <summary>Solution</summary>
 The information that we want to move is stored in an object called a CAS (Common Analysis System). 
 All objects within the CAS are of a Type defined in an extensible Type System. 
-For instance a discovered instance of "cancer" is stored in the CAS as an object of Type "DiseaseOrderMention".  
+For instance a discovered instance of "cancer" is stored in the CAS as an object of Type "DiseaseDisorderMention".  
 
 The next step was for us to choose a method of delivery for our path of information.
 We were looking for something that could handle multiple sub-pipelines, allow for parallel sub-pipelines, 
