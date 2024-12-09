@@ -1275,7 +1275,7 @@ This instantiates a manages/treats relation which should be marked as conditiona
     </typeDescription>
     <typeDescription>
       <name>org.apache.ctakes.typesystem.type.relation.CollectionTextRelation</name>
-      <description/>
+      <description>Generic relation between two spans in text.</description>
       <supertypeName>org.apache.ctakes.typesystem.type.relation.Relation</supertypeName>
       <features>
         <featureDescription>
@@ -1362,107 +1362,107 @@ This instantiates a manages/treats relation which should be marked as conditiona
     </typeDescription>
     <typeDescription>
       <name>org.apache.ctakes.typesystem.type.relation.AffectsTextRelation</name>
-      <description/>
+      <description>Affects type relation between two spans of text.</description>
       <supertypeName>org.apache.ctakes.typesystem.type.relation.BinaryTextRelation</supertypeName>
     </typeDescription>
     <typeDescription>
       <name>org.apache.ctakes.typesystem.type.relation.CausesBringsAbout</name>
-      <description/>
+      <description>Causes or Brings about relation between two Elements.</description>
       <supertypeName>org.apache.ctakes.typesystem.type.relation.ElementRelation</supertypeName>
     </typeDescription>
     <typeDescription>
       <name>org.apache.ctakes.typesystem.type.relation.CausesBringsAboutTextRelation</name>
-      <description/>
+      <description>Causes or Brings about relation between two spans of text.</description>
       <supertypeName>org.apache.ctakes.typesystem.type.relation.BinaryTextRelation</supertypeName>
     </typeDescription>
     <typeDescription>
       <name>org.apache.ctakes.typesystem.type.relation.ComplicatesDisrupts</name>
-      <description/>
+      <description>Complicates or Disrupts relation between two Elements.</description>
       <supertypeName>org.apache.ctakes.typesystem.type.relation.ElementRelation</supertypeName>
     </typeDescription>
     <typeDescription>
       <name>org.apache.ctakes.typesystem.type.relation.ComplicatesDisruptsTextRelation</name>
-      <description/>
+      <description>Complicates or Disrupts relation between two spans of text.</description>
       <supertypeName>org.apache.ctakes.typesystem.type.relation.BinaryTextRelation</supertypeName>
     </typeDescription>
     <typeDescription>
       <name>org.apache.ctakes.typesystem.type.relation.Contraindicates</name>
-      <description/>
+      <description>Contraindicates relation between two Elements</description>
       <supertypeName>org.apache.ctakes.typesystem.type.relation.ElementRelation</supertypeName>
     </typeDescription>
     <typeDescription>
       <name>org.apache.ctakes.typesystem.type.relation.ContraindicatesTextRelation</name>
-      <description/>
+      <description>Contraindicates relation between two spans of text.</description>
       <supertypeName>org.apache.ctakes.typesystem.type.relation.BinaryTextRelation</supertypeName>
     </typeDescription>
     <typeDescription>
       <name>org.apache.ctakes.typesystem.type.relation.Diagnoses</name>
-      <description/>
+      <description>Diagnoses relation between two Elements.</description>
       <supertypeName>org.apache.ctakes.typesystem.type.relation.ElementRelation</supertypeName>
     </typeDescription>
     <typeDescription>
       <name>org.apache.ctakes.typesystem.type.relation.DiagnosesTextRelation</name>
-      <description/>
+      <description>Contraindicates relation between two spans of text.</description>
       <supertypeName>org.apache.ctakes.typesystem.type.relation.BinaryTextRelation</supertypeName>
     </typeDescription>
     <typeDescription>
       <name>org.apache.ctakes.typesystem.type.relation.Indicates</name>
-      <description/>
+      <description>Indicates relation between two Elements</description>
       <supertypeName>org.apache.ctakes.typesystem.type.relation.ElementRelation</supertypeName>
     </typeDescription>
     <typeDescription>
       <name>org.apache.ctakes.typesystem.type.relation.IndicatesTextRelation</name>
-      <description/>
+      <description>Indicates relation between two spans of text.</description>
       <supertypeName>org.apache.ctakes.typesystem.type.relation.BinaryTextRelation</supertypeName>
     </typeDescription>
     <typeDescription>
       <name>org.apache.ctakes.typesystem.type.relation.IsIndicatedFor</name>
-      <description/>
+      <description>Is Indicated For relation between two Elements</description>
       <supertypeName>org.apache.ctakes.typesystem.type.relation.ElementRelation</supertypeName>
     </typeDescription>
     <typeDescription>
       <name>org.apache.ctakes.typesystem.type.relation.IsIndicatedForTextRelation</name>
-      <description/>
+      <description>Is Indicated For relation between two spans of text</description>
       <supertypeName>org.apache.ctakes.typesystem.type.relation.BinaryTextRelation</supertypeName>
     </typeDescription>
     <typeDescription>
       <name>org.apache.ctakes.typesystem.type.relation.ManagesTreats</name>
-      <description/>
+      <description>Manages or Treats relation between two Elements</description>
       <supertypeName>org.apache.ctakes.typesystem.type.relation.ElementRelation</supertypeName>
     </typeDescription>
     <typeDescription>
       <name>org.apache.ctakes.typesystem.type.relation.Prevents</name>
-      <description/>
+      <description>Prevents relation between two Elements</description>
       <supertypeName>org.apache.ctakes.typesystem.type.relation.ElementRelation</supertypeName>
     </typeDescription>
     <typeDescription>
       <name>org.apache.ctakes.typesystem.type.relation.PreventsTextRelation</name>
-      <description/>
+      <description>Prevents relation between two spans of text</description>
       <supertypeName>org.apache.ctakes.typesystem.type.relation.BinaryTextRelation</supertypeName>
     </typeDescription>
     <typeDescription>
       <name>org.apache.ctakes.typesystem.type.relation.DegreeOfTextRelation</name>
-      <description/>
+      <description>Degree relation between two spans of text</description>
       <supertypeName>org.apache.ctakes.typesystem.type.relation.BinaryTextRelation</supertypeName>
     </typeDescription>
     <typeDescription>
       <name>org.apache.ctakes.typesystem.type.relation.LocationOfTextRelation</name>
-      <description/>
+      <description>Location relation between two spans of text</description>
       <supertypeName>org.apache.ctakes.typesystem.type.relation.BinaryTextRelation</supertypeName>
     </typeDescription>
     <typeDescription>
       <name>org.apache.ctakes.typesystem.type.relation.ManagesTreatsTextRelation</name>
-      <description/>
+      <description>Manages or Treats relation between two spans of text</description>
       <supertypeName>org.apache.ctakes.typesystem.type.relation.BinaryTextRelation</supertypeName>
     </typeDescription>
     <typeDescription>
       <name>org.apache.ctakes.typesystem.type.relation.ManifestationOfTextRelation</name>
-      <description/>
+      <description>Manifestation relation between two spans of text</description>
       <supertypeName>org.apache.ctakes.typesystem.type.relation.BinaryTextRelation</supertypeName>
     </typeDescription>
     <typeDescription>
       <name>org.apache.ctakes.typesystem.type.relation.ResultOfTextRelation</name>
-      <description/>
+      <description>Result relation between two spans of text</description>
       <supertypeName>org.apache.ctakes.typesystem.type.relation.BinaryTextRelation</supertypeName>
     </typeDescription>
     <typeDescription>
@@ -2108,7 +2108,7 @@ Equivalent to cTAKES: edu.mayo.bmi.uima.core.type.Properties</description>
     </typeDescription>
     <typeDescription>
       <name>org.apache.ctakes.typesystem.type.structured.DocumentClassification</name>
-      <description/>
+      <description>Type of Document containing full text.</description>
       <supertypeName>uima.cas.TOP</supertypeName>
       <features>
         <featureDescription>
