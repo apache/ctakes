@@ -1,6 +1,9 @@
 package org.apache.ctakes.core.pipeline;
 
 import com.lexicalscope.jewel.cli.Option;
+import com.lexicalscope.jewel.cli.Unparsed;
+
+import java.util.List;
 
 /**
  * Defines command line interface single-character options that are not ctakes defaults.
@@ -304,5 +307,11 @@ public interface CliOptionals extends StandardCliOptions {
          shortName = "Z",
          defaultValue = "" )
    String getOption_Z();
+
+   @Unparsed(
+         name = "UserDefined"
+//         pattern = "(?:\\+\\+[a-zA-Z]+ [0-9a-zA-Z]+)"
+   )
+   List<String> getUserDefined();
 
 }

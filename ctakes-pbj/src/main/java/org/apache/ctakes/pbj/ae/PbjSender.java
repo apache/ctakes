@@ -155,7 +155,7 @@ abstract public class PbjSender extends JCasAnnotator_ImplBase {
       try {
          setPort( Integer.parseInt( port ) );
       } catch (NumberFormatException nfE ) {
-         LOGGER.warn( "Couldn't set Port on Sender " + nfE.getMessage() );
+         LOGGER.warn( "Couldn't set Port on Sender {}", nfE.getMessage() );
       }
    }
 
@@ -182,7 +182,7 @@ abstract public class PbjSender extends JCasAnnotator_ImplBase {
       try {
          setQueueSize( Integer.parseInt( queueSize ) );
       } catch (NumberFormatException nfE ) {
-         LOGGER.warn( "Couldn't set Queue size " + nfE.getMessage() );
+         LOGGER.warn( "Couldn't set Queue size {}", nfE.getMessage() );
       }
    }
 
@@ -206,7 +206,6 @@ abstract public class PbjSender extends JCasAnnotator_ImplBase {
    @Override
    public void initialize( final UimaContext context ) throws ResourceInitializationException {
       super.initialize( context );
-      LOGGER.info( "Starting PBJ Sender on " + _host + " " + _queue + " ..." );
       _id = createID();
       connect();
       registerShutdownHook();
@@ -218,7 +217,7 @@ abstract public class PbjSender extends JCasAnnotator_ImplBase {
     */
    @Override
    public void process( final JCas jcas ) throws AnalysisEngineProcessException {
-      LOGGER.info( "Sending processed information to " + _host + " " + _queue + " ..." );
+      LOGGER.info( "Sending processed information to {} {} ...", _host, _queue );
 //      waitOnQueue();
       sendJCas( jcas );
    }
@@ -286,10 +285,11 @@ abstract public class PbjSender extends JCasAnnotator_ImplBase {
       if ( !_sendStop.equalsIgnoreCase( "yes" ) ) {
          return;
       }
-      LOGGER.info( "Sending Stop code to " + _host + " " + _queue + " ..." );
+      LOGGER.info( "Sending Stop code to {} {} ...", _host, _queue );
       try {
          // TODO send stop as MULTICAST to stop all receivers on the queue.  v6 ?
          sendText( STOP_MESSAGE );
+         _sendStop = "no";
       } catch ( AnalysisEngineProcessException ioE ) {
          throw new AnalysisEngineProcessException( ioE );
       }

@@ -1369,6 +1369,81 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-clean-plugin</artifactId>
                     <version>${maven-clean-plugin.version}</version>
+                    <configuration>
+                        <filesets>
+                            <!--  Clean up the resources directory so that mvn compile regenerates with any changes.
+                            Use individual ctakes modules.
+                            Do not use universal ctakes/ alone as user may add their own module.  -->
+                            <fileset>
+                                <directory>${project.basedir}/../resources/org/apache/ctakes/assertion</directory>
+                            </fileset>
+                            <fileset>
+                                <directory>${project.basedir}/../resources/org/apache/ctakes/chunker</directory>
+                            </fileset>
+                            <fileset>
+                                <directory>${project.basedir}/../resources/org/apache/ctakes/clinical</directory>
+                            </fileset>
+                            <fileset>
+                                <directory>${project.basedir}/../resources/org/apache/ctakes/constituency</directory>
+                            </fileset>
+                            <fileset>
+                                <directory>${project.basedir}/../resources/org/apache/ctakes/core</directory>
+                            </fileset>
+                            <fileset>
+                                <directory>${project.basedir}/../resources/org/apache/ctakes/coreference</directory>
+                            </fileset>
+                            <fileset>
+                                <directory>${project.basedir}/../resources/org/apache/ctakes/dependency</directory>
+                            </fileset>
+                            <fileset>
+                                <directory>${project.basedir}/../resources/org/apache/ctakes/dictionary</directory>
+                            </fileset>
+                            <fileset>
+                                <directory>${project.basedir}/../resources/org/apache/ctakes/examples</directory>
+                            </fileset>
+                            <fileset>
+                                <directory>${project.basedir}/../resources/org/apache/ctakes/lvg</directory>
+                            </fileset>
+                            <fileset>
+                                <directory>${project.basedir}/../resources/org/apache/ctakes/ne</directory>
+                            </fileset>
+                            <fileset>
+                                <directory>${project.basedir}/../resources/org/apache/ctakes/pbj</directory>
+                            </fileset>
+                            <fileset>
+                                <directory>${project.basedir}/../resources/org/apache/ctakes/pos</directory>
+                            </fileset>
+                            <fileset>
+                                <directory>${project.basedir}/../resources/org/apache/ctakes/postagger</directory>
+                            </fileset>
+                            <fileset>
+                                <directory>${project.basedir}/../resources/org/apache/ctakes/relation</directory>
+                            </fileset>
+                            <fileset>
+                                <directory>${project.basedir}/../resources/org/apache/ctakes/sideeffect</directory>
+                            </fileset>
+                            <fileset>
+                                <directory>${project.basedir}/../resources/org/apache/ctakes/smoking</directory>
+                            </fileset>
+                            <fileset>
+                                <directory>${project.basedir}/../resources/org/apache/ctakes/temporal</directory>
+                            </fileset>
+                            <fileset>
+                                <directory>${project.basedir}/../resources/org/apache/ctakes/utils</directory>
+                            </fileset>
+                            <fileset>
+                                <directory>${project.basedir}/../resources/org/mitre/medfacts</directory>
+                            </fileset>
+                            <fileset>
+                                <directory>${project.basedir}/../resources/org/mitre/medfacts</directory>
+                            </fileset>
+                            <!--  Remove any old error log.  -->
+                            <fileset>
+                                <directory>${project.basedir}/..</directory>
+                                <includes>cTAKES.error.log</includes>
+                            </fileset>
+                        </filesets>
+                    </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>

@@ -42,12 +42,24 @@ add CtakesRunner Pipeline="-p PbjThirdStep -o $OutputDirectory -a $ArtemisBroker
 // Start the python bit of the full pipeline.
 //
 
-// pip the cnlp_transformers project and its dependencies.
-//add PythonRunner Command="-m pip install resources/org/apache/ctakes/examples/ctakes_cnlpt_py/" Wait=yes
-add PythonPipper PipPackage="resources/org/apache/ctakes/examples/ctakes_cnlpt_py/" Wait=yes
+//       An explanation of the following command "cli PipCnlpt=pipCnlpt" :
+// Set the value of a user-declared variable to a value coming from the command line.
+// Unlike other parameter names (e.g. OutputDirectory), PipCnlpt (uppercase P) is not defined in cTAKES.
+// The user is declaring it, and thus it is so.  It can be used in this piper file.
 
-// There is a fixed order to queue specification in python pipelines.
-// The incoming (receiver) queue is named first, the outgoing (sender) queue is named second.
+// The user is also declaring a command line option named "pipCnlpt" (lowercase p).
+// This is not a standard command line parameter like --pipPbj,  -i or -o.
+// If used, it will need to be declared on the command line with double plus ++ instead of double minus --.
+// It will also need to be at the end of the command.  It cannot be before other command line parameters.
+// [rest of command] ++pipCnlpt yes/no
+
+// Set the user-declared piper variable "PipCnlpt" to have the same value of command line option "++pipCnlpt"
+cli PipCnlpt=pipCnlpt
+
+// pip the cnlp_transformers project and its dependencies.  Note the use of variable $PipCnlpt as value for RunPip.
+add PythonPipper PipPackage="resources/org/apache/ctakes/examples/ctakes_cnlpt_py/" Wait=yes RunPip=$PipCnlpt
+
+// Start a PBJ python pipeline for cnlp_transformers Negation.
 // TODO: Right now cnlpt isn't using --output_dir.  Need to figure out why.
 add PythonRunner Command="-m ctakes_cnlpt.negation_pipeline --receive_queue JavaToPy --send_queue PyToJava --output_dir $OutputDirectory" LogFile=negation_pipeline.log
 

@@ -112,15 +112,15 @@ final public class PiperFileReader {
     * @param filePath path to the pipeline command file
     */
    public boolean loadPipelineFile( final String filePath ) throws UIMAException {
-      LOGGER.info( "Loading Piper File " + filePath + " ..." );
-      try ( final BufferedReader reader = getPiperReader( filePath ); DotLogger logger = new DotLogger() ) {
+      try ( final BufferedReader reader = getPiperReader( filePath );
+            DotLogger logger = new DotLogger( LOGGER, "Loading Piper File {} ", filePath) ) {
          String line = reader.readLine();
          while ( line != null ) {
             parsePipelineLine( line.trim() );
             line = reader.readLine();
          }
       } catch ( IOException ioE ) {
-         LOGGER.error( "Could not read piper file: " + filePath );
+         LOGGER.error( "Could not read piper file: {}", filePath );
          throw new UIMAException( ioE );
       }
       return true;
@@ -155,109 +155,131 @@ final public class PiperFileReader {
       final Collection<String> viewSpecs = getViewSpecs( parameter );
       final Collection<String> views = getViews( viewSpecs );
       final String info = removeViewSpecs( parameter, viewSpecs );
-      switch ( command ) {
-         case "load":
-            return loadPipelineFile( info );
-         case "package":
+      return switch ( command ) {
+         case "load" -> loadPipelineFile( info );
+         case "package" -> {
             PipeBitLocator.getInstance()
                           .addUserPackage( info );
-            return true;
-         case "set":
+            yield true;
+         }
+         case "set" -> {
             _builder.set( splitParameters( info ) );
-            return true;
-         case "cli":
+            yield true;
+         }
+         case "cli" -> {
             _builder.setIfEmpty( getCliParameters( info ) );
-            return true;
-         case "env":
+            yield true;
+         }
+         case "env" -> {
             _builder.env( splitParameters( info ) );
-            return true;
-         case "reader":
+            yield true;
+         }
+         case "reader" -> {
             if ( hasParameters( info ) ) {
                final String[] component_parameters = splitFromParameters( info );
                final String component = component_parameters[ 0 ];
                final Object[] parameters = splitParameters( component_parameters[ 1 ] );
                _builder.reader( PipeBitLocator.getInstance()
                                               .getReaderClass( component ), parameters );
-            } else {
+            }
+            else {
                _builder.reader( PipeBitLocator.getInstance()
                                               .getReaderClass( info ) );
             }
-            return true;
-         case "readFiles":
+            yield true;
+         }
+         case "readFiles" -> {
             if ( info.isEmpty() ) {
                _builder.readFiles();
-            } else {
+            }
+            else {
                _builder.readFiles( info );
             }
-            return true;
-         case "add":
+            yield true;
+         }
+         case "add" -> {
             if ( hasParameters( info ) ) {
                final String[] component_parameters = splitFromParameters( info );
                final String component = component_parameters[ 0 ];
                final Object[] parameters = splitParameters( component_parameters[ 1 ] );
                _builder.add( PipeBitLocator.getInstance().getComponentClass( component ), views, parameters );
-            } else {
+            }
+            else {
                _builder.add( PipeBitLocator.getInstance().getComponentClass( info ), views );
             }
-            return true;
-         case "addLogged":
+            yield true;
+         }
+         case "addLogged" -> {
             if ( hasParameters( info ) ) {
                final String[] component_parameters = splitFromParameters( info );
                final String component = component_parameters[ 0 ];
                final Object[] parameters = splitParameters( component_parameters[ 1 ] );
                _builder.addLogged( PipeBitLocator.getInstance().getComponentClass( component ), views, parameters );
-            } else {
+            }
+            else {
                _builder.addLogged( PipeBitLocator.getInstance().getComponentClass( info ), views );
             }
-            return true;
-         case "addDescription":
+            yield true;
+         }
+         case "addDescription" -> {
             if ( hasParameters( info ) ) {
                final String[] descriptor_parameters = splitFromParameters( info );
                final String component = descriptor_parameters[ 0 ];
                final Object[] values = splitDescriptorValues( descriptor_parameters[ 1 ] );
-               final AnalysisEngineDescription description = PipeBitLocator.getInstance().createDescription( component, values );
+               final AnalysisEngineDescription description =
+                     PipeBitLocator.getInstance().createDescription( component, values );
                _builder.addDescription( description, views );
-            } else {
+            }
+            else {
                final AnalysisEngineDescription description = PipeBitLocator.getInstance().createDescription( info );
                _builder.addDescription( description, views );
             }
-            return true;
-         case "addLast":
+            yield true;
+         }
+         case "addLast" -> {
             if ( hasParameters( info ) ) {
                final String[] component_parameters = splitFromParameters( info );
                final String component = component_parameters[ 0 ];
                final Object[] parameters = splitParameters( component_parameters[ 1 ] );
                _builder.addLast( PipeBitLocator.getInstance().getComponentClass( component ), views, parameters );
-            } else {
+            }
+            else {
                _builder.addLast( PipeBitLocator.getInstance().getComponentClass( info ), views );
             }
-            return true;
-         case "threads":
-            return setThreadCount( info );
-         case "collectCuis":
+            yield true;
+         }
+         case "threads" -> setThreadCount( info );
+         case "collectCuis" -> {
             _builder.collectCuis();
-            return true;
-         case "collectEntities":
+            yield true;
+         }
+         case "collectEntities" -> {
             _builder.collectEntities();
-            return true;
-         case "writeXmis":
+            yield true;
+         }
+         case "writeXmis" -> {
             if ( info.isEmpty() ) {
                _builder.writeXMIs();
-            } else {
+            }
+            else {
                _builder.writeXMIs( info );
             }
-            return true;
-         case "writeHtml":
+            yield true;
+         }
+         case "writeHtml" -> {
             if ( info.isEmpty() ) {
                _builder.writeHtml();
-            } else {
+            }
+            else {
                _builder.writeHtml( info );
             }
-            return true;
-         default:
-            LOGGER.error( "Unknown Piper Command: " + command );
-            return false;
-      }
+            yield true;
+         }
+         default -> {
+            LOGGER.error( "Unknown Piper Command: {}", command );
+            yield false;
+         }
+      };
    }
 
    private boolean setThreadCount( final String info ) {
@@ -266,7 +288,7 @@ final public class PiperFileReader {
          _builder.threads( (Integer) count );
          return true;
       }
-      LOGGER.error( "Could not parse thread count from " + info );
+      LOGGER.error( "Could not parse thread count from {}", info );
       return false;
    }
 
@@ -327,7 +349,7 @@ final public class PiperFileReader {
             return stream;
          }
       }
-      LOGGER.error( "No piper file found for " + filePath );
+      LOGGER.error( "No piper file found for {}", filePath );
       return null;
    }
 
@@ -387,7 +409,7 @@ final public class PiperFileReader {
             i += 2;
             continue;
          } else if ( keyAndValue.length > 2 ) {
-            LOGGER.warn( "Multiple parameter values, using first of " + pair );
+            LOGGER.warn( "Multiple parameter values, using first of {}", pair );
          }
          keysAndValues[ i + 1 ] = getValueObject( keyAndValue[ 1 ] );
          i += 2;
@@ -429,7 +451,7 @@ final public class PiperFileReader {
             i += 2;
             continue;
          } else if ( keyAndValue.length > 2 ) {
-            LOGGER.warn( "Multiple parameter values, using first of " + pair );
+            LOGGER.warn( "Multiple parameter values, using first of {}", pair );
          }
          keysAndValues[ i + 1 ] = getValueObject( CliOptionalsHandler
                .getCliOptionalValue( _cliOptionals, keyAndValue[ 1 ] ) );

@@ -3,6 +3,8 @@ package org.apache.ctakes.core.pipeline;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 
+import java.util.List;
+
 
 /**
  * @author SPF , chip-nlp
@@ -20,11 +22,11 @@ final public class CliOptionalsHandler {
     * Brute force method to get option values
     *
     * @param optionals  -
-    * @param optionChar character option
+    * @param name character option
     * @return the value specified on the command line for the given character
     */
-   static public String getCliOptionalValue( final CliOptionals optionals, final String optionChar ) {
-      switch ( optionChar ) {
+   static public String getCliOptionalValue( final CliOptionals optionals, final String name ) {
+      switch ( name ) {
          case "i":
             return optionals.getInputDirectory();
          case "o":
@@ -156,7 +158,17 @@ final public class CliOptionalsHandler {
          case "Z":
             return optionals.getOption_Z();
       }
-      LOGGER.warn( "No value specified on command line for " + optionChar );
+      final List<String> userDefined = optionals.getUserDefined();
+      if ( userDefined != null ) {
+         for ( int i = 0; i < userDefined.size() - 1; i++ ) {
+            if ( userDefined.get( i ).equals( "++" + name ) ) {
+               LOGGER.debug( "Using value \"{}\" for dynamic command line parameter \"++{}\"", userDefined.get( i + 1 ),
+                     name );
+               return userDefined.get( i + 1 );
+            }
+         }
+      }
+      LOGGER.warn( "No value specified on command line for parameter \"{}\"", name );
       return "";
    }
 

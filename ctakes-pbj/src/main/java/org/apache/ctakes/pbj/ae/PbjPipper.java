@@ -53,7 +53,7 @@ public class PbjPipper extends PythonRunner {
    public void process( final JCas jcas ) throws AnalysisEngineProcessException {
    }
 
-   private boolean doPip() {
+   private boolean runPip() {
       return _pipPbj.isEmpty()
              || _pipPbj.equalsIgnoreCase( "yes" )
              || _pipPbj.equalsIgnoreCase( "true" );
@@ -92,11 +92,13 @@ public class PbjPipper extends PythonRunner {
     * @throws IOException -
     */
    protected void runCommand() throws IOException {
-      if ( doPip() ) {
+      if ( runPip() ) {
          LOGGER.info( "Since ctakes-pbj is pip installed from source, pip will always perform an install." );
          LOGGER.info( "To turn off the pip use \"set " + PIP_PBJ_PARAM + "=no\" in your piper file" );
          LOGGER.info( " or add \"--pipPbj no\" to your command line." );
          super.runCommand();
+      } else {
+         LOGGER.info( "Skipping pip of PBJ" );
       }
    }
 

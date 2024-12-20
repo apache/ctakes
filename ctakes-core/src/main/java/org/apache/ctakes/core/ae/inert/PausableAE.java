@@ -5,6 +5,7 @@ import org.apache.uima.UimaContext;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
 import org.apache.uima.fit.descriptor.ConfigurationParameter;
 import org.apache.uima.resource.ResourceInitializationException;
+import org.slf4j.Logger;
 
 import java.io.IOException;
 
@@ -42,7 +43,9 @@ abstract public class PausableAE extends JCasAnnotator_ImplBase {
       super.initialize( context );
    }
 
-   protected void logInfo( final String info ) {}
+   protected Logger getPauseLogger() {
+      return null;
+   }
 
    protected boolean shouldWait() {
       return _wait.equalsIgnoreCase( "yes" ) || _wait.equalsIgnoreCase( "true" );
@@ -53,8 +56,7 @@ abstract public class PausableAE extends JCasAnnotator_ImplBase {
          return;
       }
       final long pause = _pause * 1000L;
-      logInfo( "Pausing " + _pause + " seconds ..." );
-      try ( DotLogger dotter = new DotLogger() ) {
+      try ( DotLogger dotter = new DotLogger( getPauseLogger(), "Pausing {} seconds ", _pause ) ) {
          Thread.sleep( pause );
       } catch ( IOException | InterruptedException multE ) {
          // do nothing

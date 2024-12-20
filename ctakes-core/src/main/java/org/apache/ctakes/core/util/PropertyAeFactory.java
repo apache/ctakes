@@ -44,7 +44,7 @@ public enum PropertyAeFactory {
          _typeSystemDescription = TypeSystemDescriptionFactory.createTypeSystemDescription();
       } catch ( ResourceInitializationException riE ) {
          LoggerFactory.getLogger( "PropertyAeFactory" )
-               .error( "Could not initialize cTAKES Type System\n" + riE.getMessage() );
+                      .error( "Could not initialize cTAKES Type System\n{}", riE.getMessage() );
          System.exit( -1 );
       }
    }
@@ -85,12 +85,11 @@ public enum PropertyAeFactory {
          if ( parameters[ i ] instanceof String ) {
             name = (String) parameters[ i ];
          } else {
-            LOGGER.warn( "Parameter " + i + " not a String, using " + parameters[ i ].toString() );
+            LOGGER.warn( "Parameter {} not a String, using {}", i, parameters[ i ].toString() );
             name = parameters[ i ].toString();
          }
          if ( _properties.containsKey( name ) && parameters[ i + 1 ].toString().isEmpty() ) {
-            LOGGER.info( "Parameter " + name + " has value " + _properties.get( name )
-                  + " ; ignoring empty value" );
+            LOGGER.info( "Parameter {} has value {} ; ignoring empty value", name, _properties.get( name ) );
             continue;
          }
          _properties.put( name, parameters[ i + 1 ] );
@@ -106,7 +105,12 @@ public enum PropertyAeFactory {
       int i = 0;
       for ( Map.Entry<String, Object> entry : parameterMap.entrySet() ) {
          parameters[ i ] = entry.getKey();
-         parameters[ i + 1 ] = entry.getValue();
+         final Object value = subVariableParameter( entry.getValue(), parameterMap );
+         if ( !value.equals( entry.getValue() ) ) {
+            LOGGER.info( "Substituting Parameter Value \"{}\" for \"{}\" on Parameter \"{}\"", value, entry.getValue(),
+                  entry.getKey() );
+         }
+         parameters[ i + 1 ] = value;
          i += 2;
       }
       return parameters;
@@ -131,6 +135,28 @@ public enum PropertyAeFactory {
       addToMap( parameterMap, parameters );
       return createParameters( parameterMap );
    }
+
+   static public Object subVariableParameter( final Object parameterValue, final Map<String,Object> parameterMap ) {
+      if ( parameterMap == null || !(parameterValue instanceof String) ) {
+         return parameterValue;
+      }
+      final String textValue = parameterValue.toString();
+      if ( !textValue.startsWith( "$" ) ) {
+         return parameterValue;
+      }
+      final String varName = textValue.substring( 1 );
+      final Object subValue = parameterMap.get( varName );
+      if ( subValue == null ) {
+         // Check for an environment variable.
+         final String envValue = System.getenv( varName );
+         if ( envValue != null ) {
+            return envValue;
+         }
+         LOGGER.warn( "No value for unknown substitution variable ${}", varName );
+         return parameterValue;
+      }
+      return subValue;
+    }
 
    /**
     * @param readerClass Collection Reader class
@@ -221,7 +247,7 @@ public enum PropertyAeFactory {
          if ( parameters[ i ] instanceof String ) {
             map.put( (String) parameters[ i ], parameters[ i + 1 ] );
          } else {
-            LOGGER.warn( "Parameter " + i + " not a String, using " + parameters[ i ].toString() );
+            LOGGER.warn( "Parameter {} not a String, using {}", i, parameters[ i ].toString() );
             map.put( parameters[ i ].toString(), parameters[ i + 1 ] );
          }
       }

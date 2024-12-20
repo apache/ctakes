@@ -26,7 +26,6 @@ abstract public class AbstractCommandRunner extends PausableFileLoggerAE {
          name = CMD_PARAM,
          description = CMD_DESC,
          mandatory = false
-
    )
    private String _cmd;
 
@@ -101,8 +100,8 @@ abstract public class AbstractCommandRunner extends PausableFileLoggerAE {
       return ( commandDir == null || commandDir.isEmpty() ) ? command : commandDir + File.separator + command;
    }
 
-   public void logInfo( final String info ) {
-      LOGGER.info( info );
+   protected Logger getPauseLogger() {
+      return LOGGER;
    }
 
    /**
@@ -115,10 +114,10 @@ abstract public class AbstractCommandRunner extends PausableFileLoggerAE {
       _cmdDir = SystemUtil.subVariableParameters( _cmdDir, context );
       _workDir = SystemUtil.subVariableParameters( _workDir, context );
       if ( _cmdDir != null && !_cmdDir.isEmpty() && !new File( _cmdDir ).exists() ) {
-         LOGGER.warn( "Cannot find Command Directory " + _cmdDir );
+         LOGGER.warn( "Cannot find Command Directory {}", _cmdDir );
       }
       if ( _workDir != null && !_workDir.isEmpty() && !new File( _workDir ).exists() ) {
-         LOGGER.warn( "Cannot find Working Directory " + _workDir );
+         LOGGER.warn( "Cannot find Working Directory {}", _workDir );
       }
       if ( isCommandMandatory() && ( _cmd == null || _cmd.trim().isEmpty() ) ) {
          throw new ResourceInitializationException( new IOException( "Parameter " + CMD_PARAM + " must be set." ) );

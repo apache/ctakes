@@ -17,6 +17,23 @@ import java.util.Arrays;
 import java.util.stream.Collectors;
 
 /**
+ *   Runs the pipeline in the piper file specified by -p (piperfile)
+ *   with any other provided arguments.  Standard arguments are:
+ *     -i , --inputDir {inputDirectory}
+ *     -o , --outputDir {outputDirectory}
+ *     -s , --subDir {subDirectory}  (for i/o)
+ *     --xmiOut {xmiOutputDirectory} (if different from -o)
+ *     -l , --lookupXml {dictionaryConfigFile} (fast only)
+ *     --key {umlsKey}
+ *     -? , --help
+ *   Other parameters may be declared in the piper file using the cli command:
+ *     cli {parameterName}={singleCharacter}
+ *   For instance, for declaration of ParagraphAnnotator path to regex file optional parameter PARAGRAPH_TYPES_PATH,
+ *   in the custom piper file add the line:
+ *     cli PARAGRAPH_TYPES_PATH=t
+ *   and when executing this class use:
+ *      PiperFileRunner( -p, path/to/my/custom.piper, -t, path/to/my/custom.bsv  ... );
+ *
  * @author SPF , chip-nlp
  * @version %I%
  * @since 10/13/2016
@@ -102,14 +119,14 @@ final public class PiperFileRunner {
          try {
             final PrintStream stream = new PrintStream( logPath );
             multE.printStackTrace( stream );
-            LOGGER.info( "\nFor more information please see log file " + logPath );
+            LOGGER.info( "\nFor more information please see log file {}", logPath );
             LOGGER.info( "This is a log file on your machine listing information that may be useful in debugging your failed run." );
             LOGGER.info(
-                  "Seriously, don't ignore this message.  If you want to get to the root of a problem, check the error log file " +
+                  "Seriously, don't ignore this message.  If you want to get to the root of a problem, check the error log file {}",
                   logPath );
          } catch ( FileNotFoundException fnfE ) {
-            LOGGER.warn( "Could not write to log file " + logPath );
-            multE.printStackTrace();
+            LOGGER.warn( "Could not write to log file {}", logPath );
+            Arrays.stream( multE.getStackTrace() ).map( Object::toString ).forEach( LOGGER::warn );
          }
          return false;
       }

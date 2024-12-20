@@ -53,8 +53,8 @@ public class ExitForcer extends PausableAE {
       // Do nothing
    }
 
-   protected void logInfo( final String info ) {
-      LOGGER.info( info );
+   protected Logger getPauseLogger() {
+      return LOGGER;
    }
 
    /**

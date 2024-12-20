@@ -19,7 +19,7 @@
     under the License.
 
 -->
-<Configuration status="info">
+<Configuration status="info" shutdownHook="disable">
     <Appenders>
         <Console name="consoleAppender" target="SYSTEM_OUT">
             <PatternLayout pattern="%d{dd MMM yyyy HH:mm:ss} %5p %c{1} - %m%n"/>

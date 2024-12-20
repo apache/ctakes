@@ -39,14 +39,13 @@ public class CtakesRunner extends PausableFileLoggerAE {
 
    static private final String JAVA_CMD = "-Xms512M -Xmx3g org.apache.ctakes.core.pipeline.PiperFileRunner";
 
-   private String _logFile;
 
    protected boolean processPerDoc() {
       return false;
    }
 
-   public void logInfo( final String info ) {
-      LOGGER.info( info );
+   protected Logger getPauseLogger() {
+      return LOGGER;
    }
 
 
@@ -117,13 +116,14 @@ public class CtakesRunner extends PausableFileLoggerAE {
 
    protected void runCommand() throws IOException {
       final String java_home = System.getProperty( "java.home" );
-      final SystemUtil.CommandRunner runner =
-            new SystemUtil.CommandRunner( "\"" + java_home + File.separator + "bin" + File.separator
-                                          + "java\" " + JAVA_CMD + " " + _pipeline );
+      final String fullCommand = "\"" + java_home + File.separator + "bin" + File.separator
+            + "java\" " + JAVA_CMD + " " + _pipeline;
+      final SystemUtil.CommandRunner runner = new SystemUtil.CommandRunner( fullCommand );
       final String logFile = getLogFile();
       runner.setLogFiles( logFile );
 //      LOGGER.info( "Starting cTAKES with " + _cli + " ..." );
-      LOGGER.info( "Starting external cTAKES pipeline with " + _pipeline + " ..." );
+      LOGGER.info( "Starting external cTAKES pipeline with {} ...", _pipeline );
+//      LOGGER.info( "Full command:\n{}", fullCommand );
       SystemUtil.run( runner );
       pause();
    }

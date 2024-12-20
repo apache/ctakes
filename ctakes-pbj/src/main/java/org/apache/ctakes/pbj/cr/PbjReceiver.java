@@ -5,6 +5,7 @@ import org.apache.activemq.artemis.jms.client.ActiveMQConnectionFactory;
 import org.apache.activemq.artemis.jms.client.ActiveMQQueue;
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.core.util.doc.JCasBuilder;
+import org.apache.ctakes.core.util.log.DotLogger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
@@ -140,9 +141,9 @@ final public class PbjReceiver extends JCasCollectionReader_ImplBase {
    @Override
    public void initialize( final UimaContext context ) throws ResourceInitializationException {
       super.initialize( context );
-      try {
+      try ( DotLogger dotter = new DotLogger( LOGGER,
+            "Starting Python Bridge to Java Receiver on {} {} ", _host, _queue ) ){
          InitialContext initialContext = new InitialContext();
-         LOGGER.info( "Starting Python Bridge to Java Receiver on " + _host + " " + _queue + " ..." );
          final ActiveMQConnectionFactory cf
                = new ActiveMQConnectionFactory( "tcp://" + _host + ":" + _port );
          // Time To Live TTL of -1 asks server to never close this connection.
@@ -155,7 +156,7 @@ final public class PbjReceiver extends JCasCollectionReader_ImplBase {
          _consumer = session.createConsumer( queue );
          _connection.start();
          registerShutdownHook();
-      } catch ( NamingException | JMSException multE ) {
+      } catch ( NamingException | JMSException | IOException multE ) {
          throw new ResourceInitializationException( multE );
       }
    }
@@ -210,9 +211,8 @@ final public class PbjReceiver extends JCasCollectionReader_ImplBase {
          } else if ( message instanceof ActiveMQBytesMessage ) {
             text = readBytesMessage( (BytesMessage) message );
          } else if ( message != null ) {
-            LOGGER.error( "Received unexpected message format " + message.getClass()
-                                                                         .getName()
-                          + "\n" + message.toString() + "\nProcessing Empty Document." );
+            LOGGER.error( "Received unexpected message format {}\n{}\nProcessing Empty Document.",
+                  message.getClass().getName(), message.toString() );
             text = EMPTY_CAS;
          }
          if ( !text.isEmpty() ) {
@@ -242,15 +242,17 @@ final public class PbjReceiver extends JCasCollectionReader_ImplBase {
 
 
    public void disconnect() {
-      try {
-         _connection.stop();
+      if ( _connection == null ) {
+         return;
+      }
+      try ( DotLogger dotter = new DotLogger( LOGGER, "Disconnecting PBJ Receiver on {} {} ", _host, _queue ) ){
          _connection.close();
-         LOGGER.info( "Disconnected PBJ Receiver on " + _host + " " + _queue + " ..." );
-      } catch ( JMSException jmsE ) {
-         if ( jmsE.getMessage().equalsIgnoreCase( "Connection is closed" ) ) {
+         _connection = null;
+      } catch ( JMSException | IOException multE ) {
+         if ( multE.getMessage().equalsIgnoreCase( "Connection is closed" ) ) {
             return;
          }
-         LOGGER.info( "Artemis Disconnect: " + jmsE.getMessage() );
+         LOGGER.warn( "Artemis Disconnect: {}", multE.getMessage() );
       }
    }
 

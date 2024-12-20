@@ -97,7 +97,7 @@ public class PbjJmsSender extends PbjSender {
             return true;
          }
       }
-      LOGGER.info( "Queued Message Count = " + count );
+      LOGGER.info( "Queued Message Count = {}", count );
       return false;
    }
 
@@ -124,9 +124,8 @@ public class PbjJmsSender extends PbjSender {
     */
    @Override
    protected void connect() throws ResourceInitializationException {
-      try {
+      try ( DotLogger dotter = new DotLogger( LOGGER, "Connecting PBJ Sender on {} {} ", _host, _queue ) ) {
          final InitialContext initialContext = new InitialContext();
-         LOGGER.info( "Connecting PBJ Sender on " + _host + " " + _queue + " ..." );
          final ActiveMQConnectionFactory cf
                = new ActiveMQConnectionFactory( "tcp://" + _host + ":" + _port );
          // Time To Live TTL of -1 asks server to never close this connection.
@@ -140,7 +139,7 @@ public class PbjJmsSender extends PbjSender {
          _producer.setTimeToLive( 300000 );
          _connection.start();
          _queueBrowser = _session.createBrowser( queue );
-      } catch ( NamingException | JMSException multE ) {
+      } catch ( NamingException | JMSException | IOException multE ) {
          throw new ResourceInitializationException( multE );
       }
    }
@@ -151,12 +150,16 @@ public class PbjJmsSender extends PbjSender {
     */
    @Override
    protected void disconnect() throws AnalysisEngineProcessException {
-      try {
-         _connection.stop();
+      if ( _connection == null ) {
+         return;
+      }
+      try ( DotLogger dotter = new DotLogger( LOGGER, "Disconnecting PBJ Sender on {} {} ", _host, _queue ) ) {
          _connection.close();
-         LOGGER.info( "Disconnected PBJ Sender on " + _host + " " + _queue + " ..." );
-      } catch ( JMSException jmsE ) {
-         throw new AnalysisEngineProcessException( jmsE );
+         _connection = null;
+      } catch ( JMSException | IOException multE ) {
+         LOGGER.error( multE.getMessage() );
+         _connection = null;
+         throw new AnalysisEngineProcessException( multE );
       }
    }
 
