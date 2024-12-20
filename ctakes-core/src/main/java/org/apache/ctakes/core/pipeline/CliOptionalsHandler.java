@@ -15,7 +15,13 @@ final public class CliOptionalsHandler {
 
    static private final Logger LOGGER = LoggerFactory.getLogger( "CliOptionalsHandler" );
 
+   static public final String NO_CLI_VALUE = "NO_CLI_VALUE";
+
    private CliOptionalsHandler() {
+   }
+
+   static public boolean noCliValue( final Object value ) {
+      return NO_CLI_VALUE.equals( value );
    }
 
    /**
@@ -169,7 +175,7 @@ final public class CliOptionalsHandler {
          }
       }
       LOGGER.warn( "No value specified on command line for parameter \"{}\"", name );
-      return "";
+      return NO_CLI_VALUE;
    }
 
 }

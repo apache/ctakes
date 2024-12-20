@@ -14,7 +14,9 @@ import org.apache.uima.fit.factory.TypeSystemDescriptionFactory;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.resource.metadata.TypeSystemDescription;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -34,6 +36,7 @@ public enum PropertyAeFactory {
 
    static private final Logger LOGGER = LoggerFactory.getLogger( "PropertyAeFactory" );
 
+   static private final String NO_SUBSTITUTION_VALUE = "NO_SUBSTITUTION_VALUE";
 
    // Use a single hashmap so that multiple properties files can be used
    final private Map<String, Object> _properties = new HashMap<>();
@@ -44,7 +47,7 @@ public enum PropertyAeFactory {
          _typeSystemDescription = TypeSystemDescriptionFactory.createTypeSystemDescription();
       } catch ( ResourceInitializationException riE ) {
          LoggerFactory.getLogger( "PropertyAeFactory" )
-                      .error( "Could not initialize cTAKES Type System\n{}", riE.getMessage() );
+                      .error( "Could not initialize cTAKES Type System\n{}.", riE.getMessage() );
          System.exit( -1 );
       }
    }
@@ -56,7 +59,7 @@ public enum PropertyAeFactory {
     */
    synchronized public void addParameters( final Object... parameters ) {
       if ( parameters.length == 0 ) {
-         LOGGER.warn( "No parameters specified." );
+//         LOGGER.warn( "No parameters specified." );
          return;
       }
       if ( parameters.length % 2 != 0 ) {
@@ -73,7 +76,7 @@ public enum PropertyAeFactory {
     */
    synchronized public void addIfEmptyParameters( final Object... parameters ) {
       if ( parameters.length == 0 ) {
-         LOGGER.warn( "No parameters specified." );
+//         LOGGER.warn( "No parameters specified." );
          return;
       }
       if ( parameters.length % 2 != 0 ) {
@@ -101,19 +104,28 @@ public enum PropertyAeFactory {
     * @return array of Objects representing name value pairs
     */
    static private Object[] createParameters( final Map<String, Object> parameterMap ) {
-      final Object[] parameters = new Object[ parameterMap.size() * 2 ];
-      int i = 0;
+//      final Object[] parameters = new Object[ parameterMap.size() * 2 ];
+      final List<Object> parameterList = new ArrayList<>();
+//      int i = 0;
       for ( Map.Entry<String, Object> entry : parameterMap.entrySet() ) {
-         parameters[ i ] = entry.getKey();
+//         parameters[ i ] = entry.getKey();
          final Object value = subVariableParameter( entry.getValue(), parameterMap );
          if ( !value.equals( entry.getValue() ) ) {
-            LOGGER.info( "Substituting Parameter Value \"{}\" for \"{}\" on Parameter \"{}\"", value, entry.getValue(),
-                  entry.getKey() );
+            if ( value.equals( NO_SUBSTITUTION_VALUE ) ) {
+               LOGGER.warn( "No value for variable {} on parameter {}, default value will be used.", entry.getValue(), entry.getKey() );
+               continue;
+            } else {
+               LOGGER.info( "Substituting Parameter Value \"{}\" for \"{}\" on Parameter \"{}\".", value, entry.getValue(),
+                     entry.getKey() );
+            }
          }
-         parameters[ i + 1 ] = value;
-         i += 2;
+         parameterList.add( entry.getKey() );
+         parameterList.add( value );
+//         parameters[ i + 1 ] = value;
+//         i += 2;
       }
-      return parameters;
+//      return parameters;
+      return parameterList.toArray();
    }
 
    /**
@@ -152,8 +164,9 @@ public enum PropertyAeFactory {
          if ( envValue != null ) {
             return envValue;
          }
-         LOGGER.warn( "No value for unknown substitution variable ${}", varName );
-         return parameterValue;
+//         LOGGER.warn( "No value for unknown substitution variable ${}", varName );
+//         return parameterValue;
+         return NO_SUBSTITUTION_VALUE;
       }
       return subValue;
     }
@@ -247,7 +260,7 @@ public enum PropertyAeFactory {
          if ( parameters[ i ] instanceof String ) {
             map.put( (String) parameters[ i ], parameters[ i + 1 ] );
          } else {
-            LOGGER.warn( "Parameter {} not a String, using {}", i, parameters[ i ].toString() );
+            LOGGER.warn( "Parameter {} not a String, using {}.", i, parameters[ i ].toString() );
             map.put( parameters[ i ].toString(), parameters[ i + 1 ] );
          }
       }

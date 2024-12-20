@@ -435,7 +435,8 @@ final public class PiperFileReader {
          pairList.add( text.substring( matcher.start(), matcher.end() ) );
       }
       final String[] pairs = pairList.toArray( new String[ pairList.size() ] );
-      final Object[] keysAndValues = new Object[ pairs.length * 2 ];
+//      final Object[] keysAndValues = new Object[ pairs.length * 2 ];
+      final List<Object> keyValueList = new ArrayList<>();
       int i = 0;
       for ( String pair : pairs ) {
 //         final String[] keyAndValue = KEY_VALUE_PATTERN.split( pair );
@@ -445,19 +446,32 @@ final public class PiperFileReader {
             kvList.add( pair.substring( kv_matcher.start(), kv_matcher.end() ) );
          }
          final String[] keyAndValue = kvList.toArray( new String[ kvList.size() ] );
-         keysAndValues[ i ] = keyAndValue[ 0 ];
+//         keysAndValues[ i ] = keyAndValue[ 0 ];
          if ( keyAndValue.length == 1 ) {
-            keysAndValues[ i + 1 ] = "";
-            i += 2;
+//            keysAndValues[ i + 1 ] = "";
+//            i += 2;
+            keyValueList.add( keyAndValue[ 0 ] );
+            keyValueList.add( "" );
             continue;
          } else if ( keyAndValue.length > 2 ) {
             LOGGER.warn( "Multiple parameter values, using first of {}", pair );
          }
-         keysAndValues[ i + 1 ] = getValueObject( CliOptionalsHandler
+         final Object value = getValueObject( CliOptionalsHandler
                .getCliOptionalValue( _cliOptionals, keyAndValue[ 1 ] ) );
-         i += 2;
+         if ( CliOptionalsHandler.noCliValue( value ) ) {
+            continue;
+         }
+//            keysAndValues[ i + 1 ] = getValueObject( CliOptionalsHandler
+//                  .getCliOptionalValue( _cliOptionals, keyAndValue[ 1 ] ) );
+//            i += 2;
+         keyValueList.add( keyAndValue[ 0 ] );
+         keyValueList.add( value );
       }
-      return keysAndValues;
+      if ( keyValueList.isEmpty() ) {
+         return EMPTY_OBJECT_ARRAY;
+      }
+      return keyValueList.toArray();
+//      return keysAndValues;
    }
 
    /**
