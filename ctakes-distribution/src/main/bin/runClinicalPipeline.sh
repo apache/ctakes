@@ -1,5 +1,5 @@
 #!/bin/sh
-#
+
 # Licensed to the Apache Software Foundation (ASF) under one
 # or more contributor license agreements.  See the NOTICE file
 # distributed with this work for additional information
@@ -28,9 +28,7 @@
 #   --xmiOut {xmiOutputDirectory} (if different from -o)
 #   -l , --lookupXml {dictionaryConfigFile} (fast only)
 #   -? , --help
-
 # Requires Java 17
-
 
 # Sets up environment for cTAKES
 . ${HOME}/setenv.sh

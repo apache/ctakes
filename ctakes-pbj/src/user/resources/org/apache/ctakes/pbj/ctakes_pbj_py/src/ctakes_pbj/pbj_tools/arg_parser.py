@@ -8,7 +8,6 @@ class ArgParser:
 
     def get_arg_parser(self):
         if self.arg_parser is None:
-            print('Creating arg_parser')
             self.arg_parser = argparse.ArgumentParser(
                 prog='ctakes-pbj',
                 description='Does wonderful stuff...',
@@ -20,5 +19,5 @@ class ArgParser:
         self.get_arg_parser().add_argument(*args, **kwargs)
 
     def get_args(self):
-        print('Parsing Arguments')
+        print('Parsing Arguments ...')
         return self.get_arg_parser().parse_args()

@@ -1,4 +1,5 @@
-#
+#!/bin/sh
+
 # Licensed to the Apache Software Foundation (ASF) under one
 # or more contributor license agreements.  See the NOTICE file
 # distributed with this work for additional information
@@ -16,11 +17,10 @@
 # specific language governing permissions and limitations
 # under the License.
 #
-#   Starts a GUI that can facilitate creation of a dictionary for the
+#   Starts a GUI that can facilitate creation of a dictionary.
+#   The created dictionary contains SQL that can be used by the
 #   [ctakes-dictionary-lookup-fast](ctakes-dictionary-lookup-fast) module.
-#
 # Requires Java 17
-#
 
 # Sets up environment for cTAKES
 . ${HOME}/setenv.sh

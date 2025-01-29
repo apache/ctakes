@@ -1,5 +1,4 @@
 @ECHO OFF
-::
 :: Licensed to the Apache Software Foundation (ASF) under one
 :: or more contributor license agreements.  See the NOTICE file
 :: distributed with this work for additional information
@@ -17,13 +16,10 @@
 :: specific language governing permissions and limitations
 :: under the License.
 
-
 ::   Starts a simple GUI to fetch the cTAKES umls (snomed, rxnorm) dictionary.
-
 :: Requires Java 17
 
-
-@REM The setenv script sets up the environment needed by cTAKES.
+:: The setenv script sets up the environment needed by cTAKES.
 @call %~sdp0\setenv.bat
 
 cd %CTAKES_HOME%

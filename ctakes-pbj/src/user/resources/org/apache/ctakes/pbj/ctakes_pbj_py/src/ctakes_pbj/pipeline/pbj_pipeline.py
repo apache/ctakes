@@ -1,5 +1,13 @@
+import sys
+import time
+import traceback
+from traceback import TracebackException
+from threading import Event
+
 from ctakes_pbj.pbj_tools import pbj_defaults
 from ctakes_pbj.pbj_tools.arg_parser import ArgParser
+
+exit_event = Event()
 
 
 class PBJPipeline:
@@ -33,27 +41,82 @@ class PBJPipeline:
         # If get_args has already been called then added parameters will crash the tool.
         args = self.arg_parser.get_args()
         # Set the necessary parameters in the collection reader.
-        self.c_reader.init_params(args)
+        try:
+            self.c_reader.init_params(args)
+        except Exception as exceptable:
+            self.handle_exception(self.c_reader, exceptable, True)
         # For each annotator set the necessary parameters.
         for annotator in self.annotators:
             annotator.init_params(args)
         # For each annotator initialize resources, etc.
         for annotator in self.annotators:
-            annotator.initialize()
+            if exit_event.is_set():
+                break
+            try:
+                print(time.ctime(), "Initializing", type(annotator).__name__, "...", flush=True)
+                annotator.initialize()
+            except Exception as exceptable:
+                self.handle_exception(annotator, exceptable, True)
         self.initialized = True
 
     # Starts / Runs the pipeline.  This calls start on the collection reader.
     def run(self):
         if not self.initialized:
             self.initialize()
-        self.c_reader.start()
+        try:
+            print(time.ctime(), "Starting", type(self.c_reader).__name__, "...", flush=True)
+            self.c_reader.start()
+        except Exception as exceptable:
+            self.handle_exception(self.c_reader, exceptable)
+        # Start a second thread that does nothing.
+        # It will allow the collection reader to wait for information.
+        while not exit_event.is_set():
+            exit_event.wait()
 
     # For a new cas, call each annotator to process that cas.
     def process(self, cas):
         for annotator in self.annotators:
-            annotator.process(cas)
+            if exit_event.is_set():
+                break
+            try:
+                print(time.ctime(), "Running", type(annotator).__name__, "...", flush=True)
+                annotator.process(cas)
+            except Exception as exceptable:
+                self.handle_exception(annotator, exceptable)
 
     # At the end of the corpus, call each annotator for cleanup, etc.
     def collection_process_complete(self):
+        print(time.ctime(), "Collection processing complete.")
         for annotator in self.annotators:
-            annotator.collection_process_complete()
+            if exit_event.is_set():
+                break
+            try:
+                print(time.ctime(), "Notifying", type(annotator).__name__, "of completion ...", flush=True)
+                annotator.collection_process_complete()
+            except Exception as exceptable:
+                self.handle_exception(annotator, exceptable)
+        print(time.ctime(), "Done.", flush=True)
+        exit_event.set()
+
+    def handle_exception(self, thrower, exceptable, initializing=False):
+        print(time.ctime(), "Exception thrown in",
+              type(thrower).__name__, ":",
+              type(exceptable).__name__, exceptable, flush=True)
+        # print(TracebackException.from_exception(exceptable, limit=-3, capture_locals=True))
+        traceback.print_exc(limit=3, chain=False)
+        # Print nice output regarding the exception.
+        try:
+            print(time.ctime(), "Notifying", type(self.c_reader).__name__, "of exception ...", flush=True)
+            self.c_reader.handle_exception(thrower, exceptable)
+        except Exception as exceptable_2:
+            traceback.print_exc(limit=3, chain=False)
+        # Distribute handling of exceptions.
+        for annotator in self.annotators:
+            try:
+                print(time.ctime(), "Notifying", type(annotator).__name__, "of exception ...", flush=True)
+                annotator.handle_exception(thrower, exceptable, initializing)
+            except Exception as exceptable_2:
+                traceback.print_exc(limit=3, chain=False)
+        print(time.ctime(), "Done.", flush=True)
+        # sys.exit(1)
+        exit_event.set()

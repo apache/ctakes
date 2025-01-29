@@ -23,3 +23,7 @@ class CasAnnotator(ABC):
     # Called once at the end of the pipeline.
     def collection_process_complete(self):
         pass
+
+    # Called when an exception is thrown.
+    def handle_exception(self, thrower, exceptable, initializing=False):
+        pass

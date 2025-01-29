@@ -1,5 +1,4 @@
 @ECHO OFF
-::
 :: Licensed to the Apache Software Foundation (ASF) under one
 :: or more contributor license agreements.  See the NOTICE file
 :: distributed with this work for additional information
@@ -19,9 +18,7 @@
 
 ::   Starts a GUI that can run a pipeline.
 ::   Deprecated: Identical to the runPiperGUI script.
-
 :: Requires Java 17
-
 
 :: The setenv script sets up the environment needed by cTAKES.
 @call %~sdp0\setenv.bat

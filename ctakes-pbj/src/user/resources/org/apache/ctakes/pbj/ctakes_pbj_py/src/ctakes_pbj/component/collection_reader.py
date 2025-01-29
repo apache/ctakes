@@ -24,3 +24,11 @@ class CollectionReader(ABC):
     @abstractmethod
     def start(self):
         pass
+
+    # Called to stop reading.
+    def stop(self):
+        pass
+
+    # Called when an exception is thrown.
+    def handle_exception(self):
+        pass

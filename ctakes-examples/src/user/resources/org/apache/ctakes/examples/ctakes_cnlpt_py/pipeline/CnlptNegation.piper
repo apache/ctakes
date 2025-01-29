@@ -8,7 +8,7 @@
 #  That instance of cTAKES will run the third and final bit of the entire PBJ pipeline.
 #
 #  This piper will then launch a python PBJ pipeline that runs the negation model from the external project
-#  Clinical NLP Transformers (cnlp_transformers), which can be found at
+#  Clinical NLP Transformers (cnlp_transformers , cnlpt), which can be found at
 #  https://github.com/Machine-Learning-for-Medical-Language/cnlp_transformers
 #
 
@@ -24,6 +24,11 @@
 #  A standard command-line option is the specification of whether or not to pip the ctakes-pbj package.
 #  By default ctakes-pbj will be pip ed at the beginning of a run.  You can turn this off with:
 #  --pipPbj no
+#
+#  A non-standard command-line option is the specification of whether or not to pip the cnlpt package.
+#  By default cnlpt will be pip ed at the beginning of a run.  You can turn this off with:
+#  ++pipCnlpt no
+#  If used, that must be added at the end of your command.
 #
 
 //  Sets up required parameters, starts your Artemis Broker, pips the PBJ project.

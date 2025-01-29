@@ -1,5 +1,5 @@
 #!/bin/sh
-#
+
 # Licensed to the Apache Software Foundation (ASF) under one
 # or more contributor license agreements.  See the NOTICE file
 # distributed with this work for additional information
@@ -19,7 +19,6 @@
 
 #   Starts a GUI that can run a pipeline.
 #   Deprecated: Identical to the runPiperGUI script.
-
 # Requires Java 17
 
 # Sets up environment for cTAKES

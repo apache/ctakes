@@ -1,5 +1,4 @@
 @ECHO OFF
-::
 :: Licensed to the Apache Software Foundation (ASF) under one
 :: or more contributor license agreements.  See the NOTICE file
 :: distributed with this work for additional information
@@ -17,7 +16,6 @@
 :: specific language governing permissions and limitations
 :: under the License.
 
-
 ::   Runs the default clinical pipeline with provided parameters.
 ::   Required parameters are:
 ::   -i , --inputDir {inputDirectory}
@@ -29,9 +27,7 @@
 ::   --xmiOut {xmiOutputDirectory} (if different from -o)
 ::   -l , --lookupXml {dictionaryConfigFile} (fast only)
 ::   -? , --help
-
 :: Requires Java 17
-
 
 :: The setenv script sets up the environment needed by cTAKES.
 @call %~sdp0\setenv.bat

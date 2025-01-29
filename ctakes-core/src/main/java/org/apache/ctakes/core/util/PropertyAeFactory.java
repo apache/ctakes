@@ -148,7 +148,7 @@ public enum PropertyAeFactory {
       return createParameters( parameterMap );
    }
 
-   static public Object subVariableParameter( final Object parameterValue, final Map<String,Object> parameterMap ) {
+   static public Object subVariableParameterFull( final Object parameterValue, final Map<String,Object> parameterMap ) {
       if ( parameterMap == null || !(parameterValue instanceof String) ) {
          return parameterValue;
       }
@@ -170,6 +170,42 @@ public enum PropertyAeFactory {
       }
       return subValue;
     }
+
+    static private String subVarParms( final String valueText, final Map<String,Object> parameterMap ) {
+       int lastIndex = valueText.lastIndexOf( '$' );
+       if ( lastIndex < 0 ) {
+          return valueText;
+       }
+       final String preText = subVarParms( valueText.substring( 0, lastIndex ), parameterMap );
+       if ( lastIndex == valueText.length()-1 ) {
+          return preText;
+       }
+       final String text = valueText.substring( lastIndex+1 );
+       String varName = text;
+       for ( int i = text.length(); i>0; i-- ) {
+          varName = text.substring( 0, i );
+          Object subValue = parameterMap.get( varName );
+          if ( subValue == null ) {
+             // Check for an environment variable.
+             subValue = System.getenv( varName );
+          }
+          if ( subValue != null ) {
+             return preText + subValue + text.substring( i );
+          }
+       }
+//         LOGGER.warn( "No value for unknown substitution variable ${}", varName );
+//         return parameterValue;
+       return preText + "$" + text;
+    }
+
+   static public Object subVariableParameter( final Object parameterValue, final Map<String,Object> parameterMap ) {
+      if ( parameterMap == null || !(parameterValue instanceof String) ) {
+         return parameterValue;
+      }
+      final String textValue = parameterValue.toString();
+      return subVarParms( textValue, parameterMap );
+   }
+
 
    /**
     * @param readerClass Collection Reader class

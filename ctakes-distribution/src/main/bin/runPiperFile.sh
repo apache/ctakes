@@ -1,5 +1,5 @@
 #!/bin/sh
-#
+
 # Licensed to the Apache Software Foundation (ASF) under one
 # or more contributor license agreements.  See the NOTICE file
 # distributed with this work for additional information
@@ -17,9 +17,8 @@
 # specific language governing permissions and limitations
 # under the License.
 
-
-#   Runs the pipeline in the piper file specified by -p (piperfile)
-#   with any other provided parameters.  Standard parameters are:
+#   Runs the pipeline in the piper file specified by -p {piperfile} with provided parameters.
+#   Standard parameters are:
 #     -i , --inputDir {inputDirectory}
 #     -o , --outputDir {outputDirectory}
 #     -s , --subDir {subDirectory}  (for i/o)
@@ -35,9 +34,7 @@
 #     cli PARAGRAPH_TYPES_PATH=t
 #   and when executing this script use:
 #      runPiperFile -p path/to/my/custom.piper -t path/to/my/custom.bsv  ...
-
 # Requires Java 17
-
 
 # Sets up environment for cTAKES
 . ${HOME}/setenv.sh
