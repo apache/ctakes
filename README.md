@@ -59,7 +59,7 @@ The easiest way for new users to get a jump start running cTAKES is to use the [
 The Standard Pipeline Installation Facility is a tool that can install cTAKES configured to run the most popular cTAKES pre-built pipelines. 
 You can then use the [Piper File Submitter](https://github.com/apache/ctakes/wiki/Piper+File+Submitter) GUI to submit jobs or submit them from the command line.
 
-For access to all cTAKES capabilities, download a [zip]() or [tar.z]() file containing a fully-built installation of the most recent cTAKES release.
+For access to all cTAKES capabilities, download a [zip]() or [tar.z]() file containing a fully-built installation of the most recent cTAKES [release](https://github.com/apache/ctakes/releases).
 Then, after obtaining a UMLS license, use the [UMLS Package Fetcher](https://github.com/apache/ctakes/wiki/cTAKES+UMLS+Package+Fetcher) GUI to install a copy of the 
 default dictionary for Named Entity Recognition (NER) using cTAKES Fast Dictionary Lookup.
 
