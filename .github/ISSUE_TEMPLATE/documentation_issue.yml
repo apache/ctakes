@@ -1,0 +1,38 @@
+name: Documentation Issue
+description: Report errors or missing information in the documentation
+title: "[Docs]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping us improve our documentation!
+  - type: textarea
+    id: what-section
+    attributes:
+      label: What section of the docs needs fixing?
+      description: Provide a link to the page or section that needs updating.
+      placeholder: "https://github.com/org/repo/docs/..."
+    validations:
+      required: true
+  - type: textarea
+    id: issue
+    attributes:
+      label: What's the issue?
+      description: Is there missing info, a typo, or an incorrect example?
+      placeholder: "The documentation says..."
+    validations:
+      required: true
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggested Fix
+      description: How should this be corrected or improved?
+      placeholder: "Instead, it should say..."
+  - type: input
+    id: contact
+    attributes:
+      label: Contact Details
+      description: How can we get in touch with you if we need more info?
+      placeholder: ex. email@example.com
+    validations:
+      required: false
