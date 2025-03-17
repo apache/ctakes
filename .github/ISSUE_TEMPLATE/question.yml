@@ -1,0 +1,39 @@
+name: Question
+description: Ask a general question about the project
+title: "[Question]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reaching out! Please provide as much detail as possible.
+  - type: textarea
+    id: question
+    attributes:
+      label: What’s your question?
+      description: Describe your question in detail.
+      placeholder: "I’d like to know more about..."
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Provide any additional details, such as where this question came up.
+      placeholder: "I encountered this when..."
+  - type: dropdown
+    id: category
+    attributes:
+      label: What category does this question fall under?
+      options:
+        - Usage
+        - Development
+        - Installation
+        - Other
+  - type: input
+    id: contact
+    attributes:
+      label: Contact Details
+      description: How can we reach you if we need more details?
+      placeholder: ex. email@example.com
+    validations:
+      required: false
