@@ -29,8 +29,8 @@ github:
   dependabot_updates: false
   del_branch_on_merge: true
 
-# notifications:
-#     commits: commits@ctakes.apache.org
-#     pullrequests: commits@ctakes.apache.org
-#     issues: dev@ctakes.apache.org
-#     discussions: dev@ctakes.apache.org
+notifications:
+    commits: commits@ctakes.apache.org
+    pullrequests: commits@ctakes.apache.org
+    issues: no-reply@ctakes.apache.org
+    discussions: dev@ctakes.apache.org
