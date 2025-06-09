@@ -30,12 +30,11 @@ We encourage people from all backgrounds to get involved! (link)
 <br>
 
 ## Supported Environments
-1. **Java 17** is required to run cTAKES 6.0.0 and higher.  **Java 8 or Java 11** is required to run cTAKES 5.  Run this command to check your Java version:
+1. **Java 17** is required to run cTAKES 6.0.0 and higher.  **Java 8 or Java 11** is required to run cTAKES 5.
+ Run this command to check your Java version:
 ```
 java -version
 ```
-> [!NOTE]
-> If you are using an integrated development environment (IDE), please see its documentation on using Java.
 2. A license for the National Library of Medicine's [Unified Medical Language System (UMLS)](https://www.nlm.nih.gov/research/umls/index.html)
    is required to use the named entity recognition module (dictionary lookup) with the default dictionary.
 3. **Python 3** is required to use cTAKES [Python Bridge to Java (PBJ)](https://github.com/apache/ctakes/wiki/pbj_intro).
@@ -44,7 +43,9 @@ java -version
 python -V
 ```
 > [!NOTE]
-> If you are using an integrated development environment (IDE), please see its documentation on using python.
+> If you are using an integrated development environment (IDE), please see its documentation on using git, Java, Python, and Apache Maven.
+> You should be able to use features in your IDE instead of running commands in a terminal.
+
 <br/>
 ### For developers:
 
@@ -52,8 +53,6 @@ python -V
 ```
 mvn -version
 ```
-> [!NOTE]
-> If you are using an integrated development environment (IDE), please see its documentation on using Apache Maven.
 
 <br/>
 
@@ -77,25 +76,22 @@ All source code for cTAKES versions 5+ is available from the [cTAKES GitHub repo
 ```
 git clone https://github.com/apache/ctakes.git
 ```
-> [!NOTE]
-> If you are using an integrated development environment (IDE), please see its documentation on using git.
 2. Compile the cTAKES code using Apache Maven.  In your cTAKES root directory, run this command:
 ```
 mvn clean compile
 ```
-> [!NOTE]
-> If you are using an integrated development environment (IDE), please see its documentation on using Apache Maven.
 3. [Download](https://sourceforge.net/projects/ctakesresources/files/sno_rx_16ab.zip) the default cTAKES dictionary zip file.
 4. Copy the contents of the zip file to the `resources/org/apache/ctakes/dictionary/lookup/fast` directory.
-> [!NOTE]
+
+> [!TIP]
 > As an alternative to steps 3 and 4, you can use the [UMLS Package Fetcher](https://github.com/apache/ctakes/wiki/cTAKES+UMLS+Package+Fetcher) GUI.
 > Run the class `DictionaryDownloader.java` to launch that tool, or use the `getUmlsDictionary` script if using a full build of cTAKES.
+
 5. Run the cTAKES default pipeline using the Java class `PiperFileRunner.java`. To use the [Piper File Submitter](https://github.com/apache/ctakes/wiki/Piper+File+Submitter) GUI, run the `PiperRunnerGui.java` class.
+
 > [!NOTE]
 > To run the cTAKES Java classes, the full Java classpath must be configured. Setting up a classpath is beyond the scope of this document.  
 > An integrated development environment (IDE) should set up the classpath for you, please see its documentation.
-
-<br>
 
 > [!IMPORTANT]
 > You cannot run scripts in the `bin/` directory within a development environment.
@@ -104,15 +100,17 @@ mvn clean compile
 > [!TIP]
 > You can build your own cTAKES installation from a development environment using Apache Maven. 
 > A cTAKES installation is required to run scripts in the `bin/` directory.
+
 6. Build using Apache Maven:
 ```
 mvn clean compile package
 ```
+
 > [!NOTE]
 > If you are using an integrated development environment (IDE), please see its documentation on using Apache Maven.
 
-After packaging, there should be tar and zip files for `apache-ctakes-...-bin` and ` apache-ctakes-...-src` in your `ctakes-distribution/target/` directory.
-7. Unzip the `apache-ctakes-...-bin` into a directory *outside* your cTAKES development area.
+After packaging, there should be tar and zip files for `apache-ctakes-#.#.#.-bin` and ` apache-ctakes-#.#.#.-src` in your `ctakes-distribution/target/` directory.
+7. Unzip the `apache-ctakes-#.#.#.-bin` into a directory *outside* your cTAKES development area.
 
 
 ## More information
