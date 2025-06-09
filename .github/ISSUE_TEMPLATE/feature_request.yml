@@ -1,0 +1,47 @@
+name: Feature Request
+description: Suggest a new feature or improvement
+title: "[Feature]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for your interest in improving this project!
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does this solve?
+      description: Explain the problem or pain point this feature will address.
+      placeholder: "I'd like to be able to..."
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Describe the solution you'd like
+      description: What do you think would be the best way to solve this issue?
+      placeholder: "A clear and concise description of what you want to happen."
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternative solutions you've considered
+      description: Have you thought about other ways to solve this?
+      placeholder: "You could also solve this by..."
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: How urgent is this request?
+      options:
+        - Low
+        - Medium
+        - High
+  - type: input
+    id: contact
+    attributes:
+      label: Contact Details
+      description: How can we get in touch with you if we need more info?
+      placeholder: ex. email@example.com
+    validations:
+      required: false

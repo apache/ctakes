@@ -16,13 +16,13 @@ body:
     validations:
       required: true
   - type: textarea
-    id: output log
+    id: output-log
     attributes:
       label: Relevant log output
       description: Please copy and paste any relevant standard log output.
       render: shell
   - type: textarea
-    id: output log
+    id: ctakes-error-log
     attributes:
       label: cTAKES.error.log contents
       description: Please copy and paste contents of the cTAKES.error.log file in your cTAKES root directory.
