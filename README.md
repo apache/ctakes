@@ -96,6 +96,7 @@ mvn clean compile
 > An integrated development environment (IDE) should set up the classpath for you, please see its documentation.
 
 <br>
+
 > [!IMPORTANT]
 > You cannot run scripts in the `bin/` directory within a development environment.
 > Within a cTAKES development environment you can run Java classes and Maven profiles, but no scripts in the `bin` directory.
