@@ -29,12 +29,14 @@ import org.apache.uima.fit.factory.AnalysisEngineFactory;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.cleartk.ml.Instance;
 import org.cleartk.ml.jar.GenericJarClassifierFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.net.URI;
 
-public class SubjectCleartkAnalysisEngine extends
-    AssertionCleartkAnalysisEngine {
+public class SubjectCleartkAnalysisEngine extends AssertionCleartkAnalysisEngine {
+  static private final Logger LOGGER = LoggerFactory.getLogger( "SubjectCleartkAnalysisEngine" );
 
   boolean USE_DEFAULT_EXTRACTORS = false;
   
@@ -70,7 +72,7 @@ public class SubjectCleartkAnalysisEngine extends
             return;
           }
           instance.setOutcome(subj);
-          getLogger().debug(String.format("[%s] expected: ''; actual: ''; features: %s",
+          LOGGER.debug(String.format("[%s] expected: ''; actual: ''; features: %s",
                 this.getClass().getSimpleName(),
                 instance.toString()
                 ));
@@ -78,7 +80,8 @@ public class SubjectCleartkAnalysisEngine extends
         {
           String label = this.classifier.classify(instance.getFeatures());
           entityOrEventMention.setSubject(label);
-          getLogger().debug("SUBJECT is being set on an IdentifiedAnnotation: "+label+" "+entityOrEventMention.getSubject());
+           LOGGER.debug( "SUBJECT is being set on an IdentifiedAnnotation: {} {}", label,
+                 entityOrEventMention.getSubject() );
         }
   }
   public static FeatureSelection<String> createFeatureSelection(double threshold) {

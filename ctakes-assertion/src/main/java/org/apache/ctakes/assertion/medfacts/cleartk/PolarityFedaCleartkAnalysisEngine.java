@@ -32,6 +32,8 @@ import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.cleartk.ml.Instance;
 import org.cleartk.ml.feature.function.FeatureFunctionExtractor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.net.URI;
@@ -45,6 +47,7 @@ import java.util.ArrayList;
 		dependencies = { PipeBitInfo.TypeProduct.SENTENCE, PipeBitInfo.TypeProduct.IDENTIFIED_ANNOTATION }
 )
 public class PolarityFedaCleartkAnalysisEngine extends PolarityCleartkAnalysisEngine {
+	static private final Logger LOGGER = LoggerFactory.getLogger( "PolarityFedaCleartkAnalysisEngine" );
 
 	@Override
 	public void initialize(UimaContext context) throws ResourceInitializationException {
@@ -74,7 +77,7 @@ public class PolarityFedaCleartkAnalysisEngine extends PolarityCleartkAnalysisEn
 	        // downsampling. initialize probabilityOfKeepingADefaultExample to 1.0 for no downsampling
 	        if (NEGATED.equals(polarity))
 	        {
-	            getLogger().debug("TRAINING: " + polarity);
+	            LOGGER.debug("TRAINING: " + polarity);
 	        }
 	        if (NOT_NEGATED.equals(polarity) 
 	        		&& coin.nextDouble() >= this.probabilityOfKeepingADefaultExample) {
@@ -93,7 +96,7 @@ public class PolarityFedaCleartkAnalysisEngine extends PolarityCleartkAnalysisEn
 	        } else if (NEGATED.equals(label))
 	        {
 	          polarity = CONST.NE_POLARITY_NEGATION_PRESENT;
-	          getLogger().debug(String.format("DECODING/EVAL: %s//%s [%d-%d] (%s)", label, polarity, entityOrEventMention.getBegin(), entityOrEventMention.getEnd(), entityOrEventMention.getClass().getName()));
+	          LOGGER.debug(String.format("DECODING/EVAL: %s//%s [%d-%d] (%s)", label, polarity, entityOrEventMention.getBegin(), entityOrEventMention.getEnd(), entityOrEventMention.getClass().getName()));
 	        }
 	        entityOrEventMention.setPolarity(polarity);
 	      }
