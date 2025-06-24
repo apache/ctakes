@@ -21,6 +21,17 @@ github:
     - clinical
     - nlp
     - bioinformatics
+    - uima
+    - named-entity-recognition
+    - umls
+    - ehr
+    - temporal-information
+    - emr
+    - healthcare
+    - ai
+    - ml
+    - medicine
+    - ctakes
   features:
     wiki: true
     issues: true
