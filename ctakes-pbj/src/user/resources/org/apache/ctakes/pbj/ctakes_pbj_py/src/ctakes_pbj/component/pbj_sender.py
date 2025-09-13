@@ -1,9 +1,12 @@
 import sys
 import time
 import stomp
+import logging
 
 from ctakes_pbj.component import cas_annotator
 from ctakes_pbj.pbj_tools.pbj_defaults import *
+
+logger = logging.getLogger(__name__)
 
 
 class PBJSender(cas_annotator.CasAnnotator):
@@ -28,9 +31,9 @@ class PBJSender(cas_annotator.CasAnnotator):
     # Called once at the beginning of a pipeline, before initialize.
     def init_params(self, args):
         if args.send_queue is None:
-            print('A queue to which information will be sent must be specified.  Use -sq or --send_queue')
-            print('Indication that this PBJ python pipeline has failed cannot be sent to an unknown queue.')
-            print('You must manually stop any processes dependent upon this pipeline.')
+            logger.error('A queue to which information will be sent must be specified.  Use -sq or --send_queue')
+            logger.error('Indication that this PBJ python pipeline has failed cannot be sent to an unknown queue.')
+            logger.critical('You must manually stop any processes dependent upon this pipeline.')
             sys.exit()
         self.queue = args.send_queue
         self.host = args.send_host
@@ -40,7 +43,7 @@ class PBJSender(cas_annotator.CasAnnotator):
 
     # Called once at the beginning of a pipeline.
     def initialize(self):
-        print(time.ctime(), "Starting PBJ Sender on", self.host, self.queue, "...")
+        logger.info(f"{time.ctime()} Starting PBJ Sender on {self.host} {self.queue} ...")
         # Use a heartbeat of 10 minutes  (in milliseconds)
         self.conn = stomp.Connection12([(self.host, self.port)],
                                        keepalive=True, heartbeats=(600000, 600000))
@@ -48,7 +51,7 @@ class PBJSender(cas_annotator.CasAnnotator):
 
     # Called for every cas passed through the pipeline.
     def process(self, cas):
-        print(time.ctime(), "Sending processed information to",
+        logger.info(time.ctime(), "Sending processed information to",
               self.host, self.queue, "...")
         xmi = cas.to_xmi()
         self.conn.send(self.queue, xmi)
@@ -65,10 +68,10 @@ class PBJSender(cas_annotator.CasAnnotator):
         self.conn.send(self.queue, text)
 
     def send_stop(self):
-        print(time.ctime(), "Sending Stop code to", self.host, self.queue, "...", flush=True)
+        logger.info(f"{time.ctime()} Sending Stop code to {self.host} {self.queue} ...")
         self.conn.send(self.queue, STOP_MESSAGE)
         self.conn.disconnect()
-        print(time.ctime(), "Disconnected PBJ Sender on", self.host, self.queue)
+        logger.info(f"{time.ctime()} Disconnected PBJ Sender on self.host self.queue")
 
     def set_host(self, host_name):
         self.host = host_name

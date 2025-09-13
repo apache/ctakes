@@ -1,5 +1,7 @@
 import argparse
+import logging
 
+logger = logging.getLogger(__name__)
 
 class ArgParser:
 
@@ -19,5 +21,5 @@ class ArgParser:
         self.get_arg_parser().add_argument(*args, **kwargs)
 
     def get_args(self):
-        print('Parsing Arguments ...')
+        logger.info('Parsing Arguments ...')
         return self.get_arg_parser().parse_args()

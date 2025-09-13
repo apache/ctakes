@@ -6,6 +6,10 @@ from ctakes_pbj.pbj_tools import pbj_defaults
 # from ctakes_pbj.pbj_tools.stomp_receiver import start_receiver
 # from ctakes_pbj.pbj_tools.stomp_receiver import stop_receiver
 from ctakes_pbj.pbj_tools.stomp_receiver import StompReceiver
+import logging
+
+
+logger = logging.getLogger(__name__)
 
 
 class PBJReceiver(CollectionReader):
@@ -35,9 +39,11 @@ class PBJReceiver(CollectionReader):
     # Called once at the beginning of a pipeline, before initialize.
     def init_params(self, args):
         if args.receive_queue is None:
-            print('A queue from which information will be received must be specified.  Use -rq or --receive_queue')
-            print('Indication that this PBJ python pipeline has failed cannot be sent.')
-            print('You must manually stop any processes dependent upon this pipeline.')
+            logger.error(
+                "A queue from which information will be received must be specified. "
+                "Use -rq or --receive_queue"
+            )
+            logger.critical("PBJ python pipeline has failed and cannot continue.")
             sys.exit()
         self.queue = args.receive_queue
         self.host = args.receive_host
@@ -60,7 +66,7 @@ class PBJReceiver(CollectionReader):
 
     # Called to stop reading.
     def stop(self):
-        print(time.ctime(), "PBJ Receiver: Stopping Stomp receiver ...")
+        logger.info("%s PBJ Receiver: Stopping Stomp receiver ...", time.ctime())
         self.stomp_receiver.stop_receiver()
 
     # Called when an exception is thrown.

@@ -1,6 +1,7 @@
 import time
 import threading
 from threading import Event
+import logging
 
 import stomp
 
@@ -38,6 +39,8 @@ from ctakes_pbj.type_system.type_system_loader import *
 # def stop_receiver():
 #     exit_event.set()
 
+logger = logging.getLogger(__name__)
+
 
 class StompReceiver(stomp.ConnectionListener):
 
@@ -62,7 +65,7 @@ class StompReceiver(stomp.ConnectionListener):
         # self.__connect_and_subscribe()
 
     def start_receiver(self):
-        print(time.ctime(), "Starting Stomp Receiver on", self.source_host, self.source_queue, "...")
+        logger.info(f"{time.ctime()} Starting Stomp Receiver on f{self.source_host} f{self.source_queue} ...")
         # Use a heartbeat of 10 minutes  (in milliseconds)
         self.conn = stomp.Connection12([(self.source_host, self.source_port)],
                                        keepalive=True, heartbeats=(600000, 600000))
@@ -95,12 +98,11 @@ class StompReceiver(stomp.ConnectionListener):
 
     def stop_receiver(self):
         self.stop = True
-        print(time.ctime(), "Disconnecting Stomp Receiver on",
-              self.source_host, self.source_queue, "...")
+        logger.info(f"{time.ctime()} Disconnecting Stomp Receiver on f{self.source_host} f{self.source_queue} ...")
         self.conn.disconnect()
-        print(time.ctime(), "Stomp Receiver disconnected.")
+        logger.info(f"{time.ctime()} Stomp Receiver disconnected.")
         self.conn.unsubscribe(destination=self.source_queue, id=self.r_id)
-        print(time.ctime(), "Stomp Receiver unsubscribed.")
+        logger.info(f"{time.ctime()} Stomp Receiver unsubscribed.")
         # self.conn.disconnect()
         # print(time.ctime((time.time())), "Stomp Receiver disconnected.")
         if self.completed:
@@ -108,7 +110,7 @@ class StompReceiver(stomp.ConnectionListener):
 
     def on_message(self, frame):
         if frame.body == STOP_MESSAGE:
-            print(time.ctime(), "Received Stop code.")
+            logger.info(f"{time.ctime()} Received Stop code.")
             # self.stop = True
             # time.sleep(3)
             self.completed = True
@@ -125,7 +127,7 @@ class StompReceiver(stomp.ConnectionListener):
             self.__connect_and_subscribe()
 
     def on_error(self, frame):
-        print(time.ctime(), "Receiver Error:", frame.body)
+        logger.error(f"{time.ctime()} Receiver Error: f{frame.body}")
 
     # Called when an exception is thrown.
     def handle_exception(self):

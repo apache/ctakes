@@ -58,15 +58,10 @@ add CtakesRunner Pipeline="-p PbjThirdStep -o $OutputDirectory -a $ArtemisBroker
 // It will also need to be at the end of the command.  It cannot be before other command line parameters.
 // [rest of command] ++pipCnlpt yes/no
 
-// Set the user-declared piper variable "PipCnlpt" to have the same value of command line option "++pipCnlpt"
-cli PipCnlpt=pipCnlpt
+// If spacey project moves to another directory, make sure to pip it here -->
 
-// pip the cnlp_transformers project and its dependencies.  Note the use of variable $PipCnlpt as value for RunPip.
-add PythonPipper PipPackage="resources/org/apache/ctakes/examples/ctakes_cnlpt_py/" Wait=yes RunPip=$PipCnlpt
-
-// Start a PBJ python pipeline for cnlp_transformers Negation.
-// TODO: Right now cnlpt isn't using --output_dir.  Need to figure out why.
-add PythonRunner Command="-m ctakes-pbj/src/user/resources/org/apache/ctakes/pbj/ctakes_pbj_py/src/ctakes_pbj/examples/spacey_negation_pipeline.py --receive_queue JavaToPy --send_queue PyToJava --output_dir $OutputDirectory" LogFile=negSpacey_pipeline.log
+// Start a PBJ python pipeline for Spacey Negation.
+add PythonRunner Command="-m ctakes_pbj.examples.spacey_negation_pipeline --receive_queue JavaToPy --send_queue PyToJava --output_dir $OutputDirectory" LogFile=negSpacey_pipeline.log
 
 
 //
