@@ -7,6 +7,8 @@ from spacy.tokens import Span
 from spacy.lang.en import English
 from negspacy.termsets import termset
 import logging
+import os
+from pathlib import Path
 
 logger = logging.getLogger(__name__)
 def a_sort_by(a):
@@ -15,7 +17,13 @@ def a_sort_by(a):
 
 class ExampleNegationAnnotator(cas_annotator.CasAnnotator):
     def __init__(self, ts=None):
-        log_path = "C:/Users/ch229935/Desktop/spacey_output/spacey.log"
+        # Use current directory or user home instead of hardcoded path
+        log_dir = Path.cwd() / "spacey_output"  # User's current working directory
+        log_path = log_dir / "spacey.log"
+
+        # Create directory
+        log_path.parent.mkdir(parents=True, exist_ok=True)
+
         handler = logging.FileHandler(log_path, mode="w", encoding="utf-8")
         formatter = logging.Formatter("%(asctime)s [%(levelname)s] %(message)s")
         handler.setFormatter(formatter)
@@ -26,7 +34,6 @@ class ExampleNegationAnnotator(cas_annotator.CasAnnotator):
         logger.propagate = False
         super().__init__()
 
-        logger.info(f"Spacy version: {spacy.__version__}")
         logger.info("Initializing ExampleNegationAnnotator")
         self.ts = ts
 
@@ -47,7 +54,6 @@ class ExampleNegationAnnotator(cas_annotator.CasAnnotator):
         logger.info(f"Spacy version: {spacy.__version__}")
 
         for sentence in cas.select(ctakes_types.Sentence):
-            logger.info(f"Sentence: {sentence.get_covered_text()}")
             tokens = cas.select_covered(ctakes_types.BaseToken, sentence)
             event_mentions = cas.select_covered(ctakes_types.EventMention, sentence)
             tokens.sort(key=a_sort_by)
@@ -58,23 +64,16 @@ class ExampleNegationAnnotator(cas_annotator.CasAnnotator):
             # For spacy 3.x - use words= parameter
             doc = Doc(self.nlp.vocab, words=words)
             logger.info(f"Doc created successfully: '{doc.text}'")
-            logger.info(f"Doc length: {len(doc)}")
 
             try:
                 logger.info("About to create entities...")
+                # need to create spans because doc does not take raw token data!
                 doc.ents = [Span(doc, i, i+1, label="CONCEPT") for i in range(len(doc))]
                 logger.info(f"Created {len(doc.ents)} entities successfully")
 
                 logger.info("About to process through negspacy pipeline...")
                 doc = self.nlp(doc)
                 logger.info("Doc processed through negspacy pipeline successfully")
-
-                logger.info("About to check negation results...")
-                # logger.info("=== NEGATION RESULTS ===")
-                for i, ent in enumerate(doc.ents):
-                    # logger.info(f"Processing entity {i}: '{ent.text}'")
-                    negated = ent._.negex
-                    # logger.info(f"Token: '{ent.text}' - Negated: {negated}")
 
                 # Create token negation mapping
                 token_negations = {}
