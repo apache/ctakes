@@ -2,7 +2,7 @@ import warnings
 from ctakes_pbj.component.pbj_receiver import PBJReceiver
 from ctakes_pbj.pipeline.pbj_pipeline import PBJPipeline
 from ctakes_pbj.component.pbj_sender import PBJSender
-from ctakes_pbj.examples.spacey_negation_w_bridge import BridgedNegationAnnotator
+from ctakes_pbj.examples.negspacy import BridgedNegationAnnotator
 from ctakes_pbj.pbj_tools import arg_parser
 
 warnings.filterwarnings("ignore")
