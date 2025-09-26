@@ -22,7 +22,7 @@ import java.util.concurrent.Executors;
  */
 final public class DictionaryDownloader {
 
-   static private final Logger LOGGER = LoggerFactory.getLogger( "PiperRunnerGui" );
+   static private final Logger LOGGER = LoggerFactory.getLogger( "DictionaryDownloader" );
    static private final String DICTIONARY_NAME = "Fast UMLS Dictionary for Apache cTAKES";
    static private final String DICTIONARY_URL
          = "https://sourceforge.net/projects/ctakesresources/files/sno_rx_16ab.zip";
