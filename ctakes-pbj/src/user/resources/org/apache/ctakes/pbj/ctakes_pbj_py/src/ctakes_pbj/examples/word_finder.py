@@ -19,8 +19,10 @@ class WordFinder(CasAnnotator):
         findings = ['hernia', 'pain', 'migraines', 'allergies']
         procedures = ['thyroidectomy', 'exam']
 
+        # Get segment types that are already in the CAS, discovered by some previous component.
         for segment in cas.select(Segment):
             text = segment.get_covered_text()
+            # Check the text in the segment for words in the lists declared above.
             for word in sites:
                 begin = text.find(word)
                 if begin > -1:
