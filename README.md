@@ -20,6 +20,8 @@ clinical notes, discharge summaries) in various institution formats as well as o
 health-related narrative (e.g. twitter feeds), using multiple data standards (e.g. Health Level 7 (HL7),
 Clinical Document Architecture (CDA), Fast Healthcare Interoperability Resources (FHIR), SNOMED-CT, RxNORM).
 
+For more information, you can view this 2014 [introduction video](https://www.youtube.com/watch?v=TpGZIKEDYMw).
+
 cTAKES is the NLP platform for many initiatives across the world covering a variety of research purposes
 and large datasets.
 Contributors include professionals at medical and commercial institutions, NLP and Machine Learning researchers,
