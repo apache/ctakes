@@ -22,7 +22,7 @@
 # Requires Java 17
 #
 # Sets up environment for cTAKES
-. ${HOME}/setenv.sh
+. "$(dirname "$0")/setenv.sh"
 
 java -cp "${CLASSPATH}" -XX:MaxPermSize=128m -Xmx512m org.eclipse.jetty.runner.Runner ${CTAKES_HOME}/desc/ctakes-ytex-web
 

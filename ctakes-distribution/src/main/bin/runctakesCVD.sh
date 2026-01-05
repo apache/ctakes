@@ -20,7 +20,7 @@
 # Requires Java 17
 
 # Sets up environment for cTAKES
-. ${HOME}/setenv.sh
+. "$(dirname "$0")/setenv.sh"
 
 cd $CTAKES_HOME
 

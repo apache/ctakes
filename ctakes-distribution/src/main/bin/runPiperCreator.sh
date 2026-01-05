@@ -21,7 +21,7 @@
 # Requires Java 17
 
 # Sets up environment for cTAKES
-. ${HOME}/setenv.sh
+. "$(dirname "$0")/setenv.sh"
 
 ALL_IMPL=""
 if [ "$1" = "-a" ]; then
