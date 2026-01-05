@@ -28,7 +28,7 @@ set SetJavaHome=no
 load PbjStarter
 
 //
-// Start another instance of cTAKES, running the pipeline in StartAllExample_end.piper
+// Start another instance of cTAKES, running the pipeline in PbjThirdStep.piper
 // $OutputDirectory will substitute the value of this cTAKES pipeline's value for OutputDirectory.
 // $ArtemisBroker will substitute the value of this cTAKES pipeline's value for ArtemisBroker.
 //
