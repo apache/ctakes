@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import java.util.Arrays;
 
 /**
+ * Some simple String processes are performed so frequently in nlp that it is good to have methods available that are faster than those in the jdk. 
  * @author SPF , chip-nlp
  * @version %I%
  * @since 5/16/2017
