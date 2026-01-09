@@ -17,6 +17,8 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
+ * Annotations that are used within text relations are buried 2 levels deep.
+ * This class has methods that make getting relation annotations easier, and others that make creating relations easier.
  * @author SPF , chip-nlp
  * @version %I%
  * @since 5/25/2016
