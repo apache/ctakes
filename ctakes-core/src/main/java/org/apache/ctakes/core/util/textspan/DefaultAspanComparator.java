@@ -5,7 +5,7 @@ import org.apache.uima.jcas.tcas.Annotation;
 import java.util.Comparator;
 
 /**
- * Compares first by begin, then by end if the begins are equal.
+ * Compares Annotation Spans first by begin, then by end if the begins are equal.
  *
  * @author SPF , chip-nlp
  * @version %I%
