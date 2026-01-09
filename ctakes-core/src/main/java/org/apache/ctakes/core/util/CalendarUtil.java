@@ -20,6 +20,7 @@ import static org.apache.ctakes.typesystem.type.constants.CONST.TIME_CLASS_DATE;
 
 
 /**
+ * Can create TimeMention, Date, Time, and Calendar classes based upon text, annotations, etc.
  * @author SPF , chip-nlp
  * @version %I%
  * @since 1/8/2019
@@ -204,6 +205,10 @@ final public class CalendarUtil {
       return time;
    }
 
+   /**
+    * @param annotation -
+    * @return Calendar parsed from annotation, or {@link #NULL_CALENDAR}.
+    */
    static public Calendar getCalendar( final Annotation annotation ) {
       if ( annotation instanceof TimeMention ) {
          return getTimeMentionCalendar( (TimeMention)annotation );
