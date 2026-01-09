@@ -43,6 +43,9 @@ final public class Pair<T> {
       return _value2;
    }
 
+   /**
+    * @return the first value as a String followed by a comma followed by the second value as a String.
+    */
    @Override
    public String toString() {
       return _value1.toString() + "," + _value2.toString();
