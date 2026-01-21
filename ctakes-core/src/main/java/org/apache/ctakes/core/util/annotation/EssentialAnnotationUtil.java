@@ -22,6 +22,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 /**
+ * Utility to fetch integrated, coordinated collections of entities, events, and coreferences in a CAS.
  * @author SPF , chip-nlp
  * @version %I%
  * @since 12/29/2017
@@ -40,13 +41,22 @@ final public class EssentialAnnotationUtil {
                 || TimeMention.class.isInstance( a )
                 || EntityMention.class.isInstance( a );
 
+   /**
+    * From a collection of annotations, get the events, times, and entities.
+    * @param annotations all IdentifiedAnnotations, regardless of type.
+    * @return Collection of EventMentions, TimeMentions, and EntityMentions.
+    */
    static private Collection<IdentifiedAnnotation> getEssentialAnnotations(
          final Collection<IdentifiedAnnotation> annotations ) {
       return annotations.stream()
                         .filter( ESSENTIALS )
-                        .collect( Collectors.toList() );
+                        .toList();
    }
 
+   /**
+    * From multiple collections of annotations, remove everything that isn't an event, time, or entity.
+    * @param annotationCollections all IdentifiedAnnotations, regardless of type.
+    */
    static private void cullToEssentialAnnotations(
          final Collection<Collection<IdentifiedAnnotation>> annotationCollections ) {
       final Collection<IdentifiedAnnotation> keepers = new HashSet<>();
@@ -59,27 +69,52 @@ final public class EssentialAnnotationUtil {
       }
    }
 
+   /**
+    * From a collection of annotations, get everything that is not in the collection of essential annotations.
+    * @param allAnnotations all IdentifiedAnnotations, regardless of type.
+    * @param unwantedAnnotations unwanted annotations.
+    * @return Collection of EventMentions, TimeMentions, and EntityMentions.
+    */
    static private Collection<IdentifiedAnnotation> getNonEssentialAnnotations(
          final Collection<IdentifiedAnnotation> allAnnotations,
-         final Collection<IdentifiedAnnotation> essentialAnnotations ) {
+         final Collection<IdentifiedAnnotation> unwantedAnnotations ) {
       return allAnnotations.stream()
-                           .filter( a -> !essentialAnnotations.contains( a ) )
+                           .filter( a -> !unwantedAnnotations.contains( a ) )
                            .filter( a -> !Markable.class.isInstance( a ) )
-                           .collect( Collectors.toList() );
+                           .toList();
    }
 
-
+   /**
+    * To allow fulfilled relations and coreference chains, we need essential annotations and related non-essential annotations.
+    * @param jCas ye olde ...
+    * @param corefIndexed map of identified annotations to coreference chains containing them.
+    * @return all events, times, and entities, plus annotations that are required for coreferences and relations.
+    */
    static public Collection<IdentifiedAnnotation> getRequiredAnnotations( final JCas jCas,
                                                                           final Map<IdentifiedAnnotation, Collection<Integer>> corefIndexed ) {
       return getRequiredAnnotations( jCas, JCasUtil.select( jCas, IdentifiedAnnotation.class ), corefIndexed );
    }
 
+   /**
+    * To allow fulfilled relations and coreference chains, we need essential annotations and related non-essential annotations.
+    * @param jCas ye olds ...
+    * @param allAnnotations all IdentifiedAnnotations, regardless of type.
+    * @param corefIndexed map of identified annotations to coreference chains containing them.
+    * @return all events, times, and entities, plus annotations that are required for coreferences and relations.
+    */
    static public Collection<IdentifiedAnnotation> getRequiredAnnotations( final JCas jCas,
                                                                           final Collection<IdentifiedAnnotation> allAnnotations,
                                                                           final Map<IdentifiedAnnotation, Collection<Integer>> corefIndexed ) {
       return getRequiredAnnotations( allAnnotations, corefIndexed, JCasUtil.select( jCas, BinaryTextRelation.class ) );
    }
 
+   /**
+    * To allow fulfilled relations and coreference chains, we need essential annotations and related non-essential annotations.
+    * @param allAnnotations all IdentifiedAnnotations, regardless of type.
+    * @param corefIndexed map of identified annotations to coreference chains containing them.
+    * @param relations relations between annotations.
+    * @return all events, times, and entities, plus annotations that are required for coreferences and relations.
+    */
    static public Collection<IdentifiedAnnotation> getRequiredAnnotations(
          final Collection<IdentifiedAnnotation> allAnnotations,
          final Map<IdentifiedAnnotation, Collection<Integer>> corefIndexed,
@@ -94,7 +129,7 @@ final public class EssentialAnnotationUtil {
 
    /**
     * @param jCas ye olde ...
-    * @return a map of markables to indexed chain numbers
+    * @return a map of coreferent annotations to indexed chain numbers.
     */
    static public Map<IdentifiedAnnotation, Collection<Integer>> createMarkableCorefs( final JCas jCas ) {
       final Collection<CollectionTextRelation> corefs = JCasUtil.select( jCas, CollectionTextRelation.class );
@@ -103,8 +138,9 @@ final public class EssentialAnnotationUtil {
    }
 
    /**
-    * @param corefs coreference chains
-    * @return a map of markables to indexed chain numbers
+    * @param corefs coreference chains.
+    * @param markableAnnotations annotations that should be allowed in coreferences.
+    * @return a map of coreferent annotations to indexed chain numbers.
     */
    static public Map<IdentifiedAnnotation, Collection<Integer>> createMarkableCorefs(
          final Collection<CollectionTextRelation> corefs,
@@ -129,8 +165,11 @@ final public class EssentialAnnotationUtil {
    }
 
    /**
-    * @param corefs coreference chains
-    * @return a map of markables to indexed chain numbers
+    * Sometimes there will be two overlapping annotations, 1 affirmed 1 negated.
+    * Use this for matching assertions in coreference chains.
+    * @param corefs coreference chains.
+    * @param markableAnnotations annotations that should be allowed in coreferences.
+    * @return a map of annotations to indexed chain numbers, separated by assertion status.
     */
    static public Map<IdentifiedAnnotation, Collection<Integer>> createMarkableAssertedCorefs(
          final Collection<CollectionTextRelation> corefs,
@@ -138,7 +177,6 @@ final public class EssentialAnnotationUtil {
       if ( corefs == null || corefs.isEmpty() ) {
          return Collections.emptyMap();
       }
-
       final List<List<IdentifiedAnnotation>> chains = new ArrayList<>();
       for ( CollectionTextRelation coref : corefs ) {
          final Map<String, List<IdentifiedAnnotation>> assertionMap = new HashMap<>();
@@ -156,7 +194,7 @@ final public class EssentialAnnotationUtil {
             }
          }
       }
-      chains.sort( ( l1, l2 ) -> l1.get( 0 ).getBegin() - l2.get( 0 ).getBegin() );
+      chains.sort( Comparator.comparingInt( l -> l.get( 0 ).getBegin() ) );
 
       final Map<IdentifiedAnnotation, Collection<Integer>> corefMarkables = new HashMap<>();
       int index = 1;
@@ -172,9 +210,8 @@ final public class EssentialAnnotationUtil {
    /**
     * Sometimes there will be two overlapping annotations, 1 affirmed 1 negated.
     * Use this for matching assertions in coreference chains.
-    *
     * @param jCas ye olde ...
-    * @return a map of markables to indexed chain numbers
+    * @return a map of annotations to indexed chain numbers, separated by assertion status.
     */
    static public Map<IdentifiedAnnotation, Collection<Integer>> createAllMarkableAssertedCorefs( final JCas jCas ) {
       final Collection<CollectionTextRelation> corefs = JCasUtil.select( jCas, CollectionTextRelation.class );
@@ -184,8 +221,11 @@ final public class EssentialAnnotationUtil {
    }
 
    /**
-    * @param corefs coreference chains
-    * @return a map of markables to indexed chain numbers
+    * Sometimes there will be two overlapping annotations, 1 affirmed 1 negated.
+    * Use this for matching assertions in coreference chains.
+    * @param corefs coreference chains.
+    * @param markableAnnotations annotations that should be allowed in coreferences.
+    * @return a map of annotations to indexed chain numbers, separated by assertion status.
     */
    static public Map<IdentifiedAnnotation, Collection<Integer>> createAllMarkableAssertedCorefs(
          final Collection<CollectionTextRelation> corefs,
@@ -193,7 +233,6 @@ final public class EssentialAnnotationUtil {
       if ( corefs == null || corefs.isEmpty() ) {
          return Collections.emptyMap();
       }
-
       final List<List<IdentifiedAnnotation>> chains = new ArrayList<>();
       for ( CollectionTextRelation coref : corefs ) {
          final Map<String, List<IdentifiedAnnotation>> assertionMap = new HashMap<>();
@@ -212,8 +251,7 @@ final public class EssentialAnnotationUtil {
             }
          }
       }
-      chains.sort( ( l1, l2 ) -> l1.get( 0 ).getBegin() - l2.get( 0 ).getBegin() );
-
+      chains.sort( Comparator.comparingInt( l -> l.get( 0 ).getBegin() ) );
       final Map<IdentifiedAnnotation, Collection<Integer>> corefMarkables = new HashMap<>();
       int index = 1;
       for ( Collection<IdentifiedAnnotation> chain : chains ) {
@@ -225,7 +263,10 @@ final public class EssentialAnnotationUtil {
       return corefMarkables;
    }
 
-
+   /**
+    * @param annotation -
+    * @return string of concatenated assertion values: AFFIRMED, NEGATED, UNCERTAIN, GENERIC, CONDITIONAL.
+    */
    static private String getAssertion( final IdentifiedAnnotation annotation ) {
       final StringBuilder sb = new StringBuilder();
       if ( annotation.getPolarity() == CONST.NE_POLARITY_NEGATION_PRESENT ) {
@@ -246,11 +287,10 @@ final public class EssentialAnnotationUtil {
    }
 
    /**
-    * This is a bit messy, but necessary.
-    *
-    * @param jCas   -
-    * @param corefs -
-    * @return map of markable to identified annotation
+    * We can create a map of "best fit" single identified annotations for each coreference markable.
+    * @param jCas ye olde ...
+    * @param corefs collection of coref relations.
+    * @return map of each coref markable to an identified annotation.
     */
    static private Map<Markable, IdentifiedAnnotation> mapMarkableAnnotations(
          final JCas jCas, final Collection<CollectionTextRelation> corefs ) {
@@ -313,11 +353,10 @@ final public class EssentialAnnotationUtil {
    }
 
    /**
-    * This is a bit messy, but necessary.
-    *
-    * @param jCas   -
-    * @param corefs -
-    * @return map of markable to identified annotation
+    * We can create a map of multiple overlapping identified annotations for each coreference markable.
+    * @param jCas ye olde ...
+    * @param corefs collection of coref relations.
+    * @return map of each coref markable to an identified annotation.
     */
    static public Map<Markable, Collection<IdentifiedAnnotation>> mapAllMarkableAnnotations(
          final JCas jCas, final Collection<CollectionTextRelation> corefs ) {
@@ -405,6 +444,8 @@ final public class EssentialAnnotationUtil {
 
    /**
     * Finds the head node out of a few ConllDependencyNodes. Biased toward nouns.
+    * @param nodes dependency nodes.
+    * @return best head node.
     **/
    static public ConllDependencyNode getNominalHeadNode( final List<ConllDependencyNode> nodes ) {
       final ArrayList<ConllDependencyNode> anodes = new ArrayList<>( nodes );
@@ -477,7 +518,10 @@ final public class EssentialAnnotationUtil {
       }
    }
 
-
+   /**
+    * @param relations -
+    * @return all annotations in relations.
+    */
    static public Collection<IdentifiedAnnotation> getRelationAnnotations(
          final Collection<BinaryTextRelation> relations ) {
       final Collection<IdentifiedAnnotation> relationAnnotations = new HashSet<>();
@@ -489,7 +533,7 @@ final public class EssentialAnnotationUtil {
          if ( source instanceof IdentifiedAnnotation ) {
             sourceIA = (IdentifiedAnnotation)source;
          } else {
-            LOGGER.error( "Relation source is not an IdentifiedAnnotation " + source.getCoveredText() );
+            LOGGER.error( "Relation source is not an IdentifiedAnnotation {}", source.getCoveredText() );
             continue;
          }
          final RelationArgument arg2 = relation.getArg2();
@@ -497,7 +541,7 @@ final public class EssentialAnnotationUtil {
          if ( target instanceof IdentifiedAnnotation ) {
             targetIA = (IdentifiedAnnotation)target;
          } else {
-            LOGGER.error( "Relation target is not an IdentifiedAnnotation " + source.getCoveredText() );
+            LOGGER.error( "Relation target is not an IdentifiedAnnotation {}", source.getCoveredText() );
             continue;
          }
          relationAnnotations.add( sourceIA );
@@ -507,7 +551,10 @@ final public class EssentialAnnotationUtil {
    }
 
 
-   // The assumption is that any given span can only have one exact EventMention.
+   /**
+    * @param annotations all IdentifiedAnnotations, regardless of type.
+    * @return collection of events in the annotations.
+    */
    static private Collection<IdentifiedAnnotation> getEventMentions(
          final Collection<IdentifiedAnnotation> annotations ) {
       return annotations.stream()
@@ -516,8 +563,8 @@ final public class EssentialAnnotationUtil {
    }
 
    /**
-    * @param annotationMap -
-    * @return map of umls annotations to events
+    * @param annotationMap map of TextSpans for IdentifiedAnnotations with those text spans.
+    * @return map of annotations to events.
     */
    static private Map<IdentifiedAnnotation, Collection<IdentifiedAnnotation>> getAnnotationEvents(
          final Map<TextSpan, Collection<IdentifiedAnnotation>> annotationMap ) {
@@ -575,12 +622,17 @@ final public class EssentialAnnotationUtil {
                                                            .filter( e -> e.getValue()
                                                                           .isEmpty() )
                                                            .map( Map.Entry::getKey )
-                                                           .collect( Collectors.toList() );
+                                                           .toList();
       annotationMap.keySet()
                    .removeAll( emptySpans );
       return annotationEvents;
    }
 
+   /**
+    * There may be multiple sections with the same preferred name.  We want unique names for each section.
+    * @param section -
+    * @return Section Name + section ID or section ID or section Name or "Unknown Section".
+    */
    static private String createSectionName( final Segment section ) {
       final String sectionPref = section.getPreferredText();
       final String sectionId = section.getId();

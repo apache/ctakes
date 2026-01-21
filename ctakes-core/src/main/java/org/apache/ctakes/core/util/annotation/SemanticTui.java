@@ -13,6 +13,147 @@ import java.util.stream.Collectors;
 
 import static org.apache.ctakes.core.util.annotation.SemanticGroup.*;
 
+/**
+ * The major UMLS-related semantic types as decided at the inception of cTAKES.
+ * Each semantic type has a single UMLS TUI.  Semantic types are collected in Semantic Groups.
+ * T116, "Amino Acid, Peptide, or Protein", DRUG
+ * T020, "Acquired Abnormality", DISORDER
+ * T052, "Activity", EVENT
+ * T100, "Age Group", SUBJECT
+ * T003, "Alga", ENTITY
+ * T087, "Amino Acid Sequence", DRUG
+ * T011, "Amphibian", ENTITY
+ * T190, "Anatomical Abnormality", DISORDER
+ * T008, "Animal", ENTITY
+ * T017, "Anatomical Structure", ANATOMY
+ * T195, "Antibiotic", DRUG
+ * T194, "Archaeon", ENTITY
+ * T123, "Biologically Active Substance", DRUG
+ * T007, "Bacterium", ENTITY
+ * T031, "Body Substance", FINDING
+ * T022, "Body System", ANATOMY
+ * T053, "Behavior", FINDING
+ * T038, "Biologic Function", PHENOMENON
+ * T012, "Bird", ENTITY
+ * T029, "Body Location or Region", ANATOMY
+ * T091, "Biomedical Occupation or Discipline", TITLE
+ * T122, "Biomedical or Dental Material", DRUG
+ * T023, "Body Part, Organ, or Organ Component", ANATOMY
+ * T030, "Body Space or Junction", ANATOMY
+ * T118, "Carbohydrate", DRUG
+ * T026, "Cell Component", ANATOMY
+ * T043, "Cell Function", FINDING
+ * T025, "Cell", ANATOMY
+ * T019, "Congenital Abnormality", DISORDER
+ * T103, "Chemical", DRUG
+ * T120, "Chemical Viewed Functionally", DRUG
+ * T104, "Chemical Viewed Structurally", DRUG
+ * T185, "Classification", FINDING
+ * T201, "Clinical Attribute", CLINICAL_ATTRIBUTE
+ * T200, "Clinical Drug", DRUG
+ * T077, "Conceptual Entity", FINDING
+ * T049, "Cell or Molecular Dysfunction", DISORDER
+ * T088, "Carbohydrate Sequence", DRUG
+ * T060, "Diagnostic Procedure", PROCEDURE
+ * T056, "Daily or Recreational Activity", FINDING
+ * T047, "Disease or Syndrome", DISORDER
+ * T203, "Drug Delivery Device", DEVICE
+ * T065, "Educational Activity", PROCEDURE
+ * T069, "Environmental Effect of Humans", PHENOMENON
+ * T111, "Eicosanoid", ENTITY
+ * T196, "Element, Ion, or Isotope", DRUG
+ * T050, "Experimental Model of Disease", DISORDER
+ * T018, "Embryonic Structure", ANATOMY
+ * T071, "Entity", ENTITY
+ * T126, "Enzyme", DRUG
+ * T051, "Event", EVENT
+ * T099, "Family Group", SUBJECT
+ * T021, "Fully Formed Anatomical Structure", ANATOMY
+ * T013, "Fish", ENTITY
+ * T033, "Finding", FINDING
+ * T004, "Fungus", ENTITY
+ * T168, "Food", DRUG
+ * T169, "Functional Concept", FINDING
+ * T045, "Genetic Function", FINDING
+ * T083, "Geographic Area", ENTITY
+ * T028, "Gene or Genome", FINDING
+ * T064, "Governmental or Regulatory Activity", EVENT
+ * T102, "Group Attribute", SUBJECT
+ * T096, "Group", SUBJECT
+ * T068, "Human-caused Phenomenon or Process", PHENOMENON
+ * T093, "Health Care Related Organization", ENTITY
+ * T058, "Health Care Activity", PROCEDURE
+ * T131, "Hazardous or Poisonous Substance", DRUG
+ * T125, "Hormone", DRUG
+ * T016, "Human", SUBJECT
+ * T078, "Idea or Concept", FINDING
+ * T129, "Immunologic Factor", DRUG
+ * T055, "Individual Behavior", FINDING
+ * T197, "Inorganic Chemical", DRUG
+ * T037, "Injury or Poisoning", DISORDER
+ * T170, "Intellectual Product", FINDING
+ * T009, "Invertebrate", ENTITY
+ * T130, "Indicator, Reagent, or Diagnostic Aid", DRUG
+ * T171, "Language", ENTITY
+ * T059, "Laboratory Procedure", PROCEDURE
+ * T034, "Laboratory or Test Result", LAB
+ * T119, "Lipid", DRUG
+ * T015, "Mammal", ENTITY
+ * T063, "Molecular Biology Research Technique", PROCEDURE
+ * T066, "Machine Activity", PROCEDURE
+ * T074, "Medical Device", DEVICE
+ * T041, "Mental Process", FINDING
+ * T073, "Manufactured Object", DEVICE
+ * T048, "Mental or Behavioral Dysfunction", DISORDER
+ * T044, "Molecular Function", FINDING
+ * T085, "Molecular Sequence", FINDING
+ * T191, "Neoplastic Process", DISORDER
+ * T114, "Nucleic Acid, Nucleoside, or Nucleotide", DRUG
+ * T070, "Natural Phenomenon or Process", PHENOMENON
+ * T124, "Neuroreactive Substance or Biogenic Amine", DRUG
+ * T086, "Nucleotide Sequence", FINDING
+ * T057, "Occupational Activity", EVENT
+ * T090, "Occupation or Discipline", SUBJECT
+ * T115, "Organophosphorous Compound", DRUG
+ * T109, "Organic Chemical", DRUG
+ * T032, "Organism Attribute", SUBJECT
+ * T040, "Organism Function", FINDING
+ * T001, "Organism", ENTITY
+ * T092, "Organization", ENTITY
+ * T042, "Organ or * Tissue Function", FINDING
+ * T046, "Pathologic Function", FINDING
+ * T072, "Physical Object", ENTITY
+ * T067, "Phenomenon or Process", PHENOMENON
+ * T039, "Physiologic Function", FINDING
+ * T121, "Pharmacologic Substance", DRUG
+ * T002, "Plant", ENTITY
+ * T101, "Patient or Disabled Group", SUBJECT
+ * T098, "Population Group", SUBJECT
+ * T097, "Professional or Occupational Group", SUBJECT
+ * T094, "Professional Society", ENTITY
+ * T080, "Qualitative Concept", MODIFIER
+ * T081, "Quantitative Concept", LAB_MODIFIER
+ * T192, "Receptor", FINDING
+ * T014, "Reptile", ENTITY
+ * T062, "Research Activity", PROCEDURE
+ * T075, "Research Device", DEVICE
+ * T006, "Rickettsia or Chlamydia", DISORDER
+ * T089, "Regulation or Law", ENTITY
+ * T167, "Substance", DRUG
+ * T095, "Self-help or Relief Organization", ENTITY
+ * T054, "Social Behavior", FINDING
+ * T184, "Sign or Symptom", FINDING
+ * T082, "Spatial Concept", MODIFIER
+ * T110, "Steroid", DRUG
+ * T024, "Tissue", ANATOMY
+ * T079, "Temporal Concept", TIME
+ * T061, "Therapeutic or Preventive Procedure", PROCEDURE
+ * T005, "Virus", DISORDER
+ * T127, "Vitamin", DRUG
+ * T010, "Vertebrate", ENTITY
+ * T204, "Eukaryote", ENTITY
+ * UNKNOWN, "Unknown", SemanticGroup.UNKNOWN
+ */
 public enum SemanticTui {
    T116( 116, "Amino Acid, Peptide, or Protein", DRUG ),
    T020( 20, "Acquired Abnormality", DISORDER ),
@@ -165,10 +306,16 @@ public enum SemanticTui {
       _group = group;
    }
 
+   /**
+    * @return type for UMLS TUI.
+    */
    public int getCode() {
       return _code;
    }
 
+   /**
+    * @return Name for the type.
+    */
    public String getSemanticType() {
       return _name;
    }
@@ -183,30 +330,52 @@ public enum SemanticTui {
       _group = group;
    }
 
+   /**
+    * @return semantic group for this type.
+    */
    public SemanticGroup getGroup() {
       return _group;
    }
 
+   /**
+    * @return internal cTAKES CONST code for group. These were old constants that shouldn't be used.
+    */
    public int getGroupCode() {
       return _group.getCode();
    }
 
+   /**
+    * @return Short name for the group for this type.  e.g. "Disease" or "Drug".
+    */
    public String getGroupName() {
       return _group.getName();
    }
 
+   /**
+    * @return the cTAKES java / type system class that represents the group for this type.
+    */
    public Class<? extends IdentifiedAnnotation> getCtakesClass() {
       return _group.getCtakesClass();
    }
 
+   /**
+    * @return A function that can create the java / type system class that represents the group for this type.
+    */
    public Function<JCas, ? extends IdentifiedAnnotation> getCreator() {
       return _group.getCreator();
    }
 
+   /**
+    * @return name of this type to lowercase and without commas.
+    */
    private String getMatchType() {
       return getMatchable( _name );
    }
 
+   /**
+    * @param semanticType name of a semantic type.
+    * @return Type for the given type name.
+    */
    static public SemanticTui getTui( final String semanticType ) {
       // Attempt to match name ( e.g. "Cell" ).
       final String toMatch = getMatchable( semanticType );
@@ -220,6 +389,10 @@ public enum SemanticTui {
       return getTuiFromCode( toMatch );
    }
 
+   /**
+    * @param code UMLS TUI code of a semantic type, not including "T" prefix.
+    * @return Type for the given TUI.
+    */
    static public SemanticTui getTui( final int code ) {
       for ( SemanticTui tui : SemanticTui.values() ) {
          if ( tui.getCode() == code ) {
@@ -229,6 +402,10 @@ public enum SemanticTui {
       return UNKNOWN;
    }
 
+   /**
+    * @param tuiCode UMLS TUI code of a semantic type, including "T" prefix.
+    * @return Type for the given TUI.
+    */
    static public SemanticTui getTuiFromCode( final String tuiCode ) {
       for ( SemanticTui tui : SemanticTui.values() ) {
          if ( tui.name()
@@ -240,6 +417,10 @@ public enum SemanticTui {
 
    }
 
+   /**
+    * @param annotation Some annotation.
+    * @return The types appropriate for the annotation. Done using known TUIs for the annotation.
+    */
    static public Collection<SemanticTui> getTuis( final IdentifiedAnnotation annotation ) {
       final Collection<UmlsConcept> umlsConcepts = OntologyConceptUtil.getUmlsConcepts( annotation );
       if ( umlsConcepts != null && !umlsConcepts.isEmpty() ) {
@@ -257,6 +438,10 @@ public enum SemanticTui {
       return Collections.singletonList( UNKNOWN );
    }
 
+   /**
+    * @param umlsConcept Some UMLS concept of a real-world thing.
+    * @return The type appropriate for the concept.
+    */
    static public SemanticTui getTui( final UmlsConcept umlsConcept ) {
       return getTuiFromCode( umlsConcept.getTui() );
    }
@@ -283,6 +468,10 @@ public enum SemanticTui {
       getTui( type ).setGroup( SemanticGroup.getGroup( group ) );
    }
 
+   /**
+    * @param text -
+    * @return text to lowercase and without commas.
+    */
    static private String getMatchable( final String text ) {
       return text.toLowerCase()
                  .replaceAll( ",", "" );

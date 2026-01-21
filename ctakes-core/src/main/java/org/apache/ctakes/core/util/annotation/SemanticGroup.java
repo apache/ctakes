@@ -12,6 +12,11 @@ import java.util.stream.Collectors;
 
 import static org.apache.ctakes.typesystem.type.constants.CONST.*;
 
+/**
+ * The major UMLS-related semantic groups as decided at the inception of cTAKES.
+ * The major 5 groups are: Medication, Disease/Disorder, Sign/Symptom, Procedure, Anatomical Site.
+ * Minor groups are: Clinical Attribute, Device, Lab, Phenomenon, Subject, Person Title, Event, Entity, Time, Modifier, Lab Modifier, and Unknown.
+ */
 public enum SemanticGroup {
    DRUG( NE_TYPE_ID_DRUG, "Drug", "Medication", MedicationMention.class, MedicationMention::new ),
    DISORDER( NE_TYPE_ID_DISORDER, "Disorder", "Disease/Disorder", DiseaseDisorderMention.class, DiseaseDisorderMention::new ),
@@ -48,26 +53,45 @@ public enum SemanticGroup {
       _creator = creator;
    }
 
+   /**
+    * @return internal cTAKES CONST code for group. These were old constants that shouldn't be used.
+    */
    public int getCode() {
       return _code;
    }
 
+   /**
+    * @return Short name for the group.  e.g. "Disease" or "Drug".
+    */
    public String getName() {
       return _name;
    }
 
+   /**
+    * @return Long name for the group.  e.g. "Disease/Disorder" or "Medication".
+    */
    public String getLongName() {
       return _longName;
    }
 
+   /**
+    * @return the cTAKES java / type system class that represents the group.
+    */
    public Class<? extends IdentifiedAnnotation> getCtakesClass() {
       return _clazz;
    }
 
+   /**
+    * @return A function that can create the java / type system class that represents the group.
+    */
    public Function<JCas, ? extends IdentifiedAnnotation> getCreator() {
       return _creator;
    }
 
+   /**
+    * @param code internal cTAKES CONST code for a group. These were old constants that shouldn't be used.
+    * @return the group with the given code.
+    */
    static public SemanticGroup getGroup( final int code ) {
       return Arrays.stream( values() )
             .filter( g -> g._code == code )
@@ -75,6 +99,10 @@ public enum SemanticGroup {
             .orElse( UNKNOWN );
    }
 
+   /**
+    * @param name -short- name for a group.
+    * @return the group with the given -short- name.
+    */
    static public SemanticGroup getGroup( final String name ) {
       return Arrays.stream( values() )
             .filter( g -> g._name.equals( name ) )
@@ -82,6 +110,10 @@ public enum SemanticGroup {
             .orElse( UNKNOWN );
    }
 
+   /**
+    * @param name old name for a group. These were old constants that shouldn't be used.
+    * @return the group with the given -short- name.
+    */
    static public SemanticGroup getGroupFromOld( final String name ) {
       return switch ( name ) {
          case "Disease_Disorder" -> DISORDER;
@@ -92,6 +124,10 @@ public enum SemanticGroup {
       };
    }
 
+   /**
+    * @param annotation Some annotation.
+    * @return The groups appropriate for the annotation. Done using known TUIs for the annotation.
+    */
    static public Collection<SemanticGroup> getGroups( final IdentifiedAnnotation annotation ) {
       final Collection<SemanticGroup> groups
             = SemanticTui.getTuis( annotation )
@@ -107,6 +143,9 @@ public enum SemanticGroup {
       return allGroups;
    }
 
+   /**
+    * Compares two groups for the most descriptive/accurate.  e.g. Procedure is before Phenomenon.
+    */
    static private final class BestGrouper implements Comparator<SemanticGroup> {
       static private final BestGrouper INSTANCE = new BestGrouper();
 
@@ -121,6 +160,10 @@ public enum SemanticGroup {
       }
    }
 
+   /**
+    * @param annotation Some annotation.
+    * @return The most appropriate group for the annotation. Done using known TUIs for the annotation.
+    */
    static public SemanticGroup getBestGroup( final IdentifiedAnnotation annotation ) {
       final SemanticGroup typeIdGroup = getBestTypeIdGroup( annotation );
       if ( typeIdGroup != UNKNOWN ) {
@@ -129,12 +172,22 @@ public enum SemanticGroup {
       return getBestGroup( getGroups( annotation ) );
    }
 
+   /**
+    * @param groups collection of groups.
+    * @return The most appropriate group for the annotation.
+    */
    static public SemanticGroup getBestGroup( final Collection<SemanticGroup> groups ) {
       return groups.stream()
                    .min( BestGrouper.INSTANCE )
                    .orElse( UNKNOWN );
    }
 
+   /**
+    * Gets the best group based upon internal cTAKES type code for a group.
+    * These were old constants that shouldn't be used.  However, an annotation may have a type id but no TUIs.
+    * @param annotation -
+    * @return the group based upon a type id set in the annotation.
+    */
    static private SemanticGroup getBestTypeIdGroup( final IdentifiedAnnotation annotation ) {
       final int typeId = annotation.getTypeID();
       return Arrays.stream( values() )

@@ -7,10 +7,16 @@ package org.apache.ctakes.core.util.regex;
 final class ThreadString implements CharSequence {
    private final CharSequence _delegate;
 
+   /**
+    * @param delegate a String to wrap for thread safety.
+    */
    ThreadString( final CharSequence delegate ) {
       _delegate = delegate;
    }
 
+   /**
+    * {@inheritDoc}
+    */
    @Override
    public char charAt( final int index ) {
       if ( Thread.currentThread().isInterrupted() ) {
@@ -19,11 +25,17 @@ final class ThreadString implements CharSequence {
       return _delegate.charAt( index );
    }
 
+   /**
+    * {@inheritDoc}
+    */
    @Override
    public int length() {
       return _delegate.length();
    }
 
+   /**
+    * {@inheritDoc}
+    */
    @Override
    public CharSequence subSequence( final int start, final int end ) {
       if ( Thread.currentThread().isInterrupted() ) {
@@ -32,6 +44,9 @@ final class ThreadString implements CharSequence {
       return new ThreadString( _delegate.subSequence( start, end ) );
    }
 
+   /**
+    * {@inheritDoc}
+    */
    @Override
    public String toString() {
       return _delegate.toString();
