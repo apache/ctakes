@@ -20,20 +20,43 @@ package org.apache.ctakes.ytex.kernel.metric;
 
 import java.util.Map;
 
+/**
+ * Wu-Palmer metric matches results as found in the CPAN UMLS-Similarity::wup module
+ * 
+ * @author vijay
+ * @author painter
+ * 
+ */
 public class WuPalmerMetric extends BaseSimilarityMetric {
 	@Override
 	public double similarity(String concept1, String concept2,
 			Map<String, Double> conceptFilter, SimilarityInfo simInfo) {
 		initLCSes(concept1, concept2, simInfo);
+		
 		if (simInfo.getLcses().size() > 0) {
 			int lcsDepth = 0;
+			
+			// Test for the LCS with the greatest depth
+			// to find the lowest common synonym
 			for (String lcs : simInfo.getLcses()) {
-				int d = simSvc.getDepth(lcs);
+				
+				// The depth of the LCS is off by 1
+				int d = simSvc.getDepth(lcs) + 1;
+				// Find the max depth of the LCS
 				if (d > lcsDepth)
 					lcsDepth = d;
 			}
-			double lcsDepth2 = (double) (lcsDepth * 2);
-			return lcsDepth2 / (lcsDepth2 + (double) (simInfo.getLcsDist()-1));
+			
+			//
+			// Compute Wu-Palmer Similarity:
+			//
+			double lcsDist = simInfo.getLcsDist().doubleValue();
+
+            // Adjust depth by 1 due to fake root node
+			double c1Depth = simSvc.getDepth(concept1) + 1;
+			double c2Depth = simSvc.getDepth(concept2) + 1;
+			double score = ( 2.0 * (lcsDepth) / ( c1Depth + c2Depth ) );
+			return score;
 		}
 		return 0d;
 	}
