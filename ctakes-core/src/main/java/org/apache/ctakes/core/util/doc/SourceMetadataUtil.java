@@ -1,5 +1,8 @@
 package org.apache.ctakes.core.util.doc;
 
+import org.apache.ctakes.core.util.CalendarUtil;
+import org.apache.ctakes.typesystem.type.refsem.Date;
+import org.apache.ctakes.typesystem.type.refsem.Time;
 import org.apache.ctakes.typesystem.type.structured.Metadata;
 import org.apache.ctakes.typesystem.type.structured.SourceData;
 import org.slf4j.Logger;
@@ -10,6 +13,7 @@ import org.apache.uima.resource.ResourceProcessException;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 
 /**
@@ -177,5 +181,88 @@ final public class SourceMetadataUtil {
       final String sourceDate = sourcedata.getSourceOriginalDate();
       return Timestamp.valueOf( sourceDate );
    }
+
+   /**
+    * Get the ctakes type Date representation of the document creation date as stored by "SourceCreationDate".
+    * If that does not exist then get one as stored by "SourceOriginalDate", and if that doesn't exist "SourceRevisionDate".
+    * If those two do not exist or cannot be normalized, use the current date.
+    * @param jCas -
+    * @return A normalized Date representing the creation date of the document. The current date if one did not exist.
+    */
+   static public Date getDocDate( final JCas jCas ) {
+      final SourceData sourceData = getOrCreateSourceData( jCas );
+      final Date docDate = sourceData.getSourceCreationDate();
+      if ( docDate != null ) {
+         return docDate;
+      }
+      final String startDate = sourceData.getSourceOriginalDate();
+      if ( startDate != null && !startDate.isBlank() ) {
+         final Calendar calendar = CalendarUtil.getCalendar( startDate );
+         if ( !CalendarUtil.NULL_CALENDAR.equals( calendar ) ) {
+            return setDocCreationDate( jCas, calendar );
+         }
+      }
+      final String revisionDate = sourceData.getSourceRevisionDate();
+      if ( revisionDate != null && !revisionDate.isBlank() ) {
+         final Calendar calendar = CalendarUtil.getCalendar( revisionDate );
+         if ( !CalendarUtil.NULL_CALENDAR.equals( calendar ) ) {
+            return setDocCreationDate( jCas, calendar );
+         }
+      }
+      return setDocCreationDate( jCas, Calendar.getInstance() );
+   }
+
+   /**
+    * Get the ctakes type Time representation of the document creation time as stored by "SourceCreationTime".
+    * If that does not exist then get one as stored by "SourceOriginalDate", and if that doesn't exist "SourceRevisionDate".
+    * If those two do not exist or cannot be normalized, use the current time.
+    * @param jCas -
+    * @return A normalized Date representing the creation date of the document. The current date if one did not exist.
+    */
+   static public Time getDocTime( final JCas jCas ) {
+      final SourceData sourceData = getOrCreateSourceData( jCas );
+      final Time docTime = sourceData.getSourceCreationTime();
+      if ( docTime != null ) {
+         return docTime;
+      }
+      final String startDate = sourceData.getSourceOriginalDate();
+      if ( startDate != null && !startDate.isBlank() ) {
+         final Calendar calendar = CalendarUtil.getCalendar( startDate );
+         if ( !CalendarUtil.NULL_CALENDAR.equals( calendar ) ) {
+            setDocCreationDate( jCas, calendar );
+            return sourceData.getSourceCreationTime();
+         }
+      }
+      final String revisionDate = sourceData.getSourceRevisionDate();
+      if ( revisionDate != null && !revisionDate.isBlank() ) {
+         final Calendar calendar = CalendarUtil.getCalendar( revisionDate );
+         if ( !CalendarUtil.NULL_CALENDAR.equals( calendar ) ) {
+            setDocCreationDate( jCas, calendar );
+            return sourceData.getSourceCreationTime();
+         }
+      }
+      setDocCreationDate( jCas, Calendar.getInstance() );
+      return sourceData.getSourceCreationTime();
+   }
+
+
+   /**
+    *
+    * @param jCas -
+    * @param calendar old, simple java object representing a date and time.
+    * @return ctakes type system date made from the given calendar. The current Date if calendar is null.
+    */
+   static public Date setDocCreationDate( final JCas jCas, final Calendar calendar ) {
+      if ( calendar == null || CalendarUtil.NULL_CALENDAR.equals( calendar ) ) {
+         return setDocCreationDate( jCas, Calendar.getInstance() );
+      }
+      final Date date = CalendarUtil.createTypeDate( jCas, calendar );
+      final Time time = CalendarUtil.createTypeTime( jCas, calendar );
+      final SourceData sourceData = getOrCreateSourceData( jCas );
+      sourceData.setSourceCreationDate( date );
+      sourceData.setSourceCreationTime( time );
+      return date;
+   }
+
 
 }

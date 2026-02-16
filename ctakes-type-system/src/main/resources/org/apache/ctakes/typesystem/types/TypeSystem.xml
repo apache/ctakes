@@ -1567,6 +1567,15 @@ This instantiates a manages/treats relation which should be marked as conditiona
           <description/>
           <rangeTypeName>uima.cas.String</rangeTypeName>
         </featureDescription>
+          <!-- Normalized Date and Time -->
+          <featureDescription>
+              <name>sourceCreationDate</name>
+              <rangeTypeName>org.apache.ctakes.typesystem.type.refsem.Date</rangeTypeName>
+          </featureDescription>
+          <featureDescription>
+              <name>sourceCreationTime</name>
+              <rangeTypeName>org.apache.ctakes.typesystem.type.refsem.Time</rangeTypeName>
+          </featureDescription>
         <featureDescription>
           <name>sourceInstitution</name>
           <description/>
