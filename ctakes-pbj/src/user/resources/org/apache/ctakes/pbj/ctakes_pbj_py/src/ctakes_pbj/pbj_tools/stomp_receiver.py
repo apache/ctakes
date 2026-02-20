@@ -120,7 +120,7 @@ class StompReceiver(stomp.ConnectionListener):
                 cas = cassis.load_cas_from_xmi(frame.body, self.get_typesystem())
                 self.pipeline.process(cas)
             else:
-                print(time.ctime(), "Malformed Message:\n", frame.body)
+                logger.error(f"{time.ctime()} Malformed Message: f{frame.body}")
 
     def on_disconnected(self):
         if not self.stop:

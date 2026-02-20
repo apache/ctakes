@@ -271,6 +271,7 @@ Equivalent to cTAKES: edu.mayo.bmi.uima.core.type.SymbolToken</description>
       <supertypeName>org.apache.ctakes.typesystem.type.syntax.BaseToken</supertypeName>
     </typeDescription>
     <typeDescription>
+    <!-- Deprecate. Same as parent type OntologyConcept.  CUI = code.  TUI = code.  Not good anyway, concepts can have >1 TUI.  -->
       <name>org.apache.ctakes.typesystem.type.refsem.UmlsConcept</name>
       <description>Concepts in the Unified Medical Language System (UMLS) Metathesaurus have a concept unique identifier (CUI) and a type unique identifier (TUI, i.e., semantic type) which are curated, normalized codes. For example, "pain" would have a cui=C0030193 and tui=T184.
 Equivalent to cTAKES: edu.mayo.bmi.uima.core.type.UmlsConcept</description>
@@ -1087,6 +1088,36 @@ More qualifying information on how the procedure was done.</description>
       <description>A normalized form for Time annotations.  Inherits from Element, but some fields may be unused.</description>
       <supertypeName>org.apache.ctakes.typesystem.type.refsem.Element</supertypeName>
       <features>
+          <featureDescription>
+              <name>hour</name>
+              <description/>
+              <rangeTypeName>uima.cas.String</rangeTypeName>
+          </featureDescription>
+          <featureDescription>
+              <name>minute</name>
+              <description/>
+              <rangeTypeName>uima.cas.String</rangeTypeName>
+          </featureDescription>
+          <featureDescription>
+              <name>second</name>
+              <description/>
+              <rangeTypeName>uima.cas.String</rangeTypeName>
+          </featureDescription>
+          <featureDescription>
+              <name>hourValue</name>
+              <description/>
+              <rangeTypeName>uima.cas.Integer</rangeTypeName>
+          </featureDescription>
+          <featureDescription>
+              <name>minuteValue</name>
+              <description/>
+              <rangeTypeName>uima.cas.Integer</rangeTypeName>
+          </featureDescription>
+          <featureDescription>
+              <name>secondValue</name>
+              <description/>
+              <rangeTypeName>uima.cas.Integer</rangeTypeName>
+          </featureDescription>
         <featureDescription>
           <name>normalizedForm</name>
           <description/>
@@ -1114,6 +1145,21 @@ More qualifying information on how the procedure was done.</description>
           <description/>
           <rangeTypeName>uima.cas.String</rangeTypeName>
         </featureDescription>
+          <featureDescription>
+              <name>dayValue</name>
+              <description/>
+              <rangeTypeName>uima.cas.Integer</rangeTypeName>
+          </featureDescription>
+          <featureDescription>
+              <name>monthValue</name>
+              <description/>
+              <rangeTypeName>uima.cas.Integer</rangeTypeName>
+          </featureDescription>
+          <featureDescription>
+              <name>yearValue</name>
+              <description/>
+              <rangeTypeName>uima.cas.Integer</rangeTypeName>
+          </featureDescription>
       </features>
     </typeDescription>
     <typeDescription>
@@ -1485,11 +1531,20 @@ This instantiates a manages/treats relation which should be marked as conditiona
           <description/>
           <rangeTypeName>uima.cas.String</rangeTypeName>
         </featureDescription>
-        <featureDescription>
+          <featureDescription>
+              <name>birthDateValue</name>
+              <description/>
+              <rangeTypeName>org.apache.ctakes.typesystem.type.refsem.Date</rangeTypeName>
+          </featureDescription>
+          <featureDescription>
           <name>deathDate</name>
           <description/>
           <rangeTypeName>uima.cas.String</rangeTypeName>
         </featureDescription>
+          <featureDescription>
+              <name>deathDateValue</name>
+              <rangeTypeName>org.apache.ctakes.typesystem.type.refsem.Date</rangeTypeName>
+          </featureDescription>
         <featureDescription>
           <name>gender</name>
           <description/>
@@ -1529,12 +1584,12 @@ This instantiates a manages/treats relation which should be marked as conditiona
       <features>
         <featureDescription>
           <name>noteTypeCode</name>
-          <description/>
+          <description>Pathology: PATH,  Imaging: IMG,  Progress: PROG,  (generic) Clinical: NOTE</description>
           <rangeTypeName>uima.cas.String</rangeTypeName>
         </featureDescription>
         <featureDescription>
           <name>noteSubTypeCode</name>
-          <description/>
+          <description>AUTOPSY vs. BIOPSY,  MRI vs. XRAY,  PREOP vs. POSTOP,  OBGYN vs. ENT,  etc.</description>
           <rangeTypeName>uima.cas.String</rangeTypeName>
         </featureDescription>
         <featureDescription>
@@ -1593,6 +1648,50 @@ This instantiates a manages/treats relation which should be marked as conditiona
         </featureDescription>
       </features>
     </typeDescription>
+      <typeDescription>
+          <name>org.apache.ctakes.typesystem.type.structured.Patient</name>
+          <supertypeName>uima.cas.TOP</supertypeName>
+          <description>Patient information. Patient information intermixed with general metadata is deprecated.</description>
+          <features>
+              <featureDescription>
+                  <name>patientIdentifier</name>
+                  <description>Represents a text identifier for the patient.</description>
+                  <rangeTypeName>uima.cas.String</rangeTypeName>
+              </featureDescription>
+              <featureDescription>
+                  <name>patientNum</name>
+                  <description>patientNum is a simple long. Could be an index in an array or table.</description>
+                  <rangeTypeName>uima.cas.Long</rangeTypeName>
+              </featureDescription>
+              <featureDescription>
+                  <name>demographics</name>
+                  <description/>
+                  <rangeTypeName>org.apache.ctakes.typesystem.type.structured.Demographics</rangeTypeName>
+              </featureDescription>
+              <featureDescription>
+                  <name>documentCount</name>
+                  <rangeTypeName>uima.cas.Integer</rangeTypeName>
+                  <description>The number of documents for the patient in the corpus.</description>
+              </featureDescription>
+          </features>
+      </typeDescription>
+      <typeDescription>
+          <name>org.apache.ctakes.typesystem.type.structured.Corpus</name>
+          <supertypeName>uima.cas.TOP</supertypeName>
+          <description>Information about a corpus containing documents.</description>
+          <features>
+              <featureDescription>
+                  <name>patientCount</name>
+                  <rangeTypeName>uima.cas.Integer</rangeTypeName>
+                  <description>The number of patients in the corpus.</description>
+              </featureDescription>
+              <featureDescription>
+                  <name>documentCount</name>
+                  <rangeTypeName>uima.cas.Integer</rangeTypeName>
+                  <description>The number of documents in the corpus.</description>
+              </featureDescription>
+          </features>
+      </typeDescription>
     <typeDescription>
       <name>org.apache.ctakes.typesystem.type.structured.Metadata</name>
       <description>Structured data that captures information about the document, patient, or context of the clinical text.</description>
@@ -1973,6 +2072,16 @@ This instantiates a manages/treats relation which should be marked as conditiona
           <description/>
           <rangeTypeName>org.apache.ctakes.typesystem.type.refsem.Time</rangeTypeName>
         </featureDescription>
+          <featureDescription>
+              <name>frequency</name>
+              <description/>
+              <rangeTypeName>org.apache.ctakes.typesystem.type.refsem.Frequency</rangeTypeName>
+          </featureDescription>
+          <featureDescription>
+              <name>duration</name>
+              <description/>
+              <rangeTypeName>org.apache.ctakes.typesystem.type.refsem.Duration</rangeTypeName>
+          </featureDescription>
         <featureDescription>
           <name>timeClass</name>
           <description>DATE, DURATION, QUANTIFIER, PREPOSTEXP, etc.</description>
@@ -2755,6 +2864,11 @@ More qualifying information on how the procedure was done.</description>
               <description/>
               <rangeTypeName>uima.cas.String</rangeTypeName>
            </featureDescription>
+            <featureDescription>
+                <name>countValue</name>
+                <description/>
+                <rangeTypeName>uima.cas.Integer</rangeTypeName>
+            </featureDescription>
         </features>
      </typeDescription>
      <typeDescription>
@@ -2768,7 +2882,12 @@ More qualifying information on how the procedure was done.</description>
               <description/>
               <rangeTypeName>uima.cas.String</rangeTypeName>
            </featureDescription>
-           <featureDescription>
+            <featureDescription>
+                <name>numberValue</name>
+                <description/>
+                <rangeTypeName>uima.cas.Integer</rangeTypeName>
+            </featureDescription>
+            <featureDescription>
               <name>unit</name>
               <description>the unit of dose measurement</description>
               <rangeTypeName>uima.cas.String</rangeTypeName>
@@ -2786,7 +2905,12 @@ More qualifying information on how the procedure was done.</description>
               <description/>
               <rangeTypeName>uima.cas.String</rangeTypeName>
            </featureDescription>
-           <featureDescription>
+            <featureDescription>
+                <name>numberValue</name>
+                <description/>
+                <rangeTypeName>uima.cas.Integer</rangeTypeName>
+            </featureDescription>
+            <featureDescription>
               <name>unit</name>
               <description>the unit of dose measurement</description>
               <rangeTypeName>uima.cas.String</rangeTypeName>
@@ -2827,7 +2951,12 @@ More qualifying information on how the procedure was done.</description>
               <description/>
               <rangeTypeName>uima.cas.String</rangeTypeName>
            </featureDescription>
-           <featureDescription>
+            <featureDescription>
+                <name>numberValue</name>
+                <description/>
+                <rangeTypeName>uima.cas.Integer</rangeTypeName>
+            </featureDescription>
+            <featureDescription>
               <name>unit</name>
               <description>The periodic unit used, e.g day, month, hour, etc.</description>
               <rangeTypeName>uima.cas.String</rangeTypeName>
@@ -2844,7 +2973,12 @@ More qualifying information on how the procedure was done.</description>
               <description/>
               <rangeTypeName>uima.cas.String</rangeTypeName>
            </featureDescription>
-           <featureDescription>
+            <featureDescription>
+                <name>numberValue</name>
+                <description/>
+                <rangeTypeName>uima.cas.Integer</rangeTypeName>
+            </featureDescription>
+            <featureDescription>
               <name>unit</name>
               <description>the unit of time measurement. e.g day, month, hour, etc.</description>
               <rangeTypeName>uima.cas.String</rangeTypeName>
