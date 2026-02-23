@@ -36,6 +36,7 @@ final public class CalendarUtil {
          "M-d-yy",
          "MM-dd-yy",
          "MM-dd-yyyy",
+         "yyyy-MM-dd",
          "M/d/yy",
          "MM/dd/yy",
          "MM/dd/yyyy",
@@ -50,6 +51,7 @@ final public class CalendarUtil {
          "h:mm",
          "h:mm a",
          "h:mm:ss",
+         "h:mm:ssz",
          "h:mm:ss.SSS",
          "h:mm z",
          "h:mm a z",
@@ -110,6 +112,16 @@ final public class CalendarUtil {
    }
 
    /**
+    * @param jCas ye olde ...
+    * @param text doc text
+    * @return TimeMention with normalized date and time and no character offsets
+    */
+   static public TimeMention createTimeMention( final JCas jCas,
+                                                final String text ) {
+      return createTimeMention( jCas, text, getCalendar( text ) );
+   }
+
+   /**
     * @param jCas     ye olde ...
     * @param begin    begin index in doc text
     * @param end      end index in doc text
@@ -125,20 +137,11 @@ final public class CalendarUtil {
          throw new InvalidParameterException( "Offsets " + begin + "," + end
                                               + " are outside document bounds 0," + docText.length() );
       }
-      final TimeMention timeMention = createTimeMention( jCas, calendar );
+      final String text = docText.substring( begin, end );
+      final TimeMention timeMention = createTimeMention( jCas, text, calendar );
       timeMention.setBegin( begin );
       timeMention.setEnd( end );
       return timeMention;
-   }
-
-   /**
-    * @param jCas ye olde ...
-    * @param text doc text
-    * @return TimeMention with normalized date and time and no character offsets
-    */
-   static public TimeMention createTimeMention( final JCas jCas,
-                                                final String text ) {
-      return createTimeMention( jCas, getCalendar( text ) );
    }
 
    /**
@@ -147,10 +150,13 @@ final public class CalendarUtil {
     * @return TimeMention with normalized date and time and no character offsets
     */
    static public TimeMention createTimeMention( final JCas jCas,
+                                                final String text,
                                                 final Calendar calendar ) {
       final Date date = createTypeDate( jCas, calendar );
       final Time time = createTypeTime( jCas, calendar );
+      time.setNormalizedForm( text );
       final TimeMention timeMention = (TimeMention)_builder.build( jCas );
+      assert timeMention != null;
       timeMention.setDate( date );
       timeMention.setTime( time );
       // Right now there is only one time class.
@@ -175,9 +181,9 @@ final public class CalendarUtil {
     */
    static public Date createTypeDate( final JCas jCas, final Calendar calendar ) {
       final Date date = new Date( jCas );
-      date.setDay( "" + calendar.get( DAY_OF_MONTH ) );
-      date.setMonth( "" + (calendar.get( Calendar.MONTH ) + 1) );
-      date.setYear( "" + calendar.get( Calendar.YEAR ) );
+      date.setDayValue( calendar.get( DAY_OF_MONTH ) );
+      date.setMonthValue( calendar.get( MONTH ) + 1 );
+      date.setYearValue( calendar.get( YEAR ) );
       return date;
    }
 
@@ -188,7 +194,9 @@ final public class CalendarUtil {
     */
    static public Time createTypeTime( final JCas jCas, final String text ) {
       final Calendar calendar = getCalendar( text );
-      return createTypeTime( jCas, calendar );
+      final Time time = createTypeTime( jCas, calendar );
+      time.setNormalizedForm( text );
+      return time;
    }
 
    /**
@@ -198,10 +206,9 @@ final public class CalendarUtil {
     */
    static public Time createTypeTime( final JCas jCas, final Calendar calendar ) {
       final Time time = new Time( jCas );
-      time.setNormalizedForm( calendar.get( HOUR_OF_DAY )
-                              + ":" + calendar.get( MINUTE )
-                              + ":" + calendar.get( SECOND )
-                              + " " + calendar.get( AM_PM ) );
+      time.setHourValue( calendar.get( HOUR_OF_DAY ) );
+      time.setMinuteValue( calendar.get( MINUTE ) );
+      time.setSecondValue( calendar.get( SECOND ) );
       return time;
    }
 
@@ -267,9 +274,12 @@ final public class CalendarUtil {
       if ( typeDate == null ) {
          return NULL_CALENDAR;
       }
-      final int year = CalendarUtil.parseInt( typeDate.getYear() );
-      final int month = CalendarUtil.parseInt( typeDate.getMonth() );
-      final int day = CalendarUtil.parseInt( typeDate.getDay() );
+//      final int year = CalendarUtil.parseInt( typeDate.getYear() );
+//      final int month = CalendarUtil.parseInt( typeDate.getMonth() );
+//      final int day = CalendarUtil.parseInt( typeDate.getDay() );
+      final int year = typeDate.getYearValue();
+      final int month = typeDate.getMonthValue();
+      final int day = typeDate.getDayValue();
       if ( year == Integer.MIN_VALUE && month == Integer.MIN_VALUE && day == Integer.MIN_VALUE ) {
          return NULL_CALENDAR;
       }
