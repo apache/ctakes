@@ -1655,8 +1655,8 @@ This instantiates a manages/treats relation which should be marked as conditiona
     </typeDescription>
       <typeDescription>
           <name>org.apache.ctakes.typesystem.type.structured.Patient</name>
-          <supertypeName>uima.cas.TOP</supertypeName>
           <description>Patient information. Patient information intermixed with general metadata is deprecated.</description>
+          <supertypeName>uima.cas.TOP</supertypeName>
           <features>
               <featureDescription>
                   <name>patientIdentifier</name>
@@ -1675,25 +1675,35 @@ This instantiates a manages/treats relation which should be marked as conditiona
               </featureDescription>
               <featureDescription>
                   <name>documentCount</name>
-                  <rangeTypeName>uima.cas.Integer</rangeTypeName>
                   <description>The number of documents for the patient in the corpus.</description>
+                  <rangeTypeName>uima.cas.Integer</rangeTypeName>
               </featureDescription>
           </features>
       </typeDescription>
       <typeDescription>
           <name>org.apache.ctakes.typesystem.type.structured.Corpus</name>
-          <supertypeName>uima.cas.TOP</supertypeName>
           <description>Information about a corpus containing documents.</description>
+          <supertypeName>uima.cas.TOP</supertypeName>
           <features>
               <featureDescription>
+                  <name>corpusId</name>
+                  <description>Some unique identifier.</description>
+                  <rangeTypeName>uima.cas.String</rangeTypeName>
+              </featureDescription>
+              <featureDescription>
+                  <name>corpusName</name>
+                  <description>A name of the corpus, for instance UPMC Melanoma Pathology Notes.</description>
+                  <rangeTypeName>uima.cas.String</rangeTypeName>
+              </featureDescription>
+              <featureDescription>
                   <name>patientCount</name>
-                  <rangeTypeName>uima.cas.Integer</rangeTypeName>
                   <description>The number of patients in the corpus.</description>
+                  <rangeTypeName>uima.cas.Integer</rangeTypeName>
               </featureDescription>
               <featureDescription>
                   <name>documentCount</name>
-                  <rangeTypeName>uima.cas.Integer</rangeTypeName>
                   <description>The number of documents in the corpus.</description>
+                  <rangeTypeName>uima.cas.Integer</rangeTypeName>
               </featureDescription>
           </features>
       </typeDescription>

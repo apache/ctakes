@@ -67,6 +67,17 @@ abstract public class AbstractFileTreeReader extends JCasCollectionReader_ImplBa
    private String _writeBannerChoice;
 
    /**
+    * Name of the Corpus for the run.
+    */
+   static public final String PARAM_CORPUS_NAME = "CorpusName";
+   @ConfigurationParameter(
+         name = PARAM_CORPUS_NAME,
+         description = "Name of the corpus for this run.",
+         mandatory = false
+   )
+   private String _corpusName;
+
+   /**
     * Name of configuration parameter that must be set to the path of
     * a directory containing input files.
     */
@@ -174,7 +185,7 @@ abstract public class AbstractFileTreeReader extends JCasCollectionReader_ImplBa
    private Collection<String> _validExtensions;
    private List<File> _files;
    private Map<File, String> _filePatients;
-   private Map<String, Integer> _patientDocCounts = new HashMap<>();
+   final private Map<String, Integer> _patientDocCounts = new HashMap<>();
    private int _currentIndex;
    private Comparator<File> _fileComparator;
 
@@ -243,6 +254,34 @@ abstract public class AbstractFileTreeReader extends JCasCollectionReader_ImplBa
    }
 
    /**
+    * @return the name of the Corpus for this run.  If none was specified it will be the name of the root directory.
+    */
+   protected String getCorpusName() {
+      if ( _patientDocCounts.isEmpty() ) {
+         logNotInitialized();
+         return "";
+      }
+      if ( _corpusName == null || _corpusName.isEmpty() ) {
+         return getRootDir().getName();
+      }
+      return _corpusName;
+   }
+
+   /**
+    * Gets the total number of patients that will be handled by this
+    * collection reader.
+    *
+    * @return the number of patients in the collection.
+    */
+   protected int getPatientCount() {
+      if ( _patientDocCounts.isEmpty() ) {
+         logNotInitialized();
+         return 0;
+      }
+      return _patientDocCounts.size();
+   }
+
+   /**
     * Gets the total number of documents that will be returned by this
     * collection reader.
     *
@@ -250,10 +289,24 @@ abstract public class AbstractFileTreeReader extends JCasCollectionReader_ImplBa
     */
    public int getNoteCount() {
       if ( _files == null ) {
-         LOGGER.error( "Not yet initialized" );
+         logNotInitialized();
          return 0;
       }
       return _files.size();
+   }
+
+   /**
+    * Gets the total number of documents for the given patient that will be returned by this
+    * collection reader.
+    * @param patientId -
+    * @return the number of documents in the collection.
+    */
+   public int getNoteCount( final String patientId ) {
+      if ( _patientDocCounts.isEmpty() ) {
+         logNotInitialized();
+         return 0;
+      }
+      return _patientDocCounts.getOrDefault( patientId, 0 );
    }
 
    /**
@@ -261,7 +314,7 @@ abstract public class AbstractFileTreeReader extends JCasCollectionReader_ImplBa
     */
    protected File getRootDir() {
       if ( _rootDir == null ) {
-         LOGGER.error( "Not yet initialized" );
+         logNotInitialized();
          return null;
       }
       return _rootDir;
@@ -273,7 +326,7 @@ abstract public class AbstractFileTreeReader extends JCasCollectionReader_ImplBa
    protected String getRootPath() {
       final File rootDir = getRootDir();
       if ( rootDir == null ) {
-         LOGGER.error( "Not yet initialized" );
+         logNotInitialized();
          return "Unknown";
       }
       return rootDir.getAbsolutePath();
@@ -284,7 +337,7 @@ abstract public class AbstractFileTreeReader extends JCasCollectionReader_ImplBa
     */
    final protected String getValidEncoding() {
       if ( _rootDir == null ) {
-         LOGGER.error( "Not yet initialized" );
+         logNotInitialized();
          return UNKNOWN;
       }
       if ( _encoding == null || _encoding.isEmpty() ) {
@@ -298,10 +351,14 @@ abstract public class AbstractFileTreeReader extends JCasCollectionReader_ImplBa
     */
    protected Collection<String> getValidExtensions() {
       if ( _validExtensions == null ) {
-         LOGGER.error( "Not yet initialized" );
+         logNotInitialized();
          return Collections.emptyList();
       }
       return _validExtensions;
+   }
+
+   protected void logNotInitialized() {
+      LOGGER.error( "Not yet initialized" );
    }
 
 
@@ -319,7 +376,7 @@ abstract public class AbstractFileTreeReader extends JCasCollectionReader_ImplBa
       try {
          _rootDir = FileLocator.getFile( _rootDirPath );
       } catch ( FileNotFoundException fnfE ) {
-         LOGGER.error( "No Directory found at " + _rootDirPath );
+         LOGGER.error( "No Directory found at {}", _rootDirPath );
          throw new ResourceInitializationException( fnfE );
       }
       _validExtensions = createValidExtensions( _explicitExtensions );
@@ -329,7 +386,7 @@ abstract public class AbstractFileTreeReader extends JCasCollectionReader_ImplBa
          final String patient = _rootDir.getParentFile().getName();
          _files = Collections.singletonList( _rootDir );
          _filePatients = Collections.singletonMap( _rootDir, patient );
-         PatientNoteStore.getInstance().setWantedDocCount( patient, 1 );
+         _patientDocCounts.put( patient, 1 );
       } else {
          // gather all of the files and set the document counts per patient.
          final File[] children = _rootDir.listFiles();
@@ -344,8 +401,8 @@ abstract public class AbstractFileTreeReader extends JCasCollectionReader_ImplBa
          _filePatients = new HashMap<>();
          _fileComparator = createFileComparator();
          _files = getDescendentFiles( _rootDir, _validExtensions, 0 );
-         _patientDocCounts.forEach( ( k, v ) -> PatientNoteStore.getInstance().setWantedDocCount( k, v ) );
       }
+      _patientDocCounts.forEach( ( k, v ) -> PatientNoteStore.getInstance().setWantedDocCount( k, v ) );
       ProgressManager.getInstance().initializeProgress( _rootDirPath, _files.size() );
    }
 
@@ -424,8 +481,8 @@ abstract public class AbstractFileTreeReader extends JCasCollectionReader_ImplBa
       for ( String extension : validExtensions ) {
          if ( fileName.endsWith( extension ) ) {
             if ( fileName.equals( extension ) ) {
-               LOGGER.warn( "File " + file.getPath()
-                     + " name exactly matches extension " + extension + " so it will not be read." );
+               LOGGER.warn( "File {} name exactly matches extension {} so it will not be read.", file.getPath(),
+                     extension );
                return false;
             }
             return true;
@@ -502,7 +559,7 @@ abstract public class AbstractFileTreeReader extends JCasCollectionReader_ImplBa
     */
    final protected String handleTextEol( final String text ) {
       String docText = text;
-      if ( !isKeepCrChar() && !docText.isEmpty() && docText.contains( "\r" ) ) {
+      if ( !isKeepCrChar() && docText.contains( "\r" ) ) {
          LOGGER.debug( "Removing Carriage-Return characters ..." );
          docText = CR_LF.matcher( docText ).replaceAll( "\n" );
       }
@@ -540,7 +597,7 @@ abstract public class AbstractFileTreeReader extends JCasCollectionReader_ImplBa
       if ( endDocQuote != docText.length() - 1 ) {
          return text;
       }
-      LOGGER.debug( "Replacing document-enclosing quote characters " + quote + " ..." );
+      LOGGER.debug( "Replacing document-enclosing quote characters {} ...", quote );
       String unquotedText = text;
       final int beginQuote = text.indexOf( quote );
       if ( beginQuote == 0 ) {
@@ -566,11 +623,15 @@ abstract public class AbstractFileTreeReader extends JCasCollectionReader_ImplBa
       final String docTime = createDocumentTime( file );
       final String patientId = getPatientId( file );
       return new JCasBuilder()
+            .setCorpusName( getCorpusName() )
+            .setCorpusPatientCount( getPatientCount() )
+            .setCorpusDocCount( getNoteCount() )
+            .setPatientId( patientId )
+            .setPatientDocCount( getNoteCount( patientId ) )
             .setDocId( id )
             .setDocIdPrefix( idPrefix )
             .setDocType( docType )
             .setDocTime( docTime )
-            .setPatientId( patientId )
             .setDocPath( file.getAbsolutePath() )
             .nullDocText();
    }

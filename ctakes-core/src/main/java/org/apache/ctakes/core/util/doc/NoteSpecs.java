@@ -21,7 +21,7 @@ import static org.apache.ctakes.core.util.doc.SourceMetadataUtil.UNKNOWN_PATIENT
 
 /**
  * Contains information on a note.  This is information can exist beyond the life of a cas.
- *
+ * This information is being added to the cas.  Deprecate when ready.
  * @author SPF , chip-nlp
  * @version %I%
  * @since 12/25/2017

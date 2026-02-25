@@ -3,6 +3,10 @@ package org.apache.ctakes.core.util.log;
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.core.pipeline.ProgressManager;
 import org.apache.ctakes.core.resource.FileLocator;
+import org.apache.ctakes.core.util.doc.JCasBuilder;
+import org.apache.ctakes.typesystem.type.structured.Corpus;
+import org.apache.ctakes.typesystem.type.structured.Patient;
+import org.apache.uima.fit.util.JCasUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.apache.uima.UimaContext;
@@ -37,6 +41,8 @@ final public class FinishedLogger extends JCasAnnotator_ImplBase {
    static private final String BUILD_VERSION = "Implementation-Version";
    static private final String BUILD_DATE = "Implementation-Build-Date";
    private long _initMillis;
+   private String _corpusName = JCasBuilder.UNKNOWN_CORPUS;
+   final private Collection<String> _patients = new HashSet<>();
    private long _docCount = 0;
 
    /**
@@ -55,6 +61,11 @@ final public class FinishedLogger extends JCasAnnotator_ImplBase {
    @Override
    public void process( final JCas jCas ) throws AnalysisEngineProcessException {
       _docCount++;
+      JCasUtil.select( jCas, Patient.class ).forEach( p -> _patients.add( p.getPatientIdentifier() ) );
+      _corpusName = JCasUtil.select( jCas, Corpus.class ).stream()
+                            .map( Corpus::getCorpusName )
+                            .findFirst()
+                            .orElse( JCasBuilder.UNKNOWN_CORPUS );
       ProgressManager.getInstance().updateProgress( Long.valueOf( _docCount ).intValue() );
    }
 
@@ -71,12 +82,14 @@ final public class FinishedLogger extends JCasAnnotator_ImplBase {
       final Map<String,String> buildInfo = getBuildInfo( BUILD_VERSION, BUILD_DATE );
       LOGGER.info( "Build Version:                {}", buildInfo.getOrDefault( BUILD_VERSION, "" ) );
       LOGGER.info( "Build Date:                   {}", buildInfo.getOrDefault( BUILD_DATE, "" ) );
+      LOGGER.info( "Corpus Name:                  {}", _corpusName );
       LOGGER.info( "Run Start Time:               {}", getTime( instantMillis ) );
       LOGGER.info( "Processing Start Time:        {}", getTime( _initMillis ) );
       LOGGER.info( "Processing End Time:          {}", getTime( endMillis ) );
       LOGGER.info( "Initialization Time Elapsed:  {}", getSpan( _initMillis - instantMillis ) );
       LOGGER.info( "Processing Time Elapsed:      {}", getSpan( endMillis - _initMillis ) );
       LOGGER.info( "Total Run Time Elapsed:       {}", getSpan( endMillis - instantMillis ) );
+      LOGGER.info( "Patients Processed:           {}", _patients.size() );
       LOGGER.info( "Documents Processed:          {}", _docCount );
       final long millisPerNote = _docCount == 0 ? 0 : (endMillis - _initMillis) / _docCount;
       LOGGER.info( String.format( "Average Seconds per Document: %.2f", (millisPerNote / 1000f) ) );

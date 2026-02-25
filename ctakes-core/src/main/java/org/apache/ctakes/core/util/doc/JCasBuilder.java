@@ -1,13 +1,20 @@
 package org.apache.ctakes.core.util.doc;
 
 
+import org.apache.ctakes.core.util.CalendarUtil;
+import org.apache.ctakes.core.util.patient.PatientBuilder;
+import org.apache.ctakes.typesystem.type.refsem.Date;
 import org.apache.ctakes.typesystem.type.structured.*;
 import org.apache.uima.UIMAException;
+import org.apache.uima.cas.impl.FeatureStructureImplC;
 import org.apache.uima.fit.factory.JCasFactory;
+import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Collection;
 
 /**
  * Populate a JCas with creator, patient and document information.
@@ -22,25 +29,20 @@ final public class JCasBuilder {
    //   For compatibility with sql db : Timestamp format must be yyyy-mm-dd hh:mm:ss[.fffffffff]
    static private final DateFormat DATE_FORMAT = new SimpleDateFormat( "yyyy-MM-dd hh:mm:ss" );
 
-   static private final String UNKNOWN_DATE = "UnknownDate";
-   static private final String UNKNOWN_GENDER = "UnknownGender";
+   static public final String UNKNOWN_CORPUS = "Unknown Corpus";
    static private final String UNKNOWN = "Unknown";
+   static private final int UNKNOWN_COUNT = -1;
 
+   private Corpus _corpus = null;
+   private String _corpusId = UNKNOWN_CORPUS;
+   private String _corpusName = UNKNOWN_CORPUS;
+   private int _corpusPatientCount = UNKNOWN_COUNT;
+   private int _corpusDocCount = UNKNOWN_COUNT;
+
+   private PatientBuilder _patientBuilder = null;
 
    private String _institutionId = UNKNOWN;
    private String _authorSpecialty = UNKNOWN;
-
-   private String _patientId = SourceMetadataUtil.UNKNOWN_PATIENT;
-   private long _patientNum = SourceMetadataUtil.UNKNOWN_PATIENT_NUM;
-
-   private String _firstName = UNKNOWN;
-   private String _middleName = UNKNOWN;
-   private String _lastName = UNKNOWN;
-
-   private String _birthday = UNKNOWN_DATE;
-   private String _deathday = UNKNOWN_DATE;
-   private String _gender = UNKNOWN_GENDER;
-
 
    private String _instanceId = "";
    //   private long _instanceNum = -1;
@@ -54,6 +56,8 @@ final public class JCasBuilder {
    private String _docStandard = "";
    private int _docRevisionNum = 1;
    private String _docTime = ""; //DATE_FORMAT.format( System.currentTimeMillis() );
+   private Calendar _docCreationDate = CalendarUtil.NULL_CALENDAR;
+
    private String _docPath = "";
 
    private boolean _nullDocText = false;
@@ -90,11 +94,99 @@ final public class JCasBuilder {
    }
 
    /**
+    *
+    * @param corpus corpus for this cas.
+    * @return this builder
+    */
+   public JCasBuilder setCorpus( final Corpus corpus ) {
+      _corpus = corpus;
+      return this;
+   }
+
+   /**
+    *
+    * @param corpusId unique Id for the corpus for this cas.
+    * @return this builder
+    */
+   public JCasBuilder setCorpusId( final String corpusId ) {
+      _corpusId = corpusId;
+      return this;
+   }
+
+   /**
+    *
+    * @param corpusName name of the corpus for this cas.
+    * @return this builder
+    */
+   public JCasBuilder setCorpusName( final String corpusName ) {
+      _corpusName = corpusName;
+      return this;
+   }
+
+
+   /**
+    *
+    * @param patientCount number of patients in the corpus.
+    * @return this builder
+    */
+   public JCasBuilder setCorpusPatientCount( final int patientCount ) {
+      _corpusPatientCount = patientCount;
+      return this;
+   }
+
+   /**
+    *
+    * @param docCount total number of documents in the corpus for all patients.
+    * @return this builder
+    */
+   public JCasBuilder setCorpusDocCount( final int docCount ) {
+      _corpusDocCount = docCount;
+      return this;
+   }
+
+   private Corpus buildCorpus( final JCas jCas ) {
+      if ( _corpus == null ) {
+         // Remove any old corpus entries before adding a new one.
+         JCasUtil.select( jCas, Corpus.class ).forEach( FeatureStructureImplC::removeFromIndexes );
+         _corpus = new Corpus( jCas );
+         _corpus.addToIndexes( jCas );
+      }
+      // Always set the Corpus ID
+      _corpus.setCorpusId( _corpusId );
+      if ( ifWrite( _corpusName, UNKNOWN ) ) {
+         _corpus.setCorpusName( _corpusName );
+      }
+      if ( ifWrite( _corpusPatientCount, UNKNOWN_COUNT ) ) {
+         _corpus.setPatientCount( _corpusPatientCount );
+      }
+      if ( ifWrite( _corpusDocCount, UNKNOWN_COUNT ) ) {
+         _corpus.setDocumentCount( _corpusDocCount );
+      }
+      return _corpus;
+   }
+
+   private PatientBuilder getPatientBuilder() {
+      if ( _patientBuilder == null ) {
+         _patientBuilder = new PatientBuilder();
+      }
+      return _patientBuilder;
+   }
+
+   /**
+    * @param patient The patient for this cas.  Acts as a seed for PatientBuilder, to which other setPatient* items are forwarded.
+    * @return this builder
+    */
+   public JCasBuilder setPatient( final Patient patient ) {
+      getPatientBuilder().seedPatient( patient );
+      return this;
+   }
+
+   /**
     * @param patientId The unique ID of a patient at an institution, in a study, in an insurance database, etc.
     * @return this builder
     */
    public JCasBuilder setPatientId( final String patientId ) {
-      _patientId = patientId;
+      getPatientBuilder().setPatientId( patientId );
       return this;
    }
 
@@ -103,7 +195,7 @@ final public class JCasBuilder {
     * @return this builder
     */
    public JCasBuilder setPatientNum( final long patientNum ) {
-      _patientNum = patientNum;
+      getPatientBuilder().setPatientNum( patientNum );
       return this;
    }
 
@@ -112,7 +204,7 @@ final public class JCasBuilder {
     * @return this builder
     */
    public JCasBuilder setFirstName( final String firstName ) {
-      _firstName = firstName;
+      getPatientBuilder().setFirstName( firstName );
       return this;
    }
 
@@ -121,7 +213,7 @@ final public class JCasBuilder {
     * @return this builder
     */
    public JCasBuilder setMiddleName( final String middleName ) {
-      _middleName = middleName;
+      getPatientBuilder().setMiddleName( middleName );
       return this;
    }
 
@@ -130,25 +222,43 @@ final public class JCasBuilder {
     * @return this builder
     */
    public JCasBuilder setLastName( final String lastName ) {
-      _lastName = lastName;
+      getPatientBuilder().setLastName( lastName );
       return this;
    }
 
    /**
-    * @param birthday Patient's date of birth. Format of this date is not controlled.
+    * @param birthDate Patient's date of birth. Format of this date is not controlled.
     * @return this builder
     */
-   public JCasBuilder setBirthDay( final String birthday ) {
-      _birthday = birthday;
+   public JCasBuilder setBirthDate( final String birthDate ) {
+      getPatientBuilder().setBirthDate( birthDate );
       return this;
    }
 
    /**
-    * @param deathday Patient's date of death. Format of this date is not controlled.
+    * @param birthDateValue Patient's date of birth. Format of this date is controlled.
     * @return this builder
     */
-   public JCasBuilder setDeathday( final String deathday ) {
-      _deathday = deathday;
+   public JCasBuilder setBirthDateValue( final Date birthDateValue ) {
+      getPatientBuilder().setBirthDateValue( birthDateValue );
+      return this;
+   }
+
+   /**
+    * @param deathDate Patient's date of death. Format of this date is not controlled.
+    * @return this builder
+    */
+   public JCasBuilder setDeathDate( final String deathDate ) {
+      getPatientBuilder().setDeathDate( deathDate );
+      return this;
+   }
+
+   /**
+    * @param deathDateValue Patient's date of birth. Format of this date is controlled.
+    * @return this builder
+    */
+   public JCasBuilder setDeathDateValue( final Date deathDateValue ) {
+      getPatientBuilder().setDeathDateValue( deathDateValue );
       return this;
    }
 
@@ -157,7 +267,17 @@ final public class JCasBuilder {
     * @return this builder
     */
    public JCasBuilder setGender( final String gender ) {
-      _gender = gender;
+      getPatientBuilder().setGender( gender );
+      return this;
+   }
+
+   /**
+    *
+    * @param docCount number of documents belonging to this patient.
+    * @return this builder
+    */
+   public JCasBuilder setPatientDocCount( final int docCount ) {
+      getPatientBuilder().setDocCount( docCount );
       return this;
    }
 
@@ -249,6 +369,16 @@ final public class JCasBuilder {
    }
 
    /**
+    * @param creationDate date and/or time of document creation.
+    * @return this builder
+    */
+   public JCasBuilder setDocCreationDate( final Calendar creationDate ) {
+      _docCreationDate = creationDate;
+      return this;
+   }
+
+
+   /**
     * @param docPath path to the file containing the doc, a database cell containing the doc, net location, etc.
     * @return this builder
     */
@@ -325,36 +455,10 @@ final public class JCasBuilder {
     * @return the given jcas populated with the data added in this builder.
     */
    public JCas populate( final JCas jCas ) {
-      final Metadata metadata = SourceMetadataUtil.getOrCreateMetadata( jCas );
-
-      if ( ifWrite( _patientId, SourceMetadataUtil.UNKNOWN_PATIENT ) ) {
-         SourceMetadataUtil.setPatientIdentifier( jCas, _patientId );
+      buildCorpus( jCas );
+      if ( _patientBuilder != null ) {
+         _patientBuilder.build( jCas );
       }
-      if ( ifWrite( _patientNum, SourceMetadataUtil.UNKNOWN_PATIENT_NUM ) ) {
-         metadata.setPatientID( _patientNum );
-      }
-
-      final Demographics demographics = new Demographics( jCas );
-      metadata.setDemographics( demographics );
-      if ( ifWrite( _firstName, UNKNOWN ) ) {
-         demographics.setFirstName( _firstName );
-      }
-      if ( ifWrite( _middleName, UNKNOWN ) ) {
-         demographics.setMiddleName( _middleName );
-      }
-      if ( ifWrite( _lastName, UNKNOWN ) ) {
-         demographics.setLastName( _lastName );
-      }
-      if ( ifWrite( _birthday, UNKNOWN_DATE ) ) {
-         demographics.setBirthDate( _birthday );
-      }
-      if ( ifWrite( _deathday, UNKNOWN_DATE ) ) {
-         demographics.setDeathDate( _deathday );
-      }
-      if ( ifWrite( _gender, UNKNOWN_GENDER ) ) {
-         demographics.setGender( _gender );
-      }
-
       final SourceData sourceData = SourceMetadataUtil.getOrCreateSourceData( jCas );
       if ( ifWrite( _institutionId, UNKNOWN ) ) {
          sourceData.setSourceInstitution( _institutionId );
@@ -393,6 +497,9 @@ final public class JCasBuilder {
 
       if ( ifWrite( _docTime, "" ) ) {
          sourceData.setSourceRevisionDate( _docTime );
+      }
+      if ( _docCreationDate != null ) {
+         SourceMetadataUtil.setDocCreationDate( jCas, _docCreationDate );
       }
       if ( ifWrite( _docRevisionNum, 1 ) ) {
          sourceData.setSourceRevisionNbr( _docRevisionNum );

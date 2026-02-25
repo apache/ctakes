@@ -27,7 +27,7 @@ final public class SourceMetadataUtil {
 
    static private final Logger LOGGER = LoggerFactory.getLogger( "SourceMetadataUtil" );
 
-   static public final String UNKNOWN_PATIENT = "UnknownPatient";
+   static public final String UNKNOWN_PATIENT = "Unknown Patient";
    static public final long UNKNOWN_PATIENT_NUM = -1;
 
    private SourceMetadataUtil() {
