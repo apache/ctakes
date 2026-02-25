@@ -1042,6 +1042,11 @@ More qualifying information on how the procedure was done.</description>
           <elementType>org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation</elementType>
         </featureDescription>
         <featureDescription>
+          <name>textRepresentation</name>
+          <description>Plain text representation of the Element. Useful when no mentions are associated and normalization cannot be performed.</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
           <name>discoveryTechnique</name>
           <description/>
           <rangeTypeName>uima.cas.Integer</rangeTypeName>
