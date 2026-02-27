@@ -101,6 +101,17 @@ final public class IdentifiedAnnotationUtil {
     * @param annotation -
     * @return preferred texts for all Umls Concepts of the annotation
     */
+   static public String getPreferredText( final IdentifiedAnnotation annotation ) {
+      return getPreferredTexts( annotation ).stream()
+                                            .sorted()
+                                            .findFirst()
+                                            .orElse( annotation.getCoveredText() );
+   }
+
+   /**
+    * @param annotation -
+    * @return preferred texts for all Umls Concepts of the annotation
+    */
    static public Collection<String> getPreferredTexts( final IdentifiedAnnotation annotation ) {
       return OntologyConceptUtil.getUmlsConceptStream( annotation )
                                 .map( UmlsConcept::getPreferredText )

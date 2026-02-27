@@ -46,6 +46,17 @@ abstract public class AbstractTableFileWriter
     */
    abstract protected List<List<String>> createDataRows( JCas jCas );
 
+   protected void clearDataRows() {
+      _dataRows.clear();
+   }
+
+   /**
+    *
+    * @param dataRow a list of ordered cells.
+    */
+   protected void addDataRow( final List<String> dataRow ) {
+      _dataRows.add( dataRow );
+   }
 
    /**
     * A Table Header indicates the type of content in each table cell.  Though not necessary, it is nice to have.
@@ -60,8 +71,17 @@ abstract public class AbstractTableFileWriter
    /**
     * @return the header list of ordered cells.
     */
-   final protected List<String> getHeaderRow() {
+   protected List<String> getHeaderRow() {
       return _headerRow;
+   }
+
+   /**
+    *
+    * @param headerRow the header list of ordered cells.
+    */
+   protected void setHeaderRow( final List<String> headerRow ) {
+      _headerRow.clear();
+      _headerRow.addAll( headerRow );
    }
 
    /**
@@ -77,30 +97,38 @@ abstract public class AbstractTableFileWriter
    /**
     * @return the footer list of ordered cells.
     */
-   final protected List<String> getFooterRow() {
+   protected List<String> getFooterRow() {
       return _footerRow;
    }
 
+   /**
+    *
+    * @param footerRow the footer list of ordered cells.
+    */
+   protected void setFooterRow( final List<String> footerRow ) {
+      _footerRow.clear();
+      _footerRow.addAll( footerRow );
+   }
 
    /**
     * @param jCas the jcas passed to the process( jcas ) method.
     */
    @Override
    protected void createData( final JCas jCas ) {
-      _headerRow.clear();
-      _dataRows.clear();
-      _footerRow.clear();
+//      _headerRow.clear();
+      clearDataRows();
+//      _footerRow.clear();
       final List<String> header = createHeaderRow( jCas );
       if ( header != null ) {
-         _headerRow.addAll( header );
+         setHeaderRow( header );
       }
       final List<List<String>> rows = createDataRows( jCas );
       if ( rows != null ) {
-         _dataRows.addAll( rows );
+         rows.forEach( this::addDataRow );
       }
       final List<String> footer = createFooterRow( jCas );
       if ( footer != null ) {
-         _footerRow.addAll( footer );
+         setFooterRow( footer );
       }
    }
 
@@ -135,7 +163,7 @@ abstract public class AbstractTableFileWriter
                                         .findFirst()
                                         .orElse( TableType.BSV );
       final File file = new File( outputDir, documentId + "_table." + tableType.name() );
-      LOGGER.info( "Writing " + tableType.name() + " Table to " + file.getPath() + " ..." );
+      LOGGER.info( "Writing {} Table to {} ...", tableType.name(), file.getPath() );
       final String header = createTableHeader( tableType, getHeaderRow() );
 
       final String footer = createTableFooter( tableType, getFooterRow() );
@@ -160,64 +188,62 @@ abstract public class AbstractTableFileWriter
 
 
    protected String createHtmlStyle() {
-      return "table {\n"
-             + "  margin-left: auto;\n"
-             + "  margin-right: auto;\n"
-             + "}\n";
+      return """
+            table {
+              margin-left: auto;
+              margin-right: auto;
+            }
+            """;
    }
 
 
    protected String createTableHeader( final TableType tableType, final List<String> headerRow ) {
-      switch ( tableType ) {
-         case BSV:
-            return String.join( "|", headerRow ) + "\n";
-         case CSV:
-            return String.join( ",", headerRow ) + "\n";
-         case TAB:
-            return String.join( "\t", headerRow ) + "\n";
-         case HTML:
-            return createHtmlHeader( headerRow );
-      }
-      return String.join( "|", headerRow ) + "\n";
+      return switch ( tableType ) {
+         case BSV -> String.join( "|", headerRow ) + "\n";
+         case CSV -> String.join( ",", headerRow ) + "\n";
+         case TAB -> String.join( "\t", headerRow ) + "\n";
+         case HTML -> createHtmlHeader( headerRow );
+      };
    }
 
    protected String createHtmlHeader( final List<String> headerRow ) {
       final StringBuilder sb = new StringBuilder();
-      sb.append( "<!DOCTYPE html>\n"
-                 + "<html>\n"
-                 + "<head>\n"
-                 + "<style>\n" );
+      sb.append( """
+            <!DOCTYPE html>
+            <html>
+            <head>
+            <style>
+            """ );
       sb.append( createHtmlStyle() );
-      sb.append( "</style>\n"
-                 + "</head>\n"
-                 + "<body>\n"
-                 + "\n"
-                 + "<table>\n"
-                 + " <thead>\n"
-                 + "  <tr>\n" );
+      sb.append( """
+            </style>
+            </head>
+            <body>
+
+            <table>
+             <thead>
+              <tr>
+            """ );
       for ( String cell : headerRow ) {
          sb.append( "    <th>" )
            .append( cell )
            .append( "</th>\n" );
       }
-      sb.append( "  </tr>\n"
-                 + " </thead>\n" );
+      sb.append( """
+              </tr>
+             </thead>
+            """ );
       return sb.toString();
    }
 
 
    protected String createTableRow( final TableType tableType, final List<String> dataRow ) {
-      switch ( tableType ) {
-         case BSV:
-            return String.join( "|", dataRow ) + "\n";
-         case CSV:
-            return String.join( ",", dataRow ) + "\n";
-         case TAB:
-            return String.join( "\t", dataRow ) + "\n";
-         case HTML:
-            return createHtmlRow( dataRow );
-      }
-      return String.join( "|", dataRow ) + "\n";
+      return switch ( tableType ) {
+         case BSV -> String.join( "|", dataRow ) + "\n";
+         case CSV -> String.join( ",", dataRow ) + "\n";
+         case TAB -> String.join( "\t", dataRow ) + "\n";
+         case HTML -> createHtmlRow( dataRow );
+      };
    }
 
    protected String createHtmlRow( final List<String> dataRow ) {
@@ -232,33 +258,32 @@ abstract public class AbstractTableFileWriter
 
 
    protected String createTableFooter( final TableType tableType, final List<String> footerRow ) {
-      switch ( tableType ) {
-         case BSV:
-            return String.join( "|", footerRow ) + "\n";
-         case CSV:
-            return String.join( ",", footerRow ) + "\n";
-         case TAB:
-            return String.join( "\t", footerRow ) + "\n";
-         case HTML:
-            return createHtmlFooter( footerRow );
-      }
-      return String.join( "|", footerRow ) + "\n";
+      return switch ( tableType ) {
+         case BSV -> String.join( "|", footerRow ) + "\n";
+         case CSV -> String.join( ",", footerRow ) + "\n";
+         case TAB -> String.join( "\t", footerRow ) + "\n";
+         case HTML -> createHtmlFooter( footerRow );
+      };
    }
 
    protected String createHtmlFooter( final List<String> footerRow ) {
       final StringBuilder sb = new StringBuilder();
-      sb.append( " <tfoot>\n"
-                 + "  <tf>\n" );
+      sb.append( """
+             <tfoot>
+              <tf>
+            """ );
       for ( String cell : footerRow ) {
          sb.append( "    <td>" )
            .append( cell )
            .append( "</td>\n" );
       }
-      sb.append( "  </tf>\n"
-                 + " <tfoot>\n"
-                 + "</table>\n"
-                 + "</body>\n"
-                 + "</html>\n" );
+      sb.append( """
+              </tf>
+             <tfoot>
+            </table>
+            </body>
+            </html>
+            """ );
       return sb.toString();
    }
 
