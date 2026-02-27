@@ -187,7 +187,7 @@ public class PatientMedTableFileWriter extends AbstractTableFileWriter {
       private PatientMed( final MedicationMention med ) {
          this( toSortedList( IdentifiedAnnotationUtil.getCuis( med ) ),
                toSortedList( IdentifiedAnnotationUtil.getCodes( med, "RXNORM" ) ),
-               toSortedList( IdentifiedAnnotationUtil.getCodes( med, "NCIT" ) ) );
+               toSortedList( IdentifiedAnnotationUtil.getCodes( med, "NCI" ) ) );
       }
    }
 
