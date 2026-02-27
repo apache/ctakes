@@ -94,7 +94,7 @@ public class ZipFileTreeReader extends AbstractFileTreeReader {
 
    private int _zipPatientLevel = 0;
 
-   private Collection<String> _patientList;
+   private final Collection<String> _patientList = new ArrayList<>();
    private ZipFile _zipFile;
 
    /**
@@ -131,7 +131,7 @@ public class ZipFileTreeReader extends AbstractFileTreeReader {
          _writeBanner_ = AeParamUtil.isTrue( writeBannerChoice.toString() );
       }
       if ( _patientListPath != null && !_patientListPath.isEmpty() ) {
-         _patientList = readPatientList( _patientListPath );
+         _patientList.addAll( readPatientList( _patientListPath ) );
       }
       // The super.initialize() will set up information for the zip files.
       // We will be ignoring most of what it sets up.
@@ -168,7 +168,7 @@ public class ZipFileTreeReader extends AbstractFileTreeReader {
 
    protected Collection<String> readPatientList( final String patientListPath )
          throws ResourceInitializationException {
-      LOGGER.info( "Reading Patient List " + _patientListPath + " ..." );
+      LOGGER.info( "Reading Patient List {} ...", _patientListPath );
       final Collection<String> patientList = new HashSet<>();
       try (BufferedReader reader = new BufferedReader( new FileReader( patientListPath ) ) ) {
          String patient = reader.readLine();
@@ -182,7 +182,7 @@ public class ZipFileTreeReader extends AbstractFileTreeReader {
       } catch ( IOException ioE ) {
          throw new ResourceInitializationException( ioE );
       }
-      LOGGER.info( patientList.size() + " patients.");
+      LOGGER.info( "{} patients.", patientList.size() );
       return patientList;
    }
 
@@ -192,7 +192,7 @@ public class ZipFileTreeReader extends AbstractFileTreeReader {
 
    // TODO move to super class
    protected  boolean isWantedPatient( final String patient ) {
-      return _patientList == null || _patientList.contains( patient.trim() );
+      return _patientList == null || _patientList.isEmpty() || _patientList.contains( patient.trim() );
    }
 
    // TODO move to super class
@@ -355,7 +355,7 @@ public class ZipFileTreeReader extends AbstractFileTreeReader {
 //   }
 
    protected boolean buildZipInfo( final File file ) throws IOException {
-      LOGGER.info( "Inspecting zip file " + file.getAbsolutePath() + " ..." );
+      LOGGER.info( "Inspecting zip file {} ...", file.getAbsolutePath() );
       _entryPaths = new ArrayList<>();
       int wantedCount = 0;
       int entryCount = 0;
@@ -374,16 +374,16 @@ public class ZipFileTreeReader extends AbstractFileTreeReader {
          }
          wantedCount++;
          if ( entryCount % 1000 == 0 ) {
-            LOGGER.info( "Zip Entries: " + entryCount + " Valid Files: " + wantedCount + " ...");
+            LOGGER.info( "Zip Entries: {} Valid Files: {} ...", entryCount, wantedCount );
          }
          // ZipEntry.getName() returns the entire file path.
          _entryPaths.add( zipEntry.getName() );
       }
       if ( _entryPaths.isEmpty() ) {
-         LOGGER.info( "No desired entries in " + file.getAbsolutePath() );
+         LOGGER.info( "No desired entries in {}", file.getAbsolutePath() );
          return false;
       }
-      LOGGER.info( "Zip Entries: " + entryCount + " Valid Files: " + wantedCount );
+      LOGGER.info( "Zip Entries: {} Valid Files: {}", entryCount, wantedCount );
       final Map<String,Integer> patientCounts = new HashMap<>();
       // Sorting all the file paths will sort the patient name and the filenames at once.
       _entryPaths.sort( new NumberedSuffixComparator() );
@@ -397,7 +397,7 @@ public class ZipFileTreeReader extends AbstractFileTreeReader {
       patientCounts.forEach( (k,v) -> PatientNoteStore.getInstance().setWantedDocCount(k, v) );
       ProgressManager.getInstance().initializeProgress( file.getPath(), _entryPaths.size() );
       _currentEntryIndex = 0;
-      LOGGER.info( "Valid Patients: " + patientCounts.keySet().size() + " in " + file.getAbsolutePath() );
+      LOGGER.info( "Valid Patients: {} in {}", patientCounts.keySet().size(), file.getAbsolutePath() );
       return true;
    }
 
@@ -474,7 +474,7 @@ public class ZipFileTreeReader extends AbstractFileTreeReader {
    // TODO move to super class
    public String readFile( final File file ) throws IOException {
       final String entryPath = getCurrentEntryPath();
-      LOGGER.info( "Reading " + entryPath + " in " + file.getAbsolutePath() + " ..." );
+      LOGGER.info( "Reading {} in {} ...", entryPath, file.getAbsolutePath() );
       final ZipFile zipFile = getZipFile();
       final ZipEntry entry = zipFile.getEntry( entryPath );
       final String encoding = getValidEncoding();
