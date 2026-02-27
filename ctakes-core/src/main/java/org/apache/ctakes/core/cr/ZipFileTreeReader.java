@@ -200,6 +200,16 @@ public class ZipFileTreeReader extends AbstractFileTreeReader {
       return _patientList.size();
    }
 
+   /**
+    * Gets the total number of documents for the given patient that will be returned by this
+    * collection reader.
+    * @param patientId -
+    * @return the number of documents in the collection.
+    */
+   public int getNoteCount( final String patientId ) {
+      return PatientNoteStore.getInstance().getWantedDocCount( patientId );
+   }
+
    protected String getPatientId( final ZipEntry entry ) {
       return getPatientId( new File( entry.getName() ) );
    }
