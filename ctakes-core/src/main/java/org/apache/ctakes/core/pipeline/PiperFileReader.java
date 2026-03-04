@@ -67,6 +67,8 @@ final public class PiperFileReader {
 
    private CliOptionals _cliOptionals;
 
+   private String _piperDir;
+
    /**
     * Create and empty PipelineReader
     */
@@ -92,6 +94,12 @@ final public class PiperFileReader {
     * @throws UIMAException if the pipeline cannot be loaded
     */
    public PiperFileReader( final String filePath, final CliOptionals cliOptionals ) throws UIMAException {
+      final File piperFile = new File( filePath );
+      if ( !piperFile.exists() ) {
+         LOGGER.error( "No Piper File exists at {}.", filePath );
+         System.exit( 1 );
+      }
+      _piperDir = piperFile.getParent();
       _builder = new PipelineBuilder();
       if ( cliOptionals != null ) {
          setCliOptionals( cliOptionals );
@@ -317,6 +325,11 @@ final public class PiperFileReader {
          final File located = FileLocator.getFileQuiet( filePath );
          if ( located != null ) {
             parentPath = located.getParent();
+         } else {
+            final File colocated = FileLocator.getFileQuiet( _piperDir + "/" + filePath );
+            if ( colocated != null ) {
+               return getPiperStream( _piperDir + "/" + filePath );
+            }
          }
       }
       if ( parentPath != null && !parentPath.isEmpty()
