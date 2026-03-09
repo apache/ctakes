@@ -149,6 +149,25 @@ abstract public class AbstractTableFileWriter
    protected void writeComplete( final List<List<String>> data ) {
    }
 
+   protected TableType getTableType() {
+      return Arrays.stream( TableType.values() )
+                   .filter( s -> s.name().equalsIgnoreCase( _tableType ) )
+                   .findFirst()
+                   .orElse( TableType.BSV );
+   }
+
+   // TODO - refactor up to AbstractFileWriter
+   protected File getOutputFile( final String outputDir,
+                                 final String documentId,
+                                 final String fileName ) {
+      final TableType tableType = Arrays.stream( TableType.values() )
+                                        .filter( s -> s.name()
+                                                       .equalsIgnoreCase( _tableType ) )
+                                        .findFirst()
+                                        .orElse( TableType.BSV );
+      return new File( outputDir, documentId + "_table." + tableType.name() );
+   }
+
    /**
     * {@inheritDoc}
     */
@@ -157,15 +176,14 @@ abstract public class AbstractTableFileWriter
                           final String outputDir,
                           final String documentId,
                           final String fileName ) throws IOException {
+      final File file = getOutputFile( outputDir, documentId, fileName );
       final TableType tableType = Arrays.stream( TableType.values() )
                                         .filter( s -> s.name()
                                                        .equalsIgnoreCase( _tableType ) )
                                         .findFirst()
                                         .orElse( TableType.BSV );
-      final File file = new File( outputDir, documentId + "_table." + tableType.name() );
       LOGGER.info( "Writing {} Table to {} ...", tableType.name(), file.getPath() );
       final String header = createTableHeader( tableType, getHeaderRow() );
-
       final String footer = createTableFooter( tableType, getFooterRow() );
       try ( Writer writer = new BufferedWriter( new FileWriter( file ) ) ) {
          writer.write( header );

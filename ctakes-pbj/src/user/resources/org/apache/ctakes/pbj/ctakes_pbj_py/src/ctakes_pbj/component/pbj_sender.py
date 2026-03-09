@@ -1,5 +1,4 @@
 import sys
-import time
 import stomp
 import logging
 
@@ -43,7 +42,7 @@ class PBJSender(cas_annotator.CasAnnotator):
 
     # Called once at the beginning of a pipeline.
     def initialize(self):
-        logger.info(f"{time.ctime()} Starting PBJ Sender on {self.host} {self.queue} ...")
+        logger.info(f"Starting PBJ Sender on {self.host} {self.queue} ...")
         # Use a heartbeat of 10 minutes  (in milliseconds)
         self.conn = stomp.Connection12([(self.host, self.port)],
                                        keepalive=True, heartbeats=(600000, 600000))
@@ -51,8 +50,7 @@ class PBJSender(cas_annotator.CasAnnotator):
 
     # Called for every cas passed through the pipeline.
     def process(self, cas):
-        logger.info(time.ctime(), "Sending processed information to",
-              self.host, self.queue, "...")
+        logger.info(f"Sending processed information to {self.host} {self.queue}...")
         xmi = cas.to_xmi()
         self.conn.send(self.queue, xmi)
 
@@ -68,10 +66,10 @@ class PBJSender(cas_annotator.CasAnnotator):
         self.conn.send(self.queue, text)
 
     def send_stop(self):
-        logger.info(f"{time.ctime()} Sending Stop code to {self.host} {self.queue} ...")
+        logger.info(f"Sending Stop code to {self.host} {self.queue} ...")
         self.conn.send(self.queue, STOP_MESSAGE)
         self.conn.disconnect()
-        logger.info(f"{time.ctime()} Disconnected PBJ Sender on self.host self.queue")
+        logger.info(f"Disconnected PBJ Sender on {self.host} {self.queue}.")
 
     def set_host(self, host_name):
         self.host = host_name

@@ -3,9 +3,7 @@ package org.apache.ctakes.core.cr;
 import org.apache.ctakes.core.patient.PatientNoteStore;
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.core.pipeline.ProgressManager;
-import org.apache.ctakes.core.util.AeParamUtil;
-import org.apache.ctakes.core.util.BannerWriter;
-import org.apache.ctakes.core.util.NumberedSuffixComparator;
+import org.apache.ctakes.core.util.*;
 import org.apache.ctakes.core.util.doc.DocIdUtil;
 import org.apache.ctakes.core.util.doc.JCasBuilder;
 import org.apache.ctakes.core.util.doc.SourceMetadataUtil;
@@ -23,11 +21,11 @@ import org.slf4j.LoggerFactory;
 import java.io.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.*;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
@@ -62,17 +60,15 @@ public class ZipFileTreeReader extends AbstractFileTreeReader {
    )
    private String _patientListPath;
 
-//   static public final String DATE_FORMAT_PARAM = "DateFormat";
-//   static public final String DATE_FORMAT_DESC = "A format to parse dates.  e.g. dd-MM-yyyy_HH:mm:ss";
-//   @ConfigurationParameter (
-//         name = DATE_FORMAT_PARAM,
-//         description = DATE_FORMAT_DESC,
-//         defaultValue = "yyyyMMdd",
-//         mandatory = false
-//   )
-//   private String _dateFormat;
-//
-//   private DateTimeFormatter _dateFormatter;
+   static public final String FILE_DATE_FORMAT_PARAM = "FileDateFormat";
+   static public final String FILE_DATE_FORMAT_DESC = "A format to parse date from a filename.  e.g. dd-MM-yyyy_HH:mm:ss";
+   @ConfigurationParameter (
+         name = FILE_DATE_FORMAT_PARAM,
+         description = FILE_DATE_FORMAT_DESC,
+         defaultValue = "yyyyMMdd",
+         mandatory = false
+   )
+   private String _fileDateFormat;
 
    static public final String CAS_DATE_FORMAT_PARAM = "CasDateFormat";
    static public final String CAS_DATE_FORMAT_DESC = "Set a value for parameter CasDateFormat.";
@@ -84,7 +80,11 @@ public class ZipFileTreeReader extends AbstractFileTreeReader {
    )
    private String _casDateFormat;
 
+   private DateTimeFormatter _fileDateFormatter;
    private DateTimeFormatter _casDateFormatter;
+   private final String SHORT_DATE_FORMAT = "yyMMdd";
+   private final DateTimeFormatter SHORT_DATE_FORMATTER = DateTimeFormatter.ofPattern( SHORT_DATE_FORMAT );
+   private final LocalDateTime RUN_START_DT = LocalDateTime.now();
 
 
    private boolean _writeBanner_ = false;
@@ -114,7 +114,7 @@ public class ZipFileTreeReader extends AbstractFileTreeReader {
    @Override
    public void initialize( final UimaContext context ) throws ResourceInitializationException {
       super.initialize( context );
-//      _dateFormatter = DateTimeFormatter.ofPattern( _dateFormat );
+      _fileDateFormatter = DateTimeFormatter.ofPattern( _fileDateFormat );
       _casDateFormatter = DateTimeFormatter.ofPattern( _casDateFormat );
       // TODO - for zipPatientLevel in the zip getPatient just get the dir at that level.
       final Object zipPatientLevel = context.getConfigParameterValue( PATIENT_LEVEL );
@@ -139,6 +139,13 @@ public class ZipFileTreeReader extends AbstractFileTreeReader {
       // Get rid of patients named after source subdirectories.
       final Collection<String> subDirPatients = PatientNoteStore.getInstance().getStoredPatientIds();
       subDirPatients.forEach( PatientNoteStore.getInstance()::removePatient );
+      if ( !SHORT_DATE_FORMAT.equals( _fileDateFormat ) ) {
+         CalendarUtil.addDateFormat( _fileDateFormat );
+      }
+      if ( !SHORT_DATE_FORMAT.equals( _casDateFormat ) ) {
+      CalendarUtil.addDateTimeFormat( _casDateFormat );
+      }
+      CalendarUtil.addDateFormat( SHORT_DATE_FORMAT );
    }
 
    // TODO move to super class
@@ -455,6 +462,7 @@ public class ZipFileTreeReader extends AbstractFileTreeReader {
          final String idPrefix = createDocumentIdPrefix( entryFile, getRootDir() );
          final String docType = createDocumentType( id );
          final String docTime = createDocumentTime( entry );
+         final Calendar creationDate = CalendarUtil.getCalendar( docTime );
          final String patientId = getPatientId( entry );
          return new JCasBuilder()
                .setCorpusName( getCorpusName() )
@@ -466,6 +474,7 @@ public class ZipFileTreeReader extends AbstractFileTreeReader {
                .setDocIdPrefix( idPrefix )
                .setDocType( docType )
                .setDocTime( docTime )
+               .setDocCreationDate( creationDate )
                .setDocPath( entryPath )
                .nullDocText();
       } catch ( IOException ioE ) {
@@ -542,14 +551,15 @@ public class ZipFileTreeReader extends AbstractFileTreeReader {
       return file.getParent();
    }
 
-
-   /**
-    * @param entry -
-    * @return the file's last modification date as a string : {@link #getDateFormat()}
-    */
-   protected String createDocumentTime( final ZipEntry entry ) {
-      return createDocumentTime( entry.getTime() );
+   protected String createDocumentType( final String documentId ) {
+      final String[] splits = StringUtil.fastSplit( documentId, '-' );
+      if  ( splits.length == 4 ) {
+         return splits[ 2 ];
+      }
+      return super.createDocumentType( documentId );
    }
+
+
 
    // TODO move to abstract reader
 
@@ -558,31 +568,54 @@ public class ZipFileTreeReader extends AbstractFileTreeReader {
     */
    @Override
    public DateFormat getDateFormat() {
-//      return new SimpleDateFormat( _dateFormat );
       return new SimpleDateFormat( _casDateFormat );
    }
 
-
-   protected String createDocumentTime( final LocalDate date ) {
-      return _casDateFormatter.format( date );
-   }
 
    protected String createDocumentTime( final LocalDateTime dateTime ) {
       return _casDateFormatter.format( dateTime );
    }
 
    /**
-    * @param millis -
+    * @param entry -
     * @return the file's last modification date as a string : {@link #getDateFormat()}
     */
-   // TODO move to super class
-   protected String createDocumentTime( final long millis ) {
-//      _dateFormatter = DateTimeFormatter.ofPattern( _dateFormat );
-//      return _dateFormatter.format(
-      return _casDateFormatter.format(
-            LocalDateTime.ofInstant( Instant.ofEpochMilli( millis ), ZONE_ID ) );
+   protected String createDocumentTime( final ZipEntry entry ) {
+      final File entryFile = new File( entry.getName() );
+      final String entryName = entryFile.getName();
+      final String[] extSplits = StringUtil.fastSplit( entryName, '.' );
+      final String[] splits = StringUtil.fastSplit( extSplits[ 0 ], '-' );
+      if ( splits.length == 4 ) {
+         final LocalDateTime ldt = getLocalDateTime( splits[ 3 ] );
+         return createDocumentTime( ldt );
+      }
+      return createDocumentTime( RUN_START_DT );
    }
 
+   // TODO move to abstract reader
+
+   private LocalDateTime getLocalDateTime( final String dateText ) {
+      LocalDate date = null;
+      if ( dateText.length() == 8 ) {
+         try {
+            date = LocalDate.parse( dateText, _fileDateFormatter );
+         } catch ( DateTimeParseException dtpE ) {
+            LOGGER.warn( "Bad File date {} {}", _fileDateFormat, dateText );
+         }
+      } else if ( dateText.length() == 6 ) {
+         try {
+            date = LocalDate.parse( dateText, SHORT_DATE_FORMATTER );
+         } catch ( DateTimeParseException dtpE ) {
+            LOGGER.warn( "Bad File short date {} {}", SHORT_DATE_FORMAT, dateText );
+         }
+      } else {
+         LOGGER.warn( "Bad File date length {}", dateText );
+      }
+      if ( date != null ) {
+         return date.atStartOfDay();
+      }
+      return RUN_START_DT;
+   }
 
 
 }

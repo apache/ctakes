@@ -271,6 +271,7 @@ Equivalent to cTAKES: edu.mayo.bmi.uima.core.type.SymbolToken</description>
       <supertypeName>org.apache.ctakes.typesystem.type.syntax.BaseToken</supertypeName>
     </typeDescription>
     <typeDescription>
+    <!-- Deprecate. Same as parent type OntologyConcept.  CUI = code.  TUI = code.  Not good anyway, concepts can have >1 TUI.  -->
       <name>org.apache.ctakes.typesystem.type.refsem.UmlsConcept</name>
       <description>Concepts in the Unified Medical Language System (UMLS) Metathesaurus have a concept unique identifier (CUI) and a type unique identifier (TUI, i.e., semantic type) which are curated, normalized codes. For example, "pain" would have a cui=C0030193 and tui=T184.
 Equivalent to cTAKES: edu.mayo.bmi.uima.core.type.UmlsConcept</description>
@@ -1041,6 +1042,11 @@ More qualifying information on how the procedure was done.</description>
           <elementType>org.apache.ctakes.typesystem.type.textsem.IdentifiedAnnotation</elementType>
         </featureDescription>
         <featureDescription>
+          <name>textRepresentation</name>
+          <description>Plain text representation of the Element. Useful when no mentions are associated and normalization cannot be performed.</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
           <name>discoveryTechnique</name>
           <description/>
           <rangeTypeName>uima.cas.Integer</rangeTypeName>
@@ -1087,6 +1093,36 @@ More qualifying information on how the procedure was done.</description>
       <description>A normalized form for Time annotations.  Inherits from Element, but some fields may be unused.</description>
       <supertypeName>org.apache.ctakes.typesystem.type.refsem.Element</supertypeName>
       <features>
+          <featureDescription>
+              <name>hour</name>
+              <description/>
+              <rangeTypeName>uima.cas.String</rangeTypeName>
+          </featureDescription>
+          <featureDescription>
+              <name>minute</name>
+              <description/>
+              <rangeTypeName>uima.cas.String</rangeTypeName>
+          </featureDescription>
+          <featureDescription>
+              <name>second</name>
+              <description/>
+              <rangeTypeName>uima.cas.String</rangeTypeName>
+          </featureDescription>
+          <featureDescription>
+              <name>hourValue</name>
+              <description/>
+              <rangeTypeName>uima.cas.Integer</rangeTypeName>
+          </featureDescription>
+          <featureDescription>
+              <name>minuteValue</name>
+              <description/>
+              <rangeTypeName>uima.cas.Integer</rangeTypeName>
+          </featureDescription>
+          <featureDescription>
+              <name>secondValue</name>
+              <description/>
+              <rangeTypeName>uima.cas.Integer</rangeTypeName>
+          </featureDescription>
         <featureDescription>
           <name>normalizedForm</name>
           <description/>
@@ -1114,6 +1150,21 @@ More qualifying information on how the procedure was done.</description>
           <description/>
           <rangeTypeName>uima.cas.String</rangeTypeName>
         </featureDescription>
+          <featureDescription>
+              <name>dayValue</name>
+              <description/>
+              <rangeTypeName>uima.cas.Integer</rangeTypeName>
+          </featureDescription>
+          <featureDescription>
+              <name>monthValue</name>
+              <description/>
+              <rangeTypeName>uima.cas.Integer</rangeTypeName>
+          </featureDescription>
+          <featureDescription>
+              <name>yearValue</name>
+              <description/>
+              <rangeTypeName>uima.cas.Integer</rangeTypeName>
+          </featureDescription>
       </features>
     </typeDescription>
     <typeDescription>
@@ -1275,7 +1326,7 @@ This instantiates a manages/treats relation which should be marked as conditiona
     </typeDescription>
     <typeDescription>
       <name>org.apache.ctakes.typesystem.type.relation.CollectionTextRelation</name>
-      <description/>
+      <description>Generic relation between two spans in text.</description>
       <supertypeName>org.apache.ctakes.typesystem.type.relation.Relation</supertypeName>
       <features>
         <featureDescription>
@@ -1362,107 +1413,107 @@ This instantiates a manages/treats relation which should be marked as conditiona
     </typeDescription>
     <typeDescription>
       <name>org.apache.ctakes.typesystem.type.relation.AffectsTextRelation</name>
-      <description/>
+      <description>Affects type relation between two spans of text.</description>
       <supertypeName>org.apache.ctakes.typesystem.type.relation.BinaryTextRelation</supertypeName>
     </typeDescription>
     <typeDescription>
       <name>org.apache.ctakes.typesystem.type.relation.CausesBringsAbout</name>
-      <description/>
+      <description>Causes or Brings about relation between two Elements.</description>
       <supertypeName>org.apache.ctakes.typesystem.type.relation.ElementRelation</supertypeName>
     </typeDescription>
     <typeDescription>
       <name>org.apache.ctakes.typesystem.type.relation.CausesBringsAboutTextRelation</name>
-      <description/>
+      <description>Causes or Brings about relation between two spans of text.</description>
       <supertypeName>org.apache.ctakes.typesystem.type.relation.BinaryTextRelation</supertypeName>
     </typeDescription>
     <typeDescription>
       <name>org.apache.ctakes.typesystem.type.relation.ComplicatesDisrupts</name>
-      <description/>
+      <description>Complicates or Disrupts relation between two Elements.</description>
       <supertypeName>org.apache.ctakes.typesystem.type.relation.ElementRelation</supertypeName>
     </typeDescription>
     <typeDescription>
       <name>org.apache.ctakes.typesystem.type.relation.ComplicatesDisruptsTextRelation</name>
-      <description/>
+      <description>Complicates or Disrupts relation between two spans of text.</description>
       <supertypeName>org.apache.ctakes.typesystem.type.relation.BinaryTextRelation</supertypeName>
     </typeDescription>
     <typeDescription>
       <name>org.apache.ctakes.typesystem.type.relation.Contraindicates</name>
-      <description/>
+      <description>Contraindicates relation between two Elements</description>
       <supertypeName>org.apache.ctakes.typesystem.type.relation.ElementRelation</supertypeName>
     </typeDescription>
     <typeDescription>
       <name>org.apache.ctakes.typesystem.type.relation.ContraindicatesTextRelation</name>
-      <description/>
+      <description>Contraindicates relation between two spans of text.</description>
       <supertypeName>org.apache.ctakes.typesystem.type.relation.BinaryTextRelation</supertypeName>
     </typeDescription>
     <typeDescription>
       <name>org.apache.ctakes.typesystem.type.relation.Diagnoses</name>
-      <description/>
+      <description>Diagnoses relation between two Elements.</description>
       <supertypeName>org.apache.ctakes.typesystem.type.relation.ElementRelation</supertypeName>
     </typeDescription>
     <typeDescription>
       <name>org.apache.ctakes.typesystem.type.relation.DiagnosesTextRelation</name>
-      <description/>
+      <description>Contraindicates relation between two spans of text.</description>
       <supertypeName>org.apache.ctakes.typesystem.type.relation.BinaryTextRelation</supertypeName>
     </typeDescription>
     <typeDescription>
       <name>org.apache.ctakes.typesystem.type.relation.Indicates</name>
-      <description/>
+      <description>Indicates relation between two Elements</description>
       <supertypeName>org.apache.ctakes.typesystem.type.relation.ElementRelation</supertypeName>
     </typeDescription>
     <typeDescription>
       <name>org.apache.ctakes.typesystem.type.relation.IndicatesTextRelation</name>
-      <description/>
+      <description>Indicates relation between two spans of text.</description>
       <supertypeName>org.apache.ctakes.typesystem.type.relation.BinaryTextRelation</supertypeName>
     </typeDescription>
     <typeDescription>
       <name>org.apache.ctakes.typesystem.type.relation.IsIndicatedFor</name>
-      <description/>
+      <description>Is Indicated For relation between two Elements</description>
       <supertypeName>org.apache.ctakes.typesystem.type.relation.ElementRelation</supertypeName>
     </typeDescription>
     <typeDescription>
       <name>org.apache.ctakes.typesystem.type.relation.IsIndicatedForTextRelation</name>
-      <description/>
+      <description>Is Indicated For relation between two spans of text</description>
       <supertypeName>org.apache.ctakes.typesystem.type.relation.BinaryTextRelation</supertypeName>
     </typeDescription>
     <typeDescription>
       <name>org.apache.ctakes.typesystem.type.relation.ManagesTreats</name>
-      <description/>
+      <description>Manages or Treats relation between two Elements</description>
       <supertypeName>org.apache.ctakes.typesystem.type.relation.ElementRelation</supertypeName>
     </typeDescription>
     <typeDescription>
       <name>org.apache.ctakes.typesystem.type.relation.Prevents</name>
-      <description/>
+      <description>Prevents relation between two Elements</description>
       <supertypeName>org.apache.ctakes.typesystem.type.relation.ElementRelation</supertypeName>
     </typeDescription>
     <typeDescription>
       <name>org.apache.ctakes.typesystem.type.relation.PreventsTextRelation</name>
-      <description/>
+      <description>Prevents relation between two spans of text</description>
       <supertypeName>org.apache.ctakes.typesystem.type.relation.BinaryTextRelation</supertypeName>
     </typeDescription>
     <typeDescription>
       <name>org.apache.ctakes.typesystem.type.relation.DegreeOfTextRelation</name>
-      <description/>
+      <description>Degree relation between two spans of text</description>
       <supertypeName>org.apache.ctakes.typesystem.type.relation.BinaryTextRelation</supertypeName>
     </typeDescription>
     <typeDescription>
       <name>org.apache.ctakes.typesystem.type.relation.LocationOfTextRelation</name>
-      <description/>
+      <description>Location relation between two spans of text</description>
       <supertypeName>org.apache.ctakes.typesystem.type.relation.BinaryTextRelation</supertypeName>
     </typeDescription>
     <typeDescription>
       <name>org.apache.ctakes.typesystem.type.relation.ManagesTreatsTextRelation</name>
-      <description/>
+      <description>Manages or Treats relation between two spans of text</description>
       <supertypeName>org.apache.ctakes.typesystem.type.relation.BinaryTextRelation</supertypeName>
     </typeDescription>
     <typeDescription>
       <name>org.apache.ctakes.typesystem.type.relation.ManifestationOfTextRelation</name>
-      <description/>
+      <description>Manifestation relation between two spans of text</description>
       <supertypeName>org.apache.ctakes.typesystem.type.relation.BinaryTextRelation</supertypeName>
     </typeDescription>
     <typeDescription>
       <name>org.apache.ctakes.typesystem.type.relation.ResultOfTextRelation</name>
-      <description/>
+      <description>Result relation between two spans of text</description>
       <supertypeName>org.apache.ctakes.typesystem.type.relation.BinaryTextRelation</supertypeName>
     </typeDescription>
     <typeDescription>
@@ -1485,11 +1536,20 @@ This instantiates a manages/treats relation which should be marked as conditiona
           <description/>
           <rangeTypeName>uima.cas.String</rangeTypeName>
         </featureDescription>
-        <featureDescription>
+          <featureDescription>
+              <name>birthDateValue</name>
+              <description/>
+              <rangeTypeName>org.apache.ctakes.typesystem.type.refsem.Date</rangeTypeName>
+          </featureDescription>
+          <featureDescription>
           <name>deathDate</name>
           <description/>
           <rangeTypeName>uima.cas.String</rangeTypeName>
         </featureDescription>
+          <featureDescription>
+              <name>deathDateValue</name>
+              <rangeTypeName>org.apache.ctakes.typesystem.type.refsem.Date</rangeTypeName>
+          </featureDescription>
         <featureDescription>
           <name>gender</name>
           <description/>
@@ -1529,12 +1589,12 @@ This instantiates a manages/treats relation which should be marked as conditiona
       <features>
         <featureDescription>
           <name>noteTypeCode</name>
-          <description/>
+          <description>Pathology: PATH,  Imaging: IMG,  Progress: PROG,  (generic) Clinical: NOTE</description>
           <rangeTypeName>uima.cas.String</rangeTypeName>
         </featureDescription>
         <featureDescription>
           <name>noteSubTypeCode</name>
-          <description/>
+          <description>AUTOPSY vs. BIOPSY,  MRI vs. XRAY,  PREOP vs. POSTOP,  OBGYN vs. ENT,  etc.</description>
           <rangeTypeName>uima.cas.String</rangeTypeName>
         </featureDescription>
         <featureDescription>
@@ -1567,6 +1627,15 @@ This instantiates a manages/treats relation which should be marked as conditiona
           <description/>
           <rangeTypeName>uima.cas.String</rangeTypeName>
         </featureDescription>
+          <!-- Normalized Date and Time -->
+          <featureDescription>
+              <name>sourceCreationDate</name>
+              <rangeTypeName>org.apache.ctakes.typesystem.type.refsem.Date</rangeTypeName>
+          </featureDescription>
+          <featureDescription>
+              <name>sourceCreationTime</name>
+              <rangeTypeName>org.apache.ctakes.typesystem.type.refsem.Time</rangeTypeName>
+          </featureDescription>
         <featureDescription>
           <name>sourceInstitution</name>
           <description/>
@@ -1584,6 +1653,60 @@ This instantiates a manages/treats relation which should be marked as conditiona
         </featureDescription>
       </features>
     </typeDescription>
+      <typeDescription>
+          <name>org.apache.ctakes.typesystem.type.structured.Patient</name>
+          <description>Patient information. Patient information intermixed with general metadata is deprecated.</description>
+          <supertypeName>uima.cas.TOP</supertypeName>
+          <features>
+              <featureDescription>
+                  <name>patientIdentifier</name>
+                  <description>Represents a text identifier for the patient.</description>
+                  <rangeTypeName>uima.cas.String</rangeTypeName>
+              </featureDescription>
+              <featureDescription>
+                  <name>patientNum</name>
+                  <description>patientNum is a simple long. Could be an index in an array or table.</description>
+                  <rangeTypeName>uima.cas.Long</rangeTypeName>
+              </featureDescription>
+              <featureDescription>
+                  <name>demographics</name>
+                  <description/>
+                  <rangeTypeName>org.apache.ctakes.typesystem.type.structured.Demographics</rangeTypeName>
+              </featureDescription>
+              <featureDescription>
+                  <name>documentCount</name>
+                  <description>The number of documents for the patient in the corpus.</description>
+                  <rangeTypeName>uima.cas.Integer</rangeTypeName>
+              </featureDescription>
+          </features>
+      </typeDescription>
+      <typeDescription>
+          <name>org.apache.ctakes.typesystem.type.structured.Corpus</name>
+          <description>Information about a corpus containing documents.</description>
+          <supertypeName>uima.cas.TOP</supertypeName>
+          <features>
+              <featureDescription>
+                  <name>corpusId</name>
+                  <description>Some unique identifier.</description>
+                  <rangeTypeName>uima.cas.String</rangeTypeName>
+              </featureDescription>
+              <featureDescription>
+                  <name>corpusName</name>
+                  <description>A name of the corpus, for instance UPMC Melanoma Pathology Notes.</description>
+                  <rangeTypeName>uima.cas.String</rangeTypeName>
+              </featureDescription>
+              <featureDescription>
+                  <name>patientCount</name>
+                  <description>The number of patients in the corpus.</description>
+                  <rangeTypeName>uima.cas.Integer</rangeTypeName>
+              </featureDescription>
+              <featureDescription>
+                  <name>documentCount</name>
+                  <description>The number of documents in the corpus.</description>
+                  <rangeTypeName>uima.cas.Integer</rangeTypeName>
+              </featureDescription>
+          </features>
+      </typeDescription>
     <typeDescription>
       <name>org.apache.ctakes.typesystem.type.structured.Metadata</name>
       <description>Structured data that captures information about the document, patient, or context of the clinical text.</description>
@@ -1964,6 +2087,16 @@ This instantiates a manages/treats relation which should be marked as conditiona
           <description/>
           <rangeTypeName>org.apache.ctakes.typesystem.type.refsem.Time</rangeTypeName>
         </featureDescription>
+          <featureDescription>
+              <name>frequency</name>
+              <description/>
+              <rangeTypeName>org.apache.ctakes.typesystem.type.refsem.Frequency</rangeTypeName>
+          </featureDescription>
+          <featureDescription>
+              <name>duration</name>
+              <description/>
+              <rangeTypeName>org.apache.ctakes.typesystem.type.refsem.Duration</rangeTypeName>
+          </featureDescription>
         <featureDescription>
           <name>timeClass</name>
           <description>DATE, DURATION, QUANTIFIER, PREPOSTEXP, etc.</description>
@@ -2108,7 +2241,7 @@ Equivalent to cTAKES: edu.mayo.bmi.uima.core.type.Properties</description>
     </typeDescription>
     <typeDescription>
       <name>org.apache.ctakes.typesystem.type.structured.DocumentClassification</name>
-      <description/>
+      <description>Type of Document containing full text.</description>
       <supertypeName>uima.cas.TOP</supertypeName>
       <features>
         <featureDescription>
@@ -2746,6 +2879,11 @@ More qualifying information on how the procedure was done.</description>
               <description/>
               <rangeTypeName>uima.cas.String</rangeTypeName>
            </featureDescription>
+            <featureDescription>
+                <name>countValue</name>
+                <description/>
+                <rangeTypeName>uima.cas.Integer</rangeTypeName>
+            </featureDescription>
         </features>
      </typeDescription>
      <typeDescription>
@@ -2759,7 +2897,12 @@ More qualifying information on how the procedure was done.</description>
               <description/>
               <rangeTypeName>uima.cas.String</rangeTypeName>
            </featureDescription>
-           <featureDescription>
+            <featureDescription>
+                <name>numberValue</name>
+                <description/>
+                <rangeTypeName>uima.cas.Integer</rangeTypeName>
+            </featureDescription>
+            <featureDescription>
               <name>unit</name>
               <description>the unit of dose measurement</description>
               <rangeTypeName>uima.cas.String</rangeTypeName>
@@ -2777,7 +2920,12 @@ More qualifying information on how the procedure was done.</description>
               <description/>
               <rangeTypeName>uima.cas.String</rangeTypeName>
            </featureDescription>
-           <featureDescription>
+            <featureDescription>
+                <name>numberValue</name>
+                <description/>
+                <rangeTypeName>uima.cas.Integer</rangeTypeName>
+            </featureDescription>
+            <featureDescription>
               <name>unit</name>
               <description>the unit of dose measurement</description>
               <rangeTypeName>uima.cas.String</rangeTypeName>
@@ -2818,7 +2966,12 @@ More qualifying information on how the procedure was done.</description>
               <description/>
               <rangeTypeName>uima.cas.String</rangeTypeName>
            </featureDescription>
-           <featureDescription>
+            <featureDescription>
+                <name>numberValue</name>
+                <description/>
+                <rangeTypeName>uima.cas.Integer</rangeTypeName>
+            </featureDescription>
+            <featureDescription>
               <name>unit</name>
               <description>The periodic unit used, e.g day, month, hour, etc.</description>
               <rangeTypeName>uima.cas.String</rangeTypeName>
@@ -2835,7 +2988,12 @@ More qualifying information on how the procedure was done.</description>
               <description/>
               <rangeTypeName>uima.cas.String</rangeTypeName>
            </featureDescription>
-           <featureDescription>
+            <featureDescription>
+                <name>numberValue</name>
+                <description/>
+                <rangeTypeName>uima.cas.Integer</rangeTypeName>
+            </featureDescription>
+            <featureDescription>
               <name>unit</name>
               <description>the unit of time measurement. e.g day, month, hour, etc.</description>
               <rangeTypeName>uima.cas.String</rangeTypeName>

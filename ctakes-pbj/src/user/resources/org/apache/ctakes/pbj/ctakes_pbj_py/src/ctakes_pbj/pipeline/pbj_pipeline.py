@@ -1,5 +1,4 @@
 import sys
-import time
 import traceback
 from traceback import TracebackException
 from threading import Event
@@ -9,6 +8,13 @@ from ctakes_pbj.pbj_tools import pbj_defaults
 from ctakes_pbj.pbj_tools.arg_parser import ArgParser
 
 exit_event = Event()
+
+# Configure logging here...
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s %(name)s - %(levelname)s: %(message)s",
+    datefmt='%m/%d/%Y %I:%M:%S %p'
+)
 
 logger = logging.getLogger(__name__)
 
@@ -55,7 +61,7 @@ class PBJPipeline:
             if exit_event.is_set():
                 break
             try:
-                logger.info(f"{time.ctime()} Initializing f{type(annotator).__name__}... ")
+                logger.info(f"Initializing {type(annotator).__name__}... ")
                 annotator.initialize()
             except Exception as exceptable:
                 self.handle_exception(annotator, exceptable, True)
@@ -66,7 +72,7 @@ class PBJPipeline:
         if not self.initialized:
             self.initialize()
         try:
-            logger.info(f"{time.ctime()} Starting f{type(self.c_reader).__name__}...")
+            logger.info(f"Starting {type(self.c_reader).__name__}...")
             self.c_reader.start()
         except Exception as exceptable:
             self.handle_exception(self.c_reader, exceptable)
@@ -81,42 +87,42 @@ class PBJPipeline:
             if exit_event.is_set():
                 break
             try:
-                logger.info(f"{time.ctime()} Running  f{type(annotator).__name__}...")
+                logger.info(f"Running  {type(annotator).__name__}...")
                 annotator.process(cas)
             except Exception as exceptable:
                 self.handle_exception(annotator, exceptable)
 
     # At the end of the corpus, call each annotator for cleanup, etc.
     def collection_process_complete(self):
-        logger.info(f"{time.ctime()} Collection processing complete.")
+        logger.info("Collection processing complete.")
         for annotator in self.annotators:
             if exit_event.is_set():
                 break
             try:
-                logger.info(f"{time.ctime()} Notifying f{type(annotator).__name__} of completion ...")
+                logger.info(f"Notifying {type(annotator).__name__} of completion ...")
                 annotator.collection_process_complete()
             except Exception as exceptable:
                 self.handle_exception(annotator, exceptable)
-        logger.info(f"{time.ctime()} Done.")
+        logger.info("Done.")
         exit_event.set()
 
     def handle_exception(self, thrower, exceptable, initializing=False):
-        logger.info(f"{time.ctime()} Exception thrown in f{type(thrower).__name__} : f{type(exceptable).__name__} exceptable")
+        logger.info(f"Exception thrown in {type(thrower).__name__} : {type(exceptable).__name__} exceptable")
         # print(TracebackException.from_exception(exceptable, limit=-3, capture_locals=True))
         traceback.print_exc(limit=3, chain=False)
         # Print nice output regarding the exception.
         try:
-            logger.info(f"{time.ctime()} Notifying f{type(self.c_reader).__name__} of exception ...")
+            logger.info(f"Notifying {type(self.c_reader).__name__} of exception ...")
             self.c_reader.handle_exception(thrower, exceptable)
         except Exception as exceptable_2:
             traceback.print_exc(limit=3, chain=False)
         # Distribute handling of exceptions.
         for annotator in self.annotators:
             try:
-                logger.info(f"{time.ctime()} Notifying f{type(annotator).__name__} of exception ...")
+                logger.info(f"Notifying {type(annotator).__name__} of exception ...")
                 annotator.handle_exception(thrower, exceptable, initializing)
             except Exception as exceptable_2:
                 traceback.print_exc(limit=3, chain=False)
-        logger.info(f"{time.ctime()} Done.")
+        logger.info("Done.")
         # sys.exit(1)
         exit_event.set()

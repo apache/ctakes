@@ -69,26 +69,71 @@ final public class CalendarUtil {
          = new IdentifiedAnnotationBuilder().creator( TimeMention::new )
                                             .type( SemanticTui.T079 );
 
-   static {
+   static  {
       for ( String date : DATE_FORMAT_CODES ) {
-         DATE_FORMATS.add( new SimpleDateFormat( date ) );
-         DATE_FORMATS.add( new SimpleDateFormat( "EEE " + date ) );
-         DATE_FORMATS.add( new SimpleDateFormat( "EEE, " + date ) );
+         addDateFormats( date );
          for ( String time : TIME_FORMAT_CODES ) {
-            DATE_TIME_FORMATS.add( new SimpleDateFormat( date + " " + time ) );
-            DATE_TIME_FORMATS.add( new SimpleDateFormat( date + " 'at' " + time ) );
-            DATE_TIME_FORMATS.add( new SimpleDateFormat( "EEE " + date + " " + time ) );
-            DATE_TIME_FORMATS.add( new SimpleDateFormat( "EEE, " + date + " 'at' " + time ) );
-
-            DATE_TIME_FORMATS.add( new SimpleDateFormat( time + " " + date ) );
-            DATE_TIME_FORMATS.add( new SimpleDateFormat( time + " 'on' " + date ) );
-            DATE_TIME_FORMATS.add( new SimpleDateFormat( time + ", EEE " + date ) );
-            DATE_TIME_FORMATS.add( new SimpleDateFormat( time + " 'on' EEE " + date ) );
-            DATE_TIME_FORMATS.add( new SimpleDateFormat( time + " 'on' EEE, " + date ) );
+            addDateTimeFormats( date, time );
          }
       }
    }
 
+   static private void addDateFormats( final String date ) {
+      DATE_FORMATS.add( new SimpleDateFormat( date ) );
+      DATE_FORMATS.add( new SimpleDateFormat( "EEE " + date ) );
+      DATE_FORMATS.add( new SimpleDateFormat( "EEE, " + date ) );
+   }
+
+   static private void addTimeFormats( final String time ) {
+      for ( String date : DATE_FORMAT_CODES ) {
+         addDateTimeFormats( date, time );
+      }
+   }
+
+
+   static private void addDateTimeFormats( final String date, final String time ) {
+      DATE_TIME_FORMATS.add( new SimpleDateFormat( date + " " + time ) );
+      DATE_TIME_FORMATS.add( new SimpleDateFormat( date + " 'at' " + time ) );
+      DATE_TIME_FORMATS.add( new SimpleDateFormat( "EEE " + date + " " + time ) );
+      DATE_TIME_FORMATS.add( new SimpleDateFormat( "EEE, " + date + " 'at' " + time ) );
+
+      DATE_TIME_FORMATS.add( new SimpleDateFormat( time + " " + date ) );
+      DATE_TIME_FORMATS.add( new SimpleDateFormat( time + " 'on' " + date ) );
+      DATE_TIME_FORMATS.add( new SimpleDateFormat( time + ", EEE " + date ) );
+      DATE_TIME_FORMATS.add( new SimpleDateFormat( time + " 'on' EEE " + date ) );
+      DATE_TIME_FORMATS.add( new SimpleDateFormat( time + " 'on' EEE, " + date ) );
+   }
+
+
+   /**
+    * To normalize date and time expressions, a number of date and time formats are tested.
+    * This will add a date format to the known list of date and time expressions.
+    * @param dateFormat for SimpleDateFormat to apply for normalization.
+    */
+   static public void addDateFormat( final String dateFormat ) {
+      addDateFormats( dateFormat );
+      for ( String time : TIME_FORMAT_CODES ) {
+         addDateTimeFormats( dateFormat, time );
+      }
+   }
+
+   /**
+    * To normalize date and time expressions, a number of date and time formats are tested.
+    * This will add a time format to the known list of date and time expressions.
+    * @param timeFormat for SimpleDateFormat to apply for normalization.
+    */
+   static public void addTimeFormat( final String timeFormat ) {
+      addTimeFormats( timeFormat );
+   }
+
+   /**
+    * To normalize date and time expressions, a number of date and time formats are tested.
+    * This will add a date and time format to the known list of date and time expressions.
+    * @param dateTimeFormat for SimpleDateFormat to apply for normalization.
+    */
+   static public void addDateTimeFormat( final String dateTimeFormat ) {
+      DATE_TIME_FORMATS.add( new SimpleDateFormat( dateTimeFormat ) );
+   }
 
    /**
     * @param jCas  ye olde ...
