@@ -1,3 +1,4 @@
+import logging
 import cassis
 XMI_INDICATOR = "xmlns:xmi"
 CTAKES_TYPE_SYSTEM = "resources/org/apache/ctakes/pbj/types/TypeSystem.xml"
@@ -12,7 +13,7 @@ class TypeSystemLoader:
 
     def load_type_system(self):
         if self.typesystem is None:
-            print("loading typesystem ...")
+            logger.info("Loading typesystem ...")
             with open(self.type_system_file, 'rb') as f:
                 self.typesystem = cassis.load_typesystem(f)
 

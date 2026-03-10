@@ -195,7 +195,7 @@ abstract public class PbjSender extends JCasAnnotator_ImplBase {
    }
 
 
-   protected String _id = "";
+   private String _id = "";
    private XmiCasSerializer _casSerializer;
    private XMISerializer _xmiSerializer;
 
@@ -229,6 +229,10 @@ abstract public class PbjSender extends JCasAnnotator_ImplBase {
    public void collectionProcessComplete() throws AnalysisEngineProcessException {
       sendStop();
       disconnect();
+   }
+
+   protected String getId() {
+      return _id;
    }
 
    /**

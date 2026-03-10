@@ -124,10 +124,15 @@ public class PbjJmsSender extends PbjSender {
     */
    @Override
    protected void connect() throws ResourceInitializationException {
-      try ( DotLogger dotter = new DotLogger( LOGGER, "Connecting PBJ Sender on {} {} ", _host, _queue ) ) {
-         final InitialContext initialContext = new InitialContext();
-         final ActiveMQConnectionFactory cf
-               = new ActiveMQConnectionFactory( "tcp://" + _host + ":" + _port );
+      try {
+         new InitialContext();
+      } catch ( NamingException nE ) {
+         throw new ResourceInitializationException( nE );
+      }
+      try ( DotLogger dotter = new DotLogger( LOGGER, "Connecting PBJ Sender on {} {} ", _host, _queue );
+            final ActiveMQConnectionFactory cf
+                  = new ActiveMQConnectionFactory( "tcp://" + _host + ":" + _port ) ) {
+         cf.setClientID( getId() );
          // Time To Live TTL of -1 asks server to never close this connection.
          cf.setConnectionTTL( -1 );
          cf.setReconnectAttempts( -1 );
@@ -139,7 +144,7 @@ public class PbjJmsSender extends PbjSender {
          _producer.setTimeToLive( 300000 );
          _connection.start();
          _queueBrowser = _session.createBrowser( queue );
-      } catch ( NamingException | JMSException | IOException multE ) {
+      } catch ( JMSException | IOException multE ) {
          throw new ResourceInitializationException( multE );
       }
    }

@@ -16,12 +16,14 @@ import java.nio.charset.StandardCharsets;
 /**
  * @author DJ , chip-nlp
  * @since {2/10/2023}
+ * @deprecated Use JMS instead.
  */
 @PipeBitInfo(
       name = "PbjStompSender",
       description = "Sends jcas to Artemis Queue using Stomp",
       role = PipeBitInfo.Role.SPECIAL
 )
+@Deprecated
 public class PbjStompSender extends PbjSender {
 
    static private final Logger LOGGER = LoggerFactory.getLogger( "PbjStompSender" );
@@ -82,7 +84,7 @@ public class PbjStompSender extends PbjSender {
       final String connectFrame = "CONNECT\n" +
                                   "accept-version:1.2\n" +
                                   "host:" + _host + "\n" +
-                                  "request-id:" + _id + "\n" +
+                                  "request-id:" + getId() + "\n" +
                                   "\n" +
                                   END_OF_FRAME;
       synchronized ( SOCKET_LOCK ) {
@@ -104,7 +106,7 @@ public class PbjStompSender extends PbjSender {
    @Override
    protected void disconnect() throws AnalysisEngineProcessException {
       String disconnectFrame = "DISCONNECT\n" +
-                               "receipt:" + _id + "\n" +
+                               "receipt:" + getId() + "\n" +
                                "\n" +
                                END_OF_FRAME;
       synchronized ( SOCKET_LOCK ) {

@@ -141,11 +141,15 @@ final public class PbjReceiver extends JCasCollectionReader_ImplBase {
    @Override
    public void initialize( final UimaContext context ) throws ResourceInitializationException {
       super.initialize( context );
+      try {
+         new InitialContext();
+      } catch ( NamingException nE ) {
+         throw new ResourceInitializationException( nE );
+      }
       try ( DotLogger dotter = new DotLogger( LOGGER,
-            "Starting Python Bridge to Java Receiver on {} {} ", _host, _queue ) ){
-         InitialContext initialContext = new InitialContext();
-         final ActiveMQConnectionFactory cf
-               = new ActiveMQConnectionFactory( "tcp://" + _host + ":" + _port );
+            "Starting Python Bridge to Java Receiver on {} {} ", _host, _queue );
+            final ActiveMQConnectionFactory cf
+                  = new ActiveMQConnectionFactory( "tcp://" + _host + ":" + _port ) ) {
          // Time To Live TTL of -1 asks server to never close this connection.
          cf.setConnectionTTL( -1 );
          cf.setReconnectAttempts( -1 );
@@ -156,7 +160,7 @@ final public class PbjReceiver extends JCasCollectionReader_ImplBase {
          _consumer = session.createConsumer( queue );
          _connection.start();
          registerShutdownHook();
-      } catch ( NamingException | JMSException | IOException multE ) {
+      } catch ( JMSException | IOException multE ) {
          throw new ResourceInitializationException( multE );
       }
    }
