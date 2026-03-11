@@ -29,10 +29,14 @@ import java.util.Set;
 public interface ConceptSimilarityService {
 
 	public enum SimilarityMetricEnum {
-		LCH(false, false), INTRINSIC_LCH(true, false), LIN(false, true), INTRINSIC_LIN(
-				true, false), PATH(false, false), INTRINSIC_PATH(true, false), JACCARD(
-				true, false), SOKAL(true, false), RADA(false, false), INTRINSIC_RADA(
-				true, false), WUPALMER(false, false), PAGERANK(false, false);
+		        LCH(false, false), INTRINSIC_LCH(true, false), 
+		        LIN(false, true), INTRINSIC_LIN(true, false), PATH(false, false), 
+		        INTRINSIC_PATH(true, false), JACCARD(true, false), SOKAL(true, false), 
+		        RADA(false, false), INTRINSIC_RADA(true, false), WUPALMER(false, false), 
+		        PAGERANK(false, false), RESNIK(false, false), INTRINSIC_RESNIK(true, false),
+				FAITH(false, false), INTRINSIC_FAITH(true, false), DICE(false, true),
+				SIMPSON(false, true), BRAUN_BLANQUET(false, true), OCHIAI(false, true);
+				
 		boolean intrinsicIC = false;
 		boolean corpusIC = false;
 
