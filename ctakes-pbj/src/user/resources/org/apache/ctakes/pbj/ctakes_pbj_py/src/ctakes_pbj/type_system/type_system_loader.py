@@ -4,6 +4,7 @@ XMI_INDICATOR = "xmlns:xmi"
 CTAKES_TYPE_SYSTEM = "resources/org/apache/ctakes/pbj/types/TypeSystem.xml"
 # CTAKES_TYPE_SYSTEM = "resources/org/apache/ctakes/typesystem/types/TypeSystem.xml"
 
+logger = logging.getLogger(__name__)
 
 class TypeSystemLoader:
 
