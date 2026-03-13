@@ -147,9 +147,9 @@ final public class PbjReceiver extends JCasCollectionReader_ImplBase {
          throw new ResourceInitializationException( nE );
       }
       try ( DotLogger dotter = new DotLogger( LOGGER,
-            "Starting Python Bridge to Java Receiver on {} {} ", _host, _queue );
-            final ActiveMQConnectionFactory cf
-                  = new ActiveMQConnectionFactory( "tcp://" + _host + ":" + _port ) ) {
+            "Starting PBJ Receiver on {} {} ", _host, _queue ) ) {
+         // THIS IS REALLY IMPORTANT!  DO NOT USE THE ActiveMQConnectionFactory IN A TRY WITH RESOURCES!  IT BREAKS!
+         final ActiveMQConnectionFactory cf = new ActiveMQConnectionFactory( "tcp://" + _host + ":" + _port );
          // Time To Live TTL of -1 asks server to never close this connection.
          cf.setConnectionTTL( -1 );
          cf.setReconnectAttempts( -1 );

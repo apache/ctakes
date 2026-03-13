@@ -129,15 +129,15 @@ public class PbjJmsSender extends PbjSender {
       } catch ( NamingException nE ) {
          throw new ResourceInitializationException( nE );
       }
-      try ( DotLogger dotter = new DotLogger( LOGGER, "Connecting PBJ Sender on {} {} ", _host, _queue );
-            final ActiveMQConnectionFactory cf
-                  = new ActiveMQConnectionFactory( "tcp://" + _host + ":" + _port ) ) {
-         cf.setClientID( getId() );
+      try ( DotLogger dotter = new DotLogger( LOGGER, "Connecting PBJ Sender on {} {} ", _host, _queue ) ) {
+         // THIS IS REALLY IMPORTANT!  DO NOT USE THE ActiveMQConnectionFactory IN A TRY WITH RESOURCES!  IT BREAKS!
+         final ActiveMQConnectionFactory cf = new ActiveMQConnectionFactory( "tcp://" + _host + ":" + _port );
          // Time To Live TTL of -1 asks server to never close this connection.
          cf.setConnectionTTL( -1 );
          cf.setReconnectAttempts( -1 );
          // On the java side we don't need to parse STOMP.  JMS will automatically translate.
          _connection = cf.createConnection();
+//         _connection.setClientID( getId() );  // Not desired?
          _session = _connection.createSession( false, Session.AUTO_ACKNOWLEDGE );
          final ActiveMQQueue queue = new ActiveMQQueue( _queue );
          _producer = _session.createProducer( queue );
