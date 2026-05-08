@@ -66,6 +66,8 @@ class PBJReceiver(CollectionReader):
 
     # Called to stop reading.
     def stop(self):
+        if self.stomp_receiver is None:
+            return
         logger.info("%s PBJ Receiver: Stopping Stomp receiver ...", time.ctime())
         self.stomp_receiver.stop_receiver()
 

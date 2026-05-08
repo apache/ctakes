@@ -1,16 +1,16 @@
-import sys
 import traceback
-from traceback import TracebackException
 from threading import Event
 import logging
 
 from ctakes_pbj.pbj_tools import pbj_defaults
 from ctakes_pbj.pbj_tools.arg_parser import ArgParser
+from ctakes_pbj.pbj_tools import helper_functions
 
 exit_event = Event()
 
 # Configure logging here...
 logging.basicConfig(
+    force=True,
     level=logging.INFO,
     format="%(asctime)s %(name)s - %(levelname)s: %(message)s",
     datefmt='%m/%d/%Y %I:%M:%S %p'
@@ -83,12 +83,13 @@ class PBJPipeline:
 
     # For a new cas, call each annotator to process that cas.
     def process(self, cas):
+        logger.info(f"Running Pipeline on {helper_functions.get_document_id(cas)}...")
         for annotator in self.annotators:
             if exit_event.is_set():
                 break
             try:
                 logger.info(f"Running  {type(annotator).__name__}...")
-                annotator.process(cas)
+                cas = annotator.process(cas)
             except Exception as exceptable:
                 self.handle_exception(annotator, exceptable)
 
@@ -108,9 +109,7 @@ class PBJPipeline:
 
     def handle_exception(self, thrower, exceptable, initializing=False):
         logger.info(f"Exception thrown in {type(thrower).__name__} : {type(exceptable).__name__} exceptable")
-        # print(TracebackException.from_exception(exceptable, limit=-3, capture_locals=True))
         traceback.print_exc(limit=3, chain=False)
-        # Print nice output regarding the exception.
         try:
             logger.info(f"Notifying {type(self.c_reader).__name__} of exception ...")
             self.c_reader.handle_exception(thrower, exceptable)
@@ -124,5 +123,4 @@ class PBJPipeline:
             except Exception as exceptable_2:
                 traceback.print_exc(limit=3, chain=False)
         logger.info("Done.")
-        # sys.exit(1)
         exit_event.set()

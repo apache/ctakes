@@ -50,9 +50,10 @@ class PBJSender(cas_annotator.CasAnnotator):
 
     # Called for every cas passed through the pipeline.
     def process(self, cas):
-        logger.info(f"Sending processed information to {self.host} {self.queue}...")
+        logger.info(f"Sending information to {self.host} {self.queue}...")
         xmi = cas.to_xmi()
         self.conn.send(self.queue, xmi)
+        return cas
 
     # Called once at the end of the pipeline.
     def collection_process_complete(self):
@@ -66,6 +67,8 @@ class PBJSender(cas_annotator.CasAnnotator):
         self.conn.send(self.queue, text)
 
     def send_stop(self):
+        if self.conn is None:
+            return
         logger.info(f"Sending Stop code to {self.host} {self.queue} ...")
         self.conn.send(self.queue, STOP_MESSAGE)
         self.conn.disconnect()

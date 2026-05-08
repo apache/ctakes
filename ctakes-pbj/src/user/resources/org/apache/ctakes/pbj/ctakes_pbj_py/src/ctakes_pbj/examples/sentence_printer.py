@@ -14,3 +14,4 @@ class SentencePrinter(ctakes_pbj.component.cas_annotator.CasAnnotator):
                                                                             token.begin,
                                                                             token.end,
                                                                             token.partOfSpeech))
+        return cas

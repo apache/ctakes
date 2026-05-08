@@ -41,3 +41,4 @@ class WordFinder(CasAnnotator):
                     print("found Procedure")
                     end = begin + len(word)
                     add_type(cas, procedure_type, begin, end)
+        return cas
