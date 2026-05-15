@@ -35,7 +35,7 @@ classifiers = [
 ]
 dependencies = [
     "dkpro-cassis~=0.9.1",
-    "stomp-py~=8.1.2"
+    "stomp-py~=8.2.0"
 ]
 
 [project.urls]
