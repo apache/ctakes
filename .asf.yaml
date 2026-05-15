@@ -40,8 +40,21 @@ github:
   dependabot_updates: false
   del_branch_on_merge: true
 
+  rulesets:
+    - name: "Default Branch Protection"
+      type: branch
+      branches:
+        includes:
+          - "~DEFAULT_BRANCH"
+          - "release/*"
+          - "rel/*"
+        excludes: []
+      bypass_teams:
+        - root
+      restrict_deletion: true
+      restrict_force_push: true
 notifications:
-    commits: commits@ctakes.apache.org
-    pullrequests: commits@ctakes.apache.org
-    issues: commits@ctakes.apache.org
-    discussions: dev@ctakes.apache.org
+  commits: commits@ctakes.apache.org
+  pullrequests: commits@ctakes.apache.org
+  issues: commits@ctakes.apache.org
+  discussions: dev@ctakes.apache.org
