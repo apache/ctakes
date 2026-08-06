@@ -16,7 +16,7 @@
         <spring.version>5.3.20</spring.version>
         <spring-core.version>6.1.11</spring-core.version>
         <spring-web.version>6.1.11</spring-web.version>
-        <spring-mvc.version>6.1.11</spring-mvc.version>
+        <spring-mvc.version>6.2.19</spring-mvc.version>
         <jakarta-api.version>6.0.0</jakarta-api.version>
         <jakarta-jsp-api.version>3.1.0</jakarta-jsp-api.version>
         <jakarta-el-api.version>5.0.0</jakarta-el-api.version>
