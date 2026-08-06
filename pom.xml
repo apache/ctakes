@@ -185,7 +185,7 @@
         <opennlp.version>2.3.3</opennlp.version>
         <!--  opennlp-maxent depends upon opennlp 1.5.3   The project looks like it hasn't changed in a while.  -->
         <opennlp.maxent.version>3.0.3</opennlp.maxent.version>
-        <protobuf.version>4.27.2</protobuf.version>
+        <protobuf.version>4.27.5</protobuf.version>
         <scala-library.version>2.13.14</scala-library.version>
         <scala-tools.version>0.4.0</scala-tools.version>
         <servlet-jsp-api.version>2.2</servlet-jsp-api.version>
