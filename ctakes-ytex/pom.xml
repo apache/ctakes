@@ -19,6 +19,14 @@
         <artifactId>ctakes</artifactId>
         <version>7.0.0-SNAPSHOT</version>
     </parent>
+    <properties>
+        <spring-aop.version>6.1.11</spring-aop.version>
+        <spring-context.version>6.1.11</spring-context.version>
+        <spring-core.version>6.1.11</spring-core.version>
+        <spring-jdbc.version>6.1.11</spring-jdbc.version>
+        <spring-orm.version>6.1.11</spring-orm.version>
+        <spring-web.version>6.1.21</spring-web.version>
+    </properties>
     <dependencies>
         <dependency>
             <groupId>org.apache.ctakes</groupId>
@@ -115,22 +123,27 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
+            <version>${spring-core.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
+            <version>${spring-jdbc.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
+            <version>${spring-orm.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-aop</artifactId>
+            <version>${spring-aop.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context-support</artifactId>
+            <version>${spring-context.version}</version>
         </dependency>
         <dependency>
             <groupId>org.aspectj</groupId>
@@ -254,41 +267,41 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
                 <executions>
-                    <execution>
-                        <id>generate-config</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                        <configuration>
-                            <target>
-                                <ant antfile="build-setup.xml" dir="scripts" target="templateToConfig">
-                                    <property name="config.generated.dir" value="${project.build.outputDirectory}"/>
-                                    <property name="ctakes.home" value="${project.basedir}/.."/>
-                                </ant>
-                            </target>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>generate-test-config</id>
-                        <phase>pre-integration-test</phase>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                        <configuration>
-                            <target>
-                                <!-- default to hsql, override via -D -->
-                                <property name="db.type" value="hsql"/>
-                                <ant antfile="build-setup.xml" dir="scripts" target="test.setup">
-                                    <property name="config.local" value="${project.build.testOutputDirectory}"/>
-                                    <!--									<property name="db.type" value="${db.type}" />-->
-                                    <property name="db.type" value="hsql"/>
-                                    <property name="ytex.test" value="true"/>
-                                    <property name="ctakes.home" value="${project.basedir}/.."/>
-                                </ant>
-                            </target>
-                        </configuration>
-                    </execution>
+<!--                    <execution>-->
+<!--                        <id>generate-config</id>-->
+<!--                        <phase>package</phase>-->
+<!--                        <goals>-->
+<!--                            <goal>run</goal>-->
+<!--                        </goals>-->
+<!--                        <configuration>-->
+<!--                            <target>-->
+<!--                                <ant antfile="build-setup.xml" dir="scripts" target="templateToConfig">-->
+<!--                                    <property name="config.generated.dir" value="${project.build.outputDirectory}"/>-->
+<!--                                    <property name="ctakes.home" value="${project.basedir}/.."/>-->
+<!--                                </ant>-->
+<!--                            </target>-->
+<!--                        </configuration>-->
+<!--                    </execution>-->
+<!--                    <execution>-->
+<!--                        <id>generate-test-config</id>-->
+<!--                        <phase>pre-integration-test</phase>-->
+<!--                        <goals>-->
+<!--                            <goal>run</goal>-->
+<!--                        </goals>-->
+<!--                        <configuration>-->
+<!--                            <target>-->
+<!--                                &lt;!&ndash; default to hsql, override via -D &ndash;&gt;-->
+<!--                                <property name="db.type" value="hsql"/>-->
+<!--                                <ant antfile="build-setup.xml" dir="scripts" target="test.setup">-->
+<!--                                    <property name="config.local" value="${project.build.testOutputDirectory}"/>-->
+<!--                                    &lt;!&ndash;									<property name="db.type" value="${db.type}" />&ndash;&gt;-->
+<!--                                    <property name="db.type" value="hsql"/>-->
+<!--                                    <property name="ytex.test" value="true"/>-->
+<!--                                    <property name="ctakes.home" value="${project.basedir}/.."/>-->
+<!--                                </ant>-->
+<!--                            </target>-->
+<!--                        </configuration>-->
+<!--                    </execution>-->
                 </executions>
             </plugin>
 

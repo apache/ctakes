@@ -193,15 +193,20 @@
         <slf4j.version>2.0.13</slf4j.version>
         <log4j-slf4j2.version>2.23.1</log4j-slf4j2.version>
         <solr.version>3.5.0</solr.version>
-        <spring.version>5.3.20</spring.version>
+<!--        <spring.version>5.3.39</spring.version>-->
         <spring-aop.version>6.1.11</spring-aop.version>
+        <spring-beans.version>6.1.11</spring-beans.version>
         <spring-context.version>6.1.11</spring-context.version>
+        <spring-context-support.version>6.1.11</spring-context-support.version>
         <spring-core.version>6.1.11</spring-core.version>
         <spring-jdbc.version>6.1.11</spring-jdbc.version>
         <spring-orm.version>6.1.11</spring-orm.version>
+        <spring-tx.version>6.1.11</spring-tx.version>
         <spring-web.version>6.1.21</spring-web.version>
         <sqlwrapper.version>0.0.1</sqlwrapper.version>
         <timenorm.version>1.0.5</timenorm.version>
+        <!--  Uimafit was pulled into Uima in v3.6.0
+        However, Cleatk still uses it by itself, so we still use 3.5.0      -->
         <uimafit.version>3.5.0</uimafit.version>
         <uimaj.version>3.5.0</uimaj.version>
         <weka.version>3.6.10</weka.version>
@@ -837,12 +842,12 @@
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-aop</artifactId>
-                <version>${spring.version}</version>
+                <version>${spring-aop.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-beans</artifactId>
-                <version>${spring.version}</version>
+                <version>${spring-beans.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
@@ -852,7 +857,7 @@
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-context-support</artifactId>
-                <version>${spring.version}</version>
+                <version>${spring-context-support.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
@@ -862,17 +867,17 @@
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-jdbc</artifactId>
-                <version>${spring.version}</version>
+                <version>${spring-jdbc.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-orm</artifactId>
-                <version>${spring.version}</version>
+                <version>${spring-orm.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-tx</artifactId>
-                <version>${spring.version}</version>
+                <version>${spring-tx.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>

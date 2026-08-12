@@ -246,10 +246,10 @@
                                     <directory>${project.basedir}/../ctakes-fhir/src/user/resources</directory>
                                     <filtering>true</filtering>
                                 </resource>
-                                <resource>
-                                    <directory>${project.basedir}/../ctakes-pbj/src/user/resources</directory>
-                                    <filtering>true</filtering>
-                                </resource>
+<!--                                <resource>-->
+<!--                                    <directory>${project.basedir}/../ctakes-pbj/src/user/resources</directory>-->
+<!--                                    <filtering>true</filtering>-->
+<!--                                </resource>-->
                                 <resource>
                                     <directory>${project.basedir}/../ctakes-lvg/src/user/resources</directory>
                                     <filtering>true</filtering>
