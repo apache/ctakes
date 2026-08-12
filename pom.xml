@@ -194,15 +194,15 @@
         <log4j-slf4j2.version>2.23.1</log4j-slf4j2.version>
         <solr.version>3.5.0</solr.version>
 <!--        <spring.version>5.3.39</spring.version>-->
-        <spring-aop.version>6.1.11</spring-aop.version>
-        <spring-beans.version>6.1.11</spring-beans.version>
-        <spring-context.version>6.1.11</spring-context.version>
-        <spring-context-support.version>6.1.11</spring-context-support.version>
-        <spring-core.version>6.1.11</spring-core.version>
-        <spring-jdbc.version>6.1.11</spring-jdbc.version>
-        <spring-orm.version>6.1.11</spring-orm.version>
-        <spring-tx.version>6.1.11</spring-tx.version>
-        <spring-web.version>6.1.21</spring-web.version>
+        <spring-aop.version>6.2.19</spring-aop.version>
+        <spring-beans.version>6.2.19</spring-beans.version>
+        <spring-context.version>6.2.19</spring-context.version>
+        <spring-context-support.version>6.2.19</spring-context-support.version>
+        <spring-core.version>6.2.19</spring-core.version>
+        <spring-jdbc.version>6.2.19</spring-jdbc.version>
+        <spring-orm.version>6.2.19</spring-orm.version>
+        <spring-tx.version>6.2.19</spring-tx.version>
+        <spring-web.version>6.2.19</spring-web.version>
         <sqlwrapper.version>0.0.1</sqlwrapper.version>
         <timenorm.version>1.0.5</timenorm.version>
         <!--  Uimafit was pulled into Uima in v3.6.0

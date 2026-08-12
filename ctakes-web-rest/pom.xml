@@ -14,11 +14,11 @@
         <ctakes.version>7.0.0-SNAPSHOT</ctakes.version>
 
 <!--        <spring.version>5.3.39</spring.version>-->
-        <spring-core.version>6.1.11</spring-core.version>
-        <spring-web.version>6.1.21</spring-web.version>
+        <spring-core.version>6.2.19</spring-core.version>
+        <spring-web.version>6.2.19</spring-web.version>
         <spring-mvc.version>6.2.19</spring-mvc.version>
-        <spring-context.version>6.1.11</spring-context.version>
-        <spring-beans.version>6.1.11</spring-beans.version>
+        <spring-context.version>6.2.19</spring-context.version>
+        <spring-beans.version>6.2.19</spring-beans.version>
         <jakarta-api.version>6.0.0</jakarta-api.version>
         <jakarta-jsp-api.version>3.1.0</jakarta-jsp-api.version>
         <jakarta-el-api.version>5.0.0</jakarta-el-api.version>
