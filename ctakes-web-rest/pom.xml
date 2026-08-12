@@ -22,7 +22,7 @@
         <jakarta-el-api.version>5.0.0</jakarta-el-api.version>
         <jakarta-websocket-api.version>2.1.0</jakarta-websocket-api.version>
         <jakarta-security.version>3.0.0</jakarta-security.version>
-        <jackson.version>2.17.2</jackson.version>
+        <jackson.version>2.18.9</jackson.version>
         <maven-compiler-plugin.version>3.13.0</maven-compiler-plugin.version>
         <maven-war-plugin.version>3.2.3</maven-war-plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
