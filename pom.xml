@@ -199,7 +199,7 @@
         <spring-core.version>6.1.11</spring-core.version>
         <spring-jdbc.version>6.1.11</spring-jdbc.version>
         <spring-orm.version>6.1.11</spring-orm.version>
-        <spring-web.version>6.1.11</spring-web.version>
+        <spring-web.version>6.1.21</spring-web.version>
         <sqlwrapper.version>0.0.1</sqlwrapper.version>
         <timenorm.version>1.0.5</timenorm.version>
         <uimafit.version>3.5.0</uimafit.version>
