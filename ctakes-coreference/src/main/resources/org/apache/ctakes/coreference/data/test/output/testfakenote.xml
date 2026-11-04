@@ -3657,7 +3657,7 @@
     <org.apache.ctakes.typesystem.type.Lemma _id="1884" key="occurredder" posTag="RB"/>
     <org.apache.ctakes.typesystem.type.Lemma _id="1881" key="occurredder" posTag="JJ"/>
     <org.apache.ctakes.typesystem.type.Lemma _id="1878" key="occurredding" posTag="VB"/>
-    <org.apache.ctakes.typesystem.type.Lemma _id="1875" key="occured" posTag="VB"/>
+    <org.apache.ctakes.typesystem.type.Lemma _id="1875" key="occurred" posTag="VB"/>
     <org.apache.ctakes.typesystem.type.Lemma _id="1872" key="occurreeds" posTag="VB"/>
     <org.apache.ctakes.typesystem.type.Lemma _id="1869" key="occurreded" posTag="VB"/>
     <uima.cas.EmptyFSList _id="1868"/>
