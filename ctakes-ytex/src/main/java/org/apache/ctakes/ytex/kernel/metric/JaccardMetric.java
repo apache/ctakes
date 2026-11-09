@@ -42,7 +42,15 @@ public class JaccardMetric extends BaseSimilarityMetric {
 			return 0d;
 		double ic1 = simSvc.getIC(concept1, true);
 		double ic2 = simSvc.getIC(concept2, true);
-		return lcsIC / (ic1 + ic2 - lcsIC);
+		
+		//
+		// Test that we get a positive denominator
+		//
+		if ( ic1 + ic2 > lcsIC ) {
+			return lcsIC / (ic1 + ic2 - lcsIC);
+		} else {
+			return 0d;
+		}
 	}
 
 }

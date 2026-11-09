@@ -20,22 +20,36 @@ package org.apache.ctakes.ytex.kernel.metric;
 
 import java.util.Map;
 
+/**
+ * 
+ * This metric is an implementation of the semantic relatedness measure described
+ * by Leacock and Chodorow (1998).
+ * 
+ * See reference paper: https://aclanthology.org/J06-1003.pdf
+ * Page 19, Sec 2.5.3 (7)
+ * 
+ * sim(c1,c2) = -log ( len(c1,c2) / 2 * max_depth )
+ * 
+ */
 public class LCHMetric extends BaseSimilarityMetric {
 	/**
-	 * log(max depth * 2)
+	 * natural log(max depth * 2)
 	 */
-	double logdm = 0d;
+	double maxDepth = 0d;
 
 	@Override
 	public double similarity(String concept1, String concept2,
 			Map<String, Double> conceptFilter, SimilarityInfo simInfo) {
-		if (logdm != 0d) {
+		if (maxDepth != 0d) {
 			initLCSes(concept1, concept2, simInfo);
 			if (simInfo.getLcsDist() > 0) {
-				// double lch = logdm - Math.log((double) simInfo.getLcsDist());
-				// // scale to depth
-				// return lch / logdm;
-				return 1 - (Math.log((double) simInfo.getLcsDist()) / logdm);
+
+				double length = simInfo.getLcsDist();
+				
+				// Compute the length between the concepts
+				double lch = Math.log(length / (double)(2 * maxDepth)) * -1.0d;
+				return lch;
+				
 			}
 		}
 		return 0d;
@@ -44,7 +58,10 @@ public class LCHMetric extends BaseSimilarityMetric {
 	public LCHMetric(ConceptSimilarityService simSvc, Integer maxDepth) {
 		super(simSvc);
 		if (maxDepth != null) {
-			this.logdm = Math.log(2 * maxDepth);
+			// The cTakes YTEX concept graph adds a dummy node C000000
+			// which should be reduced by 1 for computing the max depth
+			// correctly
+			this.maxDepth = maxDepth - 1;
 		}
 	}
 
