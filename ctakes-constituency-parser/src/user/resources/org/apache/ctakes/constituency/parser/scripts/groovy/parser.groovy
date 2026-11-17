@@ -1,3 +1,4 @@
+#!/usr/bin/env groovy
 /**
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -16,7 +17,6 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-#!/usr/bin/env groovy
 import org.apache.ctakes.constituency.parser.ae.ConstituencyParser
 import org.apache.ctakes.core.ae.SentenceDetector
 import org.apache.ctakes.core.ae.SimpleSegmentAnnotator
